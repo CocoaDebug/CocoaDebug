@@ -21,7 +21,7 @@ class EditViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var textView: UITextView!
     
-    let keyboardMan = KeyboardMan()
+//    let keyboardMan = KeyboardMan()
     private var button: UIButton?
     
     var editType: EditType  = .unknow
@@ -131,25 +131,25 @@ class EditViewController: UITableViewController, UITextViewDelegate {
         }
         
         //键盘
-        keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
-            switch keyboardInfo.action {
-            case .show:
-                self?.initButton(keyboardInfo.height)
-            case .hide:
-                self?.deInitButton(keyboardInfo.height)
-            }
-        }
+//        keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
+//            switch keyboardInfo.action {
+//            case .show:
+//                self?.initButton(keyboardInfo.height)
+//            case .hide:
+//                self?.deInitButton(keyboardInfo.height)
+//            }
+//        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textView.becomeFirstResponder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        textView.resignFirstResponder()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        textView.becomeFirstResponder()
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        textView.resignFirstResponder()
+//    }
     
     //MARK: - UITextViewDelegate
     func textViewDidChange(_ textView: UITextView)
@@ -159,6 +159,15 @@ class EditViewController: UITableViewController, UITextViewDelegate {
         
         editedContent = textView.text
         detailModel?.content = textView.text
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
+    {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     //MARK: - UITableViewDelegate
@@ -212,3 +221,4 @@ class EditViewController: UITableViewController, UITextViewDelegate {
         textView.resignFirstResponder()
     }
 }
+
