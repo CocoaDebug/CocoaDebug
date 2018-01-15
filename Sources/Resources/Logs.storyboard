@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3CJ-ep-uee">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Logs-->
+        <scene sceneID="Ppy-kU-SGA">
+            <objects>
+                <tableViewController storyboardIdentifier="LogsViewController" title="Logs" id="AVG-2n-hvN" customClass="LogsViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uo3-eQ-AeA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="xBS-8l-n92">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Filter" translatesAutoresizingMaskIntoConstraints="NO" id="zXm-3w-uLw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogTableViewCell" rowHeight="103" id="0nQ-St-owY" customClass="LogTableViewCell" customModule="DebugMan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nQ-St-owY" id="rlT-8f-zyl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="frq-th-OEB">
+                                            <rect key="frame" x="4" y="0.0" width="371" height="103"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5b-mx-5Yj">
+                                            <rect key="frame" x="4" y="8" width="0.0" height="87"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" id="gj5-Nu-R9k"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="K5b-mx-5Yj" firstAttribute="leading" secondItem="rlT-8f-zyl" secondAttribute="leading" constant="4" id="am3-bE-AbL"/>
+                                        <constraint firstAttribute="bottom" secondItem="K5b-mx-5Yj" secondAttribute="bottom" constant="7.5" id="i5h-EA-2I6"/>
+                                        <constraint firstAttribute="trailing" secondItem="frq-th-OEB" secondAttribute="trailing" id="kRi-eK-MGs"/>
+                                        <constraint firstItem="frq-th-OEB" firstAttribute="top" secondItem="rlT-8f-zyl" secondAttribute="top" id="m6D-c7-so7"/>
+                                        <constraint firstItem="K5b-mx-5Yj" firstAttribute="top" secondItem="rlT-8f-zyl" secondAttribute="top" constant="8" id="nez-xd-kFa"/>
+                                        <constraint firstAttribute="bottom" secondItem="frq-th-OEB" secondAttribute="bottom" id="qks-WQ-vnk"/>
+                                        <constraint firstItem="frq-th-OEB" firstAttribute="leading" secondItem="K5b-mx-5Yj" secondAttribute="trailing" id="tF7-ub-pwy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="labelContent" destination="frq-th-OEB" id="OGw-zN-1NM"/>
+                                    <outlet property="viewTypeLogColor" destination="K5b-mx-5Yj" id="AOq-R3-V8b"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AVG-2n-hvN" id="u0e-lb-vKk"/>
+                            <outlet property="delegate" destination="AVG-2n-hvN" id="fcZ-AL-meb"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Logs" id="DpU-H0-ZF2">
+                        <barButtonItem key="backBarButtonItem" title=" " id="9Uo-kH-0P4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Uw0-Z9-dwT">
+                            <connections>
+                                <action selector="resetLogs:" destination="AVG-2n-hvN" id="hjg-LT-89B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="zXm-3w-uLw" id="NfY-oW-JLR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Na9-BJ-4rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-884" y="2220"/>
+        </scene>
+        <!--logs-->
+        <scene sceneID="afz-qj-lGc">
+            <objects>
+                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="3CJ-ep-uee" customClass="LogNavigationViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="logs" image="debugman_logs" selectedImage="debugman_logs" id="Uuf-aW-P9g"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EEW-tV-ACR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AVG-2n-hvN" kind="relationship" relationship="rootViewController" id="sai-5d-20w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5V-jJ-LUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739" y="1481"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="debugman_logs" width="16" height="16"/>
+    </resources>
+</document>
