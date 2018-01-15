@@ -39,12 +39,12 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.4.0' , :configurations => ['Debug']
+pod 'DebugMan', '~> 4.4.1' , :configurations => ['Debug']
 end
 ```
 
-- use `~> 4.4.0` if your project use Swift-4
-- use `~> 3.4.0` if your project use Swift-3
+- use `~> 4.4.1` if your project use Swift-4
+- use `~> 3.4.1` if your project use Swift-3
 
 ## Usage
 
