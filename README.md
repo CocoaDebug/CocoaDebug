@@ -43,8 +43,8 @@ pod 'DebugMan', '~> 4.4.0' , :configurations => ['Debug']
 end
 ```
 
-- use `~> 4.4.0` if your project use Swift4
-- use `~> 3.4.0` if your project use Swift3
+- use `~> 4.4.0` if your project use Swift-4
+- use `~> 3.4.0` if your project use Swift-3
 
 ## Usage
 
