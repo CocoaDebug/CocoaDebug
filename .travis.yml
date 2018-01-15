@@ -1,4 +1,8 @@
-osx_image: xcode9.2
 language: objective-c
-xcode_project: DebugMan.xcworkspace
-script: xcodebuild -project DebugMan.xcworkspace -scheme "DebugMan" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+osx_image: xcode9
+
+env:
+  - ACTION=test  PLATFORM=iOS     DESTINATION='platform=iOS Simulator,name=iPhone 6S'
+
+script:
+  - set -o pipefail && xcodebuild -scheme DebugMan -destination "$DESTINATION" $ACTION | xcpretty
