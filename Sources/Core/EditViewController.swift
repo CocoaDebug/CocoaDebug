@@ -22,7 +22,7 @@ class EditViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     
 //    let keyboardMan = KeyboardMan()
-    private var button: UIButton?
+//    private var button: UIButton?
     
     var editType: EditType  = .unknow
     var httpModel: JxbHttpModel?
@@ -59,33 +59,33 @@ class EditViewController: UITableViewController, UITextViewDelegate {
     }
     
     //show button
-    private func initButton(_ infoHeight: CGFloat) {
-        if button == nil {
-            button = UIButton.init(frame: CGRect(x:UIScreen.main.bounds.width-74,y:UIScreen.main.bounds.height,width:74,height:38))
-            button?.backgroundColor = UIColor.white
-            button?.setTitle("Hide", for: .normal)
-            button?.setTitleColor(UIColor.black, for: .normal)
-            button?.addCorner(roundingCorners: UIRectCorner(rawValue: UIRectCorner.RawValue(UInt8(UIRectCorner.topLeft.rawValue) | UInt8(UIRectCorner.topRight.rawValue))), cornerSize: CGSize(width:4,height:4))
-            button?.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
-            
-            guard let button = button else {return}
-            Dotzu.sharedManager.window.addSubview(button)
-        }
-        
-        UIView.animate(withDuration: 0.35) { [weak self] in
-            self?.button?.frame.origin.y = UIScreen.main.bounds.height-infoHeight-38
-        }
-    }
+//    private func initButton(_ infoHeight: CGFloat) {
+//        if button == nil {
+//            button = UIButton.init(frame: CGRect(x:UIScreen.main.bounds.width-74,y:UIScreen.main.bounds.height,width:74,height:38))
+//            button?.backgroundColor = UIColor.white
+//            button?.setTitle("Hide", for: .normal)
+//            button?.setTitleColor(UIColor.black, for: .normal)
+//            button?.addCorner(roundingCorners: UIRectCorner(rawValue: UIRectCorner.RawValue(UInt8(UIRectCorner.topLeft.rawValue) | UInt8(UIRectCorner.topRight.rawValue))), cornerSize: CGSize(width:4,height:4))
+//            button?.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+//
+//            guard let button = button else {return}
+//            Dotzu.sharedManager.window.addSubview(button)
+//        }
+//
+//        UIView.animate(withDuration: 0.35) { [weak self] in
+//            self?.button?.frame.origin.y = UIScreen.main.bounds.height-infoHeight-38
+//        }
+//    }
     
     //hide button
-    private func deInitButton(_ infoHeight: CGFloat) {
-        UIView.animate(withDuration: 0.35, animations: { [weak self] in
-            self?.button?.frame.origin.y = UIScreen.main.bounds.height
-        }) { [weak self] _ in
-            self?.button?.removeFromSuperview()
-            self?.button = nil
-        }
-    }
+//    private func deInitButton(_ infoHeight: CGFloat) {
+//        UIView.animate(withDuration: 0.35, animations: { [weak self] in
+//            self?.button?.frame.origin.y = UIScreen.main.bounds.height
+//        }) { [weak self] _ in
+//            self?.button?.removeFromSuperview()
+//            self?.button = nil
+//        }
+//    }
     
     
     //MARK: - init
@@ -217,7 +217,7 @@ class EditViewController: UITableViewController, UITextViewDelegate {
     }
     
     
-    @objc private func tapButton(_ sender: UIButton?) {
-        textView.resignFirstResponder()
-    }
+//    @objc private func tapButton(_ sender: UIButton?) {
+//        textView.resignFirstResponder()
+//    }
 }

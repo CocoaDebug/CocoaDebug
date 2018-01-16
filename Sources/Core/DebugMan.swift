@@ -68,7 +68,7 @@ public class DebugMan : NSObject {
     private override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(methodThatIsCalledAfterShake), name: NSNotification.Name(DHCSHakeNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(methodThatIsCalledAfterShake), name: NSNotification.Name("DebugManShakeNotificationName"), object: nil)
         
         LogsSettings.shared.logSearchWord = nil
         LogsSettings.shared.networkSearchWord = nil

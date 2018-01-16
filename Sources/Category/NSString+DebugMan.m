@@ -1,9 +1,9 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#import "NSString+Utils.h"
+#import "NSString+DebugMan.h"
 
-@implementation NSString (Utils)
+@implementation NSString (DebugMan)
 
 - (CGFloat)heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
 {
