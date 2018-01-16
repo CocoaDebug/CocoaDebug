@@ -216,7 +216,7 @@
         <!--app-->
         <scene sceneID="PWc-Aa-Ldz">
             <objects>
-                <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="OYf-mT-x66" customClass="LogNavigationViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="LogNavigationViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="app" image="debugman_app" selectedImage="debugman_app" id="bj0-w7-cGx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LTO-vU-VsB">
@@ -719,7 +719,7 @@
                                                     <gestureRecognizers/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">DebugMan is an debugger tool for iOS in Swift, released under the MIT License. The author stole the idea from remirobert/Dotzu and JxbSir/JxbDebugTool so that people can make crappy clones.
+                                                            <string key="content">DebugMan is an debugger tool for iOS in Swift, released under the MIT License. The author stole the idea from remirobert/Dotzu and JxbSir/JxbDebugTool so that people can make crappy clones.
 
 DebugMan has the following features:
 
@@ -730,7 +730,7 @@ DebugMan has the following features:
 ● filter keywords in app logs and app network http requests.
 ● app memory real-time monitoring.
 
-Welcome to star and fork. If you have any questions, welcome to open issues. HomePage </mutableString>
+Welcome to star and fork. If you have any questions, welcome to open issues. HomePage </string>
                                                             <attributes>
                                                                 <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

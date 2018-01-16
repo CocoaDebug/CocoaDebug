@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B0B9ACECBADFD121FD5439B /* Pods_DebugMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB81748A666363A89D95A62 /* Pods_DebugMan.framework */; };
 		EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */; };
 		EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4931FE26CBA00DF34EF /* Logs.storyboard */; };
 		EA02F4A41FE26CBA00DF34EF /* debugman_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4961FE26CBA00DF34EF /* debugman_app@2x.png */; };
@@ -73,12 +72,10 @@
 		EA44B99E1FE140D600DF7FF6 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9461FE140D600DF7FF6 /* NSString+Utils.m */; };
 		EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */; };
 		EA9B47DD1FEA6084001DD838 /* debugman_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B47DC1FEA6084001DD838 /* debugman_logo.png */; };
+		EADFB134200D9F32001E0C67 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADFB133200D9F32001E0C67 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		34DB8974225EF4F14FB0C082 /* Pods-DebugMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan.debug.xcconfig"; sourceTree = "<group>"; };
-		5FB81748A666363A89D95A62 /* Pods_DebugMan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89C20EEF19A8E549894C61C4 /* Pods-DebugMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan.release.xcconfig"; sourceTree = "<group>"; };
 		EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkCell.xib; sourceTree = "<group>"; };
 		EA02F4931FE26CBA00DF34EF /* Logs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
 		EA02F4961FE26CBA00DF34EF /* debugman_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_app@2x.png"; sourceTree = "<group>"; };
@@ -161,6 +158,7 @@
 		EA44B9471FE140D600DF7FF6 /* UIColor+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
 		EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugMan+Extensions.swift"; sourceTree = "<group>"; };
 		EA9B47DC1FEA6084001DD838 /* debugman_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_logo.png; sourceTree = "<group>"; };
+		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B0B9ACECBADFD121FD5439B /* Pods_DebugMan.framework in Frameworks */,
+				EADFB134200D9F32001E0C67 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,18 +176,9 @@
 		0E0DE5CD60B2CB4657751F4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5FB81748A666363A89D95A62 /* Pods_DebugMan.framework */,
+				EADFB133200D9F32001E0C67 /* Alamofire.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		925AA1A29AFB6088ED9E733F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				34DB8974225EF4F14FB0C082 /* Pods-DebugMan.debug.xcconfig */,
-				89C20EEF19A8E549894C61C4 /* Pods-DebugMan.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		EA02F4911FE26CBA00DF34EF /* Resources */ = {
@@ -224,7 +213,6 @@
 				EA44B9031FE140D600DF7FF6 /* Sources */,
 				EA44B7851FE13ECD00DF7FF6 /* Demo */,
 				EA44B7841FE13ECD00DF7FF6 /* Products */,
-				925AA1A29AFB6088ED9E733F /* Pods */,
 				0E0DE5CD60B2CB4657751F4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -361,12 +349,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA44B7951FE13ECD00DF7FF6 /* Build configuration list for PBXNativeTarget "DebugMan" */;
 			buildPhases = (
-				A9D7A20602596D11D02D718A /* [CP] Check Pods Manifest.lock */,
 				EA44B77F1FE13ECD00DF7FF6 /* Sources */,
 				EA44B7801FE13ECD00DF7FF6 /* Frameworks */,
 				EA44B7811FE13ECD00DF7FF6 /* Resources */,
-				BBB4DEEC634F041EAEA0DD7D /* [CP] Embed Pods Frameworks */,
-				35CA29E2ABB7D4135638AF74 /* [CP] Copy Pods Resources */,
+				EADFB135200DA0F0001E0C67 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -437,58 +423,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		35CA29E2ABB7D4135638AF74 /* [CP] Copy Pods Resources */ = {
+		EADFB135200DA0F0001E0C67 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
-			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A9D7A20602596D11D02D718A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DebugMan-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBB4DEEC634F041EAEA0DD7D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-4/iOS/RevealServer.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -682,13 +629,16 @@
 		};
 		EA44B7961FE13ECD00DF7FF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34DB8974225EF4F14FB0C082 /* Pods-DebugMan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -704,13 +654,16 @@
 		};
 		EA44B7971FE13ECD00DF7FF6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C20EEF19A8E549894C61C4 /* Pods-DebugMan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

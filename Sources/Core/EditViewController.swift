@@ -221,4 +221,3 @@ class EditViewController: UITableViewController, UITextViewDelegate {
         textView.resignFirstResponder()
     }
 }
-
