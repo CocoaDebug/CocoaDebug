@@ -1,4 +1,4 @@
-osx_image: xcode9.2
+osx_image: xcode7.3
 language: objective-c
 xcode_project: DebugMan.xcodeproj
 script: xcodebuild -project DebugMan.xcodeproj -scheme "DebugMan" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
