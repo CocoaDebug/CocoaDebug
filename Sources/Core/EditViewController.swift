@@ -69,7 +69,7 @@ class EditViewController: UITableViewController, UITextViewDelegate {
 //            button?.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
 //
 //            guard let button = button else {return}
-//            Dotzu.sharedManager.window.addSubview(button)
+//            DotzuManager.shared.window.addSubview(button)
 //        }
 //
 //        UIView.animate(withDuration: 0.35) { [weak self] in

@@ -12,29 +12,31 @@ public class LogsSettings {
 
     public static let shared = LogsSettings()
 
-    public var showBall: Bool {
+    public var showBallAndWindow: Bool = false {
         didSet {
-            UserDefaults.standard.set(showBall, forKey: "showBall")
+            UserDefaults.standard.set(showBallAndWindow, forKey: "showBallAndWindow")
             UserDefaults.standard.synchronize()
             
-            let x = Dotzu.sharedManager.controller.logHeadView.frame.origin.x
-            let width = Dotzu.sharedManager.controller.logHeadView.frame.size.width
+            let x = DotzuManager.shared.controller.logHeadView.frame.origin.x
+            let width = DotzuManager.shared.controller.logHeadView.frame.size.width
             
-            if showBall == true
+            if showBallAndWindow == true
             {
                 if x > 0 {
-                    Dotzu.sharedManager.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
+                    DotzuManager.shared.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
                 }else{
-                    Dotzu.sharedManager.controller.logHeadView.frame.origin.x = -width + width/8*7
+                    DotzuManager.shared.controller.logHeadView.frame.origin.x = -width + width/8*7
                 }
+                DotzuManager.shared.enable()
             }
             else
             {
                 if x > 0 {
-                    Dotzu.sharedManager.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width
+                    DotzuManager.shared.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width
                 }else{
-                    Dotzu.sharedManager.controller.logHeadView.frame.origin.x = -width
+                    DotzuManager.shared.controller.logHeadView.frame.origin.x = -width
                 }
+                DotzuManager.shared.disable()
             }
         }
     }
@@ -99,7 +101,7 @@ public class LogsSettings {
     {
         serverURL = UserDefaults.standard.string(forKey: "serverURL") ?? ""
         maxLogsCount = UserDefaults.standard.integer(forKey: "maxLogsCount")
-        showBall = UserDefaults.standard.bool(forKey: "showBall")
+        showBallAndWindow = UserDefaults.standard.bool(forKey: "showBallAndWindow")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem")
         logHeadFrameX = UserDefaults.standard.float(forKey: "logHeadFrameX")
         logHeadFrameY = UserDefaults.standard.float(forKey: "logHeadFrameY")

@@ -28,18 +28,18 @@ class ManagerViewController: UIViewController, LogHeadViewDelegate {
     }
 
     func didTapLogHeadView() {
-        Dotzu.sharedManager.displayedList = true
+        DotzuManager.shared.displayedList = true
         let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: ManagerViewController.self))
         guard let controller = storyboard.instantiateInitialViewController() else {return}
         self.present(controller, animated: true, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        Dotzu.sharedManager.displayedList = false
+        DotzuManager.shared.displayedList = false
     }
 
     func shouldReceive(point: CGPoint) -> Bool {
-        if Dotzu.sharedManager.displayedList {
+        if DotzuManager.shared.displayedList {
             return true
         }
         return self.logHeadView.frame.contains(point)

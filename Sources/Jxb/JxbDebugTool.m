@@ -34,12 +34,12 @@
 {
    [NSURLProtocol registerClass:[JxbHttpProtocol class]];
 }
-
+/*
 - (void)disable
 {
     [NSURLProtocol unregisterClass:[JxbHttpProtocol class]];
 }
-
+*/
 - (NSString *)bytesOfUsedMemory
 {
     unsigned long long used = [JxbMemoryHelper bytesOfUsedMemory];

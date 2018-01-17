@@ -37,9 +37,7 @@ public class Logger: LogGenerator {
     var enable: Bool = true
 
     fileprivate func parseFileInfo(file: String?, function: String?, line: Int?) -> String? {
-        guard let file = file, let function = function, let line = line else {return nil}
-        guard let fileName = file.components(separatedBy: "/").last else { return nil }
-        
+        guard let file = file, let function = function, let line = line, let fileName = file.components(separatedBy: "/").last else {return nil}
         
         return "\(fileName)[\(line)]\(function):\n"
     }

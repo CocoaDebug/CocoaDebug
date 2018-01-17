@@ -1,6 +1,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIWindow (DHCShakeRecognizer)
+@interface UIWindow (DebugMan)
 
 @end

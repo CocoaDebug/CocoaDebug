@@ -1,5 +1,5 @@
 //
-//  Manager.swift
+//  DotzuManager.swift
 //  exampleWindow
 //
 //  Created by Remi Robert on 02/12/2016.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class Dotzu: NSObject {
-    public static let sharedManager = Dotzu()
+public class DotzuManager: NSObject {
+    public static let shared = DotzuManager()
     var window: ManagerWindow
     let controller = ManagerViewController()
     var displayedList = false
@@ -17,26 +17,29 @@ public class Dotzu: NSObject {
     override init() {
         self.window = ManagerWindow(frame: UIScreen.main.bounds)
         super.init()
-    }
-
-    public func enable() {
-        self.window.rootViewController = self.controller
-        self.window.isHidden = false
-        self.window.delegate = self
+        
         Logger.shared.enable = true
         LoggerCrash.shared.enable = true
     }
 
+    public func enable() {
+        if self.window.rootViewController != self.controller {
+            self.window.rootViewController = self.controller
+            self.window.delegate = self
+            self.window.isHidden = false
+        }
+    }
+
     public func disable() {
-        self.window.rootViewController = nil
-        self.window.removeFromSuperview()
-        self.window.delegate = nil
-        Logger.shared.enable = false
-        LoggerCrash.shared.enable = false
+        if self.window.rootViewController != nil {
+            self.window.rootViewController = nil
+            self.window.delegate = nil
+            self.window.isHidden = true
+        }
     }
 }
 
-extension Dotzu: ManagerWindowDelegate {
+extension DotzuManager: ManagerWindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
         return self.controller.shouldReceive(point: point)
     }

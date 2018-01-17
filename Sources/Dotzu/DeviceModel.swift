@@ -49,10 +49,8 @@ enum DeviceModel {
         var systemInfo = utsname()
         uname(&systemInfo)
 
-        guard let bytesString = NSString(bytes: &systemInfo.machine, length: Int(_SYS_NAMELEN),
-                                         encoding: String.Encoding.ascii.rawValue) else {return .unknown}
-        guard let versionCode = String(validatingUTF8: bytesString.utf8String!) else { return .unknown }
-
+        guard let bytesString = NSString(bytes: &systemInfo.machine, length: Int(_SYS_NAMELEN), encoding: String.Encoding.ascii.rawValue), let versionCode = String(validatingUTF8: bytesString.utf8String!) else {return .unknown}
+        
         switch versionCode {
         case "iPhone3,1", "iPhone3,2", "iPhone3,3":      return .iPhone4
         case "iPhone4,1", "iPhone4,2", "iPhone4,3":      return .iPhone4S

@@ -39,12 +39,12 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.4.3' , :configurations => ['Debug']
+pod 'DebugMan', '~> 4.4.4' , :configurations => ['Debug']
 end
 ```
 
-- use `~> 4.4.3` if your project use Swift-4
-- use `~> 3.4.3` if your project use Swift-3
+- use `~> 4.4.4` if your project use Swift-4
+- use `~> 3.4.4` if your project use Swift-3
 
 ## Usage
 
@@ -82,7 +82,7 @@ end
 
 Small Tips:
 
-- You can temporarily hide the black ball by shaking iPhone or Simulator. Then if you want to show the black ball, just shake again.
+- Shake iPhone or Simulator to show the black ball, shake again to hide the black ball.
 - APP memory real-time monitoring data displayed on the black ball.
 - For more instructions, please check my demo.
 

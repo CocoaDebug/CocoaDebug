@@ -54,7 +54,7 @@
 /**
  *  禁用
  */
-- (void)disable;
+//- (void)disable;
 /**
  *  内存占用
  */
