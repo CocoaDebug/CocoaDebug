@@ -1,14 +1,8 @@
 language: objective-c
-osx_image: xcode8.2
-
-cache:
-  directories:
-  - Carthage
+osx_image: xcode8.3
 
 before_install:
-  - brew update
-  - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap --verbose --no-use-binaries --platform iOS --cache-builds
+  - gem install cocoapods
 
 xcode_project: DebugMan.xcodeproj
 script: xcodebuild -project DebugMan.xcodeproj -scheme "DebugMan" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
