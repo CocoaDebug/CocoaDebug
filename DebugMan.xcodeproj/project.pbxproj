@@ -58,9 +58,6 @@
 		EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */; };
 		EA44B99B1FE140D600DF7FF6 /* IgnoredURLsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */; };
 		EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */; };
-		EA68B3FD20146E9D00BA01C5 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B3F820146E9C00BA01C5 /* MethodSwizzling.m */; };
-		EA68B3FE20146E9D00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B3F920146E9C00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */; };
-		EA68B3FF20146E9D00BA01C5 /* SWHttpTrafficRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B3FC20146E9C00BA01C5 /* SWHttpTrafficRecorder.m */; };
 		EA68B4022014732200BA01C5 /* NSData+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B4012014732200BA01C5 /* NSData+DebugMan.m */; };
 		EA68B418201477EE00BA01C5 /* NSURLResponse+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B404201477EE00BA01C5 /* NSURLResponse+Data.m */; };
 		EA68B419201477EE00BA01C5 /* NSURLSessionTask+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B405201477EE00BA01C5 /* NSURLSessionTask+Swizzling.m */; };
@@ -73,6 +70,9 @@
 		EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */; };
 		EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */; };
 		EA68B42C201494B700BA01C5 /* debugman_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EA68B42B201494B700BA01C5 /* debugman_json.png */; };
+		EA68B45B2014CAAC00BA01C5 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B4562014CAAC00BA01C5 /* MethodSwizzling.m */; };
+		EA68B45C2014CAAC00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B4572014CAAC00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */; };
+		EA68B45D2014CAAC00BA01C5 /* SWHttpTrafficRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B45A2014CAAC00BA01C5 /* SWHttpTrafficRecorder.m */; };
 		EA9B47DD1FEA6084001DD838 /* debugman_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B47DC1FEA6084001DD838 /* debugman_logo.png */; };
 		EADFB13C200E13D7001E0C67 /* NSString+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EADFB136200E13D7001E0C67 /* NSString+DebugMan.m */; };
 		EADFB13D200E13D7001E0C67 /* UIWindow+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EADFB139200E13D7001E0C67 /* UIWindow+DebugMan.m */; };
@@ -137,11 +137,6 @@
 		EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoredURLsViewController.swift; sourceTree = "<group>"; };
 		EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugMan+Extensions.swift"; sourceTree = "<group>"; };
-		EA68B3F820146E9C00BA01C5 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
-		EA68B3F920146E9C00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWHttpTrafficRecorder+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
-		EA68B3FA20146E9C00BA01C5 /* SWHttpTrafficRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWHttpTrafficRecorder.h; sourceTree = "<group>"; };
-		EA68B3FB20146E9C00BA01C5 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
-		EA68B3FC20146E9C00BA01C5 /* SWHttpTrafficRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWHttpTrafficRecorder.m; sourceTree = "<group>"; };
 		EA68B4002014732200BA01C5 /* NSData+DebugMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+DebugMan.h"; sourceTree = "<group>"; };
 		EA68B4012014732200BA01C5 /* NSData+DebugMan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugMan.m"; sourceTree = "<group>"; };
 		EA68B404201477EE00BA01C5 /* NSURLResponse+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLResponse+Data.m"; sourceTree = "<group>"; };
@@ -166,6 +161,11 @@
 		EA68B417201477EE00BA01C5 /* NSURLSessionTask+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+Data.h"; sourceTree = "<group>"; };
 		EA68B4222014783200BA01C5 /* Category+DebugMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Category+DebugMan.h"; sourceTree = "<group>"; };
 		EA68B42B201494B700BA01C5 /* debugman_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_json.png; sourceTree = "<group>"; };
+		EA68B4562014CAAC00BA01C5 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
+		EA68B4572014CAAC00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SWHttpTrafficRecorder+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
+		EA68B4582014CAAC00BA01C5 /* SWHttpTrafficRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWHttpTrafficRecorder.h; sourceTree = "<group>"; };
+		EA68B4592014CAAC00BA01C5 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
+		EA68B45A2014CAAC00BA01C5 /* SWHttpTrafficRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWHttpTrafficRecorder.m; sourceTree = "<group>"; };
 		EA9B47DC1FEA6084001DD838 /* debugman_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_logo.png; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		EADFB136200E13D7001E0C67 /* NSString+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugMan.m"; sourceTree = "<group>"; };
@@ -269,9 +269,9 @@
 		EA44B9031FE140D600DF7FF6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA68B4552014CAAC00BA01C5 /* SWHttpTrafficRecorder */,
 				EA44B9341FE140D600DF7FF6 /* Core */,
 				EA68B403201477EE00BA01C5 /* JxbDebugTool */,
-				EA68B3F720146E9C00BA01C5 /* SWHttpTrafficRecorder */,
 				EA44B9191FE140D600DF7FF6 /* Dotzu */,
 				EA44B9411FE140D600DF7FF6 /* Category */,
 				EA02F4911FE26CBA00DF34EF /* Resources */,
@@ -345,19 +345,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		EA68B3F720146E9C00BA01C5 /* SWHttpTrafficRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				EA68B3FB20146E9C00BA01C5 /* MethodSwizzling.h */,
-				EA68B3F820146E9C00BA01C5 /* MethodSwizzling.m */,
-				EA68B3F920146E9C00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */,
-				EA68B3FA20146E9C00BA01C5 /* SWHttpTrafficRecorder.h */,
-				EA68B3FC20146E9C00BA01C5 /* SWHttpTrafficRecorder.m */,
-			);
-			name = SWHttpTrafficRecorder;
-			path = "../../../Downloads/SWHttpTrafficRecorder-master/SWHttpTrafficRecorder";
-			sourceTree = "<group>";
-		};
 		EA68B403201477EE00BA01C5 /* JxbDebugTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +370,18 @@
 				EA68B417201477EE00BA01C5 /* NSURLSessionTask+Data.h */,
 			);
 			path = JxbDebugTool;
+			sourceTree = "<group>";
+		};
+		EA68B4552014CAAC00BA01C5 /* SWHttpTrafficRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				EA68B4562014CAAC00BA01C5 /* MethodSwizzling.m */,
+				EA68B4572014CAAC00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m */,
+				EA68B4582014CAAC00BA01C5 /* SWHttpTrafficRecorder.h */,
+				EA68B4592014CAAC00BA01C5 /* MethodSwizzling.h */,
+				EA68B45A2014CAAC00BA01C5 /* SWHttpTrafficRecorder.m */,
+			);
+			path = SWHttpTrafficRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -539,7 +538,6 @@
 				EA68B41E201477EE00BA01C5 /* NSURLSessionTask+Data.m in Sources */,
 				EADFB13C200E13D7001E0C67 /* NSString+DebugMan.m in Sources */,
 				EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */,
-				EA68B3FE20146E9D00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m in Sources */,
 				EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */,
 				EA44B97D1FE140D600DF7FF6 /* LogTableViewCell.swift in Sources */,
 				EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */,
@@ -566,18 +564,19 @@
 				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
 				EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */,
 				EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */,
+				EA68B45B2014CAAC00BA01C5 /* MethodSwizzling.m in Sources */,
 				EA44B9841FE140D600DF7FF6 /* ManagerWindow.swift in Sources */,
 				EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */,
-				EA68B3FF20146E9D00BA01C5 /* SWHttpTrafficRecorder.m in Sources */,
+				EA68B45D2014CAAC00BA01C5 /* SWHttpTrafficRecorder.m in Sources */,
 				EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */,
 				EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */,
 				EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */,
 				EA44B9801FE140D600DF7FF6 /* LogsViewController.swift in Sources */,
 				EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */,
 				EA68B4022014732200BA01C5 /* NSData+DebugMan.m in Sources */,
+				EA68B45C2014CAAC00BA01C5 /* SWHttpTrafficRecorder+NSURLSessionConfiguration.m in Sources */,
 				EA44B9871FE140D600DF7FF6 /* CrashListTableViewCell.swift in Sources */,
 				EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */,
-				EA68B3FD20146E9D00BA01C5 /* MethodSwizzling.m in Sources */,
 				EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */,
 				EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */,
 				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
