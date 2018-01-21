@@ -45,7 +45,7 @@ class InformationsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let count = UserDefaults.standard.integer(forKey: "crashCount")
+        let count = UserDefaults.standard.integer(forKey: "crashCount_debugman")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? UIColor.red : UIColor.white
     }
@@ -56,6 +56,11 @@ class InformationsTableViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 4 {
             if labelserverURL.text == nil || labelserverURL.text == "" {
                 return 0
+            }
+        }
+        if indexPath.section == 3 && indexPath.row == 0 {
+            if labelignoredURLs.text == "0" {
+                return 0.5
             }
         }
         return 44

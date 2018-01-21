@@ -5,17 +5,18 @@
 [![Travis CI](https://travis-ci.org/liman123/DebugMan.svg?branch=master)](https://travis-ci.org/liman123/DebugMan)
 ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-333333.svg)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DebugMan.svg)](https://img.shields.io/cocoapods/v/DebugMan.svg)
+![Language](https://img.shields.io/badge/language-Swift%203.0+-orange.svg)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
 
 # DebugMan
 
-debugger tool for iOS in Swift
+debugger tool for iOS
 
 ## Introduction
 
-`DebugMan` is an debugger tool for iOS in Swift, released under the [MIT License](http://www.opensource.org/licenses/MIT). The author stole the idea from [remirobert/Dotzu](https://github.com/remirobert/Dotzu) and [JxbSir/JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) so that people can make crappy clones.
+The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/capitalone/SWHttpTrafficRecorder) so that people can make crappy clones.
 
-`DebugMan` has the following features:
+`DebugMan` is an debugger tool for iOS, with the following features:
 
 - display all app logs in different colors as you like.
 - display all app network http requests details, including third-party SDK in app.
@@ -39,44 +40,37 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.4.4' , :configurations => ['Debug']
+pod 'DebugMan', '~> 4.4.5' , :configurations => ['Debug']
 end
 ```
 
-- use `~> 4.4.4` if your project use Swift-4
-- use `~> 3.4.4` if your project use Swift-3
+- use `~> 4.4.5` if your project use `Swift 4`
+- use `~> 3.4.5` if your project use `Swift 3`
 
 ## Usage
 
-	import DebugMan
+	#if DEBUG
+	    import DebugMan
+	#endif
 	
-	@UIApplicationMain
-	class AppDelegate: UIResponder, UIApplicationDelegate {
-	
-	    var window: UIWindow?
-	
-	    //step 1: initialize DebugMan
-	    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	        
-	        #if DEBUG
-	            DebugMan.shared.enable()
-	        #endif
-	        
-	        return true
-	    }
+	//step 1: initialize `DebugMan`
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	    
+	    #if DEBUG
+	        DebugMan.shared.enable()
+	    #endif
+	    
+	    return true
 	}
 	
-	//step 2: override system print method
-	public func print<T>(file: String = #file,
-	                     function: String = #function,
-	                     line: Int = #line,
-	                     _ message: T,
-	                     _ color: UIColor? = nil)
-	{
+	//step 2: override `print` (or override `NSLog`)
+	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+	    
 	    #if DEBUG
 	        DebugManLog(file, function, line, message, color)
 	    #endif
 	}
+
 
 ## Screenshots
 

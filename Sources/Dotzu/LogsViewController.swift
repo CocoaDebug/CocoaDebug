@@ -15,8 +15,11 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     var searchModels: Array<Log>?
     
     var flag: Bool = false
+    var selectedSegmentIndex: Int = 0
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     
     //MARK: - tool
     //搜索逻辑
@@ -43,7 +46,13 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     //MARK: - private
     func reloadLogs(_ isFirstIn: Bool = false) {
         
-        models = StoreManager.shared.logArray
+        if selectedSegmentIndex == 0 {
+            models = StoreManager.shared.defaultLogArray
+        }else{
+            models = StoreManager.shared.colorLogArray
+        }
+        
+        
         self.cacheModels = self.models
         
         self.searchLogic(LogsSettings.shared.logSearchWord ?? "")
@@ -90,7 +99,11 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_debugman"), object: nil)
+        
+        //segmentedControl
+        selectedSegmentIndex = LogsSettings.shared.logSelectIndex
+        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         reloadLogs(true)
         
@@ -218,15 +231,30 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     
     //MARK: - target action
     @IBAction func resetLogs(_ sender: Any) {
+        searchBar.resignFirstResponder()
+        
         models = []
         cacheModels = []
-        StoreManager.shared.resetLogs()
-        searchBar.resignFirstResponder()
+        
+        if selectedSegmentIndex == 0 {
+            StoreManager.shared.resetDefaultLogs()
+        }else{
+            StoreManager.shared.resetColorLogs()
+        }
+        
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
         }
     }
+    
+    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
+        selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+        LogsSettings.shared.logSelectIndex = selectedSegmentIndex
+        
+        reloadLogs(true)
+    }
+    
     
     //MARK: - notification
     @objc func refreshLogs_notification() {

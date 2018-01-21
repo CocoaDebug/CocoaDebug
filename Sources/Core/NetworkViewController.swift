@@ -101,7 +101,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         setNeedsStatusBarAppearanceUpdate()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_debugman"), object: nil)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -188,7 +188,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         model.isSelected = true
         
         let vc: NetworkDetailViewController = NetworkDetailViewController.instanceFromStoryBoard()
-        vc.httpModel = model.copy() as? JxbHttpModel
+        vc.httpModel = model
         self.navigationController?.pushViewController(vc, animated: true)
         
         vc.justCancelCallback = { [weak self] in

@@ -1,12 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "DebugMan"
-  s.version      = "4.4.4"
-  s.summary      = "debugger tool for iOS in Swift"
+  s.version      = "4.4.5"
+  s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
-                    DebugMan is an debugger tool for iOS in Swift, released under the MIT License. The author stole the idea from remirobert/Dotzu and JxbSir/JxbDebugTool so that people can make crappy clones.
-
-                    DebugMan has the following features:
+                    DebugMan is an debugger tool for iOS, with the following features:
 
                     ● display all app logs in different colors as you like.
                     ● display all app network http requests details, including third-party SDK in app.

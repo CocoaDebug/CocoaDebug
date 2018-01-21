@@ -19,16 +19,17 @@
 @implementation JxbUrlSessionHook_NSURLSessionAsynchronousConvenience
 
 #pragma mark - 加载hook
-+ (void)load {
-    Class cls = NSClassFromString(@"NSURLSession");
-    [self swizzling_dataTaskWithURL:cls];
-    [self swizzling_dataTaskWithRequest:cls];
-    [self swizzling_uploadTaskFromFileWithRequest:cls];
-    [self swizzling_uploadTaskFromDataWithRequest:cls];
-    [self swizzling_downloadTaskWithRequest:cls];
-    [self swizzling_downloadTaskWithURL:cls];
-    [self swizzling_downloadTaskWithResumeData:cls];
-}
+//liman
+//+ (void)load {
+//    Class cls = NSClassFromString(@"NSURLSession");
+//    [self swizzling_dataTaskWithURL:cls];
+//    [self swizzling_dataTaskWithRequest:cls];
+//    [self swizzling_uploadTaskFromFileWithRequest:cls];
+//    [self swizzling_uploadTaskFromDataWithRequest:cls];
+//    [self swizzling_downloadTaskWithRequest:cls];
+//    [self swizzling_downloadTaskWithURL:cls];
+//    [self swizzling_downloadTaskWithResumeData:cls];
+//}
 
 #pragma mark - hook处理
 + (void)swizzling_dataTaskWithURL:(Class)cls {

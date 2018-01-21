@@ -191,7 +191,7 @@ class NetworkDetailViewController: UITableViewController {
         
         //2.点击了编辑view (编辑request/header)
         cell.tapEditViewCallback = { [weak self] detailModel in
-            let vc = EditViewController.instanceFromStoryBoard()
+            let vc = ToJSONViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
             self?.navigationController?.pushViewController(vc, animated: true)
         }

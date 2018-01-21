@@ -1,5 +1,5 @@
 //
-//  EditViewController.swift
+//  ToJSONViewController.swift
 //  PhiHome
 //
 //  Created by liman on 09/12/2017.
@@ -15,7 +15,7 @@ enum EditType {
 import Foundation
 import UIKit
 
-class EditViewController: UITableViewController, UITextViewDelegate {
+class ToJSONViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -33,9 +33,9 @@ class EditViewController: UITableViewController, UITextViewDelegate {
     //编辑过的content (request/header)
     var editedContent: String?
     
-    static func instanceFromStoryBoard() -> EditViewController {
+    static func instanceFromStoryBoard() -> ToJSONViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self))
-        return storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        return storyboard.instantiateViewController(withIdentifier: "ToJSONViewController") as! ToJSONViewController
     }
     
     //MARK: - tool
@@ -141,40 +141,18 @@ class EditViewController: UITableViewController, UITextViewDelegate {
 //        }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        textView.becomeFirstResponder()
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        textView.resignFirstResponder()
-//    }
     
     //MARK: - UITextViewDelegate
     func textViewDidChange(_ textView: UITextView)
     {
         tableView.beginUpdates()
         tableView.endUpdates()
-        
+
         editedContent = textView.text
         detailModel?.content = textView.text
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
-    {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    //MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1000
-    }
-    
+
     //MARK: - target action
     
     //能点击segmentedControl, 说明一定是在编辑request
@@ -215,9 +193,4 @@ class EditViewController: UITableViewController, UITextViewDelegate {
             }
         }
     }
-    
-    
-//    @objc private func tapButton(_ sender: UIButton?) {
-//        textView.resignFirstResponder()
-//    }
 }

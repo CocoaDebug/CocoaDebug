@@ -5,15 +5,41 @@
 //  Created by Peter Jin  on 15/11/12.
 //  Copyright (c) 2015年 Mail:i@Jxb.name. All rights reserved.
 //
-#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
 
 #import "JxbHttpProtocol.h"
 #import <UIKit/UIKit.h>
 #import "JxbDebugTool.h"
 #import "JxbHttpDatasource.h"
+#import "MethodSwizzling.h"
+#import "NSData+DebugMan.h"
 
 #define myProtocolKey   @"JxbHttpProtocol"
 
+typedef NSURLSessionConfiguration*(*SessionConfigConstructor)(id,SEL);
+static SessionConfigConstructor orig_defaultSessionConfiguration;
+
+static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SEL _cmd)
+{
+    // call original method
+    NSURLSessionConfiguration* config = orig_defaultSessionConfiguration(self,_cmd);
+    
+    
+    
+    if (   [config respondsToSelector:@selector(protocolClasses)]
+        && [config respondsToSelector:@selector(setProtocolClasses:)]){
+        NSMutableArray * urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+        Class protoCls = JxbHttpProtocol.class;
+        if (![urlProtocolClasses containsObject:protoCls]){
+            [urlProtocolClasses insertObject:protoCls atIndex:0];
+        }
+        
+        config.protocolClasses = urlProtocolClasses;
+    }
+    
+    
+    
+    return config;
+}
 
 @interface JxbHttpProtocol()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
@@ -26,9 +52,14 @@
 @implementation JxbHttpProtocol
 
 
+
 #pragma mark - protocol
-+ (void)load {
-    
++ (void)load {//liman
+    orig_defaultSessionConfiguration = (SessionConfigConstructor)ReplaceMethod(
+                                                                               @selector(defaultSessionConfiguration),
+                                                                               (IMP)SWHttp_defaultSessionConfiguration,
+                                                                               [NSURLSessionConfiguration class],
+                                                                               YES);
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
@@ -84,12 +115,17 @@
         }
         model.requestData = data;
     }
+    if (self.request.HTTPBodyStream) {//liman
+        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
+        model.requestData = data;
+    }
+    
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
     model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
     model.responseData = self.data;
     model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-    model.totalDuration = [NSString stringWithFormat:@"%fs",[[NSDate date] timeIntervalSince1970] - self.startTime];
-    model.startTime = [NSString stringWithFormat:@"%fs",self.startTime];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)",[[NSDate date] timeIntervalSince1970] - self.startTime];
+    model.startTime = [NSString stringWithFormat:@"%f",self.startTime];
     
     
     model.localizedErrorMsg = self.error.localizedDescription;
@@ -117,7 +153,7 @@
     if ([[JxbHttpDatasource shareInstance] addHttpRequset:model])
     {
         GCD_DELAY_AFTER(0.1, ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp" object:nil userInfo:@{@"statusCode":model.statusCode}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_debugman" object:nil userInfo:@{@"statusCode":model.statusCode}];
         });
     }
 }

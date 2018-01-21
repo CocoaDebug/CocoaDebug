@@ -43,14 +43,14 @@
         }
     }
     
-    if (self.httpModels.count >= [JxbDebugTool shareInstance].maxLogsCount) {
+    if (self.httpModels.count >= 9999) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }
     }
     [self.httpModels addObject:model];
 
-    if (self.httpModelRequestIds.count >= [JxbDebugTool shareInstance].maxLogsCount) {
+    if (self.httpModelRequestIds.count >= 9999) {
         if ([self.httpModelRequestIds count] > 0) {
             [self.httpModelRequestIds removeObjectAtIndex:0];
         }

@@ -8,34 +8,40 @@
 
 import UIKit
 import Alamofire
+import SwiftHTTP
+import Networking
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //1.test logs
-        print("1111111")
-        print("2222222", .red)
-        
-        
-        //2.test network
-        Alamofire.request("https://httpbin.org/get").responseJSON { response in
-            switch response.result {
-            case .success:
-                print(response)
-            case .failure(let error):
-                print(error)
-            }
+        //Alamofire
+        Alamofire.request("http://httpbin.org/get").responseJSON { _ in
+            print("111")
         }
-
-        Alamofire.request("https://httpbin.org/post", method: .post, parameters: ["data": "hello world"], encoding: JSONEncoding.default).responseJSON { response in
-            switch response.result {
-            case .success:
-                print(response)
-            case .failure(let error):
-                print(error)
-            }
+        Alamofire.request("http://httpbin.org/post", method: .post, parameters: ["data": "Alamofire"], encoding: JSONEncoding.default).responseJSON { _ in
+            print("111", .blue)
+        }
+        
+        //SwiftHTTP
+        HTTP.GET("http://httpbin.org/get") { _ in
+            print("222")
+        }
+        HTTP.POST("http://httpbin.org/post", parameters: ["data": "SwiftHTTP"]) { _ in
+            print("222", .yellow)
+        }
+        HTTP.GET("https://www.baidu.com/img/bd_logo1.png") { _ in
+            print("pic", .red)
+        }
+        
+        //Networking
+        let networking = Networking(baseURL: "http://httpbin.org")
+        networking.get("/get") { (_, _) in
+            print("333")
+        }
+        networking.post("/post", parameters: ["data": "Networking"]) { (_, _) in
+            print("333", .orange)
         }
     }
 }

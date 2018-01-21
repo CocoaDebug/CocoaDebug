@@ -239,7 +239,18 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-In-PqH">
                                             <rect key="frame" x="301" y="13.5" width="74" height="49.5"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="debugman_json.png" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-Yw-VsV">
+                                                    <rect key="frame" x="44" y="19.5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="2r0-ZG-EOw"/>
+                                                        <constraint firstAttribute="height" constant="30" id="wxF-Xu-IGW"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="NeX-Yw-VsV" secondAttribute="bottom" id="63n-Rp-R6f"/>
+                                                <constraint firstAttribute="trailing" secondItem="NeX-Yw-VsV" secondAttribute="trailing" id="MhH-If-lb2"/>
                                                 <constraint firstAttribute="width" constant="74" id="rg7-D4-feV"/>
                                                 <constraint firstAttribute="height" constant="49.5" id="uhu-Hl-iAE"/>
                                             </constraints>
@@ -281,6 +292,7 @@
                                     <outlet property="titleLabel" destination="LgN-MH-NgE" id="XOn-wT-EAY"/>
                                     <outlet property="titleView" destination="r8O-hu-g8b" id="c4y-eN-zgl"/>
                                     <outlet property="titleViewBottomSpaceToMiddleLine" destination="lrd-fC-LwK" id="RRz-R6-TPl"/>
+                                    <outlet property="toJSONImageView" destination="NeX-Yw-VsV" id="0Ce-Y8-Msy"/>
                                     <outlet property="topLine" destination="huU-o6-oW4" id="PFz-53-cwv"/>
                                 </connections>
                             </tableViewCell>
@@ -304,12 +316,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-1F-g7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="2437"/>
+            <point key="canvasLocation" x="1477.5999999999999" y="2436.4317841079464"/>
         </scene>
         <!--Edit-->
         <scene sceneID="rDz-FI-N6l">
             <objects>
-                <tableViewController storyboardIdentifier="EditViewController" title="Edit" id="ltn-IU-TOh" customClass="EditViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ToJSONViewController" title="Edit" id="ltn-IU-TOh" customClass="ToJSONViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cDS-DX-fHq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +361,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-5m-zBk">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-5m-zBk">
                                                     <rect key="frame" x="15" y="10" width="345" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -415,6 +427,7 @@
     </scenes>
     <resources>
         <image name="debugman_close" width="16" height="16"/>
+        <image name="debugman_json.png" width="252" height="252"/>
         <image name="debugman_network" width="16" height="16"/>
     </resources>
 </document>

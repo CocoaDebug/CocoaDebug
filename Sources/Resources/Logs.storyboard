@@ -78,8 +78,20 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Logs" id="DpU-H0-ZF2">
+                    <navigationItem key="navigationItem" id="DpU-H0-ZF2">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="9Uo-kH-0P4"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bVl-tO-PKS">
+                            <rect key="frame" x="129" y="7" width="117" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Default"/>
+                                <segment title="Color"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlAction:" destination="AVG-2n-hvN" eventType="valueChanged" id="VKZ-BV-8mP"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Uw0-Z9-dwT">
                             <connections>
                                 <action selector="resetLogs:" destination="AVG-2n-hvN" id="hjg-LT-89B"/>
@@ -90,11 +102,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="zXm-3w-uLw" id="NfY-oW-JLR"/>
+                        <outlet property="segmentedControl" destination="bVl-tO-PKS" id="DrF-p6-dpP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Na9-BJ-4rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-884" y="2220"/>
+            <point key="canvasLocation" x="-1009" y="2221"/>
         </scene>
         <!--logs-->
         <scene sceneID="afz-qj-lGc">

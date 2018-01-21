@@ -9,16 +9,15 @@
 import Foundation
 import UIKit
 
-public class DebugMan : NSObject {
+@objc public class DebugMan : NSObject {
     
     //MARK: - ****************** Usage of DebugMan ******************
     
     /// serverURL: if the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil by default (加粗标记服务器地址URL, 为nil就不标记, 默认值为nil) |
     /// ignoredURLs: Set the URLs which should not catched, ignoring case, catch all URLs when the value is nil. the default is nil (设置不抓取的域名, 忽略大小写, 为nil时默认抓取所有, 默认值为nil) |
     /// onlyURLs: Set the URLs which are only catched, ignoring case, catch all URLs when the value is nil. the default is nil (设置只抓取的域名, 忽略大小写, 为nil时默认抓取所有, 默认值为nil) |
-    /// maxLogsCount: Custom set "Logs/Network/Crash" maximum record amount, the default is 100 (if exceed maximum record amount, DebugMan will automatically clear the earliest record, and update the recent record. so do not worry) (自定义logs/network/crash最大记录, 默认100条 (超过会自动清除最早的记录,并更新最近记录. 所以不必担心)) |
     /// tabBarControllers: custom controllers to be added as child controllers of UITabBarController. the default is none (给UITabBarController增加的自定义子控制器, 默认没有) |
-    public func enable(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, maxLogsCount: Int = 100, tabBarControllers: [UIViewController]? = nil) {
+    @objc public func enable(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil) {
         
         if serverURL == nil {
             LogsSettings.shared.serverURL = ""
@@ -41,29 +40,35 @@ public class DebugMan : NSObject {
             LogsSettings.shared.ignoredURLs = ignoredURLs
         }
         
-        LogsSettings.shared.maxLogsCount = maxLogsCount
-        LogsSettings.shared.showBallAndWindow = LogsSettings.shared.showBallAndWindow
+        
+        if LogsSettings.shared.firstIn == nil { //first launch
+            LogsSettings.shared.firstIn = ""
+            LogsSettings.shared.showBallAndWindow = true
+        }else{                                  //second launch
+            LogsSettings.shared.showBallAndWindow = LogsSettings.shared.showBallAndWindow
+        }
         
         if LogsSettings.shared.showBallAndWindow == true {
             DotzuManager.shared.enable()
         }
+        
         JxbDebugTool.shareInstance().enable()
     }
     
-    /*
-    //MARK: - private method
-    private func disable() {
-        DotzuManager.shared.disable()
-        JxbDebugTool.shareInstance().disable()
-    }
-    */
+    
+    //MARK: - 暂时没用用到
+//    @objc public func disable() {
+//        DotzuManager.shared.disable()
+//        JxbDebugTool.shareInstance().disable()
+//    }
+ 
     
     //MARK: - init method
-    public static let shared = DebugMan()
+    @objc public static let shared = DebugMan()
     private override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(shake), name: NSNotification.Name("DebugManShakeNotificationName"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shake), name: NSNotification.Name("ShakeNotification_debugman"), object: nil)
         
         LogsSettings.shared.logSearchWord = nil
         LogsSettings.shared.networkSearchWord = nil

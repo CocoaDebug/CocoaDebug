@@ -25,12 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 //step 2: override system print method
-public func print<T>(file: String = #file,
-                     function: String = #function,
-                     line: Int = #line,
-                     _ message: T,
-                     _ color: UIColor? = nil)
-{
+public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+    
     #if DEBUG
         DebugManLog(file, function, line, message, color)
     #endif

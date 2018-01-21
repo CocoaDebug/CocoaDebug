@@ -13,6 +13,8 @@ class LogNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationBar.isTranslucent = false //liman
+        
         navigationBar.tintColor = Color.mainGreen
         navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                              NSAttributedStringKey.foregroundColor: Color.mainGreen]

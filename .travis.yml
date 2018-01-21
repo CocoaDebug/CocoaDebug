@@ -1,8 +1,16 @@
-language: objective-c
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
+
 osx_image: xcode8.3
+language: objective-c
 
+cache: cocoapods
+podfile: DebugMan/Podfile
 before_install:
-  - gem install cocoapods
+- gem install cocoapods # Since Travis is not always on latest version
+- pod install --project-directory=DebugMan
 
-xcode_project: DebugMan.xcodeproj
-script: xcodebuild -project DebugMan.xcodeproj -scheme "DebugMan" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+script:
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace DebugMan/${POD_NAME}.xcworkspace -scheme ${POD_NAME}-DebugMan -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+- pod lib lint

@@ -32,7 +32,7 @@ public func DebugManLog<T>(_ file: String = #file,
 public class Logger: LogGenerator {
     
     static let shared = Logger()
-    private let queue = DispatchQueue(label: "logprint.log.queue")
+    private let queue = DispatchQueue(label: "log.queue.DebugMan")
 
     var enable: Bool = true
 
@@ -59,7 +59,7 @@ public class Logger: LogGenerator {
         }
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_debugman"), object: nil, userInfo: nil)
         }
     }
 }

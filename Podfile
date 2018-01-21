@@ -3,5 +3,7 @@ use_frameworks!
 
 target 'DebugMan' do
   pod 'Alamofire'
+  pod 'SwiftHTTP'
+  pod 'Networking'
 end
 

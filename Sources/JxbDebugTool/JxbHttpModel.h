@@ -13,7 +13,7 @@ typedef enum {
 
 #import <Foundation/Foundation.h>
 
-@interface JxbHttpModel : NSObject <NSCopying>
+@interface JxbHttpModel : NSObject
 
 @property (nonatomic,copy)NSURL     *url;
 @property (nonatomic,copy)NSData    *requestData;

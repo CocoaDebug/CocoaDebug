@@ -6,8 +6,11 @@
 //  Copyright (c) 2015年 Mail:i@Jxb.name. All rights reserved.
 //
 
+#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "JxbHttpDatasource.h"
 
 @protocol JxbDebugDelegate <NSObject>
 - (NSData*)decryptJson:(NSData*)data;
@@ -40,10 +43,6 @@
  */
 @property (nonatomic, strong)   NSArray<NSString *>     *ignoredURLs;
 
-/**
- *  设置抓取的域名个数, 默认100条
- */
-@property (nonatomic, assign)   NSInteger     maxLogsCount;
 
 
 + (instancetype)shareInstance;
@@ -54,7 +53,7 @@
 /**
  *  禁用
  */
-//- (void)disable;
+- (void)disable;
 /**
  *  内存占用
  */

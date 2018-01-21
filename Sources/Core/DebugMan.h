@@ -7,10 +7,7 @@
 //
 
 #import "JxbDebugTool.h"
-#import "JxbHttpDatasource.h"
-#import "NSString+DebugMan.h"
-#import "UIColor+DebugMan.h"
-#import "UIWindow+DebugMan.h"
+#import "Category+DebugMan.h"
 
 
 

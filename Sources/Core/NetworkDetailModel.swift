@@ -24,8 +24,8 @@ struct NetworkDetailModel {
         
         //超时时间
         if title == "LATENCY" {
-            if let double_second_string = content?.replacingOccurrences(of: "s", with: "") {
-                if let double_second = Double(double_second_string) {
+            if let content = content {
+                if let double_second = Double(content) {
                     let int_second = Int(double_second)
                     if int_second > 10000 {
                         self.content = ""

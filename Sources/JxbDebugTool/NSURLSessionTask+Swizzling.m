@@ -5,7 +5,6 @@
 //  Created by Peter on 16/1/22.
 //  Copyright © 2016年 Peter. All rights reserved.
 //
-#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
 
 #import "NSURLSessionTask+Swizzling.h"
 #import "JxbHttpDatasource.h"
@@ -19,46 +18,47 @@
 
 @implementation NSURLSession (Swizzling)
 
-+ (void)load {
-    Method oriMethod = class_getInstanceMethod([NSURLSession class], @selector(dataTaskWithRequest:));
-    Method newMethod = class_getInstanceMethod([NSURLSession class], @selector(dataTaskWithRequest_swizzling:));
-    method_exchangeImplementations(oriMethod, newMethod);
-
-    const SEL selectors_data[] = {
-        @selector(URLSession:dataTask:didReceiveResponse:completionHandler:),
-        @selector(URLSession:dataTask:didBecomeDownloadTask:),
-        @selector(URLSession:dataTask:didBecomeStreamTask:),
-        @selector(URLSession:dataTask:didReceiveData:),
-        @selector(URLSession:dataTask:willCacheResponse:completionHandler:)
-    };
-
-    const int numSelectors_data = sizeof(selectors_data) / sizeof(SEL);
-
-    Class *classes = NULL;
-    int numClasses = objc_getClassList(NULL, 0);
-    classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
-    numClasses = objc_getClassList(classes, numClasses);
-    for (NSInteger classIndex = 0; classIndex < numClasses; ++classIndex) {
-        Class class = classes[classIndex];
-
-        unsigned int methodCount = 0;
-        Method *methods = class_copyMethodList(class, &methodCount);
-        BOOL matchingSelectorFound = NO;
-        for (unsigned int methodIndex = 0; methodIndex < methodCount; methodIndex++) {
-            for (int selectorIndex = 0; selectorIndex < numSelectors_data; ++selectorIndex) {
-                if (method_getName(methods[methodIndex]) == selectors_data[selectorIndex]) {
-                    [self swizzling_selectors_task:class];
-                    [self swizzling_selectors_data:class];
-                    matchingSelectorFound = YES;
-                    break;
-                }
-            }
-            if (matchingSelectorFound) {
-                break;
-            }
-        }
-    }
-}
+//liman
+//+ (void)load {
+//    Method oriMethod = class_getInstanceMethod([NSURLSession class], @selector(dataTaskWithRequest:));
+//    Method newMethod = class_getInstanceMethod([NSURLSession class], @selector(dataTaskWithRequest_swizzling:));
+//    method_exchangeImplementations(oriMethod, newMethod);
+//
+//    const SEL selectors_data[] = {
+//        @selector(URLSession:dataTask:didReceiveResponse:completionHandler:),
+//        @selector(URLSession:dataTask:didBecomeDownloadTask:),
+//        @selector(URLSession:dataTask:didBecomeStreamTask:),
+//        @selector(URLSession:dataTask:didReceiveData:),
+//        @selector(URLSession:dataTask:willCacheResponse:completionHandler:)
+//    };
+//
+//    const int numSelectors_data = sizeof(selectors_data) / sizeof(SEL);
+//
+//    Class *classes = NULL;
+//    int numClasses = objc_getClassList(NULL, 0);
+//    classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
+//    numClasses = objc_getClassList(classes, numClasses);
+//    for (NSInteger classIndex = 0; classIndex < numClasses; ++classIndex) {
+//        Class class = classes[classIndex];
+//
+//        unsigned int methodCount = 0;
+//        Method *methods = class_copyMethodList(class, &methodCount);
+//        BOOL matchingSelectorFound = NO;
+//        for (unsigned int methodIndex = 0; methodIndex < methodCount; methodIndex++) {
+//            for (int selectorIndex = 0; selectorIndex < numSelectors_data; ++selectorIndex) {
+//                if (method_getName(methods[methodIndex]) == selectors_data[selectorIndex]) {
+//                    [self swizzling_selectors_task:class];
+//                    [self swizzling_selectors_data:class];
+//                    matchingSelectorFound = YES;
+//                    break;
+//                }
+//            }
+//            if (matchingSelectorFound) {
+//                break;
+//            }
+//        }
+//    }
+//}
 
 #pragma mark - NSURLSession task delegate with swizzling
 + (void)swizzling_selectors_task:(Class)cls {
@@ -174,8 +174,8 @@
     model.responseData = task.responseDatas;
     model.isImage = [resp.MIMEType rangeOfString:@"image"].location != NSNotFound;
     
-    model.totalDuration = [NSString stringWithFormat:@"%fs",[[NSDate date] timeIntervalSince1970] - req.startTime.doubleValue];
-    model.startTime = [NSString stringWithFormat:@"%fs",req.startTime.doubleValue];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)",[[NSDate date] timeIntervalSince1970] - req.startTime.doubleValue];
+    model.startTime = [NSString stringWithFormat:@"%f",req.startTime.doubleValue];
     
     
     model.localizedErrorMsg = error.localizedDescription;
@@ -199,13 +199,13 @@
     }
     
     
-    
-    if ([[JxbHttpDatasource shareInstance] addHttpRequset:model])
-    {
-        GCD_DELAY_AFTER(0.1, ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp" object:nil userInfo:@{@"statusCode":model.statusCode}];
-        });
-    }
+    //liman
+//    if ([[JxbHttpDatasource shareInstance] addHttpRequset:model])
+//    {
+//        GCD_DELAY_AFTER(0.1, ^{
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_debugman" object:nil userInfo:@{@"statusCode":model.statusCode}];
+//        });
+//    }
 }
 
 
