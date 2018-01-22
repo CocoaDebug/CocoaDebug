@@ -22,7 +22,7 @@ class LogNavigationViewController: UINavigationController {
         let selector = #selector(LogNavigationViewController.exit)
 
         
-        let image = UIImage(named: "debugman_close", in: Bundle(for: LogNavigationViewController.self), compatibleWith: nil)
+        let image = UIImage(named: "DebugMan_close", in: Bundle(for: LogNavigationViewController.self), compatibleWith: nil)
         let leftButton = UIBarButtonItem(image: image,
                                          style: .done, target: self, action: selector)
         topViewController?.navigationItem.leftBarButtonItem = leftButton

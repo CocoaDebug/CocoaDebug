@@ -99,7 +99,7 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_debugman"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DebugMan"), object: nil)
         
         //segmentedControl
         selectedSegmentIndex = LogsSettings.shared.logSelectIndex

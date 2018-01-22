@@ -9,7 +9,7 @@
 #import "JxbHttpProtocol.h"
 #import "JxbDebugTool.h"
 #import "JxbHttpDatasource.h"
-#import "NSData+debugman.h"
+#import "NSData+DebugMan.h"
 #import "MethodSwizzling.h"
 
 #define myProtocolKey   @"JxbHttpProtocol"
@@ -152,7 +152,7 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
     if ([[JxbHttpDatasource shareInstance] addHttpRequset:model])
     {
         GCD_DELAY_AFTER(0.1, ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_debugman" object:nil userInfo:@{@"statusCode":model.statusCode}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DebugMan" object:nil userInfo:@{@"statusCode":model.statusCode}];
         });
     }
 }

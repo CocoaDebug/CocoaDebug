@@ -59,7 +59,7 @@ public class Logger: LogGenerator {
         }
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_debugman"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugMan"), object: nil, userInfo: nil)
         }
     }
 }

@@ -45,7 +45,7 @@ class InformationsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let count = UserDefaults.standard.integer(forKey: "crashCount_debugman")
+        let count = UserDefaults.standard.integer(forKey: "crashCount_DebugMan")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? UIColor.red : UIColor.white
     }

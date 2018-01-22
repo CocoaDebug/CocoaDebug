@@ -1,5 +1,5 @@
 //
-//  NSURLRequest+debugman.h
+//  NSURLRequest+DebugMan.h
 //  DebugMan
 //
 //  Created by liman on 21/01/2018.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSURLRequest (debugman)
+@interface NSURLRequest (DebugMan)
 
 - (NSString *)requestId;
 - (void)setRequestId:(NSString *)requestId;

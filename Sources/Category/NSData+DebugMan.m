@@ -6,9 +6,9 @@
 //  Copyright © 2018 liman. All rights reserved.
 //
 
-#import "NSData+debugman.h"
+#import "NSData+DebugMan.h"
 
-@implementation NSData (debugman)
+@implementation NSData (DebugMan)
 
 +(NSData*) dataWithInputStream:(NSInputStream*) stream {
     

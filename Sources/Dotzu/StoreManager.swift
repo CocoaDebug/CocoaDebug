@@ -22,13 +22,13 @@ class StoreManager {
     //MARK: - tool
     private func archiveCrashs(_ crashs: [LogCrash]) {
         let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_debugman")
-        UserDefaults.standard.set(crashs.count, forKey: "crashCount_debugman")
+        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DebugMan")
+        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DebugMan")
         UserDefaults.standard.synchronize()
     }
     
     private func getCrashs() -> [LogCrash] {
-        guard let data = UserDefaults.standard.object(forKey: "crashArchive_debugman") as? Data else {return []}
+        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DebugMan") as? Data else {return []}
         do {
             if #available(iOS 9.0, *) {
                 let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
@@ -113,8 +113,8 @@ class StoreManager {
     
     func resetCrashs() {
         self.crashArray.removeAll()
-        UserDefaults.standard.removeObject(forKey: "crashArchive_debugman")
-        UserDefaults.standard.removeObject(forKey: "crashCount_debugman")
+        UserDefaults.standard.removeObject(forKey: "crashArchive_DebugMan")
+        UserDefaults.standard.removeObject(forKey: "crashCount_DebugMan")
         UserDefaults.standard.synchronize()
     }
 }

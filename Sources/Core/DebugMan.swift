@@ -68,7 +68,7 @@ import UIKit
     private override init() {
         super.init()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(shake), name: NSNotification.Name("ShakeNotification_debugman"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shake), name: NSNotification.Name("ShakeNotification_DebugMan"), object: nil)
         
         LogsSettings.shared.logSearchWord = nil
         LogsSettings.shared.networkSearchWord = nil

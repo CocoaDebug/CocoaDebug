@@ -1,15 +1,15 @@
 //
-//  NSURLRequest+debugman.m
+//  NSURLRequest+DebugMan.m
 //  DebugMan
 //
 //  Created by liman on 21/01/2018.
 //  Copyright © 2018 liman. All rights reserved.
 //
 
-#import "NSURLRequest+debugman.h"
+#import "NSURLRequest+DebugMan.h"
 #import <objc/runtime.h>
 
-@implementation NSURLRequest (debugman)
+@implementation NSURLRequest (DebugMan)
 
 - (NSString *)requestId {
     return objc_getAssociatedObject(self, @"requestId");

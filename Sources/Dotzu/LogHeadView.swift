@@ -155,7 +155,7 @@ class LogHeadView: UIView {
         self.addGestureRecognizer(panGesture)
         
         //网络通知
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_debugman"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugMan"), object: nil)
         
         //内存监控
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)

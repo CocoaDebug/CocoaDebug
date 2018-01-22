@@ -6,8 +6,8 @@
 //  Copyright © 2018 liman. All rights reserved.
 //
 
-#import "NSString+debugman.h"
-#import "UIColor+debugman.h"
-#import "UIWindow+debugman.h"
-#import "NSData+debugman.h"
-#import "NSURLRequest+debugman.h"
+#import "NSString+DebugMan.h"
+#import "UIColor+DebugMan.h"
+#import "UIWindow+DebugMan.h"
+#import "NSData+DebugMan.h"
+#import "NSURLRequest+DebugMan.h"

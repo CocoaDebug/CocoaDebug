@@ -1,6 +1,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIWindow (debugman)
+@interface UIWindow (DebugMan)
 
 @end

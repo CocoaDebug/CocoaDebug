@@ -101,7 +101,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         setNeedsStatusBarAppearanceUpdate()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_debugman"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugMan"), object: nil)
         
         tableView.dataSource = self
         tableView.delegate = self

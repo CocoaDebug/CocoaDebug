@@ -10,19 +10,21 @@
 		33D8A463A794AA97543B6F24 /* Pods_DebugMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADC5A7404A5C5A2038C992A /* Pods_DebugMan.framework */; };
 		EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */; };
 		EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4931FE26CBA00DF34EF /* Logs.storyboard */; };
-		EA02F4A41FE26CBA00DF34EF /* debugman_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4961FE26CBA00DF34EF /* debugman_app@2x.png */; };
-		EA02F4A51FE26CBA00DF34EF /* debugman_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4971FE26CBA00DF34EF /* debugman_logs@2x.png */; };
-		EA02F4A61FE26CBA00DF34EF /* debugman_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4981FE26CBA00DF34EF /* debugman_network@2x.png */; };
-		EA02F4A81FE26CBA00DF34EF /* debugman_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49A1FE26CBA00DF34EF /* debugman_close@2x.png */; };
-		EA02F4AB1FE26CBA00DF34EF /* debugman_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49D1FE26CBA00DF34EF /* debugman_bugs@2x.png */; };
 		EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49E1FE26CBA00DF34EF /* Network.storyboard */; };
 		EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */; };
 		EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4A01FE26CBA00DF34EF /* App.storyboard */; };
-		EA433217201606EC00192A8D /* NSString+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA43320C201606EC00192A8D /* NSString+debugman.m */; };
-		EA433218201606EC00192A8D /* NSData+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA43320D201606EC00192A8D /* NSData+debugman.m */; };
-		EA433219201606EC00192A8D /* UIColor+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433210201606EC00192A8D /* UIColor+debugman.m */; };
-		EA43321A201606EC00192A8D /* UIWindow+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433211201606EC00192A8D /* UIWindow+debugman.m */; };
-		EA43321B201606EC00192A8D /* NSURLRequest+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433214201606EC00192A8D /* NSURLRequest+debugman.m */; };
+		EA1FF843201639ED00E8ED27 /* NSString+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF838201639ED00E8ED27 /* NSString+DebugMan.m */; };
+		EA1FF844201639ED00E8ED27 /* NSData+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF839201639ED00E8ED27 /* NSData+DebugMan.m */; };
+		EA1FF845201639ED00E8ED27 /* UIColor+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF83C201639ED00E8ED27 /* UIColor+DebugMan.m */; };
+		EA1FF846201639ED00E8ED27 /* UIWindow+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF83D201639ED00E8ED27 /* UIWindow+DebugMan.m */; };
+		EA1FF847201639ED00E8ED27 /* NSURLRequest+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF840201639ED00E8ED27 /* NSURLRequest+DebugMan.m */; };
+		EA1FF850201639F900E8ED27 /* DebugMan_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF849201639F900E8ED27 /* DebugMan_app@2x.png */; };
+		EA1FF851201639F900E8ED27 /* DebugMan_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84A201639F900E8ED27 /* DebugMan_json.png */; };
+		EA1FF852201639F900E8ED27 /* DebugMan_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84B201639F900E8ED27 /* DebugMan_bugs@2x.png */; };
+		EA1FF853201639F900E8ED27 /* DebugMan_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84C201639F900E8ED27 /* DebugMan_network@2x.png */; };
+		EA1FF854201639F900E8ED27 /* DebugMan_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84D201639F900E8ED27 /* DebugMan_logs@2x.png */; };
+		EA1FF855201639F900E8ED27 /* DebugMan_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84E201639F900E8ED27 /* DebugMan_logo.png */; };
+		EA1FF856201639F900E8ED27 /* DebugMan_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF84F201639F900E8ED27 /* DebugMan_close@2x.png */; };
 		EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */; };
 		EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */; };
 		EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78A1FE13ECD00DF7FF6 /* Main.storyboard */; };
@@ -68,9 +70,7 @@
 		EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B411201477EE00BA01C5 /* JxbDebugTool.m */; };
 		EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */; };
 		EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */; };
-		EA68B42C201494B700BA01C5 /* debugman_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EA68B42B201494B700BA01C5 /* debugman_json.png */; };
 		EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */; };
-		EA9B47DD1FEA6084001DD838 /* debugman_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B47DC1FEA6084001DD838 /* debugman_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,25 +79,27 @@
 		C251A720CBD3015433314855 /* Pods-DebugMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan.debug.xcconfig"; sourceTree = "<group>"; };
 		EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkCell.xib; sourceTree = "<group>"; };
 		EA02F4931FE26CBA00DF34EF /* Logs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
-		EA02F4961FE26CBA00DF34EF /* debugman_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_app@2x.png"; sourceTree = "<group>"; };
-		EA02F4971FE26CBA00DF34EF /* debugman_logs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_logs@2x.png"; sourceTree = "<group>"; };
-		EA02F4981FE26CBA00DF34EF /* debugman_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_network@2x.png"; sourceTree = "<group>"; };
-		EA02F49A1FE26CBA00DF34EF /* debugman_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_close@2x.png"; sourceTree = "<group>"; };
-		EA02F49D1FE26CBA00DF34EF /* debugman_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debugman_bugs@2x.png"; sourceTree = "<group>"; };
 		EA02F49E1FE26CBA00DF34EF /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		EA02F4A01FE26CBA00DF34EF /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
-		EA43320C201606EC00192A8D /* NSString+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+debugman.m"; sourceTree = "<group>"; };
-		EA43320D201606EC00192A8D /* NSData+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+debugman.m"; sourceTree = "<group>"; };
-		EA43320E201606EC00192A8D /* Category+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+debugman.h"; sourceTree = "<group>"; };
-		EA43320F201606EC00192A8D /* NSURLRequest+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+debugman.h"; sourceTree = "<group>"; };
-		EA433210201606EC00192A8D /* UIColor+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+debugman.m"; sourceTree = "<group>"; };
-		EA433211201606EC00192A8D /* UIWindow+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+debugman.m"; sourceTree = "<group>"; };
-		EA433212201606EC00192A8D /* NSData+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+debugman.h"; sourceTree = "<group>"; };
-		EA433213201606EC00192A8D /* NSString+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+debugman.h"; sourceTree = "<group>"; };
-		EA433214201606EC00192A8D /* NSURLRequest+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+debugman.m"; sourceTree = "<group>"; };
-		EA433215201606EC00192A8D /* UIWindow+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+debugman.h"; sourceTree = "<group>"; };
-		EA433216201606EC00192A8D /* UIColor+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+debugman.h"; sourceTree = "<group>"; };
+		EA1FF838201639ED00E8ED27 /* NSString+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF839201639ED00E8ED27 /* NSData+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF83A201639ED00E8ED27 /* Category+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF83B201639ED00E8ED27 /* NSURLRequest+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF83C201639ED00E8ED27 /* UIColor+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF83D201639ED00E8ED27 /* UIWindow+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF83E201639ED00E8ED27 /* NSData+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF83F201639ED00E8ED27 /* NSString+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF840201639ED00E8ED27 /* NSURLRequest+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF841201639ED00E8ED27 /* UIWindow+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF842201639ED00E8ED27 /* UIColor+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF849201639F900E8ED27 /* DebugMan_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_app@2x.png"; sourceTree = "<group>"; };
+		EA1FF84A201639F900E8ED27 /* DebugMan_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DebugMan_json.png; sourceTree = "<group>"; };
+		EA1FF84B201639F900E8ED27 /* DebugMan_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_bugs@2x.png"; sourceTree = "<group>"; };
+		EA1FF84C201639F900E8ED27 /* DebugMan_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_network@2x.png"; sourceTree = "<group>"; };
+		EA1FF84D201639F900E8ED27 /* DebugMan_logs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_logs@2x.png"; sourceTree = "<group>"; };
+		EA1FF84E201639F900E8ED27 /* DebugMan_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DebugMan_logo.png; sourceTree = "<group>"; };
+		EA1FF84F201639F900E8ED27 /* DebugMan_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_close@2x.png"; sourceTree = "<group>"; };
 		EA44B7831FE13ECD00DF7FF6 /* DebugMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,10 +154,8 @@
 		EA68B413201477EE00BA01C5 /* JxbHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpProtocol.h; sourceTree = "<group>"; };
 		EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbMemoryHelper.m; sourceTree = "<group>"; };
 		EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpDatasource.m; sourceTree = "<group>"; };
-		EA68B42B201494B700BA01C5 /* debugman_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_json.png; sourceTree = "<group>"; };
 		EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
 		EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
-		EA9B47DC1FEA6084001DD838 /* debugman_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_logo.png; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +192,7 @@
 		EA02F4911FE26CBA00DF34EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA02F4941FE26CBA00DF34EF /* images */,
+				EA1FF848201639F900E8ED27 /* images */,
 				EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */,
 				EA02F4931FE26CBA00DF34EF /* Logs.storyboard */,
 				EA02F49E1FE26CBA00DF34EF /* Network.storyboard */,
@@ -202,36 +202,36 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		EA02F4941FE26CBA00DF34EF /* images */ = {
+		EA1FF837201639ED00E8ED27 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				EA68B42B201494B700BA01C5 /* debugman_json.png */,
-				EA9B47DC1FEA6084001DD838 /* debugman_logo.png */,
-				EA02F4961FE26CBA00DF34EF /* debugman_app@2x.png */,
-				EA02F4971FE26CBA00DF34EF /* debugman_logs@2x.png */,
-				EA02F4981FE26CBA00DF34EF /* debugman_network@2x.png */,
-				EA02F49A1FE26CBA00DF34EF /* debugman_close@2x.png */,
-				EA02F49D1FE26CBA00DF34EF /* debugman_bugs@2x.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		EA43320B201606EC00192A8D /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				EA43320E201606EC00192A8D /* Category+debugman.h */,
-				EA433213201606EC00192A8D /* NSString+debugman.h */,
-				EA43320C201606EC00192A8D /* NSString+debugman.m */,
-				EA433212201606EC00192A8D /* NSData+debugman.h */,
-				EA43320D201606EC00192A8D /* NSData+debugman.m */,
-				EA43320F201606EC00192A8D /* NSURLRequest+debugman.h */,
-				EA433214201606EC00192A8D /* NSURLRequest+debugman.m */,
-				EA433216201606EC00192A8D /* UIColor+debugman.h */,
-				EA433210201606EC00192A8D /* UIColor+debugman.m */,
-				EA433215201606EC00192A8D /* UIWindow+debugman.h */,
-				EA433211201606EC00192A8D /* UIWindow+debugman.m */,
+				EA1FF838201639ED00E8ED27 /* NSString+DebugMan.m */,
+				EA1FF839201639ED00E8ED27 /* NSData+DebugMan.m */,
+				EA1FF83A201639ED00E8ED27 /* Category+DebugMan.h */,
+				EA1FF83B201639ED00E8ED27 /* NSURLRequest+DebugMan.h */,
+				EA1FF83C201639ED00E8ED27 /* UIColor+DebugMan.m */,
+				EA1FF83D201639ED00E8ED27 /* UIWindow+DebugMan.m */,
+				EA1FF83E201639ED00E8ED27 /* NSData+DebugMan.h */,
+				EA1FF83F201639ED00E8ED27 /* NSString+DebugMan.h */,
+				EA1FF840201639ED00E8ED27 /* NSURLRequest+DebugMan.m */,
+				EA1FF841201639ED00E8ED27 /* UIWindow+DebugMan.h */,
+				EA1FF842201639ED00E8ED27 /* UIColor+DebugMan.h */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		EA1FF848201639F900E8ED27 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EA1FF849201639F900E8ED27 /* DebugMan_app@2x.png */,
+				EA1FF84A201639F900E8ED27 /* DebugMan_json.png */,
+				EA1FF84B201639F900E8ED27 /* DebugMan_bugs@2x.png */,
+				EA1FF84C201639F900E8ED27 /* DebugMan_network@2x.png */,
+				EA1FF84D201639F900E8ED27 /* DebugMan_logs@2x.png */,
+				EA1FF84E201639F900E8ED27 /* DebugMan_logo.png */,
+				EA1FF84F201639F900E8ED27 /* DebugMan_close@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		EA44B77A1FE13ECD00DF7FF6 = {
@@ -270,11 +270,11 @@
 		EA44B9031FE140D600DF7FF6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA1FF837201639ED00E8ED27 /* Category */,
 				EA44B9341FE140D600DF7FF6 /* Core */,
 				EA86A6772014E1F700B20CF1 /* MethodSwizzling */,
 				EA68B403201477EE00BA01C5 /* JxbDebugTool */,
 				EA44B9191FE140D600DF7FF6 /* Dotzu */,
-				EA43320B201606EC00192A8D /* Category */,
 				EA02F4911FE26CBA00DF34EF /* Resources */,
 			);
 			path = Sources;
@@ -419,20 +419,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1FF856201639F900E8ED27 /* DebugMan_close@2x.png in Resources */,
 				EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */,
-				EA68B42C201494B700BA01C5 /* debugman_json.png in Resources */,
-				EA02F4A41FE26CBA00DF34EF /* debugman_app@2x.png in Resources */,
 				EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */,
+				EA1FF852201639F900E8ED27 /* DebugMan_bugs@2x.png in Resources */,
+				EA1FF850201639F900E8ED27 /* DebugMan_app@2x.png in Resources */,
+				EA1FF853201639F900E8ED27 /* DebugMan_network@2x.png in Resources */,
 				EA44B7911FE13ECD00DF7FF6 /* LaunchScreen.storyboard in Resources */,
-				EA02F4AB1FE26CBA00DF34EF /* debugman_bugs@2x.png in Resources */,
-				EA9B47DD1FEA6084001DD838 /* debugman_logo.png in Resources */,
-				EA02F4A61FE26CBA00DF34EF /* debugman_network@2x.png in Resources */,
 				EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */,
+				EA1FF855201639F900E8ED27 /* DebugMan_logo.png in Resources */,
+				EA1FF854201639F900E8ED27 /* DebugMan_logs@2x.png in Resources */,
 				EA44B78E1FE13ECD00DF7FF6 /* Assets.xcassets in Resources */,
-				EA02F4A81FE26CBA00DF34EF /* debugman_close@2x.png in Resources */,
 				EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */,
-				EA02F4A51FE26CBA00DF34EF /* debugman_logs@2x.png in Resources */,
 				EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */,
+				EA1FF851201639F900E8ED27 /* DebugMan_json.png in Resources */,
 				EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +515,6 @@
 				EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */,
 				EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */,
 				EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */,
-				EA43321B201606EC00192A8D /* NSURLRequest+debugman.m in Sources */,
 				EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */,
 				EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */,
 				EA44B97E1FE140D600DF7FF6 /* NotificationCenter.swift in Sources */,
@@ -523,15 +522,16 @@
 				EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */,
 				EA44B9831FE140D600DF7FF6 /* DetailCrashTableViewController.swift in Sources */,
 				EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */,
+				EA1FF843201639ED00E8ED27 /* NSString+DebugMan.m in Sources */,
 				EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */,
 				EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */,
-				EA433219201606EC00192A8D /* UIColor+debugman.m in Sources */,
 				EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */,
 				EA44B98A1FE140D600DF7FF6 /* LogsSettings.swift in Sources */,
 				EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */,
-				EA43321A201606EC00192A8D /* UIWindow+debugman.m in Sources */,
 				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
+				EA1FF844201639ED00E8ED27 /* NSData+DebugMan.m in Sources */,
 				EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */,
+				EA1FF847201639ED00E8ED27 /* NSURLRequest+DebugMan.m in Sources */,
 				EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */,
 				EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */,
 				EA44B9841FE140D600DF7FF6 /* ManagerWindow.swift in Sources */,
@@ -545,11 +545,11 @@
 				EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */,
 				EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */,
 				EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */,
-				EA433217201606EC00192A8D /* NSString+debugman.m in Sources */,
+				EA1FF845201639ED00E8ED27 /* UIColor+DebugMan.m in Sources */,
 				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
-				EA433218201606EC00192A8D /* NSData+debugman.m in Sources */,
 				EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */,
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
+				EA1FF846201639ED00E8ED27 /* UIWindow+DebugMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

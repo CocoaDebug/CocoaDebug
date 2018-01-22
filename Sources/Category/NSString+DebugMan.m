@@ -1,7 +1,7 @@
 
-#import "NSString+debugman.h"
+#import "NSString+DebugMan.h"
 
-@implementation NSString (debugman)
+@implementation NSString (DebugMan)
 
 - (CGFloat)heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
 {
