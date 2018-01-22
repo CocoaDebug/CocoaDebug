@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSData (DebugMan)
+@interface NSData (debugman)
 
 +(NSData*) dataWithInputStream:(NSInputStream*) stream;
 

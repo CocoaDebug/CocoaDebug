@@ -18,6 +18,11 @@
 		EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49E1FE26CBA00DF34EF /* Network.storyboard */; };
 		EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */; };
 		EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4A01FE26CBA00DF34EF /* App.storyboard */; };
+		EA433217201606EC00192A8D /* NSString+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA43320C201606EC00192A8D /* NSString+debugman.m */; };
+		EA433218201606EC00192A8D /* NSData+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA43320D201606EC00192A8D /* NSData+debugman.m */; };
+		EA433219201606EC00192A8D /* UIColor+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433210201606EC00192A8D /* UIColor+debugman.m */; };
+		EA43321A201606EC00192A8D /* UIWindow+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433211201606EC00192A8D /* UIWindow+debugman.m */; };
+		EA43321B201606EC00192A8D /* NSURLRequest+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA433214201606EC00192A8D /* NSURLRequest+debugman.m */; };
 		EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */; };
 		EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */; };
 		EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78A1FE13ECD00DF7FF6 /* Main.storyboard */; };
@@ -65,11 +70,6 @@
 		EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */; };
 		EA68B42C201494B700BA01C5 /* debugman_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EA68B42B201494B700BA01C5 /* debugman_json.png */; };
 		EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */; };
-		EA86A6862014E22100B20CF1 /* NSURLRequest+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A67E2014E22100B20CF1 /* NSURLRequest+debugman.m */; };
-		EA86A6872014E22100B20CF1 /* NSString+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6802014E22100B20CF1 /* NSString+debugman.m */; };
-		EA86A6882014E22100B20CF1 /* UIWindow+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6822014E22100B20CF1 /* UIWindow+debugman.m */; };
-		EA86A6892014E22100B20CF1 /* NSData+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6832014E22100B20CF1 /* NSData+debugman.m */; };
-		EA86A68A2014E22100B20CF1 /* UIColor+debugman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6842014E22100B20CF1 /* UIColor+debugman.m */; };
 		EA9B47DD1FEA6084001DD838 /* debugman_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9B47DC1FEA6084001DD838 /* debugman_logo.png */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +87,17 @@
 		EA02F49E1FE26CBA00DF34EF /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		EA02F4A01FE26CBA00DF34EF /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		EA43320C201606EC00192A8D /* NSString+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+debugman.m"; sourceTree = "<group>"; };
+		EA43320D201606EC00192A8D /* NSData+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+debugman.m"; sourceTree = "<group>"; };
+		EA43320E201606EC00192A8D /* Category+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+debugman.h"; sourceTree = "<group>"; };
+		EA43320F201606EC00192A8D /* NSURLRequest+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+debugman.h"; sourceTree = "<group>"; };
+		EA433210201606EC00192A8D /* UIColor+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+debugman.m"; sourceTree = "<group>"; };
+		EA433211201606EC00192A8D /* UIWindow+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+debugman.m"; sourceTree = "<group>"; };
+		EA433212201606EC00192A8D /* NSData+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+debugman.h"; sourceTree = "<group>"; };
+		EA433213201606EC00192A8D /* NSString+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+debugman.h"; sourceTree = "<group>"; };
+		EA433214201606EC00192A8D /* NSURLRequest+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+debugman.m"; sourceTree = "<group>"; };
+		EA433215201606EC00192A8D /* UIWindow+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+debugman.h"; sourceTree = "<group>"; };
+		EA433216201606EC00192A8D /* UIColor+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+debugman.h"; sourceTree = "<group>"; };
 		EA44B7831FE13ECD00DF7FF6 /* DebugMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,17 +155,6 @@
 		EA68B42B201494B700BA01C5 /* debugman_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_json.png; sourceTree = "<group>"; };
 		EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
 		EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
-		EA86A67B2014E22100B20CF1 /* UIColor+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+debugman.h"; sourceTree = "<group>"; };
-		EA86A67C2014E22100B20CF1 /* NSURLRequest+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+debugman.h"; sourceTree = "<group>"; };
-		EA86A67D2014E22100B20CF1 /* NSData+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+debugman.h"; sourceTree = "<group>"; };
-		EA86A67E2014E22100B20CF1 /* NSURLRequest+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+debugman.m"; sourceTree = "<group>"; };
-		EA86A67F2014E22100B20CF1 /* NSString+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+debugman.h"; sourceTree = "<group>"; };
-		EA86A6802014E22100B20CF1 /* NSString+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+debugman.m"; sourceTree = "<group>"; };
-		EA86A6812014E22100B20CF1 /* Category+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+debugman.h"; sourceTree = "<group>"; };
-		EA86A6822014E22100B20CF1 /* UIWindow+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+debugman.m"; sourceTree = "<group>"; };
-		EA86A6832014E22100B20CF1 /* NSData+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+debugman.m"; sourceTree = "<group>"; };
-		EA86A6842014E22100B20CF1 /* UIColor+debugman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+debugman.m"; sourceTree = "<group>"; };
-		EA86A6852014E22100B20CF1 /* UIWindow+debugman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+debugman.h"; sourceTree = "<group>"; };
 		EA9B47DC1FEA6084001DD838 /* debugman_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debugman_logo.png; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +216,24 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		EA43320B201606EC00192A8D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				EA43320E201606EC00192A8D /* Category+debugman.h */,
+				EA433213201606EC00192A8D /* NSString+debugman.h */,
+				EA43320C201606EC00192A8D /* NSString+debugman.m */,
+				EA433212201606EC00192A8D /* NSData+debugman.h */,
+				EA43320D201606EC00192A8D /* NSData+debugman.m */,
+				EA43320F201606EC00192A8D /* NSURLRequest+debugman.h */,
+				EA433214201606EC00192A8D /* NSURLRequest+debugman.m */,
+				EA433216201606EC00192A8D /* UIColor+debugman.h */,
+				EA433210201606EC00192A8D /* UIColor+debugman.m */,
+				EA433215201606EC00192A8D /* UIWindow+debugman.h */,
+				EA433211201606EC00192A8D /* UIWindow+debugman.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		EA44B77A1FE13ECD00DF7FF6 = {
 			isa = PBXGroup;
 			children = (
@@ -256,7 +274,7 @@
 				EA86A6772014E1F700B20CF1 /* MethodSwizzling */,
 				EA68B403201477EE00BA01C5 /* JxbDebugTool */,
 				EA44B9191FE140D600DF7FF6 /* Dotzu */,
-				EA44B9411FE140D600DF7FF6 /* Category */,
+				EA43320B201606EC00192A8D /* Category */,
 				EA02F4911FE26CBA00DF34EF /* Resources */,
 			);
 			path = Sources;
@@ -310,24 +328,6 @@
 				EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		EA44B9411FE140D600DF7FF6 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				EA86A6812014E22100B20CF1 /* Category+debugman.h */,
-				EA86A67D2014E22100B20CF1 /* NSData+debugman.h */,
-				EA86A6832014E22100B20CF1 /* NSData+debugman.m */,
-				EA86A67F2014E22100B20CF1 /* NSString+debugman.h */,
-				EA86A6802014E22100B20CF1 /* NSString+debugman.m */,
-				EA86A67C2014E22100B20CF1 /* NSURLRequest+debugman.h */,
-				EA86A67E2014E22100B20CF1 /* NSURLRequest+debugman.m */,
-				EA86A67B2014E22100B20CF1 /* UIColor+debugman.h */,
-				EA86A6842014E22100B20CF1 /* UIColor+debugman.m */,
-				EA86A6852014E22100B20CF1 /* UIWindow+debugman.h */,
-				EA86A6822014E22100B20CF1 /* UIWindow+debugman.m */,
-			);
-			path = Category;
 			sourceTree = "<group>";
 		};
 		EA68B403201477EE00BA01C5 /* JxbDebugTool */ = {
@@ -515,6 +515,7 @@
 				EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */,
 				EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */,
 				EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */,
+				EA43321B201606EC00192A8D /* NSURLRequest+debugman.m in Sources */,
 				EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */,
 				EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */,
 				EA44B97E1FE140D600DF7FF6 /* NotificationCenter.swift in Sources */,
@@ -522,15 +523,14 @@
 				EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */,
 				EA44B9831FE140D600DF7FF6 /* DetailCrashTableViewController.swift in Sources */,
 				EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */,
-				EA86A6882014E22100B20CF1 /* UIWindow+debugman.m in Sources */,
 				EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */,
 				EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */,
+				EA433219201606EC00192A8D /* UIColor+debugman.m in Sources */,
 				EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */,
-				EA86A68A2014E22100B20CF1 /* UIColor+debugman.m in Sources */,
 				EA44B98A1FE140D600DF7FF6 /* LogsSettings.swift in Sources */,
 				EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */,
+				EA43321A201606EC00192A8D /* UIWindow+debugman.m in Sources */,
 				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
-				EA86A6872014E22100B20CF1 /* NSString+debugman.m in Sources */,
 				EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */,
 				EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */,
 				EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */,
@@ -538,7 +538,6 @@
 				EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */,
 				EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */,
 				EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */,
-				EA86A6862014E22100B20CF1 /* NSURLRequest+debugman.m in Sources */,
 				EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */,
 				EA44B9801FE140D600DF7FF6 /* LogsViewController.swift in Sources */,
 				EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */,
@@ -546,10 +545,11 @@
 				EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */,
 				EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */,
 				EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */,
+				EA433217201606EC00192A8D /* NSString+debugman.m in Sources */,
 				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
+				EA433218201606EC00192A8D /* NSData+debugman.m in Sources */,
 				EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */,
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
-				EA86A6892014E22100B20CF1 /* NSData+debugman.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

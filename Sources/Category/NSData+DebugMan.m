@@ -8,7 +8,7 @@
 
 #import "NSData+debugman.h"
 
-@implementation NSData (DebugMan)
+@implementation NSData (debugman)
 
 +(NSData*) dataWithInputStream:(NSInputStream*) stream {
     

@@ -1,7 +1,7 @@
 
 #import "UIWindow+debugman.h"
 
-@implementation UIWindow (DebugMan)
+@implementation UIWindow (debugman)
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (event.type == UIEventTypeMotion && event.subtype == UIEventSubtypeMotionShake) {

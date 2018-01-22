@@ -1,7 +1,7 @@
 
 #import "UIColor+debugman.h"
 
-@implementation UIColor (DebugMan)
+@implementation UIColor (debugman)
 
 + (UIColor *)colorWithHexString:(NSString *)hexColorString
 {
