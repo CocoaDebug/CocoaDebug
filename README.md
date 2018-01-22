@@ -72,13 +72,13 @@ end
 
 ## Screenshots
 
-Small Tips:
-
-- Shake iPhone or Simulator to show the black ball, shake again to hide the black ball.
-- APP memory real-time monitoring data displayed on the black ball.
-- For more instructions, please check my demo.
-
 <img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="200">
+
+## Note
+
+- You can shake iPhone/simulator to hide/show the black bubble.
+
+- If you want to get the root view controller for the app's key window, using `UIApplication.shared.keyWindow?.rootViewController` may crash. You should using `UIApplication.shared.delegate?.window??.rootViewController`.
 
 ## Contact
 
