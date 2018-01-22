@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DebugMan"
-  s.version      = "3.5.0"
+  s.version      = "4.5.1"
   s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
                     DebugMan is an debugger tool for iOS, with the following features:
@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.resources = "Sources/**/*.{png,xib,storyboard}"
   s.frameworks = 'UIKit', 'Foundation'
   s.requires_arc = true
-  s.pod_target_xcconfig = {'SWIFT_VERSION' => '3.0'}
+  s.pod_target_xcconfig = {'SWIFT_VERSION' => '4.0'}
 
 end
