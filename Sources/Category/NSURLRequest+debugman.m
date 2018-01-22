@@ -1,15 +1,15 @@
 //
-//  NSURLRequest+Identify.m
-//  Pods
+//  NSURLRequest+debugman.m
+//  DebugMan
 //
-//  Created by Peter on 16/1/23.
-//
+//  Created by liman on 21/01/2018.
+//  Copyright © 2018 liman. All rights reserved.
 //
 
-#import "NSURLRequest+Identify.h"
+#import "NSURLRequest+debugman.h"
 #import <objc/runtime.h>
 
-@implementation NSURLRequest (Identify)
+@implementation NSURLRequest (debugman)
 
 - (NSString *)requestId {
     return objc_getAssociatedObject(self, @"requestId");

@@ -1,5 +1,5 @@
 
-#import "UIWindow+DebugMan.h"
+#import "UIWindow+debugman.h"
 
 @implementation UIWindow (DebugMan)
 

@@ -1,5 +1,5 @@
 
-#import "UIColor+DebugMan.h"
+#import "UIColor+debugman.h"
 
 @implementation UIColor (DebugMan)
 

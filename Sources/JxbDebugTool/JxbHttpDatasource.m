@@ -7,9 +7,6 @@
 //
 
 #import "JxbHttpDatasource.h"
-#import "NSURLRequest+Identify.h"
-#import "NSURLResponse+Data.h"
-#import "NSURLSessionTask+Data.h"
 #import "JxbDebugTool.h"
 
 @implementation JxbHttpDatasource

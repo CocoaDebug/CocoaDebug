@@ -279,7 +279,7 @@ open class Networking {
         let index = baseURLWithDash.index(before: baseURLWithDash.endIndex)
         let baseURL = baseURLWithDash.substring(to: index)
         let relativePath = path.replacingOccurrences(of: baseURL, with: "")
-        
+
         return (baseURL, relativePath)
     }
 
@@ -367,7 +367,7 @@ extension Networking {
          255 characters, resulting in error. Another option to explore is to use a hash version of the url if it's
          longer than 255 characters.
          */
-        guard let destinationURL = try? destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(String(describing: cacheName))") }
+        guard let destinationURL = try? destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(cacheName)") }
 
         if let object = cache.object(forKey: destinationURL.absoluteString as AnyObject) {
             return object
@@ -471,7 +471,7 @@ extension Networking {
 
                         var returnedResponse: Any?
                         if let data = data, data.count > 0 {
-                            guard let destinationURL = try? self.destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(String(describing: cacheName))") }
+                            guard let destinationURL = try? self.destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(cacheName)") }
                             _ = try? data.write(to: destinationURL, options: [.atomic])
                             switch responseType {
                             case .data:
@@ -540,14 +540,14 @@ extension Networking {
                     }
                 }
             case .formURLEncoded:
-                guard let parametersDictionary = parameters as? [String: Any] else { fatalError("Couldn't convert parameters to a dictionary: \(String(describing: parameters))") }
+                guard let parametersDictionary = parameters as? [String: Any] else { fatalError("Couldn't convert parameters to a dictionary: \(parameters)") }
                 do {
                     let formattedParameters = try parametersDictionary.urlEncodedString()
                     switch requestType {
                     case .get, .delete:
                         let urlEncodedPath: String
                         if path.contains("?") {
-                            if let lastCharacter = path.last, lastCharacter == "?" {
+                            if let lastCharacter = path.characters.last, lastCharacter == "?" {
                                 urlEncodedPath = path + formattedParameters
                             } else {
                                 urlEncodedPath = path + "&" + formattedParameters
@@ -613,7 +613,7 @@ extension Networking {
                         }
                     } else {
                         var errorCode = httpResponse.statusCode
-                        if let error = error as NSError? {
+                        if let error = error as? NSError {
                             if error.code == URLError.cancelled.rawValue {
                                 errorCode = error.code
                             }
@@ -686,31 +686,31 @@ extension Networking {
         if disableErrorLogging { return }
         guard let error = error else { return }
 
-//        print(" ")
-//        print("========== Networking Error ==========")
-//        print(" ")
+        print(" ")
+        print("========== Networking Error ==========")
+        print(" ")
 
         let isCancelled = error.code == NSURLErrorCancelled
         if isCancelled {
-            if let request = request, let _ = request.url {
-//                print("Cancelled request: \(url.absoluteString)")
-//                print(" ")
+            if let request = request, let url = request.url {
+                print("Cancelled request: \(url.absoluteString)")
+                print(" ")
             }
         } else {
-//            print("*** Request ***")
-//            print(" ")
+            print("*** Request ***")
+            print(" ")
 
-//            print("Error \(error.code): \(error.description)")
-//            print(" ")
+            print("Error \(error.code): \(error.description)")
+            print(" ")
 
-            if let request = request, let _ = request.url {
-//                print("URL: \(url.absoluteString)")
-//                print(" ")
+            if let request = request, let url = request.url {
+                print("URL: \(url.absoluteString)")
+                print(" ")
             }
 
-            if (request?.allHTTPHeaderFields) != nil {
-//                print("Headers: \(headers)")
-//                print(" ")
+            if let headers = request?.allHTTPHeaderFields {
+                print("Headers: \(headers)")
+                print(" ")
             }
 
             if let parameterType = parameterType, let parameters = parameters {
@@ -719,44 +719,44 @@ extension Networking {
                     do {
                         let data = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
                         let string = String(data: data, encoding: .utf8)
-                        if string != nil {
-//                            print("Parameters: \(string)")
-//                            print(" ")
+                        if let string = string {
+                            print("Parameters: \(string)")
+                            print(" ")
                         }
-                    } catch _ as NSError {
-//                        print("Failed pretty printing parameters: \(parameters), error: \(error)")
-//                        print(" ")
+                    } catch let error as NSError {
+                        print("Failed pretty printing parameters: \(parameters), error: \(error)")
+                        print(" ")
                     }
                 case .formURLEncoded:
                     guard let parametersDictionary = parameters as? [String: Any] else { fatalError("Couldn't cast parameters as dictionary: \(parameters)") }
                     do {
-                        _ = try parametersDictionary.urlEncodedString()
-//                        print("Parameters: \(formattedParameters)")
-                    } catch _ as NSError {
-//                        print("Failed parsing Parameters: \(parametersDictionary) — \(error)")
+                        let formattedParameters = try parametersDictionary.urlEncodedString()
+                        print("Parameters: \(formattedParameters)")
+                    } catch let error as NSError {
+                        print("Failed parsing Parameters: \(parametersDictionary) — \(error)")
                     }
-//                    print(" ")
+                    print(" ")
                 default: break
                 }
             }
 
-            if let data = data, let _ = String(data: data, encoding: .utf8) {
-//                print("Data: \(stringData)")
-//                print(" ")
+            if let data = data, let stringData = String(data: data, encoding: .utf8) {
+                print("Data: \(stringData)")
+                print(" ")
             }
 
-            if (response as? HTTPURLResponse) != nil {
-//                print("*** Response ***")
-//                print(" ")
+            if let response = response as? HTTPURLResponse {
+                print("*** Response ***")
+                print(" ")
 
-//                print("Headers: \(response.allHeaderFields)")
-//                print(" ")
+                print("Headers: \(response.allHeaderFields)")
+                print(" ")
 
-//                print("Status code: \(response.statusCode) — \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode))")
-//                print(" ")
+                print("Status code: \(response.statusCode) — \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode))")
+                print(" ")
             }
         }
-//        print("================= ~ ==================")
-//        print(" ")
+        print("================= ~ ==================")
+        print(" ")
     }
 }

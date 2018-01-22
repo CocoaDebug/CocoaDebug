@@ -313,7 +313,7 @@ extension Request: CustomDebugStringConvertible {
             #if swift(>=3.2)
                 components.append("-b \"\(string[..<string.index(before: string.endIndex)])\"")
             #else
-                components.append("-b \"\(string.substring(to: stringindex(before: string.endIndex)))\"")
+                components.append("-b \"\(string.substring(to: string.characters.index(before: string.endIndex)))\"")
             #endif
             }
         }

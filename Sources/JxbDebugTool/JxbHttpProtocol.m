@@ -7,11 +7,10 @@
 //
 
 #import "JxbHttpProtocol.h"
-#import <UIKit/UIKit.h>
 #import "JxbDebugTool.h"
 #import "JxbHttpDatasource.h"
+#import "NSData+debugman.h"
 #import "MethodSwizzling.h"
-#import "NSData+DebugMan.h"
 
 #define myProtocolKey   @"JxbHttpProtocol"
 

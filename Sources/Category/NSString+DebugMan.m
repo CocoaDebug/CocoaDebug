@@ -1,7 +1,7 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#import "NSString+DebugMan.h"
+#import "NSString+debugman.h"
 
 @implementation NSString (DebugMan)
 

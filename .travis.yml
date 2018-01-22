@@ -5,11 +5,11 @@
 osx_image: xcode8.3
 language: objective-c
 
-cache: cocoapods
-podfile: DebugMan/Podfile
-before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=DebugMan
+#cache: cocoapods
+#podfile: DebugMan/Podfile
+#before_install:
+#- gem install cocoapods # Since Travis is not always on latest version
+#- pod install --project-directory=DebugMan
 
 script:
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace DebugMan/${POD_NAME}.xcworkspace -scheme ${POD_NAME}-DebugMan -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty

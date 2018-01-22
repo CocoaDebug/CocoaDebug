@@ -10,11 +10,11 @@
 
 # DebugMan
 
-debugger tool for iOS
+Debugger tool for iOS
 
 ## Introduction
 
-The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/capitalone/SWHttpTrafficRecorder) so that people can make crappy clones.
+The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder) so that people can make crappy clones.
 
 `DebugMan` is an debugger tool for iOS, with the following features:
 
@@ -40,12 +40,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.4.5' , :configurations => ['Debug']
+ pod 'DebugMan', '~> 4.5.0' , :configurations => ['Debug'] #Swift 4
+#pod 'DebugMan', '~> 3.5.0' , :configurations => ['Debug'] #Swift 3
 end
 ```
-
-- use `~> 4.4.5` if your project use `Swift 4`
-- use `~> 3.4.5` if your project use `Swift 3`
 
 ## Usage
 
@@ -80,7 +78,7 @@ Small Tips:
 - APP memory real-time monitoring data displayed on the black ball.
 - For more instructions, please check my demo.
 
-<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="150">
+<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="200">
 
 ## Contact
 

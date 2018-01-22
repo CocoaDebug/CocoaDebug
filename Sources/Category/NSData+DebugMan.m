@@ -6,7 +6,7 @@
 //  Copyright © 2018 liman. All rights reserved.
 //
 
-#import "NSData+DebugMan.h"
+#import "NSData+debugman.h"
 
 @implementation NSData (DebugMan)
 

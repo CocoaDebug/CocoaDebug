@@ -7,8 +7,7 @@
 //
 
 #import "JxbDebugTool.h"
-#import "Category+DebugMan.h"
-
+#import "Category+debugman.h"
 
 
 
