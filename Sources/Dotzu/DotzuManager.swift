@@ -17,9 +17,6 @@ public class DotzuManager: NSObject {
     override init() {
         self.window = ManagerWindow(frame: UIScreen.main.bounds)
         super.init()
-        
-        Logger.shared.enable = true
-        LoggerCrash.shared.enable = true
     }
 
     public func enable() {

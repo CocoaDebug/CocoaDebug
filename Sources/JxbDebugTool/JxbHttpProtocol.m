@@ -127,7 +127,8 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
     model.startTime = [NSString stringWithFormat:@"%f",self.startTime];
     
     
-    model.localizedErrorMsg = self.error.localizedDescription;
+    model.errorDescription = self.error.description;
+    model.errorLocalizedDescription = self.error.localizedDescription;
     model.headerFields = self.request.allHTTPHeaderFields;
     
     if (self.response.MIMEType == nil) {

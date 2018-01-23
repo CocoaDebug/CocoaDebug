@@ -55,7 +55,8 @@ class NetworkDetailViewController: UITableViewController {
             let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
             let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             var m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let m4 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.localizedErrorMsg)
+            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let m4 = NetworkDetailModel.init(title: "ERROR DETAILS", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
                 m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
@@ -73,6 +74,7 @@ class NetworkDetailViewController: UITableViewController {
             detailModels.append(m1)
             detailModels.append(m3)
             detailModels.append(m2)
+            detailModels.append(m8)
             detailModels.append(m4)
             detailModels.append(m7)
             detailModels.append(m6)
@@ -84,7 +86,8 @@ class NetworkDetailViewController: UITableViewController {
             let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
             let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             let m3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let m4 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.localizedErrorMsg)
+            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let m4 = NetworkDetailModel.init(title: "ERROR DETAILS", content: httpModel?.errorDescription)
             //2.次要
             let m5 = NetworkDetailModel.init(title: "LATENCY", content: httpModel?.totalDuration)
             let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
@@ -99,6 +102,7 @@ class NetworkDetailViewController: UITableViewController {
             detailModels.append(m1)
             detailModels.append(m3)
             detailModels.append(m2)
+            detailModels.append(m8)
             detailModels.append(m4)
             detailModels.append(m7)
             detailModels.append(m6)

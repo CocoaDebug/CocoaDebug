@@ -252,7 +252,7 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
         LogsSettings.shared.logSelectIndex = selectedSegmentIndex
         
-        reloadLogs(true)
+        reloadLogs()
     }
     
     

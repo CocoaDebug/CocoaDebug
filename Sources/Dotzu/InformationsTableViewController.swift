@@ -51,8 +51,31 @@ class InformationsTableViewController: UITableViewController {
     }
     
     //MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        if LogsSettings.shared.recordCrash == true {
+            if section == 0 {
+                return 56
+            }
+        }else{
+            if section == 0 {
+                return 0
+            }
+            if section == 1 {
+                return 3
+            }
+        }
+        return 38
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
+        if LogsSettings.shared.recordCrash == false {
+            if indexPath.section == 0 && indexPath.row == 0 {
+                return 0
+            }
+        }
+        
         if indexPath.section == 1 && indexPath.row == 4 {
             if labelserverURL.text == nil || labelserverURL.text == "" {
                 return 0
@@ -61,6 +84,11 @@ class InformationsTableViewController: UITableViewController {
         if indexPath.section == 3 && indexPath.row == 0 {
             if labelignoredURLs.text == "0" {
                 return 0.5
+            }
+        }
+        if indexPath.section == 2 && indexPath.row == 1 {
+            if labelScreenSize.text == "0.0" {
+                return 0
             }
         }
         return 44
@@ -73,7 +101,7 @@ class InformationsTableViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 3 {
             UIPasteboard.general.string = Bundle.main.bundleIdentifier
             
-            let alert = UIAlertController.init(title: "copy bundle id to clipboard success", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "Copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
@@ -86,7 +114,7 @@ class InformationsTableViewController: UITableViewController {
             
             UIPasteboard.general.string = LogsSettings.shared.serverURL
             
-            let alert = UIAlertController.init(title: "copy server URL to clipboard success", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "Copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

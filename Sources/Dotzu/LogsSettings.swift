@@ -19,6 +19,18 @@ public class LogsSettings {
             UserDefaults.standard.synchronize()
         }
     }
+    public var recordCrash: Bool {
+        didSet {
+            UserDefaults.standard.set(recordCrash, forKey: "recordCrash_DebugMan")
+            UserDefaults.standard.synchronize()
+            
+            if recordCrash == true {
+                LoggerCrash.shared.enable = true
+            }else{
+                StoreManager.shared.resetCrashs()
+            }
+        }
+    }
     public var showBallAndWindow: Bool {
         didSet {
             UserDefaults.standard.set(showBallAndWindow, forKey: "showBallAndWindow_DebugMan")
@@ -108,6 +120,7 @@ public class LogsSettings {
         firstIn = UserDefaults.standard.string(forKey: "firstIn_DebugMan")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_DebugMan")
         showBallAndWindow = UserDefaults.standard.bool(forKey: "showBallAndWindow_DebugMan")
+        recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_DebugMan")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_DebugMan")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_DebugMan")
         logHeadFrameX = UserDefaults.standard.float(forKey: "logHeadFrameX_DebugMan")

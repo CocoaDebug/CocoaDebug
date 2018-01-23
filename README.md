@@ -40,8 +40,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
- pod 'DebugMan', '~> 4.6.0' , :configurations => ['Debug'] #Swift 4
-#pod 'DebugMan', '~> 3.6.0' , :configurations => ['Debug'] #Swift 3
+ pod 'DebugMan', '~> 4.6.1' , :configurations => ['Debug'] #Swift 4
+#pod 'DebugMan', '~> 3.6.1' , :configurations => ['Debug'] #Swift 3
 end
 ```
 
@@ -78,7 +78,11 @@ end
 
 - You can shake iPhone/simulator to hide/show the black bubble.
 
-- If you want to get the root view controller for the app's key window, using `UIApplication.shared.keyWindow?.rootViewController` may crash. You should using `UIApplication.shared.delegate?.window??.rootViewController`.
+- When using `DebugMan`, app's key window is DebugMan's transparent window. You can check app's UI layout by [Reveal](https://revealapp.com/).
+
+- If you want to get the root view controller for the app's key window, `UIApplication.shared.keyWindow?.rootViewController` may crash. You should use `UIApplication.shared.delegate?.window??.rootViewController`.
+
+- If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
 
 ## Contact
 

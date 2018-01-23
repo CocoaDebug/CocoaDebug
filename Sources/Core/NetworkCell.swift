@@ -22,22 +22,7 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var statusCodeView: UIView!
     @IBOutlet weak var refreshImageView: UIImageView!
     
-    /*
-     @interface JxbHttpModel : NSObject
-     @property (nonatomic,copy)NSString  *requestId;
-     @property (nonatomic,copy)NSURL     *url;
-     @property (nonatomic,copy)NSString  *method;
-     @property (nonatomic,copy)NSString  *requestBody;
-     @property (nonatomic,copy)NSString  *statusCode;
-     @property (nonatomic,copy)NSData    *responseData;
-     @property (nonatomic,assign)BOOL    isImage;
-     @property (nonatomic,copy)NSString  *mineType;
-     @property (nonatomic,copy)NSString  *startTime;
-     @property (nonatomic,copy)NSString  *totalDuration;
-     
-     @property (nonatomic,copy)NSString  *localizedErrorMsg;
-     @property (nonatomic,copy)NSDictionary *headerFields;
-     */
+    
     var httpModel: JxbHttpModel? {
         didSet {
             

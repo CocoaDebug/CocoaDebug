@@ -27,10 +27,11 @@ typedef enum {
 @property (nonatomic,assign)BOOL    isImage;
 
 
-@property (nonatomic,copy)NSString                              *localizedErrorMsg;
 @property (nonatomic,copy)NSDictionary<NSString*, id>           *headerFields;
 @property (nonatomic,assign)BOOL                                isTag;
 @property (nonatomic,assign)BOOL                                isSelected;
 @property (nonatomic,assign)RequestSerializer                   requestSerializer;//默认JSON格式
+@property (nonatomic,copy)NSString                              *errorDescription;
+@property (nonatomic,copy)NSString                              *errorLocalizedDescription;
 
 @end
