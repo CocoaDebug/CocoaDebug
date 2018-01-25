@@ -8,19 +8,98 @@
 
 /* Begin PBXBuildFile section */
 		33D8A463A794AA97543B6F24 /* Pods_DebugMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADC5A7404A5C5A2038C992A /* Pods_DebugMan.framework */; };
-		EA1E8DD0201979F70080DF4E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8DCF201979F70080DF4E /* File.swift */; };
+		EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */; };
+		EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4931FE26CBA00DF34EF /* Logs.storyboard */; };
+		EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49E1FE26CBA00DF34EF /* Network.storyboard */; };
+		EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */; };
+		EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4A01FE26CBA00DF34EF /* App.storyboard */; };
+		EA1FF823201637B600E8ED27 /* NSString+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */; };
+		EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */; };
+		EA1FF825201637B600E8ED27 /* UIColor+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */; };
+		EA1FF826201637B600E8ED27 /* UIWindow+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF81D201637B600E8ED27 /* UIWindow+DebugMan.m */; };
+		EA1FF827201637B600E8ED27 /* NSURLRequest+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF820201637B600E8ED27 /* NSURLRequest+DebugMan.m */; };
+		EA1FF8302016383600E8ED27 /* DebugMan_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF8292016383600E8ED27 /* DebugMan_app@2x.png */; };
+		EA1FF8312016383600E8ED27 /* DebugMan_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82A2016383600E8ED27 /* DebugMan_json.png */; };
+		EA1FF8322016383600E8ED27 /* DebugMan_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82B2016383600E8ED27 /* DebugMan_bugs@2x.png */; };
+		EA1FF8332016383600E8ED27 /* DebugMan_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82C2016383600E8ED27 /* DebugMan_network@2x.png */; };
+		EA1FF8342016383600E8ED27 /* DebugMan_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82D2016383600E8ED27 /* DebugMan_logs@2x.png */; };
+		EA1FF8352016383600E8ED27 /* DebugMan_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82E2016383600E8ED27 /* DebugMan_logo.png */; };
+		EA1FF8362016383600E8ED27 /* DebugMan_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1FF82F2016383600E8ED27 /* DebugMan_close@2x.png */; };
 		EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */; };
 		EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */; };
 		EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78A1FE13ECD00DF7FF6 /* Main.storyboard */; };
 		EA44B78E1FE13ECD00DF7FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78D1FE13ECD00DF7FF6 /* Assets.xcassets */; };
 		EA44B7911FE13ECD00DF7FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78F1FE13ECD00DF7FF6 /* LaunchScreen.storyboard */; };
+		EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */; };
+		EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */; };
+		EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */; };
+		EA44B97A1FE140D600DF7FF6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91D1FE140D600DF7FF6 /* Log.swift */; };
+		EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */; };
+		EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91F1FE140D600DF7FF6 /* Logger.swift */; };
+		EA44B97D1FE140D600DF7FF6 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9201FE140D600DF7FF6 /* LogTableViewCell.swift */; };
+		EA44B97E1FE140D600DF7FF6 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9211FE140D600DF7FF6 /* NotificationCenter.swift */; };
+		EA44B97F1FE140D600DF7FF6 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9221FE140D600DF7FF6 /* DeviceModel.swift */; };
+		EA44B9801FE140D600DF7FF6 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9231FE140D600DF7FF6 /* LogsViewController.swift */; };
+		EA44B9821FE140D600DF7FF6 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9251FE140D600DF7FF6 /* ManagerViewController.swift */; };
+		EA44B9831FE140D600DF7FF6 /* DetailCrashTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9261FE140D600DF7FF6 /* DetailCrashTableViewController.swift */; };
+		EA44B9841FE140D600DF7FF6 /* ManagerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9271FE140D600DF7FF6 /* ManagerWindow.swift */; };
+		EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9281FE140D600DF7FF6 /* DotzuManager.swift */; };
+		EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9291FE140D600DF7FF6 /* LogNavigationViewController.swift */; };
+		EA44B9871FE140D600DF7FF6 /* CrashListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */; };
+		EA44B9881FE140D600DF7FF6 /* ListCrashesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */; };
+		EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */; };
+		EA44B98A1FE140D600DF7FF6 /* LogsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92D1FE140D600DF7FF6 /* LogsSettings.swift */; };
+		EA44B98B1FE140D600DF7FF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92E1FE140D600DF7FF6 /* Device.swift */; };
+		EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */; };
+		EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9301FE140D600DF7FF6 /* StoreManager.swift */; };
+		EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9311FE140D600DF7FF6 /* LoggerFormat.swift */; };
+		EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9321FE140D600DF7FF6 /* LogHeadView.swift */; };
+		EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9331FE140D600DF7FF6 /* Color.swift */; };
+		EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */; };
+		EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */; };
+		EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */; };
+		EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */; };
+		EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */; };
+		EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */; };
+		EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */; };
+		EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */; };
+		EA44B99B1FE140D600DF7FF6 /* IgnoredURLsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */; };
+		EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */; };
+		EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */; };
+		EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B408201477EE00BA01C5 /* JxbHttpModel.m */; };
+		EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B411201477EE00BA01C5 /* JxbDebugTool.m */; };
+		EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */; };
+		EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */; };
+		EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0ADC5A7404A5C5A2038C992A /* Pods_DebugMan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DebugMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		507625A9033E17EC2DB5F22D /* Pods-DebugMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan.release.xcconfig"; sourceTree = "<group>"; };
 		C251A720CBD3015433314855 /* Pods-DebugMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DebugMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan.debug.xcconfig"; sourceTree = "<group>"; };
-		EA1E8DCF201979F70080DF4E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkCell.xib; sourceTree = "<group>"; };
+		EA02F4931FE26CBA00DF34EF /* Logs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
+		EA02F49E1FE26CBA00DF34EF /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
+		EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
+		EA02F4A01FE26CBA00DF34EF /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF81A201637B600E8ED27 /* Category+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF81B201637B600E8ED27 /* NSURLRequest+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF81D201637B600E8ED27 /* UIWindow+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF81E201637B600E8ED27 /* NSData+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF81F201637B600E8ED27 /* NSString+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF820201637B600E8ED27 /* NSURLRequest+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+DebugMan.m"; sourceTree = "<group>"; };
+		EA1FF821201637B600E8ED27 /* UIWindow+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF822201637B600E8ED27 /* UIColor+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DebugMan.h"; sourceTree = "<group>"; };
+		EA1FF8292016383600E8ED27 /* DebugMan_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_app@2x.png"; sourceTree = "<group>"; };
+		EA1FF82A2016383600E8ED27 /* DebugMan_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DebugMan_json.png; sourceTree = "<group>"; };
+		EA1FF82B2016383600E8ED27 /* DebugMan_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_bugs@2x.png"; sourceTree = "<group>"; };
+		EA1FF82C2016383600E8ED27 /* DebugMan_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_network@2x.png"; sourceTree = "<group>"; };
+		EA1FF82D2016383600E8ED27 /* DebugMan_logs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_logs@2x.png"; sourceTree = "<group>"; };
+		EA1FF82E2016383600E8ED27 /* DebugMan_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DebugMan_logo.png; sourceTree = "<group>"; };
+		EA1FF82F2016383600E8ED27 /* DebugMan_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_close@2x.png"; sourceTree = "<group>"; };
 		EA44B7831FE13ECD00DF7FF6 /* DebugMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +108,54 @@
 		EA44B7901FE13ECD00DF7FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA44B7921FE13ECD00DF7FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA44B84D1FE1400600DF7FF6 /* DebugMan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DebugMan-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTabBarViewController.swift; sourceTree = "<group>"; };
+		EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCrash.swift; sourceTree = "<group>"; };
+		EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogGenerator.swift; sourceTree = "<group>"; };
+		EA44B91D1FE140D600DF7FF6 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInformation.swift; sourceTree = "<group>"; };
+		EA44B91F1FE140D600DF7FF6 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		EA44B9201FE140D600DF7FF6 /* LogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		EA44B9211FE140D600DF7FF6 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		EA44B9221FE140D600DF7FF6 /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		EA44B9231FE140D600DF7FF6 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
+		EA44B9251FE140D600DF7FF6 /* ManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
+		EA44B9261FE140D600DF7FF6 /* DetailCrashTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCrashTableViewController.swift; sourceTree = "<group>"; };
+		EA44B9271FE140D600DF7FF6 /* ManagerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerWindow.swift; sourceTree = "<group>"; };
+		EA44B9281FE140D600DF7FF6 /* DotzuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuManager.swift; sourceTree = "<group>"; };
+		EA44B9291FE140D600DF7FF6 /* LogNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogNavigationViewController.swift; sourceTree = "<group>"; };
+		EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashListTableViewCell.swift; sourceTree = "<group>"; };
+		EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCrashesViewController.swift; sourceTree = "<group>"; };
+		EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationsTableViewController.swift; sourceTree = "<group>"; };
+		EA44B92D1FE140D600DF7FF6 /* LogsSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsSettings.swift; sourceTree = "<group>"; };
+		EA44B92E1FE140D600DF7FF6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerCrash.swift; sourceTree = "<group>"; };
+		EA44B9301FE140D600DF7FF6 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		EA44B9311FE140D600DF7FF6 /* LoggerFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerFormat.swift; sourceTree = "<group>"; };
+		EA44B9321FE140D600DF7FF6 /* LogHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHeadView.swift; sourceTree = "<group>"; };
+		EA44B9331FE140D600DF7FF6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EA44B9361FE140D600DF7FF6 /* DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMan.h; sourceTree = "<group>"; };
+		EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
+		EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToJSONViewController.swift; sourceTree = "<group>"; };
+		EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMan.swift; sourceTree = "<group>"; };
+		EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailViewController.swift; sourceTree = "<group>"; };
+		EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
+		EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
+		EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoredURLsViewController.swift; sourceTree = "<group>"; };
+		EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugMan+Extensions.swift"; sourceTree = "<group>"; };
+		EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpProtocol.m; sourceTree = "<group>"; };
+		EA68B408201477EE00BA01C5 /* JxbHttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpModel.m; sourceTree = "<group>"; };
+		EA68B409201477EE00BA01C5 /* JxbDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbDebugTool.h; sourceTree = "<group>"; };
+		EA68B40A201477EE00BA01C5 /* JxbHttpDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpDatasource.h; sourceTree = "<group>"; };
+		EA68B40B201477EE00BA01C5 /* JxbMemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbMemoryHelper.h; sourceTree = "<group>"; };
+		EA68B410201477EE00BA01C5 /* JxbHttpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpModel.h; sourceTree = "<group>"; };
+		EA68B411201477EE00BA01C5 /* JxbDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbDebugTool.m; sourceTree = "<group>"; };
+		EA68B413201477EE00BA01C5 /* JxbHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpProtocol.h; sourceTree = "<group>"; };
+		EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbMemoryHelper.m; sourceTree = "<group>"; };
+		EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpDatasource.m; sourceTree = "<group>"; };
+		EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
+		EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +187,51 @@
 				507625A9033E17EC2DB5F22D /* Pods-DebugMan.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EA02F4911FE26CBA00DF34EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EA1FF8282016383600E8ED27 /* images */,
+				EA02F4921FE26CBA00DF34EF /* NetworkCell.xib */,
+				EA02F4931FE26CBA00DF34EF /* Logs.storyboard */,
+				EA02F49E1FE26CBA00DF34EF /* Network.storyboard */,
+				EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */,
+				EA02F4A01FE26CBA00DF34EF /* App.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA1FF817201637B600E8ED27 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */,
+				EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */,
+				EA1FF81A201637B600E8ED27 /* Category+DebugMan.h */,
+				EA1FF81B201637B600E8ED27 /* NSURLRequest+DebugMan.h */,
+				EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */,
+				EA1FF81D201637B600E8ED27 /* UIWindow+DebugMan.m */,
+				EA1FF81E201637B600E8ED27 /* NSData+DebugMan.h */,
+				EA1FF81F201637B600E8ED27 /* NSString+DebugMan.h */,
+				EA1FF820201637B600E8ED27 /* NSURLRequest+DebugMan.m */,
+				EA1FF821201637B600E8ED27 /* UIWindow+DebugMan.h */,
+				EA1FF822201637B600E8ED27 /* UIColor+DebugMan.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		EA1FF8282016383600E8ED27 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EA1FF8292016383600E8ED27 /* DebugMan_app@2x.png */,
+				EA1FF82A2016383600E8ED27 /* DebugMan_json.png */,
+				EA1FF82B2016383600E8ED27 /* DebugMan_bugs@2x.png */,
+				EA1FF82C2016383600E8ED27 /* DebugMan_network@2x.png */,
+				EA1FF82D2016383600E8ED27 /* DebugMan_logs@2x.png */,
+				EA1FF82E2016383600E8ED27 /* DebugMan_logo.png */,
+				EA1FF82F2016383600E8ED27 /* DebugMan_close@2x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		EA44B77A1FE13ECD00DF7FF6 = {
@@ -98,9 +270,90 @@
 		EA44B9031FE140D600DF7FF6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EA1E8DCF201979F70080DF4E /* File.swift */,
+				EA1FF817201637B600E8ED27 /* Category */,
+				EA44B9341FE140D600DF7FF6 /* Core */,
+				EA86A6772014E1F700B20CF1 /* MethodSwizzling */,
+				EA68B403201477EE00BA01C5 /* JxbDebugTool */,
+				EA44B9191FE140D600DF7FF6 /* Dotzu */,
+				EA02F4911FE26CBA00DF34EF /* Resources */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		EA44B9191FE140D600DF7FF6 /* Dotzu */ = {
+			isa = PBXGroup;
+			children = (
+				EA44B9251FE140D600DF7FF6 /* ManagerViewController.swift */,
+				EA44B9231FE140D600DF7FF6 /* LogsViewController.swift */,
+				EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */,
+				EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */,
+				EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */,
+				EA44B91D1FE140D600DF7FF6 /* Log.swift */,
+				EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */,
+				EA44B91F1FE140D600DF7FF6 /* Logger.swift */,
+				EA44B9201FE140D600DF7FF6 /* LogTableViewCell.swift */,
+				EA44B9211FE140D600DF7FF6 /* NotificationCenter.swift */,
+				EA44B9221FE140D600DF7FF6 /* DeviceModel.swift */,
+				EA44B9261FE140D600DF7FF6 /* DetailCrashTableViewController.swift */,
+				EA44B9271FE140D600DF7FF6 /* ManagerWindow.swift */,
+				EA44B9281FE140D600DF7FF6 /* DotzuManager.swift */,
+				EA44B9291FE140D600DF7FF6 /* LogNavigationViewController.swift */,
+				EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */,
+				EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */,
+				EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */,
+				EA44B92D1FE140D600DF7FF6 /* LogsSettings.swift */,
+				EA44B92E1FE140D600DF7FF6 /* Device.swift */,
+				EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */,
+				EA44B9301FE140D600DF7FF6 /* StoreManager.swift */,
+				EA44B9311FE140D600DF7FF6 /* LoggerFormat.swift */,
+				EA44B9321FE140D600DF7FF6 /* LogHeadView.swift */,
+				EA44B9331FE140D600DF7FF6 /* Color.swift */,
+			);
+			path = Dotzu;
+			sourceTree = "<group>";
+		};
+		EA44B9341FE140D600DF7FF6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EA44B9361FE140D600DF7FF6 /* DebugMan.h */,
+				EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */,
+				EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */,
+				EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */,
+				EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */,
+				EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */,
+				EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */,
+				EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */,
+				EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */,
+				EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */,
+				EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		EA68B403201477EE00BA01C5 /* JxbDebugTool */ = {
+			isa = PBXGroup;
+			children = (
+				EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */,
+				EA68B408201477EE00BA01C5 /* JxbHttpModel.m */,
+				EA68B409201477EE00BA01C5 /* JxbDebugTool.h */,
+				EA68B40A201477EE00BA01C5 /* JxbHttpDatasource.h */,
+				EA68B40B201477EE00BA01C5 /* JxbMemoryHelper.h */,
+				EA68B410201477EE00BA01C5 /* JxbHttpModel.h */,
+				EA68B411201477EE00BA01C5 /* JxbDebugTool.m */,
+				EA68B413201477EE00BA01C5 /* JxbHttpProtocol.h */,
+				EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */,
+				EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */,
+			);
+			path = JxbDebugTool;
+			sourceTree = "<group>";
+		};
+		EA86A6772014E1F700B20CF1 /* MethodSwizzling */ = {
+			isa = PBXGroup;
+			children = (
+				EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */,
+				EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */,
+			);
+			path = MethodSwizzling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +419,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1FF8362016383600E8ED27 /* DebugMan_close@2x.png in Resources */,
+				EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */,
+				EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */,
+				EA1FF8322016383600E8ED27 /* DebugMan_bugs@2x.png in Resources */,
+				EA1FF8302016383600E8ED27 /* DebugMan_app@2x.png in Resources */,
+				EA1FF8332016383600E8ED27 /* DebugMan_network@2x.png in Resources */,
 				EA44B7911FE13ECD00DF7FF6 /* LaunchScreen.storyboard in Resources */,
+				EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */,
+				EA1FF8352016383600E8ED27 /* DebugMan_logo.png in Resources */,
+				EA1FF8342016383600E8ED27 /* DebugMan_logs@2x.png in Resources */,
 				EA44B78E1FE13ECD00DF7FF6 /* Assets.xcassets in Resources */,
+				EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */,
+				EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */,
+				EA1FF8312016383600E8ED27 /* DebugMan_json.png in Resources */,
 				EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,9 +502,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA44B99B1FE140D600DF7FF6 /* IgnoredURLsViewController.swift in Sources */,
+				EA44B98B1FE140D600DF7FF6 /* Device.swift in Sources */,
+				EA44B9881FE140D600DF7FF6 /* ListCrashesViewController.swift in Sources */,
+				EA44B9821FE140D600DF7FF6 /* ManagerViewController.swift in Sources */,
+				EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */,
+				EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */,
+				EA44B97D1FE140D600DF7FF6 /* LogTableViewCell.swift in Sources */,
+				EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */,
+				EA44B97F1FE140D600DF7FF6 /* DeviceModel.swift in Sources */,
 				EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */,
-				EA1E8DD0201979F70080DF4E /* File.swift in Sources */,
+				EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */,
+				EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */,
+				EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */,
+				EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */,
+				EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */,
+				EA44B97E1FE140D600DF7FF6 /* NotificationCenter.swift in Sources */,
+				EA44B97A1FE140D600DF7FF6 /* Log.swift in Sources */,
+				EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */,
+				EA44B9831FE140D600DF7FF6 /* DetailCrashTableViewController.swift in Sources */,
+				EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */,
+				EA1FF823201637B600E8ED27 /* NSString+DebugMan.m in Sources */,
+				EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */,
+				EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */,
+				EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */,
+				EA44B98A1FE140D600DF7FF6 /* LogsSettings.swift in Sources */,
+				EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */,
+				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
+				EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */,
+				EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */,
+				EA1FF827201637B600E8ED27 /* NSURLRequest+DebugMan.m in Sources */,
+				EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */,
+				EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */,
+				EA44B9841FE140D600DF7FF6 /* ManagerWindow.swift in Sources */,
+				EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */,
+				EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */,
+				EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */,
+				EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */,
+				EA44B9801FE140D600DF7FF6 /* LogsViewController.swift in Sources */,
+				EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */,
+				EA44B9871FE140D600DF7FF6 /* CrashListTableViewCell.swift in Sources */,
+				EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */,
+				EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */,
+				EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */,
+				EA1FF825201637B600E8ED27 /* UIColor+DebugMan.m in Sources */,
+				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
+				EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */,
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
+				EA1FF826201637B600E8ED27 /* UIWindow+DebugMan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
