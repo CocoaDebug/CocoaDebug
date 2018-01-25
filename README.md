@@ -1,5 +1,5 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/master/Sources/Resources/images/debugman_logo.png"/>
+  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/master/Sources/Resources/images/DebugMan_logo.png"/>
 </p>
 
 [![Travis CI](https://travis-ci.org/liman123/DebugMan.svg?branch=master)](https://travis-ci.org/liman123/DebugMan)
