@@ -12,5 +12,5 @@ language: objective-c
 #- pod install --project-directory=DebugMan
 
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace DebugMan.xcworkspace -scheme ${POD_NAME}-DebugMan -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace DebugMan.xcworkspace -scheme DebugMan -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
