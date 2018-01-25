@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    //step 1: initialize DebugMan
+    //MARK: - step 1: initialize `DebugMan`
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
@@ -24,8 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-//step 2: override system print method
+//MARK: - step 2: override `print` && `NSLog`
 public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+    
+    #if DEBUG
+        DebugManLog(file, function, line, message, color)
+    #endif
+}
+
+public func NSLog<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
     
     #if DEBUG
         DebugManLog(file, function, line, message, color)

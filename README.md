@@ -40,18 +40,19 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
- pod 'DebugMan', '~> 4.6.1' , :configurations => ['Debug'] #Swift 4
-#pod 'DebugMan', '~> 3.6.1' , :configurations => ['Debug'] #Swift 3
+pod 'DebugMan', :configurations => ['Debug']
 end
 ```
 
 ## Usage
 
+	//AppDelegate.swift
+	
 	#if DEBUG
 	    import DebugMan
 	#endif
-	
-	//step 1: initialize `DebugMan`
+	    
+	//MARK: - step 1: initialize `DebugMan`
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 	    
 	    #if DEBUG
@@ -61,8 +62,15 @@ end
 	    return true
 	}
 	
-	//step 2: override `print` (or override `NSLog`)
+	//MARK: - step 2: override `print` && `NSLog`
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+	    
+	    #if DEBUG
+	        DebugManLog(file, function, line, message, color)
+	    #endif
+	}
+	
+	public func NSLog<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
 	    
 	    #if DEBUG
 	        DebugManLog(file, function, line, message, color)

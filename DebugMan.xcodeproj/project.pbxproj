@@ -205,17 +205,17 @@
 		EA1FF817201637B600E8ED27 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */,
-				EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */,
 				EA1FF81A201637B600E8ED27 /* Category+DebugMan.h */,
-				EA1FF81B201637B600E8ED27 /* NSURLRequest+DebugMan.h */,
-				EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */,
-				EA1FF81D201637B600E8ED27 /* UIWindow+DebugMan.m */,
-				EA1FF81E201637B600E8ED27 /* NSData+DebugMan.h */,
 				EA1FF81F201637B600E8ED27 /* NSString+DebugMan.h */,
+				EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */,
+				EA1FF81E201637B600E8ED27 /* NSData+DebugMan.h */,
+				EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */,
+				EA1FF81B201637B600E8ED27 /* NSURLRequest+DebugMan.h */,
 				EA1FF820201637B600E8ED27 /* NSURLRequest+DebugMan.m */,
-				EA1FF821201637B600E8ED27 /* UIWindow+DebugMan.h */,
 				EA1FF822201637B600E8ED27 /* UIColor+DebugMan.h */,
+				EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */,
+				EA1FF821201637B600E8ED27 /* UIWindow+DebugMan.h */,
+				EA1FF81D201637B600E8ED27 /* UIWindow+DebugMan.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -333,16 +333,16 @@
 		EA68B403201477EE00BA01C5 /* JxbDebugTool */ = {
 			isa = PBXGroup;
 			children = (
-				EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */,
-				EA68B408201477EE00BA01C5 /* JxbHttpModel.m */,
 				EA68B409201477EE00BA01C5 /* JxbDebugTool.h */,
-				EA68B40A201477EE00BA01C5 /* JxbHttpDatasource.h */,
-				EA68B40B201477EE00BA01C5 /* JxbMemoryHelper.h */,
-				EA68B410201477EE00BA01C5 /* JxbHttpModel.h */,
 				EA68B411201477EE00BA01C5 /* JxbDebugTool.m */,
 				EA68B413201477EE00BA01C5 /* JxbHttpProtocol.h */,
-				EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */,
+				EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */,
+				EA68B410201477EE00BA01C5 /* JxbHttpModel.h */,
+				EA68B408201477EE00BA01C5 /* JxbHttpModel.m */,
+				EA68B40A201477EE00BA01C5 /* JxbHttpDatasource.h */,
 				EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */,
+				EA68B40B201477EE00BA01C5 /* JxbMemoryHelper.h */,
+				EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */,
 			);
 			path = JxbDebugTool;
 			sourceTree = "<group>";
@@ -350,8 +350,8 @@
 		EA86A6772014E1F700B20CF1 /* MethodSwizzling */ = {
 			isa = PBXGroup;
 			children = (
-				EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */,
 				EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */,
+				EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */,
 			);
 			path = MethodSwizzling;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 					EA44B7821FE13ECD00DF7FF6 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -689,8 +689,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3B37F52X83;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -712,8 +712,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3B37F52X83;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
