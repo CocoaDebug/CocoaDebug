@@ -46,7 +46,7 @@ class StoreManager {
     func addLog(_ log: Log) {
         if log.color == .white || log.color == nil
         {   //白色
-            if self.defaultLogArray.count >= 10000 {
+            if self.defaultLogArray.count >= 1000 {
                 if self.defaultLogArray.count > 0 {
                     self.defaultLogArray.remove(at: 0)
                 }
@@ -55,7 +55,7 @@ class StoreManager {
         }
         else ///////////////////////////////
         {   //彩色
-            if self.colorLogArray.count >= 10000 {
+            if self.colorLogArray.count >= 1000 {
                 if self.colorLogArray.count > 0 {
                     self.colorLogArray.remove(at: 0)
                 }
@@ -93,7 +93,7 @@ class StoreManager {
     
     //MARK: - crash相关
     func addCrash(_ crash: LogCrash) {
-        if self.crashArray.count >= 10000 {
+        if self.crashArray.count >= 1000 {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }
