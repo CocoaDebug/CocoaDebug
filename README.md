@@ -44,6 +44,9 @@ pod 'DebugMan', :configurations => ['Debug']
 end
 ```
 
+- `~> 3.x.x` for Swift 3
+- `~> 4.x.x` for Swift 4
+
 ## Usage
 
 	//AppDelegate.swift
