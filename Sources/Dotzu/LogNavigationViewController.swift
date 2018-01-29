@@ -20,7 +20,6 @@ class LogNavigationViewController: UINavigationController {
                                              NSAttributedStringKey.foregroundColor: Color.mainGreen]
 
         let selector = #selector(LogNavigationViewController.exit)
-
         
         let image = UIImage(named: "DebugMan_close", in: Bundle(for: LogNavigationViewController.self), compatibleWith: nil)
         let leftButton = UIBarButtonItem(image: image,

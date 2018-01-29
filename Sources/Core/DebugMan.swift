@@ -11,7 +11,7 @@ import UIKit
 
 @objc public class DebugMan : NSObject {
     
-    //MARK: - //////////////////////// Usage of DebugMan ////////////////////////
+    //MARK: - ***** Usage of DebugMan *****
     
     /// serverURL: If the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
     /// ignoredURLs: Set the URLs which should not catched, ignoring case, catch all URLs when the value is nil. default value is `nil`.

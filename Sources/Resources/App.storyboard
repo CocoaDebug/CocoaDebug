@@ -213,11 +213,11 @@
             </objects>
             <point key="canvasLocation" x="1487" y="3090"/>
         </scene>
-        <!--app-->
+        <!--App-->
         <scene sceneID="PWc-Aa-Ldz">
             <objects>
                 <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="LogNavigationViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="app" image="DebugMan_app" selectedImage="DebugMan_app" id="bj0-w7-cGx"/>
+                    <tabBarItem key="tabBarItem" title="App" image="DebugMan_app" selectedImage="DebugMan_app" id="bj0-w7-cGx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LTO-vU-VsB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="-18" y="1721"/>
         </scene>
-        <!--APP-->
+        <!--App-->
         <scene sceneID="bwZ-u7-a4K">
             <objects>
-                <tableViewController title="APP" id="jF1-Ov-37R" customClass="InformationsTableViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="App" id="jF1-Ov-37R" customClass="InformationsTableViewController" customModule="DebugMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vkj-g7-DtV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -675,7 +675,7 @@
                             <outlet property="delegate" destination="jF1-Ov-37R" id="LiC-7u-XBE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="APP" id="nfh-qO-k6T">
+                    <navigationItem key="navigationItem" title="App" id="nfh-qO-k6T">
                         <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l"/>
                     </navigationItem>
                     <connections>
@@ -707,28 +707,29 @@
                         <sections>
                             <tableViewSection id="OgA-8W-RBV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="420" id="zrF-HA-EEh">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="420"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="440" id="zrF-HA-EEh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zrF-HA-EEh" id="9Yu-I0-Oa7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="420"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbY-oT-O44">
-                                                    <rect key="frame" x="15" y="93" width="345" height="316"/>
+                                                    <rect key="frame" x="15" y="93" width="345" height="336"/>
                                                     <gestureRecognizers/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <string key="content">DebugMan is an debugger tool for iOS, with the following features:
+                                                            <mutableString key="content">DebugMan is an debugger tool for iOS, with the following features:
 
-● display all app logs in different colors as you like.
-● display all app network http requests details, including third-party SDK in app.
-● display app device informations and app identity informations.
-● display app crash logs.
-● filter keywords in app logs and app network http requests.
-● app memory real-time monitoring.
+● Display all app network http requests details, including SDKs and image preview.
+● Display app device informations and app identity informations.
+● Preview and share sandbox files on device/simulator.
+● Display all app logs in different colors as you like.
+● App memory real-time monitoring.
+● Display app crash logs.
 
-Welcome to star and fork. If you have any questions, welcome to open issues. HomePage https://github.com/liman123/DebugMan</string>
+Welcome to star and fork. If you have any questions, welcome to open issues.
+[HomePage: GitHub.com/liman123/DebugMan]</mutableString>
                                                             <attributes>
                                                                 <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

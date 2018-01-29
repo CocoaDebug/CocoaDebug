@@ -101,7 +101,7 @@ class InformationsTableViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 3 {
             UIPasteboard.general.string = Bundle.main.bundleIdentifier
             
-            let alert = UIAlertController.init(title: "Copied", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
@@ -114,7 +114,7 @@ class InformationsTableViewController: UITableViewController {
             
             UIPasteboard.general.string = LogsSettings.shared.serverURL
             
-            let alert = UIAlertController.init(title: "Copied", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

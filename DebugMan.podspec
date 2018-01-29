@@ -1,17 +1,17 @@
 Pod::Spec.new do |s|
 
   s.name         = "DebugMan"
-  s.version      = "4.6.5"
+  s.version      = "4.6.6"
   s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
                     DebugMan is an debugger tool for iOS, with the following features:
 
-                    ● display all app logs in different colors as you like.
-                    ● display all app network http requests details, including third-party SDK in app.
-                    ● display app device informations and app identity informations.
-                    ● display app crash logs.
-                    ● filter keywords in app logs and app network http requests.
-                    ● app memory real-time monitoring.
+                    ● Display all app network http requests details, including SDKs and image preview.
+                    ● Display app device informations and app identity informations.
+                    ● Preview and share sandbox files on device/simulator.
+                    ● Display all app logs in different colors as you like.
+                    ● App memory real-time monitoring.
+                    ● Display app crash logs.
 
                     Welcome to star and fork. If you have any questions, welcome to open issues.
                    DESC

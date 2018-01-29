@@ -13,6 +13,25 @@
 		EA02F4AC1FE26CBA00DF34EF /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49E1FE26CBA00DF34EF /* Network.storyboard */; };
 		EA02F4AD1FE26CBA00DF34EF /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */; };
 		EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA02F4A01FE26CBA00DF34EF /* App.storyboard */; };
+		EA065145201DAEC40020F6FB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA065143201DAEC40020F6FB /* AboutViewController.swift */; };
+		EA065146201DAEC40020F6FB /* IgnoredURLsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA065144201DAEC40020F6FB /* IgnoredURLsViewController.swift */; };
+		EA06514D201DAED00020F6FB /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA065147201DAED00020F6FB /* NetworkDetailModel.swift */; };
+		EA06514E201DAED00020F6FB /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA065148201DAED00020F6FB /* NetworkViewController.swift */; };
+		EA06514F201DAED00020F6FB /* ToJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA065149201DAED00020F6FB /* ToJSONViewController.swift */; };
+		EA065150201DAED00020F6FB /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06514A201DAED00020F6FB /* NetworkCell.swift */; };
+		EA065151201DAED00020F6FB /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06514B201DAED00020F6FB /* NetworkDetailCell.swift */; };
+		EA065152201DAED00020F6FB /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06514C201DAED00020F6FB /* NetworkDetailViewController.swift */; };
+		EA065188201DE59D0020F6FB /* MLBFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA065174201DE59D0020F6FB /* MLBFileTableViewCell.m */; };
+		EA065189201DE59D0020F6FB /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA065179201DE59D0020F6FB /* MLBFileInfo.m */; };
+		EA06518A201DE59D0020F6FB /* SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA06517C201DE59D0020F6FB /* SandboxerHelper.m */; };
+		EA06518B201DE59D0020F6FB /* NSBundle+Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA06517E201DE59D0020F6FB /* NSBundle+Sandboxer.m */; };
+		EA06518C201DE59D0020F6FB /* MLBImageResources.m in Sources */ = {isa = PBXBuildFile; fileRef = EA06517F201DE59D0020F6FB /* MLBImageResources.m */; };
+		EA06518D201DE59D0020F6FB /* Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA065181201DE59D0020F6FB /* Sandboxer.m */; };
+		EA06518E201DE59D0020F6FB /* MLBFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA065185201DE59D0020F6FB /* MLBFilePreviewController.m */; };
+		EA06518F201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA065186201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.m */; };
+		EA065190201DE59D0020F6FB /* SandboxerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA065187201DE59D0020F6FB /* SandboxerResources.bundle */; };
+		EA06519E201DF6DF0020F6FB /* DebugMan_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06519D201DF6DF0020F6FB /* DebugMan_sandbox@2x.png */; };
+		EA0651A0201E19C80020F6FB /* Sandbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA06519F201E19C70020F6FB /* Sandbox.storyboard */; };
 		EA1FF823201637B600E8ED27 /* NSString+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */; };
 		EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */; };
 		EA1FF825201637B600E8ED27 /* UIColor+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */; };
@@ -55,15 +74,7 @@
 		EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9311FE140D600DF7FF6 /* LoggerFormat.swift */; };
 		EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9321FE140D600DF7FF6 /* LogHeadView.swift */; };
 		EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9331FE140D600DF7FF6 /* Color.swift */; };
-		EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */; };
-		EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */; };
-		EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */; };
 		EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */; };
-		EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */; };
-		EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */; };
-		EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */; };
-		EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */; };
-		EA44B99B1FE140D600DF7FF6 /* IgnoredURLsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */; };
 		EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */; };
 		EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */; };
 		EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B408201477EE00BA01C5 /* JxbHttpModel.m */; };
@@ -82,6 +93,34 @@
 		EA02F49E1FE26CBA00DF34EF /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		EA02F4A01FE26CBA00DF34EF /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		EA065143201DAEC40020F6FB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		EA065144201DAEC40020F6FB /* IgnoredURLsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoredURLsViewController.swift; sourceTree = "<group>"; };
+		EA065147201DAED00020F6FB /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
+		EA065148201DAED00020F6FB /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		EA065149201DAED00020F6FB /* ToJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToJSONViewController.swift; sourceTree = "<group>"; };
+		EA06514A201DAED00020F6FB /* NetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
+		EA06514B201DAED00020F6FB /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
+		EA06514C201DAED00020F6FB /* NetworkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailViewController.swift; sourceTree = "<group>"; };
+		EA065172201DE59D0020F6FB /* Sandboxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandboxer.h; sourceTree = "<group>"; };
+		EA065174201DE59D0020F6FB /* MLBFileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileTableViewCell.m; sourceTree = "<group>"; };
+		EA065175201DE59D0020F6FB /* MLBFileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileTableViewCell.h; sourceTree = "<group>"; };
+		EA065176201DE59D0020F6FB /* Sandboxer-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sandboxer-Header.h"; sourceTree = "<group>"; };
+		EA065178201DE59D0020F6FB /* MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileInfo.h; sourceTree = "<group>"; };
+		EA065179201DE59D0020F6FB /* MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileInfo.m; sourceTree = "<group>"; };
+		EA06517B201DE59D0020F6FB /* NSBundle+Sandboxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Sandboxer.h"; sourceTree = "<group>"; };
+		EA06517C201DE59D0020F6FB /* SandboxerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxerHelper.m; sourceTree = "<group>"; };
+		EA06517D201DE59D0020F6FB /* MLBImageResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBImageResources.h; sourceTree = "<group>"; };
+		EA06517E201DE59D0020F6FB /* NSBundle+Sandboxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Sandboxer.m"; sourceTree = "<group>"; };
+		EA06517F201DE59D0020F6FB /* MLBImageResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBImageResources.m; sourceTree = "<group>"; };
+		EA065180201DE59D0020F6FB /* SandboxerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxerHelper.h; sourceTree = "<group>"; };
+		EA065181201DE59D0020F6FB /* Sandboxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sandboxer.m; sourceTree = "<group>"; };
+		EA065183201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
+		EA065184201DE59D0020F6FB /* MLBFilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFilePreviewController.h; sourceTree = "<group>"; };
+		EA065185201DE59D0020F6FB /* MLBFilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFilePreviewController.m; sourceTree = "<group>"; };
+		EA065186201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBDirectoryContentsTableViewController.m; sourceTree = "<group>"; };
+		EA065187201DE59D0020F6FB /* SandboxerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SandboxerResources.bundle; sourceTree = "<group>"; };
+		EA06519D201DF6DF0020F6FB /* DebugMan_sandbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugMan_sandbox@2x.png"; sourceTree = "<group>"; };
+		EA06519F201E19C70020F6FB /* Sandbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sandbox.storyboard; sourceTree = "<group>"; };
 		EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugMan.m"; sourceTree = "<group>"; };
 		EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugMan.m"; sourceTree = "<group>"; };
 		EA1FF81A201637B600E8ED27 /* Category+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+DebugMan.h"; sourceTree = "<group>"; };
@@ -134,15 +173,7 @@
 		EA44B9321FE140D600DF7FF6 /* LogHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHeadView.swift; sourceTree = "<group>"; };
 		EA44B9331FE140D600DF7FF6 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA44B9361FE140D600DF7FF6 /* DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMan.h; sourceTree = "<group>"; };
-		EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
-		EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
-		EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToJSONViewController.swift; sourceTree = "<group>"; };
 		EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMan.swift; sourceTree = "<group>"; };
-		EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailViewController.swift; sourceTree = "<group>"; };
-		EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
-		EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
-		EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoredURLsViewController.swift; sourceTree = "<group>"; };
 		EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugMan+Extensions.swift"; sourceTree = "<group>"; };
 		EA68B406201477EE00BA01C5 /* JxbHttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpProtocol.m; sourceTree = "<group>"; };
 		EA68B408201477EE00BA01C5 /* JxbHttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpModel.m; sourceTree = "<group>"; };
@@ -198,8 +229,96 @@
 				EA02F49E1FE26CBA00DF34EF /* Network.storyboard */,
 				EA02F49F1FE26CBA00DF34EF /* Manager.storyboard */,
 				EA02F4A01FE26CBA00DF34EF /* App.storyboard */,
+				EA06519F201E19C70020F6FB /* Sandbox.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EA065141201DAE610020F6FB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EA06514A201DAED00020F6FB /* NetworkCell.swift */,
+				EA06514B201DAED00020F6FB /* NetworkDetailCell.swift */,
+				EA065147201DAED00020F6FB /* NetworkDetailModel.swift */,
+				EA06514C201DAED00020F6FB /* NetworkDetailViewController.swift */,
+				EA065148201DAED00020F6FB /* NetworkViewController.swift */,
+				EA065149201DAED00020F6FB /* ToJSONViewController.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EA065142201DAE9E0020F6FB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EA065143201DAEC40020F6FB /* AboutViewController.swift */,
+				EA065144201DAEC40020F6FB /* IgnoredURLsViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EA065170201DE59D0020F6FB /* Sandboxer */ = {
+			isa = PBXGroup;
+			children = (
+				EA065171201DE59D0020F6FB /* Classes */,
+				EA065187201DE59D0020F6FB /* SandboxerResources.bundle */,
+			);
+			path = Sandboxer;
+			sourceTree = "<group>";
+		};
+		EA065171201DE59D0020F6FB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EA065176201DE59D0020F6FB /* Sandboxer-Header.h */,
+				EA065172201DE59D0020F6FB /* Sandboxer.h */,
+				EA065181201DE59D0020F6FB /* Sandboxer.m */,
+				EA065173201DE59D0020F6FB /* Cells */,
+				EA065177201DE59D0020F6FB /* Models */,
+				EA06517A201DE59D0020F6FB /* Utilities */,
+				EA065182201DE59D0020F6FB /* ViewControllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		EA065173201DE59D0020F6FB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EA065175201DE59D0020F6FB /* MLBFileTableViewCell.h */,
+				EA065174201DE59D0020F6FB /* MLBFileTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EA065177201DE59D0020F6FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA065178201DE59D0020F6FB /* MLBFileInfo.h */,
+				EA065179201DE59D0020F6FB /* MLBFileInfo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EA06517A201DE59D0020F6FB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EA06517B201DE59D0020F6FB /* NSBundle+Sandboxer.h */,
+				EA06517E201DE59D0020F6FB /* NSBundle+Sandboxer.m */,
+				EA065180201DE59D0020F6FB /* SandboxerHelper.h */,
+				EA06517C201DE59D0020F6FB /* SandboxerHelper.m */,
+				EA06517D201DE59D0020F6FB /* MLBImageResources.h */,
+				EA06517F201DE59D0020F6FB /* MLBImageResources.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EA065182201DE59D0020F6FB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA065183201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.h */,
+				EA065186201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.m */,
+				EA065184201DE59D0020F6FB /* MLBFilePreviewController.h */,
+				EA065185201DE59D0020F6FB /* MLBFilePreviewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		EA1FF817201637B600E8ED27 /* Category */ = {
@@ -223,6 +342,7 @@
 		EA1FF8282016383600E8ED27 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EA06519D201DF6DF0020F6FB /* DebugMan_sandbox@2x.png */,
 				EA1FF8292016383600E8ED27 /* DebugMan_app@2x.png */,
 				EA1FF82A2016383600E8ED27 /* DebugMan_json.png */,
 				EA1FF82B2016383600E8ED27 /* DebugMan_bugs@2x.png */,
@@ -270,6 +390,9 @@
 		EA44B9031FE140D600DF7FF6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA065170201DE59D0020F6FB /* Sandboxer */,
+				EA065142201DAE9E0020F6FB /* App */,
+				EA065141201DAE610020F6FB /* Network */,
 				EA1FF817201637B600E8ED27 /* Category */,
 				EA44B9341FE140D600DF7FF6 /* Core */,
 				EA86A6772014E1F700B20CF1 /* MethodSwizzling */,
@@ -317,14 +440,6 @@
 			children = (
 				EA44B9361FE140D600DF7FF6 /* DebugMan.h */,
 				EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */,
-				EA44B9371FE140D600DF7FF6 /* NetworkCell.swift */,
-				EA44B9381FE140D600DF7FF6 /* NetworkViewController.swift */,
-				EA44B93B1FE140D600DF7FF6 /* NetworkDetailViewController.swift */,
-				EA44B9391FE140D600DF7FF6 /* ToJSONViewController.swift */,
-				EA44B93C1FE140D600DF7FF6 /* NetworkDetailCell.swift */,
-				EA44B93D1FE140D600DF7FF6 /* NetworkDetailModel.swift */,
-				EA44B93E1FE140D600DF7FF6 /* AboutViewController.swift */,
-				EA44B9401FE140D600DF7FF6 /* IgnoredURLsViewController.swift */,
 				EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */,
 			);
 			path = Core;
@@ -392,7 +507,7 @@
 					EA44B7821FE13ECD00DF7FF6 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -427,8 +542,11 @@
 				EA1FF8332016383600E8ED27 /* DebugMan_network@2x.png in Resources */,
 				EA44B7911FE13ECD00DF7FF6 /* LaunchScreen.storyboard in Resources */,
 				EA02F4AE1FE26CBA00DF34EF /* App.storyboard in Resources */,
+				EA06519E201DF6DF0020F6FB /* DebugMan_sandbox@2x.png in Resources */,
+				EA065190201DE59D0020F6FB /* SandboxerResources.bundle in Resources */,
 				EA1FF8352016383600E8ED27 /* DebugMan_logo.png in Resources */,
 				EA1FF8342016383600E8ED27 /* DebugMan_logs@2x.png in Resources */,
+				EA0651A0201E19C80020F6FB /* Sandbox.storyboard in Resources */,
 				EA44B78E1FE13ECD00DF7FF6 /* Assets.xcassets in Resources */,
 				EA02F4A11FE26CBA00DF34EF /* NetworkCell.xib in Resources */,
 				EA02F4A21FE26CBA00DF34EF /* Logs.storyboard in Resources */,
@@ -467,12 +585,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-DebugMan/Pods-DebugMan-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Networking/Networking.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-4/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Networking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHTTP.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,9 +622,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA44B99B1FE140D600DF7FF6 /* IgnoredURLsViewController.swift in Sources */,
 				EA44B98B1FE140D600DF7FF6 /* Device.swift in Sources */,
+				EA065146201DAEC40020F6FB /* IgnoredURLsViewController.swift in Sources */,
+				EA065145201DAEC40020F6FB /* AboutViewController.swift in Sources */,
 				EA44B9881FE140D600DF7FF6 /* ListCrashesViewController.swift in Sources */,
+				EA06518B201DE59D0020F6FB /* NSBundle+Sandboxer.m in Sources */,
 				EA44B9821FE140D600DF7FF6 /* ManagerViewController.swift in Sources */,
 				EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */,
 				EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */,
@@ -515,41 +637,47 @@
 				EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */,
 				EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */,
 				EA44B9901FE140D600DF7FF6 /* Color.swift in Sources */,
-				EA44B9921FE140D600DF7FF6 /* NetworkCell.swift in Sources */,
-				EA44B9931FE140D600DF7FF6 /* NetworkViewController.swift in Sources */,
 				EA44B97E1FE140D600DF7FF6 /* NotificationCenter.swift in Sources */,
+				EA065152201DAED00020F6FB /* NetworkDetailViewController.swift in Sources */,
 				EA44B97A1FE140D600DF7FF6 /* Log.swift in Sources */,
-				EA44B9941FE140D600DF7FF6 /* ToJSONViewController.swift in Sources */,
 				EA44B9831FE140D600DF7FF6 /* DetailCrashTableViewController.swift in Sources */,
-				EA44B9981FE140D600DF7FF6 /* NetworkDetailModel.swift in Sources */,
 				EA1FF823201637B600E8ED27 /* NSString+DebugMan.m in Sources */,
 				EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */,
-				EA44B9991FE140D600DF7FF6 /* AboutViewController.swift in Sources */,
 				EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */,
+				EA06514D201DAED00020F6FB /* NetworkDetailModel.swift in Sources */,
 				EA44B98A1FE140D600DF7FF6 /* LogsSettings.swift in Sources */,
 				EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */,
+				EA06518D201DE59D0020F6FB /* Sandboxer.m in Sources */,
+				EA065189201DE59D0020F6FB /* MLBFileInfo.m in Sources */,
 				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
 				EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */,
 				EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */,
+				EA06514F201DAED00020F6FB /* ToJSONViewController.swift in Sources */,
 				EA1FF827201637B600E8ED27 /* NSURLRequest+DebugMan.m in Sources */,
 				EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */,
+				EA06518C201DE59D0020F6FB /* MLBImageResources.m in Sources */,
 				EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */,
 				EA44B9841FE140D600DF7FF6 /* ManagerWindow.swift in Sources */,
-				EA44B9971FE140D600DF7FF6 /* NetworkDetailCell.swift in Sources */,
+				EA06518A201DE59D0020F6FB /* SandboxerHelper.m in Sources */,
+				EA065188201DE59D0020F6FB /* MLBFileTableViewCell.m in Sources */,
 				EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */,
 				EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */,
 				EA6760A22005F0D000ADA56A /* DebugMan+Extensions.swift in Sources */,
 				EA44B9801FE140D600DF7FF6 /* LogsViewController.swift in Sources */,
 				EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */,
+				EA06518F201DE59D0020F6FB /* MLBDirectoryContentsTableViewController.m in Sources */,
 				EA44B9871FE140D600DF7FF6 /* CrashListTableViewCell.swift in Sources */,
 				EA44B98F1FE140D600DF7FF6 /* LogHeadView.swift in Sources */,
+				EA06518E201DE59D0020F6FB /* MLBFilePreviewController.m in Sources */,
 				EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */,
-				EA44B9961FE140D600DF7FF6 /* NetworkDetailViewController.swift in Sources */,
 				EA1FF825201637B600E8ED27 /* UIColor+DebugMan.m in Sources */,
 				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
 				EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */,
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
+				EA065150201DAED00020F6FB /* NetworkCell.swift in Sources */,
+				EA06514E201DAED00020F6FB /* NetworkViewController.swift in Sources */,
 				EA1FF826201637B600E8ED27 /* UIWindow+DebugMan.m in Sources */,
+				EA065151201DAED00020F6FB /* NetworkDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,8 +817,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3B37F52X83;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -712,8 +840,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3B37F52X83;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

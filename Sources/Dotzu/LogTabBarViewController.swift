@@ -26,15 +26,23 @@ class LogTabBarViewController: UITabBarController {
     
     //MARK: - private
     func setChildControllers() {
-        let Logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugMan.self))
-        let Network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self))
-        let App = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self))
+
+        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "Logs")
+        let network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "Network")
+        let app = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "App")
         
-        let Logs_ = Logs.instantiateViewController(withIdentifier: "Logs")
-        let Network_ = Network.instantiateViewController(withIdentifier: "Network")
-        let App_ = App.instantiateViewController(withIdentifier: "App")
         
-        self.viewControllers = [Logs_, Network_, App_]
+        Sandboxer.shared.isSystemFilesHidden = false
+        Sandboxer.shared.isExtensionHidden = false
+        Sandboxer.shared.isShareable = true
+        Sandboxer.shared.isFileDeletable = true
+        Sandboxer.shared.isDirectoryDeletable = true
+        guard let sandboxer = Sandboxer.shared.homeDirectoryNavigationController() else {return}
+        sandboxer.tabBarItem = UITabBarItem.init(title: "Sandbox", image: UIImage.init(named: "DebugMan_sandbox"), selectedImage: UIImage.init(named: "DebugMan_sandbox"))
+        
+        
+        self.viewControllers = [logs, network, sandboxer, app]
+        
         
         
         //添加额外的控制器
