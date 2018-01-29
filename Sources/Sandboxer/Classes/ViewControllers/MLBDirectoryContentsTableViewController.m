@@ -63,7 +63,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 + (instancetype)instanceFromStoryBoard
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sandbox" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sandbox" bundle:[MLBDirectoryContentsTableViewController self]];
     return [storyboard instantiateViewControllerWithIdentifier:@"MLBDirectoryContentsTableViewController"];
 }
 
