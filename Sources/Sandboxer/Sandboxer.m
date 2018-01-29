@@ -8,7 +8,6 @@
 
 #import "Sandboxer.h"
 #import "MLBDirectoryContentsTableViewController.h"
-#import "NSBundle+Sandboxer.h"
 
 @interface Sandboxer ()
 
@@ -61,7 +60,7 @@
 
 - (NSString *)homeTitle {
     if (nil == _homeTitle) {
-        _homeTitle = [NSBundle mlb_localizedStringForKey:@"sandbox"];
+        _homeTitle = @"Sandbox";
     }
     
     return _homeTitle;
@@ -69,7 +68,7 @@
 
 - (UINavigationController *)homeDirectoryNavigationController {
     if (!_homeDirectoryNavigationController) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [MLBDirectoryContentsTableViewController instanceFromStoryBoard];
+        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.homeDirectory = YES;
         directoryContentsTableViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
 //        directoryContentsTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;//liman

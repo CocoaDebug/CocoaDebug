@@ -12,7 +12,6 @@
 #import <WebKit/WebKit.h>
 #import "Sandboxer-Header.h"
 #import "Sandboxer.h"
-#import "NSBundle+Sandboxer.h"
 
 @interface MLBFilePreviewController () </*QLPreviewControllerDataSource, */WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -137,7 +136,7 @@
                     if (!data) {
                         //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by liman
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
+                            self.textView.text = @"unable to preview this file";
                         });
                     }else{
                         NSError *error;
@@ -146,7 +145,7 @@
                             [self.activityIndicatorView stopAnimating];
                             //liman
                             if (error) {
-                                self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
+                                self.textView.text = @"unable to preview this file";
                             }else{
                                 self.textView.text = content;
                             }
@@ -157,7 +156,7 @@
             }
             default:
                 //liman
-                self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
+                self.textView.text = @"unable to preview this file";
                 break;
         }
     }

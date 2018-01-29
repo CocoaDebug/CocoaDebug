@@ -9,11 +9,9 @@
 #import "MLBDirectoryContentsTableViewController.h"
 #import "MLBFilePreviewController.h"
 #import "MLBFileTableViewCell.h"
-#import "MLBImageResources.h"
 #import "Sandboxer.h"
 #import <QuickLook/QuickLook.h>
 #import "Sandboxer-Header.h"
-#import "NSBundle+Sandboxer.h"
 
 @interface MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UIAlertViewDelegate>
 
@@ -61,12 +59,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-+ (instancetype)instanceFromStoryBoard
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sandbox" bundle:[MLBDirectoryContentsTableViewController self]];
-    return [storyboard instantiateViewControllerWithIdentifier:@"MLBDirectoryContentsTableViewController"];
-}
-
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,7 +71,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (MLBIsStringEmpty(self.title)) {
         if (self.isHomeDirectory) {
             [self customNavigationBar];//liman
-            self.title = [NSBundle mlb_localizedStringForKey:@"sandbox"];
+            self.title = @"Sandbox";
         } else {
             self.title = self.fileInfo.displayName;
         }
@@ -121,16 +113,16 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 //    self.refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDirectoryContents)];
 //    NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray arrayWithObject:self.refreshItem];
 //    if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
-//        self.editItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
-//        self.editItem.possibleTitles = [NSSet setWithObjects:[NSBundle mlb_localizedStringForKey:@"edit"], [NSBundle mlb_localizedStringForKey:@"cancel"], nil];
+//        self.editItem = [[UIBarButtonItem alloc] initWithTitle:@Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
+//        self.editItem.possibleTitles = [NSSet setWithObjects:@Edit", @"Cancel", nil];
 //        [rightBarButtonItems addObject:self.editItem];
 //    }
 //    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
     //liman
     if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
-        self.editItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
-        self.editItem.possibleTitles = [NSSet setWithObjects:[NSBundle mlb_localizedStringForKey:@"edit"], [NSBundle mlb_localizedStringForKey:@"cancel"], nil];
+        self.editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
+        self.editItem.possibleTitles = [NSSet setWithObjects:@"Edit", @"Cancel", nil];
         self.navigationItem.rightBarButtonItem = self.editItem;
     }
     
@@ -203,7 +195,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (UIViewController *)viewControllerWithFileInfo:(MLBFileInfo *)fileInfo {
     if (fileInfo.isDirectory) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [MLBDirectoryContentsTableViewController instanceFromStoryBoard];
+        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.hidesBottomBarWhenPushed = YES;//liman
         directoryContentsTableViewController.fileInfo = fileInfo;
         return directoryContentsTableViewController;
@@ -276,33 +268,33 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (NSString *)messageForDeleteWithFileCount:(NSInteger)fileCount directoryCount:(NSInteger)directoryCount {
-    NSMutableString *message = [NSMutableString stringWithString:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_prefix"]];
+    NSMutableString *message = [NSMutableString stringWithString:@"Are you sure to delete "];
     if ([Sandboxer shared].isFileDeletable && fileCount > 0) {
-        [message appendFormat:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_file_count"], fileCount];
+        [message appendFormat:@"%ld files", (long)fileCount];
     }
     
     if ([Sandboxer shared].isDirectoryDeletable && directoryCount > 0) {
         if ([Sandboxer shared].isFileDeletable && fileCount > 0) {
-            [message appendString:[NSBundle mlb_localizedStringForKey:@"comma"]];
+            [message appendString:@", "];
         }
         
-        [message appendFormat:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_directory_count"], directoryCount];
+        [message appendFormat:@"%ld directories", (long)directoryCount];
     }
     
-    [message appendString:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_question_suffix"]];
+    [message appendString:@"?"];
     
     return message.copy;
 }
 
 - (UIAlertController *)alertControllerForDeleteWithMessage:(NSString *)message deleteHandler:(void (^ __nullable)(UIAlertAction *action))handler {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_cancel"] style:UIAlertActionStyleCancel handler:nil]];
-    [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_delete"] style:UIAlertActionStyleDestructive handler:handler]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:handler]];
     return alertController;
 }
 
 - (UIAlertView *)alertViewForDeleteWithMessage:(NSString *)message tag:(NSInteger)tag {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_cancel"] otherButtonTitles:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_delete"], nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     alertView.tag = tag;
     return alertView;
 }
@@ -324,7 +316,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)beginEditing {
     if (self.tableView.isEditing) { return; }
     self.tableView.editing = YES;
-    self.editItem.title = [NSBundle mlb_localizedStringForKey:@"cancel"];
+    self.editItem.title = @"Cancel";
     self.editItem.style = UIBarButtonItemStylePlain;
     if (self.searchController) {
         self.searchController.searchBar.userInteractionEnabled = NO;
@@ -334,8 +326,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.navigationController setToolbarHidden:NO animated:YES];
     
     if (nil == self.deleteAllItem) {
-        self.deleteAllItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete_all"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllAction)];
-        self.deleteItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelectedFilesAction)];
+        self.deleteAllItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete All" style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllAction)];
+        self.deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelectedFilesAction)];
         
         //liman
         [self.deleteAllItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]} forState:UIControlStateNormal];
@@ -489,7 +481,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MLBFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MLBFileTableViewCellReuseIdentifier forIndexPath:indexPath];
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
-    cell.imageView.image = [MLBImageResources fileTypeImageNamed:fileInfo.typeImageName];
+    cell.imageView.image = [UIImage imageNamed:fileInfo.typeImageName];
     cell.textLabel.text = [Sandboxer shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
     cell.accessoryType = fileInfo.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;
@@ -519,14 +511,14 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         self.deletingFileInfo = fileInfo;
         NSMutableString *message = [NSMutableString string];
         if (fileInfo.isDirectory) {
-            [message appendFormat:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_single_directory"], fileInfo.filesCount];
+            [message appendFormat:@"Are you sure to delete this directory(including %lu files(or directories) inside)?", (unsigned long)fileInfo.filesCount];
         } else {
-            [message appendString:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_single_file"]];
+            [message appendString:@"Are you sure to delete this file?"];
         }
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_cancel"] style:UIAlertActionStyleCancel handler:nil]];
-        [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_delete"] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [self deleteSelectedFile];
         }]];
         [self presentViewController:alertController animated:YES completion:nil];
