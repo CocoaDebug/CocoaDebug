@@ -41,7 +41,7 @@ class LogTabBarViewController: UITabBarController {
         Sandboxer.shared.isDirectoryDeletable = true
         guard let sandboxer = Sandboxer.shared.homeDirectoryNavigationController() else {return}
         sandboxer.tabBarItem.title = "Sandbox"
-        sandboxer.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox")
+        sandboxer.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         
         //3.
         self.viewControllers = [logs, network, sandboxer, app]
@@ -55,7 +55,9 @@ class LogTabBarViewController: UITabBarController {
             
             let nav = UINavigationController.init(rootViewController: vc)
             
-            //************ 以下代码从LogNavigationViewController.swift复制 ************
+            //****** 以下代码从LogNavigationViewController.swift复制 ******
+            nav.navigationBar.isTranslucent = false
+            
             nav.navigationBar.tintColor = Color.mainGreen
             nav.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                                      NSAttributedStringKey.foregroundColor: Color.mainGreen]
@@ -68,7 +70,7 @@ class LogTabBarViewController: UITabBarController {
                                              style: .done, target: self, action: selector)
             leftItem.tintColor = Color.mainGreen
             nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
-            //************ 以上代码从LogNavigationViewController.swift复制 ************
+            //****** 以上代码从LogNavigationViewController.swift复制 ******
             
             nav.navigationBar.barTintColor = UIColor.init(hexString: "#1f2124")
             self.viewControllers?.append(nav)
@@ -76,7 +78,6 @@ class LogTabBarViewController: UITabBarController {
     }
     
     
-    //************ 以下代码从LogNavigationViewController.swift复制 ************
     //MARK: - target action
     @objc func exit() {
         dismiss(animated: true, completion: nil)

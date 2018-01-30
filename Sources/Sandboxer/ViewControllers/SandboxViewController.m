@@ -38,7 +38,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 #pragma mark - liman
 - (void)customNavigationBar
 {
-    //copied from LogNavigationViewController.swift viewDidLoad() by liman
+    //****** 以下代码从LogNavigationViewController.swift复制 ******
     self.navigationController.navigationBar.translucent = NO;
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
@@ -47,7 +47,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
                                                                     NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0]
                                                                     };
     
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close"] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     leftItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
     self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
 }
@@ -111,9 +111,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     //liman
     if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
-        self.editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
-        self.editItem.possibleTitles = [NSSet setWithObjects:@"Edit", @"Cancel", nil];
-        self.editItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:[UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        button.frame = CGRectMake(0, 0, 56, 34);
+        [button setTitle:@"     Edit" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(editAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.editItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         self.navigationItem.rightBarButtonItem = self.editItem;
     }
     
@@ -271,8 +277,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)beginEditing {
     if (self.tableView.isEditing) { return; }
     self.tableView.editing = YES;
-    self.editItem.title = @"Cancel";
-    self.editItem.style = UIBarButtonItemStylePlain;
+    [((UIButton *)self.editItem.customView) setTitle:@"Cancel" forState:UIControlStateNormal];
     
     [self.navigationController setToolbarHidden:NO animated:YES];
     
@@ -298,8 +303,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)endEditing {
     if (!self.tableView.isEditing) { return; }
     self.tableView.editing = NO;
-    self.editItem.title = @"Edit";
-    self.editItem.style = UIBarButtonItemStylePlain;
+    [((UIButton *)self.editItem.customView) setTitle:@"     Edit" forState:UIControlStateNormal];
     
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
@@ -419,7 +423,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MLBFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MLBFileTableViewCellReuseIdentifier forIndexPath:indexPath];
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:fileInfo.typeImageName];
+    cell.imageView.image = [UIImage imageNamed:fileInfo.typeImageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
     cell.textLabel.text = [Sandboxer shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
     cell.accessoryType = fileInfo.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;
