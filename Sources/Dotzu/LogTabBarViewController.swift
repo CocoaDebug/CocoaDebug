@@ -38,18 +38,18 @@ class LogTabBarViewController: UITabBarController {
         Sandboxer.shared.isShareable = true
         Sandboxer.shared.isFileDeletable = true
         Sandboxer.shared.isDirectoryDeletable = true
-        guard let sandboxer = Sandboxer.shared.homeDirectoryNavigationController() else {return}
-        sandboxer.tabBarItem.title = "Sandbox"
-        sandboxer.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
+        guard let sandbox = Sandboxer.shared.homeDirectoryNavigationController() else {return}
+        sandbox.tabBarItem.title = "Sandbox"
+        sandbox.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         
         //3.
         guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {
-            self.viewControllers = [logs, network, sandboxer, app]
+            self.viewControllers = [logs, network, app, sandbox]
             return
         }
         
         //4.添加额外的控制器
-        var temp = [logs, network, sandboxer, app]
+        var temp = [logs, network, app, sandbox]
         
         for vc in tabBarControllers {
             
