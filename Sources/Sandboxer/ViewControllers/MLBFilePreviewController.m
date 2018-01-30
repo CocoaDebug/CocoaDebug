@@ -36,11 +36,6 @@
     
     [self setupViews];
     [self loadFile];
-    
-    //liman
-    self.view.backgroundColor = [UIColor blackColor];
-    self.textView.backgroundColor = [UIColor blackColor];
-    self.textView.textColor = [UIColor whiteColor];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -127,7 +122,10 @@
                     if (!data) {
                         //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by liman
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            self.textView.text = @"unable to preview this file";
+                            self.textView.text = @" unable to preview";
+                            self.textView.backgroundColor = [UIColor blackColor];
+                            self.textView.textColor = [UIColor whiteColor];
+                            self.textView.font = [UIFont boldSystemFontOfSize:17];
                         });
                     }else{
                         NSError *error;
@@ -136,9 +134,15 @@
                             [self.activityIndicatorView stopAnimating];
                             //liman
                             if (error) {
-                                self.textView.text = @"unable to preview this file";
+                                self.textView.text = @" unable to preview";
+                                self.textView.backgroundColor = [UIColor blackColor];
+                                self.textView.textColor = [UIColor whiteColor];
+                                self.textView.font = [UIFont boldSystemFontOfSize:17];
                             }else{
                                 self.textView.text = content;
+                                self.textView.backgroundColor = [UIColor whiteColor];
+                                self.textView.textColor = [UIColor blackColor];
+                                self.textView.font = [UIFont systemFontOfSize:12];
                             }
                         });
                     }
@@ -147,7 +151,10 @@
             }
             default:
                 //liman
-                self.textView.text = @"unable to preview this file";
+                self.textView.text = @" unable to preview";
+                self.textView.backgroundColor = [UIColor blackColor];
+                self.textView.textColor = [UIColor whiteColor];
+                self.textView.font = [UIFont boldSystemFontOfSize:17];
                 break;
         }
     }
@@ -161,11 +168,11 @@
 
 - (void)sharingAction {
     if (![Sandboxer shared].isShareable) { return; }
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
-    } else {
+//    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+//        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+//    } else {
         [self.documentInteractionController presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
-    }
+//    }
 }
 
 #pragma mark - UIDocumentInteractionControllerDelegate

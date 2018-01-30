@@ -9,25 +9,24 @@
 import UIKit
 
 class LogTabBarViewController: UITabBarController {
-    
+
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.tintColor = Color.mainGreen
+        if let window = UIApplication.shared.delegate?.window {
+            window?.endEditing(true)
+        }
         
         setChildControllers()
         
         self.selectedIndex = LogsSettings.shared.tabBarSelectItem
-        
-        if let window = UIApplication.shared.delegate?.window {
-            window?.endEditing(true)
-        }
+        self.tabBar.tintColor = Color.mainGreen
     }
     
     //MARK: - private
     func setChildControllers() {
-        
+
         //1.
         let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "Logs")
         let network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "Network")
@@ -44,10 +43,13 @@ class LogTabBarViewController: UITabBarController {
         sandboxer.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         
         //3.
-        self.viewControllers = [logs, network, sandboxer, app]
+        guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {
+            self.viewControllers = [logs, network, sandboxer, app]
+            return
+        }
         
         //4.添加额外的控制器
-        guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {return}
+        var temp = [logs, network, sandboxer, app]
         
         for vc in tabBarControllers {
             
@@ -66,13 +68,15 @@ class LogTabBarViewController: UITabBarController {
             
             let image = UIImage(named: "DebugMan_close", in: Bundle(for: LogNavigationViewController.self), compatibleWith: nil)
             let leftItem = UIBarButtonItem(image: image,
-                                           style: .done, target: self, action: selector)
+                                             style: .done, target: self, action: selector)
             leftItem.tintColor = Color.mainGreen
             nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
             //****** 以上代码从LogNavigationViewController.swift复制 ******
             
-            self.addChildViewController(nav)
+            temp.append(nav)
         }
+        
+        self.viewControllers = temp
     }
     
     //MARK: - target action
@@ -99,4 +103,3 @@ class LogTabBarViewController: UITabBarController {
         return UITraitCollection(traitsFrom: [realTraits, lieTrait])
     }
 }
-
