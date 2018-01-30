@@ -367,7 +367,7 @@ extension Networking {
          255 characters, resulting in error. Another option to explore is to use a hash version of the url if it's
          longer than 255 characters.
          */
-        guard let destinationURL = try? destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(cacheName)") }
+        guard let destinationURL = try? destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(String(describing: cacheName))") }
 
         if let object = cache.object(forKey: destinationURL.absoluteString as AnyObject) {
             return object
@@ -471,7 +471,7 @@ extension Networking {
 
                         var returnedResponse: Any?
                         if let data = data, data.count > 0 {
-                            guard let destinationURL = try? self.destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(cacheName)") }
+                            guard let destinationURL = try? self.destinationURL(for: path, cacheName: cacheName) else { fatalError("Couldn't get destination URL for path: \(path) and cacheName: \(String(describing: cacheName))") }
                             _ = try? data.write(to: destinationURL, options: [.atomic])
                             switch responseType {
                             case .data:
@@ -540,14 +540,14 @@ extension Networking {
                     }
                 }
             case .formURLEncoded:
-                guard let parametersDictionary = parameters as? [String: Any] else { fatalError("Couldn't convert parameters to a dictionary: \(parameters)") }
+                guard let parametersDictionary = parameters as? [String: Any] else { fatalError("Couldn't convert parameters to a dictionary: \(String(describing: parameters))") }
                 do {
                     let formattedParameters = try parametersDictionary.urlEncodedString()
                     switch requestType {
                     case .get, .delete:
                         let urlEncodedPath: String
                         if path.contains("?") {
-                            if let lastCharacter = path.characters.last, lastCharacter == "?" {
+                            if let lastCharacter = path.last, lastCharacter == "?" {
                                 urlEncodedPath = path + formattedParameters
                             } else {
                                 urlEncodedPath = path + "&" + formattedParameters
@@ -613,7 +613,7 @@ extension Networking {
                         }
                     } else {
                         var errorCode = httpResponse.statusCode
-                        if let error = error as? NSError {
+                        if let error = error as NSError? {
                             if error.code == URLError.cancelled.rawValue {
                                 errorCode = error.code
                             }
