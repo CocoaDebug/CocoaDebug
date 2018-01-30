@@ -190,7 +190,7 @@
 		EA1BBCD4201F7EE900A0DE90 /* SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BBCC7201F7EE900A0DE90 /* SandboxerHelper.m */; };
 		EA1BBCD7201F7EE900A0DE90 /* Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BBCCC201F7EE900A0DE90 /* Sandboxer.m */; };
 		EA1BBCD8201F7EE900A0DE90 /* MLBFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BBCD0201F7EE900A0DE90 /* MLBFilePreviewController.m */; };
-		EA1BBCD9201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BBCD1201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.m */; };
+		EA1BBCD9201F7EE900A0DE90 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BBCD1201F7EE900A0DE90 /* SandboxViewController.m */; };
 		EA1FF823201637B600E8ED27 /* NSString+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */; };
 		EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */; };
 		EA1FF825201637B600E8ED27 /* UIColor+DebugMan.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FF81C201637B600E8ED27 /* UIColor+DebugMan.m */; };
@@ -432,10 +432,10 @@
 		EA1BBCC7201F7EE900A0DE90 /* SandboxerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxerHelper.m; sourceTree = "<group>"; };
 		EA1BBCCB201F7EE900A0DE90 /* SandboxerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxerHelper.h; sourceTree = "<group>"; };
 		EA1BBCCC201F7EE900A0DE90 /* Sandboxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sandboxer.m; sourceTree = "<group>"; };
-		EA1BBCCE201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
+		EA1BBCCE201F7EE900A0DE90 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		EA1BBCCF201F7EE900A0DE90 /* MLBFilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFilePreviewController.h; sourceTree = "<group>"; };
 		EA1BBCD0201F7EE900A0DE90 /* MLBFilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFilePreviewController.m; sourceTree = "<group>"; };
-		EA1BBCD1201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBDirectoryContentsTableViewController.m; sourceTree = "<group>"; };
+		EA1BBCD1201F7EE900A0DE90 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
 		EA1FF818201637B600E8ED27 /* NSString+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugMan.m"; sourceTree = "<group>"; };
 		EA1FF819201637B600E8ED27 /* NSData+DebugMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugMan.m"; sourceTree = "<group>"; };
 		EA1FF81A201637B600E8ED27 /* Category+DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+DebugMan.h"; sourceTree = "<group>"; };
@@ -755,8 +755,8 @@
 		EA1BBCBE201F7EE900A0DE90 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				EA1BBCBF201F7EE900A0DE90 /* MLBFileTableViewCell.m */,
 				EA1BBCC0201F7EE900A0DE90 /* MLBFileTableViewCell.h */,
+				EA1BBCBF201F7EE900A0DE90 /* MLBFileTableViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -782,8 +782,8 @@
 		EA1BBCCD201F7EE900A0DE90 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EA1BBCCE201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.h */,
-				EA1BBCD1201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.m */,
+				EA1BBCCE201F7EE900A0DE90 /* SandboxViewController.h */,
+				EA1BBCD1201F7EE900A0DE90 /* SandboxViewController.m */,
 				EA1BBCCF201F7EE900A0DE90 /* MLBFilePreviewController.h */,
 				EA1BBCD0201F7EE900A0DE90 /* MLBFilePreviewController.m */,
 			);
@@ -1261,7 +1261,7 @@
 				EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */,
 				EA44B97D1FE140D600DF7FF6 /* LogTableViewCell.swift in Sources */,
 				EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */,
-				EA1BBCD9201F7EE900A0DE90 /* MLBDirectoryContentsTableViewController.m in Sources */,
+				EA1BBCD9201F7EE900A0DE90 /* SandboxViewController.m in Sources */,
 				EA44B97F1FE140D600DF7FF6 /* DeviceModel.swift in Sources */,
 				EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */,
 				EA44B9861FE140D600DF7FF6 /* LogNavigationViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  MLBDirectoryContentsTableViewController.h
+//  SandboxViewController.h
 //  Example
 //
 //  Created by meilbn on 18/07/2017.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MLBFileInfo.h"
 
-@interface MLBDirectoryContentsTableViewController : UITableViewController
+@interface SandboxViewController : UITableViewController
 
 @property (nonatomic, assign, getter=isHomeDirectory) BOOL homeDirectory;
 @property (nonatomic, strong) MLBFileInfo *fileInfo;

@@ -80,7 +80,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DpU-H0-ZF2">
                         <nil key="title"/>
-                        <barButtonItem key="backBarButtonItem" title=" " id="9Uo-kH-0P4"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="9Uo-kH-0P4">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bVl-tO-PKS">
                             <rect key="frame" x="129" y="7" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -88,11 +90,13 @@
                                 <segment title="Default"/>
                                 <segment title="Color"/>
                             </segments>
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="segmentedControlAction:" destination="AVG-2n-hvN" eventType="valueChanged" id="VKZ-BV-8mP"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Uw0-Z9-dwT">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="resetLogs:" destination="AVG-2n-hvN" id="hjg-LT-89B"/>
                             </connections>

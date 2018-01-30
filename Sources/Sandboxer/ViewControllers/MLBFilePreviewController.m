@@ -13,9 +13,8 @@
 #import "Sandboxer-Header.h"
 #import "Sandboxer.h"
 
-@interface MLBFilePreviewController () </*QLPreviewControllerDataSource, */WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface MLBFilePreviewController () <WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
-//@property (strong, nonatomic) QLPreviewController *previewController;
 @property (strong, nonatomic) WKWebView *wkWebView;
 
 @property (strong, nonatomic) UITextView *textView;
@@ -46,7 +45,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-//    self.previewController.view.frame = self.view.bounds;
+
     if (self.wkWebView) {
         self.wkWebView.frame = self.view.bounds;
     }
@@ -73,14 +72,6 @@
 #pragma mark - Private Methods
 
 - (void)setupViews {
-    //remove by Author
-    
-//    self.previewController = [[QLPreviewController alloc] init];
-//    [self addChildViewController:self.previewController];
-//    [self.previewController willMoveToParentViewController:self];
-//    [self.view addSubview:self.previewController.view];
-//    [self.previewController didMoveToParentViewController:self];
-//    self.previewController.dataSource = self;
     
     if ([Sandboxer shared].isShareable) {
         UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharingAction)];
@@ -190,14 +181,6 @@
 - (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller {
     return self.view;
 }
-
-//#pragma mark - QLPreviewControllerDataSource
-//- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
-//    return 1;
-//}
-//- (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
-//    return self.fileInfo.URL;
-//}
 
 #pragma mark - WKNavigationDelegate
 

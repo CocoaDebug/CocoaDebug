@@ -7,11 +7,10 @@
 //
 
 #import "Sandboxer.h"
-#import "MLBDirectoryContentsTableViewController.h"
+#import "SandboxViewController.h"
 
 @interface Sandboxer ()
 
-//@property (class, readwrite, strong) Sandboxer *shared;
 @property (strong, nonatomic) UINavigationController *homeDirectoryNavigationController;
 
 @end
@@ -68,32 +67,13 @@
 
 - (UINavigationController *)homeDirectoryNavigationController {
     if (!_homeDirectoryNavigationController) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
-        directoryContentsTableViewController.homeDirectory = YES;
-        directoryContentsTableViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
-//        directoryContentsTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;//liman
-        _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:directoryContentsTableViewController];
+        SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
+        sandboxViewController.homeDirectory = YES;
+        sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+        _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
     }
     
     return _homeDirectoryNavigationController;
 }
-
-#pragma mark - Public Methods
-//liman
-//- (void)trigger {
-//    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-//    if (rootViewController.presentedViewController) {
-//        if (rootViewController.presentedViewController == self.homeDirectoryNavigationController) {
-//            self.homeDirectoryNavigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//            [self.homeDirectoryNavigationController dismissViewControllerAnimated:YES completion:nil];
-//        } else {
-//            [rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
-//                [rootViewController presentViewController:self.homeDirectoryNavigationController animated:YES completion:nil];
-//            }];
-//        }
-//    } else {
-//        [rootViewController presentViewController:self.homeDirectoryNavigationController animated:YES completion:nil];
-//    }
-//}
 
 @end

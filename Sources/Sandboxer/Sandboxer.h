@@ -26,8 +26,6 @@
 
 - (instancetype)init __attribute__((unavailable("Use [Sandboxer shared] or Sandboxer.shared instead.")));
 
-//- (void)trigger;
-
 //liman
 - (UINavigationController *)homeDirectoryNavigationController;
 

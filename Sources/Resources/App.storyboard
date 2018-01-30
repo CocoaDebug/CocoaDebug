@@ -112,7 +112,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Details" id="uCh-Lu-9de">
-                        <barButtonItem key="backBarButtonItem" title=" " id="mEF-aY-qWg"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="mEF-aY-qWg">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="textviewName" destination="VfO-ya-iWG" id="gry-vq-ffv"/>
@@ -206,7 +208,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ignored URLs" id="isR-TM-jaf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPT-gm-xVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +680,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="App" id="nfh-qO-k6T">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="labelBuildNumber" destination="N5q-Tu-CeT" id="W9d-GI-HdH"/>
@@ -719,7 +725,7 @@
                                                     <gestureRecognizers/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">DebugMan is an debugger tool for iOS, with the following features:
+                                                            <string key="content">DebugMan is an debugger tool for iOS, with the following features:
 
 ● Display all app network http requests details, including SDKs and image preview.
 ● Display app device informations and app identity informations.
@@ -729,7 +735,7 @@
 ● Display app crash logs.
 
 Welcome to star and fork. If you have any questions, welcome to open issues.
-[HomePage: GitHub.com/liman123/DebugMan]</mutableString>
+[HomePage: GitHub.com/liman123/DebugMan]</string>
                                                             <attributes>
                                                                 <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -772,7 +778,9 @@ Welcome to star and fork. If you have any questions, welcome to open issues.
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="GUF-Y3-spN">
-                        <barButtonItem key="backBarButtonItem" title=" " id="f35-mx-N9q"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="f35-mx-N9q">
+                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lB-4W-SQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
