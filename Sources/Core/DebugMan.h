@@ -8,7 +8,7 @@
 
 #import "JxbDebugTool.h"
 #import "Category+DebugMan.h"
-#import "Sandboxer.h"
+#import "Sandbox.h"
 
 
 

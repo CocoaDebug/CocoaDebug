@@ -13,6 +13,7 @@
 #import "MethodSwizzling.h"
 
 #define myProtocolKey   @"JxbHttpProtocol"
+#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
 
 typedef NSURLSessionConfiguration*(*SessionConfigConstructor)(id,SEL);
 static SessionConfigConstructor orig_defaultSessionConfiguration;

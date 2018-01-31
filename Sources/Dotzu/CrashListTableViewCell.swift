@@ -21,7 +21,7 @@ class CrashListTableViewCell: UITableViewCell {
         didSet {
             guard let crash = crash else {return}
             let formatDate = LoggerFormat.formatDate(date: crash.date)
-            let content = "\("\(formatDate)\n")\(crash.name ?? "unknow crash")"
+            let content = "\("\(formatDate)\n")\(crash.name ?? "unknown crash")"
             
             textview.text = content
             let attstr = NSMutableAttributedString(string: content)

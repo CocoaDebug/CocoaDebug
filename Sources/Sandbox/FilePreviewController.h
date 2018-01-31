@@ -1,5 +1,5 @@
 //
-//  MLBFilePreviewController.h
+//  FilePreviewController.h
 //  Example
 //
 //  Created by meilbn on 20/07/2017.
@@ -10,7 +10,7 @@
 
 @class MLBFileInfo;
 
-@interface MLBFilePreviewController : UIViewController
+@interface FilePreviewController : UIViewController
 
 @property (nonatomic, strong) MLBFileInfo *fileInfo;
 

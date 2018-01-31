@@ -36,24 +36,24 @@ public class LogsSettings {
             UserDefaults.standard.set(showBallAndWindow, forKey: "showBallAndWindow_DebugMan")
             UserDefaults.standard.synchronize()
             
-            let x = DotzuManager.shared.controller.logHeadView.frame.origin.x
-            let width = DotzuManager.shared.controller.logHeadView.frame.size.width
+            let x = DotzuManager.shared.vc.logHeadView.frame.origin.x
+            let width = DotzuManager.shared.vc.logHeadView.frame.size.width
             
             if showBallAndWindow == true
             {
                 if x > 0 {
-                    DotzuManager.shared.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
+                    DotzuManager.shared.vc.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
                 }else{
-                    DotzuManager.shared.controller.logHeadView.frame.origin.x = -width + width/8*7
+                    DotzuManager.shared.vc.logHeadView.frame.origin.x = -width + width/8*7
                 }
                 DotzuManager.shared.enable()
             }
             else
             {
                 if x > 0 {
-                    DotzuManager.shared.controller.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width
+                    DotzuManager.shared.vc.logHeadView.frame.origin.x = UIScreen.main.bounds.size.width
                 }else{
-                    DotzuManager.shared.controller.logHeadView.frame.origin.x = -width
+                    DotzuManager.shared.vc.logHeadView.frame.origin.x = -width
                 }
                 DotzuManager.shared.disable()
             }

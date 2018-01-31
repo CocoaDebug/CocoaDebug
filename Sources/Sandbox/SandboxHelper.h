@@ -1,5 +1,5 @@
 //
-//  SandboxerHelper.h
+//  SandboxHelper.h
 //  Example
 //
 //  Created by meilbn on 18/07/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SandboxerHelper : NSObject
+@interface SandboxHelper : NSObject
 
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date;
 

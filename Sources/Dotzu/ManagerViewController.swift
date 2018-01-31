@@ -30,8 +30,8 @@ class ManagerViewController: UIViewController, LogHeadViewDelegate {
     func didTapLogHeadView() {
         DotzuManager.shared.displayedList = true
         let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: ManagerViewController.self))
-        guard let controller = storyboard.instantiateInitialViewController() else {return}
-        self.present(controller, animated: true, completion: nil)
+        guard let vc = storyboard.instantiateInitialViewController() else {return}
+        self.present(vc, animated: true, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -1,16 +1,16 @@
 //
-//  MLBFileTableViewCell.m
+//  FileTableViewCell.m
 //  Example
 //
 //  Created by meilbn on 18/07/2017.
 //  Copyright © 2017 meilbn. All rights reserved.
 //
 
-#import "MLBFileTableViewCell.h"
+#import "FileTableViewCell.h"
 
-NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
+NSString *const FileTableViewCellReuseIdentifier = @"FileTableViewCell";
 
-@implementation MLBFileTableViewCell
+@implementation FileTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
@@ -22,8 +22,7 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
 }
 
 - (void)setupViews {
-//    self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    
+
     //liman
     self.backgroundColor = [UIColor blackColor];
     self.contentView.backgroundColor = [UIColor blackColor];

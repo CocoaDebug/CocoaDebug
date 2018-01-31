@@ -1,19 +1,18 @@
 //
-//  MLBFilePreviewController.m
+//  FilePreviewController.m
 //  Example
 //
 //  Created by meilbn on 20/07/2017.
 //  Copyright © 2017 meilbn. All rights reserved.
 //
 
-#import "MLBFilePreviewController.h"
+#import "FilePreviewController.h"
 #import "MLBFileInfo.h"
 #import <QuickLook/QuickLook.h>
 #import <WebKit/WebKit.h>
-#import "Sandboxer-Header.h"
-#import "Sandboxer.h"
+#import "Sandbox.h"
 
-@interface MLBFilePreviewController () <WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface FilePreviewController () <WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (strong, nonatomic) WKWebView *wkWebView;
 
@@ -25,7 +24,7 @@
 
 @end
 
-@implementation MLBFilePreviewController
+@implementation FilePreviewController
 
 #pragma mark - View Lifecycle
 
@@ -68,7 +67,7 @@
 
 - (void)setupViews {
     
-    if ([Sandboxer shared].isShareable) {
+    if ([Sandbox shared].isShareable) {
         UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharingAction)];
         self.navigationItem.rightBarButtonItem = shareItem;
     }
@@ -96,9 +95,6 @@
                 break;
         }
     }
-    
-    //liman
-//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideNavigationBar)]];
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.activityIndicatorView];
@@ -161,18 +157,14 @@
 }
 
 #pragma mark - Action
-//liman
-//- (void)showOrHideNavigationBar {
-//    [self.navigationController setNavigationBarHidden:!self.navigationController.isNavigationBarHidden animated:YES];
-//}
 
 - (void)sharingAction {
-    if (![Sandboxer shared].isShareable) { return; }
-//    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-//        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
-//    } else {
+    if (![Sandbox shared].isShareable) { return; }
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    } else {
         [self.documentInteractionController presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
-//    }
+    }
 }
 
 #pragma mark - UIDocumentInteractionControllerDelegate

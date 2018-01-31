@@ -7,11 +7,12 @@
 //
 
 #import "MLBFileInfo.h"
-#import "Sandboxer.h"
-#import "SandboxerHelper.h"
-#import "Sandboxer-Header.h"
+#import "Sandbox.h"
+#import "SandboxHelper.h"
 #import <QuickLook/QuickLook.h>
-//#import <MobileCoreServices/MobileCoreServices.h>
+
+#define MLBIsStringEmpty(string)                    (nil == string || (NSNull *)string == [NSNull null] || [@"" isEqualToString:string])
+#define MLBIsStringNotEmpty(string)                 (string && (NSNull *)string != [NSNull null] && ![@"" isEqualToString:string])
 
 @interface MLBFileInfo ()
 
@@ -32,7 +33,7 @@
             self.filesCount = [MLBFileInfo contentCountOfDirectoryAtURL:URL];
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFolder:URL.path]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxHelper sizeOfFolder:URL.path]];
             }
         } else {
             self.extension = URL.pathExtension;
@@ -40,7 +41,7 @@
             self.filesCount = 0;
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFile:URL.path]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxHelper sizeOfFile:URL.path]];
             }
         }
         
@@ -177,22 +178,17 @@
     return NO;
 }
 
-#pragma mark - Public Methods
+#pragma mark - helper
 
-//+ (BOOL)isDirectoryWithFileURL:(NSURL *)url {
-//    NSNumber *isDir;
-//    NSError *error;
-//    BOOL rtn = [url getResourceValue:&isDir forKey:NSURLIsDirectoryKey error:&error];
-//    if (!rtn) {
-//        NSLog(@"%@, getResourceValue failed", NSStringFromSelector(_cmd));
-//    }
-//    
-//    if (error) {
-//        NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
-//    }
-//    
-//    return isDir.boolValue;
-//}
+//按照时间排序 by liman
++ (NSMutableArray<MLBFileInfo *> *)sortedMLBFileInfoArray:(NSMutableArray<MLBFileInfo *> *)array
+{
+    return [[[array copy] sortedArrayUsingComparator:^NSComparisonResult(MLBFileInfo  *_Nonnull obj1, MLBFileInfo  *_Nonnull obj2) {
+        return [obj1.attributes.fileModificationDate compare:obj2.attributes.fileModificationDate ?: [NSDate date]];
+    }] mutableCopy];
+}
+
+#pragma mark - Public Methods
 
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL {
     NSError *error;
@@ -214,7 +210,7 @@
         NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
         if (!error) {
             for (NSString *name in contents) {
-                if (Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
+                if (Sandbox.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 MLBFileInfo *fileInfo = [[MLBFileInfo alloc] initWithFileURL:[URL URLByAppendingPathComponent:name]];
                 [fileInfos addObject:fileInfo];
             }
@@ -223,7 +219,8 @@
         }
     }
     
-    return fileInfos;
+    //按照时间排序 by liman
+    return [self sortedMLBFileInfoArray:fileInfos];
 }
 
 + (NSUInteger)contentCountOfDirectoryAtURL:(NSURL *)URL {
@@ -236,7 +233,7 @@
         NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
         if (!error) {
             for (NSString *name in contents) {
-                if (Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
+                if (Sandbox.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 count++;
             }
         } else {
@@ -246,19 +243,6 @@
     
     return count;
 }
-
-//+ (MLBFileType)fileTypeWithExtension:(NSString *)extension {
-//    MLBFileType type = MLBFileTypeUnknown;
-//    
-//    if (extension == nil || [extension isEqualToString:@""]) {
-//        return type;
-//    }
-//    
-//    CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef _Nonnull)(extension), NULL);
-//    if (UTTypeConformsTo(uti, kUTTypeGIF)) {
-//        
-//    }
-//}
 
 + (MLBFileType)fileTypeWithExtension:(NSString *)extension {
     MLBFileType type = MLBFileTypeUnknown;

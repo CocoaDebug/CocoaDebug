@@ -1,29 +1,29 @@
 //
-//  Sandboxer.m
+//  Sandbox.m
 //  Example
 //
 //  Created by meilbn on 18/07/2017.
 //  Copyright © 2017 meilbn. All rights reserved.
 //
 
-#import "Sandboxer.h"
+#import "Sandbox.h"
 #import "SandboxViewController.h"
 
-@interface Sandboxer ()
+@interface Sandbox ()
 
 @property (strong, nonatomic) UINavigationController *homeDirectoryNavigationController;
 
 @end
 
-@implementation Sandboxer
+@implementation Sandbox
 
 @synthesize homeTitle = _homeTitle;
 
-+ (Sandboxer *)shared {
-    static Sandboxer *_sharedInstance = nil;
++ (Sandbox *)shared {
+    static Sandbox *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [[Sandboxer alloc] _init];
+        _sharedInstance = [[Sandbox alloc] _init];
     });
     
     return _sharedInstance;

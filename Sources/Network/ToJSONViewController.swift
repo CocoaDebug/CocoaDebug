@@ -7,7 +7,7 @@
 //
 
 enum EditType {
-    case unknow
+    case unknown
     case request
     case header
 }
@@ -24,7 +24,7 @@ class ToJSONViewController: UITableViewController, UITextViewDelegate {
 //    let keyboardMan = KeyboardMan()
 //    private var button: UIButton?
     
-    var editType: EditType  = .unknow
+    var editType: EditType  = .unknown
     var httpModel: JxbHttpModel?
     var detailModel: NetworkDetailModel?
     

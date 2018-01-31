@@ -7,11 +7,13 @@
 //
 
 #import "SandboxViewController.h"
-#import "MLBFilePreviewController.h"
-#import "MLBFileTableViewCell.h"
-#import "Sandboxer.h"
+#import "FilePreviewController.h"
+#import "FileTableViewCell.h"
+#import "Sandbox.h"
 #import <QuickLook/QuickLook.h>
-#import "Sandboxer-Header.h"
+
+#define MLBIsStringEmpty(string)                    (nil == string || (NSNull *)string == [NSNull null] || [@"" isEqualToString:string])
+#define MLBIsStringNotEmpty(string)                 (string && (NSNull *)string != [NSNull null] && ![@"" isEqualToString:string])
 
 @interface SandboxViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate>
 
@@ -20,7 +22,6 @@
 @property (strong, nonatomic) MLBFileInfo *previewingFileInfo;
 @property (strong, nonatomic) MLBFileInfo *deletingFileInfo;
 
-@property (strong, nonatomic) UIBarButtonItem *refreshItem;
 @property (strong, nonatomic) UIBarButtonItem *editItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteAllItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteItem;
@@ -110,7 +111,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)setupViews {
     
     //liman
-    if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
+    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    closeItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+
+    //liman
+    if ([Sandbox shared].isFileDeletable || [Sandbox shared].isDirectoryDeletable) {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitleColor:[UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0] forState:UIControlStateNormal];
@@ -118,14 +123,23 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         button.frame = CGRectMake(0, 0, 56, 34);
         [button setTitle:@"     Edit" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(editAction) forControlEvents:UIControlEventTouchUpInside];
-        
         self.editItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-        self.navigationItem.rightBarButtonItem = self.editItem;
+        
+        if (!self.homeDirectory) {
+            self.navigationItem.rightBarButtonItems = @[closeItem, self.editItem];
+        }else{
+            self.navigationItem.rightBarButtonItem = self.editItem;
+        }
+    }else{
+        if (!self.homeDirectory) {
+            self.navigationItem.rightBarButtonItem = closeItem;
+        }
     }
     
     
+    
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    [self.tableView registerClass:[MLBFileTableViewCell class] forCellReuseIdentifier:MLBFileTableViewCellReuseIdentifier];
+    [self.tableView registerClass:[FileTableViewCell class] forCellReuseIdentifier:FileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
 }
 
@@ -135,16 +149,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [self registerForPreviewingWithDelegate:self sourceView:self.view];
         }
     } else {
-        // Fallback on earlier versions //do nothing by author
+        // Fallback on earlier versions
+        // do nothing by author
     }
 }
 
 - (void)loadDirectoryContents {
-    self.refreshItem.enabled = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.dataSource = [MLBFileInfo contentsOfDirectoryAtURL:self.fileInfo.URL];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.refreshItem.enabled = YES;
             [self.tableView reloadData];
             [self updateToolbarItems];
             if (_isFirstAppear) {
@@ -161,20 +174,17 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UIViewController *)viewControllerWithFileInfo:(MLBFileInfo *)fileInfo {
     if (fileInfo.isDirectory) {
         SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
-        sandboxViewController.hidesBottomBarWhenPushed = YES;//liman
+//        sandboxViewController.hidesBottomBarWhenPushed = YES;//liman
         sandboxViewController.fileInfo = fileInfo;
         return sandboxViewController;
     } else {
-        if ([Sandboxer shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
-//            NSLog(@"Quick Look can preview this file");
+        if ([Sandbox shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
             self.previewingFileInfo = fileInfo;
-            
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
             return previewController;
         } else {
-//            NSLog(@"Quick Look can not preview this file");
-            MLBFilePreviewController *filePreviewController = [[MLBFilePreviewController alloc] init];
+            FilePreviewController *filePreviewController = [[FilePreviewController alloc] init];
             filePreviewController.hidesBottomBarWhenPushed = YES;//liman
             filePreviewController.fileInfo = fileInfo;
             return filePreviewController;
@@ -183,7 +193,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (BOOL)isCanDeleteAll {
-    if ((![Sandboxer shared].isFileDeletable && ![Sandboxer shared].isDirectoryDeletable) || self.dataSource.count == 0) {
+    if ((![Sandbox shared].isFileDeletable && ![Sandbox shared].isDirectoryDeletable) || self.dataSource.count == 0) {
         return NO;
     }
     
@@ -191,8 +201,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     NSInteger directoryCount = 0;
     [self getDeletableFileCount:&fileCount directoryCount:&directoryCount];
     
-    if (([Sandboxer shared].isFileDeletable && ![Sandboxer shared].isDirectoryDeletable && fileCount == 0) || // 只能删除文件，但是文件数为 0
-        (![Sandboxer shared].isFileDeletable && [Sandboxer shared].isDirectoryDeletable && directoryCount == 0)) { // 只能删除文件夹，但是文件夹数为 0
+    if (([Sandbox shared].isFileDeletable && ![Sandbox shared].isDirectoryDeletable && fileCount == 0) || // 只能删除文件，但是文件数为 0
+        (![Sandbox shared].isFileDeletable && [Sandbox shared].isDirectoryDeletable && directoryCount == 0)) { // 只能删除文件夹，但是文件夹数为 0
         return NO;
     }
     
@@ -203,9 +213,9 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     NSInteger fc = 0;
     NSInteger dc = 0;
     for (MLBFileInfo *fileInfo in self.dataSource) {
-        if (fileInfo.isDirectory && [Sandboxer shared].isDirectoryDeletable) {
+        if (fileInfo.isDirectory && [Sandbox shared].isDirectoryDeletable) {
             dc++;
-        } else if (!fileInfo.isDirectory && [Sandboxer shared].isFileDeletable) {
+        } else if (!fileInfo.isDirectory && [Sandbox shared].isFileDeletable) {
             fc++;
         }
     }
@@ -234,12 +244,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (NSString *)messageForDeleteWithFileCount:(NSInteger)fileCount directoryCount:(NSInteger)directoryCount {
     NSMutableString *message = [NSMutableString stringWithString:@"Are you sure to delete "];
-    if ([Sandboxer shared].isFileDeletable && fileCount > 0) {
+    if ([Sandbox shared].isFileDeletable && fileCount > 0) {
         [message appendFormat:@"%ld files", (long)fileCount];
     }
     
-    if ([Sandboxer shared].isDirectoryDeletable && directoryCount > 0) {
-        if ([Sandboxer shared].isFileDeletable && fileCount > 0) {
+    if ([Sandbox shared].isDirectoryDeletable && directoryCount > 0) {
+        if ([Sandbox shared].isFileDeletable && fileCount > 0) {
             [message appendString:@", "];
         }
         
@@ -395,8 +405,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (BOOL)deleteFile:(MLBFileInfo *)fileInfo {
-    if (![Sandboxer shared].isFileDeletable || // 是否可以删除文件
-        (![Sandboxer shared].isDirectoryDeletable && fileInfo.isDirectory)) { // 是否可以删除文件夹
+    if (![Sandbox shared].isFileDeletable || // 是否可以删除文件
+        (![Sandbox shared].isDirectoryDeletable && fileInfo.isDirectory)) { // 是否可以删除文件夹
         return NO;
     }
     
@@ -421,10 +431,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MLBFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MLBFileTableViewCellReuseIdentifier forIndexPath:indexPath];
+    FileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FileTableViewCellReuseIdentifier forIndexPath:indexPath];
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     cell.imageView.image = [UIImage imageNamed:fileInfo.typeImageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    cell.textLabel.text = [Sandboxer shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
+    cell.textLabel.text = [Sandbox shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
     cell.accessoryType = fileInfo.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;
     
@@ -440,9 +450,9 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self fileInfoAtIndexPath:indexPath].isDirectory) {
-        return [Sandboxer shared].isDirectoryDeletable;
+        return [Sandbox shared].isDirectoryDeletable;
     } else {
-        return [Sandboxer shared].isFileDeletable;
+        return [Sandbox shared].isFileDeletable;
     }
 }
 
@@ -476,21 +486,27 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     if (tableView.isEditing) {
-        if ((fileInfo.isDirectory && ![Sandboxer shared].isDirectoryDeletable) || (!fileInfo.isDirectory && ![Sandboxer shared].isFileDeletable)) {
+        if ((fileInfo.isDirectory && ![Sandbox shared].isDirectoryDeletable) || (!fileInfo.isDirectory && ![Sandbox shared].isFileDeletable)) {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         } else {
             [self updateToolbarDeleteItem];
         }
     } else {
         
-        [self.navigationController pushViewController:[self viewControllerWithFileInfo:fileInfo] animated:YES];
+        //liman
+        UIViewController *vc = [self viewControllerWithFileInfo:fileInfo];
+        if ([vc isKindOfClass:[QLPreviewController class]]) {
+            [self presentViewController:vc animated:YES completion:nil];
+        }else{
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     if (tableView.isEditing) {
-        if ((fileInfo.isDirectory && ![Sandboxer shared].isDirectoryDeletable) || (!fileInfo.isDirectory && ![Sandboxer shared].isFileDeletable)) {
+        if ((fileInfo.isDirectory && ![Sandbox shared].isDirectoryDeletable) || (!fileInfo.isDirectory && ![Sandbox shared].isFileDeletable)) {
             
         } else {
             [self updateToolbarDeleteItem];
@@ -514,7 +530,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
     // Obtain the index path and the cell that was pressed.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-    MLBFileTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    FileTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (!cell) { return nil; }
     
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
@@ -531,7 +547,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (@available(iOS 9.0, *)) {
         previewingContext.sourceRect = cell.frame;
     } else {
-        // Fallback on earlier versions //do nothing by author
+        // Fallback on earlier versions
+        // do nothing by author
     }
     
     return detailViewController;

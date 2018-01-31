@@ -33,12 +33,12 @@ class LogTabBarViewController: UITabBarController {
         let app = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
-        Sandboxer.shared.isSystemFilesHidden = false
-        Sandboxer.shared.isExtensionHidden = false
-        Sandboxer.shared.isShareable = true
-        Sandboxer.shared.isFileDeletable = true
-        Sandboxer.shared.isDirectoryDeletable = true
-        guard let sandbox = Sandboxer.shared.homeDirectoryNavigationController() else {return}
+        Sandbox.shared.isSystemFilesHidden = false
+        Sandbox.shared.isExtensionHidden = false
+        Sandbox.shared.isShareable = true
+        Sandbox.shared.isFileDeletable = true
+        Sandbox.shared.isDirectoryDeletable = true
+        guard let sandbox = Sandbox.shared.homeDirectoryNavigationController() else {return}
         sandbox.tabBarItem.title = "Sandbox"
         sandbox.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         

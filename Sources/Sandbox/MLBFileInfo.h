@@ -54,7 +54,6 @@ typedef NS_ENUM(NSUInteger, MLBFileType) {
 
 - (instancetype)initWithFileURL:(NSURL *)URL;
 
-//+ (BOOL)isDirectoryWithFileURL:(NSURL *)url;
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL;
 + (NSMutableArray<MLBFileInfo *> *)contentsOfDirectoryAtURL:(NSURL *)URL;
 

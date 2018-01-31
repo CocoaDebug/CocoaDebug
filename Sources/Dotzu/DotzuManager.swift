@@ -11,7 +11,7 @@ import UIKit
 public class DotzuManager: NSObject {
     public static let shared = DotzuManager()
     var window: ManagerWindow
-    let controller = ManagerViewController()
+    let vc = ManagerViewController()
     var displayedList = false
 
     override init() {
@@ -20,8 +20,8 @@ public class DotzuManager: NSObject {
     }
 
     public func enable() {
-        if self.window.rootViewController != self.controller {
-            self.window.rootViewController = self.controller
+        if self.window.rootViewController != self.vc {
+            self.window.rootViewController = self.vc
             self.window.delegate = self
             self.window.isHidden = false
         }
@@ -38,6 +38,6 @@ public class DotzuManager: NSObject {
 
 extension DotzuManager: ManagerWindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
-        return self.controller.shouldReceive(point: point)
+        return self.vc.shouldReceive(point: point)
     }
 }

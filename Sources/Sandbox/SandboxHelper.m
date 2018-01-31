@@ -1,14 +1,14 @@
 //
-//  SandboxerHelper.m
+//  SandboxHelper.m
 //  Example
 //
 //  Created by meilbn on 18/07/2017.
 //  Copyright © 2017 meilbn. All rights reserved.
 //
 
-#import "SandboxerHelper.h"
+#import "SandboxHelper.h"
 
-@implementation SandboxerHelper
+@implementation SandboxHelper
 
 + (NSDateFormatter *)fileModificationDateFormatter {
     static NSDateFormatter *_fileModificationDateFormatter;
@@ -24,7 +24,7 @@
 
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date {
     if (!date) { return @""; }
-    return [[SandboxerHelper fileModificationDateFormatter] stringFromDate:date];
+    return [[SandboxHelper fileModificationDateFormatter] stringFromDate:date];
 }
 
 #pragma mark - liman

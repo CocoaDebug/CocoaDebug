@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 Mail:i@Jxb.name. All rights reserved.
 //
 
-#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "JxbHttpDatasource.h"
