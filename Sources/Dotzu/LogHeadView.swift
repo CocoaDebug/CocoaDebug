@@ -37,8 +37,8 @@ class LogHeadView: UIView {
     
     static var originalPosition: CGPoint {
         
-        if LogsSettings.shared.logHeadFrameX != 0 && LogsSettings.shared.logHeadFrameY != 0 {
-            return CGPoint(x: CGFloat(LogsSettings.shared.logHeadFrameX), y: CGFloat(LogsSettings.shared.logHeadFrameY))
+        if DebugManSettings.shared.logHeadFrameX != 0 && DebugManSettings.shared.logHeadFrameY != 0 {
+            return CGPoint(x: CGFloat(DebugManSettings.shared.logHeadFrameX), y: CGFloat(DebugManSettings.shared.logHeadFrameY))
         }
         return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
     }
@@ -260,8 +260,8 @@ class LogHeadView: UIView {
                 self?.transform = CGAffineTransform.identity
                 }, completion: { [weak self] _ in
                     guard let x = self?.frame.origin.x, let y = self?.frame.origin.y else {return}
-                    LogsSettings.shared.logHeadFrameX = Float(x)
-                    LogsSettings.shared.logHeadFrameY = Float(y)
+                    DebugManSettings.shared.logHeadFrameX = Float(x)
+                    DebugManSettings.shared.logHeadFrameY = Float(y)
             })
         }
     }

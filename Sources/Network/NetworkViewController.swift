@@ -51,7 +51,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         self.models = (JxbHttpDatasource.shareInstance().httpModels as NSArray as? [JxbHttpModel])
         self.cacheModels = self.models
         
-        self.searchLogic(LogsSettings.shared.networkSearchWord ?? "")
+        self.searchLogic(DebugManSettings.shared.networkSearchWord ?? "")
 
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -106,7 +106,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        searchBar.text = LogsSettings.shared.networkSearchWord
+        searchBar.text = DebugManSettings.shared.networkSearchWord
         tableView.tableFooterView = UIView()
         
         //hide searchBar icon
@@ -141,7 +141,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = LogsSettings.shared.serverURL else {return 0}
+        guard let serverURL = DebugManSettings.shared.serverURL else {return 0}
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
@@ -269,7 +269,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        LogsSettings.shared.networkSearchWord = searchText
+        DebugManSettings.shared.networkSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in

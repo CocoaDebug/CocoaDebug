@@ -1,16 +1,16 @@
 //
-//  LogsSettings.swift
-//  exampleWindow
+//  DebugManSettings.swift
+//  example
 //
-//  Created by Remi Robert on 18/01/2017.
-//  Copyright © 2017 Remi Robert. All rights reserved.
+//  Created by liman on 18/01/2017.
+//  Copyright © 2017 liman. All rights reserved.
 //
 
 import Foundation
 
-public class LogsSettings {
+public class DebugManSettings {
 
-    public static let shared = LogsSettings()
+    public static let shared = DebugManSettings()
 
     
     public var firstIn: String? = nil {

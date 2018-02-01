@@ -24,7 +24,7 @@ class IgnoredURLsViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
 
-        models = LogsSettings.shared.ignoredURLs
+        models = DebugManSettings.shared.ignoredURLs
     }
     
     //MARK: - UITableViewDataSource

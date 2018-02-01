@@ -37,9 +37,9 @@ class InformationsTableViewController: UITableViewController {
         labelDeviceModel.text = "\(Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
-        labelignoredURLs.text = String(LogsSettings.shared.ignoredURLs?.count ?? 0)
+        labelignoredURLs.text = String(DebugManSettings.shared.ignoredURLs?.count ?? 0)
         
-        labelserverURL.text = LogsSettings.shared.serverURL
+        labelserverURL.text = DebugManSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
     }
     
@@ -53,7 +53,7 @@ class InformationsTableViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        if LogsSettings.shared.recordCrash == true {
+        if DebugManSettings.shared.recordCrash == true {
             if section == 0 {
                 return 56
             }
@@ -70,7 +70,7 @@ class InformationsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if LogsSettings.shared.recordCrash == false {
+        if DebugManSettings.shared.recordCrash == false {
             if indexPath.section == 0 && indexPath.row == 0 {
                 return 0
             }
@@ -112,7 +112,7 @@ class InformationsTableViewController: UITableViewController {
                 return
             }
             
-            UIPasteboard.general.string = LogsSettings.shared.serverURL
+            UIPasteboard.general.string = DebugManSettings.shared.serverURL
             
             let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)

@@ -20,7 +20,7 @@ class LogTabBarViewController: UITabBarController {
         
         setChildControllers()
         
-        self.selectedIndex = LogsSettings.shared.tabBarSelectItem
+        self.selectedIndex = DebugManSettings.shared.tabBarSelectItem
         self.tabBar.tintColor = Color.mainGreen
     }
     
@@ -43,7 +43,7 @@ class LogTabBarViewController: UITabBarController {
         sandbox.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         
         //3.
-        guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {
+        guard let tabBarControllers = DebugManSettings.shared.tabBarControllers else {
             self.viewControllers = [logs, network, app, sandbox]
             return
         }
@@ -91,7 +91,7 @@ class LogTabBarViewController: UITabBarController {
         
         for index in 0...items.count-1 {
             if item == items[index] {
-                LogsSettings.shared.tabBarSelectItem = index
+                DebugManSettings.shared.tabBarSelectItem = index
             }
         }
     }

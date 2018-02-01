@@ -21,42 +21,42 @@ import UIKit
     @objc public func enable(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = true) {
         
         if serverURL == nil {
-            LogsSettings.shared.serverURL = ""
+            DebugManSettings.shared.serverURL = ""
         }else{
-            LogsSettings.shared.serverURL = serverURL
+            DebugManSettings.shared.serverURL = serverURL
         }
         if tabBarControllers == nil {
-            LogsSettings.shared.tabBarControllers = []
+            DebugManSettings.shared.tabBarControllers = []
         }else{
-            LogsSettings.shared.tabBarControllers = tabBarControllers
+            DebugManSettings.shared.tabBarControllers = tabBarControllers
         }
         if onlyURLs == nil {
-            LogsSettings.shared.onlyURLs = []
+            DebugManSettings.shared.onlyURLs = []
         }else{
-            LogsSettings.shared.onlyURLs = onlyURLs
+            DebugManSettings.shared.onlyURLs = onlyURLs
         }
         if ignoredURLs == nil {
-            LogsSettings.shared.ignoredURLs = []
+            DebugManSettings.shared.ignoredURLs = []
         }else{
-            LogsSettings.shared.ignoredURLs = ignoredURLs
+            DebugManSettings.shared.ignoredURLs = ignoredURLs
         }
         
         
-        if LogsSettings.shared.firstIn == nil { //first launch
-            LogsSettings.shared.firstIn = ""
-            LogsSettings.shared.showBallAndWindow = true
+        if DebugManSettings.shared.firstIn == nil { //first launch
+            DebugManSettings.shared.firstIn = ""
+            DebugManSettings.shared.showBallAndWindow = true
         }else{                                  //second launch
-            LogsSettings.shared.showBallAndWindow = LogsSettings.shared.showBallAndWindow
+            DebugManSettings.shared.showBallAndWindow = DebugManSettings.shared.showBallAndWindow
         }
         
-        if LogsSettings.shared.showBallAndWindow == true {
+        if DebugManSettings.shared.showBallAndWindow == true {
             DotzuManager.shared.enable()
         }
         
         JxbDebugTool.shareInstance().enable()
         Logger.shared.enable = true
         
-        LogsSettings.shared.recordCrash = recordCrash
+        DebugManSettings.shared.recordCrash = recordCrash
     }
     
     
@@ -76,8 +76,8 @@ import UIKit
         
         NotificationCenter.default.addObserver(self, selector: #selector(shake), name: NSNotification.Name("ShakeNotification_DebugMan"), object: nil)
         
-        LogsSettings.shared.logSearchWord = nil
-        LogsSettings.shared.networkSearchWord = nil
+        DebugManSettings.shared.logSearchWord = nil
+        DebugManSettings.shared.networkSearchWord = nil
         
         let _ = StoreManager.shared
     }
@@ -89,6 +89,6 @@ import UIKit
     
     //MARK: - notification method
     @objc private func shake() {
-        LogsSettings.shared.showBallAndWindow = !LogsSettings.shared.showBallAndWindow
+        DebugManSettings.shared.showBallAndWindow = !DebugManSettings.shared.showBallAndWindow
     }
 }

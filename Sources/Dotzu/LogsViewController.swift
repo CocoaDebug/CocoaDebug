@@ -55,7 +55,7 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
         
         self.cacheModels = self.models
         
-        self.searchLogic(LogsSettings.shared.logSearchWord ?? "")
+        self.searchLogic(DebugManSettings.shared.logSearchWord ?? "")
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -102,14 +102,14 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DebugMan"), object: nil)
         
         //segmentedControl
-        selectedSegmentIndex = LogsSettings.shared.logSelectIndex
+        selectedSegmentIndex = DebugManSettings.shared.logSelectIndex
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         reloadLogs(true)
         
         tableView.tableFooterView = UIView()
         searchBar.delegate = self
-        searchBar.text = LogsSettings.shared.logSearchWord
+        searchBar.text = DebugManSettings.shared.logSearchWord
 
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
@@ -221,7 +221,7 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        LogsSettings.shared.logSearchWord = searchText
+        DebugManSettings.shared.logSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in
@@ -250,7 +250,7 @@ class LogsViewController: UITableViewController, UISearchBarDelegate {
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        LogsSettings.shared.logSelectIndex = selectedSegmentIndex
+        DebugManSettings.shared.logSelectIndex = selectedSegmentIndex
         
         reloadLogs()
     }
