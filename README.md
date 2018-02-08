@@ -10,13 +10,13 @@
 
 # DebugMan
 
-Debugger tool for iOS
+Debugger tool for iOS, support both Swift and Objective-C language.
 
 ## Introduction
 
 The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder) [Sandboxer](https://github.com/meilbn/Sandboxer-Objc) so that people can make crappy clones.
 
-`DebugMan` is an debugger tool for iOS, with the following features:
+`DebugMan` has the following features:
 
 - Display all app network http requests details, including SDKs and image preview.
 - Display app device informations and app identity informations.
@@ -49,38 +49,9 @@ end
 
 ## Usage
 
-	//AppDelegate.swift
-	
-	#if DEBUG
-	    import DebugMan
-	#endif
-	    
-	//MARK: - step 1: initialize `DebugMan`
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	    
-	    #if DEBUG
-	        DebugMan.shared.enable()
-	    #endif
-	    
-	    return true
-	}
-	
-	//MARK: - step 2: override `print` && `NSLog`
-	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
-	    
-	    #if DEBUG
-	        DebugManLog(file, function, line, message, color)
-	    #endif
-	}
-	
-	public func NSLog<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
-	    
-	    #if DEBUG
-	        DebugManLog(file, function, line, message, color)
-	    #endif
-	}
+    DebugMan.shared.enable()
 
-For more advanced usage, see `enable()` parameters in demo.
+For more advanced usage, check in demo.
 
 ## Screenshots
 
