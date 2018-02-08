@@ -24,6 +24,16 @@ class LogTabBarViewController: UITabBarController {
         self.tabBar.tintColor = Color.mainGreen
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DebugManSettings.shared.visible = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DebugManSettings.shared.visible = false
+    }
+    
     //MARK: - private
     func setChildControllers() {
 

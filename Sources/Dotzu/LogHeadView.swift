@@ -180,23 +180,17 @@ class LogHeadView: UIView {
         let statusCode = userInfo["statusCode"] as? String
         
         if statusCode == "200" {
-            DispatchQueue.main.async { [weak self] in
-                self?.initLabelEvent("🚀", true)
-                self?.initLabelEvent("🚀", false)
-            }
+            initLabelEvent("🚀", true)
+            initLabelEvent("🚀", false)
         }
         else if statusCode == "0" {
-            DispatchQueue.main.async { [weak self] in
-                self?.initLabelEvent("❌", true)
-                self?.initLabelEvent("❌", false)
-            }
+            initLabelEvent("❌", true)
+            initLabelEvent("❌", false)
         }
         else{
-            DispatchQueue.main.async { [weak self] in
-                guard let statusCode = statusCode else {return}
-                self?.initLabelEvent(statusCode, true)
-                self?.initLabelEvent(statusCode, false)
-            }
+            guard let statusCode = statusCode else {return}
+            initLabelEvent(statusCode, true)
+            initLabelEvent(statusCode, false)
         }
     }
     

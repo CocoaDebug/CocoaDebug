@@ -8,58 +8,61 @@
 
 import Foundation
 
-//MARK: - ****************** Usage of DebugManLog ******************
+//MARK: - ***** Usage of DebugManLog for Swift *****
 
-/// file: logs file (打印日志所在的文件名) |
-/// function: logs function (打印日志所在的函数名) |
-/// line: logs line (打印日志所在的行数) |
-/// message: logs content (打印日志的内容) |
-/// color: logs color, default is white (打印日志的颜色, 默认白色) |
+/// file: logs file
+/// function: logs function
+/// line: logs line
+/// message: logs content
+/// color: logs color, default is white
 public func DebugManLog<T>(_ file: String = #file,
                            _ function: String = #function,
                            _ line: Int = #line,
                            _ message: T,
                            _ color: UIColor? = nil)
 {
-    if Logger.shared.enable {
-        Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
-    } else {
-        Swift.print(message)
-    }
+    Swift.print(message)
+    Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
 
 //MARK: -
-public class Logger: LogGenerator {
+public class Logger: NSObject {
     
     static let shared = Logger()
-    private let queue = DispatchQueue(label: "log.queue.DebugMan")
-
-    var enable: Bool = true
-
+    
     fileprivate func parseFileInfo(file: String?, function: String?, line: Int?) -> String? {
         guard let file = file, let function = function, let line = line, let fileName = file.components(separatedBy: "/").last else {return nil}
-        
-        return "\(fileName)[\(line)]\(function):\n"
+        return "\(fileName)[\(line)]\(function)\n"
     }
 
-    fileprivate func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
-        if !Logger.shared.enable {
-            return
-        }
+    func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
+        //1.
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"
         }
-
-        Logger.shared.queue.async {
-            let newLog = Log(content: stringContent, color: color, fileInfo: fileInfo)
-            let format = LoggerFormat.format(newLog)
-            Swift.print(format.str)
-            StoreManager.shared.addLog(newLog)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+        
+        //2.
+        let newLog = Log(content: stringContent, color: color, fileInfo: fileInfo)
+        StoreManager.shared.addLog(newLog)
+        
+        dispatch_main_async_safe {
             NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugMan"), object: nil, userInfo: nil)
         }
+        
+        
+        
+//        DispatchQueue.global().async {
+//            //子线程
+//            let newLog = Log(content: stringContent, color: color, fileInfo: fileInfo)
+//            let format = LoggerFormat.format(newLog)
+//            Swift.print(format.str)
+//            StoreManager.shared.addLog(newLog)
+//
+//            DispatchQueue.main.async {
+//                //主线程
+//                NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugMan"), object: nil, userInfo: nil)
+//            }
+//        }
     }
 }

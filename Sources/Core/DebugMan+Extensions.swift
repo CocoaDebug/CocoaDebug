@@ -176,7 +176,7 @@ extension UIView {
 }
 
 ///主线程
-extension UIViewController {
+extension NSObject {
     func dispatch_main_async_safe(callback: @escaping ()->Void ) {
         if Thread.isMainThread {
             callback()

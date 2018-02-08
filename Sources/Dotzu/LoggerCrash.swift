@@ -43,7 +43,7 @@ func handleSignal(signal: Int32) {
     }
 }
 
-class LoggerCrash: LogGenerator {
+class LoggerCrash {
 
     static let shared = LoggerCrash()
     var crashed = false

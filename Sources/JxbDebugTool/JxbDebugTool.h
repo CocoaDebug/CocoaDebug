@@ -10,40 +10,16 @@
 #import <UIKit/UIKit.h>
 #import "JxbHttpDatasource.h"
 
-@protocol JxbDebugDelegate <NSObject>
-- (NSData*)decryptJson:(NSData*)data;
-@end
-
 @interface JxbDebugTool : NSObject
-
-/**
- *  设置代理
- */
-@property (nonatomic, weak) id<JxbDebugDelegate> delegate;
-
-/**
- *  http请求数据是否加密,默认不加密
- */
-@property (nonatomic, assign)   BOOL        isHttpRequestEncrypt;
-
-/**
- *  http响应数据是否加密,默认不加密
- */
-@property (nonatomic, assign)   BOOL        isHttpResponseEncrypt;
 
 /**
  *  设置只抓取的域名,忽略大小写,默认抓取所有
  */
-@property (nonatomic, strong)   NSArray<NSString *>     *onlyURLs;
-
+@property (nonatomic, strong) NSArray<NSString *> *onlyURLs;
 /**
  *  设置不抓取的域名,忽略大小写,默认抓取所有
  */
-@property (nonatomic, strong)   NSArray<NSString *>     *ignoredURLs;
-
-
-
-+ (instancetype)shareInstance;
+@property (nonatomic, strong) NSArray<NSString *> *ignoredURLs;
 /**
  *  启用
  */
@@ -56,5 +32,7 @@
  *  内存占用
  */
 - (NSString *)bytesOfUsedMemory;
+
++ (instancetype)shareInstance;
 
 @end

@@ -201,8 +201,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     NSInteger directoryCount = 0;
     [self getDeletableFileCount:&fileCount directoryCount:&directoryCount];
     
-    if (([Sandbox shared].isFileDeletable && ![Sandbox shared].isDirectoryDeletable && fileCount == 0) || // 只能删除文件，但是文件数为 0
-        (![Sandbox shared].isFileDeletable && [Sandbox shared].isDirectoryDeletable && directoryCount == 0)) { // 只能删除文件夹，但是文件夹数为 0
+    if (([Sandbox shared].isFileDeletable && ![Sandbox shared].isDirectoryDeletable && fileCount == 0) || // 只能删除文件,但是文件数为 0
+        (![Sandbox shared].isFileDeletable && [Sandbox shared].isDirectoryDeletable && directoryCount == 0)) { // 只能删除文件夹,但是文件夹数为 0
         return NO;
     }
     

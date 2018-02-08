@@ -41,7 +41,6 @@ import UIKit
             DebugManSettings.shared.ignoredURLs = ignoredURLs
         }
         
-        
         if DebugManSettings.shared.firstIn == nil { //first launch
             DebugManSettings.shared.firstIn = ""
             DebugManSettings.shared.showBallAndWindow = true
@@ -54,23 +53,41 @@ import UIKit
         }
         
         JxbDebugTool.shareInstance().enable()
-        Logger.shared.enable = true
         
         DebugManSettings.shared.recordCrash = recordCrash
+        DebugManSettings.shared.visible = false
     }
     
     
-    //MARK: - 暂时没用用到
+    //暂时没用用到
 //    @objc public func disable() {
 //        DotzuManager.shared.disable()
 //        JxbDebugTool.shareInstance().disable()
 //        Logger.shared.enable = false
 //        LoggerCrash.shared.enable = false
 //    }
- 
+    
+    
+    //MARK: - ***** Usage of DebugManLog for Objective-C *****
+    
+    /// file: logs file
+    /// function: logs function
+    /// line: logs line
+    /// message: logs content
+    /// color: logs color, default is white
+    @objc public static func NSLog(_ file: String = #file,
+                                 _ function: String = #function,
+                                 _ line: Int = #line,
+                                 _ message: Any,
+                                 _ color: UIColor? = nil) {
+        Swift.print(message)
+        Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    }
+    
     
     //MARK: - init method
     @objc public static let shared = DebugMan()
+    
     private override init() {
         super.init()
         
@@ -82,13 +99,19 @@ import UIKit
         let _ = StoreManager.shared
     }
     
-    //MARK: - deinit method
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
+    
+    
     //MARK: - notification method
     @objc private func shake() {
+        
+        if DebugManSettings.shared.visible == true {
+            return
+        }
+        
         DebugManSettings.shared.showBallAndWindow = !DebugManSettings.shared.showBallAndWindow
     }
 }
