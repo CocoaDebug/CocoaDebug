@@ -49,7 +49,15 @@ end
 
 ## Usage
 
-    DebugMan.shared.enable()
+	//Swift
+	#if DEBUG
+	    DebugMan.shared.enable()
+	#endif
+	
+	//Objective-C
+	#ifdef DEBUG
+        [[DebugMan shared] enableWithServerURL:nil ignoredURLs:nil onlyURLs:nil tabBarControllers:nil recordCrash:YES];
+    #endif
 
 For more advanced usage, check in demo.
 
