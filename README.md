@@ -143,7 +143,7 @@ For More, See `Swift` and `Objective-C` demo Examples.
 
 [https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information](https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information)
 
-If you are using crash reporting SDKs like [Crashlytics](https://try.crashlytics.com/) or [Bugly](https://bugly.qq.com/v2/), I recommend to close `DebugMan` crash reporting. (See `DebugMan` Advanced Usages)
+If you are using crash reporting SDKs like [Crashlytics](https://try.crashlytics.com/) or [Bugly](https://bugly.qq.com/v2/), I recommend to close `DebugMan` crash reporting (set `recordCrash` value to be `false`).
 
 ### key window
 
