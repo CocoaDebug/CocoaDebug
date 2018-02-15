@@ -33,15 +33,15 @@ And More, `DebugMan` support shake device/simulator to hide/show the black bubbl
 
 ## Installation
 
-Use [CocoaPods](https://cocoapods.org/) to install `DebugMan` by adding it to your `Podfile`:
+Use [CocoaPods](https://cocoapods.org/) to install `DebugMan` by adding it to your `Podfile`: (I recommend import `DebugMan` only in Xcode debug-mode)
 
 ```ruby
 platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', :configurations => ['Debug'] #Swift4
-#pod 'DebugMan', '~> 3.x.x', :configurations => ['Debug'] #Swift3
+   pod 'DebugMan', :configurations => ['Debug'] #Swift4
+  #pod 'DebugMan', '~> 3.x.x', :configurations => ['Debug'] #Swift3
 end
 ```
 
@@ -54,12 +54,11 @@ end
 	//  Swift Example
 	//
 	
-	import UIKit
+	#if DEBUG
+        import DebugMan
+    #endif
 	
-	@UIApplicationMain
 	class AppDelegate: UIResponder, UIApplicationDelegate {
-	
-	    var window: UIWindow?
 	
 	    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
 	    {
@@ -86,10 +85,6 @@ end
 	//  Objective-C Example
 	//
 	
-	#import "AppDelegate.h"
-	
-	@implementation AppDelegate
-	
 	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 	{
 	    #ifdef DEBUG
@@ -106,9 +101,9 @@ end
 	//  Objective-C Example
 	//
 	
-	#import "YourProject-Swift.h"
+	#pragma clang diagnostic ignored "-Wunused-value"//ignore Xcode warning
 	
-	#pragma clang diagnostic ignored "-Wunused-value"
+	#import "YourProject-Swift.h"
 	
 	//default logs: white color
 	#ifdef DEBUG
