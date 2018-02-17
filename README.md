@@ -4,7 +4,7 @@
 
 [![Travis CI](https://img.shields.io/badge/Build-Passed-green.svg)](https://travis-ci.org/liman123/DebugMan)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DebugMan.svg)](https://img.shields.io/cocoapods/v/DebugMan.svg)
-![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-orange.svg)
+![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-41ab8c.svg)
 ![Language](https://img.shields.io/badge/language-Swift%203.0+-orange.svg)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
 
