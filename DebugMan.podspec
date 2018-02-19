@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "4.7.7"
   s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
-                    Debugger tool for iOS, support both Swift and Objective-C language :
+                    DebugMan is an debugger tool for iOS, support both Swift and Objective-C language :
 
                     ● Display all app network http requests details, including SDKs and image preview.
                     ● Display app device informations and app identity informations.
@@ -13,6 +13,8 @@ Pod::Spec.new do |s|
                     ● App memory real-time monitoring.
                     ● Display app crash logs.
 
+                    And More, DebugMan support shake device/simulator to hide/show the black bubble.
+                    
                     Welcome to star and fork. If you have any questions, welcome to open issues.
                    DESC
   s.homepage     = "https://github.com/liman123/DebugMan"
