@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DebugMan"
-  s.version      = "4.7.6"
+  s.version      = "4.7.7"
   s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
                     Debugger tool for iOS, support both Swift and Objective-C language :
