@@ -39,10 +39,6 @@ class ManagerViewController: UIViewController, LogHeadViewDelegate {
     }
 
     func shouldReceive(point: CGPoint) -> Bool {
-        //修复keyWindow上新增view的点击事件不执行
-        if (UIApplication.shared.keyWindow?.subviews.count ?? 0) > 1 {
-            return true
-        }
         if DotzuManager.shared.displayedList {
             return true
         }
