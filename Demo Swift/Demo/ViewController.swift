@@ -49,6 +49,21 @@ class ViewController: UIViewController {
         Networking(baseURL: "http://httpbin.org").post("/post", parameters: ["data": "Networking"]) { (response, error) in
             print(response)
         }
+        APIClient.shared().getJSON("http://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
+            print(JSON)
+        }) { (request, error) in
+            print(error?.localizedDescription)
+        }
+        APIClient.shared().postJSON("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+            print(JSON)
+        }) { (request, error) in
+            print(error?.localizedDescription)
+        }
+        APIClient.shared().postForm("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+            print(JSON)
+        }) { (request, error) in
+            print(error?.localizedDescription)
+        }
     }
 }
 
