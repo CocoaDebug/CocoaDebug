@@ -56,17 +56,17 @@ class ViewController: UIViewController {
         }
         
         //4.ASIHTTPRequest
-        APIClient.shared().getJSON("http://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
+        ASIHTTPRequestClient.shared().getJSON("http://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
             print(JSON)
         }) { (request, error) in
             print(error?.localizedDescription)
         }
-        APIClient.shared().postJSON("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+        ASIHTTPRequestClient.shared().postJSON("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
             print(JSON)
         }) { (request, error) in
             print(error?.localizedDescription)
         }
-        APIClient.shared().postForm("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+        ASIHTTPRequestClient.shared().postForm("http://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
             print(JSON)
         }) { (request, error) in
             print(error?.localizedDescription)

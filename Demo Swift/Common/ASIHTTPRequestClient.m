@@ -1,20 +1,19 @@
 //
-//  APIClient.m
+//  ASIHTTPRequestClient.m
 //  AFNetworking-demo
 //
 //  Created by Jakey on 14-7-22.
 //  Copyright (c) 2014年 Jakey. All rights reserved.
 //
 
-#import "APIClient.h"
-#import "NSDictionary+Json.h"
+#import "ASIHTTPRequestClient.h"
 
 static dispatch_once_t onceToken;
-static APIClient *_sharedClient = nil;
-@implementation APIClient
+static ASIHTTPRequestClient *_sharedClient = nil;
+@implementation ASIHTTPRequestClient
 + (instancetype)sharedClient {
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[APIClient alloc] init];
+        _sharedClient = [[ASIHTTPRequestClient alloc] init];
     });
     
     return _sharedClient;
@@ -143,7 +142,7 @@ static APIClient *_sharedClient = nil;
     }];
     
     [request startAsynchronous];
-     //NSLog(@"APIClient GET: %@",[request url]);
+     //NSLog(@"ASIHTTPRequestClient GET: %@",[request url]);
     return request;
 }
 
@@ -184,8 +183,8 @@ static APIClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    ////NSLog(@"APIClient 下载文件:%@ ",path);
-    ////NSLog(@"APIClient 保存路径:%@",filePath);
+    ////NSLog(@"ASIHTTPRequestClient 下载文件:%@ ",path);
+    ////NSLog(@"ASIHTTPRequestClient 保存路径:%@",filePath);
     
     return request;
 }
@@ -222,14 +221,14 @@ static APIClient *_sharedClient = nil;
     [request setAllowResumeForFileDownloads:YES];
     
     __block float downProgress = 0;
-    downProgress = [[NSUserDefaults standardUserDefaults] floatForKey:@"APIClient_ResumeDOWN_PROGRESS"];
+    downProgress = [[NSUserDefaults standardUserDefaults] floatForKey:@"ASIHTTPRequestClient_ResumeDOWN_PROGRESS"];
     [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
         
         downProgress += (float)size/total;
         if (downProgress >1.0) {
             downProgress=1.0;
         }
-        [[NSUserDefaults standardUserDefaults] setFloat:downProgress forKey:@"APIClient_ResumeDOWN_PROGRESS"];
+        [[NSUserDefaults standardUserDefaults] setFloat:downProgress forKey:@"ASIHTTPRequestClient_ResumeDOWN_PROGRESS"];
 
         progressBlock(downProgress);
         
@@ -237,7 +236,7 @@ static APIClient *_sharedClient = nil;
     
     [request setCompletionBlock:^{
         downProgress = 0;
-        [[NSUserDefaults standardUserDefaults] setFloat:downProgress forKey:@"APIClient_ResumeDOWN_PROGRESS"];
+        [[NSUserDefaults standardUserDefaults] setFloat:downProgress forKey:@"ASIHTTPRequestClient_ResumeDOWN_PROGRESS"];
         success(filePath);
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:tempForDownPath]) {
@@ -257,7 +256,7 @@ static APIClient *_sharedClient = nil;
     
     if (downProgress >0 && downProgress) {
         if (downProgress >=1.0) downProgress = 0.9999;
-        //NSLog(@"APIClient 上次下载已完成:%.2f/100",downProgress*100);
+        //NSLog(@"ASIHTTPRequestClient 上次下载已完成:%.2f/100",downProgress*100);
     }
     return request;
 
@@ -300,8 +299,8 @@ static APIClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    //NSLog(@"APIClient 文件上传:%@ file=%@ key=%@",urlString,filePath,fileKey);
-    //NSLog(@"APIClient 文件上传参数:%@",params);
+    //NSLog(@"ASIHTTPRequestClient 文件上传:%@ file=%@ key=%@",urlString,filePath,fileKey);
+    //NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
     
     return request;
 
@@ -342,8 +341,8 @@ static APIClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    //NSLog(@"APIClient 文件上传:%@ size=%.2f MB  key=%@",urlString,fileData.length/1024.0/1024.0,dataKey);
-    //NSLog(@"APIClient 文件上传参数:%@",params);
+    //NSLog(@"ASIHTTPRequestClient 文件上传:%@ size=%.2f MB  key=%@",urlString,fileData.length/1024.0/1024.0,dataKey);
+    //NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
     
     return request;
 }

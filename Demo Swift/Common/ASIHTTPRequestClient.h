@@ -1,18 +1,19 @@
 //
-//  APIClient.h
+//  ASIHTTPRequestClient.h
 //  ASIHTTPRequest-Demo
 //
 //  Created by Jakey on 14-7-22.
 //  Copyright (c) 2014年 Jakey. All rights reserved.
 //
 
+//typedef void (^FailedBlock)(NSError *error);
+//typedef void (^ProgressBlock)(float progress);
+
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
-//typedef void (^FailedBlock)(NSError *error);
-//typedef void (^ProgressBlock)(float progress);
-@interface APIClient : NSObject
+@interface ASIHTTPRequestClient : NSObject
 + (instancetype)sharedClient;
 @property (nonatomic, strong) NSURL *baseURL;
 

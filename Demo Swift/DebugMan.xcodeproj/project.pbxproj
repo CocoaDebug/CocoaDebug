@@ -31,8 +31,7 @@
 		EA3897DD2045348E00AC5494 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3897C22045348E00AC5494 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EA3897DE2045348E00AC5494 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3897C52045348E00AC5494 /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EA3897E52045352F00AC5494 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3897E42045352F00AC5494 /* Reachability.m */; };
-		EA415FC52045385200243C2D /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EA415FBF2045385200243C2D /* APIClient.m */; };
-		EA415FC8204538DB00243C2D /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = EA415FC6204538DA00243C2D /* NSDictionary+Json.m */; };
+		EA415FC52045385200243C2D /* ASIHTTPRequestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EA415FBF2045385200243C2D /* ASIHTTPRequestClient.m */; };
 		EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */; };
 		EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */; };
 		EA44B78C1FE13ECD00DF7FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78A1FE13ECD00DF7FF6 /* Main.storyboard */; };
@@ -321,10 +320,8 @@
 		EA3897C72045348E00AC5494 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		EA3897E32045352F00AC5494 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EA3897E42045352F00AC5494 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		EA415FBD2045385200243C2D /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
-		EA415FBF2045385200243C2D /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
-		EA415FC6204538DA00243C2D /* NSDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
-		EA415FC7204538DA00243C2D /* NSDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
+		EA415FBD2045385200243C2D /* ASIHTTPRequestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestClient.h; sourceTree = "<group>"; };
+		EA415FBF2045385200243C2D /* ASIHTTPRequestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequestClient.m; sourceTree = "<group>"; };
 		EA44B7831FE13ECD00DF7FF6 /* DebugMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebugMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA44B7861FE13ECD00DF7FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA44B7881FE13ECD00DF7FF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -712,10 +709,8 @@
 		EA415FB92045385200243C2D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EA415FC7204538DA00243C2D /* NSDictionary+Json.h */,
-				EA415FC6204538DA00243C2D /* NSDictionary+Json.m */,
-				EA415FBD2045385200243C2D /* APIClient.h */,
-				EA415FBF2045385200243C2D /* APIClient.m */,
+				EA415FBD2045385200243C2D /* ASIHTTPRequestClient.h */,
+				EA415FBF2045385200243C2D /* ASIHTTPRequestClient.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1421,7 +1416,7 @@
 				EA9065D1202C2E47003777D1 /* ApplicationInformation.swift in Sources */,
 				EA9066A2202C2E47003777D1 /* NetworkDetailCell.swift in Sources */,
 				EA9065CE202C2E47003777D1 /* LogTabBarViewController.swift in Sources */,
-				EA415FC52045385200243C2D /* APIClient.m in Sources */,
+				EA415FC52045385200243C2D /* ASIHTTPRequestClient.m in Sources */,
 				EA9066AB202C2E47003777D1 /* JxbHttpModel.m in Sources */,
 				EA9065D0202C2E47003777D1 /* Log.swift in Sources */,
 				EA9066AE202C2E47003777D1 /* JxbHttpDatasource.m in Sources */,
@@ -1462,7 +1457,6 @@
 				EA9066AC202C2E47003777D1 /* JxbDebugTool.m in Sources */,
 				EA9066A7202C2E47003777D1 /* SandboxViewController.m in Sources */,
 				EA9065EB202C2E47003777D1 /* NSData+DebugMan.m in Sources */,
-				EA415FC8204538DB00243C2D /* NSDictionary+Json.m in Sources */,
 				EA9065D3202C2E47003777D1 /* LogTableViewCell.swift in Sources */,
 				EA9065E4202C2E47003777D1 /* Color.swift in Sources */,
 				EA9066A6202C2E47003777D1 /* FilePreviewController.m in Sources */,
