@@ -21,19 +21,22 @@ class ViewController: UIViewController {
         print("hello world")
         print("red color", .red)
         
-        //network monitor
+        //network
         test()
     }
     
-    //MARK - network monitor
+    //MARK - network
     func test()
     {
+        //1.Alamofire
         Alamofire.request("http://httpbin.org/get").responseJSON { response in
             print(response, .green)
         }
         Alamofire.request("http://httpbin.org/post", method: .post, parameters: ["data": "Alamofire"], encoding: JSONEncoding.default).responseJSON { response in
             print(response, .red)
         }
+        
+        //2.SwiftHTTP
         HTTP.GET("http://httpbin.org/get") { response in
             print(response, .yellow)
         }
@@ -43,12 +46,16 @@ class ViewController: UIViewController {
         HTTP.GET("https://www.baidu.com/img/bd_logo1.png") { response in
             print(response, .orange)
         }
+        
+        //3.Networking
         Networking(baseURL: "http://httpbin.org").get("/get") { (response, error) in
             print(response)
         }
         Networking(baseURL: "http://httpbin.org").post("/post", parameters: ["data": "Networking"]) { (response, error) in
             print(response)
         }
+        
+        //4.ASIHTTPRequest
         APIClient.shared().getJSON("http://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
             print(JSON)
         }) { (request, error) in
