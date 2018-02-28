@@ -11,4 +11,7 @@
 @interface JxbMemoryHelper : NSObject
 
 + (unsigned long long)bytesOfUsedMemory;
+
++ (unsigned long long)bytesOfTotalMemory;
+
 @end
