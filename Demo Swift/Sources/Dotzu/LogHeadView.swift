@@ -25,13 +25,25 @@ class LogHeadView: UIView {
     
     
     private lazy var _label: UILabel! = {
-        let label = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2, width:_width/8*6, height:16))
+        let xxx: CGFloat = 16/2
+        let label = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
         label.textColor = Color.mainGreen
         label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        label.text = JxbDebugTool.shareInstance().bytesOfUsedMemory()
+        label.text = JxbDebugTool.shareInstance().bytesOfUsedMemory().components(separatedBy: " ").first
         return label
+    }()
+    
+    private lazy var _sublabel: UILabel! = {
+        let xxx: CGFloat = -16/2
+        let sublabel = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
+        sublabel.textColor = UIColor.init(hexString: "#bdbdbe")
+        sublabel.font = UIFont.systemFont(ofSize: 10)
+        sublabel.textAlignment = .center
+        sublabel.adjustsFontSizeToFitWidth = true
+        sublabel.text = JxbDebugTool.shareInstance().bytesOfUsedMemory().components(separatedBy: " ").last
+        return sublabel
     }()
     
     
@@ -125,6 +137,7 @@ class LogHeadView: UIView {
         self.layer.addSublayer(gradientLayer)
                 
         self.addSubview(_label)
+        self.addSubview(_sublabel)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LogHeadView.tap))
         self.addGestureRecognizer(tapGesture)
@@ -197,7 +210,8 @@ class LogHeadView: UIView {
     //MARK: - target action
     //内存监控
     @objc func timerMonitor() {
-        _label.text = JxbDebugTool.shareInstance().bytesOfUsedMemory()
+        _label.text = JxbDebugTool.shareInstance().bytesOfUsedMemory().components(separatedBy: " ").first
+        _sublabel.text = JxbDebugTool.shareInstance().bytesOfUsedMemory().components(separatedBy: " ").last
     }
     
     @objc func tap() {

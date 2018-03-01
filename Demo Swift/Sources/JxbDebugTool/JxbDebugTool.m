@@ -44,9 +44,12 @@
 {
     unsigned long long total = [JxbMemoryHelper bytesOfTotalMemory];
     unsigned long long used = [JxbMemoryHelper bytesOfUsedMemory];
-    return [self number2String:used];
+    NSString *usedStr = [self number2String:used];
+    
     float proportion = (float)used / (float)total;
-    return [NSString stringWithFormat:@"%@%@", [NSString stringWithFormat:@"%.2f", proportion * 100], @"%"];
+    NSString *percentStr = [NSString stringWithFormat:@"%@%@", [NSString stringWithFormat:@"%.2f", proportion * 100], @"%"];
+    
+    return [NSString stringWithFormat:@"%@ (%@)", usedStr, percentStr];
 }
 
 - (NSString* )number2String:(int64_t)n
