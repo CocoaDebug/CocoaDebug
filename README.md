@@ -1,5 +1,5 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/master/Sources/Resources/images/DebugMan_logo.png"/>
+  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Sources/Resources/images/DebugMan_logo.png"/>
 </p>
 
 [![Travis CI](https://img.shields.io/badge/Build-Passed-green.svg)](https://travis-ci.org/liman123/DebugMan)
@@ -18,12 +18,12 @@ Debugger tool for iOS, support both `Swift` and `Objective-C` language.
 
 - Display all app network http requests details, including SDKs and image preview.
 - Display app device informations and app identity informations.
-- Preview and share sandbox files on device/simulator.
 - Display all app logs in different colors as you like.
-- App memory real-time monitoring.
 - Display app crash logs.
-
-And More, `DebugMan` support shake device/simulator to hide/show the black bubble.
+- Preview and share sandbox files on device/simulator.
+- Shake device/simulator to hide/show the black bubble.
+- App memory real-time monitoring displayed in the black bubble.
+- Long press the black bubble to show Apple's UIDebuggingInformationOverlay. (also available in iOS11)
 
 ## Requirements
 
@@ -123,7 +123,7 @@ For More, See `Swift` and `Objective-C` demo Examples.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="240">
+<img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/1.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/2.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/3.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/4.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/5.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/6.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/7.png" width="240">
 
 ## References
 
@@ -131,10 +131,17 @@ For More, See `Swift` and `Objective-C` demo Examples.
 - Sandboxer ([https://github.com/meilbn/Sandboxer-Objc](https://github.com/meilbn/Sandboxer-Objc))
 - JxbDebugTool ([https://github.com/JxbSir/JxbDebugTool](https://github.com/JxbSir/JxbDebugTool))
 - SWHttpTrafficRecorder ([https://github.com/Amindv1/SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder))
+- UIDebuggingInformationOverlay [https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay](https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay)
 
 ## Matters Need Attention
 
-### Crash Reprting
+### Apple's private API
+
+- Because `DebugMan` used Apple's private API, so DO NOT archive to ipa with `DebugMan` inside, otherwise your app will not rejected by Apple to publish to AppStore.
+
+- So that is the reason why you should import `DebugMan` only in Xcode debug-mode, NOT in Xcode release-mode.
+
+### crash reprting
 
 [https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information](https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information)
 
@@ -147,6 +154,12 @@ If you are using crash reporting SDKs like [Crashlytics](https://try.crashlytics
 - If you want to get the root view controller for the app's key window, `UIApplication.shared.keyWindow?.rootViewController` may crash. You should use `UIApplication.shared.delegate?.window??.rootViewController`.
 
 - If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
+
+### ASIHTTPRequest
+
+- If you use [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) for HTTP requests, `DebugMan` can not catch the HTTP requests. 
+
+- Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` hooked([swizzling](http://nshipster.com/method-swizzling/)) the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
 
 ## Author
 
