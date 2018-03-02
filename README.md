@@ -137,9 +137,15 @@ For More, See `Swift` and `Objective-C` demo Examples.
 
 ### Apple's private API
 
-- Because `DebugMan` used Apple's private API, so DO NOT archive to ipa with `DebugMan` inside, otherwise your app will not rejected by Apple to publish to AppStore.
+Because `DebugMan` used Apple's private API, so DO NOT archive to ipa with `DebugMan` inside, otherwise your app will not rejected by Apple to publish to AppStore.
 
-- So that is the reason why you should import `DebugMan` only in Xcode debug-mode, NOT in Xcode release-mode.
+So that is the reason why you should import `DebugMan` only in Xcode debug-mode, NOT in Xcode release-mode.
+
+### ASIHTTPRequest
+
+If you use [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) for HTTP requests, `DebugMan` can not catch the HTTP requests. 
+
+Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` hooked([swizzling](http://nshipster.com/method-swizzling/)) the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
 
 ### crash reprting
 
@@ -149,23 +155,11 @@ If you are using crash reporting SDKs like [Crashlytics](https://try.crashlytics
 
 ### key window
 
-- When using `DebugMan`, app's key window is DebugMan's transparent window. You can check app's UI layout by [Reveal](https://revealapp.com/).
+When using `DebugMan`, app's key window is DebugMan's transparent window. You can check app's UI layout by [Reveal](https://revealapp.com/).
 
-- If you want to get the root view controller for the app's key window, `UIApplication.shared.keyWindow?.rootViewController` may crash. You should use `UIApplication.shared.delegate?.window??.rootViewController`.
+If you want to get the root view controller for the app's key window, `UIApplication.shared.keyWindow?.rootViewController` may crash. You should use `UIApplication.shared.delegate?.window??.rootViewController`.
 
-- If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
-
-### ASIHTTPRequest
-
-- If you use [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) for HTTP requests, `DebugMan` can not catch the HTTP requests. 
-
-- Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` hooked([swizzling](http://nshipster.com/method-swizzling/)) the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
-
-## Author
-
-- [liman](https://liman123.github.io/)
-- 723661989@163.com
-- gg723661989@gmail.com
+If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
 
 ## License
 
