@@ -125,14 +125,6 @@ For More, See `Swift` and `Objective-C` demo Examples.
 
 <img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/1.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/2.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/3.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/4.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/5.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/6.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/7.png" width="240">
 
-## References
-
-- Dotzu ([https://github.com/remirobert/Dotzu](https://github.com/remirobert/Dotzu))
-- Sandboxer ([https://github.com/meilbn/Sandboxer-Objc](https://github.com/meilbn/Sandboxer-Objc))
-- JxbDebugTool ([https://github.com/JxbSir/JxbDebugTool](https://github.com/JxbSir/JxbDebugTool))
-- SWHttpTrafficRecorder ([https://github.com/Amindv1/SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder))
-- UIDebuggingInformationOverlay [https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay](https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay)
-
 ## Matters Need Attention
 
 ### Apple's private API
@@ -147,7 +139,7 @@ If you use [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) for HTTP 
 
 Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` hooked([swizzling](http://nshipster.com/method-swizzling/)) the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
 
-### crash reprting
+### Crash Reprting
 
 [https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information](https://github.com/liman123/Notes/wiki/iOS-collecting-app-crash-information)
 
@@ -161,7 +153,11 @@ If you want to get the root view controller for the app's key window, `UIApplica
 
 If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
 
-## License
+## References
 
-`DebugMan` is available under the `MIT` license. See the `LICENSE` file for more info.
+- Dotzu ([https://github.com/remirobert/Dotzu](https://github.com/remirobert/Dotzu))
+- Sandboxer ([https://github.com/meilbn/Sandboxer-Objc](https://github.com/meilbn/Sandboxer-Objc))
+- JxbDebugTool ([https://github.com/JxbSir/JxbDebugTool](https://github.com/JxbSir/JxbDebugTool))
+- SWHttpTrafficRecorder ([https://github.com/Amindv1/SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder))
+- UIDebuggingInformationOverlay [https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay](https://www.raywenderlich.com/177890/swizzling-in-ios-11-with-uidebugginginformationoverlay)
 
