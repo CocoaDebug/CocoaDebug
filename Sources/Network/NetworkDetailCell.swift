@@ -1,9 +1,9 @@
 //
-//  NetworkDetailCell.swift
-//  PhiSpeaker
+//  DebugTool.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation

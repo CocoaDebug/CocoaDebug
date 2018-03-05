@@ -1,15 +1,19 @@
 //
-//  FileTableViewCell.h
-//  Example
+//  DebugTool.swift
+//  demo
 //
-//  Created by meilbn on 18/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "FileInfo.h"
 
 UIKIT_EXTERN NSString *const FileTableViewCellReuseIdentifier;
 
 @interface FileTableViewCell : UITableViewCell
+
+//liman
+@property (strong, nonatomic) FileInfo *fileInfo;
 
 @end

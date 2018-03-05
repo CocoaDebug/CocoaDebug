@@ -1,17 +1,17 @@
 //
-//  FilePreviewController.h
-//  Example
+//  DebugTool.swift
+//  demo
 //
-//  Created by meilbn on 20/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class MLBFileInfo;
+@class FileInfo;
 
 @interface FilePreviewController : UIViewController
 
-@property (nonatomic, strong) MLBFileInfo *fileInfo;
+@property (nonatomic, strong) FileInfo *fileInfo;
 
 @end

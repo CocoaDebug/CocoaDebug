@@ -1,9 +1,9 @@
 //
-//  NetworkDetailViewController.swift
-//  PhiSpeaker
+//  DebugTool.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import UIKit
 
 class NetworkDetailViewController: UITableViewController {
     
-    var httpModel: JxbHttpModel?
+    var httpModel: HttpModel?
     
     var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
@@ -20,7 +20,7 @@ class NetworkDetailViewController: UITableViewController {
     var justCancelCallback:(() -> Void)?
     
     static func instanceFromStoryBoard() -> NetworkDetailViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugTool.self))
         return storyboard.instantiateViewController(withIdentifier: "NetworkDetailViewController") as! NetworkDetailViewController
     }
     
@@ -195,7 +195,7 @@ class NetworkDetailViewController: UITableViewController {
         
         //2.点击了编辑view (编辑request/header)
         cell.tapEditViewCallback = { [weak self] detailModel in
-            let vc = ToJSONViewController.instanceFromStoryBoard()
+            let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
             self?.navigationController?.pushViewController(vc, animated: true)
         }
@@ -206,7 +206,7 @@ class NetworkDetailViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = DebugManSettings.shared.serverURL else {return 0}
+        guard let serverURL = DebugToolSettings.shared.serverURL else {return 0}
         let detailModel = detailModels[indexPath.row]
         
         if detailModel.blankContent == "..." {
@@ -262,6 +262,6 @@ class NetworkDetailViewController: UITableViewController {
     
     //MARK: - target action
     @IBAction func close(_ sender: UIBarButtonItem) {
-        (self.navigationController as! LogNavigationViewController).exit()
+        (self.navigationController as! DebugToolNavigationController).exit()
     }
 }

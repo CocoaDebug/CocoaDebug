@@ -1,9 +1,9 @@
 //
-//  Sandbox.m
-//  Example
+//  DebugTool.swift
+//  demo
 //
-//  Created by meilbn on 18/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import "Sandbox.h"
@@ -20,13 +20,14 @@
 @synthesize homeTitle = _homeTitle;
 
 + (Sandbox *)shared {
-    static Sandbox *_sharedInstance = nil;
+    static id sharedInstance = nil;
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [[Sandbox alloc] _init];
+        sharedInstance = [[self alloc] init];
     });
     
-    return _sharedInstance;
+    return sharedInstance;
 }
 
 - (instancetype)_init {
@@ -69,7 +70,7 @@
     if (!_homeDirectoryNavigationController) {
         SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
         sandboxViewController.homeDirectory = YES;
-        sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+        sandboxViewController.fileInfo = [[FileInfo alloc] initWithFileURL:self.homeFileURL];
         _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
     }
     

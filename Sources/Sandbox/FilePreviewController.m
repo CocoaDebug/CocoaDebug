@@ -1,13 +1,13 @@
 //
-//  FilePreviewController.m
-//  Example
+//  DebugTool.swift
+//  demo
 //
-//  Created by meilbn on 20/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import "FilePreviewController.h"
-#import "MLBFileInfo.h"
+#import "FileInfo.h"
 #import <QuickLook/QuickLook.h>
 #import <WebKit/WebKit.h>
 #import "Sandbox.h"
@@ -79,7 +79,7 @@
         [self.view addSubview:self.wkWebView];
     } else {
         switch (self.fileInfo.type) {
-            case MLBFileTypePList: {
+            case FileTypePList: {
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;
@@ -110,7 +110,7 @@
         }
     } else {
         switch (self.fileInfo.type) {
-            case MLBFileTypePList: {
+            case FileTypePList: {
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];

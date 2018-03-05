@@ -1,0 +1,28 @@
+//
+//  PrefixHeader.pch
+//  Example_Objc
+//
+//  Created by liman on 05/03/2018.
+//  Copyright © 2018 liman. All rights reserved.
+//
+
+#import "Example_Objc-Swift.h"
+
+//ignore warning
+#pragma clang diagnostic ignored "-Wunused-value"
+
+//default log
+#ifdef DEBUG
+#define NSLog(fmt, ...) [DebugTool objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+#else
+#define NSLog(fmt, ...) nil
+#endif
+
+//colourful log (red, blue, yellow, gray...)
+#ifdef DEBUG
+#define RedLog(fmt, ...) [DebugTool objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
+#else
+#define RedLog(fmt, ...) nil
+#endif
+
+

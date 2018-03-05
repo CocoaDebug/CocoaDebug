@@ -1,18 +1,18 @@
 //
-//  NetworkViewController.swift
-//  PhiSpeaker
+//  DebugTool.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import UIKit
 
 class NetworkViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    var models: Array<JxbHttpModel>?
-    var cacheModels: Array<JxbHttpModel>?
-    var searchModels: Array<JxbHttpModel>?
+    var models: Array<HttpModel>?
+    var cacheModels: Array<HttpModel>?
+    var searchModels: Array<HttpModel>?
     
     var foo: Bool = false
     
@@ -48,10 +48,10 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - private
     func reloadHttp(_ isFirstIn: Bool = false) {
         
-        self.models = (JxbHttpDatasource.shareInstance().httpModels as NSArray as? [JxbHttpModel])
+        self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
         
-        self.searchLogic(DebugManSettings.shared.networkSearchWord ?? "")
+        self.searchLogic(DebugToolSettings.shared.networkSearchWord ?? "")
 
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -101,12 +101,12 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         setNeedsStatusBarAppearanceUpdate()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugMan"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugTool"), object: nil)
         
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        searchBar.text = DebugManSettings.shared.networkSearchWord
+        searchBar.text = DebugToolSettings.shared.networkSearchWord
         tableView.tableFooterView = UIView()
         
         //hide searchBar icon
@@ -141,7 +141,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = DebugManSettings.shared.serverURL else {return 0}
+        guard let serverURL = DebugToolSettings.shared.serverURL else {return 0}
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
@@ -213,7 +213,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         searchBar.resignFirstResponder()
-        left.backgroundColor = UIColor.init(hexString: "#007aff")
+        left.backgroundColor = .init(hexString: "#007aff")
         return UISwipeActionsConfiguration(actions: [left])
     }
     
@@ -222,7 +222,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
             guard let models = self?.models else {return}
-            JxbHttpDatasource.shareInstance().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self?.models?.remove(at: indexPath.row)
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -247,7 +247,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let models = self.models else {return}
-            JxbHttpDatasource.shareInstance().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self.models?.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -269,7 +269,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        DebugManSettings.shared.networkSearchWord = searchText
+        DebugToolSettings.shared.networkSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in
@@ -279,7 +279,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: - target action
     @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
-        JxbHttpDatasource.shareInstance().reset()
+        HttpDatasource.shared().reset()
         models = []
         cacheModels = []
         searchBar.resignFirstResponder()

@@ -1,9 +1,9 @@
 //
-//  NetworkCell.swift
-//  PhiSpeaker
+//  DebugTool.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
@@ -23,10 +23,10 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var refreshImageView: UIImageView!
     
     
-    var httpModel: JxbHttpModel? {
+    var httpModel: HttpModel? {
         didSet {
             
-            guard let serverURL = DebugManSettings.shared.serverURL else {return}
+            guard let serverURL = DebugToolSettings.shared.serverURL else {return}
             
             //域名
             requestUrlTextView.text = httpModel?.url.absoluteString
@@ -80,16 +80,16 @@ class NetworkCell: UITableViewCell {
             
             //tag
             if httpModel?.isTag == true {
-                self.contentView.backgroundColor = UIColor.init(hexString: "#007aff")
+                self.contentView.backgroundColor = .init(hexString: "#007aff")
             }else{
-                self.contentView.backgroundColor = UIColor.black
+                self.contentView.backgroundColor = .black
             }
             
             //isSelected
             if httpModel?.isSelected == true {
-                statusCodeView.backgroundColor = UIColor.init(hexString: "#222222")
+                statusCodeView.backgroundColor = .init(hexString: "#222222")
             }else{
-                statusCodeView.backgroundColor = UIColor.init(hexString: "#333333")
+                statusCodeView.backgroundColor = .init(hexString: "#333333")
             }
         }
     }
