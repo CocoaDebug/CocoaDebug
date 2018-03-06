@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -10,12 +10,12 @@ import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-    var window: DebugToolWindow?
-    let vc = DebugToolViewController()
+    var window: DotzuXWindow?
+    let vc = DotzuXViewController()
     var displayedList = false
  
     private override init() {
-        self.window = DebugToolWindow(frame: UIScreen.main.bounds)
+        self.window = DotzuXWindow(frame: UIScreen.main.bounds)
         super.init()
     }
 

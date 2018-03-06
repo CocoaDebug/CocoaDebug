@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -13,18 +13,13 @@ class IgnoredURLsViewController: UITableViewController {
     
     var models: Array<String>?
     
-    static func instanceFromStoryBoard() -> IgnoredURLsViewController {
-        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DebugTool.self))
-        return storyboard.instantiateViewController(withIdentifier: "IgnoredURLsViewController") as! IgnoredURLsViewController
-    }
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
 
-        models = DebugToolSettings.shared.ignoredURLs
+        models = DotzuXSettings.shared.ignoredURLs
     }
     
     //MARK: - UITableViewDataSource

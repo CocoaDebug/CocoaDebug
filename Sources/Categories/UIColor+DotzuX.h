@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (DebugTool)
+@interface UIColor (DotzuX)
 
 //十六进制颜色
 + (UIColor *)colorWithHexString:(NSString *)hexColorString;

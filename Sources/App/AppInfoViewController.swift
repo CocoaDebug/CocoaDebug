@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -28,24 +28,24 @@ class AppInfoViewController: UITableViewController {
         
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
 
-        labelVersionNumber.text = AppInformation.versionNumber
-        labelBuildNumber.text = AppInformation.buildNumber
-        labelBundleName.text = AppInformation.bundleName
+        labelVersionNumber.text = AppInfo.versionNumber
+        labelBuildNumber.text = AppInfo.buildNumber
+        labelBundleName.text = AppInfo.bundleName
 
         labelScreenResolution.text = Device.screenResolution
         labelScreenSize.text = "\(Device.screenSize)"
         labelDeviceModel.text = "\(Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
-        labelignoredURLs.text = String(DebugToolSettings.shared.ignoredURLs?.count ?? 0)
+        labelignoredURLs.text = String(DotzuXSettings.shared.ignoredURLs?.count ?? 0)
         
-        labelserverURL.text = DebugToolSettings.shared.serverURL
+        labelserverURL.text = DotzuXSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let count = UserDefaults.standard.integer(forKey: "crashCount_DebugTool")
+        let count = UserDefaults.standard.integer(forKey: "crashCount_DotzuX")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? .red : .white
     }
@@ -53,7 +53,7 @@ class AppInfoViewController: UITableViewController {
     //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        if DebugToolSettings.shared.recordCrash == true {
+        if DotzuXSettings.shared.recordCrash == true {
             if section == 0 {
                 return 56
             }
@@ -70,7 +70,7 @@ class AppInfoViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if DebugToolSettings.shared.recordCrash == false {
+        if DotzuXSettings.shared.recordCrash == false {
             if indexPath.section == 0 && indexPath.row == 0 {
                 return 0
             }
@@ -81,14 +81,17 @@ class AppInfoViewController: UITableViewController {
                 return 0
             }
         }
-        if indexPath.section == 3 && indexPath.row == 0 {
-            if labelignoredURLs.text == "0" {
-                return 0.5
-            }
-        }
         if indexPath.section == 2 && indexPath.row == 1 {
             if labelScreenSize.text == "0.0" {
                 return 0
+            }
+        }
+        if indexPath.section == 3 && indexPath.row == 0 {
+            if labelignoredURLs.text == "0" {
+                if UIScreen.main.scale == 3 {
+                    return 1.5//plus，iPhone X
+                }
+                return 0.5//iphone 5,6,6s,7,8
             }
         }
         return 44
@@ -112,17 +115,12 @@ class AppInfoViewController: UITableViewController {
                 return
             }
             
-            UIPasteboard.general.string = DebugToolSettings.shared.serverURL
+            UIPasteboard.general.string = DotzuXSettings.shared.serverURL
             
             let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
-        }
-        
-        if indexPath.section == 3 && indexPath.row == 0 {
-            let vc = IgnoredURLsViewController.instanceFromStoryBoard()
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

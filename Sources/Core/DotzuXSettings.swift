@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,19 +8,19 @@
 
 import Foundation
 
-@objc public class DebugToolSettings: NSObject {
+@objc public class DotzuXSettings: NSObject {
 
-    @objc public static let shared = DebugToolSettings()
+    @objc public static let shared = DotzuXSettings()
 
     @objc public var firstIn: String? = nil {
         didSet {
-            UserDefaults.standard.set(firstIn, forKey: "firstIn_DebugTool")
+            UserDefaults.standard.set(firstIn, forKey: "firstIn_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var recordCrash: Bool = false {
         didSet {
-            UserDefaults.standard.set(recordCrash, forKey: "recordCrash_DebugTool")
+            UserDefaults.standard.set(recordCrash, forKey: "recordCrash_DotzuX")
             UserDefaults.standard.synchronize()
             
             if recordCrash == true {
@@ -32,19 +32,19 @@ import Foundation
     }
     @objc public var visible: Bool = false {
         didSet {
-            UserDefaults.standard.set(visible, forKey: "visible_DebugTool")
+            UserDefaults.standard.set(visible, forKey: "visible_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var showDebugToolBubbleAndWindow: Bool = false {
+    @objc public var showDotzuXBubbleAndWindow: Bool = false {
         didSet {
-            UserDefaults.standard.set(showDebugToolBubbleAndWindow, forKey: "showDebugToolBubbleAndWindow_DebugTool")
+            UserDefaults.standard.set(showDotzuXBubbleAndWindow, forKey: "showDotzuXBubbleAndWindow_DotzuX")
             UserDefaults.standard.synchronize()
             
             let x = WindowHelper.shared.vc.bubble.frame.origin.x
             let width = WindowHelper.shared.vc.bubble.frame.size.width
             
-            if showDebugToolBubbleAndWindow == true
+            if showDotzuXBubbleAndWindow == true
             {
                 if x > 0 {
                     WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
@@ -66,19 +66,19 @@ import Foundation
     }
     @objc public var serverURL: String? = nil {
         didSet {
-            UserDefaults.standard.set(serverURL, forKey: "serverURL_DebugTool")
+            UserDefaults.standard.set(serverURL, forKey: "serverURL_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var tabBarSelectItem: Int {
         didSet {
-            UserDefaults.standard.set(tabBarSelectItem, forKey: "tabBarSelectItem_DebugTool")
+            UserDefaults.standard.set(tabBarSelectItem, forKey: "tabBarSelectItem_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSelectIndex: Int {
         didSet {
-            UserDefaults.standard.set(logSelectIndex, forKey: "logSelectIndex_DebugTool")
+            UserDefaults.standard.set(logSelectIndex, forKey: "logSelectIndex_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
@@ -94,25 +94,25 @@ import Foundation
     }
     @objc public var bubbleFrameX: Float {
         didSet {
-            UserDefaults.standard.set(bubbleFrameX, forKey: "bubbleFrameX_DebugTool")
+            UserDefaults.standard.set(bubbleFrameX, forKey: "bubbleFrameX_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var bubbleFrameY: Float {
         didSet {
-            UserDefaults.standard.set(bubbleFrameY, forKey: "bubbleFrameY_DebugTool")
+            UserDefaults.standard.set(bubbleFrameY, forKey: "bubbleFrameY_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSearchWord: String? = nil {
         didSet {
-            UserDefaults.standard.set(logSearchWord, forKey: "logSearchWord_DebugTool")
+            UserDefaults.standard.set(logSearchWord, forKey: "logSearchWord_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
     @objc public var networkSearchWord: String? = nil {
         didSet {
-            UserDefaults.standard.set(networkSearchWord, forKey: "networkSearchWord_DebugTool")
+            UserDefaults.standard.set(networkSearchWord, forKey: "networkSearchWord_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
@@ -121,16 +121,16 @@ import Foundation
     
     
     private override init() {
-        firstIn = UserDefaults.standard.string(forKey: "firstIn_DebugTool")
-        serverURL = UserDefaults.standard.string(forKey: "serverURL_DebugTool")
-        visible = UserDefaults.standard.bool(forKey: "visible_DebugTool")
-        showDebugToolBubbleAndWindow = UserDefaults.standard.bool(forKey: "showDebugToolBubbleAndWindow_DebugTool")
-        recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_DebugTool")
-        tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_DebugTool")
-        logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_DebugTool")
-        bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_DebugTool")
-        bubbleFrameY = UserDefaults.standard.float(forKey: "bubbleFrameY_DebugTool")
-        logSearchWord = UserDefaults.standard.string(forKey: "logSearchWord_DebugTool")
-        networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_DebugTool")
+        firstIn = UserDefaults.standard.string(forKey: "firstIn_DotzuX")
+        serverURL = UserDefaults.standard.string(forKey: "serverURL_DotzuX")
+        visible = UserDefaults.standard.bool(forKey: "visible_DotzuX")
+        showDotzuXBubbleAndWindow = UserDefaults.standard.bool(forKey: "showDotzuXBubbleAndWindow_DotzuX")
+        recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_DotzuX")
+        tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_DotzuX")
+        logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_DotzuX")
+        bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_DotzuX")
+        bubbleFrameY = UserDefaults.standard.float(forKey: "bubbleFrameY_DotzuX")
+        logSearchWord = UserDefaults.standard.string(forKey: "logSearchWord_DotzuX")
+        networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_DotzuX")
     }
 }

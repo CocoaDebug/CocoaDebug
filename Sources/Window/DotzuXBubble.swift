@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,18 +9,18 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-protocol DebugToolBubbleDelegate: class {
-    func didTapDebugToolBubble()
+protocol DotzuXBubbleDelegate: class {
+    func didTapDotzuXBubble()
 }
 
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
 
-class DebugToolBubble: UIView {
+class DotzuXBubble: UIView {
     
     var hasPerformedSetup: Bool = false//liman
     
-    weak var delegate: DebugToolBubbleDelegate?
+    weak var delegate: DotzuXBubbleDelegate?
     
     public let width: CGFloat = _width
     public let height: CGFloat = _height
@@ -52,8 +52,8 @@ class DebugToolBubble: UIView {
     
     static var originalPosition: CGPoint {
         
-        if DebugToolSettings.shared.bubbleFrameX != 0 && DebugToolSettings.shared.bubbleFrameY != 0 {
-            return CGPoint(x: CGFloat(DebugToolSettings.shared.bubbleFrameX), y: CGFloat(DebugToolSettings.shared.bubbleFrameY))
+        if DotzuXSettings.shared.bubbleFrameX != 0 && DotzuXSettings.shared.bubbleFrameY != 0 {
+            return CGPoint(x: CGFloat(DotzuXSettings.shared.bubbleFrameX), y: CGFloat(DotzuXSettings.shared.bubbleFrameY))
         }
         return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
     }
@@ -99,7 +99,7 @@ class DebugToolBubble: UIView {
             label.adjustsFontSizeToFitWidth = true
             //step 2
             if #available(iOS 8.2, *) {
-                label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.bold)
+                label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
             } else {
                 // Fallback on earlier versions
                 label.font = UIFont.boldSystemFont(ofSize: 17)
@@ -144,11 +144,11 @@ class DebugToolBubble: UIView {
             self.addSubview(_sublabel)
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DebugToolBubble.tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DotzuXBubble.tap))
         self.addGestureRecognizer(tapGesture)
         
         //liman
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DebugToolBubble.longPress(sender:)))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DotzuXBubble.longPress(sender:)))
         self.addGestureRecognizer(longPress)
         
         tapGesture.require(toFail: longPress)
@@ -174,12 +174,12 @@ class DebugToolBubble: UIView {
         initLayer()
         
         //添加手势
-        let selector = #selector(DebugToolBubble.panDidFire(panner:))
+        let selector = #selector(DotzuXBubble.panDidFire(panner:))
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
         //网络通知
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugTool"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DotzuX"), object: nil)
         
         //内存监控
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)
@@ -225,7 +225,7 @@ class DebugToolBubble: UIView {
     }
     
     @objc func tap() {
-        delegate?.didTapDebugToolBubble()
+        delegate?.didTapDotzuXBubble()
     }
     
     @objc func longPress(sender: UILongPressGestureRecognizer) {
@@ -296,8 +296,8 @@ class DebugToolBubble: UIView {
                 self?.transform = CGAffineTransform.identity
                 }, completion: { [weak self] _ in
                     guard let x = self?.frame.origin.x, let y = self?.frame.origin.y else {return}
-                    DebugToolSettings.shared.bubbleFrameX = Float(x)
-                    DebugToolSettings.shared.bubbleFrameY = Float(y)
+                    DotzuXSettings.shared.bubbleFrameX = Float(x)
+                    DotzuXSettings.shared.bubbleFrameY = Float(y)
             })
         }
     }

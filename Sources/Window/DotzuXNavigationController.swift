@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugToolNavigationController: UINavigationController {
+class DotzuXNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,9 @@ class DebugToolNavigationController: UINavigationController {
         navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                              NSAttributedStringKey.foregroundColor: Color.mainGreen]
 
-        let selector = #selector(DebugToolNavigationController.exit)
+        let selector = #selector(DotzuXNavigationController.exit)
         
-        let image = UIImage(named: "DebugTool_close", in: Bundle(for: DebugToolNavigationController.self), compatibleWith: nil)
+        let image = UIImage(named: "DotzuX_close", in: Bundle(for: DotzuXNavigationController.self), compatibleWith: nil)
         let leftItem = UIBarButtonItem(image: image,
                                          style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen

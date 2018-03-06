@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FileInfo.h"
+#import "MLBFileInfo.h"
 
 @interface SandboxViewController : UITableViewController
 
 @property (nonatomic, assign, getter=isHomeDirectory) BOOL homeDirectory;
-@property (nonatomic, strong) FileInfo *fileInfo;
+@property (nonatomic, strong) MLBFileInfo *fileInfo;
 
 @end

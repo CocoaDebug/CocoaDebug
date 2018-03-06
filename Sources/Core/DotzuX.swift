@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public class DebugTool : NSObject {
+@objc public class DotzuX : NSObject {
     
     ///if the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
     @objc public static var serverURL: String? = nil
@@ -21,7 +21,7 @@ import Foundation
     ///whether to allow the recording of crash logs in app. default value is `false`.
     @objc public static var recordCrash: Bool = false
     
-    //MARK: - DebugTool start
+    //MARK: - DotzuX start
     @objc public static func start() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash)
     }

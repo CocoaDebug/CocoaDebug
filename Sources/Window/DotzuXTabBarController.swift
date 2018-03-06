@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugToolTabBarController: UITabBarController {
+class DotzuXTabBarController: UITabBarController {
 
     //MARK: - init
     override func viewDidLoad() {
@@ -20,27 +20,27 @@ class DebugToolTabBarController: UITabBarController {
         
         setChildControllers()
         
-        self.selectedIndex = DebugToolSettings.shared.tabBarSelectItem 
+        self.selectedIndex = DotzuXSettings.shared.tabBarSelectItem 
         self.tabBar.tintColor = Color.mainGreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DebugToolSettings.shared.visible = true
+        DotzuXSettings.shared.visible = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DebugToolSettings.shared.visible = false
+        DotzuXSettings.shared.visible = false
     }
     
     //MARK: - private
     func setChildControllers() {
 
         //1.
-        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugTool.self)).instantiateViewController(withIdentifier: "Logs")
-        let network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugTool.self)).instantiateViewController(withIdentifier: "Network")
-        let app = UIStoryboard(name: "App", bundle: Bundle(for: DebugTool.self)).instantiateViewController(withIdentifier: "App")
+        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DotzuX.self)).instantiateViewController(withIdentifier: "Logs")
+        let network = UIStoryboard(name: "Network", bundle: Bundle(for: DotzuX.self)).instantiateViewController(withIdentifier: "Network")
+        let app = UIStoryboard(name: "App", bundle: Bundle(for: DotzuX.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
         Sandbox.shared.isSystemFilesHidden = false
@@ -50,10 +50,10 @@ class DebugToolTabBarController: UITabBarController {
         Sandbox.shared.isDirectoryDeletable = true
         guard let sandbox = Sandbox.shared.homeDirectoryNavigationController() else {return}
         sandbox.tabBarItem.title = "Sandbox"
-        sandbox.tabBarItem.image = UIImage.init(named: "DebugTool_sandbox", in: Bundle.init(for: DebugTool.self), compatibleWith: nil)
+        sandbox.tabBarItem.image = UIImage.init(named: "DotzuX_sandbox", in: Bundle.init(for: DotzuX.self), compatibleWith: nil)
         
         //3.
-        guard let tabBarControllers = DebugToolSettings.shared.tabBarControllers else {
+        guard let tabBarControllers = DotzuXSettings.shared.tabBarControllers else {
             self.viewControllers = [logs, network, app, sandbox]
             return
         }
@@ -73,10 +73,10 @@ class DebugToolTabBarController: UITabBarController {
             nav.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                                      NSAttributedStringKey.foregroundColor: Color.mainGreen]
             
-            let selector = #selector(DebugToolNavigationController.exit)
+            let selector = #selector(DotzuXNavigationController.exit)
             
             
-            let image = UIImage(named: "DebugTool_close", in: Bundle(for: DebugToolNavigationController.self), compatibleWith: nil)
+            let image = UIImage(named: "DotzuX_close", in: Bundle(for: DotzuXNavigationController.self), compatibleWith: nil)
             let leftItem = UIBarButtonItem(image: image,
                                              style: .done, target: self, action: selector)
             leftItem.tintColor = Color.mainGreen
@@ -101,7 +101,7 @@ class DebugToolTabBarController: UITabBarController {
         
         for index in 0...items.count-1 {
             if item == items[index] {
-                DebugToolSettings.shared.tabBarSelectItem = index
+                DotzuXSettings.shared.tabBarSelectItem = index
             }
         }
     }

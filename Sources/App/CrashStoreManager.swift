@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -39,21 +39,21 @@ class CrashStoreManager {
     
     func resetCrashs() {
         self.crashArray.removeAll()
-        UserDefaults.standard.removeObject(forKey: "crashArchive_DebugTool")
-        UserDefaults.standard.removeObject(forKey: "crashCount_DebugTool")
+        UserDefaults.standard.removeObject(forKey: "crashArchive_DotzuX")
+        UserDefaults.standard.removeObject(forKey: "crashCount_DotzuX")
         UserDefaults.standard.synchronize()
     }
     
     //MARK: - private
     private func archiveCrashs(_ crashs: [CrashModel]) {
         let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DebugTool")
-        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DebugTool")
+        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DotzuX")
+        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DotzuX")
         UserDefaults.standard.synchronize()
     }
     
     private func getCrashs() -> [CrashModel] {
-        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DebugTool") as? Data else {return []}
+        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DotzuX") as? Data else {return []}
         do {
             if #available(iOS 9.0, *) {
                 let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)

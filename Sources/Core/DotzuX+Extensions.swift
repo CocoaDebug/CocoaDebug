@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -192,50 +192,50 @@ extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
-            if DebugToolSettings.shared.visible == true {return}
-            DebugToolSettings.shared.showDebugToolBubbleAndWindow = !DebugToolSettings.shared.showDebugToolBubbleAndWindow
+            if DotzuXSettings.shared.visible == true {return}
+            DotzuXSettings.shared.showDotzuXBubbleAndWindow = !DotzuXSettings.shared.showDotzuXBubbleAndWindow
         }
     }
 }
 
-///DebugTool initialization
-extension DebugTool {
+///DotzuX initialization
+extension DotzuX {
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false)
     {
         if serverURL == nil {
-            DebugToolSettings.shared.serverURL = ""
+            DotzuXSettings.shared.serverURL = ""
         }else{
-            DebugToolSettings.shared.serverURL = serverURL
+            DotzuXSettings.shared.serverURL = serverURL
         }
         if tabBarControllers == nil {
-            DebugToolSettings.shared.tabBarControllers = []
+            DotzuXSettings.shared.tabBarControllers = []
         }else{
-            DebugToolSettings.shared.tabBarControllers = tabBarControllers
+            DotzuXSettings.shared.tabBarControllers = tabBarControllers
         }
         if onlyURLs == nil {
-            DebugToolSettings.shared.onlyURLs = []
+            DotzuXSettings.shared.onlyURLs = []
         }else{
-            DebugToolSettings.shared.onlyURLs = onlyURLs
+            DotzuXSettings.shared.onlyURLs = onlyURLs
         }
         if ignoredURLs == nil {
-            DebugToolSettings.shared.ignoredURLs = []
+            DotzuXSettings.shared.ignoredURLs = []
         }else{
-            DebugToolSettings.shared.ignoredURLs = ignoredURLs
+            DotzuXSettings.shared.ignoredURLs = ignoredURLs
         }
-        if DebugToolSettings.shared.firstIn == nil {//first launch
-            DebugToolSettings.shared.firstIn = ""
-            DebugToolSettings.shared.showDebugToolBubbleAndWindow = true
+        if DotzuXSettings.shared.firstIn == nil {//first launch
+            DotzuXSettings.shared.firstIn = ""
+            DotzuXSettings.shared.showDotzuXBubbleAndWindow = true
         }else{//not first launch
-            DebugToolSettings.shared.showDebugToolBubbleAndWindow = DebugToolSettings.shared.showDebugToolBubbleAndWindow
+            DotzuXSettings.shared.showDotzuXBubbleAndWindow = DotzuXSettings.shared.showDotzuXBubbleAndWindow
         }
-        if DebugToolSettings.shared.showDebugToolBubbleAndWindow == true {
+        if DotzuXSettings.shared.showDotzuXBubbleAndWindow == true {
             WindowHelper.shared.enable()
         }
         
-        DebugToolSettings.shared.visible = false
-        DebugToolSettings.shared.logSearchWord = nil
-        DebugToolSettings.shared.networkSearchWord = nil
-        DebugToolSettings.shared.recordCrash = recordCrash
+        DotzuXSettings.shared.visible = false
+        DotzuXSettings.shared.logSearchWord = nil
+        DotzuXSettings.shared.networkSearchWord = nil
+        DotzuXSettings.shared.recordCrash = recordCrash
         
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()

@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -16,7 +16,7 @@ class CrashDetailViewController: UITableViewController {
     var crash: CrashModel?
 
     static func instanceFromStoryBoard() -> CrashDetailViewController {
-        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DebugTool.self))
+        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DotzuX.self))
         return storyboard.instantiateViewController(withIdentifier: "CrashDetailViewController") as! CrashDetailViewController
     }
     

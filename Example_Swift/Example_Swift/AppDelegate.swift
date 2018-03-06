@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-//            DebugTool.serverURL = "google.com" //default nil
-//            DebugTool.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
-//            DebugTool.onlyURLs = ["ccc.com", "ddd.com"] //default nil
-//            DebugTool.tabBarControllers = [controller, controller2] //default nil
-//            DebugTool.recordCrash = true //default false
-            DebugTool.start()
+//            DotzuX.serverURL = "google.com" //default nil
+//            DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
+//            DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
+//            DotzuX.tabBarControllers = [controller, controller2] //default nil
+//            DotzuX.recordCrash = true //default false
+            DotzuX.start()
         #endif
         
         return true

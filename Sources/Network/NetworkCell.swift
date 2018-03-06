@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -26,20 +26,20 @@ class NetworkCell: UITableViewCell {
     var httpModel: HttpModel? {
         didSet {
             
-            guard let serverURL = DebugToolSettings.shared.serverURL else {return}
+            guard let serverURL = DotzuXSettings.shared.serverURL else {return}
             
             //域名
             requestUrlTextView.text = httpModel?.url.absoluteString
             if requestUrlTextView.text?.contains(serverURL) == true {
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.heavy)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
                 }
             }else{
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.systemFont(ofSize: 13)

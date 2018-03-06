@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -34,7 +34,7 @@ class JsonViewController: UITableViewController, UITextViewDelegate {
     var editedContent: String?
     
     static func instanceFromStoryBoard() -> JsonViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugTool.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DotzuX.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
     }
     

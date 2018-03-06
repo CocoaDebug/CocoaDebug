@@ -1,14 +1,14 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSData+DebugTool.h"
+#import "NSData+DotzuX.h"
 
-@implementation NSData (DebugTool)
+@implementation NSData (DotzuX)
 
 +(NSData*) dataWithInputStream:(NSInputStream*) stream {
     

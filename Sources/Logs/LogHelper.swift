@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -30,7 +30,7 @@ public class LogHelper: NSObject {
         LogStoreManager.shared.addLog(newLog)
         
         dispatch_main_async_safe {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugTool"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DotzuX"), object: nil, userInfo: nil)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -55,7 +55,7 @@ class LogViewController: UITableViewController, UISearchBarDelegate {
         
         self.cacheModels = self.models
         
-        self.searchLogic(DebugToolSettings.shared.logSearchWord ?? "")
+        self.searchLogic(DotzuXSettings.shared.logSearchWord ?? "")
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -99,17 +99,17 @@ class LogViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DebugTool"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DotzuX"), object: nil)
         
         //segmentedControl
-        selectedSegmentIndex = DebugToolSettings.shared.logSelectIndex 
+        selectedSegmentIndex = DotzuXSettings.shared.logSelectIndex 
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         reloadLogs(true)
         
         tableView.tableFooterView = UIView()
         searchBar.delegate = self
-        searchBar.text = DebugToolSettings.shared.logSearchWord
+        searchBar.text = DotzuXSettings.shared.logSearchWord
 
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
@@ -221,7 +221,7 @@ class LogViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        DebugToolSettings.shared.logSearchWord = searchText
+        DotzuXSettings.shared.logSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in
@@ -250,7 +250,7 @@ class LogViewController: UITableViewController, UISearchBarDelegate {
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        DebugToolSettings.shared.logSelectIndex = selectedSegmentIndex
+        DotzuXSettings.shared.logSelectIndex = selectedSegmentIndex
         
         reloadLogs()
     }

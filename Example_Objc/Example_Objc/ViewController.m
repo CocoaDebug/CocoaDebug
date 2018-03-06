@@ -34,7 +34,7 @@
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            RedLog(@"%@", error.localizedDescription);
+            NSLog(@"%@", error.localizedDescription);
         } else {
             NSLog(@"%@ %@", response, responseObject);
         }
@@ -51,7 +51,7 @@
     if (error) {
         RedLog(@"%@",error.localizedDescription);
     }else{
-        NSLog(@"%@",responseString);
+        RedLog(@"%@",responseString);
     }
     
     //3.NSURLSession
@@ -63,12 +63,13 @@
         if(httpResponse.statusCode == 200) {
             NSError *parseError = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            RedLog(@"%@",responseDictionary);
+            BlueLog(@"%@",responseDictionary);
         }else{
-            RedLog(error.localizedDescription);
+            BlueLog(error.localizedDescription);
         }
     }];
     [dataTask_ resume];
 }
 
 @end
+

@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -20,14 +20,13 @@
 @synthesize homeTitle = _homeTitle;
 
 + (Sandbox *)shared {
-    static id sharedInstance = nil;
-    
+    static Sandbox *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
+        _sharedInstance = [[Sandbox alloc] _init];
     });
     
-    return sharedInstance;
+    return _sharedInstance;
 }
 
 - (instancetype)_init {
@@ -70,7 +69,7 @@
     if (!_homeDirectoryNavigationController) {
         SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
         sandboxViewController.homeDirectory = YES;
-        sandboxViewController.fileInfo = [[FileInfo alloc] initWithFileURL:self.homeFileURL];
+        sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
         _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
     }
     

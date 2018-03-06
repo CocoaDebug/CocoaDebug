@@ -6,8 +6,7 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface HttpProtocol : NSURLProtocol
-
-@end
+#import "NSString+DotzuX.h"
+#import "UIColor+DotzuX.h"
+#import "NSData+DotzuX.h"
+#import "NSURLRequest+DotzuX.h"

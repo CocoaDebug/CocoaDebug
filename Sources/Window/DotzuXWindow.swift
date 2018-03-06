@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -12,7 +12,7 @@ protocol WindowDelegate: class {
     func isPointEvent(point: CGPoint) -> Bool
 }
 
-class DebugToolWindow: UIWindow {
+class DotzuXWindow: UIWindow {
     
     weak var delegate: WindowDelegate?
 

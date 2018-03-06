@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 #import "Sandbox.h"
 #import "NetworkHelper.h"
-#import "DebugTool+Categories.h"
+#import "DotzuX+Categories.h"
 
 
 

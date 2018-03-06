@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -7,7 +7,7 @@
 //
 
 #import "FilePreviewController.h"
-#import "FileInfo.h"
+#import "MLBFileInfo.h"
 #import <QuickLook/QuickLook.h>
 #import <WebKit/WebKit.h>
 #import "Sandbox.h"
@@ -79,7 +79,7 @@
         [self.view addSubview:self.wkWebView];
     } else {
         switch (self.fileInfo.type) {
-            case FileTypePList: {
+            case MLBFileTypePList: {
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;
@@ -110,7 +110,7 @@
         }
     } else {
         switch (self.fileInfo.type) {
-            case FileTypePList: {
+            case MLBFileTypePList: {
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];

@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class FileInfo;
+@class MLBFileInfo;
 
 @interface FilePreviewController : UIViewController
 
-@property (nonatomic, strong) FileInfo *fileInfo;
+@property (nonatomic, strong) MLBFileInfo *fileInfo;
 
 @end

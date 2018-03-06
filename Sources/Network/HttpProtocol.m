@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,7 +9,7 @@
 #import "HttpProtocol.h"
 #import "NetworkHelper.h"
 #import "HttpDatasource.h"
-#import "NSData+DebugTool.h"
+#import "NSData+DotzuX.h"
 #import "Swizzling.h"
 
 #define myProtocolKey   @"HttpProtocol"
@@ -152,7 +152,7 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
     if ([[HttpDatasource shared] addHttpRequset:model])
     {
         dispatch_main_async_safe(^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DebugTool" object:nil userInfo:@{@"statusCode":model.statusCode}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
         })
     }
 }

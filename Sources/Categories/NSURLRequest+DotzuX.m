@@ -1,15 +1,15 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSURLRequest+DebugTool.h"
+#import "NSURLRequest+DotzuX.h"
 #import <objc/runtime.h>
 
-@implementation NSURLRequest (DebugTool)
+@implementation NSURLRequest (DotzuX)
 
 - (NSString *)requestId {
     return objc_getAssociatedObject(self, @"requestId");

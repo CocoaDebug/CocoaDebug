@@ -1,5 +1,5 @@
 //
-//  DebugTool.swift
+//  DotzuX.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FileInfo.h"
 
 UIKIT_EXTERN NSString *const FileTableViewCellReuseIdentifier;
 
 @interface FileTableViewCell : UITableViewCell
-
-//liman
-@property (strong, nonatomic) FileInfo *fileInfo;
 
 @end
