@@ -1,4 +1,10 @@
 language: objective-c
-osx_image: xcode6.4
+before_install:
+    - brew update
+    - brew unlink xctool
+    - brew install xctool
+    - sudo mkdir -p /usr/local/bin
+    - sudo cp app/moarfonts /usr/local/bin
+    - sudo cp app/app/Fonts/* $HOME/Library/Fonts
+script: xctool -project Example_Swift/Example_Swift.xcodeproj -scheme Example_Swift -sdk iphonesimulator build test
 
-script: xcodebuild clean && xcodebuild build -sdk iphonesimulator10.1 -project Example_Swift/Example_Swift.xcodeproj -scheme Example_Swift CODE_SIGNING_REQUIRED=NO
