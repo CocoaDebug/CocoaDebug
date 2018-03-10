@@ -1,5 +1,4 @@
 language: objective-c
-osx_image: xcode9.2
-xcode_project: Example_Swift/Example_Swift.xcodeproj
-xcode_scheme: Example_Swift
-xcode_sdk: iphonesimulator11.2
+osx_image: xcode8.3
+
+script: xcodebuild clean && xcodebuild build -sdk iphonesimulator10.1 -project Example_Swift/Example_Swift.xcodeproj -scheme Example_Swift CODE_SIGNING_REQUIRED=NO
