@@ -42,17 +42,19 @@
     [dataTask resume];
     
     //2.NSURLConnection
-    NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
-    NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-    NSHTTPURLResponse *response =[[NSHTTPURLResponse alloc] init];
-    NSError *error = nil;
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
-    NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
-    if (error) {
-        RedLog(@"%@",error.localizedDescription);
-    }else{
-        RedLog(@"%@",responseString);
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
+        NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+        NSHTTPURLResponse *response =[[NSHTTPURLResponse alloc] init];
+        NSError *error = nil;
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
+        NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
+        if (error) {
+            RedLog(@"%@",error.localizedDescription);
+        }else{
+            RedLog(@"%@",responseString);
+        }
+    });
     
     //3.NSURLSession
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://httpbin.org/get"]];

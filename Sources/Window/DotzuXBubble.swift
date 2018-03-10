@@ -24,7 +24,7 @@ class DotzuXBubble: UIView {
     
     public let width: CGFloat = _width
     public let height: CGFloat = _height
-    private var timer: Timer?
+    private var timer: Timer? 
     
     
     private lazy var _label: UILabel? = {
@@ -154,6 +154,13 @@ class DotzuXBubble: UIView {
             tapGesture.require(toFail: longPress)
         } else {
             // Fallback on earlier versions
+            if #available(iOS 10.0, *) {
+                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DotzuXBubble.longPress2(sender:)))
+                self.addGestureRecognizer(longPress)
+                tapGesture.require(toFail: longPress)
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -247,6 +254,16 @@ class DotzuXBubble: UIView {
             let handlerCls = NSClassFromString("UIDebuggingInformationOverlayInvokeGestureHandler") as! NSObject.Type
             let handler = handlerCls.perform(NSSelectorFromString("mainHandler")).takeUnretainedValue()
             let _ = handler.perform(NSSelectorFromString("_handleActivationGesture:"), with: tapGesture)
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    @objc func longPress2(sender: UILongPressGestureRecognizer) {
+        if (sender.state == .began) {
+            let overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
+            _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
+            let overlay = overlayClass?.perform(NSSelectorFromString("overlay")).takeUnretainedValue() as? UIWindow
+            _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
         }
     }
     

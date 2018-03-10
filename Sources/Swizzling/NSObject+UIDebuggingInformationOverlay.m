@@ -25,10 +25,10 @@
 
 - (instancetype)initSwizzled
 {
-    if (self = [super init]) {
-        [self _setWindowControlsStatusBarOrientation:NO];
-    }
-    return self;
+  if (self = [super init]) {
+      [self _setWindowControlsStatusBarOrientation:NO];
+  }
+  return self;
 }
 
 @end
@@ -50,19 +50,21 @@
 
 + (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod
 {
-    Method originalMethod;
-    Method swizzledMethod;
-    
-    if (isClassMethod) {
-        originalMethod = class_getClassMethod(class, originalSelector);
-        swizzledMethod = class_getClassMethod([self class], swizzledSelector);
-    } else {
-        originalMethod = class_getInstanceMethod(class, originalSelector);
-        swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-    }
-    
-    method_exchangeImplementations(originalMethod, swizzledMethod);
+  Method originalMethod;
+  Method swizzledMethod;
+
+  if (isClassMethod) {
+    originalMethod = class_getClassMethod(class, originalSelector);
+    swizzledMethod = class_getClassMethod([self class], swizzledSelector);
+  } else {
+    originalMethod = class_getInstanceMethod(class, originalSelector);
+    swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+  }
+
+  method_exchangeImplementations(originalMethod, swizzledMethod);
 }
 
 @end
 #pragma clang diagnostic pop
+
+
