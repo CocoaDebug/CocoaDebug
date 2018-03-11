@@ -5,6 +5,8 @@
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 #import "SandboxViewController.h"
 #import "FilePreviewController.h"
@@ -559,3 +561,4 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 @end
+#pragma clang diagnostic pop

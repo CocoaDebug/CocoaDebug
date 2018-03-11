@@ -21,6 +21,11 @@ class AboutViewController: UITableViewController {
     //MARK: - target action
     @IBAction func tapUrl(_ sender: UITapGestureRecognizer) {
         guard let url = URL.init(string: "https://github.com/DotzuX/DotzuX") else {return}
-        UIApplication.shared.openURL(url)
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }
