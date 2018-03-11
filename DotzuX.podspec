@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.frameworks          = 'UIKit', 'Foundation'
   s.platform            = :ios, "8.0"
   s.requires_arc        = true
-  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.0.6' }
+  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.0.8' }
   s.swift_version       = '4.0'
-  s.version             = '0.0.6'
+  s.version             = '0.0.8'
 end
