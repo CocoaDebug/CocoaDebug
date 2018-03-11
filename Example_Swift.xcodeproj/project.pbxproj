@@ -293,16 +293,16 @@
 		EAF55B152055416F003E310F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EAF55B162055417C003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B172055417C003E310F /* HttpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AD20541ACB0071A231 /* HttpModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B182055417C003E310F /* HttpProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* HttpProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B182055417C003E310F /* HttpProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* HttpProtocol.h */; };
 		EAF55B192055417C003E310F /* HttpDatasource.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AF20541ACB0071A231 /* HttpDatasource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629B320541ACB0071A231 /* NetworkHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629BD20541ACB0071A231 /* MLBFileInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C220541ACB0071A231 /* FileTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C420541ACB0071A231 /* SandboxHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C520541ACB0071A231 /* FilePreviewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629BD20541ACB0071A231 /* MLBFileInfo.h */; };
+		EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C220541ACB0071A231 /* FileTableViewCell.h */; };
+		EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C420541ACB0071A231 /* SandboxHelper.h */; };
+		EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C520541ACB0071A231 /* FilePreviewController.h */; };
 		EAF55B1F2055417C003E310F /* Sandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C620541ACB0071A231 /* Sandbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; };
+		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; };
 		EAF55B222055417C003E310F /* MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D020541ACB0071A231 /* MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D820541ACB0071A231 /* NSString+DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B242055417C003E310F /* DotzuX+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D920541ACB0071A231 /* DotzuX+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1500,23 +1500,23 @@
 			files = (
 				EAF55ADA205540F0003E310F /* DotzuX.h in Headers */,
 				EAF55B162055417C003E310F /* DotzuX.h in Headers */,
+				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
+				EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */,
+				EAF55B242055417C003E310F /* DotzuX+Categories.h in Headers */,
+				EAF55B262055417C003E310F /* UIColor+DotzuX.h in Headers */,
 				EAF55B172055417C003E310F /* HttpModel.h in Headers */,
-				EAF55B182055417C003E310F /* HttpProtocol.h in Headers */,
 				EAF55B192055417C003E310F /* HttpDatasource.h in Headers */,
+				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
+				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
+				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
+				EAF55B182055417C003E310F /* HttpProtocol.h in Headers */,
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
-				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
-				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
-				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
-				EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */,
-				EAF55B242055417C003E310F /* DotzuX+Categories.h in Headers */,
-				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
-				EAF55B262055417C003E310F /* UIColor+DotzuX.h in Headers */,
-				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
+				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
