@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
 //            DotzuX.tabBarControllers = [controller, controller2] //default nil
 //            DotzuX.recordCrash = true //default false
-            DotzuX.start()
+            DotzuX.enable()
         #endif
         
         return true

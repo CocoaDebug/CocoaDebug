@@ -23,7 +23,7 @@
 //        Debugger.onlyURLs = @[@"ccc.com", @"ddd.com"]; //default nil
 //        Debugger.tabBarControllers = @[controller, controller2]; //default nil
 //        Debugger.recordCrash = YES; //default NO
-        [DotzuX start];
+        [DotzuX enable];
     #endif
     
     return YES;

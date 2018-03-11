@@ -22,7 +22,7 @@ import Foundation
     @objc public static var recordCrash: Bool = false
     
     //MARK: - DotzuX start
-    @objc public static func start() {
+    @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash)
     }
     
