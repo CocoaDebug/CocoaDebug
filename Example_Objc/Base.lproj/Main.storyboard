@@ -20,7 +20,24 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJn-kS-BG8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <string key="text">👉 shake to hide/show the black bubble. (support both device/simulator)
+
+👉 long press the black bubble to show UIDebuggingInformationOverlay. (Apple's private API, support iOS 10/11)</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QJn-kS-BG8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cd8-hW-D8x"/>
+                            <constraint firstItem="QJn-kS-BG8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TPY-9Q-QcH"/>
+                            <constraint firstItem="XRf-7j-iLS" firstAttribute="top" secondItem="QJn-kS-BG8" secondAttribute="bottom" id="ft6-aE-cPq"/>
+                            <constraint firstAttribute="trailing" secondItem="QJn-kS-BG8" secondAttribute="trailing" id="pva-tf-WrF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
