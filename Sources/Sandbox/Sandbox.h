@@ -19,7 +19,7 @@
 
 @interface Sandbox : NSObject
 
-@property (nonatomic, readonly, strong) Sandbox *shared;
+@property (class, nonatomic, readonly, strong) Sandbox *shared;
 
 @property (nonatomic, assign, getter=isSystemFilesHidden) BOOL systemFilesHidden; // Default is YES
 @property (nonatomic, copy) NSURL *homeFileURL; // Default is Home Directory
