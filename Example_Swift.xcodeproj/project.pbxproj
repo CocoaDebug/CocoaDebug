@@ -238,8 +238,6 @@
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
 		EAF55ADA205540F0003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF55AD8205540F0003E310F /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55ADD205540F0003E310F /* DotzuX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF55AD6205540F0003E310F /* DotzuX.framework */; };
-		EAF55ADE205540F0003E310F /* DotzuX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAF55AD6205540F0003E310F /* DotzuX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAF55AE320554164003E310F /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* HttpProtocol.m */; };
 		EAF55AE420554164003E310F /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
 		EAF55AE520554164003E310F /* HttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A920541ACB0071A231 /* HttpDatasource.m */; };
@@ -546,30 +544,6 @@
 		EAF58045204E73C3001CA56D /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58003204E73C2001CA56D /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EAF55ADB205540F0003E310F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA1659CB204D1B14001472C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAF55AD5205540F0003E310F;
-			remoteInfo = DotzuX;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		EAF55AE2205540F0003E310F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EAF55ADE205540F0003E310F /* DotzuX.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EA0628E320541ACB0071A231 /* DotzuXSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXSettings.swift; sourceTree = "<group>"; };
@@ -925,7 +899,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF55ADD205540F0003E310F /* DotzuX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1530,12 +1503,10 @@
 				EA1659CF204D1B14001472C1 /* Sources */,
 				EA1659D0204D1B14001472C1 /* Frameworks */,
 				EA1659D1204D1B14001472C1 /* Resources */,
-				EAF55AE2205540F0003E310F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EAF55ADC205540F0003E310F /* PBXTargetDependency */,
 			);
 			name = Example_Swift;
 			productName = Example_Swift;
@@ -2151,14 +2122,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		EAF55ADC205540F0003E310F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EAF55AD5205540F0003E310F /* DotzuX */;
-			targetProxy = EAF55ADB205540F0003E310F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		EA1659DA204D1B14001472C1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -2289,7 +2252,6 @@
 		EA1659E6204D1B14001472C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -2313,7 +2275,6 @@
 		EA1659E7204D1B14001472C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
