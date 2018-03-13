@@ -1,10 +1,8 @@
-osx_image: xcode7.3
+osx_image: xcode9.2
 language: objective-c
 xcode_project: Example_Swift.xcodeproj
 xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script: ./build.sh
-
-before_install: rvm use $RVM_RUBY_VERSION
-install: bundle install --without=documentation --path ../travis_bundle_dir
-after_success: slather
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
