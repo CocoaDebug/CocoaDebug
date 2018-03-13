@@ -64,7 +64,6 @@ github "DotzuX/DotzuX"
 	}
 	
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
-	    
 	    #if DEBUG
 	        swiftLog(file, function, line, message, color)
 	    #endif
