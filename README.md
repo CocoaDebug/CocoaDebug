@@ -42,7 +42,7 @@ github "DotzuX/DotzuX"
 	//
 	
     #if DEBUG
-        import DebugMan
+        import DotzuX
     #endif
 	
 ### Step 2.
