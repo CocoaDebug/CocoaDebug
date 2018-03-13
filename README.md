@@ -34,32 +34,32 @@ github "DotzuX/DotzuX"
 ```
 
 ## Usage
-
-### Step 1.
-
+		
 	//
 	//  AppDelegate.swift
 	//
 	
-    #if DEBUG
-        import DotzuX
-    #endif
+	#if DEBUG
+	    import DotzuX
+	#endif
 	
-### Step 2.
-
-	//
-	//  AppDelegate.swift
-	//
-	
-    #if DEBUG
-        DotzuX.enable()
-    #endif
-    
-### Step 3.
-
-	//
-	//  AppDelegate.swift
-	//
+	@UIApplicationMain
+	class AppDelegate: UIResponder, UIApplicationDelegate {
+	    var window: UIWindow?
+	    
+	    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	        #if DEBUG
+	            //DotzuX.serverURL = "google.com" //default nil
+	            //DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
+	            //DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
+	            //DotzuX.tabBarControllers = [controller, controller2] //default nil
+	            //DotzuX.recordCrash = true //default false
+	            DotzuX.enable()
+	        #endif
+	        
+	        return true
+	    }
+	}
 	
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
 	    #if DEBUG
@@ -67,6 +67,7 @@ github "DotzuX/DotzuX"
 	    #endif
 	}
 	
+
 >For more details, please check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
 	
 ## License
