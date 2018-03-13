@@ -5,4 +5,4 @@ xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script: ./build.sh
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t ab870023-b85c-4452-b554-b6a173f76f90
