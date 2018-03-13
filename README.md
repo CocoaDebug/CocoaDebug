@@ -34,7 +34,7 @@ github "DotzuX/DotzuX"
 ```
 
 ## Usage
-		
+	
 	//
 	//  AppDelegate.swift
 	//
@@ -48,12 +48,14 @@ github "DotzuX/DotzuX"
 	    var window: UIWindow?
 	    
 	    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	        
 	        #if DEBUG
 	            //DotzuX.serverURL = "google.com" //default nil
 	            //DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
 	            //DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
 	            //DotzuX.tabBarControllers = [controller, controller2] //default nil
 	            //DotzuX.recordCrash = true //default false
+	            
 	            DotzuX.enable()
 	        #endif
 	        
@@ -62,6 +64,7 @@ github "DotzuX/DotzuX"
 	}
 	
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+	    
 	    #if DEBUG
 	        swiftLog(file, function, line, message, color)
 	    #endif
