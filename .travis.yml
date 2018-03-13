@@ -4,5 +4,7 @@ xcode_project: Example_Swift.xcodeproj
 xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script: ./build.sh
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -t ab870023-b85c-4452-b554-b6a173f76f90
+
+before_install: rvm use $RVM_RUBY_VERSION
+install: bundle install --without=documentation --path ../travis_bundle_dir
+after_success: slather
