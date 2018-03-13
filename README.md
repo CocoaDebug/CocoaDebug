@@ -42,16 +42,8 @@ github "DotzuX/DotzuX"
 	//
 	
     #if DEBUG
-        import DebugMan //CocoaPods
+        import DebugMan
     #endif
-    
-    //
-	//  YourTargetName-Bridging-Header.h
-	//
-	
-	#if DEBUG
-	    #import "DotzuX.h" //Carthage
-	#endif
 	
 ### Step 2.
 
@@ -69,12 +61,13 @@ github "DotzuX/DotzuX"
 	//  AppDelegate.swift
 	//
 	
-	//over write print()
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
 	    #if DEBUG
 	        swiftLog(file, function, line, message, color)
 	    #endif
 	}
+	
+>For more details, please check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
 	
 ## License
 
