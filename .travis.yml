@@ -5,9 +5,9 @@ xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script: ./build.sh
 
-before_install: 
+before_install:
+  - gem i slather --no-ri --no-rdoc
   - brew update
-  - brew install yarn
-  - rvm use $RVM_RUBY_VERSION
-install: bundle install --without=documentation --path ../travis_bundle_dir
+  - brew uninstall xctool; brew install xctool --HEAD;
+install:
 after_success: slather
