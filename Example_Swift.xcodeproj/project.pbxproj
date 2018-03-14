@@ -237,6 +237,7 @@
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
+		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EAF55ADA205540F0003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF55AD8205540F0003E310F /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55AE320554164003E310F /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* HttpProtocol.m */; };
 		EAF55AE420554164003E310F /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
@@ -545,6 +546,16 @@
 		EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EA6B277B20596883004D8E05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA1659CB204D1B14001472C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA1659D2204D1B14001472C1;
+			remoteInfo = Example_Swift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		EA0628E320541ACB0071A231 /* DotzuXSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotzuX.h; sourceTree = "<group>"; };
@@ -797,6 +808,9 @@
 		EA1659E0204D1B14001472C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA1659E2204D1B14001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6B277820596883004D8E05 /* Example_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_SwiftTests.swift; sourceTree = "<group>"; };
+		EA6B277A20596883004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF55AD6205540F0003E310F /* DotzuX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotzuX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF55AD8205540F0003E310F /* DotzuX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DotzuX.h; sourceTree = "<group>"; };
 		EAF55AD9205540F0003E310F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -896,6 +910,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		EA1659D0204D1B14001472C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6B277320596883004D8E05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1256,6 +1277,7 @@
 				EA0628E120541ACB0071A231 /* Sources */,
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
 				EAF55AD7205540F0003E310F /* DotzuX */,
+				EA6B277720596883004D8E05 /* Example_SwiftTests */,
 				EA1659D4204D1B14001472C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1265,6 +1287,7 @@
 			children = (
 				EA1659D3204D1B14001472C1 /* Example_Swift.app */,
 				EAF55AD6205540F0003E310F /* DotzuX.framework */,
+				EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1282,6 +1305,15 @@
 				EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */,
 			);
 			path = Example_Swift;
+			sourceTree = "<group>";
+		};
+		EA6B277720596883004D8E05 /* Example_SwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA6B277820596883004D8E05 /* Example_SwiftTests.swift */,
+				EA6B277A20596883004D8E05 /* Info.plist */,
+			);
+			path = Example_SwiftTests;
 			sourceTree = "<group>";
 		};
 		EAF55AD7205540F0003E310F /* DotzuX */ = {
@@ -1513,6 +1545,24 @@
 			productReference = EA1659D3204D1B14001472C1 /* Example_Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EA6B277520596883004D8E05 /* Example_SwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA6B277F20596883004D8E05 /* Build configuration list for PBXNativeTarget "Example_SwiftTests" */;
+			buildPhases = (
+				EA6B277220596883004D8E05 /* Sources */,
+				EA6B277320596883004D8E05 /* Frameworks */,
+				EA6B277420596883004D8E05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA6B277C20596883004D8E05 /* PBXTargetDependency */,
+			);
+			name = Example_SwiftTests;
+			productName = Example_SwiftTests;
+			productReference = EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EAF55AD5205540F0003E310F /* DotzuX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAF55AE1205540F0003E310F /* Build configuration list for PBXNativeTarget "DotzuX" */;
@@ -1546,6 +1596,11 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 					};
+					EA6B277520596883004D8E05 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EA1659D2204D1B14001472C1;
+					};
 					EAF55AD5205540F0003E310F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
@@ -1567,6 +1622,7 @@
 			targets = (
 				EA1659D2204D1B14001472C1 /* Example_Swift */,
 				EAF55AD5205540F0003E310F /* DotzuX */,
+				EA6B277520596883004D8E05 /* Example_SwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1753,6 +1809,13 @@
 				EA062A8320541ACB0071A231 /* icon_file_type_xls@2x.png in Resources */,
 				EA062A2520541ACB0071A231 /* icon_file_type_bin@2x.png in Resources */,
 				EA062A7320541ACB0071A231 /* icon_file_type_default@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6B277420596883004D8E05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2062,6 +2125,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA6B277220596883004D8E05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAF55AD1205540F0003E310F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2121,6 +2192,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA6B277C20596883004D8E05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA1659D2204D1B14001472C1 /* Example_Swift */;
+			targetProxy = EA6B277B20596883004D8E05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EA1659DA204D1B14001472C1 /* Main.storyboard */ = {
@@ -2294,6 +2373,36 @@
 			};
 			name = Release;
 		};
+		EA6B277D20596883004D8E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Example_SwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liman.Example-SwiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Swift.app/Example_Swift";
+			};
+			name = Debug;
+		};
+		EA6B277E20596883004D8E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Example_SwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liman.Example-SwiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Swift.app/Example_Swift";
+			};
+			name = Release;
+		};
 		EAF55ADF205540F0003E310F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2365,6 +2474,15 @@
 			buildConfigurations = (
 				EA1659E6204D1B14001472C1 /* Debug */,
 				EA1659E7204D1B14001472C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA6B277F20596883004D8E05 /* Build configuration list for PBXNativeTarget "Example_SwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA6B277D20596883004D8E05 /* Debug */,
+				EA6B277E20596883004D8E05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
