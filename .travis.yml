@@ -3,12 +3,7 @@ language: objective-c
 xcode_project: Example_Swift.xcodeproj
 xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
-script: ./build.sh
-
-before_install:
-  - gem i slather --no-ri --no-rdoc
-  - brew update
-  - brew uninstall xctool; brew install xctool --HEAD;
+script:
+  - xcodebuild -project Example_Swift.xcodeproj -scheme Example_Swift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.2' build test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - slather
