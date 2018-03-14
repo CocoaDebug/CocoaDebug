@@ -23,7 +23,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'YourTargetName' do
-   pod 'DotzuX', :configurations => ['Debug'] #Swift4.0
+    pod 'DotzuX', :configurations => ['Debug'] #Swift4.0
 end
 ```
 > pod 'DotzuX', :git => 'https://github.com/DotzuX/DotzuX.git', :branch => 'swift3.2', :configurations => ['Debug'] #Swift3.2
@@ -38,42 +38,42 @@ github "DotzuX/DotzuX"
 
 ### Swift
 	
-	//Step 1.
-	#if DEBUG
-	    import DotzuX
-	#endif
+    //Step 1.
+    #if DEBUG
+        import DotzuX
+    #endif
 	
-	//Step 2.
-	#if DEBUG
-	    DotzuX.enable()
-	#endif
+    //Step 2.
+    #if DEBUG
+        DotzuX.enable()
+    #endif
 
-	//Step 3.
-	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
-	    #if DEBUG
-	        swiftLog(file, function, line, message, color)
-	    #endif
+    //Step 3.
+    public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+        #if DEBUG
+            swiftLog(file, function, line, message, color)
+        #endif
 	}
 	
 
 ### Objective-C
 	
-	//Step 1.
-	#ifdef DEBUG
-	    @import DotzuX;
-	#endif
+    //Step 1.
+    #ifdef DEBUG
+        @import DotzuX;
+    #endif
 	
-	//Step 2.
-	#ifdef DEBUG
-	    [DotzuX enable];
-	#endif
+    //Step 2.
+    #ifdef DEBUG
+        [DotzuX enable];
+    #endif
 	
-	//Step 3.
-	#ifdef DEBUG
-		#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
-	#else
-		#define NSLog(fmt, ...) nil
-	#endif
+    //Step 3.
+    #ifdef DEBUG
+        #define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+    #else
+        #define NSLog(fmt, ...) nil
+    #endif
 
 
 >For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
