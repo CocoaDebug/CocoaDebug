@@ -6,8 +6,7 @@ xcode_sdk: iphonesimulator
 script: ./build.sh
 
 before_install:
-  - gem i slather --no-ri --no-rdoc
   - brew update
   - brew uninstall xctool; brew install xctool --HEAD;
-install:
-after_success: slather
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
