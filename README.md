@@ -34,36 +34,21 @@ end
 github "DotzuX/DotzuX"
 ```
 
-## Usage
+## Usage (only three steps)
+
+### Swift
 	
-	//
-	//  AppDelegate.swift
-	//
-	
+	//Step 1.
 	#if DEBUG
 	    import DotzuX
 	#endif
 	
-	@UIApplicationMain
-	class AppDelegate: UIResponder, UIApplicationDelegate {
-	    var window: UIWindow?
-	    
-	    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	        
-	        #if DEBUG
-	            //DotzuX.serverURL = "google.com" //default nil
-	            //DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
-	            //DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
-	            //DotzuX.tabBarControllers = [controller, controller2] //default nil
-	            //DotzuX.recordCrash = true //default false
-	            
-	            DotzuX.enable()
-	        #endif
-	        
-	        return true
-	    }
-	}
-	
+	//Step 2.
+	#if DEBUG
+	    DotzuX.enable()
+	#endif
+
+	//Step 3.
 	public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
 	    #if DEBUG
 	        swiftLog(file, function, line, message, color)
@@ -71,7 +56,27 @@ github "DotzuX/DotzuX"
 	}
 	
 
->For more details, please check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
+### Objective-C
+	
+	//Step 1.
+	#ifdef DEBUG
+	    @import DotzuX;
+	#endif
+	
+	//Step 2.
+	#ifdef DEBUG
+	    [DotzuX enable];
+	#endif
+	
+	//Step 3.
+	#ifdef DEBUG
+	#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+	#else
+	#define NSLog(fmt, ...) nil
+	#endif
+
+
+>For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
 	
 ## License
 
