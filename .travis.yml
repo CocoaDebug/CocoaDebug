@@ -1,8 +1,14 @@
-os: osx
-language: objective-c
-sudo: required
-dist: trusty
 osx_image: xcode9.2
-script:
-  #- eval "$(curl -sL https://raw.githubusercontent.com/DotzuX/Swift-CI/master/ci)"
-  - eval "$(curl -sL https://raw.githubusercontent.com/DotzuX/Swift-CI/master/codecov)"
+language: objective-c
+xcode_project: Example_Swift.xcodeproj
+xcode_scheme: Example_Swift
+xcode_sdk: iphonesimulator
+script: ./build.sh
+
+before_install:
+  - gem i slather --no-ri --no-rdoc
+  - brew update
+  - brew uninstall xctool; brew install xctool --HEAD;
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - slather
