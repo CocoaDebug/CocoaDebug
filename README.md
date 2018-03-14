@@ -70,9 +70,9 @@ github "DotzuX/DotzuX"
 	
 	//Step 3.
 	#ifdef DEBUG
-	#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+		#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
 	#else
-	#define NSLog(fmt, ...) nil
+		#define NSLog(fmt, ...) nil
 	#endif
 
 
