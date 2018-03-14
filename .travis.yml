@@ -4,6 +4,6 @@ xcode_project: Example_Swift.xcodeproj
 xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script:
-  - xcodebuild -project Example_Swift.xcodeproj -scheme Example_Swift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.2' build test
+  - xcodebuild -project Example_Swift.xcodeproj -scheme Example_Swift -sdk iphonesimulator build
 after_success:
   - bash <(curl -s https://codecov.io/bash)
