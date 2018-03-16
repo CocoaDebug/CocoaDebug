@@ -1,3 +1,7 @@
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/gif/logo.png"/>
+</p>
+
 # DotzuX
 
 [![Build Status](https://travis-ci.org/DotzuX/DotzuX.svg?branch=master)](https://travis-ci.org/DotzuX/DotzuX)
