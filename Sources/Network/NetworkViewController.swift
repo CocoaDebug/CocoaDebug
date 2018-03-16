@@ -19,9 +19,9 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle { //liman
+//        return .lightContent
+//    }
     
     //MARK: - tool
     //搜索逻辑
@@ -97,8 +97,8 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        setNeedsStatusBarAppearanceUpdate()
+//        UIApplication.shared.statusBarStyle = .lightContent //liman
+//        setNeedsStatusBarAppearanceUpdate()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DotzuX"), object: nil)
