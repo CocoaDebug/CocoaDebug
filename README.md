@@ -89,4 +89,4 @@ github "DotzuX/DotzuX"
 
 ## License
 
-DotzuX is released under the [MIT license]((https://github.com/DotzuX/DotzuX/blob/master/LICENSE)).
+DotzuX is released under the [MIT license](https://github.com/DotzuX/DotzuX/blob/master/LICENSE).
