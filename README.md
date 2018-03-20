@@ -11,6 +11,7 @@
 ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg)
 ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-orange.svg)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
+[![codecov](https://codecov.io/gh/DotzuX/DotzuX/branch/master/graph/badge.svg)](https://codecov.io/gh/DotzuX/DotzuX)
 
 Next Generation of [Dotzu](https://github.com/remirobert/Dotzu)
 
@@ -81,7 +82,11 @@ github "DotzuX/DotzuX"
 
 
 >For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
-	
+
+## TODO
+
+- Unit Testing
+
 ## License
 
-DotzuX is released under the MIT license. [See LICENSE](https://github.com/DotzuX/DotzuX/blob/master/LICENSE) for details.
+DotzuX is released under the [MIT license]((https://github.com/DotzuX/DotzuX/blob/master/LICENSE)).
