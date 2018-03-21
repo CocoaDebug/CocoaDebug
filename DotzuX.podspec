@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name                = "DotzuX"
   s.summary             = "DotzuX"
   s.description         = <<-DESC
-                              Next Generation of Dotzu
+                              Next Generation of Dotzu (iOS Debugging Tool)
                              DESC
   s.homepage            = "https://github.com/DotzuX/DotzuX"
   s.author              = { "liman" => "723661989@163.com" }
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.frameworks          = 'UIKit', 'Foundation'
   s.platform            = :ios, "8.0"
   s.requires_arc        = true
-  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.1.0' }
+  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.1.1' }
   s.swift_version       = '4.0'
-  s.version             = '0.1.0'
+  s.version             = '0.1.1'
 end

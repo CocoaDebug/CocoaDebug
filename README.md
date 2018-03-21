@@ -13,7 +13,7 @@
 [![codecov](https://codecov.io/gh/DotzuX/DotzuX/branch/master/graph/badge.svg)](https://codecov.io/gh/DotzuX/DotzuX)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
 
-Next Generation of [Dotzu](https://github.com/remirobert/Dotzu)
+Next Generation of [Dotzu](https://github.com/remirobert/Dotzu) (iOS Debugging Tool)
 
 ## Introduction
 
