@@ -121,7 +121,7 @@
                             self.textView.text = @" unable to preview";
                             self.textView.backgroundColor = [UIColor blackColor];
                             self.textView.textColor = [UIColor whiteColor];
-                            self.textView.font = [UIFont boldSystemFontOfSize:17];
+                            self.textView.font = [UIFont systemFontOfSize:17];
                         });
                     }else{
                         NSError *error;
@@ -133,7 +133,7 @@
                                 self.textView.text = @" unable to preview";
                                 self.textView.backgroundColor = [UIColor blackColor];
                                 self.textView.textColor = [UIColor whiteColor];
-                                self.textView.font = [UIFont boldSystemFontOfSize:17];
+                                self.textView.font = [UIFont systemFontOfSize:17];
                             }else{
                                 self.textView.text = content;
                                 self.textView.backgroundColor = [UIColor whiteColor];
@@ -150,7 +150,7 @@
                 self.textView.text = @" unable to preview";
                 self.textView.backgroundColor = [UIColor blackColor];
                 self.textView.textColor = [UIColor whiteColor];
-                self.textView.font = [UIFont boldSystemFontOfSize:17];
+                self.textView.font = [UIFont systemFontOfSize:17];
                 break;
         }
     }

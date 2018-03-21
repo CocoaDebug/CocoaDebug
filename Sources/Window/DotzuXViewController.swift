@@ -28,6 +28,7 @@ class DotzuXViewController: UIViewController, DotzuXBubbleDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         WindowHelper.shared.displayedList = false
     }
 

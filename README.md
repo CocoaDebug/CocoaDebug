@@ -28,10 +28,9 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'YourTargetName' do
-    pod 'DotzuX', :configurations => ['Debug'] #Swift4.0
+    pod 'DotzuX', :configurations => ['Debug']
 end
 ```
-> pod 'DotzuX', :git => 'https://github.com/DotzuX/DotzuX.git', :branch => 'swift3.2', :configurations => ['Debug'] #Swift3.2
 
 ### Carthage
 

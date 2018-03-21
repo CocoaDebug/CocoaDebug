@@ -187,6 +187,22 @@ extension UIAlertController {
     }
 }
 
+//https://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
+///tableView
+extension UITableView {
+    func tableViewScrollToBottom(animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            let numberOfSections = self.numberOfSections
+            let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
+            
+            if numberOfRows > 0 {
+                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                self.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+    }
+}
+
 ///shake
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
@@ -233,7 +249,8 @@ extension DotzuX {
         }
         
         DotzuXSettings.shared.visible = false
-        DotzuXSettings.shared.logSearchWord = nil
+        DotzuXSettings.shared.logSearchWordDefault = nil
+        DotzuXSettings.shared.logSearchWordColor = nil
         DotzuXSettings.shared.networkSearchWord = nil
         DotzuXSettings.shared.recordCrash = recordCrash
         

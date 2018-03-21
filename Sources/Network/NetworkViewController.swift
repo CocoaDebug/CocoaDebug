@@ -10,11 +10,11 @@ import UIKit
 
 class NetworkViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    var reachEnd: Bool = true
+    
     var models: Array<HttpModel>?
     var cacheModels: Array<HttpModel>?
     var searchModels: Array<HttpModel>?
-    
-    var foo: Bool = false
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -46,7 +46,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - private
-    func reloadHttp(_ isFirstIn: Bool = false) {
+    func reloadHttp(needScrollToEnd: Bool = false) {
         
         self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
@@ -56,12 +56,13 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
             
-            if isFirstIn == false {return}
+            if needScrollToEnd == false {return}
             
             //table下滑到底部
             if let count = self?.models?.count {
                 if count > 0 {
-                    self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
+                    self?.tableView.tableViewScrollToBottom(animated: false)
+                    //self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
                      //滑动不到最底部, 弃用
@@ -76,24 +77,6 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - init
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if foo == true {return}
-        foo = true
-        
-        
-        guard let models = self.models else {return}
-        let count = models.count
-        
-        if count > 0 {
-            //否则第一次进入滑动不到底部
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,7 +96,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar.leftViewMode = UITextFieldViewMode.never
         
-        reloadHttp(true)
+        reloadHttp(needScrollToEnd: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -259,6 +242,13 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         searchBar.resignFirstResponder()
+        
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+            //you reached end of the table
+            reachEnd = true
+        }else{
+            reachEnd = false
+        }
     }
     
     //MARK: - UISearchBarDelegate
@@ -282,7 +272,9 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         HttpDatasource.shared().reset()
         models = []
         cacheModels = []
+        searchBar.text = nil
         searchBar.resignFirstResponder()
+        DotzuXSettings.shared.networkSearchWord = nil
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -291,7 +283,8 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: - notification
     @objc func reloadHttp_notification(_ notification: Notification) {
-        reloadHttp()
+        
+        reloadHttp(needScrollToEnd: reachEnd)
     }
 }
 

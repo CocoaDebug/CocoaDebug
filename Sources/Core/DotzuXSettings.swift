@@ -104,9 +104,15 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var logSearchWord: String? = nil {
+    @objc public var logSearchWordDefault: String? = nil {
         didSet {
-            UserDefaults.standard.set(logSearchWord, forKey: "logSearchWord_DotzuX")
+            UserDefaults.standard.set(logSearchWordDefault, forKey: "logSearchWordDefault_DotzuX")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    @objc public var logSearchWordColor: String? = nil {
+        didSet {
+            UserDefaults.standard.set(logSearchWordColor, forKey: "logSearchWordColor_DotzuX")
             UserDefaults.standard.synchronize()
         }
     }
@@ -130,7 +136,8 @@ import Foundation
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_DotzuX")
         bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_DotzuX")
         bubbleFrameY = UserDefaults.standard.float(forKey: "bubbleFrameY_DotzuX")
-        logSearchWord = UserDefaults.standard.string(forKey: "logSearchWord_DotzuX")
+        logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_DotzuX")
+        logSearchWordColor = UserDefaults.standard.string(forKey: "logSearchWordColor_DotzuX")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_DotzuX")
     }
 }
