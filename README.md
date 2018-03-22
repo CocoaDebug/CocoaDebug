@@ -38,7 +38,7 @@ end
 github "DotzuX/DotzuX"
 ```
 
->WARNING: Never ship a product which has been linked with the DotzuX.framework. This [Integration Guide](file:///Applications/Reveal.app/Contents/SharedSupport/Documentation/Integrating%20Reveal%20Linking.html) outline a way to use build configurations to isolate linking the framework to Debug builds.
+>WARNING: Never ship a product which has been linked with the DotzuX.framework. This [Integration Guide](http://support.revealapp.com/kb/getting-started/integrating-reveal-via-linking) outline a way to use build configurations to isolate linking the framework to Debug builds.
 
 ## Usage (only three steps)
 
