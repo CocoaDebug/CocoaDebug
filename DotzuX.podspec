@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.public_header_files = "Sources/**/*.h"
   s.resources           = "Sources/**/*.{png,xib,storyboard}"
   s.frameworks          = 'UIKit', 'Foundation'
-  s.platform            = :ios, "8.0"
   s.requires_arc        = true
-  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.1.1' }
   s.swift_version       = '4.0'
-  s.version             = '0.1.1'
+  s.platform            = :ios, "8.0"
+  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.1.0.beta.1' }
+  s.version             = '0.1.0.beta.1'
 end
