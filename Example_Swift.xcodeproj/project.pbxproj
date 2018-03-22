@@ -238,7 +238,8 @@
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
-		EAF55ADA205540F0003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EAF55AD8205540F0003E310F /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAE674242064085300282B31 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
+		EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
 		EAF55AE320554164003E310F /* HttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* HttpProtocol.m */; };
 		EAF55AE420554164003E310F /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
 		EAF55AE520554164003E310F /* HttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A920541ACB0071A231 /* HttpDatasource.m */; };
@@ -811,6 +812,7 @@
 		EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6B277820596883004D8E05 /* Example_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_SwiftTests.swift; sourceTree = "<group>"; };
 		EA6B277A20596883004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAE674232064085200282B31 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		EAF55AD6205540F0003E310F /* DotzuX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotzuX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF55AD8205540F0003E310F /* DotzuX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DotzuX.h; sourceTree = "<group>"; };
 		EAF55AD9205540F0003E310F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1319,6 +1321,7 @@
 		EAF55AD7205540F0003E310F /* DotzuX */ = {
 			isa = PBXGroup;
 			children = (
+				EAE674232064085200282B31 /* copy_and_codesign.sh */,
 				EAF55AD8205540F0003E310F /* DotzuX.h */,
 				EAF55AD9205540F0003E310F /* Info.plist */,
 			);
@@ -1503,7 +1506,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF55ADA205540F0003E310F /* DotzuX.h in Headers */,
 				EAF55B162055417C003E310F /* DotzuX.h in Headers */,
 				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
 				EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */,
@@ -1515,6 +1517,7 @@
 				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
 				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
+				EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
 				EAF55B182055417C003E310F /* HttpProtocol.h in Headers */,
@@ -1962,6 +1965,7 @@
 				EAF55BAB2055435E003E310F /* icon_file_type_fla@2x.png in Resources */,
 				EAF55BAC2055435E003E310F /* icon_file_type_md.png in Resources */,
 				EAF55BAD2055435E003E310F /* icon_file_type_wav.png in Resources */,
+				EAE674242064085300282B31 /* copy_and_codesign.sh in Resources */,
 				EAF55BAE2055435E003E310F /* icon_file_type_zip.png in Resources */,
 				EAF55BAF2055435E003E310F /* icon_file_type_doc.png in Resources */,
 				EAF55BB02055435E003E310F /* icon_file_type_gif@3x.png in Resources */,
