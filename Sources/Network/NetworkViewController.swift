@@ -61,7 +61,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             //table下滑到底部
             if let count = self?.models?.count {
                 if count > 0 {
-                    self?.tableView.tableViewScrollToBottom(animated: false)
+                    self?.tableView.tableViewScrollToBottom(animated: true)
                     //self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*

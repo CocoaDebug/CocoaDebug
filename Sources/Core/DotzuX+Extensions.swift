@@ -197,7 +197,7 @@ extension UITableView {
             
             if numberOfRows > 0 {
                 let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
-                self.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
             }
         }
     }

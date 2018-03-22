@@ -103,7 +103,7 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
                 //table下滑到底部
                 guard let count = self?.defaultModels.count else {return}
                 if count > 0 {
-                    self?.defaultTableView.tableViewScrollToBottom(animated: false)
+                    self?.defaultTableView.tableViewScrollToBottom(animated: true)
                     //self?.defaultTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
@@ -137,7 +137,7 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
                 //table下滑到底部
                 guard let count = self?.colorModels.count else {return}
                 if count > 0 {
-                    self?.colorTableView.tableViewScrollToBottom(animated: false)
+                    self?.colorTableView.tableViewScrollToBottom(animated: true)
                     //self?.colorTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
