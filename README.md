@@ -1,5 +1,5 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/gif/logo@2x.png"/>
+  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/logo@2x.png"/>
 </p>
 
 # DotzuX
@@ -17,7 +17,7 @@ Next Generation of [Dotzu](https://github.com/remirobert/Dotzu) (iOS Debugging T
 
 ## Introduction
 
-![example](https://github.com/DotzuX/DotzuX/blob/master/gif/example.gif)
+![example](https://github.com/DotzuX/DotzuX/blob/master/pic/example.gif)
 
 ## Installation
 
