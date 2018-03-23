@@ -13,6 +13,9 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
     var reachEndDefault: Bool = true
     var reachEndColor: Bool = true
     
+    var firstInDefault: Bool = true
+    var firstInColor: Bool = true
+    
     var selectedSegmentIndex: Int = 0
     var selectedSegment_0: Bool = false
     var selectedSegment_1: Bool = false
@@ -84,6 +87,13 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         
         if selectedSegmentIndex == 0
         {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+                if self?.defaultSearchBar.isHidden == true {
+                    self?.defaultSearchBar.isHidden = false
+                }
+            }
+            
+            
             defaultTableView.isHidden = false
             colorTableView.isHidden = true
             
@@ -103,7 +113,10 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
                 //table下滑到底部
                 guard let count = self?.defaultModels.count else {return}
                 if count > 0 {
-                    self?.defaultTableView.tableViewScrollToBottom(animated: true)
+                    guard let firstInDefault = self?.firstInDefault else {return}
+                    self?.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
+                    self?.firstInDefault = false
+                    
                     //self?.defaultTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
@@ -118,6 +131,13 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         }
         else
         {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+                if self?.colorSearchBar.isHidden == true {
+                    self?.colorSearchBar.isHidden = false
+                }
+            }
+            
+            
             defaultTableView.isHidden = true
             colorTableView.isHidden = false
             
@@ -137,7 +157,10 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
                 //table下滑到底部
                 guard let count = self?.colorModels.count else {return}
                 if count > 0 {
-                    self?.colorTableView.tableViewScrollToBottom(animated: true)
+                    guard let firstInColor = self?.firstInColor else {return}
+                    self?.colorTableView.tableViewScrollToBottom(animated: !firstInColor)
+                    self?.firstInColor = false
+                    
                     //self?.colorTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
@@ -163,12 +186,14 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         defaultTableView.dataSource = self
         defaultSearchBar.delegate = self
         defaultSearchBar.text = DotzuXSettings.shared.logSearchWordDefault
+        defaultSearchBar.isHidden = true
         
         colorTableView.tableFooterView = UIView()
         colorTableView.delegate = self
         colorTableView.dataSource = self
         colorSearchBar.delegate = self
         colorSearchBar.text = DotzuXSettings.shared.logSearchWordColor
+        colorSearchBar.isHidden = true
         
         //segmentedControl
         selectedSegmentIndex = DotzuXSettings.shared.logSelectIndex 

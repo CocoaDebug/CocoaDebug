@@ -191,7 +191,7 @@ extension UIAlertController {
 ///tableView
 extension UITableView {
     func tableViewScrollToBottom(animated: Bool) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
             let numberOfSections = self.numberOfSections
             let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
             

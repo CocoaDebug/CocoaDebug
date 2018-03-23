@@ -12,6 +12,8 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var reachEnd: Bool = true
     
+    var firstIn: Bool = true
+    
     var models: Array<HttpModel>?
     var cacheModels: Array<HttpModel>?
     var searchModels: Array<HttpModel>?
@@ -48,6 +50,13 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - private
     func reloadHttp(needScrollToEnd: Bool = false) {
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+            if self?.searchBar.isHidden == true {
+                self?.searchBar.isHidden = false
+            }
+        }
+        
+        
         self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
         
@@ -61,7 +70,10 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             //table下滑到底部
             if let count = self?.models?.count {
                 if count > 0 {
-                    self?.tableView.tableViewScrollToBottom(animated: true)
+                    guard let firstIn = self?.firstIn else {return}
+                    self?.tableView.tableViewScrollToBottom(animated: !firstIn)
+                    self?.firstIn = false
+                    
                     //self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
@@ -86,11 +98,13 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DotzuX"), object: nil)
         
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        
         searchBar.delegate = self
         searchBar.text = DotzuXSettings.shared.networkSearchWord
-        tableView.tableFooterView = UIView()
+        searchBar.isHidden = true
         
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
