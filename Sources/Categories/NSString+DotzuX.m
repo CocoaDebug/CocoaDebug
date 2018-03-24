@@ -10,7 +10,7 @@
 
 @implementation NSString (DotzuX)
 
-- (CGFloat)heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
+- (CGFloat)_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
 {
     CGRect rect = [self boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil];
     

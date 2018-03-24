@@ -286,7 +286,7 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             }
             
             defaultSearchBar.resignFirstResponder()
-            left.backgroundColor = .init(hexString: "#007aff")
+            left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }else{
             let model = colorModels[indexPath.row]
@@ -302,7 +302,7 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             }
             
             colorSearchBar.resignFirstResponder()
-            left.backgroundColor = .init(hexString: "#007aff")
+            left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
     }

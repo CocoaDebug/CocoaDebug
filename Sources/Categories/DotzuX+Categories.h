@@ -6,7 +6,6 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSString+DotzuX.h"
-#import "UIColor+DotzuX.h"
 #import "NSData+DotzuX.h"
+#import "NSString+DotzuX.h"
 #import "NSURLRequest+DotzuX.h"

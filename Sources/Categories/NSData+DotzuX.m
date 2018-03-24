@@ -10,8 +10,8 @@
 
 @implementation NSData (DotzuX)
 
-+(NSData*) dataWithInputStream:(NSInputStream*) stream {
-    
++ (NSData *)_dataWithInputStream:(NSInputStream *)stream
+{
     NSMutableData * data = [NSMutableData data];
     [stream open];
     NSInteger result;

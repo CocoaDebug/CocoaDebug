@@ -224,18 +224,18 @@ class NetworkDetailViewController: UITableViewController {
                     if self.httpModel?.url.absoluteString.contains(serverURL) == true {
                         //计算NSString高度
                         if #available(iOS 8.2, *) {
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                            height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                         } else {
                             // Fallback on earlier versions
-                            height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                            height = content_._height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                         }
                     }else{
                         //计算NSString高度
                         if #available(iOS 8.2, *) {
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                            height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                         } else {
                             // Fallback on earlier versions
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                            height = content_._height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                         }
                     }
                     
@@ -251,7 +251,7 @@ class NetworkDetailViewController: UITableViewController {
                     return 0
                 }
                 //计算NSString高度
-                let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
+                let height = content._height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
             return 0  

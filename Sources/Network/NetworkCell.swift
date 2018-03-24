@@ -65,7 +65,7 @@ class NetworkCell: UITableViewCell {
             if statusCodeLabel.text == "200" {
                 statusCodeLabel.textColor = Color.mainGreen
             }else{
-                statusCodeLabel.textColor = UIColor.init(hexString: "#ff0000")
+                statusCodeLabel.textColor = "#ff0000".hexColor
             }
             if statusCodeLabel.text == "0" {
                 statusCodeLabel.text = "❌"
@@ -80,16 +80,16 @@ class NetworkCell: UITableViewCell {
             
             //tag
             if httpModel?.isTag == true {
-                self.contentView.backgroundColor = .init(hexString: "#007aff")
+                self.contentView.backgroundColor = "#007aff".hexColor
             }else{
                 self.contentView.backgroundColor = .black
             }
             
             //isSelected
             if httpModel?.isSelected == true {
-                statusCodeView.backgroundColor = .init(hexString: "#222222")
+                statusCodeView.backgroundColor = "#222222".hexColor
             }else{
-                statusCodeView.backgroundColor = .init(hexString: "#333333")
+                statusCodeView.backgroundColor = "#333333".hexColor
             }
         }
     }

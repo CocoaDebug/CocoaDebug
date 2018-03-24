@@ -64,7 +64,7 @@ class DotzuXTabBarController: UITabBarController {
         for vc in tabBarControllers {
             
             let nav = UINavigationController.init(rootViewController: vc)
-            nav.navigationBar.barTintColor = .init(hexString: "#1f2124")
+            nav.navigationBar.barTintColor = "#1f2124".hexColor
             
             //****** 以下代码从NavigationController.swift复制 ******
             nav.navigationBar.isTranslucent = false

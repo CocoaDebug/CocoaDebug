@@ -16,6 +16,6 @@ struct Color {
     }
 
     static var mainGreen: UIColor {
-        return .init(hexString: "#42d459")
+        return "#42d459".hexColor
     }
 }

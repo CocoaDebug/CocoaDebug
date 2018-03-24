@@ -10,6 +10,6 @@
 
 @interface NSData (DotzuX)
 
-+(NSData*) dataWithInputStream:(NSInputStream*) stream;
++ (NSData *)_dataWithInputStream:(NSInputStream *)stream;
 
 @end

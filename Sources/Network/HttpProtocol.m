@@ -111,7 +111,7 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
         model.requestData = self.request.HTTPBody;
     }
     if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
+        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
         model.requestData = data;
     }
     
