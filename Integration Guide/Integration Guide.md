@@ -41,5 +41,5 @@
 	
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/5.png)
 	
-	> Note: If integrated by Carthage, use this instead in line 2:
+	> Note: If integrated by Carthage, use this instead in line two:
 	> `export DotzuX_PATH="${SRCROOT}/Carthage/Build/iOS/${DotzuX_FILENAME}"`
