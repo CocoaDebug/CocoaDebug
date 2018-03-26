@@ -38,7 +38,7 @@ end
 github "DotzuX/DotzuX"
 ```
 
->WARNING: Never ship a product which has been linked with the DotzuX.framework. This [Integration Guide](https://github.com/DotzuX/DotzuX/blob/master/Integration%20Guide/Integration%20Guide.md) outline a way to use build configurations to isolate linking the framework to Debug builds.
+> WARNING: Never ship a product which has been linked with the DotzuX.framework. This [Integration Guide](https://github.com/DotzuX/DotzuX/blob/master/Integration%20Guide/Integration%20Guide.md) outline a way to use build configurations to isolate linking the framework to Debug builds.
 
 ## Usage
 
@@ -82,7 +82,7 @@ github "DotzuX/DotzuX"
     #endif
 
 
->For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
+> For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
 
 ## TODO
 
