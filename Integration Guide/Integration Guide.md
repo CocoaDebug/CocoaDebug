@@ -2,18 +2,20 @@
 
 - Copy DotzuX.framework to the root directory of your project in Finder.
 
-	> Note: If integrated by Carthage, don't need to do this. Just check here `YourProjectFolder/Carthage/Build/iOS/DotzuX.framework`
-
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/1.png)
 
+	> Note: If integrated by Carthage, don't need to do this. Just check here:
+	> `YourProjectFolder/Carthage/Build/iOS/DotzuX.framework`
+	
 - Select the Build Settings tab and add the following to the Debug configuration of the Framework Search Paths (`FRAMEWORK_SEARCH_PATHS`) setting:
 
 	`$(inherited) $(SRCROOT)`
 	
-	> Note: If integrated by Carthage, use this instead `$(inherited) $(SRCROOT)/Carthage/Build/iOS`
-	
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/2.png)
 
+	> Note: If integrated by Carthage, use this instead:
+	> `$(inherited) $(SRCROOT)/Carthage/Build/iOS`
+	
 - Still in the Build Settings tab, add the following to the Debug configuration of the Other Linker Flags (`OTHER_LDFLAGS`) setting:
 
 	`-ObjC -weak_framework DotzuX`
@@ -36,7 +38,8 @@
 	    if [ -d "${DotzuX_PATH}" ]; then
 	    "${DotzuX_PATH}/copy_and_codesign.sh"
 	    fi
-
-	> Note: If integrated by Carthage, use this instead in line 2 `export DotzuX_PATH="${SRCROOT}/Carthage/Build/iOS/${DotzuX_FILENAME}"`
 	
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/5.png)
+	
+	> Note: If integrated by Carthage, use this instead in line 2:
+	> `export DotzuX_PATH="${SRCROOT}/Carthage/Build/iOS/${DotzuX_FILENAME}"`
