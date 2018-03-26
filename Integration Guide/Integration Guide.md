@@ -4,7 +4,7 @@
 
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/1.png)
 
-	> Note: If integrated by Carthage, don't need to do this. Just check here:
+	> Note: If integrated by Carthage, don't need to do this. Just check here:<br>
 	> `YourProjectFolder/Carthage/Build/iOS/DotzuX.framework`
 	
 - Select the Build Settings tab and add the following to the Debug configuration of the Framework Search Paths (`FRAMEWORK_SEARCH_PATHS`) setting:
@@ -13,7 +13,7 @@
 	
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/2.png)
 
-	> Note: If integrated by Carthage, use this instead:
+	> Note: If integrated by Carthage, use this instead:<br>
 	> `$(inherited) $(SRCROOT)/Carthage/Build/iOS`
 	
 - Still in the Build Settings tab, add the following to the Debug configuration of the Other Linker Flags (`OTHER_LDFLAGS`) setting:
@@ -41,5 +41,5 @@
 	
 	![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/Integration%20Guide/5.png)
 	
-	> Note: If integrated by Carthage, use this instead in line two:
+	> Note: If integrated by Carthage, use this instead in line 2:<br>
 	> `export DotzuX_PATH="${SRCROOT}/Carthage/Build/iOS/${DotzuX_FILENAME}"`
