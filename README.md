@@ -17,7 +17,7 @@ Next Generation of [Dotzu](https://github.com/remirobert/Dotzu) (iOS Debugging T
 
 ## Introduction
 
-![example](https://github.com/DotzuX/DotzuX/blob/master/pic/example.gif)
+![example](https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/example.gif)
 
 ## Installation
 
