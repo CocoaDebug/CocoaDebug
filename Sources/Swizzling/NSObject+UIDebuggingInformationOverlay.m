@@ -50,18 +50,21 @@
 
 + (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod
 {
-  Method originalMethod;
-  Method swizzledMethod;
+    Method originalMethod;
+    Method swizzledMethod;
 
-  if (isClassMethod) {
-    originalMethod = class_getClassMethod(class, originalSelector);
-    swizzledMethod = class_getClassMethod([self class], swizzledSelector);
-  } else {
-    originalMethod = class_getInstanceMethod(class, originalSelector);
-    swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
-  }
-
-  method_exchangeImplementations(originalMethod, swizzledMethod);
+    if (isClassMethod) {
+        originalMethod = class_getClassMethod(class, originalSelector);
+        swizzledMethod = class_getClassMethod([self class], swizzledSelector);
+    } else {
+        originalMethod = class_getInstanceMethod(class, originalSelector);
+        swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
+    }
+    
+    if (!class_addMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)))
+    {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
 
 @end
