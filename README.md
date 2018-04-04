@@ -4,6 +4,8 @@
 
 # DotzuX
 
+### [中文介绍](https://github.com/DotzuX/DotzuX/wiki/%E4%B8%AD%E6%96%87%E4%BB%8B%E7%BB%8D)
+
 [![Build Status](https://travis-ci.org/DotzuX/DotzuX.svg?branch=master)](https://travis-ci.org/DotzuX/DotzuX)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6aac8606d10f403a811cafdf870bb552)](https://www.codacy.com/app/DotzuX/DotzuX?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DotzuX/DotzuX&amp;utm_campaign=Badge_Grade)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DotzuX.svg)](https://img.shields.io/cocoapods/v/DotzuX.svg)
