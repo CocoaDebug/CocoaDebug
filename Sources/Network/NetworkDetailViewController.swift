@@ -106,7 +106,7 @@ class NetworkDetailViewController: UITableViewController {
             detailModels.append(m4)
             detailModels.append(m7)
             detailModels.append(m6)
-            detailModels.append(m5)
+            detailModels.append(m5)            
         }
     }
     
@@ -157,7 +157,7 @@ class NetworkDetailViewController: UITableViewController {
     
     //MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return detailModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

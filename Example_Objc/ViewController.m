@@ -34,9 +34,10 @@
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(error.localizedDescription);
         } else {
-            NSLog(@"%@ %@", response, responseObject);
+            NSLog(response);
+            NSLog(responseObject);
         }
     }];
     [dataTask resume];
@@ -50,9 +51,9 @@
         NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
         NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
         if (error) {
-            RedLog(@"%@",error.localizedDescription);
+            RedLog(error.localizedDescription);
         }else{
-            RedLog(@"%@",responseString);
+            RedLog(responseString);
         }
     });
     
@@ -65,7 +66,7 @@
         if(httpResponse.statusCode == 200) {
             NSError *parseError = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            BlueLog(@"%@",responseDictionary);
+            BlueLog(responseDictionary);
         }else{
             BlueLog(error.localizedDescription);
         }

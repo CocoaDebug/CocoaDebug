@@ -228,7 +228,6 @@
 		EA062C9A20541AD60071A231 /* DotzuXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA062BB320541AD60071A231 /* DotzuXTabBarController.swift */; };
 		EA062C9B20541AD60071A231 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA062BB420541AD60071A231 /* Color.swift */; };
 		EA062C9C20541AD60071A231 /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA062BB520541AD60071A231 /* MemoryHelper.m */; };
-		EA062C9D20541AD60071A231 /* UIColor+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA062BB720541AD60071A231 /* UIColor+DotzuX.m */; };
 		EA062C9E20541AD60071A231 /* NSData+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA062BBA20541AD60071A231 /* NSData+DotzuX.m */; };
 		EA062C9F20541AD60071A231 /* NSString+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA062BBD20541AD60071A231 /* NSString+DotzuX.m */; };
 		EA062CA020541AD60071A231 /* NSURLRequest+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA062BBF20541AD60071A231 /* NSURLRequest+DotzuX.m */; };
@@ -492,12 +491,10 @@
 		EA062BB320541AD60071A231 /* DotzuXTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXTabBarController.swift; sourceTree = "<group>"; };
 		EA062BB420541AD60071A231 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA062BB520541AD60071A231 /* MemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryHelper.m; sourceTree = "<group>"; };
-		EA062BB720541AD60071A231 /* UIColor+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DotzuX.m"; sourceTree = "<group>"; };
 		EA062BB820541AD60071A231 /* NSString+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DotzuX.h"; sourceTree = "<group>"; };
 		EA062BB920541AD60071A231 /* DotzuX+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DotzuX+Categories.h"; sourceTree = "<group>"; };
 		EA062BBA20541AD60071A231 /* NSData+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DotzuX.m"; sourceTree = "<group>"; };
 		EA062BBB20541AD60071A231 /* NSURLRequest+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+DotzuX.h"; sourceTree = "<group>"; };
-		EA062BBC20541AD60071A231 /* UIColor+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DotzuX.h"; sourceTree = "<group>"; };
 		EA062BBD20541AD60071A231 /* NSString+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DotzuX.m"; sourceTree = "<group>"; };
 		EA062BBE20541AD60071A231 /* NSData+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DotzuX.h"; sourceTree = "<group>"; };
 		EA062BBF20541AD60071A231 /* NSURLRequest+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+DotzuX.m"; sourceTree = "<group>"; };
@@ -874,12 +871,10 @@
 		EA062BB620541AD60071A231 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				EA062BB720541AD60071A231 /* UIColor+DotzuX.m */,
 				EA062BB820541AD60071A231 /* NSString+DotzuX.h */,
 				EA062BB920541AD60071A231 /* DotzuX+Categories.h */,
 				EA062BBA20541AD60071A231 /* NSData+DotzuX.m */,
 				EA062BBB20541AD60071A231 /* NSURLRequest+DotzuX.h */,
-				EA062BBC20541AD60071A231 /* UIColor+DotzuX.h */,
 				EA062BBD20541AD60071A231 /* NSString+DotzuX.m */,
 				EA062BBE20541AD60071A231 /* NSData+DotzuX.h */,
 				EA062BBF20541AD60071A231 /* NSURLRequest+DotzuX.m */,
@@ -1007,7 +1002,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = liman;
 				TargetAttributes = {
 					EA165EFB204D2539001472C1 = {
@@ -1264,7 +1259,6 @@
 				EAF5805B204E7434001CA56D /* AFSecurityPolicy.m in Sources */,
 				EA062C8C20541AD60071A231 /* LoggerFormat.swift in Sources */,
 				EA062BC020541AD60071A231 /* DotzuXSettings.swift in Sources */,
-				EA062C9D20541AD60071A231 /* UIColor+DotzuX.m in Sources */,
 				EA165F0F204D2539001472C1 /* main.m in Sources */,
 				EA062BC220541AD60071A231 /* DotzuX+Extensions.swift in Sources */,
 				EA062C9C20541AD60071A231 /* MemoryHelper.m in Sources */,
@@ -1355,6 +1349,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1362,6 +1357,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1410,6 +1406,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1417,6 +1414,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1441,6 +1439,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

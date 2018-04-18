@@ -213,11 +213,14 @@ class DotzuXBubble: UIView {
         guard let userInfo = notification.userInfo else {return}
         let statusCode = userInfo["statusCode"] as? String
         
-        if statusCode == "200" {
+        //https://httpstatuses.com/
+        let successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+        
+        if successStatusCodes.contains(statusCode ?? "") {
             initLabelEvent("🚀", true)
             initLabelEvent("🚀", false)
         }
-        else if statusCode == "0" {
+        else if statusCode == "0" { //"0" means network unavailable
             initLabelEvent("❌", true)
             initLabelEvent("❌", false)
         }

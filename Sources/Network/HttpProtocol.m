@@ -119,8 +119,15 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
     model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
     model.responseData = self.data;
     model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-    model.totalDuration = [NSString stringWithFormat:@"%f (s)",[[NSDate date] timeIntervalSince1970] - self.startTime];
-    model.startTime = [NSString stringWithFormat:@"%f",self.startTime];
+
+    //时间
+    NSTimeInterval startTimeDouble = self.startTime;
+    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
+    
+    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
+    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
     
     
     model.errorDescription = self.error.description;
@@ -179,42 +186,42 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
 //                model.errorDescription = @"2×× Success :\nThe request has succeeded.";
 //                model.errorLocalizedDescription = @"OK";
 //                break;
-            case 201:
-                model.errorDescription = @"2×× Success :\nThe request has been fulfilled and has resulted in one or more new resources being created.";
-                model.errorLocalizedDescription = @"Created";
-                break;
-            case 202:
-                model.errorDescription = @"2×× Success :\nThe request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.";
-                model.errorLocalizedDescription = @"Accepted";
-                break;
-            case 203:
-                model.errorDescription = @"2×× Success :\nThe request was successful but the enclosed payload has been modified from that of the origin server's 200 OK response by a transforming proxy1.";
-                model.errorLocalizedDescription = @"Non-authoritative Information";
-                break;
-            case 204:
-                model.errorDescription = @"2×× Success :\nThe server has successfully fulfilled the request and that there is no additional content to send in the response payload body.";
-                model.errorLocalizedDescription = @"No Content";
-                break;
-            case 205:
-                model.errorDescription = @"2×× Success :\nThe server has fulfilled the request and desires that the user agent reset the \"document view\", which caused the request to be sent, to its original state as received from the origin server.";
-                model.errorLocalizedDescription = @"Reset Content";
-                break;
-            case 206:
-                model.errorDescription = @"2×× Success :\nThe server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field1.";
-                model.errorLocalizedDescription = @"Partial Content";
-                break;
-            case 207:
-                model.errorDescription = @"2×× Success :\nA Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.";
-                model.errorLocalizedDescription = @"Multi-Status";
-                break;
-            case 208:
-                model.errorDescription = @"2×× Success :\nUsed inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.";
-                model.errorLocalizedDescription = @"Already Reported";
-                break;
-            case 226:
-                model.errorDescription = @"2×× Success :\nThe server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.";
-                model.errorLocalizedDescription = @"IM Used";
-                break;
+//            case 201:
+//                model.errorDescription = @"2×× Success :\nThe request has been fulfilled and has resulted in one or more new resources being created.";
+//                model.errorLocalizedDescription = @"Created";
+//                break;
+//            case 202:
+//                model.errorDescription = @"2×× Success :\nThe request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.";
+//                model.errorLocalizedDescription = @"Accepted";
+//                break;
+//            case 203:
+//                model.errorDescription = @"2×× Success :\nThe request was successful but the enclosed payload has been modified from that of the origin server's 200 OK response by a transforming proxy1.";
+//                model.errorLocalizedDescription = @"Non-authoritative Information";
+//                break;
+//            case 204:
+//                model.errorDescription = @"2×× Success :\nThe server has successfully fulfilled the request and that there is no additional content to send in the response payload body.";
+//                model.errorLocalizedDescription = @"No Content";
+//                break;
+//            case 205:
+//                model.errorDescription = @"2×× Success :\nThe server has fulfilled the request and desires that the user agent reset the \"document view\", which caused the request to be sent, to its original state as received from the origin server.";
+//                model.errorLocalizedDescription = @"Reset Content";
+//                break;
+//            case 206:
+//                model.errorDescription = @"2×× Success :\nThe server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field1.";
+//                model.errorLocalizedDescription = @"Partial Content";
+//                break;
+//            case 207:
+//                model.errorDescription = @"2×× Success :\nA Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.";
+//                model.errorLocalizedDescription = @"Multi-Status";
+//                break;
+//            case 208:
+//                model.errorDescription = @"2×× Success :\nUsed inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.";
+//                model.errorLocalizedDescription = @"Already Reported";
+//                break;
+//            case 226:
+//                model.errorDescription = @"2×× Success :\nThe server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.";
+//                model.errorLocalizedDescription = @"IM Used";
+//                break;
             case 300:
                 model.errorDescription = @"3×× Redirection :\nThe target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.";
                 model.errorLocalizedDescription = @"Multiple Choices";
@@ -434,13 +441,18 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
     return YES;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
-}
+//------------------------------------ liman ------------------------------------
 
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
-}
+//Implementing deprecated method
+//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+//    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
+//}
+//Implementing deprecated method
+//- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+//    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
+//}
+
+//---------------------------------------------------------------------------------
 
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

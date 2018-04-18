@@ -23,6 +23,7 @@ typedef enum {
 @property (nonatomic,copy)NSString  *statusCode;
 @property (nonatomic,copy)NSString  *mineType;
 @property (nonatomic,copy)NSString  *startTime;
+@property (nonatomic,copy)NSString  *endTime;
 @property (nonatomic,copy)NSString  *totalDuration;
 @property (nonatomic,assign)BOOL    isImage;
 

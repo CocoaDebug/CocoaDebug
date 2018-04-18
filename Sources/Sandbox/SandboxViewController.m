@@ -162,8 +162,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
             [self updateToolbarItems];
-            if (_isFirstAppear) {
-                _isFirstAppear = NO;
+            if (self->_isFirstAppear) {
+                self->_isFirstAppear = NO;
             }
         });
     });

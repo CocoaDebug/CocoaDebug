@@ -60,14 +60,17 @@ class NetworkCell: UITableViewCell {
                 }
             }
             
+            //https://httpstatuses.com/
+            let successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+            
             //状态码
             statusCodeLabel.text = httpModel?.statusCode
-            if statusCodeLabel.text == "200" {
+            if successStatusCodes.contains(statusCodeLabel.text ?? "") {
                 statusCodeLabel.textColor = Color.mainGreen
             }else{
                 statusCodeLabel.textColor = "#ff0000".hexColor
             }
-            if statusCodeLabel.text == "0" {
+            if statusCodeLabel.text == "0" { //"0" means network unavailable
                 statusCodeLabel.text = "❌"
             }
             

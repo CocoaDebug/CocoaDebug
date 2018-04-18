@@ -22,7 +22,9 @@ struct NetworkDetailModel {
         self.content = content
         self.image = image
         
-        //超时时间
+        
+        
+        //响应时间, 偶现bug
         if title == "LATENCY" {
             if let content = content {
                 if let double_second = Double(content) {
