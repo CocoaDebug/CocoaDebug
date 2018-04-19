@@ -185,7 +185,6 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
         defaultTableView.rowHeight = UITableViewAutomaticDimension
-        defaultTableView.estimatedRowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
         defaultSearchBar.text = DotzuXSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
@@ -194,7 +193,6 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         colorTableView.delegate = self
         colorTableView.dataSource = self
         colorTableView.rowHeight = UITableViewAutomaticDimension
-        colorTableView.estimatedRowHeight = UITableViewAutomaticDimension
         colorSearchBar.delegate = self
         colorSearchBar.text = DotzuXSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
