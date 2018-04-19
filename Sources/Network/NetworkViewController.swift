@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NetworkViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class NetworkViewController: UIViewController {
     
     var reachEnd: Bool = true
     
@@ -122,7 +122,30 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.removeObserver(self)
     }
     
-    //MARK: - UITableViewDataSource
+    //MARK: - target action
+    @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
+        HttpDatasource.shared().reset()
+        models = []
+        cacheModels = []
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        DotzuXSettings.shared.networkSearchWord = nil
+        
+        dispatch_main_async_safe { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    //MARK: - notification
+    @objc func reloadHttp_notification(_ notification: Notification) {
+        
+        reloadHttp(needScrollToEnd: reachEnd)
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension NetworkViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
@@ -134,8 +157,11 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.httpModel = models?[indexPath.row]
         return cell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension NetworkViewController: UITableViewDelegate {
     
-    //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
@@ -167,7 +193,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        return 0  
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -251,8 +277,11 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
+}
+
+//MARK: - UIScrollViewDelegate
+extension NetworkViewController: UIScrollViewDelegate {
     
-    //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         searchBar.resignFirstResponder()
@@ -264,8 +293,11 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             reachEnd = false
         }
     }
+}
+
+//MARK: - UISearchBarDelegate
+extension NetworkViewController: UISearchBarDelegate {
     
-    //MARK: - UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -279,26 +311,6 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
         }
-    }
-    
-    //MARK: - target action
-    @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
-        HttpDatasource.shared().reset()
-        models = []
-        cacheModels = []
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        DotzuXSettings.shared.networkSearchWord = nil
-        
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-    
-    //MARK: - notification
-    @objc func reloadHttp_notification(_ notification: Notification) {
-        
-        reloadHttp(needScrollToEnd: reachEnd)
     }
 }
 

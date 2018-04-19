@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
     var reachEndColor: Bool = true
@@ -229,7 +229,80 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
         NotificationCenter.default.removeObserver(self)
     }
     
-    //MARK: - UITableViewDataSource
+    
+    
+    
+    
+    
+
+    
+    //MARK: - target action
+    @IBAction func resetLogs(_ sender: Any) {
+        
+        if selectedSegmentIndex == 0
+        {
+            defaultModels = []
+            defaultCacheModels = []
+            defaultSearchBar.text = nil
+            defaultSearchBar.resignFirstResponder()
+            DotzuXSettings.shared.logSearchWordDefault = nil
+            
+            LogStoreManager.shared.resetDefaultLogs()
+            
+            dispatch_main_async_safe { [weak self] in
+                self?.defaultTableView.reloadData()
+            }
+        }
+        else
+        {
+            colorModels = []
+            colorCacheModels = []
+            colorSearchBar.text = nil
+            colorSearchBar.resignFirstResponder()
+            DotzuXSettings.shared.logSearchWordColor = nil
+            
+            LogStoreManager.shared.resetColorLogs()
+            
+            dispatch_main_async_safe { [weak self] in
+                self?.colorTableView.reloadData()
+            }
+        }
+    }
+    
+    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
+        selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+        DotzuXSettings.shared.logSelectIndex = selectedSegmentIndex
+        
+        if selectedSegmentIndex == 0 && selectedSegment_0 == false {
+            selectedSegment_0 = true
+            reloadLogs(needScrollToEnd: true, needReloadData: true)
+            return
+        }
+        
+        if selectedSegmentIndex == 1 && selectedSegment_1 == false {
+            selectedSegment_1 = true
+            reloadLogs(needScrollToEnd: true, needReloadData: true)
+            return
+        }
+        
+        reloadLogs(needScrollToEnd: false, needReloadData: false)
+    }
+    
+    
+    //MARK: - notification
+    @objc func refreshLogs_notification() {
+        
+        if selectedSegmentIndex == 0 {
+            reloadLogs(needScrollToEnd: reachEndDefault, needReloadData: true)
+        }else{
+            reloadLogs(needScrollToEnd: reachEndColor, needReloadData: true)
+        }
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension LogViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
             return defaultModels.count
@@ -261,8 +334,11 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             return cell
         }
     }
+}
+
+//MARK: - UITableViewDelegate
+extension LogViewController: UITableViewDelegate {
     
-    //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if tableView == defaultTableView {
@@ -371,10 +447,13 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             }
         }
     }
+}
+
+//MARK: - UIScrollViewDelegate
+extension LogViewController: UIScrollViewDelegate {
     
-    //MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         if scrollView == defaultTableView
         {
             defaultSearchBar.resignFirstResponder()
@@ -398,8 +477,11 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             }
         }
     }
+}
 
-    //MARK: - UISearchBarDelegate
+//MARK: - UISearchBarDelegate
+extension LogViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -423,70 +505,4 @@ class LogViewController: UIViewController, UISearchBarDelegate, UITableViewDeleg
             }
         }
     }
-    
-    //MARK: - target action
-    @IBAction func resetLogs(_ sender: Any) {
-        
-        if selectedSegmentIndex == 0
-        {
-            defaultModels = []
-            defaultCacheModels = []
-            defaultSearchBar.text = nil
-            defaultSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordDefault = nil
-            
-            LogStoreManager.shared.resetDefaultLogs()
-            
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
-            }
-        }
-        else
-        {
-            colorModels = []
-            colorCacheModels = []
-            colorSearchBar.text = nil
-            colorSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordColor = nil
-            
-            LogStoreManager.shared.resetColorLogs()
-            
-            dispatch_main_async_safe { [weak self] in
-                self?.colorTableView.reloadData()
-            }
-        }
-    }
-    
-    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
-        selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        DotzuXSettings.shared.logSelectIndex = selectedSegmentIndex
-        
-        if selectedSegmentIndex == 0 && selectedSegment_0 == false {
-            selectedSegment_0 = true
-            reloadLogs(needScrollToEnd: true, needReloadData: true)
-            return
-        }
-        
-        if selectedSegmentIndex == 1 && selectedSegment_1 == false {
-            selectedSegment_1 = true
-            reloadLogs(needScrollToEnd: true, needReloadData: true)
-            return
-        }
-        
-        reloadLogs(needScrollToEnd: false, needReloadData: false)
-    }
-    
-    
-    //MARK: - notification
-    @objc func refreshLogs_notification() {
-        
-        if selectedSegmentIndex == 0 {
-            reloadLogs(needScrollToEnd: reachEndDefault, needReloadData: true)
-        }else{
-            reloadLogs(needScrollToEnd: reachEndColor, needReloadData: true)
-        }
-    }
 }
-
-
-

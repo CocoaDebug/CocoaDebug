@@ -36,12 +36,15 @@ class CrashDetailViewController: UITableViewController {
         })
         textviewStackTraces.text = contentStack
     }
+}
 
-    //MARK - UITableViewDelegate
+//MARK: - UITableViewDelegate
+extension CrashDetailViewController {
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-
+    
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }

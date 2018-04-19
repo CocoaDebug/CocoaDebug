@@ -15,7 +15,7 @@ enum EditType {
 import Foundation
 import UIKit
 
-class JsonViewController: UITableViewController, UITextViewDelegate {
+class JsonViewController: UITableViewController {
     
     @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -141,17 +141,6 @@ class JsonViewController: UITableViewController, UITextViewDelegate {
 //        }
     }
     
-    
-    //MARK: - UITextViewDelegate
-    func textViewDidChange(_ textView: UITextView)
-    {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-
-        editedContent = textView.text
-        detailModel?.content = textView.text
-    }
-    
 
     //MARK: - target action
     
@@ -192,5 +181,18 @@ class JsonViewController: UITableViewController, UITextViewDelegate {
                 }
             }
         }
+    }
+}
+
+//MARK: - UITextViewDelegate
+extension JsonViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+        editedContent = textView.text
+        detailModel?.content = textView.text
     }
 }

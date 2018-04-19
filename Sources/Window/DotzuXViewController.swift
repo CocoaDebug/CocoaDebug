@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DotzuXViewController: UIViewController, DotzuXBubbleDelegate {
+class DotzuXViewController: UIViewController {
 
     var bubble = DotzuXBubble(frame: CGRect(origin: DotzuXBubble.originalPosition, size: DotzuXBubble.size))
 
@@ -38,8 +38,11 @@ class DotzuXViewController: UIViewController, DotzuXBubbleDelegate {
         }
         return self.bubble.frame.contains(point)
     }
+}
+
+//MARK: - DotzuXBubbleDelegate
+extension DotzuXViewController: DotzuXBubbleDelegate {
     
-    //MARK: - DotzuXBubbleDelegate
     func didTapDotzuXBubble() {
         WindowHelper.shared.displayedList = true
         let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: DotzuXViewController.self))

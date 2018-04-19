@@ -155,7 +155,15 @@ class NetworkDetailViewController: UITableViewController {
         }
     }
     
-    //MARK: - UITableViewDataSource
+    //MARK: - target action
+    @IBAction func close(_ sender: UIBarButtonItem) {
+        (self.navigationController as! DotzuXNavigationController).exit()
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension NetworkDetailViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return detailModels.count
     }
@@ -202,8 +210,11 @@ class NetworkDetailViewController: UITableViewController {
         
         return cell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension NetworkDetailViewController {
     
-    //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
@@ -242,7 +253,7 @@ class NetworkDetailViewController: UITableViewController {
                     return height + 57
                 }
             }
-            return 0  
+            return 0
         }
         
         if detailModel.image == nil {
@@ -254,14 +265,9 @@ class NetworkDetailViewController: UITableViewController {
                 let height = content._height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
-            return 0  
+            return 0
         }
         
         return UIScreen.main.bounds.size.width + 50
-    }
-    
-    //MARK: - target action
-    @IBAction func close(_ sender: UIBarButtonItem) {
-        (self.navigationController as! DotzuXNavigationController).exit()
     }
 }

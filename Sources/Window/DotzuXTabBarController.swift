@@ -94,7 +94,17 @@ class DotzuXTabBarController: UITabBarController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - UITabBarDelegate
+    //MARK: - show more than 5 tabs by liman
+    override var traitCollection: UITraitCollection {
+        let realTraits = super.traitCollection
+        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
+    }
+}
+
+//MARK: - UITabBarDelegate
+extension DotzuXTabBarController {
+    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
     {
         guard let items = self.tabBar.items else {return}
@@ -104,12 +114,5 @@ class DotzuXTabBarController: UITabBarController {
                 DotzuXSettings.shared.tabBarSelectItem = index
             }
         }
-    }
-    
-    //MARK: - show more than 5 tabs by liman
-    override var traitCollection: UITraitCollection {
-        let realTraits = super.traitCollection
-        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
-        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
     }
 }

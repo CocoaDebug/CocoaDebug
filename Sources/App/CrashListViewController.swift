@@ -25,9 +25,21 @@ class CrashListViewController: UITableViewController {
         models = CrashStoreManager.shared.crashArray
         tableView.reloadData()
     }
-
     
-    //MARK: - UITableViewDataSource
+    //MARK: - target action
+    @objc func deleteCrashes() {
+        models = []
+        CrashStoreManager.shared.resetCrashs()
+        
+        dispatch_main_async_safe { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension CrashListViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -44,8 +56,11 @@ class CrashListViewController: UITableViewController {
         cell.crash = models[indexPath.row]
         return cell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension CrashListViewController {
     
-    //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -54,7 +69,7 @@ class CrashListViewController: UITableViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-  
+    
     @available(iOS 11.0, *)
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -88,16 +103,6 @@ class CrashListViewController: UITableViewController {
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-        }
-    }
-    
-    //MARK: - target action
-    @objc func deleteCrashes() {
-        models = []
-        CrashStoreManager.shared.resetCrashs()
-        
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
         }
     }
 }

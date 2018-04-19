@@ -49,8 +49,11 @@ class AppInfoViewController: UITableViewController {
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? .red : .white
     }
+}
+
+//MARK: - UITableViewDelegate
+extension AppInfoViewController {
     
-    //MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         if DotzuXSettings.shared.recordCrash == true {

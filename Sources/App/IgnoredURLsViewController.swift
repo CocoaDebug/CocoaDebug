@@ -21,8 +21,11 @@ class IgnoredURLsViewController: UITableViewController {
 
         models = DotzuXSettings.shared.ignoredURLs
     }
+}
+
+//MARK: - UITableViewDataSource
+extension IgnoredURLsViewController {
     
-    //MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
