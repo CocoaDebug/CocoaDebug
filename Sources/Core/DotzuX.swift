@@ -27,6 +27,14 @@ import Foundation
     }
     
     //MARK: - objcLog() usage only for Objective-C
+    @objc public static func objcHandleLog(_ file: String = #file,
+                                           _ function: String = #function,
+                                           _ line: Int = #line,
+                                           _ message: Any,
+                                           _ color: UIColor? = nil) {
+        LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    }
+    
     @objc public static func objcLog(_ file: String = #file,
                                      _ function: String = #function,
                                      _ line: Int = #line,
@@ -39,6 +47,14 @@ import Foundation
 
 
 //MARK: - swiftLog() usage only for Swift
+public func swiftHandleLog<T>(_ file: String = #file,
+                              _ function: String = #function,
+                              _ line: Int = #line,
+                              _ message: T,
+                              _ color: UIColor? = nil) {
+    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+}
+
 public func swiftLog<T>(_ file: String = #file,
                         _ function: String = #function,
                         _ line: Int = #line,
