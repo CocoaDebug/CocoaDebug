@@ -14,7 +14,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         print("hello world")
-        print("hello world red", .red)
+        print("hello world red", color: .red)
+        print("hello world blue", color: UIColor.blue)
         
         testHTTP()
     }
@@ -23,21 +24,21 @@ class ViewController: UIViewController {
     func testHTTP() {
         //1.Alamofire
         request("https://httpbin.org/get").responseJSON { response in
-            print(response, .green)
+            print(response, color: .green)
         }
         request("https://httpbin.org/post", method: .post, parameters: ["data": "Alamofire"], encoding: JSONEncoding.default).responseJSON { response in
-            print(response, .red)
+            print(response, color: .red)
         }
         
         //2.SwiftHTTP
         HTTP.GET("https://httpbin.org/get") { response in
-            print(response.text, .yellow)
+            print(response.text, color: .yellow)
         }
         HTTP.POST("https://httpbin.org/post", parameters: ["data": "SwiftHTTP"]) { response in
-            print(response.text, .gray)
+            print(response.text, color: .gray)
         }
         HTTP.GET("https://www.baidu.com/img/bd_logo1.png") { response in
-            print(response.description, .orange)
+            print(response.description, color: .orange)
         }
         
         //3.Networking

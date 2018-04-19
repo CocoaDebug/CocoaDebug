@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 //MARK: - over write print()
-public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, _ color: UIColor? = nil) {
+public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor? = nil) {
     
     #if DEBUG
         swiftLog(file, function, line, message, color)
