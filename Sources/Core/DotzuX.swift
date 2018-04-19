@@ -31,7 +31,7 @@ import Foundation
                                            _ function: String = #function,
                                            _ line: Int = #line,
                                            _ message: Any,
-                                           _ color: UIColor? = nil) {
+                                           _ color: UIColor) {
         LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
     }
     
@@ -51,7 +51,7 @@ public func swiftHandleLog<T>(_ file: String = #file,
                               _ function: String = #function,
                               _ line: Int = #line,
                               _ message: T,
-                              _ color: UIColor? = nil) {
+                              _ color: UIColor) {
     LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
 
