@@ -441,18 +441,15 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
     return YES;
 }
 
-//------------------------------------ liman ------------------------------------
-
-//Implementing deprecated method
-//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
-//}
-//Implementing deprecated method
-//- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
-//}
-
-//---------------------------------------------------------------------------------
+#pragma GCC diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
+}
+- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
+}
+#pragma GCC diagnostic pop
 
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
