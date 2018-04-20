@@ -84,8 +84,9 @@ github "DotzuX/DotzuX"
         #define NSLog(fmt, ...) nil
     #endif
 
+> NOTE: If using Swift & Objective-C in the Same Project, you should be careful about `Other Swift Flags` & `Preprocessor Macros`. See [here](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).
 
-> For more advanced usage, check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj`.
+> TIPS: Please check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj` for more advanced usage.
 
 ## TODO
 
