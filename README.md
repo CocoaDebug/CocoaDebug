@@ -1,5 +1,5 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/logo@2x.png"/>
+  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/logo.png"/>
 </p>
 
 # DotzuX
