@@ -238,6 +238,10 @@
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
 		EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
 		EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
+		EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
+		EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
+		EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4A2090291000EFDCCD /* FPSLabel.h */; };
+		EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4C2090291000EFDCCD /* WeakProxy.h */; };
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EAE674242064085300282B31 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
 		EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
@@ -1527,6 +1531,8 @@
 				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
 				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
+				EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */,
+				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
 				EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
@@ -2152,6 +2158,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */,
+				EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */,
 				EAF55AF42055416F003E310F /* DotzuXSettings.swift in Sources */,
 				EAF55AF52055416F003E310F /* DotzuX.swift in Sources */,
 				EAF55AF62055416F003E310F /* DotzuX+Extensions.swift in Sources */,

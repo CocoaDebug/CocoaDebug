@@ -29,7 +29,7 @@ struct NetworkDetailModel {
             if let content = content {
                 if let double_second = Double(content) {
                     let int_second = Int(double_second)
-                    if int_second > 10000 {
+                    if int_second > 9999 {
                         self.content = ""
                     }else{
                         self.content = content
