@@ -6,6 +6,7 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
+#ifdef DEBUG//***************** Private API *****************
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -69,4 +70,4 @@
 
 @end
 #pragma clang diagnostic pop
-
+#endif//***************** Private API *****************
