@@ -42,7 +42,7 @@ end
 github "DotzuX/DotzuX"
 ```
 
-> WARNING: Never ship a product(for example, to the App Store) which has been linked with the `DotzuX.framework`. This [Integration Guide](https://github.com/DotzuX/DotzuX/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
+> WARNING: It is not recommended to submit `.ipa` to AppStore which has been linked with the `DotzuX.framework`. This [Integration Guide](https://github.com/DotzuX/DotzuX/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
 
 ## Usage
 
