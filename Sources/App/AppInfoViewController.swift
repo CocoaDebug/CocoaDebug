@@ -92,7 +92,7 @@ extension AppInfoViewController {
         if indexPath.section == 3 && indexPath.row == 0 {
             if labelignoredURLs.text == "0" {
                 if UIScreen.main.scale == 3 {
-                    return 1.5//plus，iPhone X
+                    return 1.5//plus,iPhone X
                 }
                 return 0.5//iphone 5,6,6s,7,8
             }

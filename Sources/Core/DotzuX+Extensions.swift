@@ -275,6 +275,7 @@ extension DotzuX {
         DotzuXSettings.shared.logSearchWordColor = nil
         DotzuXSettings.shared.networkSearchWord = nil
         DotzuXSettings.shared.recordCrash = recordCrash
+        DotzuXSettings.shared.logMaxCount = DotzuX.logMaxCount
         
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()

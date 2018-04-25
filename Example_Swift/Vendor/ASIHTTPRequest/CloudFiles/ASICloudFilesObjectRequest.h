@@ -48,13 +48,13 @@
 + (id)listRequestWithContainer:(NSString *)containerName limit:(NSUInteger)limit marker:(NSString *)marker prefix:(NSString *)prefix path:(NSString *)path;
 
 // Conditional GET headers: If-Match • If-None-Match • If-Modified-Since • If-Unmodified-Since
-// HTTP Range header: “Range: bytes=0-5” •	“Range: bytes=-5” •	“Range: bytes=32-“
+// HTTP Range header: "Range: bytes=0-5" •	"Range: bytes=-5" •	"Range: bytes=32-"
 + (id)getObjectRequestWithContainer:(NSString *)containerName objectPath:(NSString *)objectPath;
 - (ASICloudFilesObject *)object;
 
 // PUT /<api version>/<account>/<container>/<object>
 // PUT operations are used to write, or overwrite, an Object's metadata and content.
-// The Object can be created with custom metadata via HTTP headers identified with the “X-Object-Meta-” prefix.
+// The Object can be created with custom metadata via HTTP headers identified with the "X-Object-Meta-" prefix.
 + (id)putObjectRequestWithContainer:(NSString *)containerName object:(ASICloudFilesObject *)object;
 + (id)putObjectRequestWithContainer:(NSString *)containerName objectPath:(NSString *)objectPath contentType:(NSString *)contentType objectData:(NSData *)objectData metadata:(NSDictionary *)metadata etag:(NSString *)etag;
 + (id)putObjectRequestWithContainer:(NSString *)containerName objectPath:(NSString *)objectPath contentType:(NSString *)contentType file:(NSString *)filePath metadata:(NSDictionary *)metadata etag:(NSString *)etag;

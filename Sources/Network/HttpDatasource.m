@@ -42,14 +42,14 @@
         }
     }
     
-    if (self.httpModels.count >= 1000/2) {
+    if (self.httpModels.count >= [NetworkHelper shared].logMaxCount) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }
     }
     [self.httpModels addObject:model];
 
-    if (self.httpModelRequestIds.count >= 1000/2) {
+    if (self.httpModelRequestIds.count >= [NetworkHelper shared].logMaxCount) {
         if ([self.httpModelRequestIds count] > 0) {
             [self.httpModelRequestIds removeObjectAtIndex:0];
         }

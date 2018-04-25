@@ -18,11 +18,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     #ifdef DEBUG
-//        Debugger.serverURL = @"google.com"; //default nil
-//        Debugger.ignoredURLs = @[@"aaa.com", @"bbb.com"]; //default nil
-//        Debugger.onlyURLs = @[@"ccc.com", @"ddd.com"]; //default nil
-//        Debugger.tabBarControllers = @[controller, controller2]; //default nil
-//        Debugger.recordCrash = YES; //default NO
+//        DotzuX.serverURL = @"google.com"; //default value is `nil`
+//        DotzuX.ignoredURLs = @[@"aaa.com", @"bbb.com"]; //default value is `nil`
+//        DotzuX.onlyURLs = @[@"ccc.com", @"ddd.com"]; //default value is `nil`
+//        DotzuX.tabBarControllers = @[[UIViewController new], [UIViewController new]]; //default value is `nil`
+//        DotzuX.recordCrash = YES; //default value is `NO`
+//        DotzuX.logMaxCount = 1000; //default value is `500`
         [DotzuX enable];
     #endif
     

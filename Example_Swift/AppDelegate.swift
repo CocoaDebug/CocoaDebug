@@ -17,11 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-//            DotzuX.serverURL = "google.com" //default nil
-//            DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default nil
-//            DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default nil
-//            DotzuX.tabBarControllers = [controller, controller2] //default nil
-//            DotzuX.recordCrash = true //default false
+//            DotzuX.serverURL = "google.com" //default value is `nil`
+//            DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
+//            DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
+//            DotzuX.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
+//            DotzuX.recordCrash = true //default value is `false`
+//            DotzuX.logMaxCount = 1000 //default value is `500`
             DotzuX.enable()
         #endif
         

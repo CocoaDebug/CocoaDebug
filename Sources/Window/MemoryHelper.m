@@ -92,10 +92,10 @@ static vm_statistics_data_t jVMStats;
 {
     [self updateHostStatistics];
     
-    //free是空闲内存；
-    //active是已使用，但可被分页的（在iOS中，只有在磁盘上静态存在的才能被分页，例如文件的内存映射，而动态分配的内存是不能被分页的）；
-    //inactive是不活跃的，也就是程序退出后却没释放的内存，以便加快再次启动，而当内存不足时，就会被回收，因此也可看作空闲内存；
-    //wire就是已使用，且不可被分页的。
+    //free是空闲内存;
+    //active是已使用,但可被分页的（在iOS中,只有在磁盘上静态存在的才能被分页,例如文件的内存映射,而动态分配的内存是不能被分页的）;
+    //inactive是不活跃的,也就是程序退出后却没释放的内存,以便加快再次启动,而当内存不足时,就会被回收,因此也可看作空闲内存;
+    //wire就是已使用,且不可被分页的.
     unsigned long long free_count   = (unsigned long long)jVMStats.free_count;
 //    unsigned long long active_count = (unsigned long long)jVMStats.active_count;
 //    unsigned long long inactive_count = (unsigned long long)jVMStats.inactive_count;
@@ -110,10 +110,10 @@ static vm_statistics_data_t jVMStats;
 {
     [self updateHostStatistics];
     
-    //free是空闲内存；
-    //active是已使用，但可被分页的（在iOS中，只有在磁盘上静态存在的才能被分页，例如文件的内存映射，而动态分配的内存是不能被分页的）；
-    //inactive是不活跃的，也就是程序退出后却没释放的内存，以便加快再次启动，而当内存不足时，就会被回收，因此也可看作空闲内存；
-    //wire就是已使用，且不可被分页的。
+    //free是空闲内存;
+    //active是已使用,但可被分页的（在iOS中,只有在磁盘上静态存在的才能被分页,例如文件的内存映射,而动态分配的内存是不能被分页的）;
+    //inactive是不活跃的,也就是程序退出后却没释放的内存,以便加快再次启动,而当内存不足时,就会被回收,因此也可看作空闲内存;
+    //wire就是已使用,且不可被分页的.
     unsigned long long free_count   = (unsigned long long)jVMStats.free_count;
     unsigned long long active_count = (unsigned long long)jVMStats.active_count;
     unsigned long long inactive_count = (unsigned long long)jVMStats.inactive_count;

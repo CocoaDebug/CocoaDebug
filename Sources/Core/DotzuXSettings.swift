@@ -82,16 +82,6 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var onlyURLs: [String]? = nil {
-        didSet {
-            NetworkHelper.shared().onlyURLs = onlyURLs
-        }
-    }
-    @objc public var ignoredURLs: [String]? = nil {
-        didSet {
-            NetworkHelper.shared().ignoredURLs = ignoredURLs
-        }
-    }
     @objc public var bubbleFrameX: Float {
         didSet {
             UserDefaults.standard.set(bubbleFrameX, forKey: "bubbleFrameX_DotzuX")
@@ -124,6 +114,23 @@ import Foundation
     }
     @objc public var tabBarControllers: [UIViewController]? = nil
     
+    //objc
+    @objc public var logMaxCount: Int {
+        didSet {
+            NetworkHelper.shared().logMaxCount = logMaxCount
+        }
+    }
+    @objc public var onlyURLs: [String]? = nil {
+        didSet {
+            NetworkHelper.shared().onlyURLs = onlyURLs
+        }
+    }
+    @objc public var ignoredURLs: [String]? = nil {
+        didSet {
+            NetworkHelper.shared().ignoredURLs = ignoredURLs
+        }
+    }
+    
     
     
     private override init() {
@@ -139,5 +146,10 @@ import Foundation
         logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_DotzuX")
         logSearchWordColor = UserDefaults.standard.string(forKey: "logSearchWordColor_DotzuX")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_DotzuX")
+        
+        //objc
+        logMaxCount = NetworkHelper.shared().logMaxCount
+        onlyURLs = NetworkHelper.shared().onlyURLs
+        ignoredURLs = NetworkHelper.shared().ignoredURLs
     }
 }

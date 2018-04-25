@@ -20,6 +20,9 @@ import Foundation
     @objc public static var tabBarControllers: [UIViewController]? = nil
     ///whether to allow the recording of crash logs in app. default value is `false`.
     @objc public static var recordCrash: Bool = false
+    ///the maximum count of logs which DotzuX display. default value is `500`.
+    @objc public static var logMaxCount: Int = 500
+    
     
     //MARK: - DotzuX start
     @objc public static func enable() {

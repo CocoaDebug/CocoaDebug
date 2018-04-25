@@ -19,7 +19,7 @@ class CrashStoreManager {
     
     //MARK: - public
     func addCrash(_ crash: CrashModel) {
-        if self.crashArray.count >= 1000/2 {
+        if self.crashArray.count >= DotzuXSettings.shared.logMaxCount {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }
