@@ -28,7 +28,7 @@ class DotzuXBubble: UIView {
     
     
     private lazy var _label: UILabel? = {
-        let xxx: CGFloat = 16/2 - 4
+        let xxx: CGFloat = 16/2
         let label = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
         label.textColor = Color.mainGreen
         label.font = UIFont.boldSystemFont(ofSize: 13)
@@ -38,14 +38,16 @@ class DotzuXBubble: UIView {
         return label
     }()
     
-    private lazy var _sublabel: UILabel? = {
+    private lazy var _sublabel: FPSLabel? = {
         let xxx: CGFloat = -16/2 - 4
-        let sublabel = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
-        sublabel.textColor = .white
-        sublabel.font = UIFont.systemFont(ofSize: 10)
-        sublabel.textAlignment = .center
+        let sublabel = FPSLabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
+//        sublabel.textColor = .white
+//        sublabel.font = UIFont.systemFont(ofSize: 10)
+//        sublabel.textAlignment = .center
+//        sublabel.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").last
+        
+//        sublabel.sizeToFit()
         sublabel.adjustsFontSizeToFitWidth = true
-        sublabel.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").last
         return sublabel
     }()
     
@@ -234,7 +236,7 @@ class DotzuXBubble: UIView {
     //MARK: - target action
     @objc func timerMonitor() {
         _label?.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
-        _sublabel?.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").last
+//        _sublabel?.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").last
     }
     
     @objc func tap() {

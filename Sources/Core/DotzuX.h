@@ -7,6 +7,7 @@
 //
 
 #import "Sandbox.h"
+#import "FPSLabel.h"
 #import "NetworkHelper.h"
 #import "DotzuX+Categories.h"
 

@@ -236,6 +236,8 @@
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
+		EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
+		EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EAE674242064085300282B31 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
 		EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
@@ -804,6 +806,10 @@
 		EA1659E0204D1B14001472C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA1659E2204D1B14001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA617D492090291000EFDCCD /* WeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakProxy.m; sourceTree = "<group>"; };
+		EA617D4A2090291000EFDCCD /* FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSLabel.h; sourceTree = "<group>"; };
+		EA617D4B2090291000EFDCCD /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
+		EA617D4C2090291000EFDCCD /* WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakProxy.h; sourceTree = "<group>"; };
 		EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6B277820596883004D8E05 /* Example_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_SwiftTests.swift; sourceTree = "<group>"; };
 		EA6B277A20596883004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -933,6 +939,7 @@
 		EA0628E120541ACB0071A231 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EA617D482090291000EFDCCD /* FPS */,
 				EA0628E220541ACB0071A231 /* Core */,
 				EA0628E720541ACB0071A231 /* App */,
 				EA0628F420541ACB0071A231 /* Resources */,
@@ -979,11 +986,11 @@
 		EA0628F420541ACB0071A231 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA06290020541ACB0071A231 /* FileType */,
+				EA0628F720541ACB0071A231 /* images */,
 				EA0628F520541ACB0071A231 /* NetworkCell.xib */,
 				EA0628F620541ACB0071A231 /* Logs.storyboard */,
-				EA0628F720541ACB0071A231 /* images */,
 				EA0628FF20541ACB0071A231 /* Network.storyboard */,
-				EA06290020541ACB0071A231 /* FileType */,
 				EA0629A320541ACB0071A231 /* Manager.storyboard */,
 				EA0629A420541ACB0071A231 /* App.storyboard */,
 			);
@@ -1239,15 +1246,15 @@
 		EA0629CC20541ACB0071A231 /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				EA0629D020541ACB0071A231 /* MemoryHelper.h */,
+				EA0629D520541ACB0071A231 /* MemoryHelper.m */,
 				EA0629CD20541ACB0071A231 /* WindowHelper.swift */,
 				EA0629CE20541ACB0071A231 /* DotzuXWindow.swift */,
 				EA0629CF20541ACB0071A231 /* DotzuXViewController.swift */,
-				EA0629D020541ACB0071A231 /* MemoryHelper.h */,
 				EA0629D120541ACB0071A231 /* DotzuXNavigationController.swift */,
 				EA0629D220541ACB0071A231 /* DotzuXBubble.swift */,
 				EA0629D320541ACB0071A231 /* DotzuXTabBarController.swift */,
 				EA0629D420541ACB0071A231 /* Color.swift */,
-				EA0629D520541ACB0071A231 /* MemoryHelper.m */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -1300,6 +1307,17 @@
 				EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */,
 			);
 			path = Example_Swift;
+			sourceTree = "<group>";
+		};
+		EA617D482090291000EFDCCD /* FPS */ = {
+			isa = PBXGroup;
+			children = (
+				EA617D4A2090291000EFDCCD /* FPSLabel.h */,
+				EA617D4B2090291000EFDCCD /* FPSLabel.m */,
+				EA617D4C2090291000EFDCCD /* WeakProxy.h */,
+				EA617D492090291000EFDCCD /* WeakProxy.m */,
+			);
+			path = FPS;
 			sourceTree = "<group>";
 		};
 		EA6B277720596883004D8E05 /* Example_SwiftTests */ = {
@@ -2007,6 +2025,7 @@
 				EA0629E620541ACB0071A231 /* CrashModel.swift in Sources */,
 				EA062AAE20541ACB0071A231 /* FileTableViewCell.m in Sources */,
 				EA062AC020541ACB0071A231 /* NSURLRequest+DotzuX.m in Sources */,
+				EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */,
 				EA062AAB20541ACB0071A231 /* LogModel.swift in Sources */,
 				EA062A9E20541ACB0071A231 /* JsonViewController.swift in Sources */,
 				EA062ABE20541ACB0071A231 /* NSData+DotzuX.m in Sources */,
@@ -2104,6 +2123,7 @@
 				EAF58037204E73C3001CA56D /* ASICloudFilesObject.m in Sources */,
 				EAF5801B204E73C3001CA56D /* Networking+DELETE.swift in Sources */,
 				EA0629E120541ACB0071A231 /* DotzuX.swift in Sources */,
+				EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */,
 				EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */,
 				EAF5803D204E73C3001CA56D /* ASIS3BucketRequest.m in Sources */,
 				EAF58038204E73C3001CA56D /* ASICloudFilesRequest.m in Sources */,

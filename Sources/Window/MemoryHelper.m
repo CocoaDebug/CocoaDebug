@@ -48,10 +48,12 @@ static vm_statistics_data_t jVMStats;
     unsigned long long used = [self bytesOfAppUsedMemory];
     NSString *appUsedStr = [self number2String:used];
     
-    unsigned long long free = [self bytesOfFreeMemory];
-    NSString *freeStr = [self number2String:free];
+//    unsigned long long free = [self bytesOfFreeMemory];
+//    NSString *freeStr = [self number2String:free];
+//
+//    return [NSString stringWithFormat:@"%@  %@ Free", appUsedStr, freeStr];
     
-    return [NSString stringWithFormat:@"%@  %@ Free", appUsedStr, freeStr];
+    return [NSString stringWithFormat:@"%@  ", appUsedStr];
 }
 
 - (NSString* )number2String:(int64_t)n
