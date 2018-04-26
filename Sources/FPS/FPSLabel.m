@@ -32,7 +32,7 @@
     self.textAlignment = NSTextAlignmentCenter;
     self.userInteractionEnabled = NO;
 //    self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.700];
-    
+        
     _font = [UIFont fontWithName:@"Menlo" size:14];
     if (_font) {
         _subFont = [UIFont fontWithName:@"Menlo" size:4];

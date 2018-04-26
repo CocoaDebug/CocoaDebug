@@ -46,8 +46,7 @@ class DotzuXBubble: UIView {
 //        sublabel.textAlignment = .center
 //        sublabel.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").last
         
-//        sublabel.sizeToFit()
-        sublabel.adjustsFontSizeToFitWidth = true
+        sublabel.adjustsFontSizeToFitWidth = true //sublabel.sizeToFit()
         return sublabel
     }()
     

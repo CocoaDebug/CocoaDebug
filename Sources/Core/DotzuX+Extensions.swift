@@ -236,6 +236,17 @@ extension UIWindow {
     }
 }
 
+///add FPSLabel behind status bar
+extension UIViewController {
+    func addStatusBarBackgroundView(viewController: UIViewController) -> Void {
+        let rect = CGRect(origin: CGPoint(x: UIScreen.main.bounds.size.width/2.0, y: 0), size:CGSize(width: UIScreen.main.bounds.size.width/2.0, height:20))
+        let label : FPSLabel = FPSLabel.init(frame: rect)
+        label.adjustsFontSizeToFitWidth = true //sublabel.sizeToFit()
+//        viewController.view?.addSubview(label)
+        viewController.navigationController?.view.addSubview(label)
+    }
+}
+
 ///DotzuX initialization
 extension DotzuX {
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false)

@@ -92,6 +92,9 @@ class NetworkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //add FPSLabel behind status bar
+        addStatusBarBackgroundView(viewController: self)
+        
 //        UIApplication.shared.statusBarStyle = .lightContent //liman
 //        setNeedsStatusBarAppearanceUpdate()
         

@@ -179,6 +179,9 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //add FPSLabel behind status bar
+        addStatusBarBackgroundView(viewController: self)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DotzuX"), object: nil)
         
         defaultTableView.tableFooterView = UIView()
