@@ -256,8 +256,11 @@ extension UIViewController {
     }
 }
 
-///DotzuX initialization
+
+///DotzuX
 extension DotzuX {
+    
+    ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false)
     {
         if serverURL == nil {
@@ -301,6 +304,15 @@ extension DotzuX {
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()
         DotzuXSettings.shared.responseShake = true
+    }
+    
+    ///deinit
+    static func deinitializationMethod() {
+        WindowHelper.shared.disable()
+        NetworkHelper.shared().disable()
+        LogHelper.shared.enable = false
+        CrashLogger.shared.enable = false
+        DotzuXSettings.shared.responseShake = false
     }
 }
 

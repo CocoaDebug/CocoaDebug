@@ -31,11 +31,7 @@ import Foundation
     
     //MARK: - DotzuX disable
     @objc public static func disable() {
-        WindowHelper.shared.disable()
-        NetworkHelper.shared().disable()
-        LogHelper.shared.enable = false
-        CrashLogger.shared.enable = false
-        DotzuXSettings.shared.responseShake = false
+        deinitializationMethod()
     }
     
     //MARK: - objcLog() usage only for Objective-C
