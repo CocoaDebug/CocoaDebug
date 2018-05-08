@@ -103,6 +103,11 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
 - (void)stopLoading {
     [self.connection cancel];
     
+    if (![NetworkHelper shared].isEnable) {
+        return;
+    }
+    
+    
     HttpModel* model = [[HttpModel alloc] init];
     model.url = self.request.URL;
     model.method = self.request.HTTPMethod;

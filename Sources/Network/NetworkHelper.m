@@ -29,11 +29,13 @@
 
 - (void)enable
 {
-   [NSURLProtocol registerClass:[HttpProtocol class]];
+    self.isEnable = YES;
+    [NSURLProtocol registerClass:[HttpProtocol class]];
 }
 
 - (void)disable
 {
+    self.isEnable = NO;
     [NSURLProtocol unregisterClass:[HttpProtocol class]];
 }
 

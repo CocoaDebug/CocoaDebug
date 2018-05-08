@@ -26,6 +26,8 @@
  */
 @property (nonatomic, assign) NSInteger logMaxCount;
 
+@property (nonatomic, assign) BOOL isEnable;
+
 /**
  *  启用
  */
