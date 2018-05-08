@@ -61,21 +61,21 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-///add FPSLabel behind status bar
-- (void)addStatusBarBackgroundView:(UIViewController *)viewController
-{
-    CGRect rect = CGRectMake(UIScreen.mainScreen.bounds.size.width/2.0, 0, UIScreen.mainScreen.bounds.size.width/2.0, 20);
-    FPSLabel *label = [[FPSLabel alloc] initWithFrame:rect];
-    label.adjustsFontSizeToFitWidth = true; //sublabel.sizeToFit()
-    label.tag = 1001;
-    [viewController.navigationController.view addSubview:label];
-}
-
 ///remove FPSLabel from status bar
 - (void)removeStatusBarBackgroundView:(UIViewController *)viewController
 {
-    FPSLabel *label = [viewController.navigationController.view viewWithTag:1001];
-    if (label) {[label removeFromSuperview];}
+//    FPSLabel *label = [viewController.navigationController.view viewWithTag:1001];
+//    if (label) {[label removeFromSuperview];}
+}
+
+///add FPSLabel behind status bar
+- (void)addStatusBarBackgroundView:(UIViewController *)viewController
+{
+//    CGRect rect = CGRectMake(UIScreen.mainScreen.bounds.size.width/2.0, 0, UIScreen.mainScreen.bounds.size.width/2.0, 20);
+//    FPSLabel *label = [[FPSLabel alloc] initWithFrame:rect];
+//    label.adjustsFontSizeToFitWidth = true; //sublabel.sizeToFit()
+//    label.tag = 1001;
+//    [viewController.navigationController.view addSubview:label];
 }
 
 #pragma mark - View Lifecycle
@@ -83,9 +83,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [super viewDidLoad];
     
     //remove FPSLabel from status bar
-//    [self removeStatusBarBackgroundView:self];
+    [self removeStatusBarBackgroundView:self];
     //add FPSLabel behind status bar
-//    [self addStatusBarBackgroundView:self];
+    [self addStatusBarBackgroundView:self];
+    
     
     //add by liman
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
