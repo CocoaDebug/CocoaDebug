@@ -35,6 +35,7 @@ import Foundation
         NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
         CrashLogger.shared.enable = false
+        DotzuXSettings.shared.responseShake = false
     }
     
     //MARK: - objcLog() usage only for Objective-C

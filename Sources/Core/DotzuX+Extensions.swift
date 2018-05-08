@@ -228,6 +228,9 @@ extension UITableView {
 ///shake
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        if DotzuXSettings.shared.responseShake == false {return}
+        
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
             if DotzuXSettings.shared.visible == true {return}
@@ -297,6 +300,7 @@ extension DotzuX {
         LogHelper.shared.enable = true
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()
+        DotzuXSettings.shared.responseShake = true
     }
 }
 

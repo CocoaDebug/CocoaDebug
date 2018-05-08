@@ -12,6 +12,12 @@ import Foundation
 
     @objc public static let shared = DotzuXSettings()
 
+    @objc public var responseShake: Bool = false {
+        didSet {
+            UserDefaults.standard.set(responseShake, forKey: "responseShake_DotzuX")
+            UserDefaults.standard.synchronize()
+        }
+    }
     @objc public var firstIn: String? = nil {
         didSet {
             UserDefaults.standard.set(firstIn, forKey: "firstIn_DotzuX")
@@ -134,6 +140,7 @@ import Foundation
     
     
     private override init() {
+        responseShake = UserDefaults.standard.bool(forKey: "responseShake_DotzuX")
         firstIn = UserDefaults.standard.string(forKey: "firstIn_DotzuX")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_DotzuX")
         visible = UserDefaults.standard.bool(forKey: "visible_DotzuX")
