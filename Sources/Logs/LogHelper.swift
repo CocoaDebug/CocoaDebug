@@ -10,6 +10,8 @@ import Foundation
 
 public class LogHelper: NSObject {
     
+    var enable: Bool = true
+    
     static let shared = LogHelper()
     private override init() {}
     
@@ -19,6 +21,9 @@ public class LogHelper: NSObject {
     }
 
     func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
+        
+        if enable == false {return}
+        
         //1.
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         let stringContent = message.reduce("") { result, next -> String in

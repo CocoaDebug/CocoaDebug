@@ -294,6 +294,7 @@ extension DotzuX {
         DotzuXSettings.shared.recordCrash = recordCrash
         DotzuXSettings.shared.logMaxCount = DotzuX.logMaxCount
         
+        LogHelper.shared.enable = true
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()
     }

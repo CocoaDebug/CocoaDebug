@@ -24,9 +24,17 @@ import Foundation
     @objc public static var logMaxCount: Int = 500
     
     
-    //MARK: - DotzuX start
+    //MARK: - DotzuX enable
     @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash)
+    }
+    
+    //MARK: - DotzuX disable
+    @objc public static func disable() {
+        WindowHelper.shared.disable()
+        NetworkHelper.shared().disable()
+        LogHelper.shared.enable = false
+        CrashLogger.shared.enable = false
     }
     
     //MARK: - objcLog() usage only for Objective-C
