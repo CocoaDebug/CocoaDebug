@@ -13,9 +13,9 @@ class NetworkDetailViewController: UITableViewController {
     
     var httpModel: HttpModel?
     
-    var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
+    lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
-    var requestDictionary: [String: Any]? = Dictionary()
+    lazy var requestDictionary: [String: Any]? = Dictionary()
 
     var justCancelCallback:(() -> Void)?
     

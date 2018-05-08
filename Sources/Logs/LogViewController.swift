@@ -24,13 +24,13 @@ class LogViewController: UIViewController {
     
     @IBOutlet weak var defaultTableView: UITableView!
     @IBOutlet weak var defaultSearchBar: UISearchBar!
-    var defaultModels: [LogModel] = [LogModel]()
+    lazy var defaultModels: [LogModel] = [LogModel]()
     var defaultCacheModels: Array<LogModel>?
     var defaultSearchModels: Array<LogModel>?
     
     @IBOutlet weak var colorTableView: UITableView!
     @IBOutlet weak var colorSearchBar: UISearchBar!
-    var colorModels: [LogModel] = [LogModel]()
+    lazy var colorModels: [LogModel] = [LogModel]()
     var colorCacheModels: Array<LogModel>?
     var colorSearchModels: Array<LogModel>?
     

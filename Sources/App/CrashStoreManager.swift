@@ -10,7 +10,7 @@ import Foundation
 
 class CrashStoreManager {
     
-    var crashArray: [CrashModel] = [CrashModel]()
+    lazy var crashArray: [CrashModel] = [CrashModel]()
     
     static let shared = CrashStoreManager()
     private init() {

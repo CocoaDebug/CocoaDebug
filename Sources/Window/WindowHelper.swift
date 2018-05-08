@@ -11,7 +11,7 @@ import UIKit
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
     var window: DotzuXWindow?
-    let vc = DotzuXViewController()
+    lazy var vc = DotzuXViewController()
     var displayedList = false
  
     private override init() {

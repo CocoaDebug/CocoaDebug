@@ -11,7 +11,7 @@ import UIKit
 
 class NetworkCell: UITableViewCell {
     
-    var formatter: DateFormatter = DateFormatter()
+    lazy var formatter: DateFormatter = DateFormatter()
     
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!

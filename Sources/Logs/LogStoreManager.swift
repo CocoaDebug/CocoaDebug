@@ -10,8 +10,8 @@ import Foundation
 
 class LogStoreManager {
     
-    var defaultLogArray: [LogModel] = [LogModel]()
-    var colorLogArray: [LogModel] = [LogModel]()
+    lazy var defaultLogArray: [LogModel] = [LogModel]()
+    lazy var colorLogArray: [LogModel] = [LogModel]()
     
     static let shared = LogStoreManager()
     private init() {}
