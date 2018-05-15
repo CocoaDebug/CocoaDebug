@@ -20,20 +20,22 @@ block();\
 dispatch_async(dispatch_get_main_queue(), block);\
 }
 
-typedef NSURLSessionConfiguration*(*SessionConfigConstructor)(id,SEL);
-static SessionConfigConstructor orig_defaultSessionConfiguration;
 
-static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, SEL _cmd)
+typedef NSURLSessionConfiguration *(*SessionConfigConstructor)(id,SEL);
+
+static SessionConfigConstructor orig_defaultSessionConfiguration;
+static SessionConfigConstructor orig_ephemeralSessionConfiguration;
+
+
+static NSURLSessionConfiguration *replaced_defaultSessionConfiguration(id self, SEL _cmd)
 {
     // call original method
-    NSURLSessionConfiguration* config = orig_defaultSessionConfiguration(self,_cmd);
+    NSURLSessionConfiguration *config = orig_defaultSessionConfiguration(self,_cmd);
     
-    
-    if (   [config respondsToSelector:@selector(protocolClasses)]
-        && [config respondsToSelector:@selector(setProtocolClasses:)]){
-        NSMutableArray * urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
         Class protoCls = HttpProtocol.class;
-        if (![urlProtocolClasses containsObject:protoCls]){
+        if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
         
@@ -42,6 +44,25 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
     
     return config;
 }
+
+static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self, SEL _cmd)
+{
+    // call original method
+    NSURLSessionConfiguration *config = orig_ephemeralSessionConfiguration(self,_cmd);
+    
+    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+        Class protoCls = HttpProtocol.class;
+        if (![urlProtocolClasses containsObject:protoCls]) {
+            [urlProtocolClasses insertObject:protoCls atIndex:0];
+        }
+        
+        config.protocolClasses = urlProtocolClasses;
+    }
+    
+    return config;
+}
+
 
 @interface HttpProtocol()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
@@ -54,12 +75,16 @@ static NSURLSessionConfiguration* replaced_defaultSessionConfiguration(id self, 
 @implementation HttpProtocol
 
 
-
 #pragma mark - protocol
 + (void)load {
     static dispatch_once_t onceToken;
+    
     dispatch_once(&onceToken, ^{
         orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+    });
+    
+    dispatch_once(&onceToken, ^{
+        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
     });
 }
 
