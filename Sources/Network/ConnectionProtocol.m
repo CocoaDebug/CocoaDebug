@@ -6,13 +6,13 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "HttpProtocol.h"
+#import "ConnectionProtocol.h"
 #import "NetworkHelper.h"
 #import "HttpDatasource.h"
 #import "NSData+DotzuX.h"
 #import "Swizzling.h"
 
-#define myProtocolKey   @"HttpProtocol"
+#define kProtocolKey   @"ConnectionProtocol"
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
 block();\
@@ -35,7 +35,7 @@ static NSURLSessionConfiguration *replaced_defaultSessionConfiguration(id self, 
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = HttpProtocol.class;
+        Class protoCls = ConnectionProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -52,7 +52,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = HttpProtocol.class;
+        Class protoCls = ConnectionProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -70,7 +70,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfiguration(id sel
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = HttpProtocol.class;
+        Class protoCls = ConnectionProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -87,7 +87,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = HttpProtocol.class;
+        Class protoCls = ConnectionProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -98,8 +98,9 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     return config;
 }
 
+#pragma mark -------------------------------------------------------------------------------------
 
-@interface HttpProtocol()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface ConnectionProtocol()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, strong) NSMutableData *data;
@@ -107,131 +108,10 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 @property (nonatomic, assign) NSTimeInterval  startTime;
 @end
 
-@implementation HttpProtocol
+@implementation ConnectionProtocol
 
 
-#pragma mark - protocol
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        //Deprecated
-        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
-    });
-}
-
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    if (![request.URL.scheme isEqualToString:@"http"] &&
-        ![request.URL.scheme isEqualToString:@"https"]) {
-        return NO;
-    }
-    
-    if ([NSURLProtocol propertyForKey:myProtocolKey inRequest:request] ) {
-        return NO;
-    }
-    
-    if ([[NetworkHelper shared] onlyURLs].count > 0) {
-        NSString* url = [request.URL.absoluteString lowercaseString];
-        for (NSString* _url in [NetworkHelper shared].onlyURLs) {
-            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
-                return YES;
-        }
-        return NO;
-    }
-    
-    return YES;
-}
-
-+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
-    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
-    [NSURLProtocol setProperty:@YES forKey:myProtocolKey inRequest:mutableReqeust];
-    return [mutableReqeust copy];
-}
-
-- (void)startLoading {
-    self.data = [NSMutableData data];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
-#pragma clang diagnostic pop
-    self.startTime = [[NSDate date] timeIntervalSince1970];
-}
-
-- (void)stopLoading {
-    [self.connection cancel];
-    
-    if (![NetworkHelper shared].isEnable) {
-        return;
-    }
-    
-    
-    HttpModel* model = [[HttpModel alloc] init];
-    model.url = self.request.URL;
-    model.method = self.request.HTTPMethod;
-    model.mineType = self.response.MIMEType;
-    if (self.request.HTTPBody) {
-        model.requestData = self.request.HTTPBody;
-    }
-    if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
-        model.requestData = data;
-    }
-    
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
-    model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
-    model.responseData = self.data;
-    model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-
-    //时间
-    NSTimeInterval startTimeDouble = self.startTime;
-    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
-    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
-    
-    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
-    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
-    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
-    
-    
-    model.errorDescription = self.error.description;
-    model.errorLocalizedDescription = self.error.localizedDescription;
-    model.headerFields = self.request.allHTTPHeaderFields;
-    
-    if (self.response.MIMEType == nil) {
-        model.isImage = NO;
-    }
-    
-    if ([model.url.absoluteString length] > 4) {
-        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 4];
-        if ([str isEqualToString:@".png"] || [str isEqualToString:@".PNG"] || [str isEqualToString:@".jpg"] || [str isEqualToString:@".JPG"] || [str isEqualToString:@".gif"] || [str isEqualToString:@".GIF"]) {
-            model.isImage = YES;
-        }
-    }
-    if ([model.url.absoluteString length] > 5) {
-        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 5];
-        if ([str isEqualToString:@".jpeg"] || [str isEqualToString:@".JPEG"]) {
-            model.isImage = YES;
-        }
-    }
-    
-    //处理500,404等错误
-    model = [self handleError:self.error model:model];
-    
-    
-    
-    if ([[HttpDatasource shared] addHttpRequset:model])
-    {
-        dispatch_main_async_safe(^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
-        })
-    }
-}
-
+#pragma mark - helper
 //处理500,404等错误
 - (HttpModel *)handleError:(NSError *)error model:(HttpModel *)model
 {
@@ -496,6 +376,128 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     }
     
     return model;
+}
+
+#pragma mark - protocol
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        //Deprecated
+        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
+    });
+}
+
++ (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    if (![request.URL.scheme isEqualToString:@"http"] &&
+        ![request.URL.scheme isEqualToString:@"https"]) {
+        return NO;
+    }
+    
+    if ([NSURLProtocol propertyForKey:kProtocolKey inRequest:request] ) {
+        return NO;
+    }
+    
+    if ([[NetworkHelper shared] onlyURLs].count > 0) {
+        NSString* url = [request.URL.absoluteString lowercaseString];
+        for (NSString* _url in [NetworkHelper shared].onlyURLs) {
+            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
+                return YES;
+        }
+        return NO;
+    }
+    
+    return YES;
+}
+
++ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
+    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
+    [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
+    return [mutableReqeust copy];
+}
+
+- (void)startLoading {
+    self.data = [NSMutableData data];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
+#pragma clang diagnostic pop
+    self.startTime = [[NSDate date] timeIntervalSince1970];
+}
+
+- (void)stopLoading {
+    [self.connection cancel];
+    
+    if (![NetworkHelper shared].isEnable) {
+        return;
+    }
+    
+    
+    HttpModel* model = [[HttpModel alloc] init];
+    model.url = self.request.URL;
+    model.method = self.request.HTTPMethod;
+    model.mineType = self.response.MIMEType;
+    if (self.request.HTTPBody) {
+        model.requestData = self.request.HTTPBody;
+    }
+    if (self.request.HTTPBodyStream) {//liman
+        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
+        model.requestData = data;
+    }
+    
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
+    model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
+    model.responseData = self.data;
+    model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
+    
+    //时间
+    NSTimeInterval startTimeDouble = self.startTime;
+    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
+    
+    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
+    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
+    
+    
+    model.errorDescription = self.error.description;
+    model.errorLocalizedDescription = self.error.localizedDescription;
+    model.headerFields = self.request.allHTTPHeaderFields;
+    
+    if (self.response.MIMEType == nil) {
+        model.isImage = NO;
+    }
+    
+    if ([model.url.absoluteString length] > 4) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 4];
+        if ([str isEqualToString:@".png"] || [str isEqualToString:@".PNG"] || [str isEqualToString:@".jpg"] || [str isEqualToString:@".JPG"] || [str isEqualToString:@".gif"] || [str isEqualToString:@".GIF"]) {
+            model.isImage = YES;
+        }
+    }
+    if ([model.url.absoluteString length] > 5) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 5];
+        if ([str isEqualToString:@".jpeg"] || [str isEqualToString:@".JPEG"]) {
+            model.isImage = YES;
+        }
+    }
+    
+    //处理500,404等错误
+    model = [self handleError:self.error model:model];
+    
+    
+    
+    if ([[HttpDatasource shared] addHttpRequset:model])
+    {
+        dispatch_main_async_safe(^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
+        })
+    }
 }
 
 #pragma mark - NSURLConnectionDelegate
