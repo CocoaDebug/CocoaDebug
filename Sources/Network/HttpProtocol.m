@@ -113,21 +113,15 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark - protocol
 + (void)load {
     static dispatch_once_t onceToken;
-    
     dispatch_once(&onceToken, ^{
+        
         orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
-    });
-    
-    dispatch_once(&onceToken, ^{
+        
         orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
-    });
-    
-    //Deprecated
-    dispatch_once(&onceToken, ^{
+        
+        //Deprecated
         orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
-    });
-    
-    dispatch_once(&onceToken, ^{
+        
         orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
     });
 }
