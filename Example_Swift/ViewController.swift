@@ -82,7 +82,6 @@ fileprivate class RedirectRequester: NSObject, URLSessionTaskDelegate {
     private static var sharedInstance = RedirectRequester()
     private static var session: URLSession!
     
-    // to prevent redirection
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         completionHandler(nil)
     }

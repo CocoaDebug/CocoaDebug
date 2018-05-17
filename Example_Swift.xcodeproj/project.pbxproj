@@ -548,6 +548,7 @@
 		EAF58044204E73C3001CA56D /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58001204E73C2001CA56D /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAF58045204E73C3001CA56D /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58003204E73C2001CA56D /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		EAFA4F9820ADA64600FEFF1E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -913,6 +914,8 @@
 		EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
 		EAF58007204E73C2001CA56D /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIWebPageRequest.h; sourceTree = "<group>"; };
 		EAF58008204E73C2001CA56D /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
+		EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1189,6 +1192,8 @@
 			children = (
 				EA0629AE20541ACB0071A231 /* ConnectionProtocol.h */,
 				EA0629A620541ACB0071A231 /* ConnectionProtocol.m */,
+				EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */,
+				EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */,
 				EA0629A720541ACB0071A231 /* JsonViewController.swift */,
 				EA0629A820541ACB0071A231 /* HttpModel.m */,
 				EA0629A920541ACB0071A231 /* HttpDatasource.m */,
@@ -2142,6 +2147,7 @@
 				EAF58016204E73C3001CA56D /* SessionManager.swift in Sources */,
 				EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */,
 				EAF5802C204E73C3001CA56D /* Upload.swift in Sources */,
+				EAFA4F9820ADA64600FEFF1E /* CacheStoragePolicy.m in Sources */,
 				EA062AA320541ACB0071A231 /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

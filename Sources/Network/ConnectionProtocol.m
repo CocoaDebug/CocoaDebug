@@ -11,6 +11,7 @@
 #import "HttpDatasource.h"
 #import "NSData+DotzuX.h"
 #import "Swizzling.h"
+#import "CacheStoragePolicy.h"
 
 #define kProtocolKey   @"ConnectionProtocol"
 
@@ -175,8 +176,10 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 - (void)stopLoading
 {
-    [self.connection cancel];
-    self.connection = nil;
+    if (self.connection) {
+        [self.connection cancel];
+        self.connection = nil;
+    }
     
     
     if (![NetworkHelper shared].isEnable) {
@@ -249,8 +252,20 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    self.error = error;
-    [[self client] URLProtocol:self didFailWithError:error];
+    if (!error) {
+        [[self client] URLProtocolDidFinishLoading:self];
+    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
+        // Do nothing.  This happens in two cases:
+        //
+        // o during a redirect, in which case the redirect code has already told the client about
+        //   the failure
+        //
+        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
+        //   want to know about the failure
+    } else {
+        self.error = error;
+        [[self client] URLProtocol:self didFailWithError:error];
+    }
 }
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
@@ -293,8 +308,23 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    NSURLCacheStoragePolicy cacheStoragePolicy;
+    NSInteger               statusCode;
+    
+    // Pass the call on to our client.  The only tricky thing is that we have to decide on a
+    // cache storage policy, which is based on the actual request we issued, not the request
+    // we were given.
+    
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
+        statusCode = [((NSHTTPURLResponse *) response) statusCode];
+    } else {
+        cacheStoragePolicy = NSURLCacheStorageNotAllowed;
+        statusCode = 42;
+    }
+    
     self.response = response;
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -318,7 +348,17 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 {
     if (response) {
         self.response = response;
+        
+        
+        NSMutableURLRequest *redirectRequest;
+        redirectRequest = [request mutableCopy];
+        [[self class] removePropertyForKey:kProtocolKey inRequest:redirectRequest];
+        
         [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+        
+        
+        [self.connection cancel];
+        [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
     }
     return request;
 }
