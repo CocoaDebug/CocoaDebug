@@ -244,8 +244,8 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [[self client] URLProtocol:self didFailWithError:error];
     self.error = error;
+    [[self client] URLProtocol:self didFailWithError:error];
 }
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
@@ -269,14 +269,14 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
     self.response = response;
+    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [[self client] URLProtocol:self didLoadData:data];
     [self.data appendData:data];
+    [[self client] URLProtocol:self didLoadData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
@@ -293,6 +293,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
     if (response) {
+        self.response = response;
         [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
     }
     return request;
