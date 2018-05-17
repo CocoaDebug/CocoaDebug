@@ -155,24 +155,29 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
-    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
-    [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
-    return [mutableReqeust copy];
+    return request;
+}
+
++ (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b
+{
+    return [super requestIsCacheEquivalent:a toRequest:b];
 }
 
 - (void)startLoading
 {
     self.data = [NSMutableData data];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
-#pragma clang diagnostic pop
     self.startTime = [[NSDate date] timeIntervalSince1970];
+    
+    NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
+    [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
+    self.connection = [NSURLConnection connectionWithRequest:mutableReqeust delegate:self];
 }
 
 - (void)stopLoading
 {
     [self.connection cancel];
+    self.connection = nil;
+    
     
     if (![NetworkHelper shared].isEnable) {
         return;
@@ -264,6 +269,25 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
 }
 #pragma GCC diagnostic pop
+
+//解決發送IP地址的HTTPS請求 證書驗證
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if (!challenge) {
+        return;
+    }
+    
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
+    {
+        //構造一個NSURLCredential發送給發起方
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+    } else
+    {
+        //對於其他驗證方法直接進行處理流程
+        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+    }
+}
 
 
 #pragma mark - NSURLConnectionDataDelegate
