@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ConnectionProtocol : NSURLProtocol
+@interface CustomProtocol : NSURLProtocol
 
 @end

@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     
     
     func testRedirect() {
-        RedirectRequester.getRedirectInfo(with: "http://apple.com") { result, response in
+        RedirectRequester.getRedirectInfo(with: "https://apple.com") { result, response in
             print("Redirect \(result): \(response)")
         }
     }

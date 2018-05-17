@@ -6,14 +6,14 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "ConnectionProtocol.h"
+#import "CustomProtocol.h"
 #import "NetworkHelper.h"
 #import "HttpDatasource.h"
 #import "NSData+DotzuX.h"
 #import "Swizzling.h"
 #import "CacheStoragePolicy.h"
 
-#define kProtocolKey   @"ConnectionProtocol"
+#define kProtocolKey   @"CustomProtocol"
 
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
@@ -37,7 +37,7 @@ static NSURLSessionConfiguration *replaced_defaultSessionConfiguration(id self, 
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = ConnectionProtocol.class;
+        Class protoCls = CustomProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -54,7 +54,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = ConnectionProtocol.class;
+        Class protoCls = CustomProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -72,7 +72,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfiguration(id sel
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = ConnectionProtocol.class;
+        Class protoCls = CustomProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -89,7 +89,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     
     if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
         NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = ConnectionProtocol.class;
+        Class protoCls = CustomProtocol.class;
         if (![urlProtocolClasses containsObject:protoCls]) {
             [urlProtocolClasses insertObject:protoCls atIndex:0];
         }
@@ -102,7 +102,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 #pragma mark -------------------------------------------------------------------------------------
 
-@interface ConnectionProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface CustomProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, strong) NSMutableData *data;
@@ -110,7 +110,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 @property (nonatomic, assign) NSTimeInterval  startTime;
 @end
 
-@implementation ConnectionProtocol
+@implementation CustomProtocol
 
 
 #pragma mark - init
@@ -283,6 +283,13 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 {
     [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
 }
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    if ([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        return YES;
+    }
+    return NO;
+}
 #pragma GCC diagnostic pop
 
 //解決發送IP地址的HTTPS請求 證書驗證
@@ -349,21 +356,28 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     if (response) {
         self.response = response;
         
-        
         NSMutableURLRequest *redirectRequest;
         redirectRequest = [request mutableCopy];
         [[self class] removePropertyForKey:kProtocolKey inRequest:redirectRequest];
         
         [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
         
-        
         [self.connection cancel];
         [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
     }
+    
     return request;
 }
 
+//- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+//{
+//
+//}
 
+//- (NSInputStream *)connection:(NSURLConnection *)connection needNewBodyStream:(NSURLRequest *)request
+//{
+//
+//}
 
 #pragma mark - helper
 //处理500,404等错误

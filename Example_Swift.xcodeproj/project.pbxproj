@@ -196,7 +196,7 @@
 		EA062A9A20541ACB0071A231 /* icon_file_type_js@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0629A220541ACB0071A231 /* icon_file_type_js@3x.png */; };
 		EA062A9B20541ACB0071A231 /* Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0629A320541ACB0071A231 /* Manager.storyboard */; };
 		EA062A9C20541ACB0071A231 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0629A420541ACB0071A231 /* App.storyboard */; };
-		EA062A9D20541ACB0071A231 /* ConnectionProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* ConnectionProtocol.m */; };
+		EA062A9D20541ACB0071A231 /* CustomProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* CustomProtocol.m */; };
 		EA062A9E20541ACB0071A231 /* JsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A720541ACB0071A231 /* JsonViewController.swift */; };
 		EA062A9F20541ACB0071A231 /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
 		EA062AA020541ACB0071A231 /* HttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A920541ACB0071A231 /* HttpDatasource.m */; };
@@ -245,7 +245,7 @@
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EAE674242064085300282B31 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
 		EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EAE674232064085200282B31 /* copy_and_codesign.sh */; };
-		EAF55AE320554164003E310F /* ConnectionProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* ConnectionProtocol.m */; };
+		EAF55AE320554164003E310F /* CustomProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* CustomProtocol.m */; };
 		EAF55AE420554164003E310F /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
 		EAF55AE520554164003E310F /* HttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A920541ACB0071A231 /* HttpDatasource.m */; };
 		EAF55AE620554164003E310F /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629AA20541ACB0071A231 /* NetworkHelper.m */; };
@@ -297,7 +297,7 @@
 		EAF55B152055416F003E310F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EAF55B162055417C003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B172055417C003E310F /* HttpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AD20541ACB0071A231 /* HttpModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B182055417C003E310F /* ConnectionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* ConnectionProtocol.h */; };
+		EAF55B182055417C003E310F /* CustomProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* CustomProtocol.h */; };
 		EAF55B192055417C003E310F /* HttpDatasource.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AF20541ACB0071A231 /* HttpDatasource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629B320541ACB0071A231 /* NetworkHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629BD20541ACB0071A231 /* MLBFileInfo.h */; };
@@ -549,6 +549,8 @@
 		EAF58045204E73C3001CA56D /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58003204E73C2001CA56D /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAFA4F9820ADA64600FEFF1E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */; };
+		EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */; };
+		EAFA4F9A20ADB16E00FEFF1E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -752,7 +754,7 @@
 		EA0629A220541ACB0071A231 /* icon_file_type_js@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_file_type_js@3x.png"; sourceTree = "<group>"; };
 		EA0629A320541ACB0071A231 /* Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manager.storyboard; sourceTree = "<group>"; };
 		EA0629A420541ACB0071A231 /* App.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
-		EA0629A620541ACB0071A231 /* ConnectionProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionProtocol.m; sourceTree = "<group>"; };
+		EA0629A620541ACB0071A231 /* CustomProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProtocol.m; sourceTree = "<group>"; };
 		EA0629A720541ACB0071A231 /* JsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonViewController.swift; sourceTree = "<group>"; };
 		EA0629A820541ACB0071A231 /* HttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpModel.m; sourceTree = "<group>"; };
 		EA0629A920541ACB0071A231 /* HttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpDatasource.m; sourceTree = "<group>"; };
@@ -760,7 +762,7 @@
 		EA0629AB20541ACB0071A231 /* NetworkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCell.swift; sourceTree = "<group>"; };
 		EA0629AC20541ACB0071A231 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		EA0629AD20541ACB0071A231 /* HttpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpModel.h; sourceTree = "<group>"; };
-		EA0629AE20541ACB0071A231 /* ConnectionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionProtocol.h; sourceTree = "<group>"; };
+		EA0629AE20541ACB0071A231 /* CustomProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProtocol.h; sourceTree = "<group>"; };
 		EA0629AF20541ACB0071A231 /* HttpDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpDatasource.h; sourceTree = "<group>"; };
 		EA0629B020541ACB0071A231 /* NetworkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailViewController.swift; sourceTree = "<group>"; };
 		EA0629B120541ACB0071A231 /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
@@ -1190,8 +1192,8 @@
 		EA0629A520541ACB0071A231 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA0629AE20541ACB0071A231 /* ConnectionProtocol.h */,
-				EA0629A620541ACB0071A231 /* ConnectionProtocol.m */,
+				EA0629AE20541ACB0071A231 /* CustomProtocol.h */,
+				EA0629A620541ACB0071A231 /* CustomProtocol.m */,
 				EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */,
 				EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */,
 				EA0629A720541ACB0071A231 /* JsonViewController.swift */,
@@ -1537,11 +1539,12 @@
 				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
 				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
+				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
 				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
 				EAE674262064090E00282B31 /* copy_and_codesign.sh in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
-				EAF55B182055417C003E310F /* ConnectionProtocol.h in Headers */,
+				EAF55B182055417C003E310F /* CustomProtocol.h in Headers */,
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
@@ -2055,7 +2058,7 @@
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
-				EA062A9D20541ACB0071A231 /* ConnectionProtocol.m in Sources */,
+				EA062A9D20541ACB0071A231 /* CustomProtocol.m in Sources */,
 				EA062AA920541ACB0071A231 /* LogViewController.swift in Sources */,
 				EA0629E020541ACB0071A231 /* DotzuXSettings.swift in Sources */,
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
@@ -2164,6 +2167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAFA4F9A20ADB16E00FEFF1E /* CacheStoragePolicy.m in Sources */,
 				EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */,
 				EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */,
 				EAF55AF42055416F003E310F /* DotzuXSettings.swift in Sources */,
@@ -2200,7 +2204,7 @@
 				EAF55B132055416F003E310F /* DotzuXBubble.swift in Sources */,
 				EAF55B142055416F003E310F /* DotzuXTabBarController.swift in Sources */,
 				EAF55B152055416F003E310F /* Color.swift in Sources */,
-				EAF55AE320554164003E310F /* ConnectionProtocol.m in Sources */,
+				EAF55AE320554164003E310F /* CustomProtocol.m in Sources */,
 				EAF55AE420554164003E310F /* HttpModel.m in Sources */,
 				EAF55AE520554164003E310F /* HttpDatasource.m in Sources */,
 				EAF55AE620554164003E310F /* NetworkHelper.m in Sources */,
