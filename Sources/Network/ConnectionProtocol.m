@@ -13,6 +13,7 @@
 #import "Swizzling.h"
 
 #define kProtocolKey   @"ConnectionProtocol"
+
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
 block();\
@@ -100,7 +101,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 #pragma mark -------------------------------------------------------------------------------------
 
-@interface ConnectionProtocol()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface ConnectionProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSURLResponse *response;
 @property (nonatomic, strong) NSMutableData *data;
@@ -109,6 +110,194 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 @end
 
 @implementation ConnectionProtocol
+
+
+#pragma mark - init
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        //Deprecated
+        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
+    });
+}
+
+#pragma mark - protocol
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+    if (![request.URL.scheme isEqualToString:@"http"] &&
+        ![request.URL.scheme isEqualToString:@"https"]) {
+        return NO;
+    }
+    
+    if ([NSURLProtocol propertyForKey:kProtocolKey inRequest:request] ) {
+        return NO;
+    }
+    
+    if ([[NetworkHelper shared] onlyURLs].count > 0) {
+        NSString* url = [request.URL.absoluteString lowercaseString];
+        for (NSString* _url in [NetworkHelper shared].onlyURLs) {
+            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
+                return YES;
+        }
+        return NO;
+    }
+    
+    return YES;
+}
+
++ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
+{
+    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
+    [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
+    return [mutableReqeust copy];
+}
+
+- (void)startLoading
+{
+    self.data = [NSMutableData data];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
+#pragma clang diagnostic pop
+    self.startTime = [[NSDate date] timeIntervalSince1970];
+}
+
+- (void)stopLoading
+{
+    [self.connection cancel];
+    
+    if (![NetworkHelper shared].isEnable) {
+        return;
+    }
+    
+    
+    HttpModel* model = [[HttpModel alloc] init];
+    model.url = self.request.URL;
+    model.method = self.request.HTTPMethod;
+    model.mineType = self.response.MIMEType;
+    if (self.request.HTTPBody) {
+        model.requestData = self.request.HTTPBody;
+    }
+    if (self.request.HTTPBodyStream) {//liman
+        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
+        model.requestData = data;
+    }
+    
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
+    model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
+    model.responseData = self.data;
+    model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
+    
+    //时间
+    NSTimeInterval startTimeDouble = self.startTime;
+    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
+    
+    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
+    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
+    
+    
+    model.errorDescription = self.error.description;
+    model.errorLocalizedDescription = self.error.localizedDescription;
+    model.headerFields = self.request.allHTTPHeaderFields;
+    
+    if (self.response.MIMEType == nil) {
+        model.isImage = NO;
+    }
+    
+    if ([model.url.absoluteString length] > 4) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 4];
+        if ([str isEqualToString:@".png"] || [str isEqualToString:@".PNG"] || [str isEqualToString:@".jpg"] || [str isEqualToString:@".JPG"] || [str isEqualToString:@".gif"] || [str isEqualToString:@".GIF"]) {
+            model.isImage = YES;
+        }
+    }
+    if ([model.url.absoluteString length] > 5) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 5];
+        if ([str isEqualToString:@".jpeg"] || [str isEqualToString:@".JPEG"]) {
+            model.isImage = YES;
+        }
+    }
+    
+    //处理500,404等错误
+    model = [self handleError:self.error model:model];
+    
+    
+    
+    if ([[HttpDatasource shared] addHttpRequset:model])
+    {
+        dispatch_main_async_safe(^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
+        })
+    }
+}
+
+
+#pragma mark - NSURLConnectionDelegate
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [[self client] URLProtocol:self didFailWithError:error];
+    self.error = error;
+}
+
+- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
+{
+    return YES;
+}
+
+#pragma GCC diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
+}
+- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
+}
+#pragma GCC diagnostic pop
+
+
+#pragma mark - NSURLConnectionDataDelegate
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+    self.response = response;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [[self client] URLProtocol:self didLoadData:data];
+    [self.data appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
+{
+    [[self client] URLProtocol:self cachedResponseIsValid:cachedResponse];
+    return cachedResponse;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [[self client] URLProtocolDidFinishLoading:self];
+}
+
+- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
+{
+    if (response) {
+        [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+    }
+    return request;
+}
+
 
 
 #pragma mark - helper
@@ -130,46 +319,46 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
                 model.errorDescription = @"1×× Informational :\nAn interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.";
                 model.errorLocalizedDescription = @"Processing";
                 break;
-//            case 200:
-//                model.errorDescription = @"2×× Success :\nThe request has succeeded.";
-//                model.errorLocalizedDescription = @"OK";
-//                break;
-//            case 201:
-//                model.errorDescription = @"2×× Success :\nThe request has been fulfilled and has resulted in one or more new resources being created.";
-//                model.errorLocalizedDescription = @"Created";
-//                break;
-//            case 202:
-//                model.errorDescription = @"2×× Success :\nThe request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.";
-//                model.errorLocalizedDescription = @"Accepted";
-//                break;
-//            case 203:
-//                model.errorDescription = @"2×× Success :\nThe request was successful but the enclosed payload has been modified from that of the origin server's 200 OK response by a transforming proxy1.";
-//                model.errorLocalizedDescription = @"Non-authoritative Information";
-//                break;
-//            case 204:
-//                model.errorDescription = @"2×× Success :\nThe server has successfully fulfilled the request and that there is no additional content to send in the response payload body.";
-//                model.errorLocalizedDescription = @"No Content";
-//                break;
-//            case 205:
-//                model.errorDescription = @"2×× Success :\nThe server has fulfilled the request and desires that the user agent reset the \"document view\", which caused the request to be sent, to its original state as received from the origin server.";
-//                model.errorLocalizedDescription = @"Reset Content";
-//                break;
-//            case 206:
-//                model.errorDescription = @"2×× Success :\nThe server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field1.";
-//                model.errorLocalizedDescription = @"Partial Content";
-//                break;
-//            case 207:
-//                model.errorDescription = @"2×× Success :\nA Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.";
-//                model.errorLocalizedDescription = @"Multi-Status";
-//                break;
-//            case 208:
-//                model.errorDescription = @"2×× Success :\nUsed inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.";
-//                model.errorLocalizedDescription = @"Already Reported";
-//                break;
-//            case 226:
-//                model.errorDescription = @"2×× Success :\nThe server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.";
-//                model.errorLocalizedDescription = @"IM Used";
-//                break;
+                //            case 200:
+                //                model.errorDescription = @"2×× Success :\nThe request has succeeded.";
+                //                model.errorLocalizedDescription = @"OK";
+                //                break;
+                //            case 201:
+                //                model.errorDescription = @"2×× Success :\nThe request has been fulfilled and has resulted in one or more new resources being created.";
+                //                model.errorLocalizedDescription = @"Created";
+                //                break;
+                //            case 202:
+                //                model.errorDescription = @"2×× Success :\nThe request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.";
+                //                model.errorLocalizedDescription = @"Accepted";
+                //                break;
+                //            case 203:
+                //                model.errorDescription = @"2×× Success :\nThe request was successful but the enclosed payload has been modified from that of the origin server's 200 OK response by a transforming proxy1.";
+                //                model.errorLocalizedDescription = @"Non-authoritative Information";
+                //                break;
+                //            case 204:
+                //                model.errorDescription = @"2×× Success :\nThe server has successfully fulfilled the request and that there is no additional content to send in the response payload body.";
+                //                model.errorLocalizedDescription = @"No Content";
+                //                break;
+                //            case 205:
+                //                model.errorDescription = @"2×× Success :\nThe server has fulfilled the request and desires that the user agent reset the \"document view\", which caused the request to be sent, to its original state as received from the origin server.";
+                //                model.errorLocalizedDescription = @"Reset Content";
+                //                break;
+                //            case 206:
+                //                model.errorDescription = @"2×× Success :\nThe server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field1.";
+                //                model.errorLocalizedDescription = @"Partial Content";
+                //                break;
+                //            case 207:
+                //                model.errorDescription = @"2×× Success :\nA Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.";
+                //                model.errorLocalizedDescription = @"Multi-Status";
+                //                break;
+                //            case 208:
+                //                model.errorDescription = @"2×× Success :\nUsed inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.";
+                //                model.errorLocalizedDescription = @"Already Reported";
+                //                break;
+                //            case 226:
+                //                model.errorDescription = @"2×× Success :\nThe server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.";
+                //                model.errorLocalizedDescription = @"IM Used";
+                //                break;
             case 300:
                 model.errorDescription = @"3×× Redirection :\nThe target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.";
                 model.errorLocalizedDescription = @"Multiple Choices";
@@ -378,169 +567,5 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     return model;
 }
 
-#pragma mark - protocol
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        //Deprecated
-        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        
-        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
-    });
-}
-
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    if (![request.URL.scheme isEqualToString:@"http"] &&
-        ![request.URL.scheme isEqualToString:@"https"]) {
-        return NO;
-    }
-    
-    if ([NSURLProtocol propertyForKey:kProtocolKey inRequest:request] ) {
-        return NO;
-    }
-    
-    if ([[NetworkHelper shared] onlyURLs].count > 0) {
-        NSString* url = [request.URL.absoluteString lowercaseString];
-        for (NSString* _url in [NetworkHelper shared].onlyURLs) {
-            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
-                return YES;
-        }
-        return NO;
-    }
-    
-    return YES;
-}
-
-+ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
-    NSMutableURLRequest *mutableReqeust = [request mutableCopy];
-    [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
-    return [mutableReqeust copy];
-}
-
-- (void)startLoading {
-    self.data = [NSMutableData data];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.connection = [[NSURLConnection alloc] initWithRequest:[[self class] canonicalRequestForRequest:self.request] delegate:self startImmediately:YES];
-#pragma clang diagnostic pop
-    self.startTime = [[NSDate date] timeIntervalSince1970];
-}
-
-- (void)stopLoading {
-    [self.connection cancel];
-    
-    if (![NetworkHelper shared].isEnable) {
-        return;
-    }
-    
-    
-    HttpModel* model = [[HttpModel alloc] init];
-    model.url = self.request.URL;
-    model.method = self.request.HTTPMethod;
-    model.mineType = self.response.MIMEType;
-    if (self.request.HTTPBody) {
-        model.requestData = self.request.HTTPBody;
-    }
-    if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
-        model.requestData = data;
-    }
-    
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
-    model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
-    model.responseData = self.data;
-    model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-    
-    //时间
-    NSTimeInterval startTimeDouble = self.startTime;
-    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
-    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
-    
-    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
-    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
-    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
-    
-    
-    model.errorDescription = self.error.description;
-    model.errorLocalizedDescription = self.error.localizedDescription;
-    model.headerFields = self.request.allHTTPHeaderFields;
-    
-    if (self.response.MIMEType == nil) {
-        model.isImage = NO;
-    }
-    
-    if ([model.url.absoluteString length] > 4) {
-        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 4];
-        if ([str isEqualToString:@".png"] || [str isEqualToString:@".PNG"] || [str isEqualToString:@".jpg"] || [str isEqualToString:@".JPG"] || [str isEqualToString:@".gif"] || [str isEqualToString:@".GIF"]) {
-            model.isImage = YES;
-        }
-    }
-    if ([model.url.absoluteString length] > 5) {
-        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 5];
-        if ([str isEqualToString:@".jpeg"] || [str isEqualToString:@".JPEG"]) {
-            model.isImage = YES;
-        }
-    }
-    
-    //处理500,404等错误
-    model = [self handleError:self.error model:model];
-    
-    
-    
-    if ([[HttpDatasource shared] addHttpRequset:model])
-    {
-        dispatch_main_async_safe(^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
-        })
-    }
-}
-
-#pragma mark - NSURLConnectionDelegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [[self client] URLProtocol:self didFailWithError:error];
-    self.error = error;
-}
-
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection {
-    return YES;
-}
-
-#pragma GCC diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
-}
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
-}
-#pragma GCC diagnostic pop
-
-#pragma mark - NSURLConnectionDataDelegate
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
-    self.response = response;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [[self client] URLProtocol:self didLoadData:data];
-    [self.data appendData:data];
-}
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
-{
-    return cachedResponse;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [[self client] URLProtocolDidFinishLoading:self];
-}
 @end
 

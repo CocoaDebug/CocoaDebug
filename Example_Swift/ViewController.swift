@@ -18,8 +18,9 @@ class ViewController: UIViewController {
         print("hello world blue", color: UIColor.blue)
         
         testHTTP()
+        testRedirect()
     }
-
+    
     
     func testHTTP() {
         //1.Alamofire
@@ -66,6 +67,50 @@ class ViewController: UIViewController {
             print(error?.localizedDescription)
         }
     }
+    
+    
+    func testRedirect() {
+        RedirectRequester.getRedirectInfo(with: "http://apple.com") { result, response in
+            print("Redirect \(result): \(response)")
+        }
+    }
+}
 
+
+fileprivate class RedirectRequester: NSObject, URLSessionTaskDelegate {
+    
+    private static var sharedInstance = RedirectRequester()
+    private static var session: URLSession!
+    
+    // to prevent redirection
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        completionHandler(nil)
+    }
+    
+    class func getRedirectInfo(with url: String, completionHandler: @escaping (Bool, String) -> Void) -> Void {
+        if self.session == nil {
+            let config = URLSessionConfiguration.default
+            self.session = URLSession(configuration: config, delegate: RedirectRequester.sharedInstance, delegateQueue: nil)
+        }
+        
+        let request = URLRequest(url: URL(string: url)!, cachePolicy: .reloadIgnoringLocalCacheData)
+        
+        let task = self.session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completionHandler(false, error.localizedDescription)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if (300...302).contains(httpResponse.statusCode) {
+                    completionHandler(true, httpResponse.allHeaderFields["Location"] as! String)
+                    return
+                }
+            }
+            
+            completionHandler(false, "Redirect request failed")
+        }
+        task.resume()
+    }
 }
 
