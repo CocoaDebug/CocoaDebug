@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.swift_version       = '4.0'
   s.platform            = :ios, "8.0"
-  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.2.3' }
-  s.version             = '0.2.3'
+  s.source              = { :git => "https://github.com/DotzuX/DotzuX.git", :branch => 'master', :tag => '0.2.4' }
+  s.version             = '0.2.4'
 end
