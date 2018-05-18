@@ -53,12 +53,12 @@ class NetworkDetailViewController: UITableViewController {
             //图片:
             //1.主要
             let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
+            let m2 = NetworkDetailModel.init(title: "REQUEST PARAMETER", content: requestContent)
+            var m3 = NetworkDetailModel.init(title: "RESPONSE DATA", content: nil)
             let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
             let m4 = NetworkDetailModel.init(title: "ERROR DETAILS", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
-                m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                m3 = NetworkDetailModel.init(title: "RESPONSE DATA", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
             let m5 = NetworkDetailModel.init(title: "LATENCY", content: httpModel?.totalDuration)
@@ -92,8 +92,8 @@ class NetworkDetailViewController: UITableViewController {
             //非图片:
             //1.主要
             let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let m3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
+            let m2 = NetworkDetailModel.init(title: "REQUEST PARAMETER", content: requestContent)
+            let m3 = NetworkDetailModel.init(title: "RESPONSE DATA", content: httpModel?.responseData.dataToPrettyPrintString())
             let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
             let m4 = NetworkDetailModel.init(title: "ERROR DETAILS", content: httpModel?.errorDescription)
             //2.次要

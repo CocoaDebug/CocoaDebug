@@ -102,7 +102,7 @@ class JsonViewController: UITableViewController {
         self.title = detailModel?.title
         
         //判断类型 (默认类型URL)
-        if detailModel?.title == "REQUEST" {
+        if detailModel?.title == "REQUEST PARAMETER" {
             editType = .request
         }
         if detailModel?.title == "REQUEST HEADER" {
