@@ -342,7 +342,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
-    [[self client] URLProtocol:self cachedResponseIsValid:cachedResponse];
+//    [[self client] URLProtocol:self cachedResponseIsValid:cachedResponse];
     return cachedResponse;
 }
 
