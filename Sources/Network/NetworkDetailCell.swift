@@ -66,7 +66,7 @@ class NetworkDetailCell: UITableViewCell {
             if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
                 editView.isHidden = false
             }else{
-                if detailModel?.title == "REQUEST PARAMETER" {
+                if detailModel?.title == "REQUEST" {
                     if let content = detailModel?.content {
                         if let _ = content.stringToDictionary() {
                             //JSON格式

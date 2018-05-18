@@ -26,7 +26,7 @@ struct NetworkDetailModel {
         
         
         //响应时间, 偶现bug
-        if title == "LATENCY" {
+        if title == "TOTAL TIME" {
             if let content = content {
                 if let double_second = Double(content) {
                     let int_second = Int(double_second)
