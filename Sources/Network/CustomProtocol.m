@@ -263,8 +263,8 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
         // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
         //   want to know about the failure
     } else {
-        self.error = error;
         [[self client] URLProtocol:self didFailWithError:error];
+        self.error = error;
     }
 }
 
@@ -330,14 +330,14 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
         statusCode = 42;
     }
     
-    self.response = response;
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
+    self.response = response;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [self.data appendData:data];
     [[self client] URLProtocol:self didLoadData:data];
+    [self.data appendData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
@@ -354,16 +354,24 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
     if (response) {
-        self.response = response;
-        
-        NSMutableURLRequest *redirectRequest;
-        redirectRequest = [request mutableCopy];
+
+        NSMutableURLRequest *redirectRequest = [request mutableCopy];
         [[self class] removePropertyForKey:kProtocolKey inRequest:redirectRequest];
         
-        [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
-        
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+            if ([HTTPResponse statusCode] == 301 || [HTTPResponse statusCode] == 302) {
+                [redirectRequest setURL:[NSURL URLWithString:[[HTTPResponse allHeaderFields] objectForKey:@"Location"]]];
+            }
+        }
+
+        [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
+
         [self.connection cancel];
         [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
+        
+        self.response = response;
+        return redirectRequest;
     }
     
     return request;
