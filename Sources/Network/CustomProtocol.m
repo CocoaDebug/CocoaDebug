@@ -239,7 +239,6 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     model = [self handleError:self.error model:model];
     
     
-    
     if ([[HttpDatasource shared] addHttpRequset:model])
     {
         dispatch_main_async_safe(^{
@@ -249,19 +248,12 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 }
 
 
+
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     if (!error) {
         [[self client] URLProtocolDidFinishLoading:self];
-    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
-        // Do nothing.  This happens in two cases:
-        //
-        // o during a redirect, in which case the redirect code has already told the client about
-        //   the failure
-        //
-        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
-        //   want to know about the failure
     } else {
         [[self client] URLProtocol:self didFailWithError:error];
         self.error = error;
@@ -271,6 +263,23 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
 {
     return YES;
+}
+
+//解決發送IP地址的HTTPS請求 證書驗證
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if (!challenge) {
+        return;
+    }
+    
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        //構造一個NSURLCredential發送給發起方
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+    } else {
+        //對於其他驗證方法直接進行處理流程
+        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+    }
 }
 
 #pragma GCC diagnostic push
@@ -292,42 +301,14 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 }
 #pragma GCC diagnostic pop
 
-//解決發送IP地址的HTTPS請求 證書驗證
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    if (!challenge) {
-        return;
-    }
-    
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
-    {
-        //構造一個NSURLCredential發送給發起方
-        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-    } else
-    {
-        //對於其他驗證方法直接進行處理流程
-        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-    }
-}
 
 
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSURLCacheStoragePolicy cacheStoragePolicy;
-    NSInteger               statusCode;
-    
-    // Pass the call on to our client.  The only tricky thing is that we have to decide on a
-    // cache storage policy, which is based on the actual request we issued, not the request
-    // we were given.
-    
+    NSURLCacheStoragePolicy cacheStoragePolicy = NSURLCacheStorageNotAllowed;
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
-        statusCode = [((NSHTTPURLResponse *) response) statusCode];
-    } else {
-        cacheStoragePolicy = NSURLCacheStorageNotAllowed;
-        statusCode = 42;
     }
     
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
@@ -354,26 +335,21 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
     if (response) {
-
         NSMutableURLRequest *redirectRequest = [request mutableCopy];
         [[self class] removePropertyForKey:kProtocolKey inRequest:redirectRequest];
-        
+
+        NSURLCacheStoragePolicy cacheStoragePolicy = NSURLCacheStorageNotAllowed;
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-            if ([HTTPResponse statusCode] == 301 || [HTTPResponse statusCode] == 302) {
-                [redirectRequest setURL:[NSURL URLWithString:[[HTTPResponse allHeaderFields] objectForKey:@"Location"]]];
-            }
+            cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
         }
-
+        
         [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
-
-        [self.connection cancel];
-        [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
+        [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
+        [[self client] URLProtocolDidFinishLoading:self];
         
         self.response = response;
         return redirectRequest;
     }
-    
     return request;
 }
 
