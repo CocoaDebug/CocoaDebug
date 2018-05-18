@@ -70,6 +70,13 @@ class NetworkDetailViewController: UITableViewController {
                     m7.headerFields = headerFields
                 }
             }
+            var m7_ = NetworkDetailModel.init(title: "REDIRECT HEADER", content: nil)
+            if let redirectHeaderFields = httpModel?.redirectHeaderFields {
+                if !redirectHeaderFields.isEmpty {
+                    m7_ = NetworkDetailModel.init(title: "REDIRECT HEADER", content: redirectHeaderFields.description)
+                    m7_.redirectHeaderFields = redirectHeaderFields
+                }
+            }
             //3.
             detailModels.append(m1)
             detailModels.append(m3)
@@ -77,6 +84,7 @@ class NetworkDetailViewController: UITableViewController {
             detailModels.append(m8)
             detailModels.append(m4)
             detailModels.append(m7)
+            detailModels.append(m7_)
             detailModels.append(m6)
             detailModels.append(m5)
         }
@@ -98,6 +106,13 @@ class NetworkDetailViewController: UITableViewController {
                     m7.headerFields = headerFields
                 }
             }
+            var m7_ = NetworkDetailModel.init(title: "REDIRECT HEADER", content: nil)
+            if let redirectHeaderFields = httpModel?.redirectHeaderFields {
+                if !redirectHeaderFields.isEmpty {
+                    m7_ = NetworkDetailModel.init(title: "REDIRECT HEADER", content: redirectHeaderFields.description)
+                    m7_.redirectHeaderFields = redirectHeaderFields
+                }
+            }
             //3.
             detailModels.append(m1)
             detailModels.append(m3)
@@ -105,6 +120,7 @@ class NetworkDetailViewController: UITableViewController {
             detailModels.append(m8)
             detailModels.append(m4)
             detailModels.append(m7)
+            detailModels.append(m7_)
             detailModels.append(m6)
             detailModels.append(m5)            
         }

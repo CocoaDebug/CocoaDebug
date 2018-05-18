@@ -218,9 +218,8 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     model.errorLocalizedDescription = self.error.localizedDescription;
     model.headerFields = self.request.allHTTPHeaderFields;
     
-    //重定向
     if ([self.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        model.headerFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        model.redirectHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
     }
     
     if (self.response.MIMEType == nil) {

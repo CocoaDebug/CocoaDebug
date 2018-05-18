@@ -10,6 +10,7 @@ enum EditType {
     case unknown
     case request
     case header
+    case redirectHeader
 }
 
 import Foundation
@@ -107,6 +108,9 @@ class JsonViewController: UITableViewController {
         if detailModel?.title == "HEADER" {
             editType = .header
         }
+        if detailModel?.title == "REDIRECT HEADER" {
+            editType = .redirectHeader
+        }
         
         //设置UI
         if editType == .request
@@ -121,6 +125,12 @@ class JsonViewController: UITableViewController {
             tableView.tableHeaderView?.frame.size.height = 0
             tableView.tableHeaderView?.isHidden = true
             textView.text = detailModel?.headerFields?.dictionaryToString()
+        }
+        else if editType == .redirectHeader
+        {
+            tableView.tableHeaderView?.frame.size.height = 0
+            tableView.tableHeaderView?.isHidden = true
+            textView.text = detailModel?.redirectHeaderFields?.dictionaryToString()
         }
         else
         {

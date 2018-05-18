@@ -63,7 +63,7 @@ class NetworkDetailCell: UITableViewCell {
             }
             
             //to JSON
-            if detailModel?.title == "HEADER" {
+            if detailModel?.title == "HEADER" || detailModel?.title == "REDIRECT HEADER" {
                 editView.isHidden = false
             }else{
                 if detailModel?.title == "REQUEST" {

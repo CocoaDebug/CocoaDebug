@@ -16,6 +16,7 @@ struct NetworkDetailModel {
     var isLast: Bool = false
     var requestSerializer: RequestSerializer = JSONRequestSerializer//默认JSON格式
     var headerFields: [String: Any]?
+    var redirectHeaderFields: [String: Any]?
     
     init(title: String? = nil, content: String? = "", _ image: UIImage? = nil) {
         self.title = title

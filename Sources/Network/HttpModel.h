@@ -29,6 +29,7 @@ typedef enum {
 
 
 @property (nonatomic,copy)NSDictionary<NSString*, id>           *headerFields;
+@property (nonatomic,copy)NSDictionary<NSString*, id>           *redirectHeaderFields;
 @property (nonatomic,assign)BOOL                                isTag;
 @property (nonatomic,assign)BOOL                                isSelected;
 @property (nonatomic,assign)RequestSerializer                   requestSerializer;//默认JSON格式
