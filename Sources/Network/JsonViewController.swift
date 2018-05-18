@@ -105,10 +105,10 @@ class JsonViewController: UITableViewController {
         if detailModel?.title == "REQUEST" {
             editType = .request
         }
-        if detailModel?.title == "HEADER" {
+        if detailModel?.title == "REQUEST HEADER" {
             editType = .header
         }
-        if detailModel?.title == "REDIRECT HEADER" {
+        if detailModel?.title == "RESPONSE HEADER" {
             editType = .redirectHeader
         }
         
