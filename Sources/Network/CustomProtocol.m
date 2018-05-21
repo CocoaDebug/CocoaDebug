@@ -179,8 +179,6 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     if (self.connection) {
         [self.connection cancel];
         self.connection = nil;
-        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
-        // which specificallys traps and ignores the error.
     }
     
     
@@ -260,20 +258,10 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 {
     if (!error) {
         [[self client] URLProtocolDidFinishLoading:self];
-    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
-        // Do nothing.  This happens in two cases:
-        //
-        // o during a redirect, in which case the redirect code has already told the client about
-        //   the failure
-        //
-        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
-        //   want to know about the failure
     } else {
         [[self client] URLProtocol:self didFailWithError:error];
         self.error = error;
     }
-    // We don't need to clean up the connection here; the system will call, or has already called,
-    // -stopLoading to do that.
 }
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
@@ -350,37 +338,16 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
-    if (response) {
-        // The new request was copied from our old request, so it has our magic property.  We actually
-        // have to remove that so that, when the client starts the new request, we see it.  If we
-        // don't do this then we never see the new request and thus don't get a chance to change
-        // its caching behaviour.
-        //
-        // We also cancel our current connection because the client is going to start a new request for
-        // us anyway.
-        NSMutableURLRequest *redirectRequest = [request mutableCopy];
-        [[self class] removePropertyForKey:kProtocolKey inRequest:redirectRequest];
-
-        NSURLCacheStoragePolicy cacheStoragePolicy = NSURLCacheStorageNotAllowed;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
+    //重定向 状态码 >=300 && < 400
+    if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSInteger status = httpResponse.statusCode;
+        if (status >= 300 && status < 400) {
+            [self.client URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+            //记得设置成nil，要不然正常请求会请求两次
+            request = nil;
         }
-        // Tell the client about the redirect.
-        [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
-        [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
-        [[self client] URLProtocolDidFinishLoading:self];
-        // Stop our load.  The CFNetwork infrastructure will create a new NSURLProtocol instance to run
-        // the load of the redirect.
-        
-        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
-        // which specificallys traps and ignores the error.
-        [self.connection cancel];
-        [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
-        
-        self.response = response;
-        return redirectRequest;
     }
-    
     return request;
 }
 
