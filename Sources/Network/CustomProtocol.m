@@ -103,11 +103,11 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 #pragma mark -------------------------------------------------------------------------------------
 
 @interface CustomProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-@property (nonatomic, strong) NSURLConnection *connection;
-@property (nonatomic, strong) NSURLResponse *response;
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSError *error;
-@property (nonatomic, assign) NSTimeInterval  startTime;
+@property (atomic, strong) NSURLConnection *connection;
+@property (atomic, strong) NSURLResponse *response;
+@property (atomic, strong) NSMutableData *data;
+@property (atomic, strong) NSError *error;
+@property (atomic, assign) NSTimeInterval  startTime;
 @end
 
 @implementation CustomProtocol
@@ -179,6 +179,8 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
     if (self.connection) {
         [self.connection cancel];
         self.connection = nil;
+        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
+        // which specificallys traps and ignores the error.
     }
     
     
@@ -258,10 +260,20 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
 {
     if (!error) {
         [[self client] URLProtocolDidFinishLoading:self];
+    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
+        // Do nothing.  This happens in two cases:
+        //
+        // o during a redirect, in which case the redirect code has already told the client about
+        //   the failure
+        //
+        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
+        //   want to know about the failure
     } else {
         [[self client] URLProtocol:self didFailWithError:error];
         self.error = error;
     }
+    // We don't need to clean up the connection here; the system will call, or has already called,
+    // -stopLoading to do that.
 }
 
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
@@ -363,6 +375,7 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
         // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
         // which specificallys traps and ignores the error.
         [self.connection cancel];
+        [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
         
         self.response = response;
         return redirectRequest;
