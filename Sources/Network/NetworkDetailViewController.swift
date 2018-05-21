@@ -185,13 +185,12 @@ extension NetworkDetailViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
-                as! NetworkCell
-            cell.httpModel = httpModel
-            
-            return cell
-        }
+//        if indexPath.row == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
+//                as! NetworkCell
+//            cell.httpModel = httpModel
+//            return cell
+//        }
         
         //------------------------------------------------------------------------------
         
@@ -233,7 +232,6 @@ extension NetworkDetailViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
         let detailModel = detailModels[indexPath.row]
         
         if detailModel.blankContent == "..." {
@@ -244,31 +242,6 @@ extension NetworkDetailViewController {
         }
         
         if indexPath.row == 0 {
-            var height: CGFloat = 0.0
-            if let cString = self.httpModel?.url.absoluteString.cString(using: String.Encoding.utf8) {
-                if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
-                    
-                    if self.httpModel?.url.absoluteString.contains(serverURL) == true {
-                        //计算NSString高度
-                        if #available(iOS 8.2, *) {
-                            height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        } else {
-                            // Fallback on earlier versions
-                            height = content_._height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        }
-                    }else{
-                        //计算NSString高度
-                        if #available(iOS 8.2, *) {
-                            height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        } else {
-                            // Fallback on earlier versions
-                            height = content_._height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        }
-                    }
-                    
-                    return height + 57
-                }
-            }
             return 0
         }
         
@@ -285,5 +258,44 @@ extension NetworkDetailViewController {
         }
         
         return UIScreen.main.bounds.size.width + 50
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell")
+            as! NetworkCell
+        cell.httpModel = httpModel
+        return cell
+    }
+
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
+        
+        var height: CGFloat = 0.0
+        if let cString = self.httpModel?.url.absoluteString.cString(using: String.Encoding.utf8) {
+            if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
+                
+                if self.httpModel?.url.absoluteString.contains(serverURL) == true {
+                    //计算NSString高度
+                    if #available(iOS 8.2, *) {
+                        height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    } else {
+                        // Fallback on earlier versions
+                        height = content_._height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    }
+                }else{
+                    //计算NSString高度
+                    if #available(iOS 8.2, *) {
+                        height = content_._height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    } else {
+                        // Fallback on earlier versions
+                        height = content_._height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    }
+                }
+                return height + 57
+            }
+        }
+        return 0
     }
 }
