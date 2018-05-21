@@ -25,7 +25,7 @@ class NetworkDetailCell: UITableViewCell {
     //-12.5
     
     
-    var tapTitleViewCallback:((NetworkDetailModel?) -> Void)?
+//    var tapTitleViewCallback:((NetworkDetailModel?) -> Void)?
     var tapEditViewCallback:((NetworkDetailModel?) -> Void)?
     
     var detailModel: NetworkDetailModel? {
@@ -89,7 +89,7 @@ class NetworkDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapTitleView)))
+//        titleView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapTitleView)))
         editView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapEditView)))
         
         contentTextView.textContainer.lineFragmentPadding = 0
@@ -98,11 +98,11 @@ class NetworkDetailCell: UITableViewCell {
     
     //MARK: - target action
     //自动隐藏内容
-    @objc func tapTitleView() {
-        if let tapTitleViewCallback = tapTitleViewCallback {
-            tapTitleViewCallback(detailModel)
-        }
-    }
+//    @objc func tapTitleView() {
+//        if let tapTitleViewCallback = tapTitleViewCallback {
+//            tapTitleViewCallback(detailModel)
+//        }
+//    }
     
     //编辑
     @objc func tapEditView() {

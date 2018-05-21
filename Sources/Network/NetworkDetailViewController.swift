@@ -199,22 +199,22 @@ extension NetworkDetailViewController {
         cell.detailModel = detailModels[indexPath.row]
         
         //1.点击了标题view
-        cell.tapTitleViewCallback = { [weak self] detailModel in
-            if let index = self?.detailModels.index(where: { (model_) -> Bool in
-                return model_.title == detailModel?.title
-            }) {
-                if var model = self?.detailModels[index] {
-                    if model.blankContent == "..." {
-                        model.blankContent = nil
-                    }else{
-                        model.blankContent = "..."
-                    }
-                    self?.detailModels.remove(at: index)
-                    self?.detailModels.insert(model, at: index)
-                }
-            }
-            self?.tableView.reloadData()
-        }
+//        cell.tapTitleViewCallback = { [weak self] detailModel in
+//            if let index = self?.detailModels.index(where: { (model_) -> Bool in
+//                return model_.title == detailModel?.title
+//            }) {
+//                if var model = self?.detailModels[index] {
+//                    if model.blankContent == "..." {
+//                        model.blankContent = nil
+//                    }else{
+//                        model.blankContent = "..."
+//                    }
+//                    self?.detailModels.remove(at: index)
+//                    self?.detailModels.insert(model, at: index)
+//                }
+//            }
+//            self?.tableView.reloadData()
+//        }
         
         //2.点击了编辑view (编辑request/header)
         cell.tapEditViewCallback = { [weak self] detailModel in
@@ -265,7 +265,7 @@ extension NetworkDetailViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell")
             as! NetworkCell
         cell.httpModel = httpModel
-        return cell
+        return cell.contentView
     }
 
 
