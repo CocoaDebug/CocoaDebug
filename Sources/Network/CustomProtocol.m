@@ -27,8 +27,8 @@ typedef NSURLSessionConfiguration *(*SessionConfigConstructor)(id,SEL);
 
 static SessionConfigConstructor orig_defaultSessionConfiguration;
 static SessionConfigConstructor orig_ephemeralSessionConfiguration;
-static SessionConfigConstructor orig_backgroundSessionConfiguration; //Deprecated
-static SessionConfigConstructor orig_backgroundSessionConfigurationWithIdentifier;
+//static SessionConfigConstructor orig_backgroundSessionConfiguration; //Deprecated
+//static SessionConfigConstructor orig_backgroundSessionConfigurationWithIdentifier;
 
 
 static NSURLSessionConfiguration *replaced_defaultSessionConfiguration(id self, SEL _cmd)
@@ -66,48 +66,48 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
 }
 
 //Deprecated
-static NSURLSessionConfiguration *replaced_backgroundSessionConfiguration(id self, SEL _cmd)
-{
-    NSURLSessionConfiguration *config = orig_backgroundSessionConfiguration(self,_cmd);
-    
-    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
-        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = CustomProtocol.class;
-        if (![urlProtocolClasses containsObject:protoCls]) {
-            [urlProtocolClasses insertObject:protoCls atIndex:0];
-        }
-        
-        config.protocolClasses = urlProtocolClasses;
-    }
-    
-    return config;
-}
+//static NSURLSessionConfiguration *replaced_backgroundSessionConfiguration(id self, SEL _cmd)
+//{
+//    NSURLSessionConfiguration *config = orig_backgroundSessionConfiguration(self,_cmd);
+//
+//    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+//        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+//        Class protoCls = CustomProtocol.class;
+//        if (![urlProtocolClasses containsObject:protoCls]) {
+//            [urlProtocolClasses insertObject:protoCls atIndex:0];
+//        }
+//
+//        config.protocolClasses = urlProtocolClasses;
+//    }
+//
+//    return config;
+//}
 
-static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIdentifier(id self, SEL _cmd)
-{
-    NSURLSessionConfiguration *config = orig_backgroundSessionConfigurationWithIdentifier(self,_cmd);
-    
-    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
-        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
-        Class protoCls = CustomProtocol.class;
-        if (![urlProtocolClasses containsObject:protoCls]) {
-            [urlProtocolClasses insertObject:protoCls atIndex:0];
-        }
-        
-        config.protocolClasses = urlProtocolClasses;
-    }
-    
-    return config;
-}
+//static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIdentifier(id self, SEL _cmd)
+//{
+//    NSURLSessionConfiguration *config = orig_backgroundSessionConfigurationWithIdentifier(self,_cmd);
+//
+//    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+//        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+//        Class protoCls = CustomProtocol.class;
+//        if (![urlProtocolClasses containsObject:protoCls]) {
+//            [urlProtocolClasses insertObject:protoCls atIndex:0];
+//        }
+//
+//        config.protocolClasses = urlProtocolClasses;
+//    }
+//
+//    return config;
+//}
 
 #pragma mark -------------------------------------------------------------------------------------
 
 @interface CustomProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-@property (atomic, strong) NSURLConnection *connection;
-@property (atomic, strong) NSURLResponse *response;
-@property (atomic, strong) NSMutableData *data;
-@property (atomic, strong) NSError *error;
-@property (atomic, assign) NSTimeInterval  startTime;
+@property (atomic, strong) NSURLConnection  *connection;
+@property (atomic, strong) NSURLResponse    *response;
+@property (atomic, strong) NSMutableData    *data;
+@property (atomic, strong) NSError          *error;
+@property (atomic, assign) NSTimeInterval   startTime;
 @end
 
 @implementation CustomProtocol
@@ -124,9 +124,9 @@ static NSURLSessionConfiguration *replaced_backgroundSessionConfigurationWithIde
         orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
         
         //Deprecated
-        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
+//        orig_backgroundSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfiguration:), (IMP)replaced_backgroundSessionConfiguration, [NSURLSessionConfiguration class], YES);
         
-        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
+//        orig_backgroundSessionConfigurationWithIdentifier = (SessionConfigConstructor)replaceMethod(@selector(backgroundSessionConfigurationWithIdentifier:), (IMP)replaced_backgroundSessionConfigurationWithIdentifier, [NSURLSessionConfiguration class], YES);
     });
 }
 
