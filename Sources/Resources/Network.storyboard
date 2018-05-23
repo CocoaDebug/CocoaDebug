@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,26 +13,26 @@
         <!--Network-->
         <scene sceneID="C6G-AD-xq1">
             <objects>
-                <viewController title="Network" id="C9A-fD-Ood" customClass="NetworkViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Network" id="C9A-fD-Ood" customClass="NetworkViewController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5LO-XP-TDA"/>
                         <viewControllerLayoutGuide type="bottom" id="AxS-rn-hDA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jKX-oK-70h">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HG7-0d-Yj9">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <color key="separatorColor" red="0.30192413930000001" green="0.30198186640000002" blue="0.30192047360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="H1I-hQ-x8v">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-UO-WV3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -37,11 +41,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="600" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="DotzuX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caZ-x3-DZv" id="wOJ-KD-fAY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-aJ-1Wg">
@@ -172,21 +176,21 @@
         <!--Details-->
         <scene sceneID="KLL-VA-asP">
             <objects>
-                <tableViewController storyboardIdentifier="NetworkDetailViewController" title="Details" hidesBottomBarWhenPushed="YES" id="q3G-BB-F3V" customClass="NetworkDetailViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NetworkDetailViewController" title="Details" hidesBottomBarWhenPushed="YES" id="q3G-BB-F3V" customClass="NetworkDetailViewController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fPI-1I-xFz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkDetailCell" rowHeight="401" id="q3L-mI-Jwn" customClass="NetworkDetailCell" customModule="demo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="401"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkDetailCell" rowHeight="401" id="q3L-mI-Jwn" customClass="NetworkDetailCell" customModule="DotzuX" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="401"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3L-mI-Jwn" id="JkA-KQ-aXq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="401"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huU-o6-oW4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
                                             <color key="backgroundColor" red="0.50190365314483643" green="0.50199371576309204" blue="0.50189799070358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="1gU-6d-kBG"/>
@@ -203,27 +207,27 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emT-kY-cWQ">
-                                            <rect key="frame" x="0.0" y="50.5" width="600" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="50.5" width="375" height="0.5"/>
                                             <color key="backgroundColor" red="0.50190365314483643" green="0.50199371576309204" blue="0.50189799070358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="Ibd-Xa-qxe"/>
                                             </constraints>
                                         </view>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTG-PY-Xcv">
-                                            <rect key="frame" x="0.0" y="400.5" width="600" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="400.5" width="375" height="0.5"/>
                                             <color key="backgroundColor" red="0.50190365309999996" green="0.50199371579999996" blue="0.50189799069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="bsj-4L-bqn"/>
                                             </constraints>
                                         </view>
                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0OK-GH-Jip">
-                                            <rect key="frame" x="0.0" y="51" width="600" height="600"/>
+                                            <rect key="frame" x="0.0" y="51" width="375" height="375"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="0OK-GH-Jip" secondAttribute="height" id="pHb-Fs-JfP"/>
                                             </constraints>
                                         </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J5Y-09-1Ve">
-                                            <rect key="frame" x="15" y="61" width="570" height="340"/>
+                                            <rect key="frame" x="15" y="61" width="345" height="340"/>
                                             <gestureRecognizers/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -237,7 +241,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-In-PqH">
-                                            <rect key="frame" x="526" y="13.5" width="74" height="49.5"/>
+                                            <rect key="frame" x="301" y="13.5" width="74" height="49.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DotzuX_json.png" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-Yw-VsV">
                                                     <rect key="frame" x="44" y="19.5" width="30" height="30"/>
@@ -323,18 +327,18 @@
         <!--ToJSON-->
         <scene sceneID="rDz-FI-N6l">
             <objects>
-                <tableViewController storyboardIdentifier="JsonViewController" title="ToJSON" id="ltn-IU-TOh" customClass="JsonViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="JsonViewController" title="ToJSON" id="ltn-IU-TOh" customClass="JsonViewController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cDS-DX-fHq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="L6h-8n-FTZ">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="28"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GM6-bf-hk9">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="29"/>
+                                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GM6-bf-hk9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                     <segments>
                                         <segment title="JSON"/>
                                         <segment title="Form"/>
@@ -357,14 +361,14 @@
                             <tableViewSection id="Goo-nL-EZ7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6p7-KH-khD">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6p7-KH-khD" id="wbV-hv-OAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-5m-zBk">
-                                                    <rect key="frame" x="15" y="10" width="570" height="24"/>
+                                                    <rect key="frame" x="15" y="10" width="345" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -406,7 +410,7 @@
         <!--Network-->
         <scene sceneID="Z1b-qJ-9zV">
             <objects>
-                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="DotzuXNavigationController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="DotzuXNavigationController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Network" image="DotzuX_network" selectedImage="DotzuX_network" id="HZO-tF-0ia"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yog-aO-SHJ">
@@ -429,7 +433,7 @@
     </scenes>
     <resources>
         <image name="DotzuX_close" width="16" height="16"/>
-        <image name="DotzuX_json.png" width="16" height="16"/>
+        <image name="DotzuX_json.png" width="252" height="252"/>
         <image name="DotzuX_network" width="16" height="16"/>
     </resources>
 </document>
