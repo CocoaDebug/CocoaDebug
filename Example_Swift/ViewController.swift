@@ -41,6 +41,9 @@ class ViewController: UIViewController {
         HTTP.GET("https://www.baidu.com/img/bd_logo1.png") { response in
             print(response.description, color: .orange)
         }
+        HTTP.GET("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png") { response in
+            print(response.description, color: .orange)
+        }
         
         //3.Networking
         Networking(baseURL: "https://httpbin.org").get("/get") { (response, error) in
