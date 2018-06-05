@@ -60,9 +60,19 @@ class JsonViewController: UITableViewController {
     
     
     //MARK: - init
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnSwipe = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.tableFooterView = UIView()
         textView.textContainer.lineFragmentPadding = 0
         textView.textContainerInset = .zero
