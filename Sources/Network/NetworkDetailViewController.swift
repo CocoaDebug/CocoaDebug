@@ -64,17 +64,17 @@ class NetworkDetailViewController: UITableViewController {
             let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
             let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
             var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
-            if let headerFields = httpModel?.headerFields {
-                if !headerFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: headerFields.description)
-                    m7.headerFields = headerFields
+            if let requestHeaderFields = httpModel?.requestHeaderFields {
+                if !requestHeaderFields.isEmpty {
+                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    m7.requestHeaderFields = requestHeaderFields
                 }
             }
             var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
-            if let redirectHeaderFields = httpModel?.redirectHeaderFields {
-                if !redirectHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: redirectHeaderFields.description)
-                    m7_.redirectHeaderFields = redirectHeaderFields
+            if let responseHeaderFields = httpModel?.responseHeaderFields {
+                if !responseHeaderFields.isEmpty {
+                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    m7_.responseHeaderFields = responseHeaderFields
                 }
             }
             //3.
@@ -100,17 +100,17 @@ class NetworkDetailViewController: UITableViewController {
             let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
             let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
             var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
-            if let headerFields = httpModel?.headerFields {
-                if !headerFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: headerFields.description)
-                    m7.headerFields = headerFields
+            if let requestHeaderFields = httpModel?.requestHeaderFields {
+                if !requestHeaderFields.isEmpty {
+                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    m7.requestHeaderFields = requestHeaderFields
                 }
             }
             var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
-            if let redirectHeaderFields = httpModel?.redirectHeaderFields {
-                if !redirectHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: redirectHeaderFields.description)
-                    m7_.redirectHeaderFields = redirectHeaderFields
+            if let responseHeaderFields = httpModel?.responseHeaderFields {
+                if !responseHeaderFields.isEmpty {
+                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    m7_.responseHeaderFields = responseHeaderFields
                 }
             }
             //3.

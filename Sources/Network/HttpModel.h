@@ -28,8 +28,8 @@ typedef enum {
 @property (nonatomic,assign)BOOL    isImage;
 
 
-@property (nonatomic,copy)NSDictionary<NSString*, id>           *headerFields;
-@property (nonatomic,copy)NSDictionary<NSString*, id>           *redirectHeaderFields;
+@property (nonatomic,copy)NSDictionary<NSString*, id>           *requestHeaderFields;
+@property (nonatomic,copy)NSDictionary<NSString*, id>           *responseHeaderFields;
 @property (nonatomic,assign)BOOL                                isTag;
 @property (nonatomic,assign)BOOL                                isSelected;
 @property (nonatomic,assign)RequestSerializer                   requestSerializer;//默认JSON格式

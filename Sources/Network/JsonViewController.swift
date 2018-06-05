@@ -8,9 +8,8 @@
 
 enum EditType {
     case unknown
-    case request
-    case header
-    case redirectHeader
+    case requestHeader
+    case responseHeader
 }
 
 import Foundation
@@ -18,12 +17,7 @@ import UIKit
 
 class JsonViewController: UITableViewController {
     
-    @IBOutlet weak var tableHeaderView: UIView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var textView: UITextView!
-    
-//    let keyboardMan = KeyboardMan()
-//    private var button: UIButton?
     
     var editType: EditType  = .unknown
     var httpModel: HttpModel?
@@ -51,59 +45,17 @@ class JsonViewController: UITableViewController {
         if let _ = content.stringToDictionary() {
             //JSON格式
             detailModel?.requestSerializer = JSONRequestSerializer
-            segmentedControl.selectedSegmentIndex = 0
         }else{
             //Form格式
             detailModel?.requestSerializer = FormRequestSerializer
-            segmentedControl.selectedSegmentIndex = 1
             
-            //....
-//            if requestSerializer == FormRequestSerializer {//原格式为Form
-//                if sender.selectedSegmentIndex == 0 {//转换为JSON
-            
-                    if let jsonString = detailModel?.content?.formStringToJsonString() {
-                        textView.text = jsonString
-                        self.textViewDidChange(textView)
-                        detailModel?.requestSerializer = JSONRequestSerializer
-                        detailModel?.content = textView.text
-                    }else{
-//                        sender.selectedSegmentIndex = 1
-//                        UIAlertController.showError(title: "Format is illegal", controller: self)
-//                        return
-                    }
-//                }
-//            }
+                if let jsonString = detailModel?.content?.formStringToJsonString() {
+                    textView.text = jsonString
+                    detailModel?.requestSerializer = JSONRequestSerializer
+                    detailModel?.content = textView.text
+                }
         }
     }
-    
-    //show button
-//    private func initButton(_ infoHeight: CGFloat) {
-//        if button == nil {
-//            button = UIButton.init(frame: CGRect(x:UIScreen.main.bounds.width-74,y:UIScreen.main.bounds.height,width:74,height:38))
-//            button?.backgroundColor = .white
-//            button?.setTitle("Hide", for: .normal)
-//            button?.setTitleColor(.black, for: .normal)
-//            button?.addCorner(roundingCorners: UIRectCorner(rawValue: UIRectCorner.RawValue(UInt8(UIRectCorner.topLeft.rawValue) | UInt8(UIRectCorner.topRight.rawValue))), cornerSize: CGSize(width:4,height:4))
-//            button?.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
-//
-//            guard let button = button else {return}
-//            Manager.shared.window.addSubview(button)
-//        }
-//
-//        UIView.animate(withDuration: 0.35) { [weak self] in
-//            self?.button?.frame.origin.y = UIScreen.main.bounds.height-infoHeight-38
-//        }
-//    }
-    
-    //hide button
-//    private func deInitButton(_ infoHeight: CGFloat) {
-//        UIView.animate(withDuration: 0.35, animations: { [weak self] in
-//            self?.button?.frame.origin.y = UIScreen.main.bounds.height
-//        }) { [weak self] _ in
-//            self?.button?.removeFromSuperview()
-//            self?.button = nil
-//        }
-//    }
     
     
     //MARK: - init
@@ -111,116 +63,32 @@ class JsonViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        tableView.tableHeaderView = tableHeaderView
-        textView.delegate = self
         textView.textContainer.lineFragmentPadding = 0
         textView.textContainerInset = .zero
         
         self.title = detailModel?.title
         
         //判断类型 (默认类型URL)
-        if detailModel?.title == "REQUEST" {
-            editType = .request
-        }
         if detailModel?.title == "REQUEST HEADER" {
-            editType = .header
+            editType = .requestHeader
         }
         if detailModel?.title == "RESPONSE HEADER" {
-            editType = .redirectHeader
+            editType = .responseHeader
         }
         
         //设置UI
-        if editType == .request
+        if editType == .requestHeader
         {
-//            tableView.tableHeaderView?.frame.size.height = 28
-            tableView.tableHeaderView?.frame.size.height = 0
-            tableView.tableHeaderView?.isHidden = false
-            textView.text = detailModel?.content
-            detectSerializer()//确定格式(JSON/Form)
+            textView.text = detailModel?.requestHeaderFields?.dictionaryToString()
         }
-        else if editType == .header
+        else if editType == .responseHeader
         {
-            tableView.tableHeaderView?.frame.size.height = 0
-            tableView.tableHeaderView?.isHidden = true
-            textView.text = detailModel?.headerFields?.dictionaryToString()
-        }
-        else if editType == .redirectHeader
-        {
-            tableView.tableHeaderView?.frame.size.height = 0
-            tableView.tableHeaderView?.isHidden = true
-            textView.text = detailModel?.redirectHeaderFields?.dictionaryToString()
+            textView.text = detailModel?.responseHeaderFields?.dictionaryToString()
         }
         else
         {
-            tableView.tableHeaderView?.frame.size.height = 0
-            tableView.tableHeaderView?.isHidden = true
             textView.text = detailModel?.content
             detectSerializer()//确定格式(JSON/Form)
         }
-        
-        //键盘
-//        keyboardMan.postKeyboardInfo = { [weak self] keyboardMan, keyboardInfo in
-//            switch keyboardInfo.action {
-//            case .show:
-//                self?.initButton(keyboardInfo.height)
-//            case .hide:
-//                self?.deInitButton(keyboardInfo.height)
-//            }
-//        }
-    }
-    
-
-    //MARK: - target action
-    
-    //能点击segmentedControl, 说明一定是在编辑request
-    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
-        guard let requestSerializer = detailModel?.requestSerializer, let textView = textView else {return}
-        
-        
-        if requestSerializer == JSONRequestSerializer {//原格式为JSON
-            if sender.selectedSegmentIndex == 1 {//转换为Form
-                
-                if let formString = detailModel?.content?.jsonStringToFormString() {
-                    textView.text = formString
-                    self.textViewDidChange(textView)
-                    detailModel?.requestSerializer = FormRequestSerializer
-                    detailModel?.content = textView.text
-                }else{
-//                    sender.selectedSegmentIndex = 0
-//                    UIAlertController.showError(title: "Format is illegal", controller: self)
-//                    return
-                }
-            }
-        }
-        
-        
-        if requestSerializer == FormRequestSerializer {//原格式为Form
-            if sender.selectedSegmentIndex == 0 {//转换为JSON
-                
-                if let jsonString = detailModel?.content?.formStringToJsonString() {
-                    textView.text = jsonString
-                    self.textViewDidChange(textView)
-                    detailModel?.requestSerializer = JSONRequestSerializer
-                    detailModel?.content = textView.text
-                }else{
-//                    sender.selectedSegmentIndex = 1
-//                    UIAlertController.showError(title: "Format is illegal", controller: self)
-//                    return
-                }
-            }
-        }
-    }
-}
-
-//MARK: - UITextViewDelegate
-extension JsonViewController: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-        editedContent = textView.text
-        detailModel?.content = textView.text
     }
 }

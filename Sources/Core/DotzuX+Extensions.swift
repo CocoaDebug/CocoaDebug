@@ -197,18 +197,6 @@ extension NSObject {
     }
 }
 
-///alert
-extension UIAlertController {
-    static func showError(title: String?, controller: UIViewController?) {
-        weak var weakVC = controller
-        
-        let alert = self.init(title: title, message: nil, preferredStyle: .alert)
-        let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        weakVC?.present(alert, animated: true, completion: nil)
-    }
-}
-
 //https://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
 ///tableView
 extension UITableView {

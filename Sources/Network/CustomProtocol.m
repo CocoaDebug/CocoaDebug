@@ -216,10 +216,10 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     
     model.errorDescription = self.error.description;
     model.errorLocalizedDescription = self.error.localizedDescription;
-    model.headerFields = self.request.allHTTPHeaderFields;
+    model.requestHeaderFields = self.request.allHTTPHeaderFields;
     
     if ([self.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        model.redirectHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        model.responseHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
     }
     
     if (self.response.MIMEType == nil) {

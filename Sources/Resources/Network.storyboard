@@ -321,35 +321,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="L6h-8n-FTZ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GM6-bf-hk9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
-                                    <segments>
-                                        <segment title="JSON"/>
-                                        <segment title="Form"/>
-                                    </segments>
-                                    <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="segmentedControlAction:" destination="ltn-IU-TOh" eventType="valueChanged" id="R3P-xh-OHL"/>
-                                    </connections>
-                                </segmentedControl>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="GM6-bf-hk9" secondAttribute="bottom" id="4Qy-4k-raT"/>
-                                <constraint firstItem="GM6-bf-hk9" firstAttribute="top" secondItem="L6h-8n-FTZ" secondAttribute="top" id="P5L-rG-xAX"/>
-                                <constraint firstAttribute="trailing" secondItem="GM6-bf-hk9" secondAttribute="trailing" id="PwB-H4-TcS"/>
-                                <constraint firstItem="GM6-bf-hk9" firstAttribute="leading" secondItem="L6h-8n-FTZ" secondAttribute="leading" id="R7M-QU-tOL"/>
-                            </constraints>
-                        </view>
                         <sections>
                             <tableViewSection id="Goo-nL-EZ7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6p7-KH-khD">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6p7-KH-khD" id="wbV-hv-OAJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -386,8 +362,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="segmentedControl" destination="GM6-bf-hk9" id="VRK-Nl-rUL"/>
-                        <outlet property="tableHeaderView" destination="L6h-8n-FTZ" id="nJF-OA-hXx"/>
                         <outlet property="textView" destination="fJ8-5m-zBk" id="ofw-Fp-Ly1"/>
                     </connections>
                 </tableViewController>
