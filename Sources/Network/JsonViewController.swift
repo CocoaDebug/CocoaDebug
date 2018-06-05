@@ -68,7 +68,7 @@ class JsonViewController: UITableViewController {
                         detailModel?.content = textView.text
                     }else{
 //                        sender.selectedSegmentIndex = 1
-                        UIAlertController.showError(title: "Format is illegal", controller: self)
+//                        UIAlertController.showError(title: "Format is illegal", controller: self)
 //                        return
                     }
 //                }
@@ -186,9 +186,9 @@ class JsonViewController: UITableViewController {
                     detailModel?.requestSerializer = FormRequestSerializer
                     detailModel?.content = textView.text
                 }else{
-                    sender.selectedSegmentIndex = 0
-                    UIAlertController.showError(title: "Format is illegal", controller: self)
-                    return
+//                    sender.selectedSegmentIndex = 0
+//                    UIAlertController.showError(title: "Format is illegal", controller: self)
+//                    return
                 }
             }
         }
@@ -203,9 +203,9 @@ class JsonViewController: UITableViewController {
                     detailModel?.requestSerializer = JSONRequestSerializer
                     detailModel?.content = textView.text
                 }else{
-                    sender.selectedSegmentIndex = 1
-                    UIAlertController.showError(title: "Format is illegal", controller: self)
-                    return
+//                    sender.selectedSegmentIndex = 1
+//                    UIAlertController.showError(title: "Format is illegal", controller: self)
+//                    return
                 }
             }
         }

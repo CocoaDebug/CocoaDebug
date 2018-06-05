@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,7 +49,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-aJ-1Wg">
-                                                    <rect key="frame" x="526" y="0.0" width="74" height="140.5"/>
+                                                    <rect key="frame" x="301" y="0.0" width="74" height="140.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-n7-vuk">
                                                             <rect key="frame" x="20.5" y="60" width="33.5" height="21"/>
@@ -94,7 +94,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oVC-1n-Afy">
-                                                    <rect key="frame" x="9" y="41" width="508" height="83"/>
+                                                    <rect key="frame" x="9" y="41" width="283" height="83"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -242,18 +242,7 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-In-PqH">
                                             <rect key="frame" x="301" y="13.5" width="74" height="49.5"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DotzuX_json.png" translatesAutoresizingMaskIntoConstraints="NO" id="NeX-Yw-VsV">
-                                                    <rect key="frame" x="44" y="19.5" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="2r0-ZG-EOw"/>
-                                                        <constraint firstAttribute="height" constant="30" id="wxF-Xu-IGW"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="NeX-Yw-VsV" secondAttribute="bottom" id="63n-Rp-R6f"/>
-                                                <constraint firstAttribute="trailing" secondItem="NeX-Yw-VsV" secondAttribute="trailing" id="MhH-If-lb2"/>
                                                 <constraint firstAttribute="width" constant="74" id="rg7-D4-feV"/>
                                                 <constraint firstAttribute="height" constant="49.5" id="uhu-Hl-iAE"/>
                                             </constraints>
@@ -295,7 +284,6 @@
                                     <outlet property="titleLabel" destination="LgN-MH-NgE" id="XOn-wT-EAY"/>
                                     <outlet property="titleView" destination="r8O-hu-g8b" id="c4y-eN-zgl"/>
                                     <outlet property="titleViewBottomSpaceToMiddleLine" destination="lrd-fC-LwK" id="RRz-R6-TPl"/>
-                                    <outlet property="toJSONImageView" destination="NeX-Yw-VsV" id="0Ce-Y8-Msy"/>
                                     <outlet property="topLine" destination="huU-o6-oW4" id="PFz-53-cwv"/>
                                 </connections>
                             </tableViewCell>
@@ -433,7 +421,6 @@
     </scenes>
     <resources>
         <image name="DotzuX_close" width="16" height="16"/>
-        <image name="DotzuX_json.png" width="252" height="252"/>
         <image name="DotzuX_network" width="16" height="16"/>
     </resources>
 </document>

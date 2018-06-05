@@ -19,7 +19,6 @@ class NetworkDetailCell: UITableViewCell {
     @IBOutlet weak var middleLine: UIView!
     @IBOutlet weak var bottomLine: UIView!
     @IBOutlet weak var editView: UIView!
-    @IBOutlet weak var toJSONImageView: UIImageView!
     
     @IBOutlet weak var titleViewBottomSpaceToMiddleLine: NSLayoutConstraint!
     //-12.5
@@ -64,22 +63,22 @@ class NetworkDetailCell: UITableViewCell {
             
             //to JSON
             if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
-                editView.isHidden = false
+//                editView.isHidden = false
             }else{
                 if detailModel?.title == "REQUEST" {
                     if let content = detailModel?.content {
                         if let _ = content.stringToDictionary() {
                             //JSON格式
-                            editView.isHidden = true
+//                            editView.isHidden = true
                         }else{
                             //Form格式
-                            editView.isHidden = false
+//                            editView.isHidden = false
                         }
                     }else{
-                        editView.isHidden = true
+//                        editView.isHidden = true
                     }
                 }else{
-                    editView.isHidden = true
+//                    editView.isHidden = true
                 }
             }
         }
