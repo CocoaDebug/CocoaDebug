@@ -20,8 +20,7 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var requestUrlTextView: UITextView!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
-    @IBOutlet weak var refreshImageView: UIImageView!
-    
+
     
     var httpModel: HttpModel? {
         didSet {

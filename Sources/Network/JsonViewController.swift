@@ -18,6 +18,7 @@ import UIKit
 class JsonViewController: UITableViewController {
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     
     var editType: EditType  = .unknown
     var httpModel: HttpModel?
@@ -79,16 +80,29 @@ class JsonViewController: UITableViewController {
         //设置UI
         if editType == .requestHeader
         {
+            imageView.isHidden = true
+            textView.isHidden = false
             textView.text = detailModel?.requestHeaderFields?.dictionaryToString()
         }
         else if editType == .responseHeader
         {
+            imageView.isHidden = true
+            textView.isHidden = false
             textView.text = detailModel?.responseHeaderFields?.dictionaryToString()
         }
         else
         {
-            textView.text = detailModel?.content
-            detectSerializer()//确定格式(JSON/Form)
+            if let content = detailModel?.content {
+                imageView.isHidden = true
+                textView.isHidden = false
+                textView.text = content
+                detectSerializer()//确定格式(JSON/Form)
+            }
+            if let image = detailModel?.image {
+                textView.isHidden = true
+                imageView.isHidden = false
+                imageView.image = image
+            }
         }
     }
 }
