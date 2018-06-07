@@ -41,7 +41,6 @@
 		EAFA50B420ADB1D900FEFF1E /* DotzuX_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FB620ADB1D900FEFF1E /* DotzuX_app@2x.png */; };
 		EAFA50B520ADB1D900FEFF1E /* DotzuX_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FB720ADB1D900FEFF1E /* DotzuX_close@2x.png */; };
 		EAFA50B620ADB1D900FEFF1E /* DotzuX_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FB820ADB1D900FEFF1E /* DotzuX_bugs@2x.png */; };
-		EAFA50B720ADB1D900FEFF1E /* DotzuX_json.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FB920ADB1D900FEFF1E /* DotzuX_json.png */; };
 		EAFA50B820ADB1D900FEFF1E /* DotzuX_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FBA20ADB1D900FEFF1E /* DotzuX_sandbox@2x.png */; };
 		EAFA50B920ADB1D900FEFF1E /* DotzuX_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FBB20ADB1D900FEFF1E /* DotzuX_network@2x.png */; };
 		EAFA50BA20ADB1D900FEFF1E /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFA4FBC20ADB1D900FEFF1E /* Network.storyboard */; };
@@ -310,7 +309,6 @@
 		EAFA4FB620ADB1D900FEFF1E /* DotzuX_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_app@2x.png"; sourceTree = "<group>"; };
 		EAFA4FB720ADB1D900FEFF1E /* DotzuX_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_close@2x.png"; sourceTree = "<group>"; };
 		EAFA4FB820ADB1D900FEFF1E /* DotzuX_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_bugs@2x.png"; sourceTree = "<group>"; };
-		EAFA4FB920ADB1D900FEFF1E /* DotzuX_json.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DotzuX_json.png; sourceTree = "<group>"; };
 		EAFA4FBA20ADB1D900FEFF1E /* DotzuX_sandbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_sandbox@2x.png"; sourceTree = "<group>"; };
 		EAFA4FBB20ADB1D900FEFF1E /* DotzuX_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_network@2x.png"; sourceTree = "<group>"; };
 		EAFA4FBC20ADB1D900FEFF1E /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
@@ -633,7 +631,6 @@
 		EAFA4F9B20ADB1D900FEFF1E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EAFA4F9C20ADB1D900FEFF1E /* RxCocoa */,
 				EAFA4F9F20ADB1D900FEFF1E /* Core */,
 				EAFA4FA420ADB1D900FEFF1E /* App */,
 				EAFA4FB120ADB1D900FEFF1E /* Resources */,
@@ -646,29 +643,6 @@
 				EAFA509D20ADB1D900FEFF1E /* FPS */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		EAFA4F9C20ADB1D900FEFF1E /* RxCocoa */ = {
-			isa = PBXGroup;
-			children = (
-				EAFA4F9D20ADB1D900FEFF1E /* iOS */,
-			);
-			path = RxCocoa;
-			sourceTree = "<group>";
-		};
-		EAFA4F9D20ADB1D900FEFF1E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EAFA4F9E20ADB1D900FEFF1E /* Events */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		EAFA4F9E20ADB1D900FEFF1E /* Events */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Events;
 			sourceTree = "<group>";
 		};
 		EAFA4F9F20ADB1D900FEFF1E /* Core */ = {
@@ -722,7 +696,6 @@
 				EAFA4FB620ADB1D900FEFF1E /* DotzuX_app@2x.png */,
 				EAFA4FB720ADB1D900FEFF1E /* DotzuX_close@2x.png */,
 				EAFA4FB820ADB1D900FEFF1E /* DotzuX_bugs@2x.png */,
-				EAFA4FB920ADB1D900FEFF1E /* DotzuX_json.png */,
 				EAFA4FBA20ADB1D900FEFF1E /* DotzuX_sandbox@2x.png */,
 				EAFA4FBB20ADB1D900FEFF1E /* DotzuX_network@2x.png */,
 			);
@@ -1199,7 +1172,6 @@
 				EAFA514820ADB1DA00FEFF1E /* icon_file_type_numbers@2x.png in Resources */,
 				EAFA513B20ADB1DA00FEFF1E /* icon_file_type_doc.png in Resources */,
 				EAFA511C20ADB1DA00FEFF1E /* icon_file_type_pages.png in Resources */,
-				EAFA50B720ADB1D900FEFF1E /* DotzuX_json.png in Resources */,
 				EAFA50F820ADB1D900FEFF1E /* icon_file_type_tif.png in Resources */,
 				EAFA50DB20ADB1D900FEFF1E /* icon_file_type_php@3x.png in Resources */,
 				EAFA50D320ADB1D900FEFF1E /* icon_file_type_json@2x.png in Resources */,

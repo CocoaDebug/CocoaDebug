@@ -148,7 +148,7 @@ class DotzuXBubble: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DotzuXBubble.tap))
         self.addGestureRecognizer(tapGesture)
         
-        #if DEBUG//***************** Private API *****************
+//        #if DEBUG//***************** Private API *****************
         if #available(iOS 11.0, *) {
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DotzuXBubble.longPress(sender:)))
             self.addGestureRecognizer(longPress)
@@ -163,7 +163,7 @@ class DotzuXBubble: UIView {
                 // Fallback on earlier versions
             }
         }
-        #endif//***************** Private API *****************
+//        #endif//***************** Private API *****************
     }
     
     func changeSideDisplay() {
@@ -243,7 +243,7 @@ class DotzuXBubble: UIView {
         delegate?.didTapDotzuXBubble()
     }
     
-    #if DEBUG//***************** Private API *****************
+//    #if DEBUG//***************** Private API *****************
     @available(iOS 11.0, *)
     @objc func longPress(sender: UILongPressGestureRecognizer) {
         if (sender.state == .began) {
@@ -272,7 +272,7 @@ class DotzuXBubble: UIView {
             _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
         }
     }
-    #endif//***************** Private API *****************
+//    #endif//***************** Private API *****************
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {
         if panner.state == .began {
