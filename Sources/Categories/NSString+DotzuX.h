@@ -11,6 +11,6 @@
 @interface NSString (DotzuX)
 
 //计算NSString高度
-- (CGFloat)_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
+- (CGFloat)dotzuX_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
 
 @end

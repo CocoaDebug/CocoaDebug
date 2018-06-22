@@ -195,7 +195,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
         model.requestData = self.request.HTTPBody;
     }
     if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData _dataWithInputStream:self.request.HTTPBodyStream];
+        NSData* data = [NSData dotzuX_dataWithInputStream:self.request.HTTPBodyStream];
         model.requestData = data;
     }
     
