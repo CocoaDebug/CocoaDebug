@@ -16,6 +16,8 @@ class NetworkDetailViewController: UITableViewController {
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
     lazy var requestDictionary: [String: Any]? = Dictionary()
+    
+    var headerCell: NetworkCell?
 
     var justCancelCallback:(() -> Void)?
     
@@ -161,6 +163,10 @@ class NetworkDetailViewController: UITableViewController {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NetworkCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
+        
+        //header
+        headerCell = bundle.loadNibNamed(String(describing: NetworkCell.self), owner: nil, options: nil)?.first as? NetworkCell
+        headerCell?.httpModel = httpModel
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,6 +180,19 @@ class NetworkDetailViewController: UITableViewController {
     //MARK: - target action
     @IBAction func close(_ sender: UIBarButtonItem) {
         (self.navigationController as! DotzuXNavigationController).exit()
+    }
+    
+    
+    //MARK: - override
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(selectAll(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func selectAll(_ sender: Any?) {
+        headerCell?.requestUrlTextView.selectAll(sender)
     }
 }
 
@@ -262,10 +281,7 @@ extension NetworkDetailViewController {
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell")
-            as! NetworkCell
-        cell.httpModel = httpModel
-        return cell.contentView
+        return headerCell?.contentView
     }
 
 

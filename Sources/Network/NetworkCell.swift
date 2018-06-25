@@ -102,10 +102,12 @@ class NetworkCell: UITableViewCell {
         
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        requestUrlTextView.textContainer.lineFragmentPadding = 0
-        requestUrlTextView.textContainerInset = .zero
-        
         requestTimeTextView.textContainer.lineFragmentPadding = 0
         requestTimeTextView.textContainerInset = .zero
+        requestTimeTextView.isSelectable = false
+        
+        requestUrlTextView.textContainer.lineFragmentPadding = 0
+        requestUrlTextView.textContainerInset = .zero
+        requestUrlTextView.isSelectable = true
     }
 }
