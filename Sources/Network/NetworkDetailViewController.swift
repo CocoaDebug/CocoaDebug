@@ -235,7 +235,7 @@ extension NetworkDetailViewController {
 //            self?.tableView.reloadData()
 //        }
         
-        //2.点击了编辑view (编辑request/header)
+        //2.点击了编辑view
         cell.tapEditViewCallback = { [weak self] detailModel in
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel

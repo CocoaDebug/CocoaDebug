@@ -26,7 +26,7 @@ class JsonViewController: UITableViewController {
     
     //编辑过的url
     var editedURLString: String?
-    //编辑过的content (request/header)
+    //编辑过的content
     var editedContent: String?
     
     static func instanceFromStoryBoard() -> JsonViewController {
