@@ -54,81 +54,81 @@ class NetworkDetailViewController: UITableViewController {
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let m4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            var model3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
+            let model8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
-                m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                model3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
-            let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    m7.requestHeaderFields = requestHeaderFields
-                    m7.content = requestHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
+                    model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model7.requestHeaderFields = requestHeaderFields
+                    model7.content = "[" + String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
                 }
             }
-            var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    m7_.responseHeaderFields = responseHeaderFields
-                    m7_.content = responseHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
+                    model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model7_.responseHeaderFields = responseHeaderFields
+                    model7_.content = "[" + String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
                 }
             }
             //3.
-            detailModels.append(m1)
-            detailModels.append(m7)
-            detailModels.append(m2)
-            detailModels.append(m7_)
-            detailModels.append(m3)
-            detailModels.append(m8)
-            detailModels.append(m4)
-            detailModels.append(m5)
-            detailModels.append(m6)
+            detailModels.append(model1)
+            detailModels.append(model7)
+            detailModels.append(model2)
+            detailModels.append(model7_)
+            detailModels.append(model3)
+            detailModels.append(model8)
+            detailModels.append(model4)
+            detailModels.append(model5)
+            detailModels.append(model6)
         }
         else{
             //非图片:
             //1.主要
-            let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let m3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let m4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            let model3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
+            let model8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             //2.次要
-            let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    m7.requestHeaderFields = requestHeaderFields
-                    m7.content = requestHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
+                    model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model7.requestHeaderFields = requestHeaderFields
+                    model7.content = "[" + String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
                 }
             }
-            var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    m7_.responseHeaderFields = responseHeaderFields
-                    m7_.content = responseHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
+                    model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model7_.responseHeaderFields = responseHeaderFields
+                    model7_.content = "[" + String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
                 }
             }
             //3.
-            detailModels.append(m1)
-            detailModels.append(m7)
-            detailModels.append(m2)
-            detailModels.append(m7_)
-            detailModels.append(m3)
-            detailModels.append(m8)
-            detailModels.append(m4)
-            detailModels.append(m5)
-            detailModels.append(m6)
+            detailModels.append(model1)
+            detailModels.append(model7)
+            detailModels.append(model2)
+            detailModels.append(model7_)
+            detailModels.append(model3)
+            detailModels.append(model8)
+            detailModels.append(model4)
+            detailModels.append(model5)
+            detailModels.append(model6)
         }
     }
     
