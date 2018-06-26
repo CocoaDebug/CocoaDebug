@@ -62,25 +62,25 @@ class NetworkDetailCell: UITableViewCell {
             }
             
             //to JSON
-            if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
-//                editView.isHidden = false
-            }else{
-                if detailModel?.title == "REQUEST" {
-                    if let content = detailModel?.content {
-                        if let _ = content.stringToDictionary() {
-                            //JSON格式
-//                            editView.isHidden = true
-                        }else{
-                            //Form格式
-//                            editView.isHidden = false
-                        }
-                    }else{
-//                        editView.isHidden = true
-                    }
-                }else{
-//                    editView.isHidden = true
-                }
-            }
+//            if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
+////                editView.isHidden = false
+//            }else{
+//                if detailModel?.title == "REQUEST" {
+//                    if let content = detailModel?.content {
+//                        if let _ = content.stringToDictionary() {
+//                            //JSON格式
+////                            editView.isHidden = true
+//                        }else{
+//                            //Form格式
+////                            editView.isHidden = false
+//                        }
+//                    }else{
+////                        editView.isHidden = true
+//                    }
+//                }else{
+////                    editView.isHidden = true
+//                }
+//            }
         }
     }
     

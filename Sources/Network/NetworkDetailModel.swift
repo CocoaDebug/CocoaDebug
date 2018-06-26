@@ -24,7 +24,6 @@ struct NetworkDetailModel {
         self.image = image
         
         
-        
         //响应时间, 偶现bug
         if title == "TOTAL TIME" {
             if let content = content {

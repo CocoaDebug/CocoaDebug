@@ -70,6 +70,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !requestHeaderFields.isEmpty {
                     m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     m7.requestHeaderFields = requestHeaderFields
+                    m7.content = requestHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
                 }
             }
             var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -77,6 +78,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !responseHeaderFields.isEmpty {
                     m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     m7_.responseHeaderFields = responseHeaderFields
+                    m7_.content = responseHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
                 }
             }
             //3.
@@ -106,6 +108,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !requestHeaderFields.isEmpty {
                     m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     m7.requestHeaderFields = requestHeaderFields
+                    m7.content = requestHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
                 }
             }
             var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -113,6 +116,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !responseHeaderFields.isEmpty {
                     m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     m7_.responseHeaderFields = responseHeaderFields
+                    m7_.content = responseHeaderFields.dictionaryToString()?.replacingOccurrences(of: "{", with: "[").replacingOccurrences(of: "}", with: "]")
                 }
             }
             //3.
