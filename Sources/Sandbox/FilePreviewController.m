@@ -87,7 +87,7 @@
                 break;
             }
             default:
-                //copyied by liman
+                //copy by liman
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;

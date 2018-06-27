@@ -221,7 +221,12 @@ extension UIWindow {
         
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
-            if DotzuXSettings.shared.visible == true {return}
+            if DotzuXSettings.shared.visible == true {
+                dispatch_main_async_safe {
+                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_DotzuX"), object: nil, userInfo: nil)
+                }
+                return
+            }
             DotzuXSettings.shared.showDotzuXBubbleAndWindow = !DotzuXSettings.shared.showDotzuXBubbleAndWindow
         }
     }

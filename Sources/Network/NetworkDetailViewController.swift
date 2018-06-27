@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
-class NetworkDetailViewController: UITableViewController {
+class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
     var httpModel: HttpModel?
     
@@ -148,9 +149,23 @@ class NetworkDetailViewController: UITableViewController {
         }
     }
     
+    //email
+    func configureMailComposer() -> MFMailComposeViewController{
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(["723661989@163.com"])
+        mailComposeVC.setCcRecipients(["723661989@qq.com"])
+        mailComposeVC.setSubject("subject")
+        mailComposeVC.setMessageBody("msg", isHTML: false)
+        return mailComposeVC
+    }
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //震动通知
+        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_DotzuX"), object: nil)
         
         //确定request格式(JSON/Form)
         detectRequestSerializer()
@@ -181,9 +196,21 @@ class NetworkDetailViewController: UITableViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     //MARK: - target action
     @IBAction func close(_ sender: UIBarButtonItem) {
         (self.navigationController as! DotzuXNavigationController).exit()
+    }
+    
+    //MARK: - notification
+    @objc func motionShake_notification() {
+        let mailComposeViewController = configureMailComposer()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        }
     }
     
     
@@ -317,5 +344,32 @@ extension NetworkDetailViewController {
             }
         }
         return 0
+    }
+}
+
+//MARK: - MFMailComposeViewControllerDelegate
+extension NetworkDetailViewController {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        var title: String = "unknown"
+        
+        switch result {
+            case .cancelled:
+                title = "cancelled"
+            case .saved:
+                title = "saved"
+            case .failed:
+                title = "failed"
+            case .sent:
+                title = "sent"
+        }
+        
+        controller.dismiss(animated: true) {
+            let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
