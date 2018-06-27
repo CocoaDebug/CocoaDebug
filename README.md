@@ -90,6 +90,26 @@ github "DotzuX/DotzuX"
 
 > NOTE: Be careful with `Other Swift Flags` & `Preprocessor Macros` when using Swift & Objective-C in one project. You can refer to [here](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).
 
+## New feature in 0.3.7
+
+When you are in the `Network Details` page, just shake your device or simulator, then you can share network details via email.
+
+Added 3 new parameters when initialize `DotzuX`:
+
+- emailSubject
+	
+	    emailSubject: sets the initial text for the subject line of the email when share via email. default value is `Network Details`.
+
+- emailToRecipients
+
+		emailToRecipients: sets the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
+		
+- emailCcRecipients
+
+		emailCcRecipients: sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
+
+        
+
 ## TODO
 
 - Unit Testing
