@@ -22,9 +22,9 @@ class DotzuXWindow: UIWindow {
         self.backgroundColor = .clear
         self.windowLevel = UIWindowLevelStatusBar - 1
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
-        fatalError()
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

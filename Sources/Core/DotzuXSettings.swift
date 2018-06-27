@@ -18,6 +18,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    @objc public var responseShakeNetworkDetail: Bool = false {
+        didSet {
+            UserDefaults.standard.set(responseShakeNetworkDetail, forKey: "responseShakeNetworkDetail_DotzuX")
+            UserDefaults.standard.synchronize()
+        }
+    }
     @objc public var firstIn: String? = nil {
         didSet {
             UserDefaults.standard.set(firstIn, forKey: "firstIn_DotzuX")
@@ -141,6 +147,7 @@ import Foundation
     
     private override init() {
         responseShake = UserDefaults.standard.bool(forKey: "responseShake_DotzuX")
+        responseShakeNetworkDetail = UserDefaults.standard.bool(forKey: "responseShakeNetworkDetail_DotzuX")
         firstIn = UserDefaults.standard.string(forKey: "firstIn_DotzuX")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_DotzuX")
         visible = UserDefaults.standard.bool(forKey: "visible_DotzuX")

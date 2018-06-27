@@ -164,9 +164,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //震动通知
-        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_DotzuX"), object: nil)
-        
         //确定request格式(JSON/Form)
         detectRequestSerializer()
             
@@ -188,16 +185,20 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         headerCell?.httpModel = httpModel
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_DotzuX"), object: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        NotificationCenter.default.removeObserver(self)
+
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - target action
@@ -210,6 +211,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         let mailComposeViewController = configureMailComposer()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
+            DotzuXSettings.shared.responseShakeNetworkDetail = false
         }
     }
     
@@ -367,7 +369,9 @@ extension NetworkDetailViewController {
         
         controller.dismiss(animated: true) {
             let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            let action = UIAlertAction.init(title: "OK", style: .default, handler: { (_) in
+                DotzuXSettings.shared.responseShakeNetworkDetail = true
+            })
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }
