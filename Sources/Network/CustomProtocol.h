@@ -1,6 +1,6 @@
 //
 //  DotzuX.swift
-//  demow
+//  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
