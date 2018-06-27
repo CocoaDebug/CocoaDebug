@@ -153,9 +153,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     func configureMailComposer() -> MFMailComposeViewController{
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
-        mailComposeVC.setToRecipients(["723661989@163.com"])
-        mailComposeVC.setCcRecipients(["723661989@qq.com"])
-        mailComposeVC.setSubject("subject")
+        mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
+        mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
+        mailComposeVC.setSubject(DotzuXSettings.shared.emailSubject ?? "Network Details")
         mailComposeVC.setMessageBody("msg", isHTML: false)
         return mailComposeVC
     }

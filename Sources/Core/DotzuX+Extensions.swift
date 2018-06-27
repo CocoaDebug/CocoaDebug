@@ -256,7 +256,7 @@ extension UIViewController {
 extension DotzuX {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false, emailSubject: String? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil)
     {
         if serverURL == nil {
             DotzuXSettings.shared.serverURL = ""
@@ -300,6 +300,11 @@ extension DotzuX {
         NetworkHelper.shared().enable()
         DotzuXSettings.shared.responseShake = true
         DotzuXSettings.shared.responseShakeNetworkDetail = true
+        
+        //share via email
+        DotzuXSettings.shared.emailSubject = emailSubject
+        DotzuXSettings.shared.emailToRecipients = emailToRecipients
+        DotzuXSettings.shared.emailCcRecipients = emailCcRecipients
     }
     
     ///deinit

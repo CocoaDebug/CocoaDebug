@@ -22,11 +22,16 @@ import Foundation
     @objc public static var recordCrash: Bool = false
     ///the maximum count of logs which DotzuX display. default value is `500`.
     @objc public static var logMaxCount: Int = 500
-    
+    ///sets the initial text for the subject line of the email when share via email. default value is `Network Details`.
+    @objc public static var emailSubject: String = "Network Details"
+    ///sets the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
+    @objc public static var emailToRecipients: [String]? = nil
+    ///sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
+    @objc public static var emailCcRecipients: [String]? = nil
     
     //MARK: - DotzuX enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailSubject: emailSubject, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients)
     }
     
     //MARK: - DotzuX disable
