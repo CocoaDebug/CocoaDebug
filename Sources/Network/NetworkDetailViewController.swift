@@ -12,6 +12,8 @@ import MessageUI
 
 class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
+    lazy var formatter: DateFormatter = DateFormatter()
+    
     var httpModel: HttpModel?
     
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
@@ -55,7 +57,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DotzuX.com")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -96,7 +98,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else{
             //非图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DotzuX.com")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -149,14 +151,90 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
     }
     
-    //email
-    func configureMailComposer() -> MFMailComposeViewController{
+    
+    //email configure
+    func configureMailComposer() -> MFMailComposeViewController {
+        
+        //1.email
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
         mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
         mailComposeVC.setSubject(DotzuXSettings.shared.emailSubject ?? "Network Details")
-        mailComposeVC.setMessageBody("msg", isHTML: false)
+        
+        //2.image
+        var isImage: Bool = false
+        if let httpModel = httpModel {
+            isImage = httpModel.isImage
+        }
+        
+        //3.MessageBody start
+        var messageBody: String = ""
+        var string: String = ""
+        
+        for model in detailModels {
+            if let title = model.title, let content = model.content {
+                if content != "" {
+                    string = "\n\n" + "------- " + title + " -------" + "\n" + content
+                }
+            }
+            if !messageBody.contains(string) {
+                messageBody.append(string)
+            }
+            //image
+            if isImage == true {
+                if let image = model.image {
+                    if let imageData = UIImagePNGRepresentation(image) {
+                        mailComposeVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "image")
+                    }
+                }
+            }
+        }
+        
+        //4.url
+        var url: String = ""
+        if let httpModel = httpModel {
+            url = httpModel.url.absoluteString
+        }
+        
+        //5.method
+        var method: String = ""
+        if let httpModel = httpModel {
+            method = "[" + httpModel.method + "]"
+        }
+        
+        //6.time
+        var time: String = ""
+        if let httpModel = httpModel {
+            if let startTime = httpModel.startTime {
+                if (startTime as NSString).doubleValue == 0 {
+                    time = formatter.string(from: Date())
+                }else{
+                    time = formatter.string(from: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                }
+            }
+        }
+        
+        //7.statusCode
+        var statusCode: String = ""
+        if let httpModel = httpModel {
+            statusCode = httpModel.statusCode
+            if statusCode == "0" { //"0" means network unavailable
+                statusCode = "❌"
+            }
+        }
+        
+        //8.MessageBody end
+        var subString = method + " " + time + " " + "(" + statusCode + ")"
+        if subString.contains("❌") {
+            subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        }
+        
+        messageBody = messageBody.replacingOccurrences(of: "http://DotzuX.com", with: url)
+        messageBody = subString + messageBody
+        
+        mailComposeVC.setMessageBody(messageBody, isHTML: false)
+        
         return mailComposeVC
     }
     
@@ -164,6 +242,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
         //确定request格式(JSON/Form)
         detectRequestSerializer()
             
@@ -354,26 +434,17 @@ extension NetworkDetailViewController {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
-        var title: String = "unknown"
-        
-        switch result {
-            case .cancelled:
-                title = "cancelled"
-            case .saved:
-                title = "saved"
-            case .failed:
-                title = "failed"
-            case .sent:
-                title = "sent"
-        }
-        
         controller.dismiss(animated: true) {
-            let alert = UIAlertController.init(title: title, message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: { (_) in
+            if error != nil {
+                let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "OK", style: .default, handler: { (_) in
+                    DotzuXSettings.shared.responseShakeNetworkDetail = true
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }else{
                 DotzuXSettings.shared.responseShakeNetworkDetail = true
-            })
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            }
         }
     }
 }
