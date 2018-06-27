@@ -92,13 +92,13 @@ class JsonViewController: UITableViewController {
         {
             imageView.isHidden = true
             textView.isHidden = false
-            textView.text = String(detailModel?.requestHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+            textView.text = String(detailModel?.requestHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else if editType == .responseHeader
         {
             imageView.isHidden = true
             textView.isHidden = false
-            textView.text = String(detailModel?.responseHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+            textView.text = String(detailModel?.responseHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else
         {

@@ -54,81 +54,81 @@ class NetworkDetailViewController: UITableViewController {
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let model2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var model3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let model8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
-                model3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
-            let model5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    model7.requestHeaderFields = requestHeaderFields
-                    model7.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2.requestHeaderFields = requestHeaderFields
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    model7_.responseHeaderFields = responseHeaderFields
-                    model7_.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4.responseHeaderFields = responseHeaderFields
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
             //3.
-            detailModels.append(model1)
-            detailModels.append(model7)
-            detailModels.append(model2)
-            detailModels.append(model7_)
-            detailModels.append(model3)
-            detailModels.append(model8)
-            detailModels.append(model4)
-            detailModels.append(model5)
-            detailModels.append(model6)
+            detailModels.append(model_1)
+            detailModels.append(model_2)
+            detailModels.append(model_3)
+            detailModels.append(model_4)
+            detailModels.append(model_5)
+            detailModels.append(model_6)
+            detailModels.append(model_7)
+            detailModels.append(model_8)
+            detailModels.append(model_9)
         }
         else{
             //非图片:
             //1.主要
-            let model1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let model2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let model3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let model8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             //2.次要
-            let model5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    model7.requestHeaderFields = requestHeaderFields
-                    model7.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2.requestHeaderFields = requestHeaderFields
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    model7_.responseHeaderFields = responseHeaderFields
-                    model7_.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4.responseHeaderFields = responseHeaderFields
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
             //3.
-            detailModels.append(model1)
-            detailModels.append(model7)
-            detailModels.append(model2)
-            detailModels.append(model7_)
-            detailModels.append(model3)
-            detailModels.append(model8)
-            detailModels.append(model4)
-            detailModels.append(model5)
-            detailModels.append(model6)
+            detailModels.append(model_1)
+            detailModels.append(model_2)
+            detailModels.append(model_3)
+            detailModels.append(model_4)
+            detailModels.append(model_5)
+            detailModels.append(model_6)
+            detailModels.append(model_7)
+            detailModels.append(model_8)
+            detailModels.append(model_9)
         }
     }
     
