@@ -70,7 +70,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !requestHeaderFields.isEmpty {
                     model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model7.requestHeaderFields = requestHeaderFields
-                    model7.content = "[" + String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
+                    model7.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
                 }
             }
             var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -78,7 +78,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !responseHeaderFields.isEmpty {
                     model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model7_.responseHeaderFields = responseHeaderFields
-                    model7_.content = "[" + String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
+                    model7_.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
                 }
             }
             //3.
@@ -108,7 +108,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !requestHeaderFields.isEmpty {
                     model7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model7.requestHeaderFields = requestHeaderFields
-                    model7.content = "[" + String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
+                    model7.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
                 }
             }
             var model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -116,7 +116,7 @@ class NetworkDetailViewController: UITableViewController {
                 if !responseHeaderFields.isEmpty {
                     model7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model7_.responseHeaderFields = responseHeaderFields
-                    model7_.content = "[" + String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast() ?? "") + "]"
+                    model7_.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast() ?? "").replacingOccurrences(of: "  \"", with: "\"")
                 }
             }
             //3.
