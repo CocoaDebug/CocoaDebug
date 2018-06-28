@@ -27,6 +27,8 @@ Next Generation of [Dotzu](https://github.com/remirobert/Dotzu) (iOS Debugging T
 
 When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
 
+![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/6.png)
+
 Added two new parameters when initialize `DotzuX`:
 
 - emailToRecipients
@@ -36,8 +38,6 @@ Added two new parameters when initialize `DotzuX`:
 - emailCcRecipients
 
         emailCcRecipients: sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
-
-![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/6.png)
 
 ## Installation
 
