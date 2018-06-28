@@ -155,12 +155,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //email configure
     func configureMailComposer() -> MFMailComposeViewController {
         
-        //1.email
+        //1.email recipients
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
         mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
-        mailComposeVC.setSubject(DotzuXSettings.shared.emailSubject ?? "Network Details")
         
         //2.image
         var isImage: Bool = false
@@ -168,7 +167,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             isImage = httpModel.isImage
         }
         
-        //3.MessageBody start
+        //3.MessageBody --------- start ---------
         var messageBody: String = ""
         var string: String = ""
         
@@ -224,7 +223,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             }
         }
         
-        //8.MessageBody end
+        //8.MessageBody --------- end ---------
         var subString = method + " " + time + " " + "(" + statusCode + ")"
         if subString.contains("❌") {
             subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
@@ -232,9 +231,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         messageBody = messageBody.replacingOccurrences(of: "http://DotzuX.com", with: url)
         messageBody = subString + messageBody
-        
         mailComposeVC.setMessageBody(messageBody, isHTML: false)
         
+        //9.subject
+        mailComposeVC.setSubject(url)
+
         return mailComposeVC
     }
     

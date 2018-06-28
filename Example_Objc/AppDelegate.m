@@ -24,7 +24,6 @@
 //        DotzuX.tabBarControllers = @[[UIViewController new], [UIViewController new]]; //default value is `nil`
 //        DotzuX.recordCrash = YES; //default value is `NO`
 //        DotzuX.logMaxCount = 1000; //default value is `500`
-//        DotzuX.emailSubject = @"my email subject"; //default value is `Network Details`.
 //        DotzuX.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"]; //default value is `nil`
 //        DotzuX.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"]; //default value is `nil`
         [DotzuX enable];

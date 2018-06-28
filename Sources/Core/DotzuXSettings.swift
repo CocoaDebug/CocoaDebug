@@ -127,7 +127,6 @@ import Foundation
     @objc public var tabBarControllers: [UIViewController]? = nil
     
     //share via email
-    @objc public var emailSubject: String? = nil
     @objc public var emailToRecipients: [String]? = nil
     @objc public var emailCcRecipients: [String]? = nil
     

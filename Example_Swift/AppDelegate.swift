@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            DotzuX.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
 //            DotzuX.recordCrash = true //default value is `false`
 //            DotzuX.logMaxCount = 1000 //default value is `500`
-//            DotzuX.emailSubject = "my email subject" //default value is `Network Details`.
 //            DotzuX.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
 //            DotzuX.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
             DotzuX.enable()
