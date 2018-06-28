@@ -21,6 +21,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     lazy var requestDictionary: [String: Any]? = Dictionary()
     
     var headerCell: NetworkCell?
+    
+    var messageBody: String = ""
 
     var justCancelCallback:(() -> Void)?
     
@@ -153,23 +155,18 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     
     //email configure
-    func configureMailComposer() -> MFMailComposeViewController {
+    func configureMailComposer(_ copy: Bool = false) -> MFMailComposeViewController? {
         
-        //1.email recipients
-        let mailComposeVC = MFMailComposeViewController()
-        mailComposeVC.mailComposeDelegate = self
-        mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
-        mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
-        
-        //2.image
+        //1.image
+        var img: UIImage? = nil
         var isImage: Bool = false
         if let httpModel = httpModel {
             isImage = httpModel.isImage
         }
         
-        //3.MessageBody --------- start ---------
-        var messageBody: String = ""
+        //2.body message ------------------ start ------------------
         var string: String = ""
+        messageBody = ""
         
         for model in detailModels {
             if let title = model.title, let content = model.content {
@@ -183,26 +180,24 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             //image
             if isImage == true {
                 if let image = model.image {
-                    if let imageData = UIImagePNGRepresentation(image) {
-                        mailComposeVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "image")
-                    }
+                    img = image
                 }
             }
         }
         
-        //4.url
+        //2.1.url
         var url: String = ""
         if let httpModel = httpModel {
             url = httpModel.url.absoluteString
         }
         
-        //5.method
+        //2.2.method
         var method: String = ""
         if let httpModel = httpModel {
             method = "[" + httpModel.method + "]"
         }
         
-        //6.time
+        //2.3.time
         var time: String = ""
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
@@ -214,7 +209,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             }
         }
         
-        //7.statusCode
+        //2.4.statusCode
         var statusCode: String = ""
         if let httpModel = httpModel {
             statusCode = httpModel.statusCode
@@ -223,7 +218,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             }
         }
         
-        //8.MessageBody --------- end ---------
+        //body message ------------------ end ------------------
         var subString = method + " " + time + " " + "(" + statusCode + ")"
         if subString.contains("❌") {
             subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
@@ -231,13 +226,54 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         messageBody = messageBody.replacingOccurrences(of: "http://DotzuX.com", with: url)
         messageBody = subString + messageBody
+        
+        //////////////////////////////////////////////////////////////////////////////////
+        
+        if !MFMailComposeViewController.canSendMail() {
+            if copy == false {
+                //share via email
+                let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "OK", style: .cancel) { (_) in
+                    DotzuXSettings.shared.responseShakeNetworkDetail = true
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                //copy to clipboard
+                DotzuXSettings.shared.responseShakeNetworkDetail = true
+            }
+            
+            return nil
+        }
+        
+        if copy == true {
+            //copy to clipboard
+            DotzuXSettings.shared.responseShakeNetworkDetail = true
+            return nil
+        }
+        
+        //3.email recipients
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
+        mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
+        
+        //4.image
+        if let img = img {
+            if let imageData = UIImagePNGRepresentation(img) {
+                mailComposeVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "image")
+            }
+        }
+        
+        //5.body
         mailComposeVC.setMessageBody(messageBody, isHTML: false)
         
-        //9.subject
+        //6.subject
         mailComposeVC.setSubject(url)
 
         return mailComposeVC
     }
+    
     
     //MARK: - init
     override func viewDidLoad() {
@@ -289,11 +325,35 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     //MARK: - notification
     @objc func motionShake_notification() {
-        let mailComposeViewController = configureMailComposer()
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposeViewController, animated: true, completion: nil)
-            DotzuXSettings.shared.responseShakeNetworkDetail = false
+        
+        DotzuXSettings.shared.responseShakeNetworkDetail = false
+        
+        // create an actionSheet
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // create an action
+        let firstAction: UIAlertAction = UIAlertAction(title: "share via email", style: .default) { [weak self] action -> Void in
+            if let mailComposeViewController = self?.configureMailComposer() {
+                self?.present(mailComposeViewController, animated: true, completion: nil)
+            }
         }
+        
+        let secondAction: UIAlertAction = UIAlertAction(title: "copy to clipboard", style: .default) { [weak self] action -> Void in
+            _ = self?.configureMailComposer(true)
+            UIPasteboard.general.string = self?.messageBody
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            DotzuXSettings.shared.responseShakeNetworkDetail = true
+        }
+        
+        // add actions
+        actionSheetController.addAction(firstAction)
+        actionSheetController.addAction(secondAction)
+        actionSheetController.addAction(cancelAction)
+        
+        // present an actionSheet...
+        present(actionSheetController, animated: true, completion: nil)
     }
     
     
@@ -438,7 +498,7 @@ extension NetworkDetailViewController {
         controller.dismiss(animated: true) {
             if error != nil {
                 let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
-                let action = UIAlertAction.init(title: "OK", style: .default, handler: { (_) in
+                let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { (_) in
                     DotzuXSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)

@@ -110,8 +110,8 @@ extension AppInfoViewController {
         if indexPath.section == 1 && indexPath.row == 3 {
             UIPasteboard.general.string = Bundle.main.bundleIdentifier
             
-            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            let alert = UIAlertController.init(title: "copied to clipboard", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }
@@ -123,8 +123,8 @@ extension AppInfoViewController {
             
             UIPasteboard.general.string = DotzuXSettings.shared.serverURL
             
-            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            let alert = UIAlertController.init(title: "copied to clipboard", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }
