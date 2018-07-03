@@ -23,7 +23,7 @@ Debug Widget for iOS
 
 ![example](https://raw.githubusercontent.com/DebugWidget/DebugWidget/master/pic/example.gif)
 
-## New feature (0.3.8)
+## New feature
 
 When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
 
