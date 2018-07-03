@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA0629E020541ACB0071A231 /* DotzuXSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* DotzuXSettings.swift */; };
-		EA0629E120541ACB0071A231 /* DotzuX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* DotzuX.swift */; };
-		EA0629E220541ACB0071A231 /* DotzuX+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* DotzuX+Extensions.swift */; };
+		EA0629E020541ACB0071A231 /* DebugWidgetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* DebugWidgetSettings.swift */; };
+		EA0629E120541ACB0071A231 /* DebugWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* DebugWidget.swift */; };
+		EA0629E220541ACB0071A231 /* DebugWidget+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* DebugWidget+Extensions.swift */; };
 		EA0629E320541ACB0071A231 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E820541ACB0071A231 /* AppInfoViewController.swift */; };
 		EA0629E420541ACB0071A231 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E920541ACB0071A231 /* DeviceModel.swift */; };
 		EA0629E520541ACB0071A231 /* CrashStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628EA20541ACB0071A231 /* CrashStoreManager.swift */; };
@@ -24,12 +24,12 @@
 		EA0629EE20541ACB0071A231 /* CrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628F320541ACB0071A231 /* CrashCell.swift */; };
 		EA0629EF20541ACB0071A231 /* NetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F520541ACB0071A231 /* NetworkCell.xib */; };
 		EA0629F020541ACB0071A231 /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F620541ACB0071A231 /* Logs.storyboard */; };
-		EA0629F120541ACB0071A231 /* DotzuX_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* DotzuX_logs@2x.png */; };
-		EA0629F220541ACB0071A231 /* DotzuX_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F920541ACB0071A231 /* DotzuX_app@2x.png */; };
-		EA0629F320541ACB0071A231 /* DotzuX_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FA20541ACB0071A231 /* DotzuX_close@2x.png */; };
-		EA0629F420541ACB0071A231 /* DotzuX_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FB20541ACB0071A231 /* DotzuX_bugs@2x.png */; };
-		EA0629F620541ACB0071A231 /* DotzuX_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FD20541ACB0071A231 /* DotzuX_sandbox@2x.png */; };
-		EA0629F720541ACB0071A231 /* DotzuX_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FE20541ACB0071A231 /* DotzuX_network@2x.png */; };
+		EA0629F120541ACB0071A231 /* DebugWidget_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* DebugWidget_logs@2x.png */; };
+		EA0629F220541ACB0071A231 /* DebugWidget_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F920541ACB0071A231 /* DebugWidget_app@2x.png */; };
+		EA0629F320541ACB0071A231 /* DebugWidget_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FA20541ACB0071A231 /* DebugWidget_close@2x.png */; };
+		EA0629F420541ACB0071A231 /* DebugWidget_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FB20541ACB0071A231 /* DebugWidget_bugs@2x.png */; };
+		EA0629F620541ACB0071A231 /* DebugWidget_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FD20541ACB0071A231 /* DebugWidget_sandbox@2x.png */; };
+		EA0629F720541ACB0071A231 /* DebugWidget_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FE20541ACB0071A231 /* DebugWidget_network@2x.png */; };
 		EA0629F820541ACB0071A231 /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FF20541ACB0071A231 /* Network.storyboard */; };
 		EA0629F920541ACB0071A231 /* icon_file_type_wav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06290120541ACB0071A231 /* icon_file_type_wav@3x.png */; };
 		EA0629FA20541ACB0071A231 /* icon_file_type_bin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06290220541ACB0071A231 /* icon_file_type_bin@3x.png */; };
@@ -220,16 +220,16 @@
 		EA062AB320541ACB0071A231 /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C920541ACB0071A231 /* Swizzling.m */; };
 		EA062AB420541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */; };
 		EA062AB520541ACB0071A231 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CD20541ACB0071A231 /* WindowHelper.swift */; };
-		EA062AB620541ACB0071A231 /* DotzuXWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* DotzuXWindow.swift */; };
-		EA062AB720541ACB0071A231 /* DotzuXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* DotzuXViewController.swift */; };
-		EA062AB820541ACB0071A231 /* DotzuXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* DotzuXNavigationController.swift */; };
-		EA062AB920541ACB0071A231 /* DotzuXBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* DotzuXBubble.swift */; };
-		EA062ABA20541ACB0071A231 /* DotzuXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* DotzuXTabBarController.swift */; };
+		EA062AB620541ACB0071A231 /* DebugWidgetWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* DebugWidgetWindow.swift */; };
+		EA062AB720541ACB0071A231 /* DebugWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* DebugWidgetViewController.swift */; };
+		EA062AB820541ACB0071A231 /* DebugWidgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* DebugWidgetNavigationController.swift */; };
+		EA062AB920541ACB0071A231 /* DebugWidgetBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* DebugWidgetBubble.swift */; };
+		EA062ABA20541ACB0071A231 /* DebugWidgetTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* DebugWidgetTabBarController.swift */; };
 		EA062ABB20541ACB0071A231 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EA062ABC20541ACB0071A231 /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D520541ACB0071A231 /* MemoryHelper.m */; };
-		EA062ABE20541ACB0071A231 /* NSData+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+DotzuX.m */; };
-		EA062ABF20541ACB0071A231 /* NSString+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+DotzuX.m */; };
-		EA062AC020541ACB0071A231 /* NSURLRequest+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+DotzuX.m */; };
+		EA062ABE20541ACB0071A231 /* NSData+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+DebugWidget.m */; };
+		EA062ABF20541ACB0071A231 /* NSString+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+DebugWidget.m */; };
+		EA062AC020541ACB0071A231 /* NSURLRequest+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+DebugWidget.m */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
@@ -257,12 +257,12 @@
 		EAF55AED20554164003E310F /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C920541ACB0071A231 /* Swizzling.m */; };
 		EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */; };
 		EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D520541ACB0071A231 /* MemoryHelper.m */; };
-		EAF55AF120554164003E310F /* NSData+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+DotzuX.m */; };
-		EAF55AF220554164003E310F /* NSString+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+DotzuX.m */; };
-		EAF55AF320554164003E310F /* NSURLRequest+DotzuX.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+DotzuX.m */; };
-		EAF55AF42055416F003E310F /* DotzuXSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* DotzuXSettings.swift */; };
-		EAF55AF52055416F003E310F /* DotzuX.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* DotzuX.swift */; };
-		EAF55AF62055416F003E310F /* DotzuX+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* DotzuX+Extensions.swift */; };
+		EAF55AF120554164003E310F /* NSData+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+DebugWidget.m */; };
+		EAF55AF220554164003E310F /* NSString+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+DebugWidget.m */; };
+		EAF55AF320554164003E310F /* NSURLRequest+DebugWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+DebugWidget.m */; };
+		EAF55AF42055416F003E310F /* DebugWidgetSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* DebugWidgetSettings.swift */; };
+		EAF55AF52055416F003E310F /* DebugWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* DebugWidget.swift */; };
+		EAF55AF62055416F003E310F /* DebugWidget+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* DebugWidget+Extensions.swift */; };
 		EAF55AF72055416F003E310F /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E820541ACB0071A231 /* AppInfoViewController.swift */; };
 		EAF55AF82055416F003E310F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E920541ACB0071A231 /* DeviceModel.swift */; };
 		EAF55AF92055416F003E310F /* CrashStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628EA20541ACB0071A231 /* CrashStoreManager.swift */; };
@@ -288,13 +288,13 @@
 		EAF55B0D2055416F003E310F /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B920541ACB0071A231 /* LogModel.swift */; };
 		EAF55B0E2055416F003E310F /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BA20541ACB0071A231 /* LoggerFormat.swift */; };
 		EAF55B0F2055416F003E310F /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CD20541ACB0071A231 /* WindowHelper.swift */; };
-		EAF55B102055416F003E310F /* DotzuXWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* DotzuXWindow.swift */; };
-		EAF55B112055416F003E310F /* DotzuXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* DotzuXViewController.swift */; };
-		EAF55B122055416F003E310F /* DotzuXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* DotzuXNavigationController.swift */; };
-		EAF55B132055416F003E310F /* DotzuXBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* DotzuXBubble.swift */; };
-		EAF55B142055416F003E310F /* DotzuXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* DotzuXTabBarController.swift */; };
+		EAF55B102055416F003E310F /* DebugWidgetWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* DebugWidgetWindow.swift */; };
+		EAF55B112055416F003E310F /* DebugWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* DebugWidgetViewController.swift */; };
+		EAF55B122055416F003E310F /* DebugWidgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* DebugWidgetNavigationController.swift */; };
+		EAF55B132055416F003E310F /* DebugWidgetBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* DebugWidgetBubble.swift */; };
+		EAF55B142055416F003E310F /* DebugWidgetTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* DebugWidgetTabBarController.swift */; };
 		EAF55B152055416F003E310F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
-		EAF55B162055417C003E310F /* DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B162055417C003E310F /* DebugWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* DebugWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B172055417C003E310F /* HttpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AD20541ACB0071A231 /* HttpModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B182055417C003E310F /* CustomProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* CustomProtocol.h */; };
 		EAF55B192055417C003E310F /* HttpDatasource.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AF20541ACB0071A231 /* HttpDatasource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -307,16 +307,16 @@
 		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; };
 		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; };
 		EAF55B222055417C003E310F /* MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D020541ACB0071A231 /* MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D820541ACB0071A231 /* NSString+DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B242055417C003E310F /* DotzuX+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D920541ACB0071A231 /* DotzuX+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DB20541ACB0071A231 /* NSURLRequest+DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSData+DotzuX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B282055435D003E310F /* DotzuX_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* DotzuX_logs@2x.png */; };
-		EAF55B292055435D003E310F /* DotzuX_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F920541ACB0071A231 /* DotzuX_app@2x.png */; };
-		EAF55B2A2055435D003E310F /* DotzuX_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FA20541ACB0071A231 /* DotzuX_close@2x.png */; };
-		EAF55B2B2055435D003E310F /* DotzuX_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FB20541ACB0071A231 /* DotzuX_bugs@2x.png */; };
-		EAF55B2D2055435D003E310F /* DotzuX_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FD20541ACB0071A231 /* DotzuX_sandbox@2x.png */; };
-		EAF55B2E2055435D003E310F /* DotzuX_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FE20541ACB0071A231 /* DotzuX_network@2x.png */; };
+		EAF55B232055417C003E310F /* NSString+DebugWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D820541ACB0071A231 /* NSString+DebugWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B242055417C003E310F /* DebugWidget+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D920541ACB0071A231 /* DebugWidget+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B252055417C003E310F /* NSURLRequest+DebugWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DB20541ACB0071A231 /* NSURLRequest+DebugWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B272055417C003E310F /* NSData+DebugWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSData+DebugWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B282055435D003E310F /* DebugWidget_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* DebugWidget_logs@2x.png */; };
+		EAF55B292055435D003E310F /* DebugWidget_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F920541ACB0071A231 /* DebugWidget_app@2x.png */; };
+		EAF55B2A2055435D003E310F /* DebugWidget_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FA20541ACB0071A231 /* DebugWidget_close@2x.png */; };
+		EAF55B2B2055435D003E310F /* DebugWidget_bugs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FB20541ACB0071A231 /* DebugWidget_bugs@2x.png */; };
+		EAF55B2D2055435D003E310F /* DebugWidget_sandbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FD20541ACB0071A231 /* DebugWidget_sandbox@2x.png */; };
+		EAF55B2E2055435D003E310F /* DebugWidget_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FE20541ACB0071A231 /* DebugWidget_network@2x.png */; };
 		EAF55B2F2055435D003E310F /* icon_file_type_wav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06290120541ACB0071A231 /* icon_file_type_wav@3x.png */; };
 		EAF55B302055435D003E310F /* icon_file_type_bin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06290220541ACB0071A231 /* icon_file_type_bin@3x.png */; };
 		EAF55B312055435D003E310F /* icon_file_type_folder_not_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA06290320541ACB0071A231 /* icon_file_type_folder_not_empty@3x.png */; };
@@ -562,10 +562,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EA0628E320541ACB0071A231 /* DotzuXSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXSettings.swift; sourceTree = "<group>"; };
-		EA0628E420541ACB0071A231 /* DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotzuX.h; sourceTree = "<group>"; };
-		EA0628E520541ACB0071A231 /* DotzuX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuX.swift; sourceTree = "<group>"; };
-		EA0628E620541ACB0071A231 /* DotzuX+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DotzuX+Extensions.swift"; sourceTree = "<group>"; };
+		EA0628E320541ACB0071A231 /* DebugWidgetSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetSettings.swift; sourceTree = "<group>"; };
+		EA0628E420541ACB0071A231 /* DebugWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugWidget.h; sourceTree = "<group>"; };
+		EA0628E520541ACB0071A231 /* DebugWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidget.swift; sourceTree = "<group>"; };
+		EA0628E620541ACB0071A231 /* DebugWidget+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DebugWidget+Extensions.swift"; sourceTree = "<group>"; };
 		EA0628E820541ACB0071A231 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		EA0628E920541ACB0071A231 /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		EA0628EA20541ACB0071A231 /* CrashStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashStoreManager.swift; sourceTree = "<group>"; };
@@ -580,12 +580,12 @@
 		EA0628F320541ACB0071A231 /* CrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashCell.swift; sourceTree = "<group>"; };
 		EA0628F520541ACB0071A231 /* NetworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkCell.xib; sourceTree = "<group>"; };
 		EA0628F620541ACB0071A231 /* Logs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
-		EA0628F820541ACB0071A231 /* DotzuX_logs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_logs@2x.png"; sourceTree = "<group>"; };
-		EA0628F920541ACB0071A231 /* DotzuX_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_app@2x.png"; sourceTree = "<group>"; };
-		EA0628FA20541ACB0071A231 /* DotzuX_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_close@2x.png"; sourceTree = "<group>"; };
-		EA0628FB20541ACB0071A231 /* DotzuX_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_bugs@2x.png"; sourceTree = "<group>"; };
-		EA0628FD20541ACB0071A231 /* DotzuX_sandbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_sandbox@2x.png"; sourceTree = "<group>"; };
-		EA0628FE20541ACB0071A231 /* DotzuX_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DotzuX_network@2x.png"; sourceTree = "<group>"; };
+		EA0628F820541ACB0071A231 /* DebugWidget_logs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_logs@2x.png"; sourceTree = "<group>"; };
+		EA0628F920541ACB0071A231 /* DebugWidget_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_app@2x.png"; sourceTree = "<group>"; };
+		EA0628FA20541ACB0071A231 /* DebugWidget_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_close@2x.png"; sourceTree = "<group>"; };
+		EA0628FB20541ACB0071A231 /* DebugWidget_bugs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_bugs@2x.png"; sourceTree = "<group>"; };
+		EA0628FD20541ACB0071A231 /* DebugWidget_sandbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_sandbox@2x.png"; sourceTree = "<group>"; };
+		EA0628FE20541ACB0071A231 /* DebugWidget_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DebugWidget_network@2x.png"; sourceTree = "<group>"; };
 		EA0628FF20541ACB0071A231 /* Network.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		EA06290120541ACB0071A231 /* icon_file_type_wav@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_file_type_wav@3x.png"; sourceTree = "<group>"; };
 		EA06290220541ACB0071A231 /* icon_file_type_bin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_file_type_bin@3x.png"; sourceTree = "<group>"; };
@@ -787,21 +787,21 @@
 		EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
 		EA0629CB20541ACB0071A231 /* Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzling.h; sourceTree = "<group>"; };
 		EA0629CD20541ACB0071A231 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
-		EA0629CE20541ACB0071A231 /* DotzuXWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXWindow.swift; sourceTree = "<group>"; };
-		EA0629CF20541ACB0071A231 /* DotzuXViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXViewController.swift; sourceTree = "<group>"; };
+		EA0629CE20541ACB0071A231 /* DebugWidgetWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetWindow.swift; sourceTree = "<group>"; };
+		EA0629CF20541ACB0071A231 /* DebugWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetViewController.swift; sourceTree = "<group>"; };
 		EA0629D020541ACB0071A231 /* MemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryHelper.h; sourceTree = "<group>"; };
-		EA0629D120541ACB0071A231 /* DotzuXNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXNavigationController.swift; sourceTree = "<group>"; };
-		EA0629D220541ACB0071A231 /* DotzuXBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXBubble.swift; sourceTree = "<group>"; };
-		EA0629D320541ACB0071A231 /* DotzuXTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuXTabBarController.swift; sourceTree = "<group>"; };
+		EA0629D120541ACB0071A231 /* DebugWidgetNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetNavigationController.swift; sourceTree = "<group>"; };
+		EA0629D220541ACB0071A231 /* DebugWidgetBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetBubble.swift; sourceTree = "<group>"; };
+		EA0629D320541ACB0071A231 /* DebugWidgetTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugWidgetTabBarController.swift; sourceTree = "<group>"; };
 		EA0629D420541ACB0071A231 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA0629D520541ACB0071A231 /* MemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryHelper.m; sourceTree = "<group>"; };
-		EA0629D820541ACB0071A231 /* NSString+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DotzuX.h"; sourceTree = "<group>"; };
-		EA0629D920541ACB0071A231 /* DotzuX+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DotzuX+Categories.h"; sourceTree = "<group>"; };
-		EA0629DA20541ACB0071A231 /* NSData+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DotzuX.m"; sourceTree = "<group>"; };
-		EA0629DB20541ACB0071A231 /* NSURLRequest+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+DotzuX.h"; sourceTree = "<group>"; };
-		EA0629DD20541ACB0071A231 /* NSString+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DotzuX.m"; sourceTree = "<group>"; };
-		EA0629DE20541ACB0071A231 /* NSData+DotzuX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DotzuX.h"; sourceTree = "<group>"; };
-		EA0629DF20541ACB0071A231 /* NSURLRequest+DotzuX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+DotzuX.m"; sourceTree = "<group>"; };
+		EA0629D820541ACB0071A231 /* NSString+DebugWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DebugWidget.h"; sourceTree = "<group>"; };
+		EA0629D920541ACB0071A231 /* DebugWidget+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DebugWidget+Categories.h"; sourceTree = "<group>"; };
+		EA0629DA20541ACB0071A231 /* NSData+DebugWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DebugWidget.m"; sourceTree = "<group>"; };
+		EA0629DB20541ACB0071A231 /* NSURLRequest+DebugWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+DebugWidget.h"; sourceTree = "<group>"; };
+		EA0629DD20541ACB0071A231 /* NSString+DebugWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DebugWidget.m"; sourceTree = "<group>"; };
+		EA0629DE20541ACB0071A231 /* NSData+DebugWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DebugWidget.h"; sourceTree = "<group>"; };
+		EA0629DF20541ACB0071A231 /* NSURLRequest+DebugWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+DebugWidget.m"; sourceTree = "<group>"; };
 		EA1659D3204D1B14001472C1 /* Example_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1659D6204D1B14001472C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1659D8204D1B14001472C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -818,8 +818,8 @@
 		EA6B277820596883004D8E05 /* Example_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_SwiftTests.swift; sourceTree = "<group>"; };
 		EA6B277A20596883004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAE674232064085200282B31 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
-		EAF55AD6205540F0003E310F /* DotzuX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotzuX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAF55AD8205540F0003E310F /* DotzuX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DotzuX.h; sourceTree = "<group>"; };
+		EAF55AD6205540F0003E310F /* DebugWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DebugWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAF55AD8205540F0003E310F /* DebugWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugWidget.h; sourceTree = "<group>"; };
 		EAF55AD9205540F0003E310F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF57FA5204E73C2001CA56D /* TaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
 		EAF57FA6204E73C2001CA56D /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
@@ -962,10 +962,10 @@
 		EA0628E220541ACB0071A231 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EA0628E320541ACB0071A231 /* DotzuXSettings.swift */,
-				EA0628E420541ACB0071A231 /* DotzuX.h */,
-				EA0628E520541ACB0071A231 /* DotzuX.swift */,
-				EA0628E620541ACB0071A231 /* DotzuX+Extensions.swift */,
+				EA0628E320541ACB0071A231 /* DebugWidgetSettings.swift */,
+				EA0628E420541ACB0071A231 /* DebugWidget.h */,
+				EA0628E520541ACB0071A231 /* DebugWidget.swift */,
+				EA0628E620541ACB0071A231 /* DebugWidget+Extensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1006,12 +1006,12 @@
 		EA0628F720541ACB0071A231 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				EA0628F820541ACB0071A231 /* DotzuX_logs@2x.png */,
-				EA0628F920541ACB0071A231 /* DotzuX_app@2x.png */,
-				EA0628FA20541ACB0071A231 /* DotzuX_close@2x.png */,
-				EA0628FB20541ACB0071A231 /* DotzuX_bugs@2x.png */,
-				EA0628FD20541ACB0071A231 /* DotzuX_sandbox@2x.png */,
-				EA0628FE20541ACB0071A231 /* DotzuX_network@2x.png */,
+				EA0628F820541ACB0071A231 /* DebugWidget_logs@2x.png */,
+				EA0628F920541ACB0071A231 /* DebugWidget_app@2x.png */,
+				EA0628FA20541ACB0071A231 /* DebugWidget_close@2x.png */,
+				EA0628FB20541ACB0071A231 /* DebugWidget_bugs@2x.png */,
+				EA0628FD20541ACB0071A231 /* DebugWidget_sandbox@2x.png */,
+				EA0628FE20541ACB0071A231 /* DebugWidget_network@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -1256,11 +1256,11 @@
 				EA0629D020541ACB0071A231 /* MemoryHelper.h */,
 				EA0629D520541ACB0071A231 /* MemoryHelper.m */,
 				EA0629CD20541ACB0071A231 /* WindowHelper.swift */,
-				EA0629CE20541ACB0071A231 /* DotzuXWindow.swift */,
-				EA0629CF20541ACB0071A231 /* DotzuXViewController.swift */,
-				EA0629D120541ACB0071A231 /* DotzuXNavigationController.swift */,
-				EA0629D220541ACB0071A231 /* DotzuXBubble.swift */,
-				EA0629D320541ACB0071A231 /* DotzuXTabBarController.swift */,
+				EA0629CE20541ACB0071A231 /* DebugWidgetWindow.swift */,
+				EA0629CF20541ACB0071A231 /* DebugWidgetViewController.swift */,
+				EA0629D120541ACB0071A231 /* DebugWidgetNavigationController.swift */,
+				EA0629D220541ACB0071A231 /* DebugWidgetBubble.swift */,
+				EA0629D320541ACB0071A231 /* DebugWidgetTabBarController.swift */,
 				EA0629D420541ACB0071A231 /* Color.swift */,
 			);
 			path = Window;
@@ -1269,13 +1269,13 @@
 		EA0629D620541ACB0071A231 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				EA0629D920541ACB0071A231 /* DotzuX+Categories.h */,
-				EA0629DE20541ACB0071A231 /* NSData+DotzuX.h */,
-				EA0629DA20541ACB0071A231 /* NSData+DotzuX.m */,
-				EA0629D820541ACB0071A231 /* NSString+DotzuX.h */,
-				EA0629DD20541ACB0071A231 /* NSString+DotzuX.m */,
-				EA0629DB20541ACB0071A231 /* NSURLRequest+DotzuX.h */,
-				EA0629DF20541ACB0071A231 /* NSURLRequest+DotzuX.m */,
+				EA0629D920541ACB0071A231 /* DebugWidget+Categories.h */,
+				EA0629DE20541ACB0071A231 /* NSData+DebugWidget.h */,
+				EA0629DA20541ACB0071A231 /* NSData+DebugWidget.m */,
+				EA0629D820541ACB0071A231 /* NSString+DebugWidget.h */,
+				EA0629DD20541ACB0071A231 /* NSString+DebugWidget.m */,
+				EA0629DB20541ACB0071A231 /* NSURLRequest+DebugWidget.h */,
+				EA0629DF20541ACB0071A231 /* NSURLRequest+DebugWidget.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1285,7 +1285,7 @@
 			children = (
 				EA0628E120541ACB0071A231 /* Sources */,
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
-				EAF55AD7205540F0003E310F /* DotzuX */,
+				EAF55AD7205540F0003E310F /* DebugWidget */,
 				EA6B277720596883004D8E05 /* Example_SwiftTests */,
 				EA1659D4204D1B14001472C1 /* Products */,
 			);
@@ -1295,7 +1295,7 @@
 			isa = PBXGroup;
 			children = (
 				EA1659D3204D1B14001472C1 /* Example_Swift.app */,
-				EAF55AD6205540F0003E310F /* DotzuX.framework */,
+				EAF55AD6205540F0003E310F /* DebugWidget.framework */,
 				EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */,
 			);
 			name = Products;
@@ -1336,14 +1336,14 @@
 			path = Example_SwiftTests;
 			sourceTree = "<group>";
 		};
-		EAF55AD7205540F0003E310F /* DotzuX */ = {
+		EAF55AD7205540F0003E310F /* DebugWidget */ = {
 			isa = PBXGroup;
 			children = (
 				EAE674232064085200282B31 /* copy_and_codesign.sh */,
-				EAF55AD8205540F0003E310F /* DotzuX.h */,
+				EAF55AD8205540F0003E310F /* DebugWidget.h */,
 				EAF55AD9205540F0003E310F /* Info.plist */,
 			);
-			path = DotzuX;
+			path = DebugWidget;
 			sourceTree = "<group>";
 		};
 		EAF57FA3204E73C2001CA56D /* Vendor */ = {
@@ -1524,16 +1524,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF55B162055417C003E310F /* DotzuX.h in Headers */,
+				EAF55B162055417C003E310F /* DebugWidget.h in Headers */,
 				EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */,
 				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
-				EAF55B232055417C003E310F /* NSString+DotzuX.h in Headers */,
-				EAF55B242055417C003E310F /* DotzuX+Categories.h in Headers */,
+				EAF55B232055417C003E310F /* NSString+DebugWidget.h in Headers */,
+				EAF55B242055417C003E310F /* DebugWidget+Categories.h in Headers */,
 				EAF55B172055417C003E310F /* HttpModel.h in Headers */,
 				EAF55B192055417C003E310F /* HttpDatasource.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
-				EAF55B272055417C003E310F /* NSData+DotzuX.h in Headers */,
-				EAF55B252055417C003E310F /* NSURLRequest+DotzuX.h in Headers */,
+				EAF55B272055417C003E310F /* NSData+DebugWidget.h in Headers */,
+				EAF55B252055417C003E310F /* NSURLRequest+DebugWidget.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
 				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
 				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
@@ -1586,9 +1586,9 @@
 			productReference = EA6B277620596883004D8E05 /* Example_SwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EAF55AD5205540F0003E310F /* DotzuX */ = {
+		EAF55AD5205540F0003E310F /* DebugWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EAF55AE1205540F0003E310F /* Build configuration list for PBXNativeTarget "DotzuX" */;
+			buildConfigurationList = EAF55AE1205540F0003E310F /* Build configuration list for PBXNativeTarget "DebugWidget" */;
 			buildPhases = (
 				EAF55AD1205540F0003E310F /* Sources */,
 				EAF55AD2205540F0003E310F /* Frameworks */,
@@ -1599,9 +1599,9 @@
 			);
 			dependencies = (
 			);
-			name = DotzuX;
+			name = DebugWidget;
 			productName = DotzuX;
-			productReference = EAF55AD6205540F0003E310F /* DotzuX.framework */;
+			productReference = EAF55AD6205540F0003E310F /* DebugWidget.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1644,7 +1644,7 @@
 			projectRoot = "";
 			targets = (
 				EA1659D2204D1B14001472C1 /* Example_Swift */,
-				EAF55AD5205540F0003E310F /* DotzuX */,
+				EAF55AD5205540F0003E310F /* DebugWidget */,
 				EA6B277520596883004D8E05 /* Example_SwiftTests */,
 			);
 		};
@@ -1720,7 +1720,7 @@
 				EA062A0D20541ACB0071A231 /* icon_file_type_avi.png in Resources */,
 				EA062A6820541ACB0071A231 /* icon_file_type_mp3@2x.png in Resources */,
 				EA062A4920541ACB0071A231 /* icon_file_type_bmp.png in Resources */,
-				EA0629F720541ACB0071A231 /* DotzuX_network@2x.png in Resources */,
+				EA0629F720541ACB0071A231 /* DebugWidget_network@2x.png in Resources */,
 				EA062A1F20541ACB0071A231 /* icon_file_type_folder_not_empty.png in Resources */,
 				EA062A9A20541ACB0071A231 /* icon_file_type_js@3x.png in Resources */,
 				EA062A1B20541ACB0071A231 /* icon_file_type_midi@3x.png in Resources */,
@@ -1769,12 +1769,12 @@
 				EA062A3620541ACB0071A231 /* icon_file_type_tif.png in Resources */,
 				EA062A1920541ACB0071A231 /* icon_file_type_php@3x.png in Resources */,
 				EA062A1120541ACB0071A231 /* icon_file_type_json@2x.png in Resources */,
-				EA0629F320541ACB0071A231 /* DotzuX_close@2x.png in Resources */,
+				EA0629F320541ACB0071A231 /* DebugWidget_close@2x.png in Resources */,
 				EA062A5220541ACB0071A231 /* icon_file_type_css@2x.png in Resources */,
 				EA062A4620541ACB0071A231 /* icon_file_type_mp4@2x.png in Resources */,
 				EA062A4D20541ACB0071A231 /* icon_file_type_svg@2x.png in Resources */,
 				EA062A0920541ACB0071A231 /* icon_file_type_java@3x.png in Resources */,
-				EA0629F620541ACB0071A231 /* DotzuX_sandbox@2x.png in Resources */,
+				EA0629F620541ACB0071A231 /* DebugWidget_sandbox@2x.png in Resources */,
 				EA062A6A20541ACB0071A231 /* icon_file_type_ppt@2x.png in Resources */,
 				EA062A5720541ACB0071A231 /* icon_file_type_default@3x.png in Resources */,
 				EA062A0020541ACB0071A231 /* icon_file_type_midi.png in Resources */,
@@ -1786,7 +1786,7 @@
 				EA062A4820541ACB0071A231 /* icon_file_type_pages@3x.png in Resources */,
 				EA062A8120541ACB0071A231 /* icon_file_type_ttf.png in Resources */,
 				EA062A8520541ACB0071A231 /* icon_file_type_keynote@2x.png in Resources */,
-				EA0629F120541ACB0071A231 /* DotzuX_logs@2x.png in Resources */,
+				EA0629F120541ACB0071A231 /* DebugWidget_logs@2x.png in Resources */,
 				EA062A8220541ACB0071A231 /* icon_file_type_wmv@2x.png in Resources */,
 				EA062A6B20541ACB0071A231 /* icon_file_type_psd@3x.png in Resources */,
 				EA062A5920541ACB0071A231 /* icon_file_type_db@3x.png in Resources */,
@@ -1811,7 +1811,7 @@
 				EA062A9920541ACB0071A231 /* icon_file_type_pdf@3x.png in Resources */,
 				EA062A9120541ACB0071A231 /* icon_file_type_keynote@3x.png in Resources */,
 				EA062A7C20541ACB0071A231 /* icon_file_type_js@2x.png in Resources */,
-				EA0629F420541ACB0071A231 /* DotzuX_bugs@2x.png in Resources */,
+				EA0629F420541ACB0071A231 /* DebugWidget_bugs@2x.png in Resources */,
 				EA062A8E20541ACB0071A231 /* icon_file_type_mpg@2x.png in Resources */,
 				EA062A2120541ACB0071A231 /* icon_file_type_zip@2x.png in Resources */,
 				EA062A2E20541ACB0071A231 /* icon_file_type_eps@2x.png in Resources */,
@@ -1819,7 +1819,7 @@
 				EA062A2020541ACB0071A231 /* icon_file_type_torrent.png in Resources */,
 				EA062A3B20541ACB0071A231 /* icon_file_type_php.png in Resources */,
 				EA062A3C20541ACB0071A231 /* icon_file_type_mp4@3x.png in Resources */,
-				EA0629F220541ACB0071A231 /* DotzuX_app@2x.png in Resources */,
+				EA0629F220541ACB0071A231 /* DebugWidget_app@2x.png in Resources */,
 				EA0629FE20541ACB0071A231 /* icon_file_type_ogg@3x.png in Resources */,
 				EA062A7B20541ACB0071A231 /* icon_file_type_pdf@2x.png in Resources */,
 				EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */,
@@ -1850,12 +1850,12 @@
 				EAF55BD420554370003E310F /* Manager.storyboard in Resources */,
 				EAF55BD520554370003E310F /* App.storyboard in Resources */,
 				EAF55BD120554368003E310F /* NetworkCell.xib in Resources */,
-				EAF55B282055435D003E310F /* DotzuX_logs@2x.png in Resources */,
-				EAF55B292055435D003E310F /* DotzuX_app@2x.png in Resources */,
-				EAF55B2A2055435D003E310F /* DotzuX_close@2x.png in Resources */,
-				EAF55B2B2055435D003E310F /* DotzuX_bugs@2x.png in Resources */,
-				EAF55B2D2055435D003E310F /* DotzuX_sandbox@2x.png in Resources */,
-				EAF55B2E2055435D003E310F /* DotzuX_network@2x.png in Resources */,
+				EAF55B282055435D003E310F /* DebugWidget_logs@2x.png in Resources */,
+				EAF55B292055435D003E310F /* DebugWidget_app@2x.png in Resources */,
+				EAF55B2A2055435D003E310F /* DebugWidget_close@2x.png in Resources */,
+				EAF55B2B2055435D003E310F /* DebugWidget_bugs@2x.png in Resources */,
+				EAF55B2D2055435D003E310F /* DebugWidget_sandbox@2x.png in Resources */,
+				EAF55B2E2055435D003E310F /* DebugWidget_network@2x.png in Resources */,
 				EAF55B2F2055435D003E310F /* icon_file_type_wav@3x.png in Resources */,
 				EAF55B302055435D003E310F /* icon_file_type_bin@3x.png in Resources */,
 				EAF55B312055435D003E310F /* icon_file_type_folder_not_empty@3x.png in Resources */,
@@ -2032,13 +2032,13 @@
 				EAF5800E204E73C3001CA56D /* Result.swift in Sources */,
 				EA0629E620541ACB0071A231 /* CrashModel.swift in Sources */,
 				EA062AAE20541ACB0071A231 /* FileTableViewCell.m in Sources */,
-				EA062AC020541ACB0071A231 /* NSURLRequest+DotzuX.m in Sources */,
+				EA062AC020541ACB0071A231 /* NSURLRequest+DebugWidget.m in Sources */,
 				EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */,
 				EA062AAB20541ACB0071A231 /* LogModel.swift in Sources */,
 				EA062A9E20541ACB0071A231 /* JsonViewController.swift in Sources */,
-				EA062ABE20541ACB0071A231 /* NSData+DotzuX.m in Sources */,
+				EA062ABE20541ACB0071A231 /* NSData+DebugWidget.m in Sources */,
 				EA0629EA20541ACB0071A231 /* CrashListViewController.swift in Sources */,
-				EA062AB820541ACB0071A231 /* DotzuXNavigationController.swift in Sources */,
+				EA062AB820541ACB0071A231 /* DebugWidgetNavigationController.swift in Sources */,
 				EAF5802F204E73C3001CA56D /* ASIHTTPRequestClient.m in Sources */,
 				EA062A9F20541ACB0071A231 /* HttpModel.m in Sources */,
 				EAF58029204E73C3001CA56D /* FormDataPart.swift in Sources */,
@@ -2054,7 +2054,7 @@
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
 				EA062A9D20541ACB0071A231 /* CustomProtocol.m in Sources */,
 				EA062AA920541ACB0071A231 /* LogViewController.swift in Sources */,
-				EA0629E020541ACB0071A231 /* DotzuXSettings.swift in Sources */,
+				EA0629E020541ACB0071A231 /* DebugWidgetSettings.swift in Sources */,
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
 				EAF5800C204E73C3001CA56D /* Timeline.swift in Sources */,
 				EA0629EE20541ACB0071A231 /* CrashCell.swift in Sources */,
@@ -2073,13 +2073,13 @@
 				EAF58025204E73C3001CA56D /* Networking+POST.swift in Sources */,
 				EAF5801C204E73C3001CA56D /* Networking+GET.swift in Sources */,
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
-				EA062AB920541ACB0071A231 /* DotzuXBubble.swift in Sources */,
+				EA062AB920541ACB0071A231 /* DebugWidgetBubble.swift in Sources */,
 				EA0629ED20541ACB0071A231 /* AboutViewController.swift in Sources */,
 				EA062AA220541ACB0071A231 /* NetworkCell.swift in Sources */,
 				EAF5802E204E73C3001CA56D /* Operation.swift in Sources */,
 				EAF58020204E73C3001CA56D /* Dictionary+FormURLEncoded.swift in Sources */,
 				EAF5803C204E73C3001CA56D /* ASIS3Request.m in Sources */,
-				EA062AB620541ACB0071A231 /* DotzuXWindow.swift in Sources */,
+				EA062AB620541ACB0071A231 /* DebugWidgetWindow.swift in Sources */,
 				EA062AA120541ACB0071A231 /* NetworkHelper.m in Sources */,
 				EAF5800D204E73C3001CA56D /* DispatchQueue+Alamofire.swift in Sources */,
 				EAF5803E204E73C3001CA56D /* ASIS3BucketObject.m in Sources */,
@@ -2101,13 +2101,13 @@
 				EA062AAA20541ACB0071A231 /* LogHelper.swift in Sources */,
 				EA0629E920541ACB0071A231 /* IgnoredURLsViewController.swift in Sources */,
 				EA062AB320541ACB0071A231 /* Swizzling.m in Sources */,
-				EA062ABA20541ACB0071A231 /* DotzuXTabBarController.swift in Sources */,
+				EA062ABA20541ACB0071A231 /* DebugWidgetTabBarController.swift in Sources */,
 				EAF58028204E73C3001CA56D /* TestCheck.swift in Sources */,
 				EAF58022204E73C3001CA56D /* JSON.swift in Sources */,
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
-				EA062ABF20541ACB0071A231 /* NSString+DotzuX.m in Sources */,
+				EA062ABF20541ACB0071A231 /* NSString+DebugWidget.m in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
@@ -2120,7 +2120,7 @@
 				EAF58032204E73C3001CA56D /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				EAF5802D204E73C3001CA56D /* HTTPSecurity.swift in Sources */,
 				EA0629E420541ACB0071A231 /* DeviceModel.swift in Sources */,
-				EA0629E220541ACB0071A231 /* DotzuX+Extensions.swift in Sources */,
+				EA0629E220541ACB0071A231 /* DebugWidget+Extensions.swift in Sources */,
 				EA0629E720541ACB0071A231 /* AppInfo.swift in Sources */,
 				EAF58011204E73C3001CA56D /* Validation.swift in Sources */,
 				EAF58030204E73C3001CA56D /* Reachability.m in Sources */,
@@ -2130,12 +2130,12 @@
 				EA0629E820541ACB0071A231 /* CrashDetailViewController.swift in Sources */,
 				EAF58037204E73C3001CA56D /* ASICloudFilesObject.m in Sources */,
 				EAF5801B204E73C3001CA56D /* Networking+DELETE.swift in Sources */,
-				EA0629E120541ACB0071A231 /* DotzuX.swift in Sources */,
+				EA0629E120541ACB0071A231 /* DebugWidget.swift in Sources */,
 				EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */,
 				EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */,
 				EAF5803D204E73C3001CA56D /* ASIS3BucketRequest.m in Sources */,
 				EAF58038204E73C3001CA56D /* ASICloudFilesRequest.m in Sources */,
-				EA062AB720541ACB0071A231 /* DotzuXViewController.swift in Sources */,
+				EA062AB720541ACB0071A231 /* DebugWidgetViewController.swift in Sources */,
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
 				EA0629E520541ACB0071A231 /* CrashStoreManager.swift in Sources */,
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
@@ -2164,9 +2164,9 @@
 				EAFA4F9A20ADB16E00FEFF1E /* CacheStoragePolicy.m in Sources */,
 				EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */,
 				EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */,
-				EAF55AF42055416F003E310F /* DotzuXSettings.swift in Sources */,
-				EAF55AF52055416F003E310F /* DotzuX.swift in Sources */,
-				EAF55AF62055416F003E310F /* DotzuX+Extensions.swift in Sources */,
+				EAF55AF42055416F003E310F /* DebugWidgetSettings.swift in Sources */,
+				EAF55AF52055416F003E310F /* DebugWidget.swift in Sources */,
+				EAF55AF62055416F003E310F /* DebugWidget+Extensions.swift in Sources */,
 				EAF55AF72055416F003E310F /* AppInfoViewController.swift in Sources */,
 				EAF55AF82055416F003E310F /* DeviceModel.swift in Sources */,
 				EAF55AF92055416F003E310F /* CrashStoreManager.swift in Sources */,
@@ -2192,11 +2192,11 @@
 				EAF55B0D2055416F003E310F /* LogModel.swift in Sources */,
 				EAF55B0E2055416F003E310F /* LoggerFormat.swift in Sources */,
 				EAF55B0F2055416F003E310F /* WindowHelper.swift in Sources */,
-				EAF55B102055416F003E310F /* DotzuXWindow.swift in Sources */,
-				EAF55B112055416F003E310F /* DotzuXViewController.swift in Sources */,
-				EAF55B122055416F003E310F /* DotzuXNavigationController.swift in Sources */,
-				EAF55B132055416F003E310F /* DotzuXBubble.swift in Sources */,
-				EAF55B142055416F003E310F /* DotzuXTabBarController.swift in Sources */,
+				EAF55B102055416F003E310F /* DebugWidgetWindow.swift in Sources */,
+				EAF55B112055416F003E310F /* DebugWidgetViewController.swift in Sources */,
+				EAF55B122055416F003E310F /* DebugWidgetNavigationController.swift in Sources */,
+				EAF55B132055416F003E310F /* DebugWidgetBubble.swift in Sources */,
+				EAF55B142055416F003E310F /* DebugWidgetTabBarController.swift in Sources */,
 				EAF55B152055416F003E310F /* Color.swift in Sources */,
 				EAF55AE320554164003E310F /* CustomProtocol.m in Sources */,
 				EAF55AE420554164003E310F /* HttpModel.m in Sources */,
@@ -2211,9 +2211,9 @@
 				EAF55AED20554164003E310F /* Swizzling.m in Sources */,
 				EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */,
-				EAF55AF120554164003E310F /* NSData+DotzuX.m in Sources */,
-				EAF55AF220554164003E310F /* NSString+DotzuX.m in Sources */,
-				EAF55AF320554164003E310F /* NSURLRequest+DotzuX.m in Sources */,
+				EAF55AF120554164003E310F /* NSData+DebugWidget.m in Sources */,
+				EAF55AF220554164003E310F /* NSString+DebugWidget.m in Sources */,
+				EAF55AF320554164003E310F /* NSURLRequest+DebugWidget.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2446,12 +2446,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DotzuX/Info.plist;
+				INFOPLIST_FILE = DebugWidget/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liman.DotzuX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liman.DebugWidget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -2473,12 +2473,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DotzuX/Info.plist;
+				INFOPLIST_FILE = DebugWidget/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liman.DotzuX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liman.DebugWidget;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -2519,7 +2519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EAF55AE1205540F0003E310F /* Build configuration list for PBXNativeTarget "DotzuX" */ = {
+		EAF55AE1205540F0003E310F /* Build configuration list for PBXNativeTarget "DebugWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EAF55ADF205540F0003E310F /* Debug */,

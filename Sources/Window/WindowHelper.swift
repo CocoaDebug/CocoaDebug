@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -10,12 +10,12 @@ import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-    var window: DotzuXWindow?
-    lazy var vc = DotzuXViewController()
+    var window: DebugWidgetWindow?
+    lazy var vc = DebugWidgetViewController()
     var displayedList = false
  
     private override init() {
-        self.window = DotzuXWindow(frame: UIScreen.main.bounds)
+        self.window = DebugWidgetWindow(frame: UIScreen.main.bounds)
         super.init()
     }
 

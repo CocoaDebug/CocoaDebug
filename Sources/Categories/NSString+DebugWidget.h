@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSString (DotzuX)
+@interface NSString (DebugWidget)
 
 //计算NSString高度
-- (CGFloat)dotzuX_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
+- (CGFloat)debugWidget_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
 
 @end

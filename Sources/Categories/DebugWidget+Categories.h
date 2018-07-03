@@ -6,8 +6,6 @@
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface CustomProtocol : NSURLProtocol
-
-@end
+#import "NSData+DebugWidget.h"
+#import "NSString+DebugWidget.h"
+#import "NSURLRequest+DebugWidget.h"

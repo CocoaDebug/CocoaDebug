@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DotzuXViewController: UIViewController {
+class DebugWidgetViewController: UIViewController {
 
-    var bubble = DotzuXBubble(frame: CGRect(origin: DotzuXBubble.originalPosition, size: DotzuXBubble.size))
+    var bubble = DebugWidgetBubble(frame: CGRect(origin: DebugWidgetBubble.originalPosition, size: DebugWidgetBubble.size))
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -40,12 +40,12 @@ class DotzuXViewController: UIViewController {
     }
 }
 
-//MARK: - DotzuXBubbleDelegate
-extension DotzuXViewController: DotzuXBubbleDelegate {
+//MARK: - DebugWidgetBubbleDelegate
+extension DebugWidgetViewController: DebugWidgetBubbleDelegate {
     
-    func didTapDotzuXBubble() {
+    func didTapDebugWidgetBubble() {
         WindowHelper.shared.displayedList = true
-        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: DotzuXViewController.self))
+        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: DebugWidgetViewController.self))
         guard let vc = storyboard.instantiateInitialViewController() else {return}
         self.present(vc, animated: true, completion: nil)
     }

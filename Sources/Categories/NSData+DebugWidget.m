@@ -1,16 +1,16 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSData+DotzuX.h"
+#import "NSData+DebugWidget.h"
 
-@implementation NSData (DotzuX)
+@implementation NSData (DebugWidget)
 
-+ (NSData *)dotzuX_dataWithInputStream:(NSInputStream *)stream
++ (NSData *)debugWidget_dataWithInputStream:(NSInputStream *)stream
 {
     NSMutableData * data = [NSMutableData data];
     [stream open];

@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -27,7 +27,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     var justCancelCallback:(() -> Void)?
     
     static func instanceFromStoryBoard() -> NetworkDetailViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DotzuX.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugWidget.self))
         return storyboard.instantiateViewController(withIdentifier: "NetworkDetailViewController") as! NetworkDetailViewController
     }
     
@@ -59,7 +59,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DotzuX.com")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DebugWidget.com")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -100,7 +100,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else{
             //非图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DotzuX.com")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DebugWidget.com")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -224,7 +224,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
         }
         
-        messageBody = messageBody.replacingOccurrences(of: "http://DotzuX.com", with: url)
+        messageBody = messageBody.replacingOccurrences(of: "http://DebugWidget.com", with: url)
         messageBody = subString + messageBody
         
         //////////////////////////////////////////////////////////////////////////////////
@@ -234,13 +234,13 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 //share via email
                 let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel) { (_) in
-                    DotzuXSettings.shared.responseShakeNetworkDetail = true
+                    DebugWidgetSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
             }else{
                 //copy to clipboard
-                DotzuXSettings.shared.responseShakeNetworkDetail = true
+                DebugWidgetSettings.shared.responseShakeNetworkDetail = true
             }
             
             return nil
@@ -248,15 +248,15 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         if copy == true {
             //copy to clipboard
-            DotzuXSettings.shared.responseShakeNetworkDetail = true
+            DebugWidgetSettings.shared.responseShakeNetworkDetail = true
             return nil
         }
         
         //3.email recipients
         let mailComposeVC = MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
-        mailComposeVC.setToRecipients(DotzuXSettings.shared.emailToRecipients)
-        mailComposeVC.setCcRecipients(DotzuXSettings.shared.emailCcRecipients)
+        mailComposeVC.setToRecipients(DebugWidgetSettings.shared.emailToRecipients)
+        mailComposeVC.setCcRecipients(DebugWidgetSettings.shared.emailCcRecipients)
         
         //4.image
         if let img = img {
@@ -305,7 +305,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_DotzuX"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_DebugWidget"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -320,13 +320,13 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     //MARK: - target action
     @IBAction func close(_ sender: UIBarButtonItem) {
-        (self.navigationController as! DotzuXNavigationController).exit()
+        (self.navigationController as! DebugWidgetNavigationController).exit()
     }
     
     //MARK: - notification
     @objc func motionShake_notification() {
         
-        DotzuXSettings.shared.responseShakeNetworkDetail = false
+        DebugWidgetSettings.shared.responseShakeNetworkDetail = false
         
         // create an actionSheet
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -344,7 +344,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-            DotzuXSettings.shared.responseShakeNetworkDetail = true
+            DebugWidgetSettings.shared.responseShakeNetworkDetail = true
         }
         
         // add actions
@@ -444,7 +444,7 @@ extension NetworkDetailViewController {
                     return 0
                 }
                 //计算NSString高度
-                let height = content.dotzuX_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
+                let height = content.debugWidget_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
             return 0
@@ -460,7 +460,7 @@ extension NetworkDetailViewController {
 
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
+        guard let serverURL = DebugWidgetSettings.shared.serverURL else {return 0}
         
         var height: CGFloat = 0.0
         if let cString = self.httpModel?.url.absoluteString.cString(using: String.Encoding.utf8) {
@@ -469,18 +469,18 @@ extension NetworkDetailViewController {
                 if self.httpModel?.url.absoluteString.contains(serverURL) == true {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.dotzuX_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.debugWidget_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }else{
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }
                 return height + 57
@@ -499,12 +499,12 @@ extension NetworkDetailViewController {
             if error != nil {
                 let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { (_) in
-                    DotzuXSettings.shared.responseShakeNetworkDetail = true
+                    DebugWidgetSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
             }else{
-                DotzuXSettings.shared.responseShakeNetworkDetail = true
+                DebugWidgetSettings.shared.responseShakeNetworkDetail = true
             }
         }
     }

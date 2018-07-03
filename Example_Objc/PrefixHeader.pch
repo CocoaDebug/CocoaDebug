@@ -13,21 +13,21 @@
 
 //default log
 #ifdef DEBUG
-#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+#define NSLog(fmt, ...) [DebugWidget objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
 #else
 #define NSLog(fmt, ...) nil
 #endif
 
 //red log
 #ifdef DEBUG
-#define RedLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
+#define RedLog(fmt, ...) [DebugWidget objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
 #else
 #define RedLog(fmt, ...) nil
 #endif
 
 //blue log
 #ifdef DEBUG
-#define BlueLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
+#define BlueLog(fmt, ...) [DebugWidget objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
 #else
 #define BlueLog(fmt, ...) nil
 #endif

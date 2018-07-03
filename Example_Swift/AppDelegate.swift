@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-//            DotzuX.serverURL = "google.com" //default value is `nil`
-//            DotzuX.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
-//            DotzuX.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
-//            DotzuX.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
-//            DotzuX.recordCrash = true //default value is `false`
-//            DotzuX.logMaxCount = 1000 //default value is `500`
-//            DotzuX.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
-//            DotzuX.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
-            DotzuX.enable()
+//            DebugWidget.serverURL = "google.com" //default value is `nil`
+//            DebugWidget.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
+//            DebugWidget.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
+//            DebugWidget.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
+//            DebugWidget.recordCrash = true //default value is `false`
+//            DebugWidget.logMaxCount = 1000 //default value is `500`
+//            DebugWidget.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
+//            DebugWidget.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
+            DebugWidget.enable()
         #endif
         
         return true

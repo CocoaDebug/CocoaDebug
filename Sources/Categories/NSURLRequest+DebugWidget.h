@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSURLRequest (DotzuX)
+@interface NSURLRequest (DebugWidget)
 
 - (NSString *)requestId;
 - (void)setRequestId:(NSString *)requestId;

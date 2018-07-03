@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public class DotzuX : NSObject {
+@objc public class DebugWidget : NSObject {
     
     ///if the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
     @objc public static var serverURL: String? = nil
@@ -20,19 +20,19 @@ import Foundation
     @objc public static var tabBarControllers: [UIViewController]? = nil
     ///whether to allow the recording of crash logs in app. default value is `false`.
     @objc public static var recordCrash: Bool = false
-    ///the maximum count of logs which DotzuX display. default value is `500`.
+    ///the maximum count of logs which DebugWidget display. default value is `500`.
     @objc public static var logMaxCount: Int = 500
     ///sets the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
     ///sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
     @objc public static var emailCcRecipients: [String]? = nil
     
-    //MARK: - DotzuX enable
+    //MARK: - DebugWidget enable
     @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients)
     }
     
-    //MARK: - DotzuX disable
+    //MARK: - DebugWidget disable
     @objc public static func disable() {
         deinitializationMethod()
     }

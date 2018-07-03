@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,7 +9,7 @@
 #import "Sandbox.h"
 #import "FPSLabel.h"
 #import "NetworkHelper.h"
-#import "DotzuX+Categories.h"
+#import "DebugWidget+Categories.h"
 
 
 

@@ -1,16 +1,16 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSString+DotzuX.h"
+#import "NSString+DebugWidget.h"
 
-@implementation NSString (DotzuX)
+@implementation NSString (DebugWidget)
 
-- (CGFloat)dotzuX_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
+- (CGFloat)debugWidget_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
 {
     CGRect rect = [self boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil];
     

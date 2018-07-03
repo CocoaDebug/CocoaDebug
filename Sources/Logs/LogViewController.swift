@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -103,7 +103,7 @@ class LogViewController: UIViewController {
             
             self.defaultCacheModels = self.defaultModels
             
-            self.searchLogic(DotzuXSettings.shared.logSearchWordDefault ?? "")
+            self.searchLogic(DebugWidgetSettings.shared.logSearchWordDefault ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
@@ -147,7 +147,7 @@ class LogViewController: UIViewController {
             
             self.colorCacheModels = self.colorModels
             
-            self.searchLogic(DotzuXSettings.shared.logSearchWordColor ?? "")
+            self.searchLogic(DebugWidgetSettings.shared.logSearchWordColor ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.colorTableView.reloadData()
@@ -182,14 +182,14 @@ class LogViewController: UIViewController {
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DotzuX"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DebugWidget"), object: nil)
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
         defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
-        defaultSearchBar.text = DotzuXSettings.shared.logSearchWordDefault
+        defaultSearchBar.text = DebugWidgetSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
         
         colorTableView.tableFooterView = UIView()
@@ -197,11 +197,11 @@ class LogViewController: UIViewController {
         colorTableView.dataSource = self
         colorTableView.rowHeight = UITableViewAutomaticDimension
         colorSearchBar.delegate = self
-        colorSearchBar.text = DotzuXSettings.shared.logSearchWordColor
+        colorSearchBar.text = DebugWidgetSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
         
         //segmentedControl
-        selectedSegmentIndex = DotzuXSettings.shared.logSelectIndex 
+        selectedSegmentIndex = DebugWidgetSettings.shared.logSelectIndex 
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
@@ -246,7 +246,7 @@ class LogViewController: UIViewController {
             defaultCacheModels = []
             defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordDefault = nil
+            DebugWidgetSettings.shared.logSearchWordDefault = nil
             
             LogStoreManager.shared.resetDefaultLogs()
             
@@ -260,7 +260,7 @@ class LogViewController: UIViewController {
             colorCacheModels = []
             colorSearchBar.text = nil
             colorSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordColor = nil
+            DebugWidgetSettings.shared.logSearchWordColor = nil
             
             LogStoreManager.shared.resetColorLogs()
             
@@ -272,7 +272,7 @@ class LogViewController: UIViewController {
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        DotzuXSettings.shared.logSelectIndex = selectedSegmentIndex
+        DebugWidgetSettings.shared.logSelectIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
             selectedSegment_0 = true
@@ -491,14 +491,14 @@ extension LogViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         if searchBar == defaultSearchBar {
-            DotzuXSettings.shared.logSearchWordDefault = searchText
+            DebugWidgetSettings.shared.logSearchWordDefault = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
             }
         }else{
-            DotzuXSettings.shared.logSearchWordColor = searchText
+            DebugWidgetSettings.shared.logSearchWordColor = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in

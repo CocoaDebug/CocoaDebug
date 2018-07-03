@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -217,19 +217,19 @@ extension UITableView {
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         
-        if DotzuXSettings.shared.responseShakeNetworkDetail == false {return}
+        if DebugWidgetSettings.shared.responseShakeNetworkDetail == false {return}
         
-        if DotzuXSettings.shared.responseShake == false {return}
+        if DebugWidgetSettings.shared.responseShake == false {return}
         
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
-            if DotzuXSettings.shared.visible == true {
+            if DebugWidgetSettings.shared.visible == true {
                 dispatch_main_async_safe {
-                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_DotzuX"), object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_DebugWidget"), object: nil, userInfo: nil)
                 }
                 return
             }
-            DotzuXSettings.shared.showDotzuXBubbleAndWindow = !DotzuXSettings.shared.showDotzuXBubbleAndWindow
+            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = !DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow
         }
     }
 }
@@ -252,58 +252,58 @@ extension UIViewController {
 }
 
 
-///DotzuX
-extension DotzuX {
+///DebugWidget
+extension DebugWidget {
     
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil)
     {
         if serverURL == nil {
-            DotzuXSettings.shared.serverURL = ""
+            DebugWidgetSettings.shared.serverURL = ""
         }else{
-            DotzuXSettings.shared.serverURL = serverURL
+            DebugWidgetSettings.shared.serverURL = serverURL
         }
         if tabBarControllers == nil {
-            DotzuXSettings.shared.tabBarControllers = []
+            DebugWidgetSettings.shared.tabBarControllers = []
         }else{
-            DotzuXSettings.shared.tabBarControllers = tabBarControllers
+            DebugWidgetSettings.shared.tabBarControllers = tabBarControllers
         }
         if onlyURLs == nil {
-            DotzuXSettings.shared.onlyURLs = []
+            DebugWidgetSettings.shared.onlyURLs = []
         }else{
-            DotzuXSettings.shared.onlyURLs = onlyURLs
+            DebugWidgetSettings.shared.onlyURLs = onlyURLs
         }
         if ignoredURLs == nil {
-            DotzuXSettings.shared.ignoredURLs = []
+            DebugWidgetSettings.shared.ignoredURLs = []
         }else{
-            DotzuXSettings.shared.ignoredURLs = ignoredURLs
+            DebugWidgetSettings.shared.ignoredURLs = ignoredURLs
         }
-        if DotzuXSettings.shared.firstIn == nil {//first launch
-            DotzuXSettings.shared.firstIn = ""
-            DotzuXSettings.shared.showDotzuXBubbleAndWindow = true
+        if DebugWidgetSettings.shared.firstIn == nil {//first launch
+            DebugWidgetSettings.shared.firstIn = ""
+            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = true
         }else{//not first launch
-            DotzuXSettings.shared.showDotzuXBubbleAndWindow = DotzuXSettings.shared.showDotzuXBubbleAndWindow
+            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow
         }
-        if DotzuXSettings.shared.showDotzuXBubbleAndWindow == true {
+        if DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow == true {
             WindowHelper.shared.enable()
         }
         
-        DotzuXSettings.shared.visible = false
-        DotzuXSettings.shared.logSearchWordDefault = nil
-        DotzuXSettings.shared.logSearchWordColor = nil
-        DotzuXSettings.shared.networkSearchWord = nil
-        DotzuXSettings.shared.recordCrash = recordCrash
-        DotzuXSettings.shared.logMaxCount = DotzuX.logMaxCount
+        DebugWidgetSettings.shared.visible = false
+        DebugWidgetSettings.shared.logSearchWordDefault = nil
+        DebugWidgetSettings.shared.logSearchWordColor = nil
+        DebugWidgetSettings.shared.networkSearchWord = nil
+        DebugWidgetSettings.shared.recordCrash = recordCrash
+        DebugWidgetSettings.shared.logMaxCount = DebugWidget.logMaxCount
         
         LogHelper.shared.enable = true
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()
-        DotzuXSettings.shared.responseShake = true
-        DotzuXSettings.shared.responseShakeNetworkDetail = true
+        DebugWidgetSettings.shared.responseShake = true
+        DebugWidgetSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
-        DotzuXSettings.shared.emailToRecipients = emailToRecipients
-        DotzuXSettings.shared.emailCcRecipients = emailCcRecipients
+        DebugWidgetSettings.shared.emailToRecipients = emailToRecipients
+        DebugWidgetSettings.shared.emailCcRecipients = emailCcRecipients
     }
     
     ///deinit
@@ -312,8 +312,8 @@ extension DotzuX {
         NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
         CrashLogger.shared.enable = false
-        DotzuXSettings.shared.responseShake = false
-        DotzuXSettings.shared.responseShakeNetworkDetail = false
+        DebugWidgetSettings.shared.responseShake = false
+        DebugWidgetSettings.shared.responseShakeNetworkDetail = false
     }
 }
 

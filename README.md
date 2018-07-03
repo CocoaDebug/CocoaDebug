@@ -1,35 +1,35 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/logo.png"/>
+  <img src ="https://raw.githubusercontent.com/DebugWidget/DebugWidget/master/pic/logo.png"/>
 </p>
 
-# DotzuX
+# DebugWidget
 
-### [中文介绍](https://github.com/DotzuX/DotzuX/wiki/%E4%B8%AD%E6%96%87%E4%BB%8B%E7%BB%8D)
+### [中文介绍](https://github.com/DebugWidget/DebugWidget/wiki/%E4%B8%AD%E6%96%87%E4%BB%8B%E7%BB%8D)
 
-### [中文介紹(繁體)](https://github.com/DotzuX/DotzuX/wiki/%E4%B8%AD%E6%96%87%E4%BB%8B%E7%B4%B9(%E7%B9%81%E9%AB%94))
+### [中文介紹(繁體)](https://github.com/DebugWidget/DebugWidget/wiki/%E4%B8%AD%E6%96%87%E4%BB%8B%E7%B4%B9(%E7%B9%81%E9%AB%94))
 
-[![Build Status](https://travis-ci.org/DotzuX/DotzuX.svg?branch=master)](https://travis-ci.org/DotzuX/DotzuX)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6aac8606d10f403a811cafdf870bb552)](https://www.codacy.com/app/DotzuX/DotzuX?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DotzuX/DotzuX&amp;utm_campaign=Badge_Grade)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DotzuX.svg)](https://img.shields.io/cocoapods/v/DotzuX.svg)
+[![Build Status](https://travis-ci.org/DebugWidget/DebugWidget.svg?branch=master)](https://travis-ci.org/DebugWidget/DebugWidget)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6aac8606d10f403a811cafdf870bb552)](https://www.codacy.com/app/DebugWidget/DebugWidget?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DebugWidget/DebugWidget&amp;utm_campaign=Badge_Grade)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DebugWidget.svg)](https://img.shields.io/cocoapods/v/DebugWidget.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg)
 ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-orange.svg)
-[![codecov](https://codecov.io/gh/DotzuX/DotzuX/branch/master/graph/badge.svg)](https://codecov.io/gh/DotzuX/DotzuX)
+[![codecov](https://codecov.io/gh/DebugWidget/DebugWidget/branch/master/graph/badge.svg)](https://codecov.io/gh/DebugWidget/DebugWidget)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
 
-Next Generation of [Dotzu](https://github.com/remirobert/Dotzu) (iOS Debugging Tool)
+Debug Widget for iOS
 
 ## Introduction
 
-![example](https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/example.gif)
+![example](https://raw.githubusercontent.com/DebugWidget/DebugWidget/master/pic/example.gif)
 
 ## New feature (0.3.8)
 
 When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
 
-![](https://raw.githubusercontent.com/DotzuX/DotzuX/master/pic/6.png)
+![](https://raw.githubusercontent.com/DebugWidget/DebugWidget/master/pic/6.png)
 
-Added two new parameters when initialize `DotzuX`:
+Added two new parameters when initialize `DebugWidget`:
 
 - emailToRecipients
 
@@ -48,17 +48,17 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'YourTargetName' do
-    pod 'DotzuX', :configurations => ['Debug']
+    pod 'DebugWidget', :configurations => ['Debug']
 end
 ```
 
 ### Carthage
 
 ```ogdl
-github "DotzuX/DotzuX"
+github "DebugWidget/DebugWidget"
 ```
 
-> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `DotzuX.framework`. This [Integration Guide](https://github.com/DotzuX/DotzuX/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
+> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `DebugWidget.framework`. This [Integration Guide](https://github.com/DebugWidget/DebugWidget/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
 
 ## Usage
 
@@ -66,12 +66,12 @@ github "DotzuX/DotzuX"
 	
     //Step 1.
     #if DEBUG
-        import DotzuX
+        import DebugWidget
     #endif
 	
     //Step 2.
     #if DEBUG
-        DotzuX.enable()
+        DebugWidget.enable()
     #endif
 
     //Step 3.
@@ -87,17 +87,17 @@ github "DotzuX/DotzuX"
 	
     //Step 1.
     #ifdef DEBUG
-        @import DotzuX;
+        @import DebugWidget;
     #endif
 	
     //Step 2.
     #ifdef DEBUG
-        [DotzuX enable];
+        [DebugWidget enable];
     #endif
 	
     //Step 3.
     #ifdef DEBUG
-        #define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+        #define NSLog(fmt, ...) [DebugWidget objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
     #else
         #define NSLog(fmt, ...) nil
     #endif
@@ -112,4 +112,4 @@ github "DotzuX/DotzuX"
 
 ## License
 
-DotzuX is released under the [MIT license](https://github.com/DotzuX/DotzuX/blob/master/LICENSE).
+DebugWidget is released under the [MIT license](https://github.com/DebugWidget/DebugWidget/blob/master/LICENSE).

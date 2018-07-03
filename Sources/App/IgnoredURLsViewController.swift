@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -19,7 +19,7 @@ class IgnoredURLsViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
 
-        models = DotzuXSettings.shared.ignoredURLs
+        models = DebugWidgetSettings.shared.ignoredURLs
     }
 }
 

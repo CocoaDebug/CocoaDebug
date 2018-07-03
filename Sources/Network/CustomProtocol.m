@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,7 +9,7 @@
 #import "CustomProtocol.h"
 #import "NetworkHelper.h"
 #import "HttpDatasource.h"
-#import "NSData+DotzuX.h"
+#import "NSData+DebugWidget.h"
 #import "Swizzling.h"
 #import "CacheStoragePolicy.h"
 
@@ -195,7 +195,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
         model.requestData = self.request.HTTPBody;
     }
     if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData dotzuX_dataWithInputStream:self.request.HTTPBodyStream];
+        NSData* data = [NSData debugWidget_dataWithInputStream:self.request.HTTPBodyStream];
         model.requestData = data;
     }
     
@@ -246,7 +246,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     if ([[HttpDatasource shared] addHttpRequset:model])
     {
         dispatch_main_async_safe(^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DotzuX" object:nil userInfo:@{@"statusCode":model.statusCode}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DebugWidget" object:nil userInfo:@{@"statusCode":model.statusCode}];
         })
     }
 }

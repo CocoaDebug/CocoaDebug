@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -19,7 +19,7 @@ class CrashStoreManager {
     
     //MARK: - public
     func addCrash(_ crash: CrashModel) {
-        if self.crashArray.count >= DotzuXSettings.shared.logMaxCount {
+        if self.crashArray.count >= DebugWidgetSettings.shared.logMaxCount {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }
@@ -39,21 +39,21 @@ class CrashStoreManager {
     
     func resetCrashs() {
         self.crashArray.removeAll()
-        UserDefaults.standard.removeObject(forKey: "crashArchive_DotzuX")
-        UserDefaults.standard.removeObject(forKey: "crashCount_DotzuX")
+        UserDefaults.standard.removeObject(forKey: "crashArchive_DebugWidget")
+        UserDefaults.standard.removeObject(forKey: "crashCount_DebugWidget")
         UserDefaults.standard.synchronize()
     }
     
     //MARK: - private
     private func archiveCrashs(_ crashs: [CrashModel]) {
         let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DotzuX")
-        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DotzuX")
+        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DebugWidget")
+        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DebugWidget")
         UserDefaults.standard.synchronize()
     }
     
     private func getCrashs() -> [CrashModel] {
-        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DotzuX") as? Data else {return []}
+        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DebugWidget") as? Data else {return []}
         do {
             if #available(iOS 9.0, *) {
                 let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)

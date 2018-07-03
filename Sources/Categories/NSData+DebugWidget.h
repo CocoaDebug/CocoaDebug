@@ -1,5 +1,5 @@
 //
-//  DotzuX.swift
+//  DebugWidget.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSData (DotzuX)
+@interface NSData (DebugWidget)
 
-+ (NSData *)dotzuX_dataWithInputStream:(NSInputStream *)stream;
++ (NSData *)debugWidget_dataWithInputStream:(NSInputStream *)stream;
 
 @end
