@@ -59,7 +59,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DebugWidget.com")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/DebugWidget/DebugWidget")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -100,7 +100,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else{
             //非图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "http://DebugWidget.com")
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/DebugWidget/DebugWidget")
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
             let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
@@ -224,7 +224,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
         }
         
-        messageBody = messageBody.replacingOccurrences(of: "http://DebugWidget.com", with: url)
+        messageBody = messageBody.replacingOccurrences(of: "https://github.com/DebugWidget/DebugWidget", with: url)
         messageBody = subString + messageBody
         
         //////////////////////////////////////////////////////////////////////////////////
