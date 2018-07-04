@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.swift_version       = '4.0'
   s.platform            = :ios, "8.0"
-  s.source              = { :git => "https://github.com/DebugWidget/DebugWidget.git", :branch => 'master', :tag => '0.0.1' }
-  s.version             = '0.0.1'
+  s.source              = { :git => "https://github.com/DebugWidget/DebugWidget.git", :branch => 'master', :tag => '0.0.2' }
+  s.version             = '0.0.2'
 end
