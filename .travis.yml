@@ -6,4 +6,4 @@ xcode_sdk: iphonesimulator
 script:
   - xcodebuild -project Example_Swift.xcodeproj -scheme Example_Swift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' build test
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'Example_Swift'
+  - bash <(curl -s https://codecov.io/bash) -J 'Example_Swift' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
