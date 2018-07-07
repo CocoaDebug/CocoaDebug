@@ -235,6 +235,8 @@
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
+		EA2E345120F11DAF00FBCFCF /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
+		EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
 		EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
 		EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
 		EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
@@ -1535,6 +1537,7 @@
 				EAF55B272055417C003E310F /* NSData+CocoaDebug.h in Headers */,
 				EAF55B252055417C003E310F /* NSURLRequest+CocoaDebug.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
+				EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */,
 				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
 				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
@@ -1846,6 +1849,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2E345120F11DAF00FBCFCF /* copy_and_codesign.sh in Resources */,
 				EAF55BD220554370003E310F /* Logs.storyboard in Resources */,
 				EAF55BD320554370003E310F /* Network.storyboard in Resources */,
 				EAF55BD420554370003E310F /* Manager.storyboard in Resources */,
