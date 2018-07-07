@@ -17,7 +17,7 @@
 [![codecov](https://codecov.io/gh/CocoaDebug/CocoaDebug/branch/master/graph/badge.svg)](https://codecov.io/gh/CocoaDebug/CocoaDebug)
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT"/>
 
-Debug Widget for iOS
+iOS Debugging Tool
 
 ## Introduction
 
