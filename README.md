@@ -21,21 +21,17 @@ iOS Debugging Tool
 
 ![example](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/example.gif)
 
-## New feature
+- Shake to hide/show the black bubble. (support both device/simulator)
 
-When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
+- Long press the black bubble to show UIDebuggingInformationOverlay. (Apple's Private API, support iOS 10/11)
+
+- You can copy app logs and network logs as you like. (long press the text, then select all or select copy)
+
+----
 
 ![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png)
 
-Added two new parameters when initialize `CocoaDebug`:
-
-- emailToRecipients
-
-        emailToRecipients: sets the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
-		
-- emailCcRecipients
-
-        emailCcRecipients: sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
+- When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
 
 ## Installation
 
