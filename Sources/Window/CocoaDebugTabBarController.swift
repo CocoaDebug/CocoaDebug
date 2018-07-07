@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugWidgetTabBarController: UITabBarController {
+class CocoaDebugTabBarController: UITabBarController {
 
     //MARK: - init
     override func viewDidLoad() {
@@ -20,27 +20,27 @@ class DebugWidgetTabBarController: UITabBarController {
         
         setChildControllers()
         
-        self.selectedIndex = DebugWidgetSettings.shared.tabBarSelectItem 
+        self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem 
         self.tabBar.tintColor = Color.mainGreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DebugWidgetSettings.shared.visible = true
+        CocoaDebugSettings.shared.visible = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DebugWidgetSettings.shared.visible = false
+        CocoaDebugSettings.shared.visible = false
     }
     
     //MARK: - private
     func setChildControllers() {
 
         //1.
-        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugWidget.self)).instantiateViewController(withIdentifier: "Logs")
-        let network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugWidget.self)).instantiateViewController(withIdentifier: "Network")
-        let app = UIStoryboard(name: "App", bundle: Bundle(for: DebugWidget.self)).instantiateViewController(withIdentifier: "App")
+        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
+        let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
+        let app = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
         Sandbox.shared.isSystemFilesHidden = false
@@ -50,10 +50,10 @@ class DebugWidgetTabBarController: UITabBarController {
         Sandbox.shared.isDirectoryDeletable = true
         guard let sandbox = Sandbox.shared.homeDirectoryNavigationController() else {return}
         sandbox.tabBarItem.title = "Sandbox"
-        sandbox.tabBarItem.image = UIImage.init(named: "DebugWidget_sandbox", in: Bundle.init(for: DebugWidget.self), compatibleWith: nil)
+        sandbox.tabBarItem.image = UIImage.init(named: "CocoaDebug_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         
         //3.
-        guard let tabBarControllers = DebugWidgetSettings.shared.tabBarControllers else {
+        guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
             self.viewControllers = [logs, network, app, sandbox]
             return
         }
@@ -73,10 +73,10 @@ class DebugWidgetTabBarController: UITabBarController {
             nav.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                                      NSAttributedStringKey.foregroundColor: Color.mainGreen]
             
-            let selector = #selector(DebugWidgetNavigationController.exit)
+            let selector = #selector(CocoaDebugNavigationController.exit)
             
             
-            let image = UIImage(named: "DebugWidget_close", in: Bundle(for: DebugWidgetNavigationController.self), compatibleWith: nil)
+            let image = UIImage(named: "CocoaDebug_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
             let leftItem = UIBarButtonItem(image: image,
                                              style: .done, target: self, action: selector)
             leftItem.tintColor = Color.mainGreen
@@ -103,7 +103,7 @@ class DebugWidgetTabBarController: UITabBarController {
 }
 
 //MARK: - UITabBarDelegate
-extension DebugWidgetTabBarController {
+extension CocoaDebugTabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
     {
@@ -111,7 +111,7 @@ extension DebugWidgetTabBarController {
         
         for index in 0...items.count-1 {
             if item == items[index] {
-                DebugWidgetSettings.shared.tabBarSelectItem = index
+                CocoaDebugSettings.shared.tabBarSelectItem = index
             }
         }
     }

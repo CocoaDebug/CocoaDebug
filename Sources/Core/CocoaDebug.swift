@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public class DebugWidget : NSObject {
+@objc public class CocoaDebug : NSObject {
     
     ///if the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
     @objc public static var serverURL: String? = nil
@@ -20,19 +20,19 @@ import Foundation
     @objc public static var tabBarControllers: [UIViewController]? = nil
     ///whether to allow the recording of crash logs in app. default value is `false`.
     @objc public static var recordCrash: Bool = false
-    ///the maximum count of logs which DebugWidget display. default value is `500`.
+    ///the maximum count of logs which CocoaDebug display. default value is `500`.
     @objc public static var logMaxCount: Int = 500
     ///sets the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
     ///sets the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
     @objc public static var emailCcRecipients: [String]? = nil
     
-    //MARK: - DebugWidget enable
+    //MARK: - CocoaDebug enable
     @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients)
     }
     
-    //MARK: - DebugWidget disable
+    //MARK: - CocoaDebug disable
     @objc public static func disable() {
         deinitializationMethod()
     }

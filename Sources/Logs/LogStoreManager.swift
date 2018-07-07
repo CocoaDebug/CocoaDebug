@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -21,7 +21,7 @@ class LogStoreManager {
         
         if log.color == .white || log.color == nil
         {   //白色
-            if self.defaultLogArray.count >= DebugWidgetSettings.shared.logMaxCount {
+            if self.defaultLogArray.count >= CocoaDebugSettings.shared.logMaxCount {
                 if self.defaultLogArray.count > 0 {
                     self.defaultLogArray.remove(at: 0)
                 }
@@ -30,7 +30,7 @@ class LogStoreManager {
         }
         else ///////////////////////////////
         {   //彩色
-            if self.colorLogArray.count >= DebugWidgetSettings.shared.logMaxCount {
+            if self.colorLogArray.count >= CocoaDebugSettings.shared.logMaxCount {
                 if self.colorLogArray.count > 0 {
                     self.colorLogArray.remove(at: 0)
                 }

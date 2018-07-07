@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -60,7 +60,7 @@ class NetworkViewController: UIViewController {
         self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
         
-        self.searchLogic(DebugWidgetSettings.shared.networkSearchWord ?? "")
+        self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
 
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -99,14 +99,14 @@ class NetworkViewController: UIViewController {
 //        setNeedsStatusBarAppearanceUpdate()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugWidget"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil)
         
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
         
         searchBar.delegate = self
-        searchBar.text = DebugWidgetSettings.shared.networkSearchWord
+        searchBar.text = CocoaDebugSettings.shared.networkSearchWord
         searchBar.isHidden = true
         
         //hide searchBar icon
@@ -132,7 +132,7 @@ class NetworkViewController: UIViewController {
         cacheModels = []
         searchBar.text = nil
         searchBar.resignFirstResponder()
-        DebugWidgetSettings.shared.networkSearchWord = nil
+        CocoaDebugSettings.shared.networkSearchWord = nil
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -167,7 +167,7 @@ extension NetworkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = DebugWidgetSettings.shared.serverURL else {return 0}
+        guard let serverURL = CocoaDebugSettings.shared.serverURL else {return 0}
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
@@ -177,18 +177,18 @@ extension NetworkViewController: UITableViewDelegate {
                 if model?.url.absoluteString.contains(serverURL) == true {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.debugWidget_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.cocoaDebug_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }else{
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.debugWidget_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }
                 
@@ -308,7 +308,7 @@ extension NetworkViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        DebugWidgetSettings.shared.networkSearchWord = searchText
+        CocoaDebugSettings.shared.networkSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in

@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-//            DebugWidget.serverURL = "google.com" //default value is `nil`
-//            DebugWidget.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
-//            DebugWidget.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
-//            DebugWidget.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
-//            DebugWidget.recordCrash = true //default value is `false`
-//            DebugWidget.logMaxCount = 1000 //default value is `500`
-//            DebugWidget.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
-//            DebugWidget.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
-            DebugWidget.enable()
+//            CocoaDebug.serverURL = "google.com" //default value is `nil`
+//            CocoaDebug.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
+//            CocoaDebug.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
+//            CocoaDebug.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
+//            CocoaDebug.recordCrash = true //default value is `false`
+//            CocoaDebug.logMaxCount = 1000 //default value is `500`
+//            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
+//            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
+            CocoaDebug.enable()
         #endif
         
         return true

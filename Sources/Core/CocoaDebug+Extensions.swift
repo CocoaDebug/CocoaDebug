@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -217,19 +217,19 @@ extension UITableView {
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         
-        if DebugWidgetSettings.shared.responseShakeNetworkDetail == false {return}
+        if CocoaDebugSettings.shared.responseShakeNetworkDetail == false {return}
         
-        if DebugWidgetSettings.shared.responseShake == false {return}
+        if CocoaDebugSettings.shared.responseShake == false {return}
         
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
-            if DebugWidgetSettings.shared.visible == true {
+            if CocoaDebugSettings.shared.visible == true {
                 dispatch_main_async_safe {
-                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_DebugWidget"), object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_CocoaDebug"), object: nil, userInfo: nil)
                 }
                 return
             }
-            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = !DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow
+            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = !CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow
         }
     }
 }
@@ -252,58 +252,58 @@ extension UIViewController {
 }
 
 
-///DebugWidget
-extension DebugWidget {
+///CocoaDebug
+extension CocoaDebug {
     
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil)
     {
         if serverURL == nil {
-            DebugWidgetSettings.shared.serverURL = ""
+            CocoaDebugSettings.shared.serverURL = ""
         }else{
-            DebugWidgetSettings.shared.serverURL = serverURL
+            CocoaDebugSettings.shared.serverURL = serverURL
         }
         if tabBarControllers == nil {
-            DebugWidgetSettings.shared.tabBarControllers = []
+            CocoaDebugSettings.shared.tabBarControllers = []
         }else{
-            DebugWidgetSettings.shared.tabBarControllers = tabBarControllers
+            CocoaDebugSettings.shared.tabBarControllers = tabBarControllers
         }
         if onlyURLs == nil {
-            DebugWidgetSettings.shared.onlyURLs = []
+            CocoaDebugSettings.shared.onlyURLs = []
         }else{
-            DebugWidgetSettings.shared.onlyURLs = onlyURLs
+            CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
         if ignoredURLs == nil {
-            DebugWidgetSettings.shared.ignoredURLs = []
+            CocoaDebugSettings.shared.ignoredURLs = []
         }else{
-            DebugWidgetSettings.shared.ignoredURLs = ignoredURLs
+            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
-        if DebugWidgetSettings.shared.firstIn == nil {//first launch
-            DebugWidgetSettings.shared.firstIn = ""
-            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = true
+        if CocoaDebugSettings.shared.firstIn == nil {//first launch
+            CocoaDebugSettings.shared.firstIn = ""
+            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = true
         }else{//not first launch
-            DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow = DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow
+            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow
         }
-        if DebugWidgetSettings.shared.showDebugWidgetBubbleAndWindow == true {
+        if CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow == true {
             WindowHelper.shared.enable()
         }
         
-        DebugWidgetSettings.shared.visible = false
-        DebugWidgetSettings.shared.logSearchWordDefault = nil
-        DebugWidgetSettings.shared.logSearchWordColor = nil
-        DebugWidgetSettings.shared.networkSearchWord = nil
-        DebugWidgetSettings.shared.recordCrash = recordCrash
-        DebugWidgetSettings.shared.logMaxCount = DebugWidget.logMaxCount
+        CocoaDebugSettings.shared.visible = false
+        CocoaDebugSettings.shared.logSearchWordDefault = nil
+        CocoaDebugSettings.shared.logSearchWordColor = nil
+        CocoaDebugSettings.shared.networkSearchWord = nil
+        CocoaDebugSettings.shared.recordCrash = recordCrash
+        CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         
         LogHelper.shared.enable = true
         let _ = LogStoreManager.shared
         NetworkHelper.shared().enable()
-        DebugWidgetSettings.shared.responseShake = true
-        DebugWidgetSettings.shared.responseShakeNetworkDetail = true
+        CocoaDebugSettings.shared.responseShake = true
+        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
-        DebugWidgetSettings.shared.emailToRecipients = emailToRecipients
-        DebugWidgetSettings.shared.emailCcRecipients = emailCcRecipients
+        CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
+        CocoaDebugSettings.shared.emailCcRecipients = emailCcRecipients
     }
     
     ///deinit
@@ -312,8 +312,8 @@ extension DebugWidget {
         NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
         CrashLogger.shared.enable = false
-        DebugWidgetSettings.shared.responseShake = false
-        DebugWidgetSettings.shared.responseShakeNetworkDetail = false
+        CocoaDebugSettings.shared.responseShake = false
+        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
     }
 }
 

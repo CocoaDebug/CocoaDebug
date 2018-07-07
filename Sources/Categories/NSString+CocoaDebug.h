@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSString (DebugWidget)
+@interface NSString (CocoaDebug)
 
 //计算NSString高度
-- (CGFloat)debugWidget_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
+- (CGFloat)cocoaDebug_heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
 
 @end

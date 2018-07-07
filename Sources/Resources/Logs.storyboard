@@ -8,8 +8,8 @@
         <!--Logs-->
         <scene sceneID="afz-qj-lGc">
             <objects>
-                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="DebugWidgetNavigationController" customModule="Example_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Logs" image="DebugWidget_logs" selectedImage="DebugWidget_logs" id="Uuf-aW-P9g"/>
+                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="CocoaDebugNavigationController" customModule="Example_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Logs" image="CocoaDebug_logs" selectedImage="CocoaDebug_logs" id="Uuf-aW-P9g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EEW-tV-ACR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -66,7 +66,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9x3-8i-qKU">
-                                                    <rect key="frame" x="4" y="0.0" width="371" height="103"/>
+                                                    <rect key="frame" x="4" y="0.0" width="596" height="103"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -125,7 +125,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QeM-j0-MxD">
-                                                    <rect key="frame" x="4" y="0.0" width="371" height="103"/>
+                                                    <rect key="frame" x="4" y="0.0" width="596" height="103"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -209,6 +209,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DebugWidget_logs" width="16" height="16"/>
+        <image name="CocoaDebug_logs" width="16" height="16"/>
     </resources>
 </document>

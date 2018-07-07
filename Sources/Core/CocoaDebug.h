@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,7 +9,7 @@
 #import "Sandbox.h"
 #import "FPSLabel.h"
 #import "NetworkHelper.h"
-#import "DebugWidget+Categories.h"
+#import "CocoaDebug+Categories.h"
 
 
 

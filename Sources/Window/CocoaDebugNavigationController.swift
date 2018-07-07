@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DebugWidgetNavigationController: UINavigationController {
+class CocoaDebugNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,9 @@ class DebugWidgetNavigationController: UINavigationController {
         navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
                                              NSAttributedStringKey.foregroundColor: Color.mainGreen]
 
-        let selector = #selector(DebugWidgetNavigationController.exit)
+        let selector = #selector(CocoaDebugNavigationController.exit)
         
-        let image = UIImage(named: "DebugWidget_close", in: Bundle(for: DebugWidgetNavigationController.self), compatibleWith: nil)
+        let image = UIImage(named: "CocoaDebug_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
         let leftItem = UIBarButtonItem(image: image,
                                          style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen

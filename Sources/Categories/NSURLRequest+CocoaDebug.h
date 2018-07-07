@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSURLRequest (DebugWidget)
+@interface NSURLRequest (CocoaDebug)
 
 - (NSString *)requestId;
 - (void)setRequestId:(NSString *)requestId;

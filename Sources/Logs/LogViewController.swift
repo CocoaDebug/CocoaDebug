@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -103,7 +103,7 @@ class LogViewController: UIViewController {
             
             self.defaultCacheModels = self.defaultModels
             
-            self.searchLogic(DebugWidgetSettings.shared.logSearchWordDefault ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordDefault ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
@@ -147,7 +147,7 @@ class LogViewController: UIViewController {
             
             self.colorCacheModels = self.colorModels
             
-            self.searchLogic(DebugWidgetSettings.shared.logSearchWordColor ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordColor ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.colorTableView.reloadData()
@@ -182,14 +182,14 @@ class LogViewController: UIViewController {
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DebugWidget"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil)
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
         defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
-        defaultSearchBar.text = DebugWidgetSettings.shared.logSearchWordDefault
+        defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
         
         colorTableView.tableFooterView = UIView()
@@ -197,11 +197,11 @@ class LogViewController: UIViewController {
         colorTableView.dataSource = self
         colorTableView.rowHeight = UITableViewAutomaticDimension
         colorSearchBar.delegate = self
-        colorSearchBar.text = DebugWidgetSettings.shared.logSearchWordColor
+        colorSearchBar.text = CocoaDebugSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
         
         //segmentedControl
-        selectedSegmentIndex = DebugWidgetSettings.shared.logSelectIndex 
+        selectedSegmentIndex = CocoaDebugSettings.shared.logSelectIndex 
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
@@ -246,7 +246,7 @@ class LogViewController: UIViewController {
             defaultCacheModels = []
             defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-            DebugWidgetSettings.shared.logSearchWordDefault = nil
+            CocoaDebugSettings.shared.logSearchWordDefault = nil
             
             LogStoreManager.shared.resetDefaultLogs()
             
@@ -260,7 +260,7 @@ class LogViewController: UIViewController {
             colorCacheModels = []
             colorSearchBar.text = nil
             colorSearchBar.resignFirstResponder()
-            DebugWidgetSettings.shared.logSearchWordColor = nil
+            CocoaDebugSettings.shared.logSearchWordColor = nil
             
             LogStoreManager.shared.resetColorLogs()
             
@@ -272,7 +272,7 @@ class LogViewController: UIViewController {
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        DebugWidgetSettings.shared.logSelectIndex = selectedSegmentIndex
+        CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
             selectedSegment_0 = true
@@ -491,14 +491,14 @@ extension LogViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         if searchBar == defaultSearchBar {
-            DebugWidgetSettings.shared.logSearchWordDefault = searchText
+            CocoaDebugSettings.shared.logSearchWordDefault = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
             }
         }else{
-            DebugWidgetSettings.shared.logSearchWordColor = searchText
+            CocoaDebugSettings.shared.logSearchWordColor = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in

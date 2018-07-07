@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -40,15 +40,15 @@ class AppInfoViewController: UITableViewController {
         labelDeviceModel.text = "\(Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
-        labelignoredURLs.text = String(DebugWidgetSettings.shared.ignoredURLs?.count ?? 0)
+        labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
-        labelserverURL.text = DebugWidgetSettings.shared.serverURL
+        labelserverURL.text = CocoaDebugSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let count = UserDefaults.standard.integer(forKey: "crashCount_DebugWidget")
+        let count = UserDefaults.standard.integer(forKey: "crashCount_CocoaDebug")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? .red : .white
     }
@@ -59,7 +59,7 @@ extension AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        if DebugWidgetSettings.shared.recordCrash == true {
+        if CocoaDebugSettings.shared.recordCrash == true {
             if section == 0 {
                 return 56
             }
@@ -76,7 +76,7 @@ extension AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if DebugWidgetSettings.shared.recordCrash == false {
+        if CocoaDebugSettings.shared.recordCrash == false {
             if indexPath.section == 0 && indexPath.row == 0 {
                 return 0
             }
@@ -121,7 +121,7 @@ extension AppInfoViewController {
                 return
             }
             
-            UIPasteboard.general.string = DebugWidgetSettings.shared.serverURL
+            UIPasteboard.general.string = CocoaDebugSettings.shared.serverURL
             
             let alert = UIAlertController.init(title: "copied to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)

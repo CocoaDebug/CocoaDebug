@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -10,12 +10,12 @@ import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-    var window: DebugWidgetWindow?
-    lazy var vc = DebugWidgetViewController()
+    var window: CocoaDebugWindow?
+    lazy var vc = CocoaDebugViewController()
     var displayedList = false
  
     private override init() {
-        self.window = DebugWidgetWindow(frame: UIScreen.main.bounds)
+        self.window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         super.init()
     }
 

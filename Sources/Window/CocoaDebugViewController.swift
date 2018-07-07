@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DebugWidgetViewController: UIViewController {
+class CocoaDebugViewController: UIViewController {
 
-    var bubble = DebugWidgetBubble(frame: CGRect(origin: DebugWidgetBubble.originalPosition, size: DebugWidgetBubble.size))
+    var bubble = CocoaDebugBubble(frame: CGRect(origin: CocoaDebugBubble.originalPosition, size: CocoaDebugBubble.size))
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -40,12 +40,12 @@ class DebugWidgetViewController: UIViewController {
     }
 }
 
-//MARK: - DebugWidgetBubbleDelegate
-extension DebugWidgetViewController: DebugWidgetBubbleDelegate {
+//MARK: - CocoaDebugBubbleDelegate
+extension CocoaDebugViewController: CocoaDebugBubbleDelegate {
     
-    func didTapDebugWidgetBubble() {
+    func didTapCocoaDebugBubble() {
         WindowHelper.shared.displayedList = true
-        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: DebugWidgetViewController.self))
+        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: CocoaDebugViewController.self))
         guard let vc = storyboard.instantiateInitialViewController() else {return}
         self.present(vc, animated: true, completion: nil)
     }

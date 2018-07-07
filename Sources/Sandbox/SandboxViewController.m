@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -51,7 +51,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
                                                                     NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0]
                                                                     };
     
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugWidget_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CocoaDebug_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     leftItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
     self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
 }
@@ -137,7 +137,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)setupViews {
     
     //liman
-    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugWidget_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CocoaDebug_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     closeItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
 
     //liman

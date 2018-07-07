@@ -13,7 +13,7 @@
         <!--Details-->
         <scene sceneID="Ln3-aw-eLd">
             <objects>
-                <tableViewController storyboardIdentifier="CrashDetailViewController" title="Details" id="0sO-85-dbe" customClass="CrashDetailViewController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CrashDetailViewController" title="Details" id="0sO-85-dbe" customClass="CrashDetailViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="37c-ry-al7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,13 +128,13 @@
         <!--Crash-->
         <scene sceneID="DuA-BW-Szs">
             <objects>
-                <tableViewController storyboardIdentifier="CrashListViewController" title="Crash" hidesBottomBarWhenPushed="YES" id="wXt-DM-5Pz" customClass="CrashListViewController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CrashListViewController" title="Crash" hidesBottomBarWhenPushed="YES" id="wXt-DM-5Pz" customClass="CrashListViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="adV-LP-Xiu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CrashCell" id="Me6-d9-qI1" customClass="CrashCell" customModule="DebugWidget" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CrashCell" id="Me6-d9-qI1" customClass="CrashCell" customModule="CocoaDebug" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Me6-d9-qI1" id="H71-A4-KNM">
@@ -186,7 +186,7 @@
         <!--Ignored URLs-->
         <scene sceneID="OGh-yx-4BT">
             <objects>
-                <tableViewController storyboardIdentifier="IgnoredURLsViewController" title="Ignored URLs" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="IgnoredURLsViewController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="IgnoredURLsViewController" title="Ignored URLs" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="IgnoredURLsViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wcd-XR-9Vs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,8 +219,8 @@
         <!--App-->
         <scene sceneID="PWc-Aa-Ldz">
             <objects>
-                <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="DebugWidgetNavigationController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="App" image="DebugWidget_app" selectedImage="DebugWidget_app" id="bj0-w7-cGx"/>
+                <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="CocoaDebugNavigationController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="App" image="CocoaDebug_app" selectedImage="CocoaDebug_app" id="bj0-w7-cGx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LTO-vU-VsB">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -242,7 +242,7 @@
         <!--App-->
         <scene sceneID="bwZ-u7-a4K">
             <objects>
-                <tableViewController storyboardIdentifier="AppInfoViewController" title="App" id="jF1-Ov-37R" customClass="AppInfoViewController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AppInfoViewController" title="App" id="jF1-Ov-37R" customClass="AppInfoViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vkj-g7-DtV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,7 +267,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DebugWidget_bugs" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-3H-SU0">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CocoaDebug_bugs" translatesAutoresizingMaskIntoConstraints="NO" id="6i2-3H-SU0">
                                                     <rect key="frame" x="16" y="6" width="30" height="30"/>
                                                     <color key="tintColor" red="0.74509805439999999" green="0.15686275059999999" blue="0.074509806930000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -707,7 +707,7 @@
         <!--About-->
         <scene sceneID="GVK-bH-MrX">
             <objects>
-                <tableViewController storyboardIdentifier="AboutViewController" title="About" hidesBottomBarWhenPushed="YES" id="FV0-KU-C1g" customClass="AboutViewController" customModule="DebugWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AboutViewController" title="About" hidesBottomBarWhenPushed="YES" id="FV0-KU-C1g" customClass="AboutViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vea-k2-6Ll">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -726,10 +726,11 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                                     <gestureRecognizers/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="https://github.com/DebugWidget/DebugWidget">
+                                                        <fragment content="https://github.com/CocoaDebug/CocoaDebug">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="14" name="Helvetica"/>
+                                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                                <string key="NSLink">https://github.com/CocoaDebug/CocoaDebug</string>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 <integer key="NSUnderline" value="1"/>
                                                             </attributes>
@@ -776,7 +777,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DebugWidget_app" width="16" height="16"/>
-        <image name="DebugWidget_bugs" width="16" height="16"/>
+        <image name="CocoaDebug_app" width="16" height="16"/>
+        <image name="CocoaDebug_bugs" width="16" height="16"/>
     </resources>
 </document>

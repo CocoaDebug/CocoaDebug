@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSData (DebugWidget)
+@interface NSData (CocoaDebug)
 
-+ (NSData *)debugWidget_dataWithInputStream:(NSInputStream *)stream;
++ (NSData *)cocoaDebug_dataWithInputStream:(NSInputStream *)stream;
 
 @end

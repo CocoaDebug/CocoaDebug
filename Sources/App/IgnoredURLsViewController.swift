@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -19,7 +19,7 @@ class IgnoredURLsViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
 
-        models = DebugWidgetSettings.shared.ignoredURLs
+        models = CocoaDebugSettings.shared.ignoredURLs
     }
 }
 

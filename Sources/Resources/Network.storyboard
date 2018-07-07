@@ -45,7 +45,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-aJ-1Wg">
-                                                    <rect key="frame" x="301" y="0.0" width="74" height="140.5"/>
+                                                    <rect key="frame" x="526" y="0.0" width="74" height="140.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-n7-vuk">
                                                             <rect key="frame" x="20.5" y="60" width="33.5" height="21"/>
@@ -90,7 +90,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oVC-1n-Afy">
-                                                    <rect key="frame" x="9" y="41" width="283" height="83"/>
+                                                    <rect key="frame" x="9" y="41" width="508" height="83"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -294,7 +294,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="m8H-zl-6KZ">
                             <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="DebugWidget_close" id="2K5-CR-fd3">
+                        <barButtonItem key="rightBarButtonItem" image="CocoaDebug_close" id="2K5-CR-fd3">
                             <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="close:" destination="q3G-BB-F3V" id="Kqx-p8-JEG"/>
@@ -376,8 +376,8 @@
         <!--Network-->
         <scene sceneID="Z1b-qJ-9zV">
             <objects>
-                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="DebugWidgetNavigationController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Network" image="DebugWidget_network" selectedImage="DebugWidget_network" id="HZO-tF-0ia"/>
+                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="CocoaDebugNavigationController" customModule="DotzuX" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Network" image="CocoaDebug_network" selectedImage="CocoaDebug_network" id="HZO-tF-0ia"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yog-aO-SHJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -398,7 +398,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DebugWidget_close" width="16" height="16"/>
-        <image name="DebugWidget_network" width="16" height="16"/>
+        <image name="CocoaDebug_close" width="16" height="16"/>
+        <image name="CocoaDebug_network" width="16" height="16"/>
     </resources>
 </document>

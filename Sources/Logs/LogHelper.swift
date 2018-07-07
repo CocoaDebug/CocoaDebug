@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -35,7 +35,7 @@ public class LogHelper: NSObject {
         LogStoreManager.shared.addLog(newLog)
         
         dispatch_main_async_safe {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugWidget"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -9,18 +9,18 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-protocol DebugWidgetBubbleDelegate: class {
-    func didTapDebugWidgetBubble()
+protocol CocoaDebugBubbleDelegate: class {
+    func didTapCocoaDebugBubble()
 }
 
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
 
-class DebugWidgetBubble: UIView {
+class CocoaDebugBubble: UIView {
     
     var hasPerformedSetup: Bool = false//liman
     
-    weak var delegate: DebugWidgetBubbleDelegate?
+    weak var delegate: CocoaDebugBubbleDelegate?
     
     public let width: CGFloat = _width
     public let height: CGFloat = _height
@@ -53,8 +53,8 @@ class DebugWidgetBubble: UIView {
     
     static var originalPosition: CGPoint {
         
-        if DebugWidgetSettings.shared.bubbleFrameX != 0 && DebugWidgetSettings.shared.bubbleFrameY != 0 {
-            return CGPoint(x: CGFloat(DebugWidgetSettings.shared.bubbleFrameX), y: CGFloat(DebugWidgetSettings.shared.bubbleFrameY))
+        if CocoaDebugSettings.shared.bubbleFrameX != 0 && CocoaDebugSettings.shared.bubbleFrameY != 0 {
+            return CGPoint(x: CGFloat(CocoaDebugSettings.shared.bubbleFrameX), y: CGFloat(CocoaDebugSettings.shared.bubbleFrameY))
         }
         return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
     }
@@ -145,18 +145,18 @@ class DebugWidgetBubble: UIView {
             self.addSubview(_sublabel)
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DebugWidgetBubble.tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.tap))
         self.addGestureRecognizer(tapGesture)
         
 //        #if DEBUG//***************** Private API *****************
         if #available(iOS 11.0, *) {
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DebugWidgetBubble.longPress(sender:)))
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.longPress(sender:)))
             self.addGestureRecognizer(longPress)
             tapGesture.require(toFail: longPress)
         } else {
             // Fallback on earlier versions
             if #available(iOS 10.0, *) {
-                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(DebugWidgetBubble.longPress2(sender:)))
+                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.longPress2(sender:)))
                 self.addGestureRecognizer(longPress)
                 tapGesture.require(toFail: longPress)
             } else {
@@ -186,12 +186,12 @@ class DebugWidgetBubble: UIView {
         initLayer()
         
         //添加手势
-        let selector = #selector(DebugWidgetBubble.panDidFire(panner:))
+        let selector = #selector(CocoaDebugBubble.panDidFire(panner:))
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
         //网络通知
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugWidget"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil)
         
         //内存监控
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)
@@ -240,7 +240,7 @@ class DebugWidgetBubble: UIView {
     }
     
     @objc func tap() {
-        delegate?.didTapDebugWidgetBubble()
+        delegate?.didTapCocoaDebugBubble()
     }
     
 //    #if DEBUG//***************** Private API *****************
@@ -324,8 +324,8 @@ class DebugWidgetBubble: UIView {
                 self?.transform = CGAffineTransform.identity
                 }, completion: { [weak self] _ in
                     guard let x = self?.frame.origin.x, let y = self?.frame.origin.y else {return}
-                    DebugWidgetSettings.shared.bubbleFrameX = Float(x)
-                    DebugWidgetSettings.shared.bubbleFrameY = Float(y)
+                    CocoaDebugSettings.shared.bubbleFrameX = Float(x)
+                    CocoaDebugSettings.shared.bubbleFrameY = Float(y)
             })
         }
     }

@@ -1,5 +1,5 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
@@ -30,7 +30,7 @@ class JsonViewController: UITableViewController {
     var editedContent: String?
     
     static func instanceFromStoryBoard() -> JsonViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DebugWidget.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
     }
     

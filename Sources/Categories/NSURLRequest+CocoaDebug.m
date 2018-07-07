@@ -1,15 +1,15 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSURLRequest+DebugWidget.h"
+#import "NSURLRequest+CocoaDebug.h"
 #import <objc/runtime.h>
 
-@implementation NSURLRequest (DebugWidget)
+@implementation NSURLRequest (CocoaDebug)
 
 - (NSString *)requestId {
     return objc_getAssociatedObject(self, @"requestId");

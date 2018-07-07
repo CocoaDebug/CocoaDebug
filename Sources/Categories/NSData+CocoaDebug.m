@@ -1,16 +1,16 @@
 //
-//  DebugWidget.swift
+//  CocoaDebug.swift
 //  demo
 //
 //  Created by liman on 26/11/2017.
 //  Copyright © 2017 Apple. All rights reserved.
 //
 
-#import "NSData+DebugWidget.h"
+#import "NSData+CocoaDebug.h"
 
-@implementation NSData (DebugWidget)
+@implementation NSData (CocoaDebug)
 
-+ (NSData *)debugWidget_dataWithInputStream:(NSInputStream *)stream
++ (NSData *)cocoaDebug_dataWithInputStream:(NSInputStream *)stream
 {
     NSMutableData * data = [NSMutableData data];
     [stream open];
