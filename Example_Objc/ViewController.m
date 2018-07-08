@@ -20,11 +20,14 @@
     
     NSLog(@"hello world");
     RedLog(@"hello world red");
+    YellowLog(@"hello world yellow");
     
     [self testHTTP];
 }
 
+
 - (void)testHTTP {
+    
     //1.AFNetworking
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];

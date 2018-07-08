@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     
     func testHTTP() {
+        
         //1.Alamofire
         request("https://httpbin.org/get").responseJSON { response in
             print(response, color: .green)

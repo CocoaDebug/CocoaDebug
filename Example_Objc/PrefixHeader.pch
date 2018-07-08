@@ -8,28 +8,43 @@
 
 #import "Example_Objc-Swift.h"
 
-//ignore warning
 #pragma clang diagnostic ignored "-Wunused-value"
 
-//default log
+
+//----------------- white log (default) -----------------
 #ifdef DEBUG
 #define NSLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
 #else
 #define NSLog(fmt, ...) nil
 #endif
 
-//red log
+
+//----------------- red log -----------------
 #ifdef DEBUG
 #define RedLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
 #else
 #define RedLog(fmt, ...) nil
 #endif
 
-//blue log
+
+//----------------- blue log -----------------
 #ifdef DEBUG
 #define BlueLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
 #else
 #define BlueLog(fmt, ...) nil
 #endif
+
+
+//----------------- yellow log -----------------
+#ifdef DEBUG
+#define YellowLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor yellowColor]]
+#else
+#define YellowLog(fmt, ...) nil
+#endif
+
+
+//----------------- other color log -----------------
+//...
+
 
 

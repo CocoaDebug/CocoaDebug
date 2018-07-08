@@ -8,11 +8,14 @@
 
 import UIKit
 
+//#if DEBUG
+//    import CocoaDebug
+//#endif
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -33,9 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
-//MARK: - over write print()
 public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-    
     #if DEBUG
         swiftLog(file, function, line, message, color)
     #endif
