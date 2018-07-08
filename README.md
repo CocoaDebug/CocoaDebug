@@ -70,7 +70,6 @@ github "CocoaDebug/CocoaDebug"
 
     //Step 3.
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-    
         #if DEBUG
             swiftLog(file, function, line, message, color)
         #endif
