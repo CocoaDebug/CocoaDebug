@@ -1,9 +1,9 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -229,7 +229,7 @@ extension UIWindow {
                 }
                 return
             }
-            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = !CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow
+            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
         }
     }
 }
@@ -280,11 +280,11 @@ extension CocoaDebug {
         }
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
-            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = true
+            CocoaDebugSettings.shared.showBubbleAndWindow = true
         }else{//not first launch
-            CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow = CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow
+            CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
-        if CocoaDebugSettings.shared.showCocoaDebugBubbleAndWindow == true {
+        if CocoaDebugSettings.shared.showBubbleAndWindow == true {
             WindowHelper.shared.enable()
         }
         

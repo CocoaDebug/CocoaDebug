@@ -1,26 +1,26 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-protocol CocoaDebugBubbleDelegate: class {
-    func didTapCocoaDebugBubble()
+protocol BubbleDelegate: class {
+    func didTapBubble()
 }
 
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
 
-class CocoaDebugBubble: UIView {
+class Bubble: UIView {
     
     var hasPerformedSetup: Bool = false//liman
     
-    weak var delegate: CocoaDebugBubbleDelegate?
+    weak var delegate: BubbleDelegate?
     
     public let width: CGFloat = _width
     public let height: CGFloat = _height
@@ -145,18 +145,18 @@ class CocoaDebugBubble: UIView {
             self.addSubview(_sublabel)
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
         
 //        #if DEBUG//***************** Private API *****************
         if #available(iOS 11.0, *) {
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.longPress(sender:)))
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress(sender:)))
             self.addGestureRecognizer(longPress)
             tapGesture.require(toFail: longPress)
         } else {
             // Fallback on earlier versions
             if #available(iOS 10.0, *) {
-                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(CocoaDebugBubble.longPress2(sender:)))
+                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress2(sender:)))
                 self.addGestureRecognizer(longPress)
                 tapGesture.require(toFail: longPress)
             } else {
@@ -186,7 +186,7 @@ class CocoaDebugBubble: UIView {
         initLayer()
         
         //添加手势
-        let selector = #selector(CocoaDebugBubble.panDidFire(panner:))
+        let selector = #selector(Bubble.panDidFire(panner:))
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
@@ -240,7 +240,7 @@ class CocoaDebugBubble: UIView {
     }
     
     @objc func tap() {
-        delegate?.didTapCocoaDebugBubble()
+        delegate?.didTapBubble()
     }
     
 //    #if DEBUG//***************** Private API *****************

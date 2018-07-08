@@ -1,9 +1,9 @@
 //
-//  AppDelegate.h
-//  Example_Objc
+//  Example
+//  man
 //
-//  Created by liman on 05/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

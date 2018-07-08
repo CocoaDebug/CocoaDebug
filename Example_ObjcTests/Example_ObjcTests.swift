@@ -1,9 +1,9 @@
 //
-//  Example_ObjcTests.swift
-//  Example_ObjcTests
+//  Example
+//  man
 //
-//  Created by liman on 14/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import XCTest

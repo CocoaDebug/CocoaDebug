@@ -1,9 +1,9 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -48,15 +48,15 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var showCocoaDebugBubbleAndWindow: Bool = false {
+    @objc public var showBubbleAndWindow: Bool = false {
         didSet {
-            UserDefaults.standard.set(showCocoaDebugBubbleAndWindow, forKey: "showCocoaDebugBubbleAndWindow_CocoaDebug")
+            UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
             UserDefaults.standard.synchronize()
             
             let x = WindowHelper.shared.vc.bubble.frame.origin.x
             let width = WindowHelper.shared.vc.bubble.frame.size.width
             
-            if showCocoaDebugBubbleAndWindow == true
+            if showBubbleAndWindow == true
             {
                 if x > 0 {
                     WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
@@ -155,7 +155,7 @@ import Foundation
         firstIn = UserDefaults.standard.string(forKey: "firstIn_CocoaDebug")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
-        showCocoaDebugBubbleAndWindow = UserDefaults.standard.bool(forKey: "showCocoaDebugBubbleAndWindow_CocoaDebug")
+        showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")

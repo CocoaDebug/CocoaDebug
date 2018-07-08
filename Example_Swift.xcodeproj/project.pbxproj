@@ -169,13 +169,11 @@
 		EA062AB620541ACB0071A231 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */; };
 		EA062AB720541ACB0071A231 /* CocoaDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */; };
 		EA062AB820541ACB0071A231 /* CocoaDebugNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* CocoaDebugNavigationController.swift */; };
-		EA062AB920541ACB0071A231 /* CocoaDebugBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* CocoaDebugBubble.swift */; };
+		EA062AB920541ACB0071A231 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* Bubble.swift */; };
 		EA062ABA20541ACB0071A231 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* CocoaDebugTabBarController.swift */; };
 		EA062ABB20541ACB0071A231 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EA062ABC20541ACB0071A231 /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D520541ACB0071A231 /* MemoryHelper.m */; };
-		EA062ABE20541ACB0071A231 /* NSData+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+CocoaDebug.m */; };
-		EA062ABF20541ACB0071A231 /* NSString+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+CocoaDebug.m */; };
-		EA062AC020541ACB0071A231 /* NSURLRequest+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+CocoaDebug.m */; };
+		EA062ABE20541ACB0071A231 /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSObject+CocoaDebug.m */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
@@ -204,9 +202,7 @@
 		EAF55AED20554164003E310F /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C920541ACB0071A231 /* Swizzling.m */; };
 		EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */; };
 		EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D520541ACB0071A231 /* MemoryHelper.m */; };
-		EAF55AF120554164003E310F /* NSData+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSData+CocoaDebug.m */; };
-		EAF55AF220554164003E310F /* NSString+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DD20541ACB0071A231 /* NSString+CocoaDebug.m */; };
-		EAF55AF320554164003E310F /* NSURLRequest+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DF20541ACB0071A231 /* NSURLRequest+CocoaDebug.m */; };
+		EAF55AF120554164003E310F /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSObject+CocoaDebug.m */; };
 		EAF55AF42055416F003E310F /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */; };
 		EAF55AF52055416F003E310F /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* CocoaDebug.swift */; };
 		EAF55AF62055416F003E310F /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* CocoaDebug+Extensions.swift */; };
@@ -238,7 +234,7 @@
 		EAF55B102055416F003E310F /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */; };
 		EAF55B112055416F003E310F /* CocoaDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */; };
 		EAF55B122055416F003E310F /* CocoaDebugNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D120541ACB0071A231 /* CocoaDebugNavigationController.swift */; };
-		EAF55B132055416F003E310F /* CocoaDebugBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* CocoaDebugBubble.swift */; };
+		EAF55B132055416F003E310F /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D220541ACB0071A231 /* Bubble.swift */; };
 		EAF55B142055416F003E310F /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D320541ACB0071A231 /* CocoaDebugTabBarController.swift */; };
 		EAF55B152055416F003E310F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EAF55B162055417C003E310F /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -254,10 +250,7 @@
 		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; };
 		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; };
 		EAF55B222055417C003E310F /* MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D020541ACB0071A231 /* MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B232055417C003E310F /* NSString+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D820541ACB0071A231 /* NSString+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B242055417C003E310F /* Categories+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D920541ACB0071A231 /* Categories+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B252055417C003E310F /* NSURLRequest+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DB20541ACB0071A231 /* NSURLRequest+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B272055417C003E310F /* NSData+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSData+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSObject+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B282055435D003E310F /* _icon_file_type_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* _icon_file_type_logs@2x.png */; };
 		EAF55B292055435D003E310F /* _icon_file_type_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F920541ACB0071A231 /* _icon_file_type_app@2x.png */; };
 		EAF55B2A2055435D003E310F /* _icon_file_type_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628FA20541ACB0071A231 /* _icon_file_type_close@2x.png */; };
@@ -630,17 +623,12 @@
 		EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugViewController.swift; sourceTree = "<group>"; };
 		EA0629D020541ACB0071A231 /* MemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryHelper.h; sourceTree = "<group>"; };
 		EA0629D120541ACB0071A231 /* CocoaDebugNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugNavigationController.swift; sourceTree = "<group>"; };
-		EA0629D220541ACB0071A231 /* CocoaDebugBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugBubble.swift; sourceTree = "<group>"; };
+		EA0629D220541ACB0071A231 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		EA0629D320541ACB0071A231 /* CocoaDebugTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugTabBarController.swift; sourceTree = "<group>"; };
 		EA0629D420541ACB0071A231 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA0629D520541ACB0071A231 /* MemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryHelper.m; sourceTree = "<group>"; };
-		EA0629D820541ACB0071A231 /* NSString+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CocoaDebug.h"; sourceTree = "<group>"; };
-		EA0629D920541ACB0071A231 /* Categories+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Categories+CocoaDebug.h"; sourceTree = "<group>"; };
-		EA0629DA20541ACB0071A231 /* NSData+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDebug.m"; sourceTree = "<group>"; };
-		EA0629DB20541ACB0071A231 /* NSURLRequest+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+CocoaDebug.h"; sourceTree = "<group>"; };
-		EA0629DD20541ACB0071A231 /* NSString+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CocoaDebug.m"; sourceTree = "<group>"; };
-		EA0629DE20541ACB0071A231 /* NSData+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDebug.h"; sourceTree = "<group>"; };
-		EA0629DF20541ACB0071A231 /* NSURLRequest+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+CocoaDebug.m"; sourceTree = "<group>"; };
+		EA0629DA20541ACB0071A231 /* NSObject+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CocoaDebug.m"; sourceTree = "<group>"; };
+		EA0629DE20541ACB0071A231 /* NSObject+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CocoaDebug.h"; sourceTree = "<group>"; };
 		EA1659D3204D1B14001472C1 /* Example_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1659D6204D1B14001472C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1659D8204D1B14001472C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1041,12 +1029,12 @@
 				EA0629D020541ACB0071A231 /* MemoryHelper.h */,
 				EA0629D520541ACB0071A231 /* MemoryHelper.m */,
 				EA0629CD20541ACB0071A231 /* WindowHelper.swift */,
+				EA0629D420541ACB0071A231 /* Color.swift */,
+				EA0629D220541ACB0071A231 /* Bubble.swift */,
 				EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */,
 				EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */,
 				EA0629D120541ACB0071A231 /* CocoaDebugNavigationController.swift */,
-				EA0629D220541ACB0071A231 /* CocoaDebugBubble.swift */,
 				EA0629D320541ACB0071A231 /* CocoaDebugTabBarController.swift */,
-				EA0629D420541ACB0071A231 /* Color.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -1054,13 +1042,8 @@
 		EA0629D620541ACB0071A231 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				EA0629D920541ACB0071A231 /* Categories+CocoaDebug.h */,
-				EA0629DE20541ACB0071A231 /* NSData+CocoaDebug.h */,
-				EA0629DA20541ACB0071A231 /* NSData+CocoaDebug.m */,
-				EA0629D820541ACB0071A231 /* NSString+CocoaDebug.h */,
-				EA0629DD20541ACB0071A231 /* NSString+CocoaDebug.m */,
-				EA0629DB20541ACB0071A231 /* NSURLRequest+CocoaDebug.h */,
-				EA0629DF20541ACB0071A231 /* NSURLRequest+CocoaDebug.m */,
+				EA0629DE20541ACB0071A231 /* NSObject+CocoaDebug.h */,
+				EA0629DA20541ACB0071A231 /* NSObject+CocoaDebug.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1312,13 +1295,10 @@
 				EAF55B162055417C003E310F /* CocoaDebug.h in Headers */,
 				EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */,
 				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
-				EAF55B232055417C003E310F /* NSString+CocoaDebug.h in Headers */,
-				EAF55B242055417C003E310F /* Categories+CocoaDebug.h in Headers */,
 				EAF55B172055417C003E310F /* HttpModel.h in Headers */,
 				EAF55B192055417C003E310F /* HttpDatasource.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
-				EAF55B272055417C003E310F /* NSData+CocoaDebug.h in Headers */,
-				EAF55B252055417C003E310F /* NSURLRequest+CocoaDebug.h in Headers */,
+				EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */,
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
 				EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */,
 				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
@@ -1710,11 +1690,10 @@
 				EAF5800E204E73C3001CA56D /* Result.swift in Sources */,
 				EA0629E620541ACB0071A231 /* CrashModel.swift in Sources */,
 				EA062AAE20541ACB0071A231 /* FileTableViewCell.m in Sources */,
-				EA062AC020541ACB0071A231 /* NSURLRequest+CocoaDebug.m in Sources */,
 				EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */,
 				EA062AAB20541ACB0071A231 /* LogModel.swift in Sources */,
 				EA062A9E20541ACB0071A231 /* JsonViewController.swift in Sources */,
-				EA062ABE20541ACB0071A231 /* NSData+CocoaDebug.m in Sources */,
+				EA062ABE20541ACB0071A231 /* NSObject+CocoaDebug.m in Sources */,
 				EA0629EA20541ACB0071A231 /* CrashListViewController.swift in Sources */,
 				EA062AB820541ACB0071A231 /* CocoaDebugNavigationController.swift in Sources */,
 				EAF5802F204E73C3001CA56D /* ASIHTTPRequestClient.m in Sources */,
@@ -1751,7 +1730,7 @@
 				EAF58025204E73C3001CA56D /* Networking+POST.swift in Sources */,
 				EAF5801C204E73C3001CA56D /* Networking+GET.swift in Sources */,
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
-				EA062AB920541ACB0071A231 /* CocoaDebugBubble.swift in Sources */,
+				EA062AB920541ACB0071A231 /* Bubble.swift in Sources */,
 				EA0629ED20541ACB0071A231 /* AboutViewController.swift in Sources */,
 				EA062AA220541ACB0071A231 /* NetworkCell.swift in Sources */,
 				EAF5802E204E73C3001CA56D /* Operation.swift in Sources */,
@@ -1785,7 +1764,6 @@
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
-				EA062ABF20541ACB0071A231 /* NSString+CocoaDebug.m in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
@@ -1873,7 +1851,7 @@
 				EAF55B102055416F003E310F /* CocoaDebugWindow.swift in Sources */,
 				EAF55B112055416F003E310F /* CocoaDebugViewController.swift in Sources */,
 				EAF55B122055416F003E310F /* CocoaDebugNavigationController.swift in Sources */,
-				EAF55B132055416F003E310F /* CocoaDebugBubble.swift in Sources */,
+				EAF55B132055416F003E310F /* Bubble.swift in Sources */,
 				EAF55B142055416F003E310F /* CocoaDebugTabBarController.swift in Sources */,
 				EAF55B152055416F003E310F /* Color.swift in Sources */,
 				EAF55AE320554164003E310F /* CustomProtocol.m in Sources */,
@@ -1889,9 +1867,7 @@
 				EAF55AED20554164003E310F /* Swizzling.m in Sources */,
 				EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */,
-				EAF55AF120554164003E310F /* NSData+CocoaDebug.m in Sources */,
-				EAF55AF220554164003E310F /* NSString+CocoaDebug.m in Sources */,
-				EAF55AF320554164003E310F /* NSURLRequest+CocoaDebug.m in Sources */,
+				EAF55AF120554164003E310F /* NSObject+CocoaDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2050,7 +2026,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.Swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Swift/Example_Swift-Bridging-Header.h";
@@ -2074,7 +2050,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug.Swift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.Swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Swift/Example_Swift-Bridging-Header.h";
@@ -2090,7 +2066,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example_SwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug.SwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.SwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2105,7 +2081,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Example_SwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug.SwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.SwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2129,7 +2105,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -2156,7 +2132,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CocoaDebug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Example.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;

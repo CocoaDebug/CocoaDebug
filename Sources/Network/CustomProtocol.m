@@ -1,15 +1,15 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "CustomProtocol.h"
 #import "NetworkHelper.h"
 #import "HttpDatasource.h"
-#import "NSData+CocoaDebug.h"
+#import "NSObject+CocoaDebug.h"
 #import "Swizzling.h"
 #import "CacheStoragePolicy.h"
 
@@ -195,7 +195,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
         model.requestData = self.request.HTTPBody;
     }
     if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData cocoaDebug_dataWithInputStream:self.request.HTTPBodyStream];
+        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
         model.requestData = data;
     }
     

@@ -1,16 +1,16 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
 
 class CocoaDebugViewController: UIViewController {
 
-    var bubble = CocoaDebugBubble(frame: CGRect(origin: CocoaDebugBubble.originalPosition, size: CocoaDebugBubble.size))
+    var bubble = Bubble(frame: CGRect(origin: Bubble.originalPosition, size: Bubble.size))
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -40,10 +40,10 @@ class CocoaDebugViewController: UIViewController {
     }
 }
 
-//MARK: - CocoaDebugBubbleDelegate
-extension CocoaDebugViewController: CocoaDebugBubbleDelegate {
+//MARK: - BubbleDelegate
+extension CocoaDebugViewController: BubbleDelegate {
     
-    func didTapCocoaDebugBubble() {
+    func didTapBubble() {
         WindowHelper.shared.displayedList = true
         let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: CocoaDebugViewController.self))
         guard let vc = storyboard.instantiateInitialViewController() else {return}

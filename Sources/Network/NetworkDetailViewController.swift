@@ -1,9 +1,9 @@
 //
-//  CocoaDebug.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 26/11/2017.
-//  Copyright © 2018 CocoaDebug. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -444,7 +444,7 @@ extension NetworkDetailViewController {
                     return 0
                 }
                 //计算NSString高度
-                let height = content.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
+                let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
             return 0
@@ -469,18 +469,18 @@ extension NetworkDetailViewController {
                 if self.httpModel?.url.absoluteString.contains(serverURL) == true {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.cocoaDebug_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }else{
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.cocoaDebug_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }
                 return height + 57

@@ -1,9 +1,9 @@
 //
-//  AboutViewController.swift
-//  PhiHome
+//  Example
+//  man
 //
-//  Created by CocoaDebug on 13/12/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation

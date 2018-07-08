@@ -1,11 +1,10 @@
-/*
-     File: CacheStoragePolicy.m
- Abstract: A function to determine the cache storage policy for a request.
-  Version: 1.1
- 
- Copyright (C) 2014 Apple Inc. All Rights Reserved.
- 
- */
+//
+//  Example
+//  man
+//
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
+//
 
 #import "CacheStoragePolicy.h"
 
