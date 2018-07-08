@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Example_Swift
 //
-//  Created by liman on 05/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by CocoaDebug on 05/03/2018.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 import UIKit

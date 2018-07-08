@@ -2,8 +2,8 @@
 //  CocoaDebug.h
 //  CocoaDebug
 //
-//  Created by liman on 11/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by CocoaDebug on 11/03/2018.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,4 +19,4 @@ FOUNDATION_EXPORT const unsigned char CocoaDebugVersionString[];
 
 #import <CocoaDebug/Sandbox.h>
 #import <CocoaDebug/NetworkHelper.h>
-#import <CocoaDebug/CocoaDebug+Categories.h>
+#import <CocoaDebug/Categories+CocoaDebug.h>

@@ -2,7 +2,7 @@
 //  AboutViewController.swift
 //  PhiHome
 //
-//  Created by liman on 13/12/2017.
+//  Created by CocoaDebug on 13/12/2017.
 //  Copyright © 2017 Phicomm. All rights reserved.
 //
 

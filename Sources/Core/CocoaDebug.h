@@ -2,14 +2,14 @@
 //  CocoaDebug.swift
 //  demo
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by CocoaDebug on 26/11/2017.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 #import "Sandbox.h"
 #import "FPSLabel.h"
 #import "NetworkHelper.h"
-#import "CocoaDebug+Categories.h"
+#import "Categories+CocoaDebug.h"
 
 
 

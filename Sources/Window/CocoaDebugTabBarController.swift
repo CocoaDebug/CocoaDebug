@@ -2,8 +2,8 @@
 //  CocoaDebug.swift
 //  demo
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by CocoaDebug on 26/11/2017.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 import UIKit
@@ -50,7 +50,7 @@ class CocoaDebugTabBarController: UITabBarController {
         Sandbox.shared.isDirectoryDeletable = true
         guard let sandbox = Sandbox.shared.homeDirectoryNavigationController() else {return}
         sandbox.tabBarItem.title = "Sandbox"
-        sandbox.tabBarItem.image = UIImage.init(named: "CocoaDebug_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
+        sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         
         //3.
         guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
@@ -76,7 +76,7 @@ class CocoaDebugTabBarController: UITabBarController {
             let selector = #selector(CocoaDebugNavigationController.exit)
             
             
-            let image = UIImage(named: "CocoaDebug_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
+            let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
             let leftItem = UIBarButtonItem(image: image,
                                              style: .done, target: self, action: selector)
             leftItem.tintColor = Color.mainGreen
@@ -94,7 +94,7 @@ class CocoaDebugTabBarController: UITabBarController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - show more than 5 tabs by liman
+    //MARK: - show more than 5 tabs by CocoaDebug
     override var traitCollection: UITraitCollection {
         let realTraits = super.traitCollection
         let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)

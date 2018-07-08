@@ -2,8 +2,8 @@
 //  CocoaDebug.swift
 //  demo
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by CocoaDebug on 26/11/2017.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 #import "MLBFileInfo.h"
@@ -180,7 +180,7 @@
 
 #pragma mark - helper
 
-//按照时间排序 by liman
+//按照时间排序 by CocoaDebug
 + (NSMutableArray<MLBFileInfo *> *)sortedMLBFileInfoArray:(NSMutableArray<MLBFileInfo *> *)array
 {
     return [[[array copy] sortedArrayUsingComparator:^NSComparisonResult(MLBFileInfo  *_Nonnull obj1, MLBFileInfo  *_Nonnull obj2) {
@@ -219,7 +219,7 @@
         }
     }
     
-    //按照时间排序 by liman
+    //按照时间排序 by CocoaDebug
     return [self sortedMLBFileInfoArray:fileInfos];
 }
 

@@ -2,8 +2,8 @@
 //  CocoaDebug.swift
 //  demo
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by CocoaDebug on 26/11/2017.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 #import "NSString+CocoaDebug.h"

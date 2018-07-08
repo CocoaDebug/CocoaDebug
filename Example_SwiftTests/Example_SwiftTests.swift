@@ -2,8 +2,8 @@
 //  Example_SwiftTests.swift
 //  Example_SwiftTests
 //
-//  Created by liman on 14/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by CocoaDebug on 14/03/2018.
+//  Copyright © 2018 CocoaDebug. All rights reserved.
 //
 
 import XCTest
