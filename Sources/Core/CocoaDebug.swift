@@ -71,7 +71,7 @@ public func swiftLog<T>(_ file: String = #file,
                         _ line: Int = #line,
                         _ message: T,
                         _ color: UIColor) {
-    Swift.print(message)
+    Swift.print("\(file.split(separator: "/").last!):\(function)[\(line)]: \(message)")
     LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
 
