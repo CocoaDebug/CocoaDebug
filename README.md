@@ -103,6 +103,10 @@ github "CocoaDebug/CocoaDebug"
 
 - [Unit Testing](https://codecov.io/gh/CocoaDebug/CocoaDebug)
 
+## Thanks
+
+Special thanks to [remirobert](https://github.com/remirobert).
+
 ## License
 
 CocoaDebug is released under the [MIT license](https://github.com/CocoaDebug/CocoaDebug/blob/master/LICENSE).
