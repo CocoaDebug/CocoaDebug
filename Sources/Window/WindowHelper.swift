@@ -15,7 +15,8 @@ public class WindowHelper: NSObject {
     var displayedList = false
  
     private override init() {
-        self.window = CocoaDebugWindow(frame: UIScreen.main.bounds)
+        let y: CGFloat = 0.0000000000001
+        self.window = CocoaDebugWindow(frame: CGRect(x: 0, y: y, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - y))
         super.init()
     }
 

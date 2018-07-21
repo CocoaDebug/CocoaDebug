@@ -21,9 +21,6 @@ class NetworkViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-//    override var preferredStatusBarStyle: UIStatusBarStyle { //liman
-//        return .lightContent
-//    }
     
     //MARK: - tool
     //搜索逻辑

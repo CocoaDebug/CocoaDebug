@@ -20,7 +20,7 @@ class CocoaDebugWindow: UIWindow {
         super.init(frame: frame)
 
         self.backgroundColor = .clear
-        self.windowLevel = UIWindowLevelStatusBar - 1
+        self.windowLevel = CGFloat.greatestFiniteMagnitude
     }
     
     required init?(coder aDecoder: NSCoder) {
