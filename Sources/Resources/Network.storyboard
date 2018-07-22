@@ -54,7 +54,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-n7-vuk">
                                                             <rect key="frame" x="20.5" y="60" width="33.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <color key="textColor" red="0.25649550557136536" green="0.81464451551437378" blue="0.34067061543464661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -81,7 +81,6 @@
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHA-Mc-2kX">
                                                     <rect key="frame" x="9" y="8.5" width="18.5" height="7.5"/>
-                                                    <color key="backgroundColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="6"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -104,7 +103,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="12" id="Djn-QT-sg4"/>
                                                     </constraints>
-                                                    <color key="textColor" red="0.25570189952850342" green="0.8225521445274353" blue="0.34441712498664856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -154,11 +152,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Network" id="npy-bN-DLs">
-                        <barButtonItem key="backBarButtonItem" title=" " id="kaw-fV-cgo">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="kaw-fV-cgo"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="b2H-kq-1Pr">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="tapTrashButton:" destination="C9A-fD-Ood" id="1T5-L9-r5A"/>
                             </connections>
@@ -167,7 +162,6 @@
                     <connections>
                         <outlet property="deleteItem" destination="b2H-kq-1Pr" id="mwS-vg-SBq"/>
                         <outlet property="searchBar" destination="g3o-UO-WV3" id="xXN-bE-t4c"/>
-                        <outlet property="systemBackItem" destination="kaw-fV-cgo" id="pbl-m2-ndD"/>
                         <outlet property="tableView" destination="HG7-0d-Yj9" id="Bnc-JE-w7i"/>
                     </connections>
                 </viewController>
@@ -297,11 +291,8 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Details" id="EGv-T3-ncf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="m8H-zl-6KZ">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="m8H-zl-6KZ"/>
                         <barButtonItem key="rightBarButtonItem" image="_icon_file_type_close" id="2K5-CR-fd3">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="close:" destination="q3G-BB-F3V" id="Kqx-p8-JEG"/>
                             </connections>
@@ -311,7 +302,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="closeItem" destination="2K5-CR-fd3" id="Ew5-BF-qyX"/>
-                        <outlet property="systemBackItem" destination="m8H-zl-6KZ" id="I0m-NR-zl0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-1F-g7f" userLabel="First Responder" sceneMemberID="firstResponder"/>

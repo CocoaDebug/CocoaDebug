@@ -111,12 +111,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Details" id="uCh-Lu-9de">
-                        <barButtonItem key="backBarButtonItem" title=" " id="mEF-aY-qWg">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="mEF-aY-qWg"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="systemBackItem" destination="mEF-aY-qWg" id="7dz-TK-JfK"/>
                         <outlet property="textviewName" destination="VfO-ya-iWG" id="gry-vq-ffv"/>
                         <outlet property="textviewReason" destination="kbB-7c-HgE" id="MUi-k9-l8S"/>
                         <outlet property="textviewStackTraces" destination="hdj-6x-4YO" id="nSP-vx-AZH"/>
@@ -208,13 +205,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ignored URLs" id="isR-TM-jaf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="systemBackItem" destination="Kb7-EV-zlP" id="ZzK-I6-ZAg"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPT-gm-xVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -629,7 +621,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bR-ma-wZQ">
-                                                    <rect key="frame" x="455" y="11" width="111" height="20.5"/>
+                                                    <rect key="frame" x="230" y="11" width="111" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="111" id="eV0-Gy-lkc"/>
                                                     </constraints>
@@ -686,9 +678,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="App" id="nfh-qO-k6T">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l">
-                            <color key="tintColor" red="0.25949156284332275" green="0.830455482006073" blue="0.34812635183334351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l"/>
                     </navigationItem>
                     <connections>
                         <outlet property="labelBuildNumber" destination="N5q-Tu-CeT" id="W9d-GI-HdH"/>
@@ -702,7 +692,6 @@
                         <outlet property="labelVersionNumber" destination="7Yi-0U-npR" id="cIg-RG-FLI"/>
                         <outlet property="labelignoredURLs" destination="5bR-ma-wZQ" id="Ab7-uR-wVL"/>
                         <outlet property="labelserverURL" destination="buG-N4-VY9" id="W1a-e8-npR"/>
-                        <outlet property="systemBackItem" destination="bL5-HO-27l" id="XLK-Vk-1DR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmQ-L8-DSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -766,13 +755,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="miW-ow-i75">
-                        <barButtonItem key="backBarButtonItem" title=" " id="Qcc-2f-UGU">
-                            <color key="tintColor" red="0.25949156280000002" green="0.83045548199999997" blue="0.34812635180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Qcc-2f-UGU"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="systemBackItem" destination="Qcc-2f-UGU" id="Hkk-F2-LPC"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3T-S0-LUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Ltp-bc-bl2">

@@ -11,16 +11,12 @@ import UIKit
 
 class IgnoredURLsViewController: UITableViewController {
     
-    
-    @IBOutlet weak var systemBackItem: UIBarButtonItem!
-    
     var models: Array<String>?
     
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        systemBackItem.tintColor = Color.mainGreen
         tableView.tableFooterView = UIView()
 
         models = CocoaDebugSettings.shared.ignoredURLs

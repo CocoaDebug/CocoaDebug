@@ -12,13 +12,10 @@ import UIKit
 class AboutViewController: UITableViewController {
     
     
-    @IBOutlet weak var systemBackItem: UIBarButtonItem!
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        systemBackItem.tintColor = Color.mainGreen
         tableView.tableFooterView = UIView()
     }
     

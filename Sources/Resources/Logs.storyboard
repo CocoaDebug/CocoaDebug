@@ -177,9 +177,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="psj-WG-xZh">
                         <nil key="title"/>
-                        <barButtonItem key="backBarButtonItem" title=" " id="50c-pz-gdb">
-                            <color key="tintColor" red="0.25949156280000002" green="0.83045548199999997" blue="0.34812635180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title=" " id="50c-pz-gdb"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RqA-gF-lv2">
                             <rect key="frame" x="129" y="7" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -187,13 +185,11 @@
                                 <segment title="Default"/>
                                 <segment title="Color"/>
                             </segments>
-                            <color key="tintColor" red="0.25949156280000002" green="0.83045548199999997" blue="0.34812635180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="segmentedControlAction:" destination="b1x-pw-stc" eventType="valueChanged" id="cv7-iN-ZnU"/>
                             </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="WWD-nk-hBH">
-                            <color key="tintColor" red="0.25949156280000002" green="0.83045548199999997" blue="0.34812635180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="resetLogs:" destination="b1x-pw-stc" id="u7x-9v-lHc"/>
                             </connections>
@@ -206,7 +202,6 @@
                         <outlet property="defaultTableView" destination="fq3-3m-DV4" id="qSc-hl-eXa"/>
                         <outlet property="deleteItem" destination="WWD-nk-hBH" id="UGl-wk-ar3"/>
                         <outlet property="segmentedControl" destination="RqA-gF-lv2" id="p0B-kF-gXH"/>
-                        <outlet property="systemBackItem" destination="50c-pz-gdb" id="E1k-Lu-yqA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBi-bm-RyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
