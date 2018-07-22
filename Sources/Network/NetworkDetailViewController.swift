@@ -12,6 +12,8 @@ import MessageUI
 
 class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var closeItem: UIBarButtonItem!
+    
     lazy var formatter: DateFormatter = DateFormatter()
     
     var httpModel: HttpModel?
@@ -278,6 +280,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        closeItem.tintColor = Color.mainGreen
         
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 

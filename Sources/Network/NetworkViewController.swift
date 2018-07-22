@@ -21,6 +21,8 @@ class NetworkViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var deleteItem: UIBarButtonItem!
+    
     
     //MARK: - tool
     //搜索逻辑
@@ -88,6 +90,8 @@ class NetworkViewController: UIViewController {
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        deleteItem.tintColor = Color.mainGreen
         
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)

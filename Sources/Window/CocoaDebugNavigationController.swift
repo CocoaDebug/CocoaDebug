@@ -13,7 +13,7 @@ class CocoaDebugNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationBar.isTranslucent = false //add by CocoaDebug
+        navigationBar.isTranslucent = false //liman
         
         navigationBar.tintColor = Color.mainGreen
         navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),

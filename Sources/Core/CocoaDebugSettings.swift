@@ -124,6 +124,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    @objc public var mainColor: String? = nil {
+        didSet {
+            UserDefaults.standard.set(mainColor, forKey: "mainColor_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
     @objc public var tabBarControllers: [UIViewController]? = nil
     
     //share via email
@@ -164,7 +170,8 @@ import Foundation
         logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_CocoaDebug")
         logSearchWordColor = UserDefaults.standard.string(forKey: "logSearchWordColor_CocoaDebug")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
-        
+        mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug")
+
         //objc
         logMaxCount = NetworkHelper.shared().logMaxCount
         onlyURLs = NetworkHelper.shared().onlyURLs

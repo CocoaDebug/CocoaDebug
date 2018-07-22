@@ -16,6 +16,6 @@ struct Color {
     }
 
     static var mainGreen: UIColor {
-        return "#42d459".hexColor
+        return CocoaDebug.mainColor?.hexColor ?? "#42d459".hexColor
     }
 }

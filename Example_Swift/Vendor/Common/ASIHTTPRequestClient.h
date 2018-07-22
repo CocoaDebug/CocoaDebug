@@ -51,7 +51,7 @@
  *  @param urlString     接口路径, 不能为空;
  *  @param params        请求的参数的字典, 参数可为nil, 例如:NSDictionary *params = @{@"key":@"value"}
  *  @param success       请求完成块, 返回 ASIHTTPRequest *request,id JSON;
- *  @param failure        请求失败块, 返回 NSError *error;
+ *  @param failure       请求失败块, 返回 NSError *error;
  *
  *  @return 返回ASIHTTPRequest的指针, 可用于 NSOperationQueue操作
  */
@@ -67,8 +67,8 @@
  *  @param destination    下载文件保存的路径, 不能为空;
  *  @param name           下载文件保存的名字, 不能为空;
  *  @param progressBlock  下载文件的Progress块, 返回 float progress,在此跟踪下载进度;
- *  @param success   请求完成块, 返回savePath地址;
- *  @param failure    请求失败块, 返回 NSError *error;
+ *  @param success        请求完成块, 返回savePath地址;
+ *  @param failure        请求失败块, 返回 NSError *error;
  *
  *  @return 返回ASIHTTPRequest的指针, 可用于 NSOperationQueue操作
  */
@@ -83,7 +83,7 @@
 *  文件下载, 断点续传功能;
 *
 *  @param path            文件路径, 不能为空;
- *  @param destination 下载文件要保存的路径, 不能为空;
+*  @param destination     下载文件要保存的路径, 不能为空;
 *  @param tempPath        临时文件保存的路径, 不能为空;
 *  @param name            下载保存的文件名, 不能为空;
 *  @param progressBlock   下载文件的Progress块, 返回 float progress,在此跟踪下载进度;
@@ -123,7 +123,7 @@
 /**
  *  一般的POST数据Data上传;
  *
- *  @param urlString           上传接口路径, 不能为空;
+ *  @param urlString      上传接口路径, 不能为空;
  *  @param fileData       要上传的文件Data, 不能为空;
  *  @param dataKey        上传的Data对应服务器接收的key, 不能为空;
  *  @param params         请求的参数的字典, 参数可为nil, 例如:NSDictionary *params = @{@"key":@"value"}

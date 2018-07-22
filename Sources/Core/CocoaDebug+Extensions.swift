@@ -256,7 +256,7 @@ extension UIViewController {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = false, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil)
     {
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
@@ -304,6 +304,9 @@ extension CocoaDebug {
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
         CocoaDebugSettings.shared.emailCcRecipients = emailCcRecipients
+        
+        //color
+        CocoaDebugSettings.shared.mainColor = mainColor
     }
     
     ///deinit

@@ -100,6 +100,9 @@ class NetworkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        imageLabel.backgroundColor = Color.mainGreen
+        requestTimeTextView.textColor = Color.mainGreen
+        
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         requestTimeTextView.textContainer.lineFragmentPadding = 0
