@@ -49,7 +49,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-aJ-1Wg">
-                                                    <rect key="frame" x="526" y="0.0" width="74" height="140.5"/>
+                                                    <rect key="frame" x="301" y="0.0" width="74" height="140.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-n7-vuk">
                                                             <rect key="frame" x="20.5" y="60" width="33.5" height="21"/>
@@ -94,7 +94,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oVC-1n-Afy">
-                                                    <rect key="frame" x="9" y="41" width="508" height="83"/>
+                                                    <rect key="frame" x="9" y="41" width="283" height="83"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -167,6 +167,7 @@
                     <connections>
                         <outlet property="deleteItem" destination="b2H-kq-1Pr" id="mwS-vg-SBq"/>
                         <outlet property="searchBar" destination="g3o-UO-WV3" id="xXN-bE-t4c"/>
+                        <outlet property="systemBackItem" destination="kaw-fV-cgo" id="pbl-m2-ndD"/>
                         <outlet property="tableView" destination="HG7-0d-Yj9" id="Bnc-JE-w7i"/>
                     </connections>
                 </viewController>
@@ -310,6 +311,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="closeItem" destination="2K5-CR-fd3" id="Ew5-BF-qyX"/>
+                        <outlet property="systemBackItem" destination="m8H-zl-6KZ" id="I0m-NR-zl0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-1F-g7f" userLabel="First Responder" sceneMemberID="firstResponder"/>

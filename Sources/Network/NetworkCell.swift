@@ -65,7 +65,7 @@ class NetworkCell: UITableViewCell {
             //状态码
             statusCodeLabel.text = httpModel?.statusCode
             if successStatusCodes.contains(statusCodeLabel.text ?? "") {
-                statusCodeLabel.textColor = Color.mainGreen
+                statusCodeLabel.textColor = "#42d459".hexColor
             }else{
                 statusCodeLabel.textColor = "#ff0000".hexColor
             }

@@ -9,7 +9,10 @@
 import UIKit
 
 class AppInfoViewController: UITableViewController {
-
+    
+    
+    @IBOutlet weak var systemBackItem: UIBarButtonItem!
+    
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
     @IBOutlet weak var labelBundleName: UILabel!
@@ -25,6 +28,8 @@ class AppInfoViewController: UITableViewController {
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        systemBackItem.tintColor = Color.mainGreen
         
         //add FPSLabel behind status bar
 //        addStatusBarBackgroundView(viewController: self)

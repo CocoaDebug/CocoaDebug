@@ -20,6 +20,8 @@ class LogViewController: UIViewController {
     var selectedSegment_0: Bool = false
     var selectedSegment_1: Bool = false
     
+    
+    @IBOutlet weak var systemBackItem: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
@@ -182,6 +184,7 @@ class LogViewController: UIViewController {
         
         segmentedControl.tintColor = Color.mainGreen
         deleteItem.tintColor = Color.mainGreen
+        systemBackItem.tintColor = Color.mainGreen
         
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)

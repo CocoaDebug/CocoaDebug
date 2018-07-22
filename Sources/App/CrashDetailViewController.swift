@@ -9,7 +9,9 @@
 import UIKit
 
 class CrashDetailViewController: UITableViewController {
-
+    
+    
+    @IBOutlet weak var systemBackItem: UIBarButtonItem!
     @IBOutlet weak var textviewName: UITextView!
     @IBOutlet weak var textviewReason: UITextView!
     @IBOutlet weak var textviewStackTraces: UITextView!
@@ -23,6 +25,8 @@ class CrashDetailViewController: UITableViewController {
     //MARK - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        systemBackItem.tintColor = Color.mainGreen
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50

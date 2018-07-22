@@ -18,9 +18,10 @@ class NetworkViewController: UIViewController {
     var cacheModels: Array<HttpModel>?
     var searchModels: Array<HttpModel>?
     
+    
+    @IBOutlet weak var systemBackItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
     
@@ -92,6 +93,7 @@ class NetworkViewController: UIViewController {
         super.viewDidLoad()
         
         deleteItem.tintColor = Color.mainGreen
+        systemBackItem.tintColor = Color.mainGreen
         
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            CocoaDebug.logMaxCount = 1000 //default value is `500`
 //            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
 //            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
-            CocoaDebug.mainColor = "#1E90FF"
+//            CocoaDebug.mainColor = "#fd9727" //default value is `nil`
             CocoaDebug.enable()
         #endif
         
