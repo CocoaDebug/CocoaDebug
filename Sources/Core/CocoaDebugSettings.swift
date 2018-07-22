@@ -128,6 +128,7 @@ import Foundation
         didSet {
             UserDefaults.standard.set(mainColor, forKey: "mainColor_CocoaDebug")
             UserDefaults.standard.synchronize()
+            NetworkHelper.shared().mainColor = mainColor?.hexColor ?? "#42d459".hexColor
         }
     }
     @objc public var tabBarControllers: [UIViewController]? = nil

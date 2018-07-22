@@ -13,6 +13,9 @@
 
 @interface NetworkHelper : NSObject
 
+//color for objc
+@property (nonatomic, strong) UIColor *mainColor;
+
 /**
  *  设置只抓取的域名,忽略大小写,默认抓取所有
  */

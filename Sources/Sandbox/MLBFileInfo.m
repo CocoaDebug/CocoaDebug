@@ -16,7 +16,7 @@
 
 @interface MLBFileInfo ()
 
-@property (nonatomic, strong, readwrite) NSString *typeImageName;
+@property (nonatomic, copy, readwrite) NSString *typeImageName;
 
 @end
 

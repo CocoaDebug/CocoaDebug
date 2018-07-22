@@ -15,6 +15,7 @@
 #import "Sandbox.h"
 #import <QuickLook/QuickLook.h>
 #import "FPSLabel.h"
+#import "NetworkHelper.h"
 
 #define MLBIsStringEmpty(string)                    (nil == string || (NSNull *)string == [NSNull null] || [@"" isEqualToString:string])
 #define MLBIsStringNotEmpty(string)                 (string && (NSNull *)string != [NSNull null] && ![@"" isEqualToString:string])
@@ -46,14 +47,14 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     //****** 以下代码从LogNavigationViewController.swift复制 ******
     self.navigationController.navigationBar.translucent = NO;
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [NetworkHelper shared].mainColor;
     self.navigationController.navigationBar.titleTextAttributes = @{
                                                                     NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
-                                                                    NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0]
+                                                                    NSForegroundColorAttributeName: [NetworkHelper shared].mainColor
                                                                     };
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"_icon_file_type_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
-    leftItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+    leftItem.tintColor = [NetworkHelper shared].mainColor;
     self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
 }
 
@@ -139,13 +140,13 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     //liman
     UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"_icon_file_type_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
-    closeItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+    closeItem.tintColor = [NetworkHelper shared].mainColor;
 
     //liman
     if ([Sandbox shared].isFileDeletable || [Sandbox shared].isDirectoryDeletable) {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitleColor:[UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [button setTitleColor:[NetworkHelper shared].mainColor forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         button.frame = CGRectMake(0, 0, 56, 34);
         [button setTitle:@"     Edit" forState:UIControlStateNormal];
@@ -468,7 +469,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     //liman
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:fileInfo.modificationDateText];
     if ([attributedString length] >= 21) {
-        [attributedString setAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0], NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 21)];
+        [attributedString setAttributes:@{NSForegroundColorAttributeName: [NetworkHelper shared].mainColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 21)];
     }
     cell.detailTextLabel.attributedText = [attributedString copy];
     
