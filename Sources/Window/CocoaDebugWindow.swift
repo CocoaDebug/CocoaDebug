@@ -14,13 +14,15 @@ protocol WindowDelegate: class {
 
 class CocoaDebugWindow: UIWindow {
     
+    static let y: CGFloat = 0.0000000000001
+    
     weak var delegate: WindowDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         self.backgroundColor = .clear
-        self.windowLevel = CGFloat.greatestFiniteMagnitude
+        self.windowLevel = 2100 - CocoaDebugWindow.y
     }
     
     required init?(coder aDecoder: NSCoder) {
