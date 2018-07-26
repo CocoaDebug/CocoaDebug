@@ -103,41 +103,23 @@ github "CocoaDebug/CocoaDebug"
 
 When you initialize `CocoaDebug`, you can custom these parameters before `CocoaDebug.enable()`.
 
-#### `serverURL:`
+- `serverURL:` - If the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is nil.
 
-If the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is nil.
+- `ignoredURLs:` - Set the URLs which should not catched, ignoring case, catch all URLs when the value is nil. default value is nil.
 
-#### `ignoredURLs:`
+- `onlyURLs:` - Set the URLs which are only catched, ignoring case, catch all URLs when the value is nil. default value is nil.
 
-Set the URLs which should not catched, ignoring case, catch all URLs when the value is nil. default value is nil.
+- `tabBarControllers:` - Set controllers to be added as child controllers of UITabBarController. default value is nil.
 
-#### `onlyURLs:`
+- `recordCrash:` - Whether to allow the recording of crash logs in app. default value is false.
 
-Set the URLs which are only catched, ignoring case, catch all URLs when the value is nil. default value is nil.
+- `logMaxCount:` - The maximum count of logs which CocoaDebug display. default value is 500.
 
-#### `tabBarControllers:`
+- `emailToRecipients:` - Set the initial recipients to include in the email’s “To” field when share via email. default value is nil.
 
-Set controllers to be added as child controllers of UITabBarController. default value is nil.
+- `emailCcRecipients:` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is nil.
 
-#### `recordCrash:`
-
-Whether to allow the recording of crash logs in app. default value is false.
-
-#### `logMaxCount:`
-
-The maximum count of logs which CocoaDebug display. default value is 500.
-
-#### `emailToRecipients:`
-
-Set the initial recipients to include in the email’s “To” field when share via email. default value is nil.
-
-#### `emailCcRecipients:`
-
-Set the initial recipients to include in the email’s “Cc” field when share via email. default value is nil.
-
-#### `mainColor:`
-
-Set the main color with hexadecimal format. default value is nil.
+- `mainColor:` - Set the main color with hexadecimal format. default value is nil.
 
 ## TODO
 
