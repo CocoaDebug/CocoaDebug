@@ -148,7 +148,7 @@ class Bubble: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
         
-//        #if DEBUG//***************** Private API *****************
+        // ***************** Private API *****************
         if #available(iOS 11.0, *) {
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress(sender:)))
             self.addGestureRecognizer(longPress)
@@ -163,7 +163,7 @@ class Bubble: UIView {
                 // Fallback on earlier versions
             }
         }
-//        #endif//***************** Private API *****************
+        // ***************** Private API *****************
     }
     
     func changeSideDisplay() {
@@ -242,8 +242,8 @@ class Bubble: UIView {
     @objc func tap() {
         delegate?.didTapBubble()
     }
-    
-//    #if DEBUG//***************** Private API *****************
+
+    //***************** Private API *****************
     @available(iOS 11.0, *)
     @objc func longPress(sender: UILongPressGestureRecognizer) {
         if (sender.state == .began) {
@@ -272,7 +272,7 @@ class Bubble: UIView {
             _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
         }
     }
-//    #endif//***************** Private API *****************
+    //***************** Private API *****************
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {
         if panner.state == .began {

@@ -6,7 +6,7 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-//#ifdef DEBUG//***************** Private API *****************
+//***************** Private API *****************
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -70,4 +70,4 @@
 
 @end
 #pragma clang diagnostic pop
-//#endif//***************** Private API *****************
+//***************** Private API *****************
