@@ -306,7 +306,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.emailCcRecipients = emailCcRecipients
         
         //color
-        CocoaDebugSettings.shared.mainColor = mainColor
+        CocoaDebugSettings.shared.mainColor = mainColor ?? "#42d459"
     }
     
     ///deinit

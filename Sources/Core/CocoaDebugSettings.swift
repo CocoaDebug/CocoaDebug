@@ -124,11 +124,11 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var mainColor: String? = nil {
+    @objc public var mainColor: String {
         didSet {
             UserDefaults.standard.set(mainColor, forKey: "mainColor_CocoaDebug")
             UserDefaults.standard.synchronize()
-            NetworkHelper.shared().mainColor = mainColor?.hexColor ?? "#42d459".hexColor
+            NetworkHelper.shared().mainColor = mainColor.hexColor
         }
     }
     @objc public var tabBarControllers: [UIViewController]? = nil
@@ -171,7 +171,7 @@ import Foundation
         logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_CocoaDebug")
         logSearchWordColor = UserDefaults.standard.string(forKey: "logSearchWordColor_CocoaDebug")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
-        mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug")
+        mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"
 
         //objc
         logMaxCount = NetworkHelper.shared().logMaxCount

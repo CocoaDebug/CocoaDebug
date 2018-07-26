@@ -101,7 +101,7 @@ github "CocoaDebug/CocoaDebug"
 
 ## Parameter Description
 
-When you initialize `CocoaDebug`, you can custom these parameters before `CocoaDebug.enable()`.
+When you initialize CocoaDebug, you can custom these parameters before `CocoaDebug.enable()`.
 
 - `serverURL:` - If the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is nil.
 
@@ -119,7 +119,7 @@ When you initialize `CocoaDebug`, you can custom these parameters before `CocoaD
 
 - `emailCcRecipients:` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is nil.
 
-- `mainColor:` - Set the main color with hexadecimal format. default value is nil.
+- `mainColor:` - Set the main color with hexadecimal format. default value is #42d459.
 
 ## TODO
 

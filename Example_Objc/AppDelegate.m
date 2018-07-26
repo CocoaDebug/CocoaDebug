@@ -29,7 +29,7 @@
 //        CocoaDebug.logMaxCount = 1000; //default value is `500`
 //        CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"]; //default value is `nil`
 //        CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"]; //default value is `nil`
-//        CocoaDebug.mainColor = @"#fd9727"; //default value is `nil`
+//        CocoaDebug.mainColor = @"#fd9727"; //default value is `#42d459`
         [CocoaDebug enable];
     #endif
     

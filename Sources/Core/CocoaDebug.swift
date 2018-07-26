@@ -10,11 +10,11 @@ import Foundation
 
 @objc public class CocoaDebug : NSObject {
     
-    ///if the catched URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
+    ///if the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
     @objc public static var serverURL: String? = nil
-    ///set the URLs which should not catched, ignoring case, catch all URLs when the value is nil. default value is `nil`.
+    ///set the URLs which should not crawled, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
     @objc public static var ignoredURLs: [String]? = nil
-    ///set the URLs which are only catched, ignoring case, catch all URLs when the value is nil. default value is `nil`.
+    ///set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
     ///set controllers to be added as child controllers of UITabBarController. default value is `nil`.
     @objc public static var tabBarControllers: [UIViewController]? = nil
@@ -26,8 +26,8 @@ import Foundation
     @objc public static var emailToRecipients: [String]? = nil
     ///set the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
     @objc public static var emailCcRecipients: [String]? = nil
-    ///set the main color with hexadecimal format. default value is `nil`.
-    @objc public static var mainColor: String? = nil
+    ///set the main color with hexadecimal format. default value is `#42d459`.
+    @objc public static var mainColor: String = "#42d459"
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
