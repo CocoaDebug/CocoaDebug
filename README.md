@@ -59,18 +59,18 @@ github "CocoaDebug/CocoaDebug"
 ### Swift
 	
     //Step 1.
-    #if DEBUG || TEST
+    #if DEBUG
         import CocoaDebug
     #endif
 	
     //Step 2.
-    #if DEBUG || TEST
+    #if DEBUG
         CocoaDebug.enable()
     #endif
 
     //Step 3.
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-        #if DEBUG || TEST
+        #if DEBUG
             swiftLog(file, function, line, message, color)
         #endif
     }

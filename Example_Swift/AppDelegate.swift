@@ -8,7 +8,7 @@
 
 import UIKit
 
-//#if DEBUG || TEST
+//#if DEBUG
 //    import CocoaDebug
 //#endif
 
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        #if DEBUG || TEST
+        #if DEBUG
 //            CocoaDebug.serverURL = "google.com" //default value is `nil`
 //            CocoaDebug.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
 //            CocoaDebug.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-    #if DEBUG || TEST
+    #if DEBUG
         swiftLog(file, function, line, message, color)
     #endif
 }
