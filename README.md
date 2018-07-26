@@ -42,7 +42,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'YourTargetName' do
-    pod 'CocoaDebug', :configurations => ['Debug']
+    pod 'CocoaDebug', :configurations => ['Debug','Test']
 end
 ```
 
@@ -52,25 +52,25 @@ end
 github "CocoaDebug/CocoaDebug"
 ```
 
-> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `CocoaDebug.framework`. This [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
+> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `CocoaDebug.framework`. This [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` or `Test` builds only.
 
 ## Usage
 
 ### Swift
 	
     //Step 1.
-    #if DEBUG
+    #if DEBUG || TEST
         import CocoaDebug
     #endif
 	
     //Step 2.
-    #if DEBUG
+    #if DEBUG || TEST
         CocoaDebug.enable()
     #endif
 
     //Step 3.
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-        #if DEBUG
+        #if DEBUG || TEST
             swiftLog(file, function, line, message, color)
         #endif
     }
@@ -79,17 +79,17 @@ github "CocoaDebug/CocoaDebug"
 ### Objective-C
 	
     //Step 1.
-    #ifdef DEBUG
+    #ifdef DEBUG || TEST
         @import CocoaDebug;
     #endif
 	
     //Step 2.
-    #ifdef DEBUG
+    #ifdef DEBUG || TEST
         [CocoaDebug enable];
     #endif
 	
     //Step 3.
-    #ifdef DEBUG
+    #ifdef DEBUG || TEST
         #define NSLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
     #else
         #define NSLog(fmt, ...) nil
