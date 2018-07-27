@@ -101,7 +101,7 @@ github "CocoaDebug/CocoaDebug"
 
 ## Parameter Description
 
-When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`:
+When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`.
 
 - `serverURL` - If the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is nil.
 
