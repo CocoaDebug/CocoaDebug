@@ -27,10 +27,6 @@ iOS Debugging Tool
 
 - You can copy app logs and network logs as you like. (long press the text, then select all or select copy)
 
----
-
-![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png)
-
 - When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
 
 ## Installation
