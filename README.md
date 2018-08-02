@@ -26,7 +26,7 @@
 
 - [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the `Network Details` page.
 
-- [x] Copy logs as you like. (long press the text, then select all or select copy).
+- [x] Copy logs. (long press the text, then select all or select copy).
 
 - [x] Search logs by keyword.
 
