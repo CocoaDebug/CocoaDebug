@@ -16,11 +16,11 @@
 
 - [x] Shake to hide or show the black bubble. (support both device and simulator).
 
-- [x] Long press the black bubble to show UIDebuggingInformationOverlay. (Apple's Private API, support iOS 10/11).
+- [x] Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11).
 
-- [x] Application memory usage and FPS.
+- [x] Application memory usage and `FPS`.
 
-- [x] List all print() and NSLog() messages which have been written by developer in Xcode.
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
 
 - [x] List of all the network requests sent by the application.
 
