@@ -14,13 +14,27 @@
 
 ![example](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/example.gif)
 
-- Shake to hide/show the black bubble. (support both device/simulator)
+- [x] Shake to hide or show the black bubble. (support both device and simulator).
 
-- Long press the black bubble to show UIDebuggingInformationOverlay. (Apple's Private API, support iOS 10/11)
+- [x] Long press the black bubble to show UIDebuggingInformationOverlay. (Apple's Private API, support iOS 10/11).
 
-- You can copy app logs and network logs as you like. (long press the text, then select all or select copy)
+- [x] Application memory usage and FPS.
 
-- When you are in the `Network Details` page, you can shake device or simulator to share network details via email or copy to clipboard.
+- [x] List all print() and NSLog() messages which have been written by developer in Xcode.
+
+- [x] List of all the network requests sent by the application.
+
+- [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the `Network Details` page.
+
+- [x] Support to copy logs as you like. (long press the text, then select all or select copy).
+
+- [x] Support to search logs by keyword.
+
+- [x] List application and device informations, including `version` `build` `bundle name` `bundle id` `screen resolution` `device` `iOS version`
+
+- [x] List all sandbox folders and files, supporting to preview and edit.
+
+- [x] List crash errors. (optional)
 
 ## Installation
 
