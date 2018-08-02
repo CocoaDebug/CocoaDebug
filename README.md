@@ -26,9 +26,9 @@
 
 - [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the `Network Details` page.
 
-- [x] Support to copy logs as you like. (long press the text, then select all or select copy).
+- [x] Copy logs as you like. (long press the text, then select all or select copy).
 
-- [x] Support to search logs by keyword.
+- [x] Search logs by keyword.
 
 - [x] List application and device informations, including `version` `build` `bundle name` `bundle id` `screen resolution` `device` `iOS version`
 
