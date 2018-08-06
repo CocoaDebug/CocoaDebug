@@ -65,15 +65,23 @@
     return _homeTitle;
 }
 
+//liman
 - (UINavigationController *)homeDirectoryNavigationController {
-    if (!_homeDirectoryNavigationController) {
-        SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
-        sandboxViewController.homeDirectory = YES;
-        sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
-        _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
-    }
-    
-    return _homeDirectoryNavigationController;
+    SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
+    sandboxViewController.homeDirectory = YES;
+    sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+    return [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
 }
+
+//- (UINavigationController *)homeDirectoryNavigationController {
+//    if (!_homeDirectoryNavigationController) {
+//        SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
+//        sandboxViewController.homeDirectory = YES;
+//        sandboxViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+//        _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:sandboxViewController];
+//    }
+//
+//    return _homeDirectoryNavigationController;
+//}
 
 @end
