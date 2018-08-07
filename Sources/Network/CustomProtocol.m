@@ -102,12 +102,13 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
 
 #pragma mark -------------------------------------------------------------------------------------
 
-@interface CustomProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-@property (atomic, strong) NSURLConnection  *connection;
-@property (atomic, strong) NSURLResponse    *response;
-@property (atomic, strong) NSMutableData    *data;
-@property (atomic, strong) NSError          *error;
-@property (atomic, assign) NSTimeInterval   startTime;
+@interface CustomProtocol() <NSURLSessionDataDelegate>
+@property (atomic, strong) NSURLSession          *session;
+@property (atomic, strong) NSURLSessionDataTask  *task;
+@property (atomic, strong) NSURLResponse         *response;
+@property (atomic, strong) NSMutableData         *data;
+@property (atomic, strong) NSError               *error;
+@property (atomic, assign) NSTimeInterval        startTime;
 @end
 
 @implementation CustomProtocol
@@ -171,14 +172,17 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     
     NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
     [NSURLProtocol setProperty:@YES forKey:kProtocolKey inRequest:mutableReqeust];
-    self.connection = [NSURLConnection connectionWithRequest:mutableReqeust delegate:self];
+    self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
+    self.task = [self.session dataTaskWithRequest:mutableReqeust];
+    [self.task resume];
 }
 
 - (void)stopLoading
 {
-    if (self.connection) {
-        [self.connection cancel];
-        self.connection = nil;
+    if (self.task) {
+        [self.task cancel];
+        self.task = nil;
+        self.session = nil;
     }
     
     
@@ -251,105 +255,180 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     }
 }
 
-
-
-#pragma mark - NSURLConnectionDelegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    if (!error) {
-        [[self client] URLProtocolDidFinishLoading:self];
-    } else {
-        [[self client] URLProtocol:self didFailWithError:error];
-        self.error = error;
-    }
-}
-
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
-{
-    return YES;
-}
-
-//解決發送IP地址的HTTPS請求 證書驗證
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+#pragma mark - NSURLSessionDataDelegate
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
     if (!challenge) {
         return;
     }
     
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        //構造一個NSURLCredential發送給發起方
+        // 构造一个 NSURLCredential 发送给发送方
         NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
         [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
-        //對於其他驗證方法直接進行處理流程
+        // 对于其他验证方法直接进行处理流程
         [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
     }
 }
 
-#pragma GCC diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
-}
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
-}
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
-{
-    if ([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        return YES;
-    }
-    return NO;
-}
-#pragma GCC diagnostic pop
-
-
-
-#pragma mark - NSURLConnectionDataDelegate
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSURLCacheStoragePolicy cacheStoragePolicy = NSURLCacheStorageNotAllowed;
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
-    }
-    
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
-    self.response = response;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
     [[self client] URLProtocol:self didLoadData:data];
     [self.data appendData:data];
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
-//    [[self client] URLProtocol:self cachedResponseIsValid:cachedResponse];
-    return cachedResponse;
+    NSURLRequestCachePolicy policy = self.request.cachePolicy;
+    
+    self.response = response;
+    
+    if (policy == 0) {
+        [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+    } else {
+        [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    }
+    completionHandler(NSURLSessionResponseAllow);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    [[self client] URLProtocolDidFinishLoading:self];
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error) {
+        [[self client] URLProtocol:self didFailWithError:error];
+        self.error = error;
+    } else {
+        [[self client] URLProtocolDidFinishLoading:self];
+    }
 }
 
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
-{
-    //重定向 状态码 >=300 && < 400
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+    
+    [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+    
     if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         NSInteger status = httpResponse.statusCode;
         if (status >= 300 && status < 400) {
             [self.client URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
-            //记得设置成nil，要不然正常请求会请求两次
+            // 记得设置成nil，要不然正常请求会请求两次
             request = nil;
         }
     }
-    return request;
+    
+    completionHandler(request);
 }
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+    if (error) {
+        [[self client] URLProtocol:self didFailWithError:error];
+        self.error = error;
+    }
+}
+
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
+    [[self client] URLProtocolDidFinishLoading:self];
+}
+
+
+// Deprecated
+//#pragma mark - NSURLConnectionDelegate
+//- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+//{
+//    if (!error) {
+//        [[self client] URLProtocolDidFinishLoading:self];
+//    } else {
+//        [[self client] URLProtocol:self didFailWithError:error];
+//        self.error = error;
+//    }
+//}
+//
+//- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection
+//{
+//    return YES;
+//}
+//
+////解決發送IP地址的HTTPS請求 證書驗證
+//- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+//{
+//    if (!challenge) {
+//        return;
+//    }
+//
+//    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+//        //構造一個NSURLCredential發送給發起方
+//        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+//        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+//    } else {
+//        //對於其他驗證方法直接進行處理流程
+//        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+//    }
+//}
+//
+//#pragma GCC diagnostic push
+//#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+//{
+//    [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
+//}
+//- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+//{
+//    [[self client] URLProtocol:self didCancelAuthenticationChallenge:challenge];
+//}
+//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+//{
+//    if ([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+//        return YES;
+//    }
+//    return NO;
+//}
+//#pragma GCC diagnostic pop
+//
+//
+//
+//#pragma mark - NSURLConnectionDataDelegate
+//- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+//{
+//    NSURLCacheStoragePolicy cacheStoragePolicy = NSURLCacheStorageNotAllowed;
+//    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+//        cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(connection.originalRequest, (NSHTTPURLResponse *) response);
+//    }
+//
+//    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
+//    self.response = response;
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+//{
+//    [[self client] URLProtocol:self didLoadData:data];
+//    [self.data appendData:data];
+//}
+//
+//- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
+//{
+////    [[self client] URLProtocol:self cachedResponseIsValid:cachedResponse];
+//    return cachedResponse;
+//}
+//
+//- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+//{
+//    [[self client] URLProtocolDidFinishLoading:self];
+//}
+//
+//- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
+//{
+//    //重定向 状态码 >=300 && < 400
+//    if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
+//        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//        NSInteger status = httpResponse.statusCode;
+//        if (status >= 300 && status < 400) {
+//            [self.client URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+//            //记得设置成nil，要不然正常请求会请求两次
+//            request = nil;
+//        }
+//    }
+//    return request;
+//}
 
 //- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 //{
