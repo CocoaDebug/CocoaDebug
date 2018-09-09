@@ -324,7 +324,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-5m-zBk">
-                                <rect key="frame" x="15" y="30" width="345" height="627"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -333,13 +333,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fJ8-5m-zBk" secondAttribute="trailing" constant="15" id="FiX-4Y-Gge"/>
-                            <constraint firstItem="fJ8-5m-zBk" firstAttribute="top" secondItem="c6C-WV-dAx" secondAttribute="bottom" constant="10" id="GpR-GT-TSD"/>
-                            <constraint firstItem="fJ8-5m-zBk" firstAttribute="leading" secondItem="W4j-z6-Szm" secondAttribute="leading" constant="15" id="bJx-IF-Ycv"/>
+                            <constraint firstAttribute="trailing" secondItem="fJ8-5m-zBk" secondAttribute="trailing" id="FiX-4Y-Gge"/>
+                            <constraint firstItem="fJ8-5m-zBk" firstAttribute="top" secondItem="c6C-WV-dAx" secondAttribute="bottom" id="GpR-GT-TSD"/>
+                            <constraint firstItem="fJ8-5m-zBk" firstAttribute="leading" secondItem="W4j-z6-Szm" secondAttribute="leading" id="bJx-IF-Ycv"/>
                             <constraint firstItem="1eV-Hh-Qwf" firstAttribute="top" secondItem="W4j-z6-Szm" secondAttribute="top" id="jqw-Xp-4Yq"/>
                             <constraint firstAttribute="trailing" secondItem="1eV-Hh-Qwf" secondAttribute="trailing" id="k2O-fr-Kdg"/>
                             <constraint firstAttribute="bottom" secondItem="1eV-Hh-Qwf" secondAttribute="bottom" id="nmC-Mm-4ZD"/>
-                            <constraint firstItem="5Sw-CP-jT1" firstAttribute="top" secondItem="fJ8-5m-zBk" secondAttribute="bottom" constant="10" id="oXN-XF-YyP"/>
+                            <constraint firstItem="5Sw-CP-jT1" firstAttribute="top" secondItem="fJ8-5m-zBk" secondAttribute="bottom" id="oXN-XF-YyP"/>
                             <constraint firstItem="1eV-Hh-Qwf" firstAttribute="leading" secondItem="W4j-z6-Szm" secondAttribute="leading" id="rBc-go-JO4"/>
                         </constraints>
                     </view>

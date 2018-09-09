@@ -62,19 +62,19 @@ class JsonViewController: UIViewController {
     //MARK: - init
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.hidesBarsOnSwipe = false
+//        navigationController?.hidesBarsOnSwipe = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textView.textContainer.lineFragmentPadding = 0
-        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 15
+//        textView.textContainerInset = .zero
         
         self.title = detailModel?.title
         
