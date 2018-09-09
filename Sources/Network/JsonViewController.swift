@@ -15,7 +15,7 @@ enum EditType {
 import Foundation
 import UIKit
 
-class JsonViewController: UITableViewController {
+class JsonViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
@@ -73,7 +73,6 @@ class JsonViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.tableFooterView = UIView()
         textView.textContainer.lineFragmentPadding = 0
         textView.textContainerInset = .zero
         
