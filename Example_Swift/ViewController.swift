@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         print("hello world")
         print("hello world red", color: .red)
         print("hello world blue", color: UIColor.blue)
-        
+
         testHTTP()
         testRedirect()
     }

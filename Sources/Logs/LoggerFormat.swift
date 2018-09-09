@@ -50,4 +50,21 @@ class LoggerFormat {
         }
         return (stringContent as String, attstr)
     }
+    
+    
+    //liman
+    static func formatStr(_ log: LogModel) -> String {
+        let stringContent = NSMutableString()
+        
+        if let date = log.date {
+            stringContent.append("[\(formatDate(date: date))] ")
+        }
+        if let fileInfoString = log.fileInfo {
+            stringContent.append("\(fileInfoString)\(log.content)")
+        } else {
+            stringContent.append("\(log.content)")
+        }
+        
+        return (stringContent as String)
+    }
 }
