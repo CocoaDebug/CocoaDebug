@@ -184,6 +184,8 @@
 		EAB358C120F1C2FC00993661 /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB3581420F1C2FB00993661 /* NSObject+CocoaDebug.m */; };
 		EAB358C220F1C2FC00993661 /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB3581620F1C2FB00993661 /* WeakProxy.m */; };
 		EAB358C320F1C2FC00993661 /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB3581920F1C2FB00993661 /* FPSLabel.m */; };
+		EAC2925421451301006F07BD /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2925321451300006F07BD /* RevealServer.framework */; };
+		EAC2925521451301006F07BD /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2925321451300006F07BD /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAF58056204E7434001CA56D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF5804D204E7434001CA56D /* AFURLResponseSerialization.m */; };
 		EAF58057204E7434001CA56D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF5804E204E7434001CA56D /* AFHTTPSessionManager.m */; };
 		EAF58058204E7434001CA56D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58050204E7434001CA56D /* AFURLSessionManager.m */; };
@@ -201,6 +203,20 @@
 			remoteInfo = Example_Objc;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAC2925621451301006F07BD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAC2925521451301006F07BD /* RevealServer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +421,7 @@
 		EAB3581720F1C2FB00993661 /* FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSLabel.h; sourceTree = "<group>"; };
 		EAB3581820F1C2FB00993661 /* WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakProxy.h; sourceTree = "<group>"; };
 		EAB3581920F1C2FB00993661 /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
+		EAC2925321451300006F07BD /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
 		EAF58049204E7434001CA56D /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
 		EAF5804A204E7434001CA56D /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		EAF5804B204E7434001CA56D /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
@@ -425,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC2925421451301006F07BD /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +459,7 @@
 		EA165EF3204D2539001472C1 = {
 			isa = PBXGroup;
 			children = (
+				EAC2925321451300006F07BD /* RevealServer.framework */,
 				EAB3575220F1C2FB00993661 /* Sources */,
 				EA165EFE204D2539001472C1 /* Example_Objc */,
 				EA6B27852059689C004D8E05 /* Example_ObjcTests */,
@@ -813,6 +832,7 @@
 				EA165EF8204D2539001472C1 /* Sources */,
 				EA165EF9204D2539001472C1 /* Frameworks */,
 				EA165EFA204D2539001472C1 /* Resources */,
+				EAC2925621451301006F07BD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1244,6 +1264,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Example_Objc/PrefixHeader.pch";
 				INFOPLIST_FILE = Example_Objc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1266,6 +1290,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Example_Objc/PrefixHeader.pch";
 				INFOPLIST_FILE = Example_Objc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

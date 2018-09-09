@@ -189,6 +189,8 @@
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EA72672120F0B7D4004D1D6F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA72671F20F0B7D4004D1D6F /* Info.plist */; };
 		EAB355D520F1ACD000993661 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
+		EAC29250214512A8006F07BD /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2924F214512A8006F07BD /* RevealServer.framework */; };
+		EAC29251214512A8006F07BD /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2924F214512A8006F07BD /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAF55AE320554164003E310F /* CustomProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A620541ACB0071A231 /* CustomProtocol.m */; };
 		EAF55AE420554164003E310F /* HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A820541ACB0071A231 /* HttpModel.m */; };
 		EAF55AE520554164003E310F /* HttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629A920541ACB0071A231 /* HttpDatasource.m */; };
@@ -447,6 +449,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EAC29252214512A8006F07BD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAC29251214512A8006F07BD /* RevealServer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -647,6 +663,7 @@
 		EA72671D20F0B7D4004D1D6F /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		EA72671F20F0B7D4004D1D6F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC2924F214512A8006F07BD /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
 		EAF55AD6205540F0003E310F /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF57FA5204E73C2001CA56D /* TaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
 		EAF57FA6204E73C2001CA56D /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
@@ -749,6 +766,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC29250214512A8006F07BD /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,6 +1069,7 @@
 		EA1659CA204D1B14001472C1 = {
 			isa = PBXGroup;
 			children = (
+				EAC2924F214512A8006F07BD /* RevealServer.framework */,
 				EA0628E120541ACB0071A231 /* Sources */,
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
 				EA72671C20F0B7D4004D1D6F /* CocoaDebug */,
@@ -1323,6 +1342,7 @@
 				EA1659CF204D1B14001472C1 /* Sources */,
 				EA1659D0204D1B14001472C1 /* Frameworks */,
 				EA1659D1204D1B14001472C1 /* Resources */,
+				EAC29252214512A8006F07BD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2020,7 +2040,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SDK_DIR}/usr/include/libxml2",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = Example_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2044,7 +2067,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SDK_DIR}/usr/include/libxml2",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = Example_Swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
