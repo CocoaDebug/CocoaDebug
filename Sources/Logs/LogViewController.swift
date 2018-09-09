@@ -355,9 +355,12 @@ extension LogViewController: UITableViewDelegate {
             model = colorModels[indexPath.row]
         }
         
-        let formatStr = LoggerFormat.formatStr(model)
-        let height = formatStr.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width)
-        return (height + 34) > 5000 ? 5000 : (height + 34)
+//        let formatStr = LoggerFormat.formatStr(model)
+        if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width) {
+            return (height + 34) > 5000 ? 5000 : (height + 34)
+        }
+        
+        return 0
     }
     
     
