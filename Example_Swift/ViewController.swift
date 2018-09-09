@@ -17,8 +17,12 @@ class ViewController: UIViewController {
         print("hello world red", color: .red)
         print("hello world blue", color: UIColor.blue)
         
-        testHTTP()
-        testRedirect()
+//        testHTTP()
+//        testRedirect()
+        
+        HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
+            print(response.text, color: .gray)
+        }
     }
     
     
