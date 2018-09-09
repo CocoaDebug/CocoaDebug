@@ -14,8 +14,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     @IBOutlet weak var closeItem: UIBarButtonItem!
     
-    lazy var formatter: DateFormatter = DateFormatter()
-    
     var httpModel: HttpModel?
     
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
@@ -204,9 +202,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
                 if (startTime as NSString).doubleValue == 0 {
-                    time = formatter.string(from: Date())
+                    time = LoggerFormat.formatDate(date: Date())
                 }else{
-                    time = formatter.string(from: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                    time = LoggerFormat.formatDate(date: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
         }
@@ -283,8 +281,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         closeItem.tintColor = Color.mainGreen
         
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
         //确定request格式(JSON/Form)
         detectRequestSerializer()
             
@@ -382,36 +378,9 @@ extension NetworkDetailViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
-//                as! NetworkCell
-//            cell.httpModel = httpModel
-//            return cell
-//        }
-        
-        //------------------------------------------------------------------------------
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkDetailCell", for: indexPath)
             as! NetworkDetailCell
         cell.detailModel = detailModels[indexPath.row]
-        
-        //1.点击了标题view
-//        cell.tapTitleViewCallback = { [weak self] detailModel in
-//            if let index = self?.detailModels.index(where: { (model_) -> Bool in
-//                return model_.title == detailModel?.title
-//            }) {
-//                if var model = self?.detailModels[index] {
-//                    if model.blankContent == "..." {
-//                        model.blankContent = nil
-//                    }else{
-//                        model.blankContent = "..."
-//                    }
-//                    self?.detailModels.remove(at: index)
-//                    self?.detailModels.insert(model, at: index)
-//                }
-//            }
-//            self?.tableView.reloadData()
-//        }
         
         //2.点击了编辑view
         cell.tapEditViewCallback = { [weak self] detailModel in

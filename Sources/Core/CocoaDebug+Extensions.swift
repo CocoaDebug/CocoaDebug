@@ -234,23 +234,6 @@ extension UIWindow {
     }
 }
 
-///add FPSLabel behind status bar
-extension UIViewController {
-    func addStatusBarBackgroundView(viewController: UIViewController) -> Void {
-//        var rect = CGRect(origin: CGPoint(x: UIScreen.main.bounds.size.width/2.0, y: 0), size:CGSize(width: UIScreen.main.bounds.size.width/2.0, height:20))
-//
-//        if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436 {
-//            //iPhone X
-//            rect.origin.y = 30
-//        }
-//
-//        let label : FPSLabel = FPSLabel.init(frame: rect)
-//        label.adjustsFontSizeToFitWidth = true //sublabel.sizeToFit()
-////        viewController.view?.addSubview(label)
-//        viewController.navigationController?.view.addSubview(label)
-    }
-}
-
 
 ///CocoaDebug
 extension CocoaDebug {

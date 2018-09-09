@@ -18,7 +18,6 @@ class LogCell: UITableViewCell {
             guard let model = model else { return }
             
             labelContent.text = nil
-//            let format = LoggerFormat.format(model)
             labelContent.text = model.str
             labelContent.attributedText = model.attr
             

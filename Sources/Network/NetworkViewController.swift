@@ -72,16 +72,6 @@ class NetworkViewController: UIViewController {
                     guard let firstIn = self?.firstIn else {return}
                     self?.tableView.tableViewScrollToBottom(animated: !firstIn)
                     self?.firstIn = false
-                    
-                    //self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
-                    
-                    /*
-                     //滑动不到最底部, 弃用
-                     if let h1 = self?.tableView.contentSize.height, let h2 = self?.tableView.frame.size.height, let bottom = self?.tableView.contentInset.bottom {
-                     if h1 > h2 {
-                     self?.tableView.setContentOffset(CGPoint.init(x: 0, y: h1-h2+bottom), animated: false)
-                     }
-                     }*/
                 }
             }
         }
@@ -92,13 +82,6 @@ class NetworkViewController: UIViewController {
         super.viewDidLoad()
         
         deleteItem.tintColor = Color.mainGreen
-        
-        //add FPSLabel behind status bar
-        addStatusBarBackgroundView(viewController: self)
-        
-//        UIApplication.shared.statusBarStyle = .lightContent //liman
-//        setNeedsStatusBarAppearanceUpdate()
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil)
         

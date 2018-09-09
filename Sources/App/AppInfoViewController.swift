@@ -26,9 +26,6 @@ class AppInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //add FPSLabel behind status bar
-//        addStatusBarBackgroundView(viewController: self)
-        
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
 
         labelVersionNumber.text = AppInfo.versionNumber

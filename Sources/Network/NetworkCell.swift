@@ -11,8 +11,6 @@ import UIKit
 
 class NetworkCell: UITableViewCell {
     
-    lazy var formatter: DateFormatter = DateFormatter()
-    
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!
     @IBOutlet weak var methodLabel: UILabel!
@@ -53,9 +51,9 @@ class NetworkCell: UITableViewCell {
             //请求时间
             if let startTime = httpModel?.startTime {
                 if (startTime as NSString).doubleValue == 0 {
-                    requestTimeTextView.text = formatter.string(from: Date())
+                    requestTimeTextView.text = LoggerFormat.formatDate(date: Date())
                 }else{
-                    requestTimeTextView.text = formatter.string(from: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                    requestTimeTextView.text = LoggerFormat.formatDate(date: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
             
@@ -102,8 +100,6 @@ class NetworkCell: UITableViewCell {
         
         imageLabel.backgroundColor = Color.mainGreen
         requestTimeTextView.textColor = Color.mainGreen
-        
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         requestTimeTextView.textContainer.lineFragmentPadding = 0
         requestTimeTextView.textContainerInset = .zero

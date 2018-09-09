@@ -24,7 +24,6 @@ class NetworkDetailCell: UITableViewCell {
     //-12.5
     
     
-//    var tapTitleViewCallback:((NetworkDetailModel?) -> Void)?
     var tapEditViewCallback:((NetworkDetailModel?) -> Void)?
     
     var detailModel: NetworkDetailModel? {
@@ -60,27 +59,6 @@ class NetworkDetailCell: UITableViewCell {
             }else{
                 bottomLine.isHidden = true
             }
-            
-            //to JSON
-//            if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
-////                editView.isHidden = false
-//            }else{
-//                if detailModel?.title == "REQUEST" {
-//                    if let content = detailModel?.content {
-//                        if let _ = content.stringToDictionary() {
-//                            //JSON格式
-////                            editView.isHidden = true
-//                        }else{
-//                            //Form格式
-////                            editView.isHidden = false
-//                        }
-//                    }else{
-////                        editView.isHidden = true
-//                    }
-//                }else{
-////                    editView.isHidden = true
-//                }
-//            }
         }
     }
     
@@ -88,21 +66,14 @@ class NetworkDetailCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        titleView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapTitleView)))
         editView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tapEditView)))
         
         contentTextView.textContainer.lineFragmentPadding = 0
         contentTextView.textContainerInset = .zero
     }
     
-    //MARK: - target action
-    //自动隐藏内容
-//    @objc func tapTitleView() {
-//        if let tapTitleViewCallback = tapTitleViewCallback {
-//            tapTitleViewCallback(detailModel)
-//        }
-//    }
     
+    //MARK: - target action
     //编辑
     @objc func tapEditView() {
         if let tapEditViewCallback = tapEditViewCallback {

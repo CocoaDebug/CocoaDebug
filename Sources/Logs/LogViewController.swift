@@ -118,16 +118,6 @@ class LogViewController: UIViewController {
                     guard let firstInDefault = self?.firstInDefault else {return}
                     self?.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
                     self?.firstInDefault = false
-                    
-                    //self?.defaultTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
-                    
-                    /*
-                     //滑动不到最底部, 弃用
-                     if let h1 = self?.tableView.contentSize.height, let h2 = self?.tableView.frame.size.height, let bottom = self?.tableView.contentInset.bottom {
-                     if h1 > h2 {
-                     self?.tableView.setContentOffset(CGPoint.init(x: 0, y: h1-h2+bottom), animated: false)
-                     }
-                     }*/
                 }
             }
         }
@@ -162,16 +152,6 @@ class LogViewController: UIViewController {
                     guard let firstInColor = self?.firstInColor else {return}
                     self?.colorTableView.tableViewScrollToBottom(animated: !firstInColor)
                     self?.firstInColor = false
-                    
-                    //self?.colorTableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
-                    
-                    /*
-                     //滑动不到最底部, 弃用
-                     if let h1 = self?.tableView.contentSize.height, let h2 = self?.tableView.frame.size.height, let bottom = self?.tableView.contentInset.bottom {
-                     if h1 > h2 {
-                     self?.tableView.setContentOffset(CGPoint.init(x: 0, y: h1-h2+bottom), animated: false)
-                     }
-                     }*/
                 }
             }
         }
@@ -183,9 +163,6 @@ class LogViewController: UIViewController {
         
         segmentedControl.tintColor = Color.mainGreen
         deleteItem.tintColor = Color.mainGreen
-        
-        //add FPSLabel behind status bar
-        addStatusBarBackgroundView(viewController: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil)
         
@@ -355,7 +332,7 @@ extension LogViewController: UITableViewDelegate {
             model = colorModels[indexPath.row]
         }
         
-//        let formatStr = LoggerFormat.formatStr(model)
+        
         if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width) {
             return (height + 34) > 5000 ? 5000 : (height + 34)
         }

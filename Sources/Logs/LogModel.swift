@@ -64,7 +64,7 @@ class LogModel {
             attstr.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
         }
         
-        //        return (stringContent as String, attstr)
+        
         self.str = stringContent as String
         self.attr = attstr
     }
