@@ -70,8 +70,8 @@ class CocoaDebugTabBarController: UITabBarController {
             nav.navigationBar.isTranslucent = false
             
             nav.navigationBar.tintColor = Color.mainGreen
-            nav.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
-                                                     NSAttributedStringKey.foregroundColor: Color.mainGreen]
+            nav.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
+                                                     .foregroundColor: Color.mainGreen]
             
             let selector = #selector(CocoaDebugNavigationController.exit)
             

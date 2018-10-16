@@ -215,7 +215,7 @@ extension UITableView {
 
 ///shake
 extension UIWindow {
-    open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         
         if CocoaDebugSettings.shared.responseShakeNetworkDetail == false {return}
         

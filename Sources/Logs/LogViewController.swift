@@ -196,10 +196,10 @@ class LogViewController: UIViewController {
 
         //hide searchBar icon
         let textFieldInsideSearchBar = defaultSearchBar.value(forKey: "searchField") as! UITextField
-        textFieldInsideSearchBar.leftViewMode = UITextFieldViewMode.never
+        textFieldInsideSearchBar.leftViewMode = .never
         
         let textFieldInsideSearchBar2 = colorSearchBar.value(forKey: "searchField") as! UITextField
-        textFieldInsideSearchBar2.leftViewMode = UITextFieldViewMode.never
+        textFieldInsideSearchBar2.leftViewMode = .never
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -420,7 +420,7 @@ extension LogViewController: UITableViewDelegate {
     }
     
     //MARK: - only for ios8/ios9/ios10, not ios11
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -429,7 +429,7 @@ extension LogViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == defaultTableView {
             if (editingStyle == .delete) {
                 LogStoreManager.shared.removeLog(defaultModels[indexPath.row])
