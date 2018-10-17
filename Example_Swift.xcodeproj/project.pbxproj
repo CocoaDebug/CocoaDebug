@@ -187,7 +187,6 @@
 		EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4A2090291000EFDCCD /* FPSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4C2090291000EFDCCD /* WeakProxy.h */; };
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
-		EA72672120F0B7D4004D1D6F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA72671F20F0B7D4004D1D6F /* Info.plist */; };
 		EAB355D520F1ACD000993661 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
 		EAC29250214512A8006F07BD /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2924F214512A8006F07BD /* RevealServer.framework */; };
 		EAC29251214512A8006F07BD /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2924F214512A8006F07BD /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1474,7 +1473,6 @@
 				EA062A8F20541ACB0071A231 /* icon_file_type_jar@3x.png in Resources */,
 				EA062A4B20541ACB0071A231 /* icon_file_type_ipa@2x.png in Resources */,
 				EA062A5B20541ACB0071A231 /* icon_file_type_torrent@2x.png in Resources */,
-				EA72672120F0B7D4004D1D6F /* Info.plist in Resources */,
 				EA062A9220541ACB0071A231 /* icon_file_type_wmv@3x.png in Resources */,
 				EA0629FA20541ACB0071A231 /* icon_file_type_bin@3x.png in Resources */,
 				EA062A1020541ACB0071A231 /* icon_file_type_flv@3x.png in Resources */,
@@ -2054,7 +2052,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Swift/Example_Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2080,7 +2078,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Swift/Example_Swift-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2135,7 +2133,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2162,7 +2160,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

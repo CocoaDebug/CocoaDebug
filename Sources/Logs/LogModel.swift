@@ -50,18 +50,18 @@ class LogModel {
         }
         
         let attstr = NSMutableAttributedString(string: stringContent as String)
-        attstr.addAttribute(NSAttributedStringKey.foregroundColor,
+        attstr.addAttribute(.foregroundColor,
                             value: self.color ?? .white,
                             range: NSMakeRange(0, stringContent.length))
         if let dateLenght = lenghtDate {
             let range = NSMakeRange(0, dateLenght)
-            attstr.addAttribute(NSAttributedStringKey.foregroundColor, value: Color.mainGreen, range: range)
-            attstr.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
+            attstr.addAttribute(.foregroundColor, value: Color.mainGreen, range: range)
+            attstr.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
         }
         if let fileInfoString = self.fileInfo {
             let range = NSMakeRange(startIndex, fileInfoString.count)
-            attstr.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: range)
-            attstr.addAttribute(NSAttributedStringKey.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
+            attstr.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
+            attstr.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
         }
         
         

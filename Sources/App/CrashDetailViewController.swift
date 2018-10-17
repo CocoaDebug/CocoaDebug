@@ -24,7 +24,7 @@ class CrashDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         tableView.delegate = self
 
@@ -42,7 +42,7 @@ class CrashDetailViewController: UITableViewController {
 extension CrashDetailViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

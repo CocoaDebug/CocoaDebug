@@ -260,7 +260,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         //4.image
         if let img = img {
-            if let imageData = UIImagePNGRepresentation(img) {
+            if let imageData = img.pngData() {
                 mailComposeVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "image")
             }
         }

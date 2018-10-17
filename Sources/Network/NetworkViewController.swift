@@ -95,7 +95,7 @@ class NetworkViewController: UIViewController {
         
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
-        textFieldInsideSearchBar.leftViewMode = UITextFieldViewMode.never
+        textFieldInsideSearchBar.leftViewMode = .never
         
         reloadHttp(needScrollToEnd: true)
     }
@@ -245,7 +245,7 @@ extension NetworkViewController: UITableViewDelegate {
     }
     
     //MARK: - only for ios8/ios9/ios10, not ios11
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -254,7 +254,7 @@ extension NetworkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let models = self.models else {return}
             HttpDatasource.shared().remove(models[indexPath.row])

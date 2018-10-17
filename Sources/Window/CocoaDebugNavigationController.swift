@@ -16,8 +16,8 @@ class CocoaDebugNavigationController: UINavigationController {
         navigationBar.isTranslucent = false //liman
         
         navigationBar.tintColor = Color.mainGreen
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
-                                             NSAttributedStringKey.foregroundColor: Color.mainGreen]
+        navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
+                                             .foregroundColor: Color.mainGreen]
 
         let selector = #selector(CocoaDebugNavigationController.exit)
         

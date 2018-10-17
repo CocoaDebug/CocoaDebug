@@ -35,7 +35,7 @@ extension NetworkingImage {
         #if os(OSX)
             return data(.PNG)
         #else
-            return UIImagePNGRepresentation(self)
+        return self.pngData()
         #endif
     }
 
@@ -43,7 +43,7 @@ extension NetworkingImage {
         #if os(OSX)
             return data(.JPEG)
         #else
-            return UIImageJPEGRepresentation(self, 1)
+            return  self.jpegData(compressionQuality: 1)
         #endif
     }
 }
