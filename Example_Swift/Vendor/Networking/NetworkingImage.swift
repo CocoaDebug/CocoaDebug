@@ -31,7 +31,7 @@ extension NetworkingImage {
         }
     #endif
 
-    func pngData() -> Data? {
+    func png_Data() -> Data? {
         #if os(OSX)
             return data(.PNG)
         #else
