@@ -1,3 +1,6 @@
+before_install:
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
 osx_image: xcode10.0
 language: objective-c
 xcode_project: Example_Swift.xcodeproj
