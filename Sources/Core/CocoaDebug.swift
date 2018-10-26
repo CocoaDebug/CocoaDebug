@@ -30,7 +30,7 @@ import Foundation
     @objc public static var mainColor: String = "#42d459"
     ///whether to disable the monitoring of Xcode logs in app. default value is `false`.
     @objc public static var disableLogMonitoring: Bool = false
-    ///whether to disable the monitoring of network in app. default value is `false`.
+    ///whether to disable the monitoring of networks in app. default value is `false`.
     @objc public static var disableNetworkMonitoring: Bool = false
     
     //MARK: - CocoaDebug enable

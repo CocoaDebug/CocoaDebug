@@ -124,6 +124,10 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `mainColor` - Set the main color with hexadecimal format. default value is #42d459.
 
+- `disableLogMonitoring` - Whether to disable the monitoring of Xcode logs in app. default value is `false`.
+
+- `disableNetworkMonitoring` - Whether to disable the monitoring of networks in app. default value is `false`.
+
 ## TODO
 
 - [Unit Testing](https://codecov.io/gh/CocoaDebug/CocoaDebug)
