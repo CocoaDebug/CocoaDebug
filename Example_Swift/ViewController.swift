@@ -72,9 +72,9 @@ class ViewController: UIViewController {
         }
         
         //5.large response data
-        HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
-            print(response.text, color: .gray)
-        }
+//        HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
+//            print(response.text, color: .gray)
+//        }
     }
     
     

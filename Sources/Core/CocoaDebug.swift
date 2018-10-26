@@ -28,10 +28,14 @@ import Foundation
     @objc public static var emailCcRecipients: [String]? = nil
     ///set the main color with hexadecimal format. default value is `#42d459`.
     @objc public static var mainColor: String = "#42d459"
+    ///whether to disable the monitoring of Xcode logs in app. default value is `false`.
+    @objc public static var disableLogMonitoring: Bool = false
+    ///whether to disable the monitoring of network in app. default value is `false`.
+    @objc public static var disableNetworkMonitoring: Bool = false
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, disableLogMonitoring: disableLogMonitoring, disableNetworkMonitoring: disableNetworkMonitoring)
     }
     
     //MARK: - CocoaDebug disable

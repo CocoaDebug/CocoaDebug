@@ -54,12 +54,34 @@ class CocoaDebugTabBarController: UITabBarController {
         
         //3.
         guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
-            self.viewControllers = [logs, network, app, sandbox]
+//            self.viewControllers = [logs, network, app, sandbox]
+            if CocoaDebug.disableLogMonitoring == true && CocoaDebug.disableNetworkMonitoring == false {
+                self.viewControllers = [network, app, sandbox]
+            }
+            else if CocoaDebug.disableLogMonitoring == false && CocoaDebug.disableNetworkMonitoring == true {
+                self.viewControllers = [logs, app, sandbox]
+            }
+            else if CocoaDebug.disableLogMonitoring == true && CocoaDebug.disableNetworkMonitoring == true {
+                self.viewControllers = [app, sandbox]
+            }
+            else{
+                self.viewControllers = [logs, network, app, sandbox]
+            }
             return
         }
         
         //4.添加额外的控制器
         var temp = [logs, network, app, sandbox]
+        
+        if CocoaDebug.disableLogMonitoring == true && CocoaDebug.disableNetworkMonitoring == false {
+            temp = [network, app, sandbox]
+        }
+        else if CocoaDebug.disableLogMonitoring == false && CocoaDebug.disableNetworkMonitoring == true {
+            temp = [logs, app, sandbox]
+        }
+        else if CocoaDebug.disableLogMonitoring == true && CocoaDebug.disableNetworkMonitoring == true {
+            temp = [app, sandbox]
+        }
         
         for vc in tabBarControllers {
             

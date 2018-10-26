@@ -30,6 +30,8 @@
 //        CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"]; //default value is `nil`
 //        CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"]; //default value is `nil`
 //        CocoaDebug.mainColor = @"#fd9727"; //default value is `#42d459`
+//        CocoaDebug.disableLogMonitoring = YES; //default value is `NO`
+//        CocoaDebug.disableNetworkMonitoring = YES; //default value is `NO`
         [CocoaDebug enable];
     #endif
     
