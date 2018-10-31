@@ -15,7 +15,7 @@ typedef enum {
 
 @interface HttpModel : NSObject
 
-@property (nonatomic,copy)NSURL     *url;
+@property (nonatomic,strong)NSURL   *url;
 @property (nonatomic,copy)NSData    *requestData;
 @property (nonatomic,copy)NSData    *responseData;
 @property (nonatomic,copy)NSString  *requestId;

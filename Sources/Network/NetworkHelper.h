@@ -19,11 +19,11 @@
 /**
  *  设置只抓取的域名,忽略大小写,默认抓取所有
  */
-@property (nonatomic, strong) NSArray<NSString *> *onlyURLs;
+@property (nonatomic, copy) NSArray<NSString *> *onlyURLs;
 /**
  *  设置不抓取的域名,忽略大小写,默认抓取所有
  */
-@property (nonatomic, strong) NSArray<NSString *> *ignoredURLs;
+@property (nonatomic, copy) NSArray<NSString *> *ignoredURLs;
 /**
  *  日志最大数量,默认`500`
  */

@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, MLBFileType) {
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *extension;
 @property (nonatomic, copy) NSString *modificationDateText;
-@property (nonatomic, strong) NSDictionary<NSString *, id> *attributes;
+@property (nonatomic, copy) NSDictionary<NSString *, id> *attributes;
 
 @property (nonatomic, assign) MLBFileType type;
 @property (nonatomic, assign, readonly) BOOL isDirectory;

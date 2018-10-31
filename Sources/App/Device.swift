@@ -33,6 +33,9 @@ struct Device {
         case .iPadMini, .iPadMini2, .iPadMini3, .iPadMini4:                     return 7.9
         case .iPadPro:                                                          return 12.9
         case .iPhoneX:                                                          return 5.8
+        case .iPhoneXS:                                                         return 5.8
+        case .iPhoneXSMax:                                                      return 6.5
+        case .iPhoneXR:                                                         return 6.1
         case .unknown, .simulator:                                              return 0
         }
     }

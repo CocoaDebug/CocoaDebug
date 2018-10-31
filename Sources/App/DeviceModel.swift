@@ -44,6 +44,9 @@ enum DeviceModel {
     case iPhone8
     case iPhone8Plus
     case iPhoneX
+    case iPhoneXS
+    case iPhoneXSMax
+    case iPhoneXR
 
     static var current: DeviceModel {
         var systemInfo = utsname()
@@ -85,6 +88,9 @@ enum DeviceModel {
         case "iPhone10,1", "iPhone10,4":                 return .iPhone8
         case "iPhone10,2", "iPhone10,5":                 return .iPhone8Plus
         case "iPhone10,3", "iPhone10,6":                 return .iPhoneX
+        case "iPhone11,2":                               return .iPhoneXS
+        case "iPhone11,4", "iPhone11,6":                 return .iPhoneXSMax
+        case "iPhone11,8":                               return .iPhoneXR
         default:                                         return .unknown
         }
     }

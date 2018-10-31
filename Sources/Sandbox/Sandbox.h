@@ -14,7 +14,7 @@
 @property (class, nonatomic, readonly, strong) Sandbox *shared;
 
 @property (nonatomic, assign, getter=isSystemFilesHidden) BOOL systemFilesHidden; // Default is YES
-@property (nonatomic, copy) NSURL *homeFileURL; // Default is Home Directory
+@property (nonatomic, strong) NSURL *homeFileURL; // Default is Home Directory
 @property (nonatomic, copy) NSString *homeTitle; // Default is `Sandbox`
 
 @property (nonatomic, assign, getter=isExtensionHidden) BOOL extensionHidden; // Default is NO
