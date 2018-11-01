@@ -14,27 +14,27 @@
 
 ![example](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/example.gif)
 
-- [x] Shake to hide or show the black bubble. (support both device and simulator).
+- [x] Shake to hide or show the black bubble. (support both device and simulator)
 
-- [x] Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11).
+- [x] Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)
 
 - [x] Application memory usage and `FPS`.
 
-- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (**optional**)
 
-- [x] List of all the network requests sent by the application.
+- [x] List of all the network requests sent by the application. (**optional**)
+
+- [x] List crash errors. (**optional**)
 
 - [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the `Network Details` page.
 
-- [x] Copy logs. (long press the text, then select all or select copy).
+- [x] Copy logs. (long press the text, then select all or select copy)
 
 - [x] Search logs by keyword.
 
 - [x] List application and device informations, including `version` `build` `bundle name` `bundle id` `screen resolution` `device` `iOS version`
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
-
-- [x] List crash errors. (optional)
 
 ## Installation
 
@@ -106,27 +106,27 @@ github "CocoaDebug/CocoaDebug"
 
 When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`.
 
-- `serverURL` - If the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is nil.
+- `serverURL` - If the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is **nil**.
 
-- `ignoredURLs` - Set the URLs which should not crawled, ignoring case, crawl all URLs when the value is nil. default value is nil.
+- `ignoredURLs` - Set the URLs which should not crawled, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
 
-- `onlyURLs` - Set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is nil.
+- `onlyURLs` - Set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
 
-- `tabBarControllers` - Set controllers to be added as child controllers of UITabBarController. default value is nil.
+- `tabBarControllers` - Set controllers to be added as child controllers of UITabBarController. default value is **nil**.
 
-- `recordCrash` - Whether to allow the recording of crash logs in app. default value is false.
+- `logMaxCount` - The maximum count of logs which CocoaDebug display. default value is **500**.
 
-- `logMaxCount` - The maximum count of logs which CocoaDebug display. default value is 500.
+- `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. default value is **nil**.
 
-- `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. default value is nil.
+- `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is **nil**.
 
-- `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is nil.
+- `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
 
-- `mainColor` - Set the main color with hexadecimal format. default value is #42d459.
+- `disableLogMonitoring` - Whether to disable the monitoring of Xcode logs in app. default value is **false**.
 
-- `disableLogMonitoring` - Whether to disable the monitoring of Xcode logs in app. default value is `false`.
+- `disableNetworkMonitoring` - Whether to disable the monitoring of networks in app. default value is **false**.
 
-- `disableNetworkMonitoring` - Whether to disable the monitoring of networks in app. default value is `false`.
+- `recordCrash` - Whether to allow the recording of crash logs in app. default value is **false**.
 
 ## TODO
 
