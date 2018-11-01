@@ -18,7 +18,7 @@
 
 - [x] Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)
 
-- [x] Application memory usage and `FPS`.
+- [x] Application memory usage and *FPS*.
 
 - [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (**optional**)
 
@@ -26,13 +26,13 @@
 
 - [x] List crash errors. (**optional**)
 
-- [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the `Network Details` page.
+- [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the *Network Details* page.
 
 - [x] Copy logs. (long press the text, then select all or select copy)
 
 - [x] Search logs by keyword.
 
-- [x] List application and device informations, including `version` `build` `bundle name` `bundle id` `screen resolution` `device` `iOS version`
+- [x] List application and device informations, including: *version*, *build*, *bundle name*, *bundle id*, *screen resolution*, *device*, *iOS version*
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
