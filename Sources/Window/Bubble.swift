@@ -13,6 +13,9 @@ protocol BubbleDelegate: class {
     func didTapBubble()
 }
 
+//https://httpstatuses.com/
+private let _successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
 
@@ -187,7 +190,9 @@ class Bubble: UIView {
         self.addGestureRecognizer(panGesture)
         
         //网络通知
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.reloadHttp_notification(notification)
+        }        
         
         //内存监控
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)
@@ -211,10 +216,7 @@ class Bubble: UIView {
         guard let userInfo = notification.userInfo else {return}
         let statusCode = userInfo["statusCode"] as? String
         
-        //https://httpstatuses.com/
-        let successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
-        
-        if successStatusCodes.contains(statusCode ?? "") {
+        if _successStatusCodes.contains(statusCode ?? "") {
             initLabelEvent("🚀", true)
             initLabelEvent("🚀", false)
         }

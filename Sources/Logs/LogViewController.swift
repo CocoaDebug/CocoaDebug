@@ -164,7 +164,9 @@ class LogViewController: UIViewController {
         segmentedControl.tintColor = Color.mainGreen
         deleteItem.tintColor = Color.mainGreen
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
+            self?.refreshLogs_notification()
+        }
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self

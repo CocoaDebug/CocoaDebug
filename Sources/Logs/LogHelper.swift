@@ -34,8 +34,6 @@ public class LogHelper: NSObject {
         let newLog = LogModel(content: stringContent, color: color, fileInfo: fileInfo)
         LogStoreManager.shared.addLog(newLog)
         
-        dispatch_main_async_safe {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
-        }
+        NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
     }
 }

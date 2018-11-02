@@ -224,9 +224,7 @@ extension UIWindow {
 //        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
         if motion == .motionShake {
             if CocoaDebugSettings.shared.visible == true {
-                dispatch_main_async_safe {
-                    NotificationCenter.default.post(name: NSNotification.Name("motionShake_CocoaDebug"), object: nil, userInfo: nil)
-                }
+                NotificationCenter.default.post(name: NSNotification.Name("motionShake_CocoaDebug"), object: nil, userInfo: nil)
                 return
             }
             CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow

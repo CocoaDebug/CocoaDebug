@@ -206,9 +206,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     
     if ([[HttpDatasource shared] addHttpRequset:model])
     {
-        dispatch_main_async_safe(^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_CocoaDebug" object:nil userInfo:@{@"statusCode":model.statusCode}];
-        })
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_CocoaDebug" object:nil userInfo:@{@"statusCode":model.statusCode}];
     }
 }
 
@@ -772,9 +770,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
  
  if ([[HttpDatasource shared] addHttpRequset:model])
  {
- dispatch_main_async_safe(^{
  [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_CocoaDebug" object:nil userInfo:@{@"statusCode":model.statusCode}];
- })
  }
  }
  
