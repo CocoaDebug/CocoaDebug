@@ -197,7 +197,7 @@ class Bubble: UIView {
         //内存监控
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)
         guard let timer = timer else {return}
-        RunLoop.current.add(timer, forMode: .default)
+        RunLoop.current.add(timer, forMode: .common)
     }
     
     required init?(coder aDecoder: NSCoder) {
