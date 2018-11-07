@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BC2E48A2192B58D00E589E3 /* CocoaDebug+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2E4892192B58D00E589E3 /* CocoaDebug+Extension.m */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
 		EA165F04204D2539001472C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F03204D2539001472C1 /* ViewController.m */; };
 		EA165F07204D2539001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F05204D2539001472C1 /* Main.storyboard */; };
@@ -219,6 +220,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1BC2E4882192B58D00E589E3 /* CocoaDebug+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaDebug+Extension.h"; sourceTree = "<group>"; };
+		1BC2E4892192B58D00E589E3 /* CocoaDebug+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CocoaDebug+Extension.m"; sourceTree = "<group>"; };
 		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA165EFF204D2539001472C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA165F00204D2539001472C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -528,6 +531,8 @@
 				EAB3575520F1C2FB00993661 /* CocoaDebugSettings.swift */,
 				EAB3575620F1C2FB00993661 /* CocoaDebug.h */,
 				EAB3575720F1C2FB00993661 /* CocoaDebug+Extensions.swift */,
+				1BC2E4882192B58D00E589E3 /* CocoaDebug+Extension.h */,
+				1BC2E4892192B58D00E589E3 /* CocoaDebug+Extension.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1057,6 +1062,7 @@
 				EAB358B720F1C2FC00993661 /* Swizzling.m in Sources */,
 				EAB358AD20F1C2FC00993661 /* LogViewController.swift in Sources */,
 				EAB358A320F1C2FC00993661 /* NetworkHelper.m in Sources */,
+				1BC2E48A2192B58D00E589E3 /* CocoaDebug+Extension.m in Sources */,
 				EAB3581D20F1C2FB00993661 /* AppInfoViewController.swift in Sources */,
 				EAB358A620F1C2FC00993661 /* CustomProtocol.m in Sources */,
 				EAB358A820F1C2FC00993661 /* NetworkDetailViewController.swift in Sources */,

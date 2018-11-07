@@ -42,26 +42,8 @@ import Foundation
     @objc public static func disable() {
         deinitializationMethod()
     }
-    
-    //MARK: - objcLog() usage only for Objective-C
-    @objc public static func objcHandleLog(_ file: String = #file,
-                                           _ function: String = #function,
-                                           _ line: Int = #line,
-                                           _ message: Any,
-                                           _ color: UIColor) {
-        LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
-    }
-    
-    @objc public static func objcLog(_ file: String = #file,
-                                     _ function: String = #function,
-                                     _ line: Int = #line,
-                                     _ message: Any,
-                                     _ color: UIColor) {
-        Swift.print(message)
-        LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
-    }
-}
 
+}
 
 //MARK: - swiftLog() usage only for Swift
 public func swiftHandleLog<T>(_ file: String = #file,

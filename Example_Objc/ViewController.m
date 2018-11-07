@@ -39,7 +39,7 @@
         if (error) {
             NSLog(error.localizedDescription);
         } else {
-            NSLog(response);
+            NSLog(@"%@",response);
             NSLog(responseObject);
         }
     }];
@@ -69,7 +69,7 @@
         if(httpResponse.statusCode == 200) {
             NSError *parseError = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            BlueLog(responseDictionary);
+            BlueLog(@"%@",responseDictionary);
         }else{
             BlueLog(error.localizedDescription);
         }
