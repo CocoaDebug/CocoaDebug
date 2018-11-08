@@ -14,8 +14,7 @@
 
 //----------------- white log (default) -----------------
 #ifdef DEBUG
-
-#define NSLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+#define CocoaLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
@@ -23,25 +22,25 @@
 
 //----------------- red log -----------------
 #ifdef DEBUG
-#define RedLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
+#define CocoaLogRed(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
 #else
-#define RedLog(fmt, ...) nil
+#define NSLog(fmt, ...) nil
 #endif
 
 
 //----------------- blue log -----------------
 #ifdef DEBUG
-#define BlueLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
+#define CocoaLogBlue(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
 #else
-#define BlueLog(fmt, ...) nil
+#define NSLog(fmt, ...) nil
 #endif
 
 
 //----------------- yellow log -----------------
 #ifdef DEBUG
-#define YellowLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
+#define CocoaLogYellow(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
 #else
-#define YellowLog(fmt, ...) nil
+#define NSLog(fmt, ...) nil
 #endif
 
 
