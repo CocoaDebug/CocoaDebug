@@ -7,13 +7,15 @@
 //
 
 #import "Example_Objc-Swift.h"
+#import "CocoaDebug+Extension.h"
 
 #pragma clang diagnostic ignored "-Wunused-value"
 
 
 //----------------- white log (default) -----------------
 #ifdef DEBUG
-#define NSLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+
+#define NSLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
@@ -21,7 +23,7 @@
 
 //----------------- red log -----------------
 #ifdef DEBUG
-#define RedLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
+#define RedLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define RedLog(fmt, ...) nil
 #endif
@@ -29,7 +31,7 @@
 
 //----------------- blue log -----------------
 #ifdef DEBUG
-#define BlueLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
+#define BlueLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define BlueLog(fmt, ...) nil
 #endif
@@ -37,7 +39,7 @@
 
 //----------------- yellow log -----------------
 #ifdef DEBUG
-#define YellowLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor yellowColor]]
+#define YellowLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define YellowLog(fmt, ...) nil
 #endif

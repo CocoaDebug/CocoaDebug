@@ -12,7 +12,7 @@ public class LogHelper: NSObject {
     
     var enable: Bool = true
     
-    static let shared = LogHelper()
+    @objc static let shared = LogHelper()
     private override init() {}
     
     fileprivate func parseFileInfo(file: String?, function: String?, line: Int?) -> String? {
@@ -22,16 +22,29 @@ public class LogHelper: NSObject {
 
     func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
         
-        if enable == false {return}
-        
-        //1.
-        let fileInfo = parseFileInfo(file: file, function: function, line: line)
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"
         }
         
+        commonHandleLog(file: file, function: function, line: (line ?? 0), message: stringContent, color: color)
+    }
+    
+    @objc func objcHandleLog(file: String?, function: String?, line: Int, message: String, color: UIColor?) {
+        
+        commonHandleLog(file: file, function: function, line: line, message: message, color: color)
+    }
+    
+    private func commonHandleLog(file: String?, function: String?, line: Int, message: String, color: UIColor?) {
+        
+        guard enable else {
+            return
+        }
+        
+        //1.
+        let fileInfo = parseFileInfo(file: file, function: function, line: line)
+        
         //2.
-        let newLog = LogModel(content: stringContent, color: color, fileInfo: fileInfo)
+        let newLog = LogModel(content: message, color: color, fileInfo: fileInfo)
         LogStoreManager.shared.addLog(newLog)
         
         NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
