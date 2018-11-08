@@ -14,21 +14,31 @@
                function:(NSString *)function
                    line:(NSUInteger)line
                   color:(UIColor *)color
-                message:(NSString *)format, ... {
+                message:(NSString *)format, ...
+{
     va_list args;
     
-    if (format) {
-        va_start(args, format);
+    if (format)
+    {
+        if ([format isKindOfClass:[NSString class]])
+        {
+            va_start(args, format);
+            
+            NSString *wholeMsg = [[NSString alloc] initWithFormat:format arguments:args];
+            
+            va_end(args);
+            
+            va_start(args, format);
+            
+            [LogHelper.shared objcHandleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:wholeMsg color:color];
+            
+            va_end(args);
+        }
+        else
+        {
+            [LogHelper.shared objcHandleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color];
+        }
         
-        NSString *wholeMsg = [[NSString alloc] initWithFormat:format arguments:args];
-        
-        va_end(args);
-        
-        va_start(args, format);
-        
-        [LogHelper.shared objcHandleLogWithFile:[NSString stringWithUTF8String:file]  function:function line:line message:wholeMsg color:color];
-        
-        va_end(args);
     }
 }
 
