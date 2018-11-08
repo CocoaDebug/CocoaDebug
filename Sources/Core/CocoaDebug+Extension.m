@@ -14,7 +14,7 @@
                function:(NSString *)function
                    line:(NSUInteger)line
                   color:(UIColor *)color
-                message:(NSString *)format, ...
+                message:(id)format, ...
 {
     va_list args;
     

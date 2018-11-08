@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
                function:(NSString *)function
                    line:(NSUInteger)line
                   color:(UIColor *)color
-                message:(NSString *)format, ...;
+                message:(id)format, ...;
 
 @end
 
