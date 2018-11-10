@@ -1,16 +1,15 @@
 //
-//  CocoaDebug+Extension.h
+//  CocoaDebugLog.h
 //  Example_Objc
 //
-//  Created by iCeBlink on 2018/11/7.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 2018/11/10.
+//  Copyright © 2018年 liman. All rights reserved.
 //
 
-NS_ASSUME_NONNULL_BEGIN
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@class CocoaDebug;
-
-@interface CocoaDebug (Extension)
+@interface CocoaDebugLog : NSObject
 
 + (void)objcLogWithFile:(const char *)file
                function:(NSString *)function
@@ -19,5 +18,3 @@ NS_ASSUME_NONNULL_BEGIN
                 message:(id)format, ...;
 
 @end
-
-NS_ASSUME_NONNULL_END

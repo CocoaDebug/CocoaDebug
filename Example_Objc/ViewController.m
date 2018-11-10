@@ -18,9 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CocoaLog(@"hello world");
-    CocoaLogRed(@"hello world red");
-    CocoaLogYellow(@"hello world yellow");
+    NSLog(@"hello world");
+    NSLogRed(@"hello world red");
+    NSLogBlue(@"hello world yellow");
     
     [self testHTTP];
 }
@@ -37,10 +37,10 @@
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            CocoaLog(error.localizedDescription);
+            NSLog(error.localizedDescription);
         } else {
-            CocoaLogBlue(@"%@",response);
-            CocoaLog(responseObject);
+            NSLogBlue(@"%@",response);
+            NSLog(responseObject);
         }
     }];
     [dataTask resume];
@@ -54,9 +54,9 @@
         NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
         NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
         if (error) {
-            CocoaLog(error.localizedDescription);
+            NSLog(error.localizedDescription);
         }else{
-            CocoaLog(responseString);
+            NSLog(responseString);
         }
     });
     
@@ -69,9 +69,9 @@
         if(httpResponse.statusCode == 200) {
             NSError *parseError = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            CocoaLog(@"%@",responseDictionary);
+            NSLog(@"%@",responseDictionary);
         }else{
-            CocoaLog(error.localizedDescription);
+            NSLog(error.localizedDescription);
         }
     }];
     [dataTask_ resume];

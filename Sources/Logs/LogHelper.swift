@@ -30,7 +30,6 @@ public class LogHelper: NSObject {
     }
     
     @objc func objcHandleLog(file: String?, function: String?, line: Int, message: String, color: UIColor?) {
-        NSLog(message)
         commonHandleLog(file: file, function: function, line: line, message: message, color: color)
     }
     
