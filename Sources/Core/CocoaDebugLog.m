@@ -7,7 +7,7 @@
 //
 
 #import "CocoaDebugLog.h"
-#import "Example_Swift-Swift.h"
+//#import "Example_Swift-Swift.h"
 
 @implementation CocoaDebugLog
 

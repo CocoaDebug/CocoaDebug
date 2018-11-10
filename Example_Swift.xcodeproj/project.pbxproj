@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38ED9B572196BF5700371A1C /* CocoaDebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED9B552196BF5700371A1C /* CocoaDebugLog.m */; };
-		38ED9B592196C17800371A1C /* Example_Swift-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 38ED9B582196C17800371A1C /* Example_Swift-Swift.h */; };
 		EA0629E020541ACB0071A231 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */; };
 		EA0629E120541ACB0071A231 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* CocoaDebug.swift */; };
 		EA0629E220541ACB0071A231 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* CocoaDebug+Extensions.swift */; };
@@ -465,9 +463,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38ED9B552196BF5700371A1C /* CocoaDebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugLog.m; sourceTree = "<group>"; };
-		38ED9B562196BF5700371A1C /* CocoaDebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugLog.h; sourceTree = "<group>"; };
-		38ED9B582196C17800371A1C /* Example_Swift-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Example_Swift-Swift.h"; sourceTree = "<group>"; };
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		EA0628E520541ACB0071A231 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -811,9 +806,6 @@
 		EA0628E220541ACB0071A231 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				38ED9B582196C17800371A1C /* Example_Swift-Swift.h */,
-				38ED9B562196BF5700371A1C /* CocoaDebugLog.h */,
-				38ED9B552196BF5700371A1C /* CocoaDebugLog.m */,
 				EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */,
 				EA0628E420541ACB0071A231 /* CocoaDebug.h */,
 				EA0628E520541ACB0071A231 /* CocoaDebug.swift */,
@@ -1328,7 +1320,6 @@
 				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
 				EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */,
 				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
-				38ED9B592196C17800371A1C /* Example_Swift-Swift.h in Headers */,
 				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
 				EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */,
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
@@ -1735,7 +1726,6 @@
 				EAF5801E204E73C3001CA56D /* NSFileManager+Helpers.swift in Sources */,
 				EA062AB520541ACB0071A231 /* WindowHelper.swift in Sources */,
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
-				38ED9B572196BF5700371A1C /* CocoaDebugLog.m in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
 				EA062A9D20541ACB0071A231 /* CustomProtocol.m in Sources */,
