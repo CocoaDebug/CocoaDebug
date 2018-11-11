@@ -20,7 +20,7 @@
 
 - [x] Application memory usage and *FPS*.
 
-- [x] List all `print()` and `CocoaLog()` messages which have been written by developer in Xcode. (**optional**)
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (**optional**)
 
 - [x] List of all the network requests sent by the application. (**optional**)
 
@@ -93,7 +93,7 @@ github "CocoaDebug/CocoaDebug"
 	
     //Step 3.
     #ifdef DEBUG
-        #define CocoaLog(fmt, ...) [CocoaDebug objcLogWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+        #define NSLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
     #else
         #define NSLog(fmt, ...) nil
     #endif
