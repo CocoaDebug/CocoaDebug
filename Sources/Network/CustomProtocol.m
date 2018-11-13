@@ -65,12 +65,12 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
 #pragma mark -------------------------------------------------------------------------------------
 
 @interface CustomProtocol() <NSURLSessionDataDelegate>
-@property (atomic, strong) NSURLSession          *session;
-@property (atomic, strong) NSURLSessionDataTask  *task;
-@property (atomic, strong) NSURLResponse         *response;
-@property (atomic, strong) NSMutableData         *data;
-@property (atomic, strong) NSError               *error;
-@property (atomic, assign) NSTimeInterval        startTime;
+@property (nonatomic, strong) NSURLSession          *session;
+@property (nonatomic, strong) NSURLSessionDataTask  *task;
+@property (nonatomic, strong) NSURLResponse         *response;
+@property (nonatomic, strong) NSMutableData         *data;
+@property (nonatomic, strong) NSError               *error;
+@property (nonatomic, assign) NSTimeInterval        startTime;
 @end
 
 @implementation CustomProtocol
@@ -628,11 +628,11 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
  #pragma mark -------------------------------------------------------------------------------------
  
  @interface CustomProtocol() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
- @property (atomic, strong) NSURLConnection  *connection;
- @property (atomic, strong) NSURLResponse    *response;
- @property (atomic, strong) NSMutableData    *data;
- @property (atomic, strong) NSError          *error;
- @property (atomic, assign) NSTimeInterval   startTime;
+ @property (nonatomic, strong) NSURLConnection  *connection;
+ @property (nonatomic, strong) NSURLResponse    *response;
+ @property (nonatomic, strong) NSMutableData    *data;
+ @property (nonatomic, strong) NSError          *error;
+ @property (nonatomic, assign) NSTimeInterval   startTime;
  @end
  
  @implementation CustomProtocol
