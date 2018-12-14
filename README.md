@@ -93,7 +93,7 @@ github "CocoaDebug/CocoaDebug"
 	
     //Step 3.
     #ifdef DEBUG
-        #define NSLog(fmt, ...) [CocoaDebugObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+        #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
     #else
         #define NSLog(fmt, ...) nil
     #endif
