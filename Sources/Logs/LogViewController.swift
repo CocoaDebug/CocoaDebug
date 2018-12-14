@@ -101,7 +101,9 @@ class LogViewController: UIViewController {
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
-            defaultModels = OCLogStoreManager.shared().defaultLogArray as! [OCLogModel]
+            if let arr = OCLogStoreManager.shared().defaultLogArray {
+                defaultModels = arr as! [OCLogModel]
+            }
             
             self.defaultCacheModels = self.defaultModels
             
@@ -135,7 +137,9 @@ class LogViewController: UIViewController {
             
             if needReloadData == false && colorModels.count > 0 {return}
             
-            colorModels = OCLogStoreManager.shared().colorLogArray as! [OCLogModel]
+            if let arr = OCLogStoreManager.shared().colorLogArray {
+                colorModels = arr as! [OCLogModel]
+            }
             
             self.colorCacheModels = self.colorModels
             
