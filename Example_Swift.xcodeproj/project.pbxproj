@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
+		3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */; };
 		EA0629E020541ACB0071A231 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */; };
 		EA0629E120541ACB0071A231 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* CocoaDebug.swift */; };
 		EA0629E220541ACB0071A231 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* CocoaDebug+Extensions.swift */; };
@@ -463,6 +465,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3803440121C3BEF100BC1CE2 /* OCLogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLogHelper.m; sourceTree = "<group>"; };
+		3803440221C3BEF100BC1CE2 /* OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogHelper.h; sourceTree = "<group>"; };
+		3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugObjcLog.m; sourceTree = "<group>"; };
+		3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugObjcLog.h; sourceTree = "<group>"; };
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		EA0628E520541ACB0071A231 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -1001,10 +1007,14 @@
 		EA0629B420541ACB0071A231 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
+				EA0629B820541ACB0071A231 /* LogHelper.swift */,
+				3803440221C3BEF100BC1CE2 /* OCLogHelper.h */,
+				3803440121C3BEF100BC1CE2 /* OCLogHelper.m */,
+				3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */,
+				3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */,
 				EA0629B520541ACB0071A231 /* LogStoreManager.swift */,
 				EA0629B620541ACB0071A231 /* LogCell.swift */,
 				EA0629B720541ACB0071A231 /* LogViewController.swift */,
-				EA0629B820541ACB0071A231 /* LogHelper.swift */,
 				EA0629B920541ACB0071A231 /* LogModel.swift */,
 				EA0629BA20541ACB0071A231 /* LoggerFormat.swift */,
 			);
@@ -1718,6 +1728,7 @@
 				EAF5802F204E73C3001CA56D /* ASIHTTPRequestClient.m in Sources */,
 				EA062A9F20541ACB0071A231 /* HttpModel.m in Sources */,
 				EAF58029204E73C3001CA56D /* FormDataPart.swift in Sources */,
+				3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */,
 				EA062AA520541ACB0071A231 /* NetworkDetailCell.swift in Sources */,
 				EAF58033204E73C3001CA56D /* ASICloudFilesContainerRequest.m in Sources */,
 				EAF5802A204E73C3001CA56D /* Request2.swift in Sources */,
@@ -1784,6 +1795,7 @@
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
+				3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
 				EA062AA720541ACB0071A231 /* LogStoreManager.swift in Sources */,

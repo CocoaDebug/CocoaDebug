@@ -276,9 +276,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.recordCrash = recordCrash
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         
-//        LogHelper.shared.enable = true
         let _ = LogStoreManager.shared
-//        NetworkHelper.shared().enable()
         CocoaDebugSettings.shared.responseShake = true
         CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
@@ -292,8 +290,10 @@ extension CocoaDebug {
         //log
         if disableLogMonitoring == true {
             LogHelper.shared.enable = false
+            OCLogHelper.shared()?.enable = false
         }else{
             LogHelper.shared.enable = true
+            OCLogHelper.shared()?.enable = true
         }
         
         //network
@@ -309,6 +309,7 @@ extension CocoaDebug {
         WindowHelper.shared.disable()
         NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
+        OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
         CocoaDebugSettings.shared.responseShakeNetworkDetail = false

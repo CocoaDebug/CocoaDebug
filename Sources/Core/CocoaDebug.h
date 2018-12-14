@@ -8,6 +8,7 @@
 
 #import "Sandbox.h"
 #import "FPSLabel.h"
+#import "OCLogHelper.h"
 #import "NetworkHelper.h"
 #import "NSObject+CocoaDebug.h"
 
