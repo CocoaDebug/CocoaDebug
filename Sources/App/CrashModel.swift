@@ -43,7 +43,7 @@ class CrashModel: NSObject, NSCoding {
     
     func toString() -> String {
         let stringContent = NSMutableString()
-        stringContent.append("Date: \(LoggerFormat.formatDate(date: date))\n")
+        stringContent.append("Date: \(String(describing: OCLoggerFormat.formatDate(date)))\n")
         stringContent.append("Name:   \(name ?? "N/A")\n")
         stringContent.append("Reason: \(reason ?? "N/A")\n")
         

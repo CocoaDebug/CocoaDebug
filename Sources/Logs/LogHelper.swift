@@ -39,9 +39,11 @@ public class LogHelper: NSObject {
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         
         //2.
-        let newLog = LogModel(content: message, color: color, fileInfo: fileInfo)
-        LogStoreManager.shared.addLog(newLog)
+        if let newLog = OCLogModel.init(content: message, color: color, fileInfo: fileInfo, isTag: false) {
+            OCLogStoreManager.shared().addLog(newLog)
+        }
         
+        //3.
         NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
     }
 }

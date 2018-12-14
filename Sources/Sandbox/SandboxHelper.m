@@ -14,6 +14,7 @@
     static NSDateFormatter *_fileModificationDateFormatter;
     if (!_fileModificationDateFormatter) {
         _fileModificationDateFormatter = [[NSDateFormatter alloc] init];
+        _fileModificationDateFormatter.timeZone = [NSTimeZone systemTimeZone];
         _fileModificationDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     }
     

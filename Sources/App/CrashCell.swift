@@ -20,8 +20,8 @@ class CrashCell: UITableViewCell {
     var crash: CrashModel? {
         didSet {
             guard let crash = crash else {return}
-            let formatDate = LoggerFormat.formatDate(date: crash.date)
-            let content = "\("\(formatDate)\n")\(crash.name ?? "unknown crash")"
+            let formatDate = OCLoggerFormat.formatDate(crash.date)
+            let content = "\("\(String(describing: formatDate))\n")\(crash.name ?? "unknown crash")"
             
             textview.text = content
             let attstr = NSMutableAttributedString(string: content)
@@ -29,7 +29,7 @@ class CrashCell: UITableViewCell {
             attstr.addAttribute(.foregroundColor,
                                 value: UIColor.white, range: NSMakeRange(0, content.count))
             
-            let range = NSMakeRange(0, formatDate.count)
+            let range = NSMakeRange(0, formatDate?.count ?? 0)
             attstr.addAttribute(.foregroundColor, value: Color.mainGreen, range: range)
             attstr.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
             

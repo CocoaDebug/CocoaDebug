@@ -11,7 +11,7 @@
 
 @interface OCLogHelper : NSObject
 
-@property (assign, nonatomic) BOOL enable;
+@property (nonatomic, assign) BOOL enable;
 
 + (instancetype)shared;
 

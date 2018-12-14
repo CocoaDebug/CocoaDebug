@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
 		3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */; };
+		3803440C21C3D54E00BC1CE2 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
+		3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
+		3803441421C3E58800BC1CE2 /* OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */; };
+		38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
+		38F7E6CD21C3F81100A6A503 /* CocoaDebugObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */; };
+		38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */; };
+		38F7E6CF21C3F81100A6A503 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
+		38F7E6D021C3F81100A6A503 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
+		38F7E6D121C3F83100A6A503 /* OCLogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440221C3BEF100BC1CE2 /* OCLogHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F7E6D221C3F83100A6A503 /* CocoaDebugObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F7E6D321C3F83100A6A503 /* OCLogStoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F7E6D421C3F83100A6A503 /* OCLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440A21C3D54E00BC1CE2 /* OCLogModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F7E6D521C3F83100A6A503 /* OCLoggerFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA0629E020541ACB0071A231 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */; };
 		EA0629E120541ACB0071A231 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E520541ACB0071A231 /* CocoaDebug.swift */; };
 		EA0629E220541ACB0071A231 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0628E620541ACB0071A231 /* CocoaDebug+Extensions.swift */; };
@@ -153,12 +166,9 @@
 		EA062AA420541ACB0071A231 /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B020541ACB0071A231 /* NetworkDetailViewController.swift */; };
 		EA062AA520541ACB0071A231 /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B120541ACB0071A231 /* NetworkDetailCell.swift */; };
 		EA062AA620541ACB0071A231 /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B220541ACB0071A231 /* NetworkDetailModel.swift */; };
-		EA062AA720541ACB0071A231 /* LogStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B520541ACB0071A231 /* LogStoreManager.swift */; };
 		EA062AA820541ACB0071A231 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B620541ACB0071A231 /* LogCell.swift */; };
 		EA062AA920541ACB0071A231 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B720541ACB0071A231 /* LogViewController.swift */; };
 		EA062AAA20541ACB0071A231 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B820541ACB0071A231 /* LogHelper.swift */; };
-		EA062AAB20541ACB0071A231 /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B920541ACB0071A231 /* LogModel.swift */; };
-		EA062AAC20541ACB0071A231 /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BA20541ACB0071A231 /* LoggerFormat.swift */; };
 		EA062AAD20541ACB0071A231 /* SandboxHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BC20541ACB0071A231 /* SandboxHelper.m */; };
 		EA062AAE20541ACB0071A231 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BE20541ACB0071A231 /* FileTableViewCell.m */; };
 		EA062AAF20541ACB0071A231 /* FilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BF20541ACB0071A231 /* FilePreviewController.m */; };
@@ -181,13 +191,13 @@
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
 		EA1659DE204D1B14001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DD204D1B14001472C1 /* Assets.xcassets */; };
 		EA1659E1204D1B14001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */; };
-		EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
+		EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
 		EA617D4E2090291000EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
 		EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D4B2090291000EFDCCD /* FPSLabel.m */; };
 		EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA617D492090291000EFDCCD /* WeakProxy.m */; };
 		EA617D5120902FFC00EFDCCD /* FPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4A2090291000EFDCCD /* FPSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4C2090291000EFDCCD /* WeakProxy.h */; };
+		EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = EA617D4C2090291000EFDCCD /* WeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA6B277920596883004D8E05 /* Example_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B277820596883004D8E05 /* Example_SwiftTests.swift */; };
 		EAB355D520F1ACD000993661 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = EA72671E20F0B7D4004D1D6F /* copy_and_codesign.sh */; };
 		EAC29250214512A8006F07BD /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC2924F214512A8006F07BD /* RevealServer.framework */; };
@@ -227,12 +237,9 @@
 		EAF55B062055416F003E310F /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B020541ACB0071A231 /* NetworkDetailViewController.swift */; };
 		EAF55B072055416F003E310F /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B120541ACB0071A231 /* NetworkDetailCell.swift */; };
 		EAF55B082055416F003E310F /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B220541ACB0071A231 /* NetworkDetailModel.swift */; };
-		EAF55B092055416F003E310F /* LogStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B520541ACB0071A231 /* LogStoreManager.swift */; };
 		EAF55B0A2055416F003E310F /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B620541ACB0071A231 /* LogCell.swift */; };
 		EAF55B0B2055416F003E310F /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B720541ACB0071A231 /* LogViewController.swift */; };
 		EAF55B0C2055416F003E310F /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B820541ACB0071A231 /* LogHelper.swift */; };
-		EAF55B0D2055416F003E310F /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629B920541ACB0071A231 /* LogModel.swift */; };
-		EAF55B0E2055416F003E310F /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629BA20541ACB0071A231 /* LoggerFormat.swift */; };
 		EAF55B0F2055416F003E310F /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CD20541ACB0071A231 /* WindowHelper.swift */; };
 		EAF55B102055416F003E310F /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */; };
 		EAF55B112055416F003E310F /* CocoaDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */; };
@@ -242,16 +249,16 @@
 		EAF55B152055416F003E310F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D420541ACB0071A231 /* Color.swift */; };
 		EAF55B162055417C003E310F /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0628E420541ACB0071A231 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B172055417C003E310F /* HttpModel.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AD20541ACB0071A231 /* HttpModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B182055417C003E310F /* CustomProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* CustomProtocol.h */; };
+		EAF55B182055417C003E310F /* CustomProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AE20541ACB0071A231 /* CustomProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B192055417C003E310F /* HttpDatasource.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629AF20541ACB0071A231 /* HttpDatasource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629B320541ACB0071A231 /* NetworkHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629BD20541ACB0071A231 /* MLBFileInfo.h */; };
-		EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C220541ACB0071A231 /* FileTableViewCell.h */; };
-		EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C420541ACB0071A231 /* SandboxHelper.h */; };
-		EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C520541ACB0071A231 /* FilePreviewController.h */; };
+		EAF55B1B2055417C003E310F /* MLBFileInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629BD20541ACB0071A231 /* MLBFileInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C220541ACB0071A231 /* FileTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C420541ACB0071A231 /* SandboxHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C520541ACB0071A231 /* FilePreviewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1F2055417C003E310F /* Sandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C620541ACB0071A231 /* Sandbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; };
-		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; };
+		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B222055417C003E310F /* MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D020541ACB0071A231 /* MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSObject+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B282055435D003E310F /* _icon_file_type_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* _icon_file_type_logs@2x.png */; };
@@ -436,7 +443,7 @@
 		EAF58045204E73C3001CA56D /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58003204E73C2001CA56D /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58006204E73C2001CA56D /* ASIWebPageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EAFA4F9820ADA64600FEFF1E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */; };
-		EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */; };
+		EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAFA4F9A20ADB16E00FEFF1E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */; };
 /* End PBXBuildFile section */
 
@@ -469,6 +476,12 @@
 		3803440221C3BEF100BC1CE2 /* OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogHelper.h; sourceTree = "<group>"; };
 		3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugObjcLog.m; sourceTree = "<group>"; };
 		3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugObjcLog.h; sourceTree = "<group>"; };
+		3803440A21C3D54E00BC1CE2 /* OCLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogModel.h; sourceTree = "<group>"; };
+		3803440B21C3D54E00BC1CE2 /* OCLogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLogModel.m; sourceTree = "<group>"; };
+		3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLoggerFormat.h; sourceTree = "<group>"; };
+		3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLoggerFormat.m; sourceTree = "<group>"; };
+		3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogStoreManager.h; sourceTree = "<group>"; };
+		3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLogStoreManager.m; sourceTree = "<group>"; };
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		EA0628E520541ACB0071A231 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -618,12 +631,9 @@
 		EA0629B120541ACB0071A231 /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
 		EA0629B220541ACB0071A231 /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
 		EA0629B320541ACB0071A231 /* NetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkHelper.h; sourceTree = "<group>"; };
-		EA0629B520541ACB0071A231 /* LogStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogStoreManager.swift; sourceTree = "<group>"; };
 		EA0629B620541ACB0071A231 /* LogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 		EA0629B720541ACB0071A231 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		EA0629B820541ACB0071A231 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
-		EA0629B920541ACB0071A231 /* LogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
-		EA0629BA20541ACB0071A231 /* LoggerFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerFormat.swift; sourceTree = "<group>"; };
 		EA0629BC20541ACB0071A231 /* SandboxHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxHelper.m; sourceTree = "<group>"; };
 		EA0629BD20541ACB0071A231 /* MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileInfo.h; sourceTree = "<group>"; };
 		EA0629BE20541ACB0071A231 /* FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewCell.m; sourceTree = "<group>"; };
@@ -1012,11 +1022,14 @@
 				3803440121C3BEF100BC1CE2 /* OCLogHelper.m */,
 				3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */,
 				3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */,
-				EA0629B520541ACB0071A231 /* LogStoreManager.swift */,
+				3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */,
+				3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */,
 				EA0629B620541ACB0071A231 /* LogCell.swift */,
 				EA0629B720541ACB0071A231 /* LogViewController.swift */,
-				EA0629B920541ACB0071A231 /* LogModel.swift */,
-				EA0629BA20541ACB0071A231 /* LoggerFormat.swift */,
+				3803440A21C3D54E00BC1CE2 /* OCLogModel.h */,
+				3803440B21C3D54E00BC1CE2 /* OCLogModel.m */,
+				3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */,
+				3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -1325,9 +1338,9 @@
 				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
 				EAF55B172055417C003E310F /* HttpModel.h in Headers */,
 				EAF55B192055417C003E310F /* HttpDatasource.h in Headers */,
-				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
-				EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */,
-				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
+				38F7E6D221C3F83100A6A503 /* CocoaDebugObjcLog.h in Headers */,
+				38F7E6D321C3F83100A6A503 /* OCLogStoreManager.h in Headers */,
+				38F7E6D521C3F83100A6A503 /* OCLoggerFormat.h in Headers */,
 				EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */,
 				EAFA4F9920ADB16600FEFF1E /* CacheStoragePolicy.h in Headers */,
 				EA617D5220902FFC00EFDCCD /* WeakProxy.h in Headers */,
@@ -1338,6 +1351,11 @@
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
 				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
+				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
+				38F7E6D421C3F83100A6A503 /* OCLogModel.h in Headers */,
+				EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */,
+				38F7E6D121C3F83100A6A503 /* OCLogHelper.h in Headers */,
+				EAF55B1A2055417C003E310F /* NetworkHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1720,7 +1738,6 @@
 				EA0629E620541ACB0071A231 /* CrashModel.swift in Sources */,
 				EA062AAE20541ACB0071A231 /* FileTableViewCell.m in Sources */,
 				EA617D4D2090291000EFDCCD /* WeakProxy.m in Sources */,
-				EA062AAB20541ACB0071A231 /* LogModel.swift in Sources */,
 				EA062A9E20541ACB0071A231 /* JsonViewController.swift in Sources */,
 				EA062ABE20541ACB0071A231 /* NSObject+CocoaDebug.m in Sources */,
 				EA0629EA20541ACB0071A231 /* CrashListViewController.swift in Sources */,
@@ -1730,6 +1747,7 @@
 				EAF58029204E73C3001CA56D /* FormDataPart.swift in Sources */,
 				3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */,
 				EA062AA520541ACB0071A231 /* NetworkDetailCell.swift in Sources */,
+				3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */,
 				EAF58033204E73C3001CA56D /* ASICloudFilesContainerRequest.m in Sources */,
 				EAF5802A204E73C3001CA56D /* Request2.swift in Sources */,
 				EA062ABC20541ACB0071A231 /* MemoryHelper.m in Sources */,
@@ -1756,7 +1774,6 @@
 				EAF5803F204E73C3001CA56D /* ASIHTTPRequest.m in Sources */,
 				EA062AA820541ACB0071A231 /* LogCell.swift in Sources */,
 				EAF58035204E73C3001CA56D /* ASICloudFilesCDNRequest.m in Sources */,
-				EA062AAC20541ACB0071A231 /* LoggerFormat.swift in Sources */,
 				EAF58025204E73C3001CA56D /* Networking+POST.swift in Sources */,
 				EAF5801C204E73C3001CA56D /* Networking+GET.swift in Sources */,
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
@@ -1789,6 +1806,7 @@
 				EA0629E920541ACB0071A231 /* IgnoredURLsViewController.swift in Sources */,
 				EA062AB320541ACB0071A231 /* Swizzling.m in Sources */,
 				EA062ABA20541ACB0071A231 /* CocoaDebugTabBarController.swift in Sources */,
+				3803441421C3E58800BC1CE2 /* OCLogStoreManager.m in Sources */,
 				EAF58028204E73C3001CA56D /* TestCheck.swift in Sources */,
 				EAF58022204E73C3001CA56D /* JSON.swift in Sources */,
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
@@ -1798,7 +1816,6 @@
 				3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
-				EA062AA720541ACB0071A231 /* LogStoreManager.swift in Sources */,
 				EAF5801D204E73C3001CA56D /* Networking+PUT.swift in Sources */,
 				EAF58024204E73C3001CA56D /* CharacterSet+Encoding.swift in Sources */,
 				EAF58017204E73C3001CA56D /* ResponseSerialization.swift in Sources */,
@@ -1810,6 +1827,7 @@
 				EA0629E220541ACB0071A231 /* CocoaDebug+Extensions.swift in Sources */,
 				EA0629E720541ACB0071A231 /* AppInfo.swift in Sources */,
 				EAF58011204E73C3001CA56D /* Validation.swift in Sources */,
+				3803440C21C3D54E00BC1CE2 /* OCLogModel.m in Sources */,
 				EAF58030204E73C3001CA56D /* Reachability.m in Sources */,
 				EAF5803B204E73C3001CA56D /* ASIS3ObjectRequest.m in Sources */,
 				EAF5800B204E73C3001CA56D /* NetworkReachabilityManager.swift in Sources */,
@@ -1848,6 +1866,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */,
+				38F7E6CD21C3F81100A6A503 /* CocoaDebugObjcLog.m in Sources */,
+				38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */,
+				38F7E6CF21C3F81100A6A503 /* OCLogModel.m in Sources */,
+				38F7E6D021C3F81100A6A503 /* OCLoggerFormat.m in Sources */,
 				EAFA4F9A20ADB16E00FEFF1E /* CacheStoragePolicy.m in Sources */,
 				EA617D4F20902FDB00EFDCCD /* FPSLabel.m in Sources */,
 				EA617D5020902FDB00EFDCCD /* WeakProxy.m in Sources */,
@@ -1872,12 +1895,9 @@
 				EAF55B062055416F003E310F /* NetworkDetailViewController.swift in Sources */,
 				EAF55B072055416F003E310F /* NetworkDetailCell.swift in Sources */,
 				EAF55B082055416F003E310F /* NetworkDetailModel.swift in Sources */,
-				EAF55B092055416F003E310F /* LogStoreManager.swift in Sources */,
 				EAF55B0A2055416F003E310F /* LogCell.swift in Sources */,
 				EAF55B0B2055416F003E310F /* LogViewController.swift in Sources */,
 				EAF55B0C2055416F003E310F /* LogHelper.swift in Sources */,
-				EAF55B0D2055416F003E310F /* LogModel.swift in Sources */,
-				EAF55B0E2055416F003E310F /* LoggerFormat.swift in Sources */,
 				EAF55B0F2055416F003E310F /* WindowHelper.swift in Sources */,
 				EAF55B102055416F003E310F /* CocoaDebugWindow.swift in Sources */,
 				EAF55B112055416F003E310F /* CocoaDebugViewController.swift in Sources */,

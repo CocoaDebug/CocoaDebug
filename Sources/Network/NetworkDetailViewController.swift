@@ -202,9 +202,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
                 if (startTime as NSString).doubleValue == 0 {
-                    time = LoggerFormat.formatDate(date: Date())
+                    time = OCLoggerFormat.formatDate(Date())
                 }else{
-                    time = LoggerFormat.formatDate(date: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                    time = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
         }

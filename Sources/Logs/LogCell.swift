@@ -13,7 +13,7 @@ class LogCell: UITableViewCell {
     @IBOutlet weak var labelContent: UITextView!
     @IBOutlet weak var viewTypeLogColor: UIView!
     
-    var model: LogModel? {
+    var model: OCLogModel? {
         didSet {
             guard let model = model else { return }
             

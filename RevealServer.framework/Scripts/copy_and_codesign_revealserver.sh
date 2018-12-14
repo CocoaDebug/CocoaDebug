@@ -16,7 +16,7 @@ app_frameworks_dir="${CODESIGNING_FOLDER_PATH}/Frameworks"
 
 copy_library() {
   mkdir -p "$app_frameworks_dir"
-  cp -vRf "$REVEAL_SERVER_PATH" "${app_frameworks_dir}/${REVEAL_SERVER_FILENAME}"
+  cp -vRf "$REVEAL_SERVER_PATH" "${app_frameworks_dir}/"
 }
 
 codesign_library() {

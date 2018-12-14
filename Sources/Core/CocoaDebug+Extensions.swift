@@ -276,7 +276,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.recordCrash = recordCrash
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         
-        let _ = LogStoreManager.shared
+        let _ = OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
         CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         

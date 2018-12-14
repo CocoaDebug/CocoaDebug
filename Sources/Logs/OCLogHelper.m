@@ -7,6 +7,8 @@
 //
 
 #import "OCLogHelper.h"
+#import "OCLogModel.h"
+#import "OCLogStoreManager.h"
 
 @implementation OCLogHelper
 
@@ -38,7 +40,11 @@
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
-
+    OCLogModel *newLog = [[OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO];
+    [[OCLogStoreManager shared] addLog:newLog];
+    
+    //3.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshLogs_CocoaDebug" object:nil userInfo:nil];
 }
 
 @end
