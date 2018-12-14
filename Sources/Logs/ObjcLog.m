@@ -1,15 +1,15 @@
 //
-//  CocoaDebugObjcLog.m
-//  Example
+//  ObjcLog.m
+//  Example_Swift
 //
 //  Created by man on 2018/11/10.
 //  Copyright © 2018年 liman. All rights reserved.
 //
 
-#import "CocoaDebugObjcLog.h"
+#import "ObjcLog.h"
 #import "OCLogHelper.h"
 
-@implementation CocoaDebugObjcLog
+@implementation ObjcLog
 
 + (void)logWithFile:(const char *)file
            function:(NSString *)function

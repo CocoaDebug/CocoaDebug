@@ -6,14 +6,14 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "CocoaDebugObjcLog.h"
+#import "ObjcLog.h"
 
 #pragma clang diagnostic ignored "-Wunused-value"
 
 
 //----------------- white log (default) -----------------
 #ifdef DEBUG
-#define NSLog(fmt, ...) [CocoaDebugObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+#define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
@@ -21,7 +21,7 @@
 
 //----------------- red log -----------------
 #ifdef DEBUG
-#define NSLogRed(fmt, ...) [CocoaDebugObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
+#define NSLogRed(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
@@ -29,7 +29,7 @@
 
 //----------------- blue log -----------------
 #ifdef DEBUG
-#define NSLogBlue(fmt, ...) [CocoaDebugObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
+#define NSLogBlue(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
@@ -37,7 +37,7 @@
 
 //----------------- yellow log -----------------
 #ifdef DEBUG
-#define NSLogYellow(fmt, ...) [CocoaDebugObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
+#define NSLogYellow(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif

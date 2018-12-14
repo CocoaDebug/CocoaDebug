@@ -1,6 +1,6 @@
 //
-//  CocoaDebugObjcLog.h
-//  Example
+//  ObjcLog.h
+//  Example_Swift
 //
 //  Created by man on 2018/11/10.
 //  Copyright © 2018年 liman. All rights reserved.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CocoaDebugObjcLog : NSObject
+@interface ObjcLog : NSObject
 
 + (void)logWithFile:(const char *)file
            function:(NSString *)function

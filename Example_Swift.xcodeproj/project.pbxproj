@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
-		3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */; };
 		3803440C21C3D54E00BC1CE2 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
 		3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
 		3803441421C3E58800BC1CE2 /* OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */; };
+		38F21ACB21C410D00009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
+		38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
+		38F21ACD21C411150009533A /* ObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F21AC921C410D00009533A /* ObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
-		38F7E6CD21C3F81100A6A503 /* CocoaDebugObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */; };
 		38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */; };
 		38F7E6CF21C3F81100A6A503 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
 		38F7E6D021C3F81100A6A503 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
 		38F7E6D121C3F83100A6A503 /* OCLogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440221C3BEF100BC1CE2 /* OCLogHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38F7E6D221C3F83100A6A503 /* CocoaDebugObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F7E6D321C3F83100A6A503 /* OCLogStoreManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F7E6D421C3F83100A6A503 /* OCLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440A21C3D54E00BC1CE2 /* OCLogModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F7E6D521C3F83100A6A503 /* OCLoggerFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -474,14 +474,14 @@
 /* Begin PBXFileReference section */
 		3803440121C3BEF100BC1CE2 /* OCLogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLogHelper.m; sourceTree = "<group>"; };
 		3803440221C3BEF100BC1CE2 /* OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogHelper.h; sourceTree = "<group>"; };
-		3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugObjcLog.m; sourceTree = "<group>"; };
-		3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugObjcLog.h; sourceTree = "<group>"; };
 		3803440A21C3D54E00BC1CE2 /* OCLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogModel.h; sourceTree = "<group>"; };
 		3803440B21C3D54E00BC1CE2 /* OCLogModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLogModel.m; sourceTree = "<group>"; };
 		3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLoggerFormat.h; sourceTree = "<group>"; };
 		3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLoggerFormat.m; sourceTree = "<group>"; };
 		3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogStoreManager.h; sourceTree = "<group>"; };
 		3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLogStoreManager.m; sourceTree = "<group>"; };
+		38F21AC921C410D00009533A /* ObjcLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcLog.h; sourceTree = "<group>"; };
+		38F21ACA21C410D00009533A /* ObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcLog.m; sourceTree = "<group>"; };
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		EA0628E420541ACB0071A231 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		EA0628E520541ACB0071A231 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -1020,8 +1020,6 @@
 				EA0629B820541ACB0071A231 /* LogHelper.swift */,
 				3803440221C3BEF100BC1CE2 /* OCLogHelper.h */,
 				3803440121C3BEF100BC1CE2 /* OCLogHelper.m */,
-				3803440821C3BFE200BC1CE2 /* CocoaDebugObjcLog.h */,
-				3803440721C3BFE200BC1CE2 /* CocoaDebugObjcLog.m */,
 				3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */,
 				3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */,
 				EA0629B620541ACB0071A231 /* LogCell.swift */,
@@ -1030,6 +1028,8 @@
 				3803440B21C3D54E00BC1CE2 /* OCLogModel.m */,
 				3803440D21C3D95400BC1CE2 /* OCLoggerFormat.h */,
 				3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */,
+				38F21AC921C410D00009533A /* ObjcLog.h */,
+				38F21ACA21C410D00009533A /* ObjcLog.m */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -1338,7 +1338,6 @@
 				EAF55B1F2055417C003E310F /* Sandbox.h in Headers */,
 				EAF55B172055417C003E310F /* HttpModel.h in Headers */,
 				EAF55B192055417C003E310F /* HttpDatasource.h in Headers */,
-				38F7E6D221C3F83100A6A503 /* CocoaDebugObjcLog.h in Headers */,
 				38F7E6D321C3F83100A6A503 /* OCLogStoreManager.h in Headers */,
 				38F7E6D521C3F83100A6A503 /* OCLoggerFormat.h in Headers */,
 				EA2E345220F11DC100FBCFCF /* copy_and_codesign.sh in Headers */,
@@ -1351,6 +1350,7 @@
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
 				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
+				38F21ACD21C411150009533A /* ObjcLog.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
 				38F7E6D421C3F83100A6A503 /* OCLogModel.h in Headers */,
 				EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */,
@@ -1811,9 +1811,9 @@
 				EAF58022204E73C3001CA56D /* JSON.swift in Sources */,
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
+				38F21ACB21C410D00009533A /* ObjcLog.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
-				3803440921C3BFE200BC1CE2 /* CocoaDebugObjcLog.m in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
 				EAF5801D204E73C3001CA56D /* Networking+PUT.swift in Sources */,
@@ -1866,8 +1866,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */,
 				38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */,
-				38F7E6CD21C3F81100A6A503 /* CocoaDebugObjcLog.m in Sources */,
 				38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */,
 				38F7E6CF21C3F81100A6A503 /* OCLogModel.m in Sources */,
 				38F7E6D021C3F81100A6A503 /* OCLoggerFormat.m in Sources */,
