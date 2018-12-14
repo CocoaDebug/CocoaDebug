@@ -21,6 +21,7 @@
     NSLog(@"hello world");
     NSLogRed(@"hello world red");
     NSLogBlue(@"hello world yellow");
+    NSLog(@"%d", 6666666);
     
     [self testHTTP];
 }
