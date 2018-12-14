@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.swift_version       = '4.2'
   s.platform            = :ios, "8.0"
-  s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => '0.1.5' }
-  s.version             = '0.1.5'
+  s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => '0.1.6' }
+  s.version             = '0.1.6'
 end
