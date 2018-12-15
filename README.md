@@ -61,17 +61,17 @@ github "CocoaDebug/CocoaDebug"
 
 ### Swift
 	
-    //Step 1.
+    //Step 1. (AppDelegate.swift)
     #if DEBUG
         import CocoaDebug
     #endif
 	
-    //Step 2.
+    //Step 2. (AppDelegate.swift)
     #if DEBUG
         CocoaDebug.enable()
     #endif
 
-    //Step 3.
+    //Step 3. (AppDelegate.swift)
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
         #if DEBUG
             swiftLog(file, function, line, message, color)
@@ -81,17 +81,17 @@ github "CocoaDebug/CocoaDebug"
 
 ### Objective-C
 	
-    //Step 1.
+    //Step 1. (PrefixHeader.pch)
     #ifdef DEBUG
         @import CocoaDebug;
     #endif
 	
-    //Step 2.
+    //Step 2. (AppDelegate.m)
     #ifdef DEBUG
         [CocoaDebug enable];
     #endif
 	
-    //Step 3.
+    //Step 3. (PrefixHeader.pch)
     #ifdef DEBUG
         #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
     #else
