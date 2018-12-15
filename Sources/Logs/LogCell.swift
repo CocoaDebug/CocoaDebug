@@ -20,6 +20,7 @@ class LogCell: UITableViewCell {
             labelContent.text = nil
             labelContent.text = model.str
             labelContent.attributedText = model.attr
+            labelContent.textContainer.lineBreakMode = NSLineBreakMode.byCharWrapping
             
             //tag
             if model.isTag == true {

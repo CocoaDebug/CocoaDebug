@@ -27,8 +27,8 @@
 {
     self = [super init];
     if (self) {
-        _httpModels = [NSMutableArray array];
-        _httpModelRequestIds = [NSMutableArray array];
+        self.httpModels = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
+        self.httpModelRequestIds = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
     }
     return self;
 }
@@ -36,20 +36,20 @@
 - (BOOL)addHttpRequset:(HttpModel*)model
 {
     //url过滤, 忽略大小写
-    for (NSString *urlString in [NetworkHelper shared].ignoredURLs) {
+    for (NSString *urlString in [[NetworkHelper shared] ignoredURLs]) {
         if ([[model.url.absoluteString lowercaseString] containsString:[urlString lowercaseString]]) {
             return NO;
         }
     }
     
-    if (self.httpModels.count >= [NetworkHelper shared].logMaxCount) {
+    if (self.httpModels.count >= [[NetworkHelper shared] logMaxCount]) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }
     }
     [self.httpModels addObject:model];
 
-    if (self.httpModelRequestIds.count >= [NetworkHelper shared].logMaxCount) {
+    if (self.httpModelRequestIds.count >= [[NetworkHelper shared] logMaxCount]) {
         if ([self.httpModelRequestIds count] > 0) {
             [self.httpModelRequestIds removeObjectAtIndex:0];
         }

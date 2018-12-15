@@ -23,14 +23,21 @@
     return sharedInstance;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.defaultLogArray = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
+        self.colorLogArray = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
+    }
+    return self;
+}
+
 - (void)addLog:(OCLogModel *)log
 {
     if (log.color == [UIColor whiteColor] || log.color == nil)
     {
         //白色
-        if (!self.defaultLogArray) {
-            self.defaultLogArray = [NSMutableArray array];
-        }
         if ([self.defaultLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
             if (self.defaultLogArray.count > 0) {
                 [self.defaultLogArray removeObjectAtIndex:0];
@@ -38,12 +45,9 @@
         }
         [self.defaultLogArray addObject:log];
     }
-    else ///////////////////////////////
+    else //////////////////////////////////////////////////////
     {
         //彩色
-        if (!self.colorLogArray) {
-            self.colorLogArray = [NSMutableArray array];
-        }
         if ([self.colorLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
             if (self.colorLogArray.count > 0) {
                 [self.colorLogArray removeObjectAtIndex:0];
@@ -60,7 +64,7 @@
         //白色
         [self.defaultLogArray removeObject:log];
     }
-    else ///////////////////////////////
+    else
     {
         //彩色
         [self.colorLogArray removeObject:log];

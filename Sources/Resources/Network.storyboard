@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +48,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-aJ-1Wg">
-                                                    <rect key="frame" x="301" y="0.0" width="74" height="140.5"/>
+                                                    <rect key="frame" x="301" y="-0.5" width="74" height="141"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-n7-vuk">
                                                             <rect key="frame" x="20.5" y="60" width="33.5" height="21"/>
@@ -67,7 +66,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z97-RH-3Xd">
-                                                    <rect key="frame" x="0.0" y="8" width="0.0" height="123.5"/>
+                                                    <rect key="frame" x="0.0" y="8" width="0.0" height="124"/>
                                                     <color key="backgroundColor" red="0.25570189952850342" green="0.8225521445274353" blue="0.34441712498664856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="0rD-2G-shp"/>
@@ -203,7 +202,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emT-kY-cWQ">
-                                            <rect key="frame" x="0.0" y="50.5" width="375" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="50" width="375" height="0.5"/>
                                             <color key="backgroundColor" red="0.50190365314483643" green="0.50199371576309204" blue="0.50189799070358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="Ibd-Xa-qxe"/>
@@ -217,27 +216,27 @@
                                             </constraints>
                                         </view>
                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0OK-GH-Jip">
-                                            <rect key="frame" x="0.0" y="51" width="375" height="375"/>
+                                            <rect key="frame" x="0.0" y="50.5" width="375" height="375"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="0OK-GH-Jip" secondAttribute="height" id="pHb-Fs-JfP"/>
                                             </constraints>
                                         </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="J5Y-09-1Ve">
-                                            <rect key="frame" x="15" y="61" width="345" height="340"/>
+                                            <rect key="frame" x="15" y="60.5" width="345" height="340.5"/>
                                             <gestureRecognizers/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8O-hu-g8b">
-                                            <rect key="frame" x="0.0" y="13.5" width="65" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="13" width="65" height="49.5"/>
                                             <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="49.5" id="kg7-dW-5Qv"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-In-PqH">
-                                            <rect key="frame" x="301" y="13.5" width="74" height="49.5"/>
+                                            <rect key="frame" x="301" y="13" width="74" height="49.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="74" id="rg7-D4-feV"/>
                                                 <constraint firstAttribute="height" constant="49.5" id="uhu-Hl-iAE"/>

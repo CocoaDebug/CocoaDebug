@@ -11,8 +11,8 @@
 
 @interface HttpDatasource : NSObject
 
-@property (nonatomic,strong) NSMutableArray    *httpModels;
-@property (nonatomic,strong) NSMutableArray    *httpModelRequestIds;
+@property (nonatomic, strong) NSMutableArray<HttpModel *> *httpModels;
+@property (nonatomic, strong) NSMutableArray<NSString *> *httpModelRequestIds;
 
 + (instancetype)shared;
 

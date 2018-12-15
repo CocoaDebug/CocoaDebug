@@ -45,10 +45,20 @@
         [attstr addAttribute:NSForegroundColorAttributeName value: [[NetworkHelper shared] mainColor] range: range];
         [attstr addAttribute:NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range];
         
-        NSRange range2 = NSMakeRange(startIndex, self.fileInfo.accessibilityElementCount);
+        NSRange range2 = NSMakeRange(startIndex, self.fileInfo.length);
         [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor grayColor]  range: range2];
         [attstr addAttribute: NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range2];
         
+        
+        //换行
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+        
+        NSRange rang3 = NSMakeRange(0, attstr.length);
+        [attstr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:rang3];
+        
+        
+        //
         self.str = stringContent;
         self.attr = [attstr copy];
     }
