@@ -822,8 +822,8 @@
 		EA0628E220541ACB0071A231 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */,
 				EA0628E420541ACB0071A231 /* CocoaDebug.h */,
+				EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */,
 				EA0628E520541ACB0071A231 /* CocoaDebug.swift */,
 				EA0628E620541ACB0071A231 /* CocoaDebug+Extensions.swift */,
 			);
@@ -999,17 +999,17 @@
 				EAFA4F9620ADA64500FEFF1E /* CacheStoragePolicy.h */,
 				EAFA4F9720ADA64500FEFF1E /* CacheStoragePolicy.m */,
 				EA0629A720541ACB0071A231 /* JsonViewController.swift */,
+				EA0629AD20541ACB0071A231 /* HttpModel.h */,
 				EA0629A820541ACB0071A231 /* HttpModel.m */,
+				EA0629AF20541ACB0071A231 /* HttpDatasource.h */,
 				EA0629A920541ACB0071A231 /* HttpDatasource.m */,
+				EA0629B320541ACB0071A231 /* NetworkHelper.h */,
 				EA0629AA20541ACB0071A231 /* NetworkHelper.m */,
 				EA0629AB20541ACB0071A231 /* NetworkCell.swift */,
 				EA0629AC20541ACB0071A231 /* NetworkViewController.swift */,
-				EA0629AD20541ACB0071A231 /* HttpModel.h */,
-				EA0629AF20541ACB0071A231 /* HttpDatasource.h */,
 				EA0629B020541ACB0071A231 /* NetworkDetailViewController.swift */,
 				EA0629B120541ACB0071A231 /* NetworkDetailCell.swift */,
 				EA0629B220541ACB0071A231 /* NetworkDetailModel.swift */,
-				EA0629B320541ACB0071A231 /* NetworkHelper.h */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1037,18 +1037,18 @@
 		EA0629BB20541ACB0071A231 /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
-				EA0629BC20541ACB0071A231 /* SandboxHelper.m */,
-				EA0629BD20541ACB0071A231 /* MLBFileInfo.h */,
-				EA0629BE20541ACB0071A231 /* FileTableViewCell.m */,
-				EA0629BF20541ACB0071A231 /* FilePreviewController.m */,
-				EA0629C020541ACB0071A231 /* SandboxViewController.m */,
-				EA0629C120541ACB0071A231 /* Sandbox.m */,
-				EA0629C220541ACB0071A231 /* FileTableViewCell.h */,
-				EA0629C320541ACB0071A231 /* MLBFileInfo.m */,
 				EA0629C420541ACB0071A231 /* SandboxHelper.h */,
+				EA0629BC20541ACB0071A231 /* SandboxHelper.m */,
+				EA0629C220541ACB0071A231 /* FileTableViewCell.h */,
+				EA0629BE20541ACB0071A231 /* FileTableViewCell.m */,
 				EA0629C520541ACB0071A231 /* FilePreviewController.h */,
-				EA0629C620541ACB0071A231 /* Sandbox.h */,
+				EA0629BF20541ACB0071A231 /* FilePreviewController.m */,
 				EA0629C720541ACB0071A231 /* SandboxViewController.h */,
+				EA0629C020541ACB0071A231 /* SandboxViewController.m */,
+				EA0629BD20541ACB0071A231 /* MLBFileInfo.h */,
+				EA0629C320541ACB0071A231 /* MLBFileInfo.m */,
+				EA0629C620541ACB0071A231 /* Sandbox.h */,
+				EA0629C120541ACB0071A231 /* Sandbox.m */,
 			);
 			path = Sandbox;
 			sourceTree = "<group>";

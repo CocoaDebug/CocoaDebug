@@ -27,6 +27,16 @@
     return sharedInstance;
 }
 
+//default value for @property
+- (id)init {
+    if (self = [super init])  {
+        self.mainColor = [self colorFromHexString:@"#42d459"];
+        self.logMaxCount = 500;
+        self.isEnable = YES;
+    }
+    return self;
+}
+
 - (void)enable
 {
     self.isEnable = YES;
@@ -37,6 +47,14 @@
 {
     self.isEnable = NO;
     [NSURLProtocol unregisterClass:[CustomProtocol class]];
+}
+
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1];
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 @end

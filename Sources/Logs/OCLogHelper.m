@@ -24,6 +24,14 @@
     return sharedInstance;
 }
 
+//default value for @property
+- (id)init {
+    if (self = [super init])  {
+        self.enable = YES;
+    }
+    return self;
+}
+
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
     NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
