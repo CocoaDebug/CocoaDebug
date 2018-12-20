@@ -221,11 +221,11 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         // 构造一个 NSURLCredential 发送给发送方
         NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
         completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
     } else {
         // 对于其他验证方法直接进行处理流程
-        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+        [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
     }
 }
 
@@ -281,7 +281,19 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
+    if (!challenge) {
+        return;
+    }
     
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        // 构造一个 NSURLCredential 发送给发送方
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
+        completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+    } else {
+        // 对于其他验证方法直接进行处理流程
+        [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willBeginDelayedRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLSessionDelayedRequestDisposition disposition, NSURLRequest *newRequest))completionHandler
@@ -329,7 +341,8 @@ API_AVAILABLE(ios(9.0))
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
 {
-    
+    [self.client URLProtocol:self cachedResponseIsValid:proposedResponse];
+    completionHandler(proposedResponse);
 }
 
 #pragma mark - NSURLSessionStreamDelegate
