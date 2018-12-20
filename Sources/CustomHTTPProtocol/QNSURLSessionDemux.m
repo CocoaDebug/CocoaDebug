@@ -73,9 +73,9 @@
 
 - (instancetype)initWithTask:(NSURLSessionDataTask *)task delegate:(id<NSURLSessionDataDelegate>)delegate modes:(NSArray *)modes
 {
-    assert(task != nil);
-    assert(delegate != nil);
-    assert(modes != nil);
+    //assert(task != nil);
+    //assert(delegate != nil);
+    //assert(modes != nil);
     
     self = [super init];
     if (self != nil) {
@@ -89,14 +89,14 @@
 
 - (void)performBlock:(dispatch_block_t)block
 {
-    assert(self.delegate != nil);
-    assert(self.thread != nil);
+    //assert(self.delegate != nil);
+    //assert(self.thread != nil);
     [self performSelector:@selector(performBlockOnClientThread:) onThread:self.thread withObject:[block copy] waitUntilDone:NO modes:self.modes];
 }
 
 - (void)performBlockOnClientThread:(dispatch_block_t)block
 {
-    assert([NSThread currentThread] == self.thread);
+    //assert([NSThread currentThread] == self.thread);
     block();
 }
 
@@ -149,8 +149,8 @@
     NSURLSessionDataTask *          task;
     QNSURLSessionDemuxTaskInfo *    taskInfo;
 
-    assert(request != nil);
-    assert(delegate != nil);
+    //assert(request != nil);
+    //assert(delegate != nil);
     // modes may be nil
     
     if ([modes count] == 0) {
@@ -158,7 +158,7 @@
     }
     
     task = [self.session dataTaskWithRequest:request];
-    assert(task != nil);
+    //assert(task != nil);
     
     taskInfo = [[QNSURLSessionDemuxTaskInfo alloc] initWithTask:task delegate:delegate modes:modes];
     
@@ -173,11 +173,11 @@
 {
     QNSURLSessionDemuxTaskInfo *    result;
     
-    assert(task != nil);
+    //assert(task != nil);
     
     @synchronized (self) {
         result = self.taskInfoByTaskID[@(task.taskIdentifier)];
-        assert(result != nil);
+        //assert(result != nil);
     }
     return result;
 }

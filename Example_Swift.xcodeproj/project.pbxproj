@@ -15,6 +15,14 @@
 		38B670DB21CBB645006C915E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D521CBB645006C915E /* QNSURLSessionDemux.m */; };
 		38B670DC21CBB645006C915E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D621CBB645006C915E /* CacheStoragePolicy.m */; };
 		38B670DD21CBB645006C915E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D721CBB645006C915E /* CanonicalRequest.m */; };
+		38B670DE21CBC6F7006C915E /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D321CBB645006C915E /* CustomHTTPProtocol.m */; };
+		38B670DF21CBC6F7006C915E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D621CBB645006C915E /* CacheStoragePolicy.m */; };
+		38B670E021CBC6F7006C915E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D721CBB645006C915E /* CanonicalRequest.m */; };
+		38B670E121CBC6F7006C915E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D521CBB645006C915E /* QNSURLSessionDemux.m */; };
+		38B670E221CBC703006C915E /* CustomHTTPProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D821CBB645006C915E /* CustomHTTPProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38B670E321CBC703006C915E /* CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D221CBB645006C915E /* CacheStoragePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38B670E421CBC703006C915E /* CanonicalRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D421CBB645006C915E /* CanonicalRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38B670E521CBC703006C915E /* QNSURLSessionDemux.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D921CBB645006C915E /* QNSURLSessionDemux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F21ACB21C410D00009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACD21C411150009533A /* ObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F21AC921C410D00009533A /* ObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1361,6 +1369,10 @@
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
+				38B670E221CBC703006C915E /* CustomHTTPProtocol.h in Headers */,
+				38B670E321CBC703006C915E /* CacheStoragePolicy.h in Headers */,
+				38B670E421CBC703006C915E /* CanonicalRequest.h in Headers */,
+				38B670E521CBC703006C915E /* QNSURLSessionDemux.h in Headers */,
 				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
 				38F21ACD21C411150009533A /* ObjcLog.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
@@ -1880,6 +1892,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B670DE21CBC6F7006C915E /* CustomHTTPProtocol.m in Sources */,
+				38B670DF21CBC6F7006C915E /* CacheStoragePolicy.m in Sources */,
+				38B670E021CBC6F7006C915E /* CanonicalRequest.m in Sources */,
+				38B670E121CBC6F7006C915E /* QNSURLSessionDemux.m in Sources */,
 				38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */,
 				38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */,
 				38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */,

@@ -51,6 +51,52 @@
 #import "CacheStoragePolicy.h"
 #import "QNSURLSessionDemux.h"
 
+//liman
+#import "Swizzling.h"
+#import "NetworkHelper.h"
+#import "HttpDatasource.h"
+#import "NSObject+CocoaDebug.h"
+
+//liman
+typedef NSURLSessionConfiguration *(*SessionConfigConstructor)(id,SEL);
+
+static SessionConfigConstructor orig_defaultSessionConfiguration;
+static SessionConfigConstructor orig_ephemeralSessionConfiguration;
+
+static NSURLSessionConfiguration *replaced_defaultSessionConfiguration(id self, SEL _cmd)
+{
+    NSURLSessionConfiguration *config = orig_defaultSessionConfiguration(self,_cmd);
+    
+    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+        Class protoCls = CustomHTTPProtocol.class;
+        if (![urlProtocolClasses containsObject:protoCls]) {
+            [urlProtocolClasses insertObject:protoCls atIndex:0];
+        }
+        
+        config.protocolClasses = urlProtocolClasses;
+    }
+    
+    return config;
+}
+
+static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self, SEL _cmd)
+{
+    NSURLSessionConfiguration *config = orig_ephemeralSessionConfiguration(self,_cmd);
+    
+    if ([config respondsToSelector:@selector(protocolClasses)] && [config respondsToSelector:@selector(setProtocolClasses:)]) {
+        NSMutableArray *urlProtocolClasses = [NSMutableArray arrayWithArray:config.protocolClasses];
+        Class protoCls = CustomHTTPProtocol.class;
+        if (![urlProtocolClasses containsObject:protoCls]) {
+            [urlProtocolClasses insertObject:protoCls atIndex:0];
+        }
+        
+        config.protocolClasses = urlProtocolClasses;
+    }
+    
+    return config;
+}
+
 // I use the following typedef to keep myself sane in the face of the wacky 
 // Objective-C block syntax.
 
@@ -74,6 +120,11 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 @property (atomic, strong, readwrite) NSURLSessionDataTask *            task;               ///< The NSURLSession task for that request; client thread only.
 @property (atomic, strong, readwrite) NSURLAuthenticationChallenge *    pendingChallenge;
 @property (atomic, copy,   readwrite) ChallengeCompletionHandler        pendingChallengeCompletionHandler;  ///< The completion handler that matches pendingChallenge; main thread only.
+
+//liman
+@property (atomic, strong) NSURLResponse         *response;
+@property (atomic, strong) NSMutableData         *data;
+@property (atomic, strong) NSError               *error;
 
 @end
 
@@ -136,23 +187,6 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
  *  \param format A standard NSString-style format string; will not be nil.
  */
 
-+ (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol logWithFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(2, 3)
-    // All internal logging calls this routine, which routes the log message to the 
-    // delegate.
-{
-    // protocol may be nil
-    id<CustomHTTPProtocolDelegate> strongDelegate;
-    
-    strongDelegate = [self delegate];
-    if ([strongDelegate respondsToSelector:@selector(customHTTPProtocol:logWithFormat:arguments:)]) {
-        va_list arguments;
-        
-        va_start(arguments, format);
-        [strongDelegate customHTTPProtocol:protocol logWithFormat:format arguments:arguments];
-        va_end(arguments);
-    }
-}
-
 #pragma mark * NSURLProtocol overrides
 
 /*! Used to mark our recursive requests so that we don't try to handle them (and thereby 
@@ -161,70 +195,95 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
 
 static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPProtocol";
 
+//liman
+//+ (BOOL)canInitWithRequest:(NSURLRequest *)request
+//{
+//    BOOL        shouldAccept;
+//    NSURL *     url;
+//    NSString *  scheme;
+//
+//    // Check the basics.  This routine is extremely defensive because experience has shown that
+//    // it can be called with some very odd requests <rdar://problem/15197355>.
+//
+//    shouldAccept = (request != nil);
+//    if (shouldAccept) {
+//        url = [request URL];
+//        shouldAccept = (url != nil);
+//    }
+//    if ( ! shouldAccept ) {
+//        [self customHTTPProtocol:nil logWithFormat:@"decline request (malformed)"];
+//    }
+//
+//    // Decline our recursive requests.
+//
+//    if (shouldAccept) {
+//        shouldAccept = ([self propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request] == nil);
+//        if ( ! shouldAccept ) {
+//            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (recursive)", url];
+//        }
+//    }
+//
+//    // Get the scheme.
+//
+//    if (shouldAccept) {
+//        scheme = [[url scheme] lowercaseString];
+//        shouldAccept = (scheme != nil);
+//
+//        if ( ! shouldAccept ) {
+//            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (no scheme)", url];
+//        }
+//    }
+//
+//    // Look for "http" or "https".
+//    //
+//    // Flip either or both of the following to YESes to control which schemes go through this custom
+//    // NSURLProtocol subclass.
+//
+//    if (shouldAccept) {
+//        shouldAccept = /* DISABLES CODE */ (NO) && [scheme isEqual:@"http"];
+//        if ( ! shouldAccept ) {
+//            shouldAccept = YES && [scheme isEqual:@"https"];
+//        }
+//
+//        if ( ! shouldAccept ) {
+//            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (scheme mismatch)", url];
+//        } else {
+//            [self customHTTPProtocol:nil logWithFormat:@"accept request %@", url];
+//        }
+//    }
+//
+//    return shouldAccept;
+//}
+
+//liman
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
-    BOOL        shouldAccept;
-    NSURL *     url;
-    NSString *  scheme;
-    
-    // Check the basics.  This routine is extremely defensive because experience has shown that 
-    // it can be called with some very odd requests <rdar://problem/15197355>.
-    
-    shouldAccept = (request != nil);
-    if (shouldAccept) {
-        url = [request URL];
-        shouldAccept = (url != nil);
-    }
-    if ( ! shouldAccept ) {
-        [self customHTTPProtocol:nil logWithFormat:@"decline request (malformed)"];
+    if (![request.URL.scheme isEqualToString:@"http"] &&
+        ![request.URL.scheme isEqualToString:@"https"]) {
+        return NO;
     }
     
-    // Decline our recursive requests.
+    if ([NSURLProtocol propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request] ) {
+        return NO;
+    }
     
-    if (shouldAccept) {
-        shouldAccept = ([self propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request] == nil);
-        if ( ! shouldAccept ) {
-            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (recursive)", url];
+    if ([[NetworkHelper shared] onlyURLs].count > 0) {
+        NSString* url = [request.URL.absoluteString lowercaseString];
+        for (NSString* _url in [NetworkHelper shared].onlyURLs) {
+            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
+                return YES;
         }
+        return NO;
     }
     
-    // Get the scheme.
-    
-    if (shouldAccept) {
-        scheme = [[url scheme] lowercaseString];
-        shouldAccept = (scheme != nil);
-        
-        if ( ! shouldAccept ) {
-            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (no scheme)", url];
-        }
-    }
-    
-    // Look for "http" or "https".
-    //
-    // Flip either or both of the following to YESes to control which schemes go through this custom 
-    // NSURLProtocol subclass.
-    
-    if (shouldAccept) {
-        shouldAccept = /* DISABLES CODE */ (NO) && [scheme isEqual:@"http"];
-        if ( ! shouldAccept ) {
-            shouldAccept = YES && [scheme isEqual:@"https"];
-        }
-
-        if ( ! shouldAccept ) {
-            [self customHTTPProtocol:nil logWithFormat:@"decline request %@ (scheme mismatch)", url];
-        } else {
-            [self customHTTPProtocol:nil logWithFormat:@"accept request %@", url];
-        }
-    }
-    
-    return shouldAccept;
+    return YES;
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
     NSURLRequest *      result;
     
-    assert(request != nil);
+    //assert(request != nil);
     // can be called on any thread
     
     // Canonicalising a request is quite complex, so all the heavy lifting has 
@@ -232,33 +291,29 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     result = CanonicalRequestForRequest(request);
 
-    [self customHTTPProtocol:nil logWithFormat:@"canonicalized %@ to %@", [request URL], [result URL]];
     
     return result;
 }
 
 - (id)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id <NSURLProtocolClient>)client
 {
-    assert(request != nil);
+    //assert(request != nil);
     // cachedResponse may be nil
-    assert(client != nil);
+    //assert(client != nil);
     // can be called on any thread
 
     self = [super initWithRequest:request cachedResponse:cachedResponse client:client];
-    if (self != nil) {
-        // All we do here is log the call.
-        [[self class] customHTTPProtocol:self logWithFormat:@"init for %@ from <%@ %p>", [request URL], [client class], client];
-    }
+    
     return self;
 }
 
 - (void)dealloc
 {
     // can be called on any thread
-    [[self class] customHTTPProtocol:self logWithFormat:@"dealloc"];
-    assert(self->_task == nil);                     // we should have cleared it by now
-    assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
-    assert(self->_pendingChallengeCompletionHandler == nil);    // we should have cancelled it by now
+    
+    //assert(self->_task == nil);                     // we should have cleared it by now
+    //assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
+    //assert(self->_pendingChallengeCompletionHandler == nil);    // we should have cancelled it by now
 }
 
 - (void)startLoading
@@ -270,8 +325,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // At this point we kick off the process of loading the URL via NSURLSession. 
     // The thread that calls this method becomes the client thread.
     
-    assert(self.clientThread == nil);           // you can't call -startLoading twice
-    assert(self.task == nil);
+    //assert(self.clientThread == nil);           // you can't call -startLoading twice
+    //assert(self.task == nil);
 
     // Calculate our effective run loop modes.  In some circumstances (yes I'm looking at 
     // you UIWebView!) we can be called from a non-standard thread which then runs a 
@@ -282,7 +337,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // For debugging purposes the non-standard mode is "WebCoreSynchronousLoaderRunLoopMode" 
     // but it's better not to hard-code that here.
     
-    assert(self.modes == nil);
+    //assert(self.modes == nil);
     calculatedModes = [NSMutableArray array];
     [calculatedModes addObject:NSDefaultRunLoopMode];
     currentMode = [[NSRunLoop currentRunLoop] currentMode];
@@ -290,22 +345,19 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         [calculatedModes addObject:currentMode];
     }
     self.modes = calculatedModes;
-    assert([self.modes count] > 0);
+    //assert([self.modes count] > 0);
 
     // Create new request that's a clone of the request we were initialised with, 
     // except that it has our 'recursive request flag' property set on it.
     
     recursiveRequest = [[self request] mutableCopy];
-    assert(recursiveRequest != nil);
+    //assert(recursiveRequest != nil);
     
     [[self class] setProperty:@YES forKey:kOurRecursiveRequestFlagProperty inRequest:recursiveRequest];
 
-    self.startTime = [NSDate timeIntervalSinceReferenceDate];
-    if (currentMode == nil) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"start %@", [recursiveRequest URL]];
-    } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"start %@ (mode %@)", [recursiveRequest URL], currentMode];
-    }
+    //liman
+    self.startTime = [[NSDate date] timeIntervalSince1970];
+    self.data = [NSMutableData data];
     
     // Latch the thread we were called on, primarily for debugging purposes.
     
@@ -314,7 +366,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // Once everything is ready to go, create a data task with the new request.
 
     self.task = [[[self class] sharedDemux] dataTaskWithRequest:recursiveRequest delegate:self modes:self.modes];
-    assert(self.task != nil);
+    //assert(self.task != nil);
     
     [self.task resume];
 }
@@ -322,10 +374,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 - (void)stopLoading
 {
     // The implementation just cancels the current load (if it's still running).
-
-    [[self class] customHTTPProtocol:self logWithFormat:@"stop (elapsed %.1f)", [NSDate timeIntervalSinceReferenceDate] - self.startTime];
     
-    assert(self.clientThread != nil);           // someone must have called -startLoading
+    //assert(self.clientThread != nil);           // someone must have called -startLoading
 
     // Check that we're being stopped on the same thread that we were started 
     // on.  Without this invariant things are going to go badly (for example, 
@@ -335,9 +385,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // I originally had code here to bounce over to the client thread but that 
     // actually gets complex when you consider run loop modes, so I've nixed it. 
     // Rather, I rely on our client calling us on the right thread, which is what 
-    // the following assert is about.
+    // the following //assert is about.
     
-    assert([NSThread currentThread] == self.clientThread);
+    //assert([NSThread currentThread] == self.clientThread);
     
     [self cancelPendingChallenge];
     if (self.task != nil) {
@@ -347,6 +397,74 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         // which specificallys traps and ignores the error.
     }
     // Don't nil out self.modes; see property declaration comments for a a discussion of this.
+    
+    
+    
+    //liman
+    if (![NetworkHelper shared].isEnable) {
+        return;
+    }
+    
+    HttpModel* model = [[HttpModel alloc] init];
+    model.url = self.request.URL;
+    model.method = self.request.HTTPMethod;
+    model.mineType = self.response.MIMEType;
+    if (self.request.HTTPBody) {
+        model.requestData = self.request.HTTPBody;
+    }
+    if (self.request.HTTPBodyStream) {//liman
+        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
+        model.requestData = data;
+    }
+    
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
+    model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
+    model.responseData = self.data;
+    model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
+    
+    //时间
+    NSTimeInterval startTimeDouble = self.startTime;
+    NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
+    
+    model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
+    model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
+    model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
+    
+    
+    model.errorDescription = self.error.description;
+    model.errorLocalizedDescription = self.error.localizedDescription;
+    model.requestHeaderFields = self.request.allHTTPHeaderFields;
+    
+    if ([self.response isKindOfClass:[NSHTTPURLResponse class]]) {
+        model.responseHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+    }
+    
+    if (self.response.MIMEType == nil) {
+        model.isImage = NO;
+    }
+    
+    if ([model.url.absoluteString length] > 4) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 4];
+        if ([str isEqualToString:@".png"] || [str isEqualToString:@".PNG"] || [str isEqualToString:@".jpg"] || [str isEqualToString:@".JPG"] || [str isEqualToString:@".gif"] || [str isEqualToString:@".GIF"]) {
+            model.isImage = YES;
+        }
+    }
+    if ([model.url.absoluteString length] > 5) {
+        NSString *str = [model.url.absoluteString substringFromIndex: [model.url.absoluteString length] - 5];
+        if ([str isEqualToString:@".jpeg"] || [str isEqualToString:@".JPEG"]) {
+            model.isImage = YES;
+        }
+    }
+    
+    //处理500,404等错误
+    model = [self handleError:self.error model:model];
+    
+    
+    if ([[HttpDatasource shared] addHttpRequset:model])
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_CocoaDebug" object:nil userInfo:@{@"statusCode":model.statusCode}];
+    }
 }
 
 #pragma mark * Authentication challenge handling
@@ -361,7 +479,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 {
     // thread may be nil
     // modes may be nil
-    assert(block != nil);
+    //assert(block != nil);
 
     if (thread == nil) {
         thread = [NSThread mainThread];
@@ -379,7 +497,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 - (void)onThreadPerformBlock:(dispatch_block_t)block
 {
-    assert(block != nil);
+    //assert(block != nil);
     block();
 }
 
@@ -404,11 +522,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 - (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
 {
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
-
-    [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ received", [[challenge protectionSpace] authenticationMethod]];
+    //assert(challenge != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread currentThread] == self.clientThread);
 
     [self performOnThread:nil modes:nil block:^{
         [self mainThreadDidReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
@@ -427,21 +543,21 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 - (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
 {
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread isMainThread]);
+    //assert(challenge != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread isMainThread]);
     
     if (self.pendingChallenge != nil) {
 
         // Our delegate is not expecting a second authentication challenge before resolving the 
         // first.  Likewise, NSURLSession shouldn't send us a second authentication challenge 
-        // before we resolve the first.  If this happens, assert, log, and cancel the challenge.
+        // before we resolve the first.  If this happens, //assert, log, and cancel the challenge.
         //
         // Note that we have to cancel the challenge on the thread on which we received it, 
         // namely, the client thread.
 
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; other challenge pending", [[challenge protectionSpace] authenticationMethod]];
-        assert(NO);
+        
+        //assert(NO);
         [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
     } else {
         id<CustomHTTPProtocolDelegate>  strongDelegate;
@@ -454,8 +570,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         // thread, of course).
         
         if ( ! [strongDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)] ) {
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; no delegate method", [[challenge protectionSpace] authenticationMethod]];
-            assert(NO);
+            
+            //assert(NO);
             [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
         } else {
 
@@ -466,7 +582,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
             // Pass the challenge to the delegate.
             
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ passed to delegate", [[challenge protectionSpace] authenticationMethod]];
+            
             [strongDelegate customHTTPProtocol:self didReceiveAuthenticationChallenge:self.pendingChallenge];
         }
     }
@@ -485,9 +601,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 - (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
 {
     #pragma unused(challenge)
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread isMainThread]);
+    //assert(challenge != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread isMainThread]);
 
     [self performOnThread:self.clientThread modes:self.modes block:^{
         completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
@@ -503,7 +619,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 - (void)cancelPendingChallenge
 {
-    assert([NSThread currentThread] == self.clientThread);
+    //assert([NSThread currentThread] == self.clientThread);
 
     // Just pass the work off to the main thread.  We do this so that all accesses 
     // to pendingChallenge are done from the main thread, which avoids the need for 
@@ -528,13 +644,11 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
             self.pendingChallengeCompletionHandler = nil;
             
             if ([strongeDelegate respondsToSelector:@selector(customHTTPProtocol:didCancelAuthenticationChallenge:)]) {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation passed to delegate", [[challenge protectionSpace] authenticationMethod]];
                 [strongeDelegate customHTTPProtocol:self didCancelAuthenticationChallenge:challenge];
             } else {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation failed; no delegate method", [[challenge protectionSpace] authenticationMethod]];
-                // If we managed to send a challenge to the client but can't cancel it, that's bad. 
+                // If we managed to send a challenge to the client but can't cancel it, that's bad.
                 // There's nothing we can do at this point except log the problem.
-                assert(NO);
+                //assert(NO);
             }
         }
     }];
@@ -542,15 +656,14 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 - (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential
 {
-    assert(challenge == self.pendingChallenge);
+    //assert(challenge == self.pendingChallenge);
     // credential may be nil
-    assert([NSThread isMainThread]);
-    assert(self.clientThread != nil);
+    //assert([NSThread isMainThread]);
+    //assert(self.clientThread != nil);
     
     if (challenge != self.pendingChallenge) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge resolution mismatch (%@ / %@)", challenge, self.pendingChallenge];
         // This should never happen, and we want to know if it does, at least in the debug build.
-        assert(NO);
+        //assert(NO);
     } else {
         ChallengeCompletionHandler  completionHandler;
         
@@ -564,10 +677,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         
         [self performOnThread:self.clientThread modes:self.modes block:^{
             if (credential == nil) {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved without credential", [[challenge protectionSpace] authenticationMethod]];
                 completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
             } else {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved with <%@ %p>", [[challenge protectionSpace] authenticationMethod], [credential class], credential];
                 completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
             }
         }];
@@ -576,47 +687,64 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 #pragma mark * NSURLSession delegate callbacks
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)newRequest completionHandler:(void (^)(NSURLRequest *))completionHandler
+//liman
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)newRequest completionHandler:(void (^)(NSURLRequest *))completionHandler
+//{
+//    NSMutableURLRequest *    redirectRequest;
+//
+//    #pragma unused(session)
+//    #pragma unused(task)
+//    //assert(task == self.task);
+//    //assert(response != nil);
+//    //assert(newRequest != nil);
+//    #pragma unused(completionHandler)
+//    //assert(completionHandler != nil);
+//    //assert([NSThread currentThread] == self.clientThread);
+//
+//
+//    // The new request was copied from our old request, so it has our magic property.  We actually
+//    // have to remove that so that, when the client starts the new request, we see it.  If we
+//    // don't do this then we never see the new request and thus don't get a chance to change
+//    // its caching behaviour.
+//    //
+//    // We also cancel our current connection because the client is going to start a new request for
+//    // us anyway.
+//
+//    //assert([[self class] propertyForKey:kOurRecursiveRequestFlagProperty inRequest:newRequest] != nil);
+//
+//    redirectRequest = [newRequest mutableCopy];
+//    [[self class] removePropertyForKey:kOurRecursiveRequestFlagProperty inRequest:redirectRequest];
+//
+//    // Tell the client about the redirect.
+//
+//    [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
+//
+//    // Stop our load.  The CFNetwork infrastructure will create a new NSURLProtocol instance to run
+//    // the load of the redirect.
+//
+//    // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
+//    // which specificallys traps and ignores the error.
+//
+//    [self.task cancel];
+//
+//    [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
+//}
+
+//liman
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler
 {
-    NSMutableURLRequest *    redirectRequest;
-
-    #pragma unused(session)
-    #pragma unused(task)
-    assert(task == self.task);
-    assert(response != nil);
-    assert(newRequest != nil);
-    #pragma unused(completionHandler)
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
+    //重定向 状态码 >=300 && < 400
+    if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        NSInteger status = httpResponse.statusCode;
+        if (status >= 300 && status < 400) {
+            [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+            // 记得设置成nil，要不然正常请求会请求两次
+            request = nil;
+        }
+    }
     
-    [[self class] customHTTPProtocol:self logWithFormat:@"will redirect from %@ to %@", [response URL], [newRequest URL]];
-
-    // The new request was copied from our old request, so it has our magic property.  We actually 
-    // have to remove that so that, when the client starts the new request, we see it.  If we 
-    // don't do this then we never see the new request and thus don't get a chance to change 
-    // its caching behaviour.
-    //
-    // We also cancel our current connection because the client is going to start a new request for 
-    // us anyway.
-
-    assert([[self class] propertyForKey:kOurRecursiveRequestFlagProperty inRequest:newRequest] != nil);
-    
-    redirectRequest = [newRequest mutableCopy];
-    [[self class] removePropertyForKey:kOurRecursiveRequestFlagProperty inRequest:redirectRequest];
-    
-    // Tell the client about the redirect.
-    
-    [[self client] URLProtocol:self wasRedirectedToRequest:redirectRequest redirectResponse:response];
-    
-    // Stop our load.  The CFNetwork infrastructure will create a new NSURLProtocol instance to run 
-    // the load of the redirect.
-    
-    // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled, 
-    // which specificallys traps and ignores the error.
-    
-    [self.task cancel];
-
-    [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
+    completionHandler(request);
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
@@ -626,10 +754,10 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
     #pragma unused(session)
     #pragma unused(task)
-    assert(task == self.task);
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
+    //assert(task == self.task);
+    //assert(challenge != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread currentThread] == self.clientThread);
 
     // Ask our delegate whether it wants this challenge.  We do this from this thread, not the main thread, 
     // to avoid the overload of bouncing to the main thread for challenges that aren't going to be customised 
@@ -645,11 +773,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // If the client wants the challenge, kick off that process.  If not, resolve it by doing the default thing.
 
     if (result) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"can authenticate %@", [[challenge protectionSpace] authenticationMethod]];
 
         [self didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
     } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"cannot authenticate %@", [[challenge protectionSpace] authenticationMethod]];
 
         completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }
@@ -662,10 +788,10 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     #pragma unused(session)
     #pragma unused(dataTask)
-    assert(dataTask == self.task);
-    assert(response != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
+    //assert(dataTask == self.task);
+    //assert(response != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread currentThread] == self.clientThread);
 
     // Pass the call on to our client.  The only tricky thing is that we have to decide on a 
     // cache storage policy, which is based on the actual request we issued, not the request 
@@ -675,14 +801,15 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         cacheStoragePolicy = CacheStoragePolicyForRequestAndResponse(self.task.originalRequest, (NSHTTPURLResponse *) response);
         statusCode = [((NSHTTPURLResponse *) response) statusCode];
     } else {
-        assert(NO);
+        //assert(NO);
         cacheStoragePolicy = NSURLCacheStorageNotAllowed;
         statusCode = 42;
     }
 
-    [[self class] customHTTPProtocol:self logWithFormat:@"received response %zd / %@ with cache storage policy %zu", (ssize_t) statusCode, [response URL], (size_t) cacheStoragePolicy];
     
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
+    
+    self.response = response;//liman
     
     completionHandler(NSURLSessionResponseAllow);
 }
@@ -691,63 +818,312 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 {
     #pragma unused(session)
     #pragma unused(dataTask)
-    assert(dataTask == self.task);
-    assert(data != nil);
-    assert([NSThread currentThread] == self.clientThread);
+    //assert(dataTask == self.task);
+    //assert(data != nil);
+    //assert([NSThread currentThread] == self.clientThread);
 
     // Just pass the call on to our client.
 
-    [[self class] customHTTPProtocol:self logWithFormat:@"received %zu bytes of data", (size_t) [data length]];
 
     [[self client] URLProtocol:self didLoadData:data];
+    [self.data appendData:data];//liman
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
 {
     #pragma unused(session)
     #pragma unused(dataTask)
-    assert(dataTask == self.task);
-    assert(proposedResponse != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
+    //assert(dataTask == self.task);
+    //assert(proposedResponse != nil);
+    //assert(completionHandler != nil);
+    //assert([NSThread currentThread] == self.clientThread);
 
     // We implement this delegate callback purely for the purposes of logging.
     
-    [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
 
     completionHandler(proposedResponse);
 }
 
+//liman
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+//    // An NSURLSession delegate callback.  We pass this on to the client.
+//{
+//    #pragma unused(session)
+//    #pragma unused(task)
+//    //assert( (self.task == nil) || (task == self.task) );        // can be nil in the 'cancel from -stopLoading' case
+//    //assert([NSThread currentThread] == self.clientThread);
+//
+//    // Just log and then, in most cases, pass the call on to our client.
+//
+//    if (error == nil) {
+//
+//        [[self client] URLProtocolDidFinishLoading:self];
+//    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
+//        // Do nothing.  This happens in two cases:
+//        //
+//        // o during a redirect, in which case the redirect code has already told the client about
+//        //   the failure
+//        //
+//        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't
+//        //   want to know about the failure
+//    } else {
+//
+//        [[self client] URLProtocol:self didFailWithError:error];
+//    }
+//
+//    // We don't need to clean up the connection here; the system will call, or has already called,
+//    // -stopLoading to do that.
+//}
+
+//liman
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-    // An NSURLSession delegate callback.  We pass this on to the client.
 {
-    #pragma unused(session)
-    #pragma unused(task)
-    assert( (self.task == nil) || (task == self.task) );        // can be nil in the 'cancel from -stopLoading' case
-    assert([NSThread currentThread] == self.clientThread);
-
-    // Just log and then, in most cases, pass the call on to our client.
-
-    if (error == nil) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"success"];
-
-        [[self client] URLProtocolDidFinishLoading:self];
-    } else if ( [[error domain] isEqual:NSURLErrorDomain] && ([error code] == NSURLErrorCancelled) ) {
-        // Do nothing.  This happens in two cases:
-        //
-        // o during a redirect, in which case the redirect code has already told the client about 
-        //   the failure
-        // 
-        // o if the request is cancelled by a call to -stopLoading, in which case the client doesn't 
-        //   want to know about the failure
-    } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"error %@ / %d", [error domain], (int) [error code]];
-
+    if (error) {
         [[self client] URLProtocol:self didFailWithError:error];
+        self.error = error;
+    } else {
+        [[self client] URLProtocolDidFinishLoading:self];
     }
+}
 
-    // We don't need to clean up the connection here; the system will call, or has already called, 
-    // -stopLoading to do that.
+
+#pragma mark -
+//liman
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+        
+        orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
+    });
+}
+
+//处理500,404等错误
+- (HttpModel *)handleError:(NSError *)error model:(HttpModel *)model
+{
+    if (!error) {
+        //https://httpstatuses.com/
+        switch (model.statusCode.integerValue) {
+            case 100:
+                model.errorDescription = @"Informational :\nThe initial part of a request has been received and has not yet been rejected by the server. The server intends to send a final response after the request has been fully received and acted upon.";
+                model.errorLocalizedDescription = @"Continue";
+                break;
+            case 101:
+                model.errorDescription = @"Informational :\nThe server understands and is willing to comply with the client's request, via the Upgrade header field1, for a change in the application protocol being used on this connection.";
+                model.errorLocalizedDescription = @"Switching Protocols";
+                break;
+            case 102:
+                model.errorDescription = @"Informational :\nAn interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.";
+                model.errorLocalizedDescription = @"Processing";
+                break;
+            case 300:
+                model.errorDescription = @"Redirection :\nThe target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.";
+                model.errorLocalizedDescription = @"Multiple Choices";
+                break;
+            case 301:
+                model.errorDescription = @"Redirection :\nThe target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.";
+                model.errorLocalizedDescription = @"Moved Permanently";
+                break;
+            case 302:
+                model.errorDescription = @"Redirection :\nThe target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the effective request URI for future requests.";
+                model.errorLocalizedDescription = @"Found";
+                break;
+            case 303:
+                model.errorDescription = @"Redirection :\nThe server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.";
+                model.errorLocalizedDescription = @"See Other";
+                break;
+            case 304:
+                model.errorDescription = @"Redirection :\nA conditional GET or HEAD request has been received and would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to false.";
+                model.errorLocalizedDescription = @"Not Modified";
+                break;
+            case 305:
+                model.errorDescription = @"Redirection :\nDefined in a previous version of this specification and is now deprecated, due to security concerns regarding in-band configuration of a proxy.";
+                model.errorLocalizedDescription = @"Use Proxy";
+                break;
+            case 307:
+                model.errorDescription = @"Redirection :\nThe target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.";
+                model.errorLocalizedDescription = @"Temporary Redirect";
+                break;
+            case 308:
+                model.errorDescription = @"Redirection :\nThe target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.";
+                model.errorLocalizedDescription = @"Permanent Redirect";
+                break;
+            case 400:
+                model.errorDescription = @"Client Error :\nThe server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).";
+                model.errorLocalizedDescription = @"Bad Request";
+                break;
+            case 401:
+                model.errorDescription = @"Client Error :\nThe request has not been applied because it lacks valid authentication credentials for the target resource.";
+                model.errorLocalizedDescription = @"Unauthorized";
+                break;
+            case 402:
+                model.errorDescription = @"Client Error :\nReserved for future use.";
+                model.errorLocalizedDescription = @"Payment Required";
+                break;
+            case 403:
+                model.errorDescription = @"Client Error :\nThe server understood the request but refuses to authorize it.";
+                model.errorLocalizedDescription = @"Forbidden";
+                break;
+            case 404:
+                model.errorDescription = @"Client Error :\nThe origin server did not find a current representation for the target resource or is not willing to disclose that one exists.";
+                model.errorLocalizedDescription = @"Not Found";
+                break;
+            case 405:
+                model.errorDescription = @"Client Error :\nThe method received in the request-line is known by the origin server but not supported by the target resource.";
+                model.errorLocalizedDescription = @"Method Not Allowed";
+                break;
+            case 406:
+                model.errorDescription = @"Client Error :\nThe target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request1, and the server is unwilling to supply a default representation.";
+                model.errorLocalizedDescription = @"Not Acceptable";
+                break;
+            case 407:
+                model.errorDescription = @"Client Error :\nSimilar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.";
+                model.errorLocalizedDescription = @"Proxy Authentication Required";
+                break;
+            case 408:
+                model.errorDescription = @"Client Error :\nThe server did not receive a complete request message within the time that it was prepared to wait.";
+                model.errorLocalizedDescription = @"Request Timeout";
+                break;
+            case 409:
+                model.errorDescription = @"Client Error :\nThe request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.";
+                model.errorLocalizedDescription = @"Conflict";
+                break;
+            case 410:
+                model.errorDescription = @"Client Error :\nThe target resource is no longer available at the origin server and that this condition is likely to be permanent.";
+                model.errorLocalizedDescription = @"Gone";
+                break;
+            case 411:
+                model.errorDescription = @"Client Error :\nThe server refuses to accept the request without a defined Content-Length1.";
+                model.errorLocalizedDescription = @"Length Required";
+                break;
+            case 412:
+                model.errorDescription = @"Client Error :\nOne or more conditions given in the request header fields evaluated to false when tested on the server.";
+                model.errorLocalizedDescription = @"Precondition Failed";
+                break;
+            case 413:
+                model.errorDescription = @"Client Error :\nThe server is refusing to process a request because the request payload is larger than the server is willing or able to process.";
+                model.errorLocalizedDescription = @"Payload Too Large";
+                break;
+            case 414:
+                model.errorDescription = @"Client Error :\nThe server is refusing to service the request because the request-target1 is longer than the server is willing to interpret.";
+                model.errorLocalizedDescription = @"Request-URI Too Long";
+                break;
+            case 415:
+                model.errorDescription = @"Client Error :\nThe origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.";
+                model.errorLocalizedDescription = @"Unsupported Media Type";
+                break;
+            case 416:
+                model.errorDescription = @"Client Error :\nNone of the ranges in the request's Range header field1 overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.";
+                model.errorLocalizedDescription = @"Requested Range Not Satisfiable";
+                break;
+            case 417:
+                model.errorDescription = @"Client Error :\nThe expectation given in the request's Expect header field1 could not be met by at least one of the inbound servers.";
+                model.errorLocalizedDescription = @"Expectation Failed";
+                break;
+            case 418:
+                model.errorDescription = @"Client Error :\nAny attempt to brew coffee with a teapot should result in the error code \"418 I'm a teapot\". The resulting entity body MAY be short and stout.";
+                model.errorLocalizedDescription = @"I'm a teapot";
+                break;
+            case 421:
+                model.errorDescription = @"Client Error :\nThe request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.";
+                model.errorLocalizedDescription = @"Misdirected Request";
+                break;
+            case 422:
+                model.errorDescription = @"Client Error :\nThe server understands the content type of the request entity (hence a 415 Unsupported Media Type status code is inappropriate), and the syntax of the request entity is correct (thus a 400 Bad Request status code is inappropriate) but was unable to process the contained instructions.";
+                model.errorLocalizedDescription = @"Unprocessable Entity";
+                break;
+            case 423:
+                model.errorDescription = @"Client Error :\nThe source or destination resource of a method is locked.";
+                model.errorLocalizedDescription = @"Locked";
+                break;
+            case 424:
+                model.errorDescription = @"Client Error :\nThe method could not be performed on the resource because the requested action depended on another action and that action failed.";
+                model.errorLocalizedDescription = @"Failed Dependency";
+                break;
+            case 426:
+                model.errorDescription = @"Client Error :\nThe server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.";
+                model.errorLocalizedDescription = @"Upgrade Required";
+                break;
+            case 428:
+                model.errorDescription = @"Client Error :\nThe origin server requires the request to be conditional.";
+                model.errorLocalizedDescription = @"Precondition Required";
+                break;
+            case 429:
+                model.errorDescription = @"Client Error :\nThe user has sent too many requests in a given amount of time (\"rate limiting\").";
+                model.errorLocalizedDescription = @"Too Many Requests";
+                break;
+            case 431:
+                model.errorDescription = @"Client Error :\nThe server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.";
+                model.errorLocalizedDescription = @"Request Header Fields Too Large";
+                break;
+            case 444:
+                model.errorDescription = @"Client Error :\nA non-standard status code used to instruct nginx to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.";
+                model.errorLocalizedDescription = @"Connection Closed Without Response";
+                break;
+            case 451:
+                model.errorDescription = @"Client Error :\nThe server is denying access to the resource as a consequence of a legal demand.";
+                model.errorLocalizedDescription = @"Unavailable For Legal Reasons";
+                break;
+            case 499:
+                model.errorDescription = @"Client Error :\nA non-standard status code introduced by nginx for the case when a client closes the connection while nginx is processing the request.";
+                model.errorLocalizedDescription = @"Client Closed Request";
+                break;
+            case 500:
+                model.errorDescription = @"Server Error :\nThe server encountered an unexpected condition that prevented it from fulfilling the request.";
+                model.errorLocalizedDescription = @"Internal Server Error";
+                break;
+            case 501:
+                model.errorDescription = @"Server Error :\nThe server does not support the functionality required to fulfill the request.";
+                model.errorLocalizedDescription = @"Not Implemented";
+                break;
+            case 502:
+                model.errorDescription = @"Server Error :\nThe server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.";
+                model.errorLocalizedDescription = @"Bad Gateway";
+                break;
+            case 503:
+                model.errorDescription = @"Server Error :\nThe server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.";
+                model.errorLocalizedDescription = @"Service Unavailable";
+                break;
+            case 504:
+                model.errorDescription = @"Server Error :\nThe server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.";
+                model.errorLocalizedDescription = @"Gateway Timeout";
+                break;
+            case 505:
+                model.errorDescription = @"Server Error :\nThe server does not support, or refuses to support, the major version of HTTP that was used in the request message.";
+                model.errorLocalizedDescription = @"HTTP Version Not Supported";
+                break;
+            case 506:
+                model.errorDescription = @"Server Error :\nThe server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.";
+                model.errorLocalizedDescription = @"Variant Also Negotiates";
+                break;
+            case 507:
+                model.errorDescription = @"Server Error :\nThe method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.";
+                model.errorLocalizedDescription = @"Insufficient Storage";
+                break;
+            case 508:
+                model.errorDescription = @"Server Error :\nThe server terminated an operation because it encountered an infinite loop while processing a request with \"Depth: infinity\". This status indicates that the entire operation failed.";
+                model.errorLocalizedDescription = @"Loop Detected";
+                break;
+            case 510:
+                model.errorDescription = @"Server Error :\nThe policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.";
+                model.errorLocalizedDescription = @"Not Extended";
+                break;
+            case 511:
+                model.errorDescription = @"Server Error :\nThe client needs to authenticate to gain network access.";
+                model.errorLocalizedDescription = @"Network Authentication Required";
+                break;
+            case 599:
+                model.errorDescription = @"Server Error :\nThis status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.";
+                model.errorLocalizedDescription = @"Network Connect Timeout Error";
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return model;
 }
 
 @end

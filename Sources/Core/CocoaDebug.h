@@ -8,6 +8,8 @@
 
 #import "CacheStoragePolicy.h"
 #import "CustomHTTPProtocol.h"
+#import "CanonicalRequest.h"
+#import "QNSURLSessionDemux.h"
 #import "FilePreviewController.h"
 #import "FileTableViewCell.h"
 #import "FPSLabel.h"
