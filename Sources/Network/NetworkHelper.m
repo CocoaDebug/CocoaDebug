@@ -7,7 +7,7 @@
 //
 
 #import "NetworkHelper.h"
-#import "CustomProtocol.h"
+#import "CustomHTTPProtocol.h"
 
 @interface NetworkHelper()
 
@@ -40,13 +40,13 @@
 - (void)enable
 {
     self.isEnable = YES;
-    [NSURLProtocol registerClass:[CustomProtocol class]];
+    [NSURLProtocol registerClass:[CustomHTTPProtocol class]];
 }
 
 - (void)disable
 {
     self.isEnable = NO;
-    [NSURLProtocol unregisterClass:[CustomProtocol class]];
+    [NSURLProtocol unregisterClass:[CustomHTTPProtocol class]];
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString {

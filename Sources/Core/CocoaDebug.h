@@ -7,7 +7,7 @@
 //
 
 #import "CacheStoragePolicy.h"
-#import "CustomProtocol.h"
+#import "CustomHTTPProtocol.h"
 #import "FilePreviewController.h"
 #import "FileTableViewCell.h"
 #import "FPSLabel.h"
