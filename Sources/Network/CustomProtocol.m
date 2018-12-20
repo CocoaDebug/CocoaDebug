@@ -88,7 +88,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     });
 }
 
-#pragma mark - protocol
+#pragma mark - overwrite NSURLProtocol
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
     if (![request.URL.scheme isEqualToString:@"http"] &&
@@ -210,7 +210,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     }
 }
 
-#pragma mark - NSURLSessionDataDelegate
+#pragma mark - NSURLSessionDelegate
 //解决发送IP地址的HTTPS请求 证书验证
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
 {
@@ -229,27 +229,27 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     }
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
 {
-    [[self client] URLProtocol:self didLoadData:data];
-    [self.data appendData:data];
+    [self.client URLProtocolDidFinishLoading:self];
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error
 {
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    self.response = response;
-    
-    completionHandler(NSURLSessionResponseAllow);
+    if (error) {
+        [self.client URLProtocol:self didFailWithError:error];
+        self.error = error;
+    }
 }
 
+#pragma mark - NSURLSessionTaskDelegate
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
     if (error) {
-        [[self client] URLProtocol:self didFailWithError:error];
+        [self.client URLProtocol:self didFailWithError:error];
         self.error = error;
     } else {
-        [[self client] URLProtocolDidFinishLoading:self];
+        [self.client URLProtocolDidFinishLoading:self];
     }
 }
 
@@ -269,17 +269,108 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     completionHandler(request);
 }
 
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
 {
-    if (error) {
-        [[self client] URLProtocol:self didFailWithError:error];
-        self.error = error;
-    }
+    
 }
 
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler
 {
-    [[self client] URLProtocolDidFinishLoading:self];
+    
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willBeginDelayedRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLSessionDelayedRequestDisposition disposition, NSURLRequest *newRequest))completionHandler
+API_AVAILABLE(ios(11.0))
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session taskIsWaitingForConnectivity:(NSURLSessionTask *)task
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics
+API_AVAILABLE(ios(10.0))
+{
+    
+}
+
+#pragma mark - NSURLSessionDataDelegate
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+    [self.client URLProtocol:self didLoadData:data];
+    [self.data appendData:data];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+{
+    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    self.response = response;
+    
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask
+API_AVAILABLE(ios(9.0))
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
+{
+    
+}
+
+#pragma mark - NSURLSessionStreamDelegate
+- (void)URLSession:(NSURLSession *)session betterRouteDiscoveredForStreamTask:(NSURLSessionStreamTask *)streamTask
+API_AVAILABLE(ios(9.0))
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session streamTask:(NSURLSessionStreamTask *)streamTask didBecomeInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream
+API_AVAILABLE(ios(9.0))
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session readClosedForStreamTask:(NSURLSessionStreamTask *)streamTask
+API_AVAILABLE(ios(9.0))
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session writeClosedForStreamTask:(NSURLSessionStreamTask *)streamTask
+API_AVAILABLE(ios(9.0))
+{
+    
+}
+
+#pragma mark - NSURLSessionDownloadDelegate
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
+{
+    
+}
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+{
+    
 }
 
 #pragma mark - helper
