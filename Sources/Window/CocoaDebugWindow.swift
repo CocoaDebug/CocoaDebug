@@ -22,11 +22,7 @@ class CocoaDebugWindow: UIWindow {
         super.init(frame: frame)
 
         self.backgroundColor = .clear
-        #if swift(>=4.2)
         self.windowLevel = UIWindow.Level(rawValue: 2100 - CocoaDebugWindow.y)
-        #else
-        self.windowLevel = 2100 - CocoaDebugWindow.y
-        #endif
     }
     
     required init?(coder aDecoder: NSCoder) {
