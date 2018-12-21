@@ -11,6 +11,8 @@
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
+#import "CocoaDebug.h"
+
 @import UIKit;
 @import Foundation;
 @import ObjectiveC.runtime;
@@ -38,15 +40,18 @@
 
 + (void)load
 {
-    if (@available(iOS 11.0, *)) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
-            [FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
-        });
-    } else {
-        // Fallback on earlier versions
-    }
+    dispatch_main_async_safe(^{
+        
+        if (@available(iOS 11.0, *)) {
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
+                [FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
+            });
+        } else {
+            // Fallback on earlier versions
+        }
+    })
 }
 
 + (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod
