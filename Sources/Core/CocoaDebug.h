@@ -25,6 +25,10 @@
 #import "SandboxViewController.h"
 #import "Swizzling.h"
 #import "WeakProxy.h"
+#import "FLEXUtility.h"
+#import "FLEXNetworkTransaction.h"
+#import "FLEXNetworkRecorder.h"
+#import "FLEXNetworkObserver.h"
 
 
 #define dispatch_main_async_safe(block)\

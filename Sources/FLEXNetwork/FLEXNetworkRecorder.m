@@ -28,6 +28,9 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 @property (nonatomic, strong) NSMutableDictionary<NSString *, FLEXNetworkTransaction *> *networkTransactionsForRequestIdentifiers;
 @property (nonatomic, strong) dispatch_queue_t queue;
 
+//liman
+@property (nonatomic, strong) dispatch_queue_t concurrent_queue;
+
 @end
 
 @implementation FLEXNetworkRecorder
@@ -49,6 +52,9 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 
         // Serial queue used because we use mutable objects that are not thread safe
         self.queue = dispatch_queue_create("com.flex.FLEXNetworkRecorder", DISPATCH_QUEUE_SERIAL);
+        
+        //liman
+        self.concurrent_queue = dispatch_queue_create("com.liman.cocoadebug", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -78,9 +84,12 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 
 - (NSArray<FLEXNetworkTransaction *> *)networkTransactions
 {
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     __block NSArray<FLEXNetworkTransaction *> *transactions = nil;
     dispatch_sync(self.queue, ^{
-        transactions = [self.orderedTransactions copy];
+        transactions = [weakSelf.orderedTransactions copy];
     });
     return transactions;
 }
@@ -119,6 +128,9 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
         [self recordResponseReceivedWithRequestID:requestID response:redirectResponse];
         [self recordLoadingFinishedWithRequestID:requestID responseBody:nil];
     }
+    
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
 
     dispatch_async(self.queue, ^{
         FLEXNetworkTransaction *transaction = [[FLEXNetworkTransaction alloc] init];
@@ -126,11 +138,11 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
         transaction.request = request;
         transaction.startTime = startDate;
 
-        [self.orderedTransactions insertObject:transaction atIndex:0];
-        [self.networkTransactionsForRequestIdentifiers setObject:transaction forKey:requestID];
+        [weakSelf.orderedTransactions insertObject:transaction atIndex:0];
+        [weakSelf.networkTransactionsForRequestIdentifiers setObject:transaction forKey:requestID];
         transaction.transactionState = FLEXNetworkTransactionStateAwaitingResponse;
 
-        [self postNewTransactionNotificationWithTransaction:transaction];
+        [weakSelf postNewTransactionNotificationWithTransaction:transaction];
     });
 }
 
@@ -138,8 +150,11 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 {
     NSDate *responseDate = [NSDate date];
 
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     dispatch_async(self.queue, ^{
-        FLEXNetworkTransaction *transaction = self.networkTransactionsForRequestIdentifiers[requestID];
+        FLEXNetworkTransaction *transaction = weakSelf.networkTransactionsForRequestIdentifiers[requestID];
         if (!transaction) {
             return;
         }
@@ -147,20 +162,23 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
         transaction.transactionState = FLEXNetworkTransactionStateReceivingData;
         transaction.latency = -[transaction.startTime timeIntervalSinceDate:responseDate];
 
-        [self postUpdateNotificationForTransaction:transaction];
+        [weakSelf postUpdateNotificationForTransaction:transaction];
     });
 }
 
 - (void)recordDataReceivedWithRequestID:(NSString *)requestID dataLength:(int64_t)dataLength
 {
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     dispatch_async(self.queue, ^{
-        FLEXNetworkTransaction *transaction = self.networkTransactionsForRequestIdentifiers[requestID];
+        FLEXNetworkTransaction *transaction = weakSelf.networkTransactionsForRequestIdentifiers[requestID];
         if (!transaction) {
             return;
         }
         transaction.receivedDataLength += dataLength;
 
-        [self postUpdateNotificationForTransaction:transaction];
+        [weakSelf postUpdateNotificationForTransaction:transaction];
     });
 }
 
@@ -168,6 +186,9 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 {
     NSDate *finishedDate = [NSDate date];
 
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     dispatch_async(self.queue, ^{
         FLEXNetworkTransaction *transaction = self.networkTransactionsForRequestIdentifiers[requestID];
         if (!transaction) {
@@ -190,6 +211,7 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 
         NSString *mimeType = transaction.response.MIMEType;
         if ([mimeType hasPrefix:@"image/"] && [responseBody length] > 0) {
+            
             // Thumbnail image previews on a separate background queue
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //                NSInteger maxPixelDimension = [[UIScreen mainScreen] scale] * 32.0;
@@ -198,7 +220,7 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
                 //liman
                 transaction.imageData = responseBody;
                 
-                [self postUpdateNotificationForTransaction:transaction];
+                [weakSelf postUpdateNotificationForTransaction:transaction];
             });
         }
         //liman
@@ -224,14 +246,17 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 //            transaction.responseThumbnail = [FLEXResources textIcon];
 //        }
         
-        [self postUpdateNotificationForTransaction:transaction];
+        [weakSelf postUpdateNotificationForTransaction:transaction];
     });
 }
 
 - (void)recordLoadingFailedWithRequestID:(NSString *)requestID error:(NSError *)error
 {
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     dispatch_async(self.queue, ^{
-        FLEXNetworkTransaction *transaction = self.networkTransactionsForRequestIdentifiers[requestID];
+        FLEXNetworkTransaction *transaction = weakSelf.networkTransactionsForRequestIdentifiers[requestID];
         if (!transaction) {
             return;
         }
@@ -239,20 +264,23 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
         transaction.duration = -[transaction.startTime timeIntervalSinceNow];
         transaction.error = error;
 
-        [self postUpdateNotificationForTransaction:transaction];
+        [weakSelf postUpdateNotificationForTransaction:transaction];
     });
 }
 
 - (void)recordMechanism:(NSString *)mechanism forRequestID:(NSString *)requestID
 {
+    //liman
+    __weak FLEXNetworkRecorder *weakSelf = self;
+    
     dispatch_async(self.queue, ^{
-        FLEXNetworkTransaction *transaction = self.networkTransactionsForRequestIdentifiers[requestID];
+        FLEXNetworkTransaction *transaction = weakSelf.networkTransactionsForRequestIdentifiers[requestID];
         if (!transaction) {
             return;
         }
         transaction.requestMechanism = mechanism;
 
-        [self postUpdateNotificationForTransaction:transaction];
+        [weakSelf postUpdateNotificationForTransaction:transaction];
     });
 }
 
@@ -280,12 +308,28 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
     [self handleFLEXNetworkTransaction:transaction];
 }
 
-
 //liman
 - (void)handleFLEXNetworkTransaction:(FLEXNetworkTransaction *)transaction
 {
-    return;
+    __weak FLEXNetworkRecorder *weakSelf = self;
     
+    //栅栏
+    dispatch_barrier_async(self.concurrent_queue, ^{
+        [weakSelf _handleFLEXNetworkTransaction:transaction];
+    });
+    
+    //信号量
+//    dispatch_semaphore_t sem = dispatch_semaphore_create(1);
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [weakSelf _handleFLEXNetworkTransaction:transaction];
+//        dispatch_semaphore_signal(sem);
+//    });
+//    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+}
+
+//liman
+- (void)_handleFLEXNetworkTransaction:(FLEXNetworkTransaction *)transaction
+{
     if (![NetworkHelper shared].isEnable) {
         return;
     }
@@ -293,6 +337,14 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
     if (transaction.transactionState != FLEXNetworkTransactionStateFinished && transaction.transactionState != FLEXNetworkTransactionStateFailed) {
         return;
     }
+    
+    
+//    FLEXNetworkTransactionStateUnstarted,
+//    FLEXNetworkTransactionStateAwaitingResponse,
+//    FLEXNetworkTransactionStateReceivingData,
+//    FLEXNetworkTransactionStateFinished,
+//    FLEXNetworkTransactionStateFailed
+    
     
     HttpModel *model = [[HttpModel alloc] init];
     model.requestId = transaction.requestID;
@@ -308,14 +360,14 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
     model.isImage = [transaction.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
     model.imageData = transaction.imageData;
     model.requestData = transaction.cachedRequestBody;
-//    NSData *data = transaction.request.HTTPBody;
-//    if (data) {
-//        model.requestData = data;
-//    }
-//    NSInputStream *stream = transaction.request.HTTPBodyStream;
-//    if (stream) {
-//        model.requestData = [NSData dataWithInputStream:stream];
-//    }
+    //    NSData *data = transaction.request.HTTPBody;
+    //    if (data) {
+    //        model.requestData = data;
+    //    }
+    //    NSInputStream *stream = transaction.request.HTTPBodyStream;
+    //    if (stream) {
+    //        model.requestData = [NSData dataWithInputStream:stream];
+    //    }
     
     if ([transaction.response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)transaction.response;

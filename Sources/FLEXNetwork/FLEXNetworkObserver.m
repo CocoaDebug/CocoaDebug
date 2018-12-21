@@ -920,7 +920,7 @@ static char const * const kFLEXRequestIDKey = "kFLEXRequestIDKey";
 - (void)performBlock:(dispatch_block_t)block
 {
     if ([[self class] isEnabled]) {
-        dispatch_async(_queue, block);
+        dispatch_async(self.queue, block);
     }
 }
 

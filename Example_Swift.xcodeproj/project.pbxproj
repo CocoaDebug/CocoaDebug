@@ -15,6 +15,14 @@
 		386A5D3E21CCC21A00585194 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3021CCC21900585194 /* FLEXNetworkRecorder.m */; };
 		386A5D4221CCC21A00585194 /* FLEXNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3721CCC21900585194 /* FLEXNetworkObserver.m */; };
 		38B5615421CCC5B200BB276A /* FLEXUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B5615221CCC5B200BB276A /* FLEXUtility.m */; };
+		38D71FB021CD3D500019A484 /* FLEXUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B5614F21CCC5B100BB276A /* FLEXUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38D71FB121CD3D500019A484 /* FLEXNetworkTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 386A5D3421CCC21900585194 /* FLEXNetworkTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38D71FB221CD3D500019A484 /* FLEXNetworkRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 386A5D3821CCC21900585194 /* FLEXNetworkRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38D71FB321CD3D500019A484 /* FLEXNetworkObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 386A5D3121CCC21900585194 /* FLEXNetworkObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38D71FB421CD3D610019A484 /* FLEXUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B5615221CCC5B200BB276A /* FLEXUtility.m */; };
+		38D71FB521CD3D610019A484 /* FLEXNetworkTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D2D21CCC21900585194 /* FLEXNetworkTransaction.m */; };
+		38D71FB621CD3D610019A484 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3021CCC21900585194 /* FLEXNetworkRecorder.m */; };
+		38D71FB721CD3D610019A484 /* FLEXNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3721CCC21900585194 /* FLEXNetworkObserver.m */; };
 		38F21ACB21C410D00009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACD21C411150009533A /* ObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F21AC921C410D00009533A /* ObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1371,6 +1379,10 @@
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
+				38D71FB021CD3D500019A484 /* FLEXUtility.h in Headers */,
+				38D71FB121CD3D500019A484 /* FLEXNetworkTransaction.h in Headers */,
+				38D71FB221CD3D500019A484 /* FLEXNetworkRecorder.h in Headers */,
+				38D71FB321CD3D500019A484 /* FLEXNetworkObserver.h in Headers */,
 				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
 				38F21ACD21C411150009533A /* ObjcLog.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
@@ -1890,6 +1902,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D71FB421CD3D610019A484 /* FLEXUtility.m in Sources */,
+				38D71FB521CD3D610019A484 /* FLEXNetworkTransaction.m in Sources */,
+				38D71FB621CD3D610019A484 /* FLEXNetworkRecorder.m in Sources */,
+				38D71FB721CD3D610019A484 /* FLEXNetworkObserver.m in Sources */,
 				38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */,
 				38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */,
 				38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */,

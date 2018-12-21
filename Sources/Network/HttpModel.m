@@ -10,6 +10,14 @@
 
 @implementation HttpModel
 
+//default value for @property
+- (id)init {
+    if (self = [super init])  {
+        self.statusCode = @"0";
+    }
+    return self;
+}
+
 @end
 
 

@@ -112,33 +112,37 @@
         switch (self.fileInfo.type) {
             case MLBFileTypePList: {
                 [self.activityIndicatorView startAnimating];
+                
+                //liman
+                __weak FilePreviewController *weakSelf = self;
+                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];
+                    NSData *data = [NSData dataWithContentsOfFile:weakSelf.fileInfo.URL.path];
                     
                     if (!data) {
                         //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by CocoaDebug
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            self.textView.text = @" unable to preview";
-                            self.textView.backgroundColor = [UIColor blackColor];
-                            self.textView.textColor = [UIColor whiteColor];
-                            self.textView.font = [UIFont systemFontOfSize:17];
+                            weakSelf.textView.text = @" unable to preview";
+                            weakSelf.textView.backgroundColor = [UIColor blackColor];
+                            weakSelf.textView.textColor = [UIColor whiteColor];
+                            weakSelf.textView.font = [UIFont systemFontOfSize:17];
                         });
                     }else{
                         NSError *error;
                         NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:&error] description];
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.activityIndicatorView stopAnimating];
+                            [weakSelf.activityIndicatorView stopAnimating];
                             //liman
                             if (error) {
-                                self.textView.text = @" unable to preview";
-                                self.textView.backgroundColor = [UIColor blackColor];
-                                self.textView.textColor = [UIColor whiteColor];
-                                self.textView.font = [UIFont systemFontOfSize:17];
+                                weakSelf.textView.text = @" unable to preview";
+                                weakSelf.textView.backgroundColor = [UIColor blackColor];
+                                weakSelf.textView.textColor = [UIColor whiteColor];
+                                weakSelf.textView.font = [UIFont systemFontOfSize:17];
                             }else{
-                                self.textView.text = content;
-                                self.textView.backgroundColor = [UIColor whiteColor];
-                                self.textView.textColor = [UIColor blackColor];
-                                self.textView.font = [UIFont systemFontOfSize:12];
+                                weakSelf.textView.text = content;
+                                weakSelf.textView.backgroundColor = [UIColor whiteColor];
+                                weakSelf.textView.textColor = [UIColor blackColor];
+                                weakSelf.textView.font = [UIFont systemFontOfSize:12];
                             }
                         });
                     }

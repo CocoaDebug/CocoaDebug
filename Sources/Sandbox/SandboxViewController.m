@@ -160,11 +160,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)loadDirectoryContents {
+    
+    //liman
+    __weak SandboxViewController *weakSelf = self;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        self.dataSource = [MLBFileInfo contentsOfDirectoryAtURL:self.fileInfo.URL];
+        weakSelf.dataSource = [MLBFileInfo contentsOfDirectoryAtURL:weakSelf.fileInfo.URL];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-            [self updateToolbarItems];
+            [weakSelf.tableView reloadData];
+            [weakSelf updateToolbarItems];
             if (self->_isFirstAppear) {
                 self->_isFirstAppear = NO;
             }
