@@ -11,18 +11,10 @@
 		3803440C21C3D54E00BC1CE2 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
 		3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
 		3803441421C3E58800BC1CE2 /* OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */; };
-		38B670DA21CBB645006C915E /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D321CBB645006C915E /* CustomHTTPProtocol.m */; };
-		38B670DB21CBB645006C915E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D521CBB645006C915E /* QNSURLSessionDemux.m */; };
-		38B670DC21CBB645006C915E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D621CBB645006C915E /* CacheStoragePolicy.m */; };
-		38B670DD21CBB645006C915E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D721CBB645006C915E /* CanonicalRequest.m */; };
-		38B670DE21CBC6F7006C915E /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D321CBB645006C915E /* CustomHTTPProtocol.m */; };
-		38B670DF21CBC6F7006C915E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D621CBB645006C915E /* CacheStoragePolicy.m */; };
-		38B670E021CBC6F7006C915E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D721CBB645006C915E /* CanonicalRequest.m */; };
-		38B670E121CBC6F7006C915E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B670D521CBB645006C915E /* QNSURLSessionDemux.m */; };
-		38B670E221CBC703006C915E /* CustomHTTPProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D821CBB645006C915E /* CustomHTTPProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38B670E321CBC703006C915E /* CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D221CBB645006C915E /* CacheStoragePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38B670E421CBC703006C915E /* CanonicalRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D421CBB645006C915E /* CanonicalRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38B670E521CBC703006C915E /* QNSURLSessionDemux.h in Headers */ = {isa = PBXBuildFile; fileRef = 38B670D921CBB645006C915E /* QNSURLSessionDemux.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		386A5D3C21CCC21A00585194 /* FLEXNetworkTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D2D21CCC21900585194 /* FLEXNetworkTransaction.m */; };
+		386A5D3E21CCC21A00585194 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3021CCC21900585194 /* FLEXNetworkRecorder.m */; };
+		386A5D4221CCC21A00585194 /* FLEXNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 386A5D3721CCC21900585194 /* FLEXNetworkObserver.m */; };
+		38B5615421CCC5B200BB276A /* FLEXUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B5615221CCC5B200BB276A /* FLEXUtility.m */; };
 		38F21ACB21C410D00009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F21ACA21C410D00009533A /* ObjcLog.m */; };
 		38F21ACD21C411150009533A /* ObjcLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F21AC921C410D00009533A /* ObjcLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -486,14 +478,15 @@
 		3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLoggerFormat.m; sourceTree = "<group>"; };
 		3803441221C3E58800BC1CE2 /* OCLogStoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogStoreManager.h; sourceTree = "<group>"; };
 		3803441321C3E58800BC1CE2 /* OCLogStoreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCLogStoreManager.m; sourceTree = "<group>"; };
-		38B670D221CBB645006C915E /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
-		38B670D321CBB645006C915E /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
-		38B670D421CBB645006C915E /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
-		38B670D521CBB645006C915E /* QNSURLSessionDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNSURLSessionDemux.m; sourceTree = "<group>"; };
-		38B670D621CBB645006C915E /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
-		38B670D721CBB645006C915E /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
-		38B670D821CBB645006C915E /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
-		38B670D921CBB645006C915E /* QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNSURLSessionDemux.h; sourceTree = "<group>"; };
+		386A5D2D21CCC21900585194 /* FLEXNetworkTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkTransaction.m; sourceTree = "<group>"; };
+		386A5D3021CCC21900585194 /* FLEXNetworkRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkRecorder.m; sourceTree = "<group>"; };
+		386A5D3121CCC21900585194 /* FLEXNetworkObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkObserver.h; sourceTree = "<group>"; };
+		386A5D3421CCC21900585194 /* FLEXNetworkTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkTransaction.h; sourceTree = "<group>"; };
+		386A5D3721CCC21900585194 /* FLEXNetworkObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkObserver.m; sourceTree = "<group>"; };
+		386A5D3821CCC21900585194 /* FLEXNetworkRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkRecorder.h; sourceTree = "<group>"; };
+		38B5614D21CCC4CB00BB276A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		38B5614F21CCC5B100BB276A /* FLEXUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXUtility.h; sourceTree = "<group>"; };
+		38B5615221CCC5B200BB276A /* FLEXUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXUtility.m; sourceTree = "<group>"; };
 		38F21AC921C410D00009533A /* ObjcLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcLog.h; sourceTree = "<group>"; };
 		38F21ACA21C410D00009533A /* ObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcLog.m; sourceTree = "<group>"; };
 		EA0628E320541ACB0071A231 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
@@ -812,25 +805,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		38B670D121CBB645006C915E /* CustomHTTPProtocol */ = {
+		386A5D2B21CCC21900585194 /* FLEXNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				38B670D821CBB645006C915E /* CustomHTTPProtocol.h */,
-				38B670D321CBB645006C915E /* CustomHTTPProtocol.m */,
-				38B670D221CBB645006C915E /* CacheStoragePolicy.h */,
-				38B670D621CBB645006C915E /* CacheStoragePolicy.m */,
-				38B670D421CBB645006C915E /* CanonicalRequest.h */,
-				38B670D721CBB645006C915E /* CanonicalRequest.m */,
-				38B670D921CBB645006C915E /* QNSURLSessionDemux.h */,
-				38B670D521CBB645006C915E /* QNSURLSessionDemux.m */,
+				38B5614F21CCC5B100BB276A /* FLEXUtility.h */,
+				38B5615221CCC5B200BB276A /* FLEXUtility.m */,
+				386A5D3421CCC21900585194 /* FLEXNetworkTransaction.h */,
+				386A5D2D21CCC21900585194 /* FLEXNetworkTransaction.m */,
+				386A5D3821CCC21900585194 /* FLEXNetworkRecorder.h */,
+				386A5D3021CCC21900585194 /* FLEXNetworkRecorder.m */,
+				386A5D3121CCC21900585194 /* FLEXNetworkObserver.h */,
+				386A5D3721CCC21900585194 /* FLEXNetworkObserver.m */,
 			);
-			path = CustomHTTPProtocol;
+			path = FLEXNetwork;
+			sourceTree = "<group>";
+		};
+		38B5614C21CCC4CB00BB276A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38B5614D21CCC4CB00BB276A /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EA0628E120541ACB0071A231 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				38B670D121CBB645006C915E /* CustomHTTPProtocol */,
+				386A5D2B21CCC21900585194 /* FLEXNetwork */,
 				EA617D482090291000EFDCCD /* FPS */,
 				EA0628E220541ACB0071A231 /* Core */,
 				EA0628E720541ACB0071A231 /* App */,
@@ -1119,6 +1120,7 @@
 				EA72671C20F0B7D4004D1D6F /* CocoaDebug */,
 				EA6B277720596883004D8E05 /* Example_SwiftTests */,
 				EA1659D4204D1B14001472C1 /* Products */,
+				38B5614C21CCC4CB00BB276A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1369,10 +1371,6 @@
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
 				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
-				38B670E221CBC703006C915E /* CustomHTTPProtocol.h in Headers */,
-				38B670E321CBC703006C915E /* CacheStoragePolicy.h in Headers */,
-				38B670E421CBC703006C915E /* CanonicalRequest.h in Headers */,
-				38B670E521CBC703006C915E /* QNSURLSessionDemux.h in Headers */,
 				EAF55B202055417C003E310F /* SandboxViewController.h in Headers */,
 				38F21ACD21C411150009533A /* ObjcLog.h in Headers */,
 				EAF55B222055417C003E310F /* MemoryHelper.h in Headers */,
@@ -1773,6 +1771,7 @@
 				EA062AA520541ACB0071A231 /* NetworkDetailCell.swift in Sources */,
 				3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */,
 				EAF58033204E73C3001CA56D /* ASICloudFilesContainerRequest.m in Sources */,
+				38B5615421CCC5B200BB276A /* FLEXUtility.m in Sources */,
 				EAF5802A204E73C3001CA56D /* Request2.swift in Sources */,
 				EA062ABC20541ACB0071A231 /* MemoryHelper.m in Sources */,
 				EA062ABB20541ACB0071A231 /* Color.swift in Sources */,
@@ -1786,7 +1785,6 @@
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
 				EAF5800C204E73C3001CA56D /* Timeline.swift in Sources */,
 				EA0629EE20541ACB0071A231 /* CrashCell.swift in Sources */,
-				38B670DA21CBB645006C915E /* CustomHTTPProtocol.m in Sources */,
 				EA062AB420541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				EAF58009204E73C3001CA56D /* TaskDelegate.swift in Sources */,
 				EAF5801F204E73C3001CA56D /* Networking.swift in Sources */,
@@ -1836,13 +1834,13 @@
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
 				38F21ACB21C410D00009533A /* ObjcLog.m in Sources */,
-				38B670DC21CBB645006C915E /* CacheStoragePolicy.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
-				38B670DD21CBB645006C915E /* CanonicalRequest.m in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
+				386A5D3E21CCC21A00585194 /* FLEXNetworkRecorder.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
 				EAF5801D204E73C3001CA56D /* Networking+PUT.swift in Sources */,
+				386A5D3C21CCC21A00585194 /* FLEXNetworkTransaction.m in Sources */,
 				EAF58024204E73C3001CA56D /* CharacterSet+Encoding.swift in Sources */,
 				EAF58017204E73C3001CA56D /* ResponseSerialization.swift in Sources */,
 				EAF58034204E73C3001CA56D /* ASICloudFilesContainer.m in Sources */,
@@ -1872,10 +1870,10 @@
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
 				EAF5800A204E73C3001CA56D /* MultipartFormData.swift in Sources */,
 				EAF58012204E73C3001CA56D /* Notifications.swift in Sources */,
+				386A5D4221CCC21A00585194 /* FLEXNetworkObserver.m in Sources */,
 				EAF58016204E73C3001CA56D /* SessionManager.swift in Sources */,
 				EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */,
 				EAF5802C204E73C3001CA56D /* Upload.swift in Sources */,
-				38B670DB21CBB645006C915E /* QNSURLSessionDemux.m in Sources */,
 				EA062AA320541ACB0071A231 /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1892,10 +1890,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B670DE21CBC6F7006C915E /* CustomHTTPProtocol.m in Sources */,
-				38B670DF21CBC6F7006C915E /* CacheStoragePolicy.m in Sources */,
-				38B670E021CBC6F7006C915E /* CanonicalRequest.m in Sources */,
-				38B670E121CBC6F7006C915E /* QNSURLSessionDemux.m in Sources */,
 				38F21ACC21C4110E0009533A /* ObjcLog.m in Sources */,
 				38F7E6CC21C3F81100A6A503 /* OCLogHelper.m in Sources */,
 				38F7E6CE21C3F81100A6A503 /* OCLogStoreManager.m in Sources */,

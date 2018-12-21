@@ -70,6 +70,6 @@ typedef enum _ASIPostFormat {
 // Same as above, but you can specify the content-type and file name
 - (void)setData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
 
-@property (atomic, assign) ASIPostFormat postFormat;
-@property (atomic, assign) NSStringEncoding stringEncoding;
+@property (nonatomic, assign) ASIPostFormat postFormat;
+@property (nonatomic, assign) NSStringEncoding stringEncoding;
 @end

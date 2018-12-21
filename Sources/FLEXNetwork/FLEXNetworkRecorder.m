@@ -284,6 +284,8 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 //liman
 - (void)handleFLEXNetworkTransaction:(FLEXNetworkTransaction *)transaction
 {
+    return;
+    
     if (![NetworkHelper shared].isEnable) {
         return;
     }

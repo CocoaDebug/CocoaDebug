@@ -28,8 +28,8 @@ typedef enum _ASIAuthenticationType {
 + (void)presentAuthenticationDialogForRequest:(ASIHTTPRequest *)request;
 + (void)dismiss;
 
-@property (atomic, retain) ASIHTTPRequest *request;
-@property (atomic, assign) ASIAuthenticationType type;
-@property (atomic, assign) BOOL didEnableRotationNotifications;
+@property (nonatomic, retain) ASIHTTPRequest *request;
+@property (nonatomic, assign) ASIAuthenticationType type;
+@property (nonatomic, assign) BOOL didEnableRotationNotifications;
 @property (retain, nonatomic) UIViewController *presentingController;
 @end

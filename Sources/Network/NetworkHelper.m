@@ -7,7 +7,7 @@
 //
 
 #import "NetworkHelper.h"
-#import "CustomHTTPProtocol.h"
+#import "FLEXNetworkObserver.h"
 
 @interface NetworkHelper()
 
@@ -40,13 +40,13 @@
 - (void)enable
 {
     self.isEnable = YES;
-    [NSURLProtocol registerClass:[CustomHTTPProtocol class]];
+    [FLEXNetworkObserver setEnabled:YES];
 }
 
 - (void)disable
 {
     self.isEnable = NO;
-    [NSURLProtocol unregisterClass:[CustomHTTPProtocol class]];
+    [FLEXNetworkObserver setEnabled:NO];
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString {

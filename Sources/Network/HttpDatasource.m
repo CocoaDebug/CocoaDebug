@@ -28,7 +28,6 @@
     self = [super init];
     if (self) {
         self.httpModels = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
-        self.httpModelRequestIds = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
     }
     return self;
 }
@@ -42,20 +41,24 @@
         }
     }
     
+    //最大个数限制
     if (self.httpModels.count >= [[NetworkHelper shared] logMaxCount]) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }
     }
-    [self.httpModels addObject:model];
-
-    if (self.httpModelRequestIds.count >= [[NetworkHelper shared] logMaxCount]) {
-        if ([self.httpModelRequestIds count] > 0) {
-            [self.httpModelRequestIds removeObjectAtIndex:0];
+    
+    //判断重复
+    __block BOOL isExist = NO;
+    [self.httpModels enumerateObjectsUsingBlock:^(HttpModel *obj, NSUInteger index, BOOL *stop) {
+        if ([obj.requestId isEqualToString:model.requestId]) {//数组中已经存在该对象
+            isExist = YES;
         }
-    }
-    if (model.requestId && [model.requestId length] > 0) {
-        [self.httpModelRequestIds addObject:model.requestId];
+    }];
+    if (!isExist) {//如果不存在就添加进去
+        [self.httpModels addObject:model];
+    }else{
+        return NO;
     }
     
     return YES;
@@ -64,18 +67,15 @@
 - (void)reset
 {
     [self.httpModels removeAllObjects];
-    [self.httpModelRequestIds removeAllObjects];
 }
 
 - (void)remove:(HttpModel *)model
 {
-    if ([[self.httpModels copy] containsObject:model]) {
-        [self.httpModels removeObject:model];
-    }
-
-    if ([[self.httpModelRequestIds copy] containsObject:model.requestId]) {
-        [self.httpModelRequestIds removeObject:model.requestId];
-    }
+    [self.httpModels enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HttpModel *obj, NSUInteger index, BOOL *stop) {
+        if ([obj.requestId isEqualToString:model.requestId]) {
+            [self.httpModels removeObjectAtIndex:index];
+        }
+    }];
 }
 
 @end

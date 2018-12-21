@@ -47,11 +47,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         //判断请求参数格式JSON/Form
-        if requestSerializer == JSONRequestSerializer {
+        if requestSerializer == RequestSerializer.JSON {
             //JSON
             requestContent = httpModel?.requestData.dataToPrettyPrintString()
         }
-        if requestSerializer == FormRequestSerializer {
+        if requestSerializer == RequestSerializer.form {
             //Form
             requestContent = httpModel?.requestData.dataToString()
         }
@@ -64,8 +64,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
             let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
-            if let responseData = httpModel?.responseData {
-                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+            if let imageData = httpModel?.imageData {
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: imageData))
             }
             //2.次要
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
@@ -140,16 +140,16 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //确定request格式(JSON/Form)
     func detectRequestSerializer() {
         guard let requestData = httpModel?.requestData else {
-            httpModel?.requestSerializer = JSONRequestSerializer//默认JSON格式
+            httpModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
             return
         }
         
         if let _ = requestData.dataToDictionary() {
             //JSON格式
-            httpModel?.requestSerializer = JSONRequestSerializer
+            httpModel?.requestSerializer = RequestSerializer.JSON
         }else{
             //Form格式
-            httpModel?.requestSerializer = FormRequestSerializer
+            httpModel?.requestSerializer = RequestSerializer.form
         }
     }
     
@@ -201,11 +201,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         var time: String = ""
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
-                if (startTime as NSString).doubleValue == 0 {
-                    time = OCLoggerFormat.formatDate(Date())
-                }else{
-                    time = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
-                }
+                time = OCLoggerFormat.formatDate(startTime)
             }
         }
         

@@ -39,20 +39,20 @@ class JsonViewController: UIViewController {
     //确定格式(JSON/Form)
     func detectSerializer() {
         guard let content = detailModel?.content else {
-            detailModel?.requestSerializer = JSONRequestSerializer//默认JSON格式
+            detailModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
             return
         }
         
         if let _ = content.stringToDictionary() {
             //JSON格式
-            detailModel?.requestSerializer = JSONRequestSerializer
+            detailModel?.requestSerializer = RequestSerializer.JSON
         }else{
             //Form格式
-            detailModel?.requestSerializer = FormRequestSerializer
+            detailModel?.requestSerializer = RequestSerializer.form
             
                 if let jsonString = detailModel?.content?.formStringToJsonString() {
                     textView.text = jsonString
-                    detailModel?.requestSerializer = JSONRequestSerializer
+                    detailModel?.requestSerializer = RequestSerializer.JSON
                     detailModel?.content = textView.text
                 }
         }

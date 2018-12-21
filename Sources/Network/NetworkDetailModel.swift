@@ -14,7 +14,7 @@ struct NetworkDetailModel {
     var image: UIImage?
     var blankContent: String?
     var isLast: Bool = false
-    var requestSerializer: RequestSerializer = JSONRequestSerializer//默认JSON格式
+    var requestSerializer: RequestSerializer = RequestSerializer.JSON//默认JSON格式
     var requestHeaderFields: [String: Any]?
     var responseHeaderFields: [String: Any]?
     
@@ -22,20 +22,5 @@ struct NetworkDetailModel {
         self.title = title
         self.content = content
         self.image = image
-        
-        
-        //响应时间, 偶现bug
-        if title == "TOTAL TIME" {
-            if let content = content {
-                if let double_second = Double(content) {
-                    let int_second = Int(double_second)
-                    if int_second > 9999 {
-                        self.content = ""
-                    }else{
-                        self.content = content
-                    }
-                }
-            }
-        }
     }
 }

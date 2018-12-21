@@ -20,7 +20,7 @@
 #import <objc/message.h>
 #import <dispatch/queue.h>
 
-#import "NetworkHelper.h"
+#import "CocoaDebug.h"
 
 //liman
 //NSString *const kFLEXNetworkObserverEnabledStateChangedNotification = @"kFLEXNetworkObserverEnabledStateChangedNotification";
@@ -117,13 +117,17 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 //}
 
 //liman
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        if ([self isEnabled]) {
-            [self injectIntoAllNSURLConnectionDelegateClasses];
-        }
-    });
++ (void)load
+{
+    dispatch_main_async_safe(^{
+        
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            if ([self isEnabled]) {
+                [self injectIntoAllNSURLConnectionDelegateClasses];
+            }
+        });
+    })
 }
 
 #pragma mark - Statics

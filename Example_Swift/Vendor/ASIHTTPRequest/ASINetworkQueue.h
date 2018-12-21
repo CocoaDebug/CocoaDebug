@@ -88,21 +88,21 @@
 @property (assign, nonatomic, setter=setUploadProgressDelegate:) id uploadProgressDelegate;
 @property (assign, nonatomic, setter=setDownloadProgressDelegate:) id downloadProgressDelegate;
 
-@property (assign, atomic) SEL requestDidStartSelector;
-@property (assign, atomic) SEL requestDidReceiveResponseHeadersSelector;
-@property (assign, atomic) SEL requestWillRedirectSelector;
-@property (assign, atomic) SEL requestDidFinishSelector;
-@property (assign, atomic) SEL requestDidFailSelector;
-@property (assign, atomic) SEL queueDidFinishSelector;
-@property (assign, atomic) BOOL shouldCancelAllRequestsOnFailure;
-@property (assign, atomic) id delegate;
-@property (assign, atomic) BOOL showAccurateProgress;
-@property (assign, atomic, readonly) int requestsCount;
-@property (retain, atomic) NSDictionary *userInfo;
+@property (assign, nonatomic) SEL requestDidStartSelector;
+@property (assign, nonatomic) SEL requestDidReceiveResponseHeadersSelector;
+@property (assign, nonatomic) SEL requestWillRedirectSelector;
+@property (assign, nonatomic) SEL requestDidFinishSelector;
+@property (assign, nonatomic) SEL requestDidFailSelector;
+@property (assign, nonatomic) SEL queueDidFinishSelector;
+@property (assign, nonatomic) BOOL shouldCancelAllRequestsOnFailure;
+@property (assign, nonatomic) id delegate;
+@property (assign, nonatomic) BOOL showAccurateProgress;
+@property (assign, nonatomic, readonly) int requestsCount;
+@property (retain, nonatomic) NSDictionary *userInfo;
 
-@property (assign, atomic) unsigned long long bytesUploadedSoFar;
-@property (assign, atomic) unsigned long long totalBytesToUpload;
-@property (assign, atomic) unsigned long long bytesDownloadedSoFar;
-@property (assign, atomic) unsigned long long totalBytesToDownload;
+@property (assign, nonatomic) unsigned long long bytesUploadedSoFar;
+@property (assign, nonatomic) unsigned long long totalBytesToUpload;
+@property (assign, nonatomic) unsigned long long bytesDownloadedSoFar;
+@property (assign, nonatomic) unsigned long long totalBytesToDownload;
 
 @end

@@ -37,5 +37,5 @@
 // If inflating finishes or fails, this method will be called automatically
 - (NSError *)closeStream;
 
-@property (atomic, assign, readonly) BOOL streamReady;
+@property (nonatomic, assign, readonly) BOOL streamReady;
 @end
