@@ -83,7 +83,7 @@ github "CocoaDebug/CocoaDebug"
 	
     //Step 1. (PrefixHeader.pch)
     #ifdef DEBUG
-        #import <CocoaDebug/CocoaDebug.h>
+        @import CocoaDebug;
     #endif
 	
     //Step 2. (AppDelegate.m)
