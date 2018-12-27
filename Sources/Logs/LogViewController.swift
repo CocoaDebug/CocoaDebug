@@ -161,6 +161,27 @@ class LogViewController: UIViewController {
         }
     }
     
+    func stoppedScrolling(scrollView: UIScrollView) {
+        if scrollView == defaultTableView
+        {
+            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+                //you reached end of the table default
+                reachEndDefault = true
+            }else{
+                reachEndDefault = false
+            }
+        }
+        else
+        {
+            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+                //you reached end of the table color
+                reachEndColor = true
+            }else{
+                reachEndColor = false
+            }
+        }
+    }
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,6 +193,8 @@ class LogViewController: UIViewController {
             self?.refreshLogs_notification()
         }
         
+        
+        
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
@@ -180,6 +203,13 @@ class LogViewController: UIViewController {
         defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
         
+        //抖动bug
+        defaultTableView.estimatedRowHeight = 0;
+        defaultTableView.estimatedSectionHeaderHeight = 0;
+        defaultTableView.estimatedSectionFooterHeight = 0;
+        
+        
+        
         colorTableView.tableFooterView = UIView()
         colorTableView.delegate = self
         colorTableView.dataSource = self
@@ -187,6 +217,13 @@ class LogViewController: UIViewController {
         colorSearchBar.delegate = self
         colorSearchBar.text = CocoaDebugSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
+        
+        //抖动bug
+        colorTableView.estimatedRowHeight = 0;
+        colorTableView.estimatedSectionHeaderHeight = 0;
+        colorTableView.estimatedSectionFooterHeight = 0;
+        
+        
         
         //segmentedControl
         selectedSegmentIndex = CocoaDebugSettings.shared.logSelectIndex 
@@ -460,55 +497,20 @@ extension LogViewController: UITableViewDelegate {
 extension LogViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == defaultTableView
-        {
+        if scrollView == defaultTableView {
             defaultSearchBar.resignFirstResponder()
-        }
-        else
-        {
+        }else{
             colorSearchBar.resignFirstResponder()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == defaultTableView
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table default
-                reachEndDefault = true
-            }else{
-                reachEndDefault = false
-            }
-        }
-        else
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table color
-                reachEndColor = true
-            }else{
-                reachEndColor = false
-            }
-        }
+        stoppedScrolling(scrollView: scrollView)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView == defaultTableView
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table default
-                reachEndDefault = true
-            }else{
-                reachEndDefault = false
-            }
-        }
-        else
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table color
-                reachEndColor = true
-            }else{
-                reachEndColor = false
-            }
+        if (decelerate == false) {
+            stoppedScrolling(scrollView: scrollView)
         }
     }
 }

@@ -77,6 +77,15 @@ class NetworkViewController: UIViewController {
         }
     }
     
+    func stoppedScrolling(scrollView: UIScrollView) {
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+            //you reached end of the table
+            reachEnd = true
+        }else{
+            reachEnd = false
+        }
+    }
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +99,11 @@ class NetworkViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        //抖动bug
+        tableView.estimatedRowHeight = 0;
+        tableView.estimatedSectionHeaderHeight = 0;
+        tableView.estimatedSectionFooterHeight = 0;
         
         searchBar.delegate = self
         searchBar.text = CocoaDebugSettings.shared.networkSearchWord
@@ -271,26 +285,17 @@ extension NetworkViewController: UITableViewDelegate {
 //MARK: - UIScrollViewDelegate
 extension NetworkViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
-            //you reached end of the table
-            reachEnd = true
-        }else{
-            reachEnd = false
-        }
+        stoppedScrolling(scrollView: scrollView)
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
-            //you reached end of the table
-            reachEnd = true
-        }else{
-            reachEnd = false
+        if (decelerate == false) {
+            stoppedScrolling(scrollView: scrollView)
         }
     }
 }
