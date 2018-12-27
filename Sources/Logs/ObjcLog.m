@@ -15,6 +15,7 @@
            function:(NSString *)function
                line:(NSUInteger)line
               color:(UIColor *)color
+   unicodeToChinese:(BOOL)unicodeToChinese
             message:(id)format, ...
 {
     if (format)
@@ -25,12 +26,12 @@
         if ([format isKindOfClass:[NSString class]])
         {
             NSLogv(format, args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color unicodeToChinese:unicodeToChinese];
         }
         else
         {
             NSLogv([NSString stringWithFormat:@"%@",format], args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color unicodeToChinese:unicodeToChinese];
         }
         
         va_end(args);

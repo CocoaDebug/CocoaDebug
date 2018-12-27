@@ -11,40 +11,38 @@
 #pragma clang diagnostic ignored "-Wunused-value"
 
 
-//----------------- white log (default) -----------------
+
+
+//----------------- white log (normal) -----------------
 #ifdef DEBUG
-#define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+#define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
 
-
-//----------------- red log -----------------
+//----------------- white log (unicode) -----------------
 #ifdef DEBUG
-#define NSLogRed(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] message:(fmt), ##__VA_ARGS__]
+#define NSLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
-#define NSLogRed(fmt, ...) nil
+#define NSLogUnicode(fmt, ...) nil
 #endif
 
 
-//----------------- blue log -----------------
+
+
+//----------------- red log (normal) -----------------
 #ifdef DEBUG
-#define NSLogBlue(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor blueColor] message:(fmt), ##__VA_ARGS__]
+#define RedLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
 #else
-#define NSLogBlue(fmt, ...) nil
+#define RedLog(fmt, ...) nil
 #endif
 
-
-//----------------- yellow log -----------------
+//----------------- red log (unicode) -----------------
 #ifdef DEBUG
-#define NSLogYellow(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor yellowColor] message:(fmt), ##__VA_ARGS__]
+#define RedLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
-#define NSLogYellow(fmt, ...) nil
+#define RedLogUnicode(fmt, ...) nil
 #endif
-
-
-//----------------- other color log -----------------
-//...
 
 
 

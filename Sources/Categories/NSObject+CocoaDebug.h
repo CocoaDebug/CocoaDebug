@@ -23,6 +23,8 @@
 
 - (CGFloat)heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width;
 
++ (NSString *)unicodeToChinese:(NSString *)unicodeStr;
+
 @end
 
 /*************************************************/
@@ -34,5 +36,13 @@
 
 - (NSNumber*)startTime;
 - (void)setStartTime:(NSNumber*)startTime;
+
+@end
+
+/*************************************************/
+
+@interface UIColor (CocoaDebug)
+
++ (UIColor *)colorFromHexString:(NSString *)hexString;
 
 @end

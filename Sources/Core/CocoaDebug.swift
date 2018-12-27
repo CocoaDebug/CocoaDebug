@@ -50,17 +50,19 @@ public func swiftHandleLog<T>(_ file: String = #file,
                               _ function: String = #function,
                               _ line: Int = #line,
                               _ message: T,
-                              _ color: UIColor) {
-    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+                              _ color: UIColor,
+                              _ unicodeToChinese: Bool = false) {
+    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color, unicodeToChinese: unicodeToChinese)
 }
 
 public func swiftLog<T>(_ file: String = #file,
                         _ function: String = #function,
                         _ line: Int = #line,
                         _ message: T,
-                        _ color: UIColor) {
+                        _ color: UIColor,
+                        _ unicodeToChinese: Bool = false) {
     Swift.print(message)
-    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color, unicodeToChinese: unicodeToChinese)
 }
 
 

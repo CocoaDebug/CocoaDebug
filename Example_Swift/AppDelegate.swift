@@ -35,10 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+
+
+//normal print
 public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
     #if DEBUG
-        swiftLog(file, function, line, message, color)
+        swiftLog(file, function, line, message, color, false)
     #endif
 }
 
+
+
+
+//unicode print
+public func printUnicode<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
+    #if DEBUG
+    swiftLog(file, function, line, message, color, true)
+    #endif
+}
 

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         
         print("hello world")
         print("hello world red", color: .red)
-        print("hello world blue", color: UIColor.blue)
+        print("hello world blue", color: UIColor.red)
+        printUnicode("unicode转换为中文")
 
         testHTTP()
         testRedirect()
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         
         //1.Alamofire
         request("https://httpbin.org/get").responseJSON { response in
-            print(response, color: .green)
+            print(response, color: .red)
         }
         request("https://httpbin.org/post", method: .post, parameters: ["data": "Alamofire"], encoding: JSONEncoding.default).responseJSON { response in
             print(response, color: .red)
@@ -34,16 +35,16 @@ class ViewController: UIViewController {
         
         //2.SwiftHTTP
         HTTP.GET("https://httpbin.org/get") { response in
-            print(response.text, color: .yellow)
+            print(response.text, color: .red)
         }
         HTTP.POST("https://httpbin.org/post", parameters: ["data": "SwiftHTTP"]) { response in
-            print(response.text, color: .gray)
+            print(response.text, color: .red)
         }
         HTTP.GET("https://www.baidu.com/img/bd_logo1.png") { response in
-            print(response.description, color: .orange)
+            print(response.description, color: .red)
         }
         HTTP.GET("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png") { response in
-            print(response.description, color: .orange)
+            print(response.description, color: .red)
         }
         
         //3.Networking
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
         
         //5.large response data
 //        HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
-//            print(response.text, color: .gray)
+//            print(response.text, color: .red)
 //        }
     }
     

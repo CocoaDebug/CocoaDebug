@@ -19,9 +19,10 @@
     [super viewDidLoad];
     
     NSLog(@"hello world");
-    NSLogRed(@"hello world red");
-    NSLogBlue(@"hello world yellow");
+    RedLog(@"hello world red");
+    RedLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
+    NSLogUnicode(@"unicode转换为中文");
     
     [self testHTTP];
 }
@@ -40,7 +41,7 @@
         if (error) {
             NSLog(error.localizedDescription);
         } else {
-            NSLogBlue(@"%@",response);
+            RedLog(@"%@",response);
             NSLog(responseObject);
         }
     }];
