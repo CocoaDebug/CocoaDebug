@@ -8,6 +8,7 @@
 
 #import "ObjcLog.h"
 #import "OCLogHelper.h"
+#import "NSObject+CocoaDebug.h"
 
 @implementation ObjcLog
 
@@ -18,6 +19,14 @@
    unicodeToChinese:(BOOL)unicodeToChinese
             message:(id)format, ...
 {
+    
+    //unicode转换为中文
+    if (format && [format isKindOfClass:[NSString class]] && unicodeToChinese) {
+        format = [NSString unicodeToChinese:format];
+    }
+    
+    
+    
     if (format)
     {
         va_list args;
@@ -26,12 +35,12 @@
         if ([format isKindOfClass:[NSString class]])
         {
             NSLogv(format, args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color unicodeToChinese:unicodeToChinese];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color];
         }
         else
         {
             NSLogv([NSString stringWithFormat:@"%@",format], args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color unicodeToChinese:unicodeToChinese];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color];
         }
         
         va_end(args);

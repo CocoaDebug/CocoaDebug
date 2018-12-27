@@ -9,11 +9,10 @@
 #import "OCLogModel.h"
 #import "OCLoggerFormat.h"
 #import "NetworkHelper.h"
-#import "NSObject+CocoaDebug.h"
 
 @implementation OCLogModel
 
-- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag unicodeToChinese:(BOOL)unicodeToChinese
+- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag
 {
     if (self = [super init]) {
         
@@ -22,7 +21,7 @@
         self.date = [NSDate date];
         self.color = color;
         self.isTag = isTag;
-        self.content = unicodeToChinese ? [NSString unicodeToChinese:content] : content;
+        self.content = content;
         
         /////////////////////////////////////////////////////////////////////////
         

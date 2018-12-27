@@ -22,15 +22,15 @@ public class LogHelper: NSObject {
     }
 
     
-    func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?, unicodeToChinese: Bool = false) {
+    func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"
         }
-        commonHandleLog(file: file, function: function, line: (line ?? 0), message: stringContent, color: color, unicodeToChinese: unicodeToChinese)
+        commonHandleLog(file: file, function: function, line: (line ?? 0), message: stringContent, color: color)
     }
     
     
-    private func commonHandleLog(file: String?, function: String?, line: Int, message: String, color: UIColor?, unicodeToChinese: Bool = false) {
+    private func commonHandleLog(file: String?, function: String?, line: Int, message: String, color: UIColor?) {
         guard enable else {
             return
         }
@@ -39,7 +39,7 @@ public class LogHelper: NSObject {
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         
         //2.
-        if let newLog = OCLogModel.init(content: message, color: color, fileInfo: fileInfo, isTag: false, unicodeToChinese: unicodeToChinese) {
+        if let newLog = OCLogModel.init(content: message, color: color, fileInfo: fileInfo, isTag: false) {
             OCLogStoreManager.shared().addLog(newLog)
         }
         

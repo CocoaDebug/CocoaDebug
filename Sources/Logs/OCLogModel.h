@@ -21,6 +21,6 @@
 @property (nonatomic, copy) NSString *str;
 @property (nonatomic, copy) NSAttributedString *attr;
 
-- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag unicodeToChinese:(BOOL)unicodeToChinese;
+- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag;
 
 @end

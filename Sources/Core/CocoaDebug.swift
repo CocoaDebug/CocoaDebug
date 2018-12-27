@@ -46,23 +46,26 @@ import Foundation
 }
 
 //MARK: - swiftLog() usage only for Swift
-public func swiftHandleLog<T>(_ file: String = #file,
-                              _ function: String = #function,
-                              _ line: Int = #line,
-                              _ message: T,
-                              _ color: UIColor,
-                              _ unicodeToChinese: Bool = false) {
-    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color, unicodeToChinese: unicodeToChinese)
-}
-
 public func swiftLog<T>(_ file: String = #file,
                         _ function: String = #function,
                         _ line: Int = #line,
                         _ message: T,
                         _ color: UIColor,
                         _ unicodeToChinese: Bool = false) {
+    
+    //unicode转换为中文
+    if message is NSString && unicodeToChinese == true {
+        if let _message = NSString.unicode(toChinese: message as? String) {
+            Swift.print(_message)
+            LogHelper.shared.handleLog(file: file, function: function, line: line, message: _message, color: color)
+            return
+        }
+    }
+    
+    
+    
     Swift.print(message)
-    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color, unicodeToChinese: unicodeToChinese)
+    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
 
 

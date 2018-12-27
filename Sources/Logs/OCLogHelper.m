@@ -38,7 +38,7 @@
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
 
-- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color unicodeToChinese:(BOOL)unicodeToChinese
+- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color
 {
     if (!self.enable) {
         return;
@@ -48,7 +48,7 @@
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
-    OCLogModel *newLog = [[OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO unicodeToChinese:unicodeToChinese];
+    OCLogModel *newLog = [[OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO];
     [[OCLogStoreManager shared] addLog:newLog];
     
     //3.
