@@ -1,15 +1,9 @@
 //
-//  FLEXNetworkObserver.m
-//  Derived from:
+//  Example
+//  man
 //
-//  PDAFNetworkDomainController.m
-//  PonyDebugger
-//
-//  Created by Mike Lewis on 2/27/12.
-//
-//  Licensed to Square, Inc. under one or more contributor license agreements.
-//  See the LICENSE file distributed with this work for the terms under
-//  which Square, Inc. licenses this file to you.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "FLEXNetworkObserver.h"

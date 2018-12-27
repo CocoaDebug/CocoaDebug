@@ -19,6 +19,16 @@ class ViewController: UIViewController {
 
         testHTTP()
         testRedirect()
+        
+        let timer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+
+    }
+    
+    
+    @objc func update()  {
+        request("https://httpbin.org/get").responseJSON { response in
+            print(response, color: .green)
+        }
     }
     
     

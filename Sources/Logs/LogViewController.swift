@@ -460,11 +460,19 @@ extension LogViewController: UITableViewDelegate {
 extension LogViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         if scrollView == defaultTableView
         {
             defaultSearchBar.resignFirstResponder()
-            
+        }
+        else
+        {
+            colorSearchBar.resignFirstResponder()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == defaultTableView
+        {
             if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
                 //you reached end of the table default
                 reachEndDefault = true
@@ -474,8 +482,27 @@ extension LogViewController: UIScrollViewDelegate {
         }
         else
         {
-            colorSearchBar.resignFirstResponder()
-            
+            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+                //you reached end of the table color
+                reachEndColor = true
+            }else{
+                reachEndColor = false
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView == defaultTableView
+        {
+            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+                //you reached end of the table default
+                reachEndDefault = true
+            }else{
+                reachEndDefault = false
+            }
+        }
+        else
+        {
             if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
                 //you reached end of the table color
                 reachEndColor = true

@@ -274,7 +274,18 @@ extension NetworkViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         searchBar.resignFirstResponder()
-        
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+            //you reached end of the table
+            reachEnd = true
+        }else{
+            reachEnd = false
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
             //you reached end of the table
             reachEnd = true

@@ -1,9 +1,9 @@
 //
-//  FLEXNetworkTransaction.m
-//  Flipboard
+//  Example
+//  man
 //
-//  Created by Ryan Olson on 2/8/15.
-//  Copyright (c) 2015 Flipboard. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "FLEXNetworkTransaction.h"

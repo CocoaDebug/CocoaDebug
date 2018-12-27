@@ -1,9 +1,9 @@
 //
-//  FLEXUtility.h
-//  Flipboard
+//  Example
+//  man
 //
-//  Created by Ryan Olson on 4/18/14.
-//  Copyright (c) 2014 Flipboard. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import <Availability.h>
