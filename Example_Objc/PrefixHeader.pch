@@ -13,14 +13,14 @@
 
 
 
-//----------------- white log (normal) -----------------
+//----------------- normal log -----------------
 #ifdef DEBUG
 #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
 #else
 #define NSLog(fmt, ...) nil
 #endif
 
-//----------------- white log (unicode) -----------------
+//----------------- unicode log -----------------
 #ifdef DEBUG
 #define NSLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
@@ -30,14 +30,14 @@
 
 
 
-//----------------- red log (normal) -----------------
+//----------------- normal log -----------------
 #ifdef DEBUG
 #define RedLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
 #else
 #define RedLog(fmt, ...) nil
 #endif
 
-//----------------- red log (unicode) -----------------
+//----------------- unicode log -----------------
 #ifdef DEBUG
 #define RedLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else

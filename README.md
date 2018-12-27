@@ -74,7 +74,7 @@ github "CocoaDebug/CocoaDebug"
     //Step 3. (AppDelegate.swift)
     public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
         #if DEBUG
-            swiftLog(file, function, line, message, color)
+            swiftLog(file, function, line, message, color, false)
         #endif
     }
 	
@@ -93,7 +93,7 @@ github "CocoaDebug/CocoaDebug"
 	
     //Step 3. (PrefixHeader.pch)
     #ifdef DEBUG
-        #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] message:(fmt), ##__VA_ARGS__]
+        #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
     #else
         #define NSLog(fmt, ...) nil
     #endif
