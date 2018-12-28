@@ -152,11 +152,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Network" id="npy-bN-DLs">
                         <barButtonItem key="backBarButtonItem" title=" " id="kaw-fV-cgo"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="b2H-kq-1Pr">
-                            <connections>
-                                <action selector="tapTrashButton:" destination="C9A-fD-Ood" id="1T5-L9-r5A"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="b2H-kq-1Pr">
+                                <connections>
+                                    <action selector="tapTrashButton:" destination="C9A-fD-Ood" id="1T5-L9-r5A"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="_icon_file_type_down.png" id="DwB-Uq-GiA">
+                                <connections>
+                                    <action selector="didTapDown:" destination="C9A-fD-Ood" id="gog-cd-BkI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="deleteItem" destination="b2H-kq-1Pr" id="mwS-vg-SBq"/>
@@ -377,6 +384,7 @@
     </scenes>
     <resources>
         <image name="_icon_file_type_close" width="16" height="16"/>
+        <image name="_icon_file_type_down.png" width="50" height="50"/>
         <image name="_icon_file_type_network" width="16" height="16"/>
     </resources>
 </document>

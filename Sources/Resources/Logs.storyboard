@@ -179,7 +179,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="50c-pz-gdb"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RqA-gF-lv2">
-                            <rect key="frame" x="129" y="7" width="117" height="30"/>
+                            <rect key="frame" x="126" y="7" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Default"/>
@@ -189,11 +189,18 @@
                                 <action selector="segmentedControlAction:" destination="b1x-pw-stc" eventType="valueChanged" id="cv7-iN-ZnU"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="WWD-nk-hBH">
-                            <connections>
-                                <action selector="resetLogs:" destination="b1x-pw-stc" id="u7x-9v-lHc"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="WWD-nk-hBH">
+                                <connections>
+                                    <action selector="resetLogs:" destination="b1x-pw-stc" id="u7x-9v-lHc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="_icon_file_type_down.png" id="CIu-Wf-1Pd">
+                                <connections>
+                                    <action selector="didTapDown:" destination="b1x-pw-stc" id="dzh-LL-LT7"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="colorSearchBar" destination="Be8-cF-Ycv" id="0cg-Qm-Wew"/>
@@ -210,6 +217,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="_icon_file_type_down.png" width="50" height="50"/>
         <image name="_icon_file_type_logs" width="16" height="16"/>
     </resources>
 </document>

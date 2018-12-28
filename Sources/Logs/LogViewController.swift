@@ -161,27 +161,6 @@ class LogViewController: UIViewController {
         }
     }
     
-    func stoppedScrolling(scrollView: UIScrollView) {
-        if scrollView == defaultTableView
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table default
-                reachEndDefault = true
-            }else{
-                reachEndDefault = false
-            }
-        }
-        else
-        {
-            if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-                //you reached end of the table color
-                reachEndColor = true
-            }else{
-                reachEndColor = false
-            }
-        }
-    }
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -263,8 +242,20 @@ class LogViewController: UIViewController {
 
     
     //MARK: - target action
+    @IBAction func didTapDown(_ sender: Any) {
+        if selectedSegmentIndex == 0
+        {
+            defaultTableView.tableViewScrollToBottom(animated: true)
+            reachEndDefault = true
+        }
+        else
+        {
+            colorTableView.tableViewScrollToBottom(animated: true)
+            reachEndColor = true
+        }
+    }
+    
     @IBAction func resetLogs(_ sender: Any) {
-        
         if selectedSegmentIndex == 0
         {
             defaultModels = []
@@ -388,9 +379,11 @@ extension LogViewController: UITableViewDelegate {
         if tableView == defaultTableView {
             tableView.deselectRow(at: indexPath, animated: true)
             defaultSearchBar.resignFirstResponder()
+            reachEndDefault = false
         }else{
             tableView.deselectRow(at: indexPath, animated: true)
             colorSearchBar.resignFirstResponder()
+            reachEndColor = false
         }
     }
     
@@ -504,13 +497,11 @@ extension LogViewController: UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        stoppedScrolling(scrollView: scrollView)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if (decelerate == false) {
-            stoppedScrolling(scrollView: scrollView)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == defaultTableView {
+            reachEndDefault = false
+        }else{
+            reachEndColor = false
         }
     }
 }

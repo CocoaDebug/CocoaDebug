@@ -77,15 +77,6 @@ class NetworkViewController: UIViewController {
         }
     }
     
-    func stoppedScrolling(scrollView: UIScrollView) {
-        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
-            //you reached end of the table
-            reachEnd = true
-        }else{
-            reachEnd = false
-        }
-    }
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,6 +117,11 @@ class NetworkViewController: UIViewController {
     }
     
     //MARK: - target action
+    @IBAction func didTapDown(_ sender: Any) {
+        tableView.tableViewScrollToBottom(animated: true)
+        reachEnd = true
+    }
+    
     @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
         HttpDatasource.shared().reset()
         models = []
@@ -202,6 +198,9 @@ extension NetworkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
+        searchBar.resignFirstResponder()
+        reachEnd = false
+        
         guard let models = models else {return}
         
         if let index = models.index(where: { (model_) -> Bool in
@@ -288,15 +287,9 @@ extension NetworkViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        stoppedScrolling(scrollView: scrollView)
-    }
-
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if (decelerate == false) {
-            stoppedScrolling(scrollView: scrollView)
-        }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        reachEnd = false
     }
 }
 
