@@ -11,8 +11,8 @@ import UIKit
 class NetworkViewController: UIViewController {
     
     var reachEnd: Bool = true
-    
     var firstIn: Bool = true
+    var reloadDataFinish: Bool = true
     
     var models: Array<HttpModel>?
     var cacheModels: Array<HttpModel>?
@@ -49,6 +49,10 @@ class NetworkViewController: UIViewController {
     //MARK: - private
     func reloadHttp(needScrollToEnd: Bool = false) {
         
+        if reloadDataFinish == false {
+            return
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
             if self?.searchBar.isHidden == true {
                 self?.searchBar.isHidden = false
@@ -62,7 +66,10 @@ class NetworkViewController: UIViewController {
         self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
 
         dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
+            self?.reloadDataFinish = false
+            self?.tableView.reloadData {
+                self?.reloadDataFinish = true
+            }
             
             if needScrollToEnd == false {return}
             
@@ -167,28 +174,31 @@ extension NetworkViewController: UITableViewDelegate {
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
-        if let cString = model?.url.absoluteString.cString(using: String.Encoding.utf8) {
-            if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
-                
-                if model?.url.absoluteString.contains(serverURL) == true {
-                    //计算NSString高度
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+        if let url = model?.url {
+            
+            if let cString = url.absoluteString.cString(using: String.Encoding.utf8) {
+                if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
+                    
+                    if url.absoluteString.contains(serverURL) == true {
+                        //计算NSString高度
+                        if #available(iOS 8.2, *) {
+                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        } else {
+                            // Fallback on earlier versions
+                            height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        }
+                    }else{
+                        //计算NSString高度
+                        if #available(iOS 8.2, *) {
+                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        } else {
+                            // Fallback on earlier versions
+                            height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        }
                     }
-                }else{
-                    //计算NSString高度
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    }
+                    
+                    return height + 57
                 }
-                
-                return height + 57
             }
         }
         

@@ -20,6 +20,9 @@ class LogViewController: UIViewController {
     var selectedSegment_0: Bool = false
     var selectedSegment_1: Bool = false
     
+    var defaultReloadDataFinish: Bool = true
+    var colorReloadDataFinish: Bool = true
+
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var deleteItem: UIBarButtonItem!
@@ -89,6 +92,10 @@ class LogViewController: UIViewController {
         
         if selectedSegmentIndex == 0
         {
+            if defaultReloadDataFinish == false {
+                return
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
                 if self?.defaultSearchBar.isHidden == true {
                     self?.defaultSearchBar.isHidden = false
@@ -110,7 +117,10 @@ class LogViewController: UIViewController {
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordDefault ?? "")
             
             dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
+                self?.defaultReloadDataFinish = false
+                self?.defaultTableView.reloadData {
+                    self?.defaultReloadDataFinish = true
+                }
                 
                 if needScrollToEnd == false {return}
                 
@@ -125,6 +135,10 @@ class LogViewController: UIViewController {
         }
         else
         {
+            if colorReloadDataFinish == false {
+                return
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
                 if self?.colorSearchBar.isHidden == true {
                     self?.colorSearchBar.isHidden = false
@@ -146,7 +160,10 @@ class LogViewController: UIViewController {
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordColor ?? "")
             
             dispatch_main_async_safe { [weak self] in
-                self?.colorTableView.reloadData()
+                self?.colorReloadDataFinish = false
+                self?.colorTableView.reloadData {
+                    self?.colorReloadDataFinish = true
+                }
                 
                 if needScrollToEnd == false {return}
                 
