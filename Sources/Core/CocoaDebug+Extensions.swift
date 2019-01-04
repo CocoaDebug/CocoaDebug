@@ -219,23 +219,24 @@ extension UITableView {
 }
 
 ///shake
-//extension UIWindow {
-//    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-//
+extension UIWindow {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+
 //        if CocoaDebugSettings.shared.responseShakeNetworkDetail == false {return}
-//
-//        if CocoaDebugSettings.shared.responseShake == false {return}
-//
-////        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
-//        if motion == .motionShake {
-//            if CocoaDebugSettings.shared.visible == true {
+
+        if CocoaDebugSettings.shared.responseShake == false {return}
+
+//        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
+        
+        if motion == .motionShake {
+            if CocoaDebugSettings.shared.visible == true {
 //                NotificationCenter.default.post(name: NSNotification.Name("motionShake_CocoaDebug"), object: nil, userInfo: nil)
-//                return
-//            }
-//            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-//        }
-//    }
-//}
+                return
+            }
+            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
+        }
+    }
+}
 
 
 ///CocoaDebug
@@ -283,7 +284,7 @@ extension CocoaDebug {
         
         let _ = OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+//        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
@@ -317,7 +318,7 @@ extension CocoaDebug {
         OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
-        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
+//        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
     }
 }
 
