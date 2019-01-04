@@ -301,15 +301,15 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("motionShake_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
-            self?.motionShake_notification()
-        }        
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name("motionShake_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
+//            self?.motionShake_notification()
+//        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self)
+//        NotificationCenter.default.removeObserver(self)
 
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
@@ -321,8 +321,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         (self.navigationController as! CocoaDebugNavigationController).exit()
     }
     
-    //MARK: - notification
-    @objc func motionShake_notification() {
+    @IBAction func didTapMail(_ sender: UIBarButtonItem) {
         
         CocoaDebugSettings.shared.responseShakeNetworkDetail = false
         
@@ -353,6 +352,12 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         // present an actionSheet...
         present(actionSheetController, animated: true, completion: nil)
     }
+    
+    
+    //MARK: - notification
+//    @objc func motionShake_notification() {
+//
+//    }
     
     
     //MARK: - override

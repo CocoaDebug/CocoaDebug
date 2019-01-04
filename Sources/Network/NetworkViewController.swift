@@ -142,6 +142,8 @@ class NetworkViewController: UIViewController {
         }
     }
     
+    
+    
     //MARK: - notification
     @objc func reloadHttp_notification(_ notification: Notification) {
         

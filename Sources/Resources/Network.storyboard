@@ -298,11 +298,18 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Details" id="EGv-T3-ncf">
                         <barButtonItem key="backBarButtonItem" title=" " id="m8H-zl-6KZ"/>
-                        <barButtonItem key="rightBarButtonItem" image="_icon_file_type_close" id="2K5-CR-fd3">
-                            <connections>
-                                <action selector="close:" destination="q3G-BB-F3V" id="Kqx-p8-JEG"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="_icon_file_type_close.png" id="2K5-CR-fd3">
+                                <connections>
+                                    <action selector="close:" destination="q3G-BB-F3V" id="Kqx-p8-JEG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="_icon_file_type_mail.png" id="geK-c2-khg">
+                                <connections>
+                                    <action selector="didTapMail:" destination="q3G-BB-F3V" id="Afj-Xh-f8n"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -383,8 +390,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="_icon_file_type_close" width="16" height="16"/>
+        <image name="_icon_file_type_close.png" width="30" height="30"/>
         <image name="_icon_file_type_down.png" width="50" height="50"/>
+        <image name="_icon_file_type_mail.png" width="30" height="30"/>
         <image name="_icon_file_type_network" width="16" height="16"/>
     </resources>
 </document>
