@@ -26,7 +26,7 @@
 
 - [x] List crash errors. (**optional**)
 
-- [x] Shake device or simulator to share network details via email or copy to clipboard when you are in the *Network Details* page.
+- [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
 
 - [x] Copy logs. (long press the text, then select all or select copy)
 
