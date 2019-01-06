@@ -708,31 +708,25 @@
                         <sections>
                             <tableViewSection id="LX5-ww-cfA">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="64" id="RiH-dO-FGa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="RiH-dO-FGa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RiH-dO-FGa" id="ehQ-pU-nc1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W3-za-4wq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W3-za-4wq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                     <gestureRecognizers/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="https://github.com/CocoaDebug/CocoaDebug">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="15" name="Helvetica"/>
-                                                                <string key="NSLink">https://github.com/CocoaDebug/CocoaDebug</string>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                <integer key="NSUnderline" value="1"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <string key="text">Homepage:
+	https://github.com/CocoaDebug
+
+Author:
+	man.li@shopee.com
+</string>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="Ltp-bc-bl2" appends="YES" id="jcP-rX-djy"/>
-                                                    </connections>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

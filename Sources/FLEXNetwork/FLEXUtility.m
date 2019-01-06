@@ -403,18 +403,18 @@
     return NO;
 }
 
-+ (void)replaceImplementationOfKnownSelector:(SEL)originalSelector onClass:(Class)class withBlock:(id)block swizzledSelector:(SEL)swizzledSelector
++ (void)replaceImplementationOfKnownSelector:(SEL)originalSelector onClass:(Class)cls withBlock:(id)block swizzledSelector:(SEL)swizzledSelector
 {
     // This method is only intended for swizzling methods that are know to exist on the class.
     // Bail if that isn't the case.
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
+    Method originalMethod = class_getInstanceMethod(cls, originalSelector);
     if (!originalMethod) {
         return;
     }
     
     IMP implementation = imp_implementationWithBlock(block);
-    class_addMethod(class, swizzledSelector, implementation, method_getTypeEncoding(originalMethod));
-    Method newMethod = class_getInstanceMethod(class, swizzledSelector);
+    class_addMethod(cls, swizzledSelector, implementation, method_getTypeEncoding(originalMethod));
+    Method newMethod = class_getInstanceMethod(cls, swizzledSelector);
     method_exchangeImplementations(originalMethod, newMethod);
 }
 

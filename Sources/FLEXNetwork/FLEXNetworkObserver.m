@@ -201,9 +201,9 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
             numClasses = objc_getClassList(classes, numClasses);
             for (NSInteger classIndex = 0; classIndex < numClasses; ++classIndex) {
-                Class class = classes[classIndex];
+                Class cls = classes[classIndex];
 
-                if (class == [FLEXNetworkObserver class]) {
+                if (cls == [FLEXNetworkObserver class]) {
                     continue;
                 }
 
@@ -211,12 +211,12 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
                 // classes we're not interested in swizzling. Otherwise we hit +initialize on all classes.
                 // NOTE: calling class_getInstanceMethod() DOES send +initialize to the class. That's why we iterate through the method list.
                 unsigned int methodCount = 0;
-                Method *methods = class_copyMethodList(class, &methodCount);
+                Method *methods = class_copyMethodList(cls, &methodCount);
                 BOOL matchingSelectorFound = NO;
                 for (unsigned int methodIndex = 0; methodIndex < methodCount; methodIndex++) {
                     for (int selectorIndex = 0; selectorIndex < numSelectors; ++selectorIndex) {
                         if (method_getName(methods[methodIndex]) == selectors[selectorIndex]) {
-                            [self injectIntoDelegateClass:class];
+                            [self injectIntoDelegateClass:cls];
                             matchingSelectorFound = YES;
                             break;
                         }
@@ -323,7 +323,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = objc_getMetaClass(class_getName([NSURLConnection class]));
+        Class cls = objc_getMetaClass(class_getName([NSURLConnection class]));
         SEL selector = @selector(sendAsynchronousRequest:queue:completionHandler:);
         SEL swizzledSelector = [FLEXUtility swizzledSelectorForSelector:selector];
 
@@ -333,7 +333,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             if ([FLEXNetworkObserver isEnabled]) {
                 NSString *requestID = [self nextRequestID];
                 [[FLEXNetworkRecorder defaultRecorder] recordRequestWillBeSentWithRequestID:requestID request:request redirectResponse:nil];
-                NSString *mechanism = [self mechanismFromClassMethod:selector onClass:class];
+                NSString *mechanism = [self mechanismFromClassMethod:selector onClass:cls];
                 [[FLEXNetworkRecorder defaultRecorder] recordMechanism:mechanism forRequestID:requestID];
                 NSURLConnectionAsyncCompletion completionWrapper = ^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     [[FLEXNetworkRecorder defaultRecorder] recordResponseReceivedWithRequestID:requestID response:response];
@@ -355,7 +355,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             }
         };
         
-        [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:class withBlock:asyncSwizzleBlock swizzledSelector:swizzledSelector];
+        [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:cls withBlock:asyncSwizzleBlock swizzledSelector:swizzledSelector];
     });
 }
 
@@ -363,7 +363,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = objc_getMetaClass(class_getName([NSURLConnection class]));
+        Class cls = objc_getMetaClass(class_getName([NSURLConnection class]));
         SEL selector = @selector(sendSynchronousRequest:returningResponse:error:);
         SEL swizzledSelector = [FLEXUtility swizzledSelectorForSelector:selector];
 
@@ -372,7 +372,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             if ([FLEXNetworkObserver isEnabled]) {
                 NSString *requestID = [self nextRequestID];
                 [[FLEXNetworkRecorder defaultRecorder] recordRequestWillBeSentWithRequestID:requestID request:request redirectResponse:nil];
-                NSString *mechanism = [self mechanismFromClassMethod:selector onClass:class];
+                NSString *mechanism = [self mechanismFromClassMethod:selector onClass:cls];
                 [[FLEXNetworkRecorder defaultRecorder] recordMechanism:mechanism forRequestID:requestID];
                 NSError *temporaryError = nil;
                 NSURLResponse *temporaryResponse = nil;
@@ -397,7 +397,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             return data;
         };
         
-        [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:class withBlock:syncSwizzleBlock swizzledSelector:swizzledSelector];
+        [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:cls withBlock:syncSwizzleBlock swizzledSelector:swizzledSelector];
     });
 }
 
@@ -405,7 +405,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = [NSURLSession class];
+        Class cls = [NSURLSession class];
 
         // The method signatures here are close enough that we can use the same logic to inject into all of them.
         const SEL selectors[] = {
@@ -422,10 +422,10 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             SEL selector = selectors[selectorIndex];
             SEL swizzledSelector = [FLEXUtility swizzledSelectorForSelector:selector];
 
-            if ([FLEXUtility instanceRespondsButDoesNotImplementSelector:selector class:class]) {
+            if ([FLEXUtility instanceRespondsButDoesNotImplementSelector:selector class:cls]) {
                 // iOS 7 does not implement these methods on NSURLSession. We actually want to
                 // swizzle __NSCFURLSession, which we can get from the class of the shared session
-                class = [[NSURLSession sharedSession] class];
+                cls = [[NSURLSession sharedSession] class];
             }
 
             NSURLSessionTask *(^asyncDataOrDownloadSwizzleBlock)(Class, id, NSURLSessionAsyncCompletion) = ^NSURLSessionTask *(Class slf, id argument, NSURLSessionAsyncCompletion completion) {
@@ -435,7 +435,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
                 // with nil completion block.
                 if ([FLEXNetworkObserver isEnabled] && completion) {
                     NSString *requestID = [self nextRequestID];
-                    NSString *mechanism = [self mechanismFromClassMethod:selector onClass:class];
+                    NSString *mechanism = [self mechanismFromClassMethod:selector onClass:cls];
                     NSURLSessionAsyncCompletion completionWrapper = [self asyncCompletionWrapperForRequestID:requestID mechanism:mechanism completion:completion];
                     task = ((id(*)(id, SEL, id, id))objc_msgSend)(slf, swizzledSelector, argument, completionWrapper);
                     [self setRequestID:requestID forConnectionOrTask:task];
@@ -445,7 +445,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
                 return task;
             };
             
-            [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:class withBlock:asyncDataOrDownloadSwizzleBlock swizzledSelector:swizzledSelector];
+            [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:cls withBlock:asyncDataOrDownloadSwizzleBlock swizzledSelector:swizzledSelector];
         }
     });
 }
@@ -454,7 +454,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Class class = [NSURLSession class];
+        Class cls = [NSURLSession class];
 
         // The method signatures here are close enough that we can use the same logic to inject into both of them.
         // Note that they have 3 arguments, so we can't easily combine with the data and download method above.
@@ -469,17 +469,17 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
             SEL selector = selectors[selectorIndex];
             SEL swizzledSelector = [FLEXUtility swizzledSelectorForSelector:selector];
 
-            if ([FLEXUtility instanceRespondsButDoesNotImplementSelector:selector class:class]) {
+            if ([FLEXUtility instanceRespondsButDoesNotImplementSelector:selector class:cls]) {
                 // iOS 7 does not implement these methods on NSURLSession. We actually want to
                 // swizzle __NSCFURLSession, which we can get from the class of the shared session
-                class = [[NSURLSession sharedSession] class];
+                cls = [[NSURLSession sharedSession] class];
             }
 
             NSURLSessionUploadTask *(^asyncUploadTaskSwizzleBlock)(Class, NSURLRequest *, id, NSURLSessionAsyncCompletion) = ^NSURLSessionUploadTask *(Class slf, NSURLRequest *request, id argument, NSURLSessionAsyncCompletion completion) {
                 NSURLSessionUploadTask *task = nil;
                 if ([FLEXNetworkObserver isEnabled] && completion) {
                     NSString *requestID = [self nextRequestID];
-                    NSString *mechanism = [self mechanismFromClassMethod:selector onClass:class];
+                    NSString *mechanism = [self mechanismFromClassMethod:selector onClass:cls];
                     NSURLSessionAsyncCompletion completionWrapper = [self asyncCompletionWrapperForRequestID:requestID mechanism:mechanism completion:completion];
                     task = ((id(*)(id, SEL, id, id, id))objc_msgSend)(slf, swizzledSelector, request, argument, completionWrapper);
                     [self setRequestID:requestID forConnectionOrTask:task];
@@ -489,7 +489,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
                 return task;
             };
             
-            [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:class withBlock:asyncUploadTaskSwizzleBlock swizzledSelector:swizzledSelector];
+            [FLEXUtility replaceImplementationOfKnownSelector:selector onClass:cls withBlock:asyncUploadTaskSwizzleBlock swizzledSelector:swizzledSelector];
         }
     });
 }
