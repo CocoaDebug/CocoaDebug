@@ -405,218 +405,250 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
 - (HttpModel *)handleError:(NSError *)error model:(HttpModel *)model
 {
     if (!error) {
-        //https://httpstatuses.com/
+        //https://httpcodes.co/status/
         switch (model.statusCode.integerValue) {
             case 100:
-                model.errorDescription = @"Informational :\nThe initial part of a request has been received and has not yet been rejected by the server. The server intends to send a final response after the request has been fully received and acted upon.";
+                model.errorDescription = @"Informational :\nClient should continue with request";
                 model.errorLocalizedDescription = @"Continue";
                 break;
             case 101:
-                model.errorDescription = @"Informational :\nThe server understands and is willing to comply with the client's request, via the Upgrade header field1, for a change in the application protocol being used on this connection.";
+                model.errorDescription = @"Informational :\nServer is switching protocols";
                 model.errorLocalizedDescription = @"Switching Protocols";
                 break;
             case 102:
-                model.errorDescription = @"Informational :\nAn interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.";
+                model.errorDescription = @"Informational :\nServer has received and is processing the request";
                 model.errorLocalizedDescription = @"Processing";
                 break;
+            case 103:
+                model.errorDescription = @"Informational :\nresume aborted PUT or POST requests";
+                model.errorLocalizedDescription = @"Checkpoint";
+                break;
+            case 122:
+                model.errorDescription = @"Informational :\nURI is longer than a maximum of 2083 characters";
+                model.errorLocalizedDescription = @"Request-URI too long";
+                break;
             case 300:
-                model.errorDescription = @"Redirection :\nThe target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.";
+                model.errorDescription = @"Redirection :\nMultiple options for the resource delivered";
                 model.errorLocalizedDescription = @"Multiple Choices";
                 break;
             case 301:
-                model.errorDescription = @"Redirection :\nThe target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.";
+                model.errorDescription = @"Redirection :\nThis and all future requests directed to the given URI";
                 model.errorLocalizedDescription = @"Moved Permanently";
                 break;
             case 302:
-                model.errorDescription = @"Redirection :\nThe target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the effective request URI for future requests.";
+                model.errorDescription = @"Redirection :\nTemporary response to request found via alternative URI";
                 model.errorLocalizedDescription = @"Found";
                 break;
             case 303:
-                model.errorDescription = @"Redirection :\nThe server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.";
+                model.errorDescription = @"Redirection :\nPermanent response to request found via alternative URI";
                 model.errorLocalizedDescription = @"See Other";
                 break;
             case 304:
-                model.errorDescription = @"Redirection :\nA conditional GET or HEAD request has been received and would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to false.";
+                model.errorDescription = @"Redirection :\nResource has not been modified since last requested";
                 model.errorLocalizedDescription = @"Not Modified";
                 break;
             case 305:
-                model.errorDescription = @"Redirection :\nDefined in a previous version of this specification and is now deprecated, due to security concerns regarding in-band configuration of a proxy.";
+                model.errorDescription = @"Redirection :\nContent located elsewhere, retrieve from there";
                 model.errorLocalizedDescription = @"Use Proxy";
                 break;
+            case 306:
+                model.errorDescription = @"Redirection :\nSubsequent requests should use the specified proxy";
+                model.errorLocalizedDescription = @"Switch Proxy";
+                break;
             case 307:
-                model.errorDescription = @"Redirection :\nThe target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.";
+                model.errorDescription = @"Redirection :\nConnect again to different URI as provided";
                 model.errorLocalizedDescription = @"Temporary Redirect";
                 break;
             case 308:
-                model.errorDescription = @"Redirection :\nThe target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.";
+                model.errorDescription = @"Redirection :\nConnect again to a different URI using the same method";
                 model.errorLocalizedDescription = @"Permanent Redirect";
                 break;
             case 400:
-                model.errorDescription = @"Client Error :\nThe server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).";
+                model.errorDescription = @"Client Error :\nRequest cannot be fulfilled due to bad syntax";
                 model.errorLocalizedDescription = @"Bad Request";
                 break;
             case 401:
-                model.errorDescription = @"Client Error :\nThe request has not been applied because it lacks valid authentication credentials for the target resource.";
+                model.errorDescription = @"Client Error :\nAuthentication is possible but has failed";
                 model.errorLocalizedDescription = @"Unauthorized";
                 break;
             case 402:
-                model.errorDescription = @"Client Error :\nReserved for future use.";
+                model.errorDescription = @"Client Error :\nPayment required, reserved for future use";
                 model.errorLocalizedDescription = @"Payment Required";
                 break;
             case 403:
-                model.errorDescription = @"Client Error :\nThe server understood the request but refuses to authorize it.";
+                model.errorDescription = @"Client Error :\nServer refuses to respond to request";
                 model.errorLocalizedDescription = @"Forbidden";
                 break;
             case 404:
-                model.errorDescription = @"Client Error :\nThe origin server did not find a current representation for the target resource or is not willing to disclose that one exists.";
+                model.errorDescription = @"Client Error :\nRequested resource could not be found";
                 model.errorLocalizedDescription = @"Not Found";
                 break;
             case 405:
-                model.errorDescription = @"Client Error :\nThe method received in the request-line is known by the origin server but not supported by the target resource.";
+                model.errorDescription = @"Client Error :\nRequest method not supported by that resource";
                 model.errorLocalizedDescription = @"Method Not Allowed";
                 break;
             case 406:
-                model.errorDescription = @"Client Error :\nThe target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request1, and the server is unwilling to supply a default representation.";
+                model.errorDescription = @"Client Error :\nContent not acceptable according to the Accept headers";
                 model.errorLocalizedDescription = @"Not Acceptable";
                 break;
             case 407:
-                model.errorDescription = @"Client Error :\nSimilar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.";
+                model.errorDescription = @"Client Error :\nClient must first authenticate itself with the proxy";
                 model.errorLocalizedDescription = @"Proxy Authentication Required";
                 break;
             case 408:
-                model.errorDescription = @"Client Error :\nThe server did not receive a complete request message within the time that it was prepared to wait.";
+                model.errorDescription = @"Client Error :\nServer timed out waiting for the request";
                 model.errorLocalizedDescription = @"Request Timeout";
                 break;
             case 409:
-                model.errorDescription = @"Client Error :\nThe request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.";
+                model.errorDescription = @"Client Error :\nRequest could not be processed because of conflict";
                 model.errorLocalizedDescription = @"Conflict";
                 break;
             case 410:
-                model.errorDescription = @"Client Error :\nThe target resource is no longer available at the origin server and that this condition is likely to be permanent.";
+                model.errorDescription = @"Client Error :\nResource is no longer available and will not be available again";
                 model.errorLocalizedDescription = @"Gone";
                 break;
             case 411:
-                model.errorDescription = @"Client Error :\nThe server refuses to accept the request without a defined Content-Length1.";
+                model.errorDescription = @"Client Error :\nRequest did not specify the length of its content";
                 model.errorLocalizedDescription = @"Length Required";
                 break;
             case 412:
-                model.errorDescription = @"Client Error :\nOne or more conditions given in the request header fields evaluated to false when tested on the server.";
+                model.errorDescription = @"Client Error :\nServer does not meet request preconditions";
                 model.errorLocalizedDescription = @"Precondition Failed";
                 break;
             case 413:
-                model.errorDescription = @"Client Error :\nThe server is refusing to process a request because the request payload is larger than the server is willing or able to process.";
-                model.errorLocalizedDescription = @"Payload Too Large";
+                model.errorDescription = @"Client Error :\nRequest is larger than the server is willing or able to process";
+                model.errorLocalizedDescription = @"Request Entity Too Large";
                 break;
             case 414:
-                model.errorDescription = @"Client Error :\nThe server is refusing to service the request because the request-target1 is longer than the server is willing to interpret.";
+                model.errorDescription = @"Client Error :\nURI provided was too long for the server to process";
                 model.errorLocalizedDescription = @"Request-URI Too Long";
                 break;
             case 415:
-                model.errorDescription = @"Client Error :\nThe origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.";
+                model.errorDescription = @"Client Error :\nServer does not support media type";
                 model.errorLocalizedDescription = @"Unsupported Media Type";
                 break;
             case 416:
-                model.errorDescription = @"Client Error :\nNone of the ranges in the request's Range header field1 overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.";
+                model.errorDescription = @"Client Error :\nClient has asked for unprovidable portion of the file";
                 model.errorLocalizedDescription = @"Requested Range Not Satisfiable";
                 break;
             case 417:
-                model.errorDescription = @"Client Error :\nThe expectation given in the request's Expect header field1 could not be met by at least one of the inbound servers.";
+                model.errorDescription = @"Client Error :\nServer cannot meet requirements of Expect request-header field";
                 model.errorLocalizedDescription = @"Expectation Failed";
                 break;
             case 418:
-                model.errorDescription = @"Client Error :\nAny attempt to brew coffee with a teapot should result in the error code \"418 I'm a teapot\". The resulting entity body MAY be short and stout.";
-                model.errorLocalizedDescription = @"I'm a teapot";
+                model.errorDescription = @"Client Error :\nI'm a teapot";
+                model.errorLocalizedDescription = @"I'm a Teapot";
+                break;
+            case 420:
+                model.errorDescription = @"Client Error :\nTwitter rate limiting";
+                model.errorLocalizedDescription = @"Enhance Your Calm";
                 break;
             case 421:
-                model.errorDescription = @"Client Error :\nThe request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.";
+                model.errorDescription = @"Client Error :\nMisdirected Request";
                 model.errorLocalizedDescription = @"Misdirected Request";
                 break;
             case 422:
-                model.errorDescription = @"Client Error :\nThe server understands the content type of the request entity (hence a 415 Unsupported Media Type status code is inappropriate), and the syntax of the request entity is correct (thus a 400 Bad Request status code is inappropriate) but was unable to process the contained instructions.";
+                model.errorDescription = @"Client Error :\nRequest unable to be followed due to semantic errors";
                 model.errorLocalizedDescription = @"Unprocessable Entity";
                 break;
             case 423:
-                model.errorDescription = @"Client Error :\nThe source or destination resource of a method is locked.";
+                model.errorDescription = @"Client Error :\nResource that is being accessed is locked";
                 model.errorLocalizedDescription = @"Locked";
                 break;
             case 424:
-                model.errorDescription = @"Client Error :\nThe method could not be performed on the resource because the requested action depended on another action and that action failed.";
+                model.errorDescription = @"Client Error :\nRequest failed due to failure of a previous request";
                 model.errorLocalizedDescription = @"Failed Dependency";
                 break;
             case 426:
-                model.errorDescription = @"Client Error :\nThe server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.";
+                model.errorDescription = @"Client Error :\nClient should switch to a different protocol";
                 model.errorLocalizedDescription = @"Upgrade Required";
                 break;
             case 428:
-                model.errorDescription = @"Client Error :\nThe origin server requires the request to be conditional.";
+                model.errorDescription = @"Client Error :\nOrigin server requires the request to be conditional";
                 model.errorLocalizedDescription = @"Precondition Required";
                 break;
             case 429:
-                model.errorDescription = @"Client Error :\nThe user has sent too many requests in a given amount of time (\"rate limiting\").";
+                model.errorDescription = @"Client Error :\nUser has sent too many requests in a given amount of time";
                 model.errorLocalizedDescription = @"Too Many Requests";
                 break;
             case 431:
-                model.errorDescription = @"Client Error :\nThe server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.";
+                model.errorDescription = @"Client Error :\nServer is unwilling to process the request";
                 model.errorLocalizedDescription = @"Request Header Fields Too Large";
                 break;
             case 444:
-                model.errorDescription = @"Client Error :\nA non-standard status code used to instruct nginx to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.";
-                model.errorLocalizedDescription = @"Connection Closed Without Response";
+                model.errorDescription = @"Client Error :\nServer returns no information and closes the connection";
+                model.errorLocalizedDescription = @"No Response";
+                break;
+            case 449:
+                model.errorDescription = @"Client Error :\nRequest should be retried after performing action";
+                model.errorLocalizedDescription = @"Retry With";
+                break;
+            case 450:
+                model.errorDescription = @"Client Error :\nWindows Parental Controls blocking access to webpage";
+                model.errorLocalizedDescription = @"Blocked by Windows Parental Controls";
                 break;
             case 451:
-                model.errorDescription = @"Client Error :\nThe server is denying access to the resource as a consequence of a legal demand.";
-                model.errorLocalizedDescription = @"Unavailable For Legal Reasons";
+                model.errorDescription = @"Client Error :\nThe server cannot reach the client's mailbox";
+                model.errorLocalizedDescription = @"Wrong Exchange server";
                 break;
             case 499:
-                model.errorDescription = @"Client Error :\nA non-standard status code introduced by nginx for the case when a client closes the connection while nginx is processing the request.";
+                model.errorDescription = @"Client Error :\nConnection closed by client while HTTP server is processing";
                 model.errorLocalizedDescription = @"Client Closed Request";
                 break;
             case 500:
-                model.errorDescription = @"Server Error :\nThe server encountered an unexpected condition that prevented it from fulfilling the request.";
+                model.errorDescription = @"Server Error :\ngeneric error message";
                 model.errorLocalizedDescription = @"Internal Server Error";
                 break;
             case 501:
-                model.errorDescription = @"Server Error :\nThe server does not support the functionality required to fulfill the request.";
+                model.errorDescription = @"Server Error :\nserver does not recognise method or lacks ability to fulfill";
                 model.errorLocalizedDescription = @"Not Implemented";
                 break;
             case 502:
-                model.errorDescription = @"Server Error :\nThe server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.";
+                model.errorDescription = @"Server Error :\nserver received an invalid response from upstream server";
                 model.errorLocalizedDescription = @"Bad Gateway";
                 break;
             case 503:
-                model.errorDescription = @"Server Error :\nThe server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.";
+                model.errorDescription = @"Server Error :\nserver is currently unavailable";
                 model.errorLocalizedDescription = @"Service Unavailable";
                 break;
             case 504:
-                model.errorDescription = @"Server Error :\nThe server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.";
+                model.errorDescription = @"Server Error :\ngateway did not receive response from upstream server";
                 model.errorLocalizedDescription = @"Gateway Timeout";
                 break;
             case 505:
-                model.errorDescription = @"Server Error :\nThe server does not support, or refuses to support, the major version of HTTP that was used in the request message.";
+                model.errorDescription = @"Server Error :\nserver does not support the HTTP protocol version";
                 model.errorLocalizedDescription = @"HTTP Version Not Supported";
                 break;
             case 506:
-                model.errorDescription = @"Server Error :\nThe server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.";
+                model.errorDescription = @"Server Error :\ncontent negotiation for the request results in a circular reference";
                 model.errorLocalizedDescription = @"Variant Also Negotiates";
                 break;
             case 507:
-                model.errorDescription = @"Server Error :\nThe method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.";
+                model.errorDescription = @"Server Error :\nserver is unable to store the representation";
                 model.errorLocalizedDescription = @"Insufficient Storage";
                 break;
             case 508:
-                model.errorDescription = @"Server Error :\nThe server terminated an operation because it encountered an infinite loop while processing a request with \"Depth: infinity\". This status indicates that the entire operation failed.";
+                model.errorDescription = @"Server Error :\nserver detected an infinite loop while processing the request";
                 model.errorLocalizedDescription = @"Loop Detected";
                 break;
+            case 509:
+                model.errorDescription = @"Server Error :\nbandwidth limit exceeded";
+                model.errorLocalizedDescription = @"Bandwidth Limit Exceeded";
+                break;
             case 510:
-                model.errorDescription = @"Server Error :\nThe policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.";
+                model.errorDescription = @"Server Error :\nfurther extensions to the request are required";
                 model.errorLocalizedDescription = @"Not Extended";
                 break;
             case 511:
-                model.errorDescription = @"Server Error :\nThe client needs to authenticate to gain network access.";
+                model.errorDescription = @"Server Error :\nclient needs to authenticate to gain network access";
                 model.errorLocalizedDescription = @"Network Authentication Required";
                 break;
+            case 598:
+                model.errorDescription = @"Server Error :\nnetwork read timeout behind the proxy";
+                model.errorLocalizedDescription = @"Network Read Timeout Error";
+                break;
             case 599:
-                model.errorDescription = @"Server Error :\nThis status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.";
+                model.errorDescription = @"Server Error :\nnetwork connect timeout behind the proxy";
                 model.errorLocalizedDescription = @"Network Connect Timeout Error";
                 break;
             default:
