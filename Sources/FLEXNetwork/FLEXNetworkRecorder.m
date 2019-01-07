@@ -643,6 +643,10 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
                 model.errorDescription = @"Server Error :\nclient needs to authenticate to gain network access";
                 model.errorLocalizedDescription = @"Network Authentication Required";
                 break;
+            case 526:
+                model.errorDescription = @"Server Error :\nThe origin web server does not have a valid SSL certificate";
+                model.errorLocalizedDescription = @"Invalid SSL certificate";
+                break;
             case 598:
                 model.errorDescription = @"Server Error :\nnetwork read timeout behind the proxy";
                 model.errorLocalizedDescription = @"Network Read Timeout Error";
