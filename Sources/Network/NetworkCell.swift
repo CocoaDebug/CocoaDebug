@@ -26,23 +26,20 @@ class NetworkCell: UITableViewCell {
             guard let serverURL = CocoaDebugSettings.shared.serverURL else {return}
             
             //域名
-            if let url = httpModel?.url {
-                
-                requestUrlTextView.text = url.absoluteString
-                if requestUrlTextView.text?.contains(serverURL) == true {
-                    if #available(iOS 8.2, *) {
-                        requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
-                    } else {
-                        // Fallback on earlier versions
-                        requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
-                    }
-                }else{
-                    if #available(iOS 8.2, *) {
-                        requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-                    } else {
-                        // Fallback on earlier versions
-                        requestUrlTextView.font = UIFont.systemFont(ofSize: 13)
-                    }
+            requestUrlTextView.text = httpModel?.url.absoluteString
+            if requestUrlTextView.text?.contains(serverURL) == true {
+                if #available(iOS 8.2, *) {
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+                } else {
+                    // Fallback on earlier versions
+                    requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
+                }
+            }else{
+                if #available(iOS 8.2, *) {
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+                } else {
+                    // Fallback on earlier versions
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13)
                 }
             }
             

@@ -176,31 +176,28 @@ extension NetworkViewController: UITableViewDelegate {
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
-        if let url = model?.url {
-            
-            if let cString = url.absoluteString.cString(using: String.Encoding.utf8) {
-                if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
-                    
-                    if url.absoluteString.contains(serverURL) == true {
-                        //计算NSString高度
-                        if #available(iOS 8.2, *) {
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        } else {
-                            // Fallback on earlier versions
-                            height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        }
-                    }else{
-                        //计算NSString高度
-                        if #available(iOS 8.2, *) {
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        } else {
-                            // Fallback on earlier versions
-                            height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                        }
+        if let cString = model?.url.absoluteString.cString(using: String.Encoding.utf8) {
+            if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
+                
+                if model?.url.absoluteString.contains(serverURL) == true {
+                    //计算NSString高度
+                    if #available(iOS 8.2, *) {
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    } else {
+                        // Fallback on earlier versions
+                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
-                    
-                    return height + 57
+                }else{
+                    //计算NSString高度
+                    if #available(iOS 8.2, *) {
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    } else {
+                        // Fallback on earlier versions
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                    }
                 }
+                
+                return height + 57
             }
         }
         

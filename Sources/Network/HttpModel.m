@@ -14,6 +14,7 @@
 - (id)init {
     if (self = [super init])  {
         self.statusCode = @"0";
+        self.url = [[NSURL alloc] initWithString:@""];
     }
     return self;
 }
