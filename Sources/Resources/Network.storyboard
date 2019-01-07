@@ -152,6 +152,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Network" id="npy-bN-DLs">
                         <barButtonItem key="backBarButtonItem" title=" " id="kaw-fV-cgo"/>
+                        <leftBarButtonItems>
+                            <barButtonItem id="oae-CE-MYL">
+                                <connections>
+                                    <action selector="didTapDown:" destination="C9A-fD-Ood" id="gBt-b7-jTb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="_icon_file_type_up.png" id="Rna-qw-hSf">
+                                <connections>
+                                    <action selector="didTapDown:" destination="C9A-fD-Ood" id="uMc-0g-OXH"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="trash" id="b2H-kq-1Pr">
                                 <connections>
@@ -395,5 +407,6 @@
         <image name="_icon_file_type_down.png" width="50" height="50"/>
         <image name="_icon_file_type_mail.png" width="30" height="30"/>
         <image name="_icon_file_type_network" width="16" height="16"/>
+        <image name="_icon_file_type_up.png" width="50" height="50"/>
     </resources>
 </document>
