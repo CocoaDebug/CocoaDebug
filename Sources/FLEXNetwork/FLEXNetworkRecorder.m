@@ -348,7 +348,13 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
     
     HttpModel *model = [[HttpModel alloc] init];
     model.requestId = transaction.requestID;
-    model.url = transaction.request.URL;
+//    model.url = transaction.request.URL;
+    
+    NSURL *url = transaction.request.URL;
+    if (url) {
+        model.url = url;
+    }
+    
     model.method = transaction.request.HTTPMethod;
     model.mineType = transaction.response.MIMEType;
     model.responseData = [[FLEXNetworkRecorder defaultRecorder] cachedResponseBodyForTransaction:transaction];
