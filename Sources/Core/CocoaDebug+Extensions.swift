@@ -212,6 +212,10 @@ extension UITableView {
         }
     }
     
+    func tableViewScrollToHeader(animated: Bool) {
+        self.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
+    }
+    
     func reloadData(completion: @escaping () -> ()) {
         UIView.animate(withDuration: 0, animations: { self.reloadData()})
         {_ in completion() }

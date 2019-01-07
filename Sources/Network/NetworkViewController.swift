@@ -130,6 +130,12 @@ class NetworkViewController: UIViewController {
         reachEnd = true
     }
     
+    @IBAction func didTapUp(_ sender: Any) {
+        tableView.tableViewScrollToHeader(animated: true)
+        reachEnd = false
+    }
+    
+    
     @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
         HttpDatasource.shared().reset()
         models = []

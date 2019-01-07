@@ -272,6 +272,20 @@ class LogViewController: UIViewController {
         }
     }
     
+    @IBAction func didTapUp(_ sender: Any) {
+        if selectedSegmentIndex == 0
+        {
+            defaultTableView.tableViewScrollToHeader(animated: true)
+            reachEndDefault = false
+        }
+        else
+        {
+            colorTableView.tableViewScrollToHeader(animated: true)
+            reachEndColor = false
+        }
+    }
+    
+    
     @IBAction func resetLogs(_ sender: Any) {
         if selectedSegmentIndex == 0
         {

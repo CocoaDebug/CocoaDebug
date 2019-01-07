@@ -186,12 +186,12 @@
                             </barButtonItem>
                             <barButtonItem image="_icon_file_type_up.png" id="9TL-gp-zIa">
                                 <connections>
-                                    <action selector="didTapDown:" destination="b1x-pw-stc" id="zdM-LR-vwb"/>
+                                    <action selector="didTapUp:" destination="b1x-pw-stc" id="9Sk-0Z-wfk"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RqA-gF-lv2">
-                            <rect key="frame" x="126" y="7" width="117" height="30"/>
+                            <rect key="frame" x="129" y="7" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Default"/>
@@ -229,8 +229,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="_icon_file_type_down.png" width="50" height="50"/>
+        <image name="_icon_file_type_down.png" width="20" height="20"/>
         <image name="_icon_file_type_logs" width="16" height="16"/>
-        <image name="_icon_file_type_up.png" width="50" height="50"/>
+        <image name="_icon_file_type_up.png" width="20" height="20"/>
     </resources>
 </document>
