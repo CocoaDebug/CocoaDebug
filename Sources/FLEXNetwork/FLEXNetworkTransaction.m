@@ -16,19 +16,6 @@
 
 @implementation FLEXNetworkTransaction
 
-//liman
-//- (NSString *)description
-//{
-//    NSString *description = [super description];
-//
-//    description = [description stringByAppendingFormat:@" id = %@;", self.requestID];
-//    description = [description stringByAppendingFormat:@" url = %@;", self.request.URL];
-//    description = [description stringByAppendingFormat:@" duration = %f;", self.duration];
-//    description = [description stringByAppendingFormat:@" receivedDataLength = %lld", self.receivedDataLength];
-//
-//    return description;
-//}
-
 - (NSData *)cachedRequestBody {
     if (!_cachedRequestBody) {
         if (self.request.HTTPBody != nil) {

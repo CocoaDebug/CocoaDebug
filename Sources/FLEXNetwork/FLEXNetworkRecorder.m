@@ -375,6 +375,8 @@ NSString *const kFLEXNetworkRecorderResponseCacheLimitDefaultsKey = @"com.flex.r
     //        model.requestData = [NSData dataWithInputStream:stream];
     //    }
     
+    model.size = [NSByteCountFormatter stringFromByteCount:transaction.receivedDataLength countStyle:NSByteCountFormatterCountStyleBinary];
+    
     if ([transaction.response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)transaction.response;
         model.responseHeaderFields = response.allHeaderFields;

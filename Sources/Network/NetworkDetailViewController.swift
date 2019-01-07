@@ -86,6 +86,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
@@ -94,6 +95,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_5)
             detailModels.append(model_6)
             detailModels.append(model_7)
+            detailModels.append(model_0)
             detailModels.append(model_8)
             detailModels.append(model_9)
         }
@@ -124,6 +126,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
@@ -132,6 +135,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_5)
             detailModels.append(model_6)
             detailModels.append(model_7)
+            detailModels.append(model_0)
             detailModels.append(model_8)
             detailModels.append(model_9)
         }
