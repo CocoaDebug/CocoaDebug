@@ -34,6 +34,11 @@
 
 - (BOOL)addHttpRequset:(HttpModel*)model
 {
+    if ([model.url.absoluteString isEqualToString:@""]) {
+        return NO;
+    }
+    
+    
     //url过滤, 忽略大小写
     for (NSString *urlString in [[NetworkHelper shared] ignoredURLs]) {
         if ([[model.url.absoluteString lowercaseString] containsString:[urlString lowercaseString]]) {
