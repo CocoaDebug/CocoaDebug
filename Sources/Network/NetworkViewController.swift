@@ -22,7 +22,7 @@ class NetworkViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var deleteItem: UIBarButtonItem!
-    
+    @IBOutlet weak var naviItem: UINavigationItem!
     
     //MARK: - tool
     //搜索逻辑
@@ -88,6 +88,7 @@ class NetworkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        naviItem.title = "[0]"
         deleteItem.tintColor = Color.mainGreen
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
@@ -139,6 +140,7 @@ class NetworkViewController: UIViewController {
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
+            self?.naviItem.title = "[0]"
         }
     }
     
@@ -155,7 +157,11 @@ class NetworkViewController: UIViewController {
 extension NetworkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models?.count ?? 0
+        if let count = models?.count {
+            naviItem.title = "[" + String(count) + "]"
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
