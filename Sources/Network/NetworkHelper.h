@@ -25,7 +25,7 @@
  */
 @property (nonatomic, copy) NSArray<NSString *> *ignoredURLs;
 /**
- *  日志最大数量,默认`999`
+ *  日志最大数量,默认`1000`
  */
 @property (nonatomic, assign) NSInteger logMaxCount;
 

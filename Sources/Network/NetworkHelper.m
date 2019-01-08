@@ -32,7 +32,7 @@
 - (id)init {
     if (self = [super init])  {
         self.mainColor = [UIColor colorFromHexString:@"#42d459"];
-        self.logMaxCount = 999;
+        self.logMaxCount = 1000;
         self.isEnable = YES;
     }
     return self;
