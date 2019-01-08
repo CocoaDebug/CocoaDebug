@@ -325,6 +325,12 @@ class LogViewController: UIViewController {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
         CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
         
+        if selectedSegmentIndex == 0 {
+            colorSearchBar.resignFirstResponder()
+        }else{
+            defaultSearchBar.resignFirstResponder()
+        }
+        
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
             selectedSegment_0 = true
             reloadLogs(needScrollToEnd: true, needReloadData: true)
@@ -417,18 +423,6 @@ extension LogViewController: UITableViewDelegate {
         return 0
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == defaultTableView {
-            tableView.deselectRow(at: indexPath, animated: true)
-            defaultSearchBar.resignFirstResponder()
-            reachEndDefault = false
-        }else{
-            tableView.deselectRow(at: indexPath, animated: true)
-            colorSearchBar.resignFirstResponder()
-            reachEndColor = false
-        }
-    }
     
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
