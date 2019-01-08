@@ -224,19 +224,25 @@ extension UITableView {
 
 ///shake
 extension UIWindow {
+    
+    open override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-
-//        if CocoaDebugSettings.shared.responseShakeNetworkDetail == false {return}
-
-        if CocoaDebugSettings.shared.responseShake == false {return}
-
-//        if event?.type == .motion && event?.subtype == .motionShake {/*shake*/}
+        super.motionEnded(motion, with: event)
+    }
+    
+    open override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionCancelled(motion, with: event)
+    }
+    
+    open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionBegan(motion, with: event)
         
+        if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
-            if CocoaDebugSettings.shared.visible == true {
-//                NotificationCenter.default.post(name: NSNotification.Name("motionShake_CocoaDebug"), object: nil, userInfo: nil)
-                return
-            }
+            if CocoaDebugSettings.shared.visible == true { return }
             CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
         }
     }
