@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AFURLSessionManager.h"
+#import <WebKit/WebKit.h>
 
 @interface ViewController ()
 
@@ -25,6 +26,7 @@
     NSLog_UNICODE(@"unicode转换为中文");
     
     [self testHTTP];
+    [self test_html_console];
 }
 
 
@@ -77,6 +79,15 @@
         }
     }];
     [dataTask_ resume];
+}
+
+
+
+- (void)test_html_console {
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:[WKWebViewConfiguration new]];
+    [self.view addSubview:webView];
+    
+    [webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 @end

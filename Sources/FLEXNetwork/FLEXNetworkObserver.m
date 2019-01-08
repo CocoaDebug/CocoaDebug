@@ -108,17 +108,6 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask delegate:(id <NSU
 }
 
 //liman
-//+ (void)load
-//{
-//    // We don't want to do the swizzling from +load because not all the classes may be loaded at this point.
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if ([self isEnabled]) {
-//            [self injectIntoAllNSURLConnectionDelegateClasses];
-//        }
-//    });
-//}
-
-//liman
 + (void)load
 {
     dispatch_main_async_safe(^{

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3800C1B121E4F6F1006B4EF1 /* WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3800C1B021E4F6F1006B4EF1 /* WKWebView+Swizzling.m */; };
+		3800C33D21E4F97E006B4EF1 /* WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3800C1B021E4F6F1006B4EF1 /* WKWebView+Swizzling.m */; };
 		3803440321C3BEF100BC1CE2 /* OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440121C3BEF100BC1CE2 /* OCLogHelper.m */; };
 		3803440C21C3D54E00BC1CE2 /* OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440B21C3D54E00BC1CE2 /* OCLogModel.m */; };
 		3803440F21C3D95400BC1CE2 /* OCLoggerFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3803440E21C3D95400BC1CE2 /* OCLoggerFormat.m */; };
@@ -192,7 +194,6 @@
 		EA062AB020541ACB0071A231 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C020541ACB0071A231 /* SandboxViewController.m */; };
 		EA062AB120541ACB0071A231 /* Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C120541ACB0071A231 /* Sandbox.m */; };
 		EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C320541ACB0071A231 /* MLBFileInfo.m */; };
-		EA062AB320541ACB0071A231 /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C920541ACB0071A231 /* Swizzling.m */; };
 		EA062AB420541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */; };
 		EA062AB520541ACB0071A231 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CD20541ACB0071A231 /* WindowHelper.swift */; };
 		EA062AB620541ACB0071A231 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */; };
@@ -228,7 +229,6 @@
 		EAF55AEA20554164003E310F /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C020541ACB0071A231 /* SandboxViewController.m */; };
 		EAF55AEB20554164003E310F /* Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C120541ACB0071A231 /* Sandbox.m */; };
 		EAF55AEC20554164003E310F /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C320541ACB0071A231 /* MLBFileInfo.m */; };
-		EAF55AED20554164003E310F /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629C920541ACB0071A231 /* Swizzling.m */; };
 		EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */; };
 		EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629D520541ACB0071A231 /* MemoryHelper.m */; };
 		EAF55AF120554164003E310F /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0629DA20541ACB0071A231 /* NSObject+CocoaDebug.m */; };
@@ -273,7 +273,6 @@
 		EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C520541ACB0071A231 /* FilePreviewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B1F2055417C003E310F /* Sandbox.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C620541ACB0071A231 /* Sandbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B202055417C003E310F /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629C720541ACB0071A231 /* SandboxViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EAF55B212055417C003E310F /* Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629CB20541ACB0071A231 /* Swizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B222055417C003E310F /* MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629D020541ACB0071A231 /* MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B272055417C003E310F /* NSObject+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0629DE20541ACB0071A231 /* NSObject+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAF55B282055435D003E310F /* _icon_file_type_logs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA0628F820541ACB0071A231 /* _icon_file_type_logs@2x.png */; };
@@ -484,6 +483,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3800C1B021E4F6F1006B4EF1 /* WKWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+Swizzling.m"; sourceTree = "<group>"; };
 		3803440121C3BEF100BC1CE2 /* OCLogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCLogHelper.m; sourceTree = "<group>"; };
 		3803440221C3BEF100BC1CE2 /* OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogHelper.h; sourceTree = "<group>"; };
 		3803440A21C3D54E00BC1CE2 /* OCLogModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogModel.h; sourceTree = "<group>"; };
@@ -668,9 +668,7 @@
 		EA0629C520541ACB0071A231 /* FilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewController.h; sourceTree = "<group>"; };
 		EA0629C620541ACB0071A231 /* Sandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandbox.h; sourceTree = "<group>"; };
 		EA0629C720541ACB0071A231 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
-		EA0629C920541ACB0071A231 /* Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzling.m; sourceTree = "<group>"; };
 		EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
-		EA0629CB20541ACB0071A231 /* Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzling.h; sourceTree = "<group>"; };
 		EA0629CD20541ACB0071A231 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		EA0629CE20541ACB0071A231 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		EA0629CF20541ACB0071A231 /* CocoaDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugViewController.swift; sourceTree = "<group>"; };
@@ -1099,8 +1097,7 @@
 		EA0629C820541ACB0071A231 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
-				EA0629CB20541ACB0071A231 /* Swizzling.h */,
-				EA0629C920541ACB0071A231 /* Swizzling.m */,
+				3800C1B021E4F6F1006B4EF1 /* WKWebView+Swizzling.m */,
 				EA0629CA20541ACB0071A231 /* NSObject+UIDebuggingInformationOverlay.m */,
 			);
 			path = Swizzling;
@@ -1390,7 +1387,6 @@
 				EAF55B1C2055417C003E310F /* FileTableViewCell.h in Headers */,
 				EAF55B1D2055417C003E310F /* SandboxHelper.h in Headers */,
 				EAF55B1E2055417C003E310F /* FilePreviewController.h in Headers */,
-				EAF55B212055417C003E310F /* Swizzling.h in Headers */,
 				38D71FB021CD3D500019A484 /* FLEXUtility.h in Headers */,
 				38D71FB121CD3D500019A484 /* FLEXNetworkTransaction.h in Headers */,
 				38D71FB221CD3D500019A484 /* FLEXNetworkRecorder.h in Headers */,
@@ -1856,7 +1852,6 @@
 				EAF58031204E73C3001CA56D /* ASIDataCompressor.m in Sources */,
 				EA062AAA20541ACB0071A231 /* LogHelper.swift in Sources */,
 				EA0629E920541ACB0071A231 /* IgnoredURLsViewController.swift in Sources */,
-				EA062AB320541ACB0071A231 /* Swizzling.m in Sources */,
 				EA062ABA20541ACB0071A231 /* CocoaDebugTabBarController.swift in Sources */,
 				3803441421C3E58800BC1CE2 /* OCLogStoreManager.m in Sources */,
 				EAF58028204E73C3001CA56D /* TestCheck.swift in Sources */,
@@ -1869,6 +1864,7 @@
 				EA062AB220541ACB0071A231 /* MLBFileInfo.m in Sources */,
 				386A5D3E21CCC21A00585194 /* FLEXNetworkRecorder.m in Sources */,
 				EAF58021204E73C3001CA56D /* String+UTF8.swift in Sources */,
+				3800C1B121E4F6F1006B4EF1 /* WKWebView+Swizzling.m in Sources */,
 				EAF5801D204E73C3001CA56D /* Networking+PUT.swift in Sources */,
 				386A5D3C21CCC21A00585194 /* FLEXNetworkTransaction.m in Sources */,
 				EAF58024204E73C3001CA56D /* CharacterSet+Encoding.swift in Sources */,
@@ -1920,6 +1916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3800C33D21E4F97E006B4EF1 /* WKWebView+Swizzling.m in Sources */,
 				38D71FB421CD3D610019A484 /* FLEXUtility.m in Sources */,
 				38D71FB521CD3D610019A484 /* FLEXNetworkTransaction.m in Sources */,
 				38D71FB621CD3D610019A484 /* FLEXNetworkRecorder.m in Sources */,
@@ -1971,7 +1968,6 @@
 				EAF55AEA20554164003E310F /* SandboxViewController.m in Sources */,
 				EAF55AEB20554164003E310F /* Sandbox.m in Sources */,
 				EAF55AEC20554164003E310F /* MLBFileInfo.m in Sources */,
-				EAF55AED20554164003E310F /* Swizzling.m in Sources */,
 				EAF55AEE20554164003E310F /* NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				EAF55AEF20554164003E310F /* MemoryHelper.m in Sources */,
 				EAF55AF120554164003E310F /* NSObject+CocoaDebug.m in Sources */,
