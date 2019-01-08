@@ -6,6 +6,15 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
+
+
 //***************** Private API *****************
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wincomplete-implementation"

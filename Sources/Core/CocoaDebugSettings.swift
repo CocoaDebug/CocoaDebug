@@ -30,12 +30,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var recordCrash: Bool = true {
+    @objc public var disableCrashRecording: Bool = false {
         didSet {
-            UserDefaults.standard.set(recordCrash, forKey: "recordCrash_CocoaDebug")
+            UserDefaults.standard.set(disableCrashRecording, forKey: "disableCrashRecording_CocoaDebug")
             UserDefaults.standard.synchronize()
             
-            if recordCrash == true {
+            if disableCrashRecording == false {
                 CrashLogger.shared.enable = true
             }else{
                 CrashStoreManager.shared.resetCrashs()
@@ -163,7 +163,7 @@ import Foundation
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
-        recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_CocoaDebug")
+        disableCrashRecording = UserDefaults.standard.bool(forKey: "disableCrashRecording_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
         bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_CocoaDebug")

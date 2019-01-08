@@ -247,7 +247,7 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, recordCrash: Bool = true, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, disableLogMonitoring: Bool = false, disableNetworkMonitoring: Bool = false)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, disableCrashRecording: Bool = false, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, disableLogMonitoring: Bool = false, disableNetworkMonitoring: Bool = false)
     {
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
@@ -283,7 +283,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logSearchWordDefault = nil
         CocoaDebugSettings.shared.logSearchWordColor = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
-        CocoaDebugSettings.shared.recordCrash = recordCrash
+        CocoaDebugSettings.shared.disableCrashRecording = disableCrashRecording
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         
         let _ = OCLogStoreManager.shared()

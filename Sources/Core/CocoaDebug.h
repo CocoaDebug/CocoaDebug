@@ -29,11 +29,3 @@
 #import "FLEXNetworkTransaction.h"
 #import "FLEXNetworkRecorder.h"
 #import "FLEXNetworkObserver.h"
-
-
-#define dispatch_main_async_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_async(dispatch_get_main_queue(), block);\
-}

@@ -18,8 +18,6 @@ import Foundation
     @objc public static var onlyURLs: [String]? = nil
     ///set controllers to be added as child controllers of UITabBarController. default value is `nil`.
     @objc public static var tabBarControllers: [UIViewController]? = nil
-    ///whether to allow the recording of crash logs in app. default value is `true`.
-    @objc public static var recordCrash: Bool = true
     ///the maximum count of logs which CocoaDebug display. default value is `500`.
     @objc public static var logMaxCount: Int = 500
     ///set the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
@@ -32,10 +30,12 @@ import Foundation
     @objc public static var disableLogMonitoring: Bool = false
     ///whether to disable the monitoring of networks in app. default value is `false`.
     @objc public static var disableNetworkMonitoring: Bool = false
+    ///whether to disable the recording of crash logs in app. default value is `false`.
+    @objc public static var disableCrashRecording: Bool = false
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, recordCrash: recordCrash, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, disableLogMonitoring: disableLogMonitoring, disableNetworkMonitoring: disableNetworkMonitoring)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, disableCrashRecording: disableCrashRecording, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, disableLogMonitoring: disableLogMonitoring, disableNetworkMonitoring: disableNetworkMonitoring)
     }
     
     //MARK: - CocoaDebug disable
