@@ -88,6 +88,11 @@ class NetworkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+        
         naviItem.title = "[0]"
         deleteItem.tintColor = Color.mainGreen
         
@@ -127,11 +132,13 @@ class NetworkViewController: UIViewController {
     //MARK: - target action
     @IBAction func didTapDown(_ sender: Any) {
         tableView.tableViewScrollToBottom(animated: true)
+        searchBar.resignFirstResponder()
         reachEnd = true
     }
     
     @IBAction func didTapUp(_ sender: Any) {
         tableView.tableViewScrollToHeader(animated: true)
+        searchBar.resignFirstResponder()
         reachEnd = false
     }
     
@@ -150,6 +157,9 @@ class NetworkViewController: UIViewController {
         }
     }
     
+    @objc func didTapView() {
+        searchBar.resignFirstResponder()
+    }
     
     
     //MARK: - notification

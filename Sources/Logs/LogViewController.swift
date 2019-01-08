@@ -178,9 +178,15 @@ class LogViewController: UIViewController {
         }
     }
     
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
         
         segmentedControl.tintColor = Color.mainGreen
         deleteItem.tintColor = Color.mainGreen
@@ -250,12 +256,6 @@ class LogViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
-    
-    
-    
-    
 
     
     //MARK: - target action
@@ -263,11 +263,13 @@ class LogViewController: UIViewController {
         if selectedSegmentIndex == 0
         {
             defaultTableView.tableViewScrollToBottom(animated: true)
+            defaultSearchBar.resignFirstResponder()
             reachEndDefault = true
         }
         else
         {
             colorTableView.tableViewScrollToBottom(animated: true)
+            colorSearchBar.resignFirstResponder()
             reachEndColor = true
         }
     }
@@ -276,11 +278,13 @@ class LogViewController: UIViewController {
         if selectedSegmentIndex == 0
         {
             defaultTableView.tableViewScrollToHeader(animated: true)
+            defaultSearchBar.resignFirstResponder()
             reachEndDefault = false
         }
         else
         {
             colorTableView.tableViewScrollToHeader(animated: true)
+            colorSearchBar.resignFirstResponder()
             reachEndColor = false
         }
     }
@@ -334,6 +338,14 @@ class LogViewController: UIViewController {
         }
         
         reloadLogs(needScrollToEnd: false, needReloadData: false)
+    }
+    
+    @objc func didTapView() {
+        if selectedSegmentIndex == 0 {
+            defaultSearchBar.resignFirstResponder()
+        }else{
+            colorSearchBar.resignFirstResponder()
+        }
     }
     
     
