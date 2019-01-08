@@ -22,7 +22,7 @@
     RedLog(@"hello world red");
     RedLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
-    NSLogUnicode(@"unicode转换为中文");
+    NSLog_UNICODE(@"unicode转换为中文");
     
     [self testHTTP];
 }

@@ -13,7 +13,7 @@
 @implementation ObjcLog
 
 + (void)logWithFile:(const char *)file
-           function:(NSString *)function
+           function:(const char *)function
                line:(NSUInteger)line
               color:(UIColor *)color
    unicodeToChinese:(BOOL)unicodeToChinese
@@ -35,12 +35,12 @@
         if ([format isKindOfClass:[NSString class]])
         {
             NSLogv(format, args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color];
         }
         else
         {
             NSLogv([NSString stringWithFormat:@"%@",format], args);
-            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:function line:line message:[NSString stringWithFormat:@"%@",format] color:color];
+            [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color];
         }
         
         va_end(args);
