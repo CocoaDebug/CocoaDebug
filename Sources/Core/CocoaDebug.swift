@@ -18,8 +18,8 @@ import Foundation
     @objc public static var onlyURLs: [String]? = nil
     ///set controllers to be added as child controllers of UITabBarController. default value is `nil`.
     @objc public static var tabBarControllers: [UIViewController]? = nil
-    ///the maximum count of logs which CocoaDebug display. default value is `500`.
-    @objc public static var logMaxCount: Int = 500
+    ///the maximum count of logs which CocoaDebug display. default value is `999`.
+    @objc public static var logMaxCount: Int = 999
     ///set the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
     ///set the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
