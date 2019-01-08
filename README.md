@@ -126,7 +126,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `disableNetworkMonitoring` - Whether to disable the monitoring of networks in app. default value is **false**.
 
-- `recordCrash` - Whether to allow the recording of crash logs in app. default value is **false**.
+- `recordCrash` - Whether to allow the recording of crash logs in app. default value is **true**.
 
 ## TODO
 

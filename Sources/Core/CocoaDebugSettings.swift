@@ -30,7 +30,7 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var recordCrash: Bool = false {
+    @objc public var recordCrash: Bool = true {
         didSet {
             UserDefaults.standard.set(recordCrash, forKey: "recordCrash_CocoaDebug")
             UserDefaults.standard.synchronize()

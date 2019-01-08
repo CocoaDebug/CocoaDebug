@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            CocoaDebug.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
 //            CocoaDebug.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
 //            CocoaDebug.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
-//            CocoaDebug.recordCrash = true //default value is `false`
+//            CocoaDebug.recordCrash = false //default value is `true`
 //            CocoaDebug.logMaxCount = 1000 //default value is `500`
 //            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
 //            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
 //            CocoaDebug.mainColor = "#fd9727" //default value is `#42d459`
-//            CocoaDebug.disableLogMonitoring = true
-//            CocoaDebug.disableNetworkMonitoring = true
+//            CocoaDebug.disableLogMonitoring = true //default value is `false`
+//            CocoaDebug.disableNetworkMonitoring = true //default value is `false`
             CocoaDebug.enable()
         #endif
         
@@ -50,7 +50,7 @@ public func print<T>(file: String = #file, function: String = #function, line: I
 //unicode print
 public func printUnicode<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
     #if DEBUG
-    swiftLog(file, function, line, message, color, true)
+        swiftLog(file, function, line, message, color, true)
     #endif
 }
 

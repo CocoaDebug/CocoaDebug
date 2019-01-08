@@ -13,35 +13,26 @@
 
 
 
-//----------------- normal log -----------------
+
+/**
+ * 日志颜色
+ * Unicode转中文
+ * 以上2个特征可以自己定制
+ */
 #ifdef DEBUG
-#define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    //white color
+    #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define NSLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+    //red color
+    #define RedLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define RedLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
-#define NSLog(fmt, ...) nil
-#endif
-
-//----------------- unicode log -----------------
-#ifdef DEBUG
-#define NSLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
-#else
-#define NSLogUnicode(fmt, ...) nil
-#endif
-
-
-
-
-//----------------- normal log -----------------
-#ifdef DEBUG
-#define RedLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-#else
-#define RedLog(fmt, ...) nil
-#endif
-
-//----------------- unicode log -----------------
-#ifdef DEBUG
-#define RedLogUnicode(fmt, ...) [ObjcLog logWithFile:__FILE__ function:NSStringFromSelector(_cmd) line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
-#else
-#define RedLogUnicode(fmt, ...) nil
+    //white color
+    #define NSLog(fmt, ...) nil
+    #define NSLogUnicode(fmt, ...) nil
+    //red color
+    #define RedLog(fmt, ...) nil
+    #define RedLogUnicode(fmt, ...) nil
 #endif
 
 
