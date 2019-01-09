@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
 
         testHTTP()
         testRedirect()
+        test_html_console()
     }
     
     
@@ -82,6 +84,17 @@ class ViewController: UIViewController {
     func testRedirect() {
         RedirectRequester.getRedirectInfo(with: "http://apple.com") { result, response in
             print("Redirect \(result): \(response)")
+        }
+    }
+    
+    
+    func test_html_console() {
+        let webView = WKWebView()
+        self.view.addSubview(webView)
+        do {
+            let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index", ofType: "html") ?? "")
+            webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
+        } catch  {
         }
     }
 }

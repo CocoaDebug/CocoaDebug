@@ -17,6 +17,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #import <WebKit/WebKit.h>
 #import <objc/runtime.h>
+#import "ObjcLog.h"
 
 @interface WKWebView ()<WKScriptMessageHandler>
 

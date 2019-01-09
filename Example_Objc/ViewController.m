@@ -84,9 +84,8 @@
 
 
 - (void)test_html_console {
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:[WKWebViewConfiguration new]];
+    WKWebView *webView = [WKWebView new];
     [self.view addSubview:webView];
-    
     [webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
