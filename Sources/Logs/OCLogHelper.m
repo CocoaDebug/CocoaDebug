@@ -34,6 +34,11 @@
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
+    if (line == 0) {
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+        return [NSString stringWithFormat:@"%@%@\n", fileName, function];
+    }
+    
     NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
@@ -49,6 +54,9 @@
     
     //2.
     OCLogModel *newLog = [[OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO];
+    if (line == 0) {
+        newLog.h5LogType = H5LogTypeNotNone;
+    }
     [[OCLogStoreManager shared] addLog:newLog];
     
     //3.

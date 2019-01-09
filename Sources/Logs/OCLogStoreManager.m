@@ -29,45 +29,64 @@
     if (self) {
         self.defaultLogArray = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
         self.colorLogArray = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
+        self.h5LogArray = [NSMutableArray arrayWithCapacity:[[NetworkHelper shared] logMaxCount]];
     }
     return self;
 }
 
 - (void)addLog:(OCLogModel *)log
 {
-    if (log.color == [UIColor whiteColor] || log.color == nil)
+    if (log.h5LogType == H5LogTypeNone)
     {
-        //白色
-        if ([self.defaultLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
-            if (self.defaultLogArray.count > 0) {
-                [self.defaultLogArray removeObjectAtIndex:0];
+        if (log.color == [UIColor whiteColor] || log.color == nil)
+        {
+            //白色
+            if ([self.defaultLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
+                if (self.defaultLogArray.count > 0) {
+                    [self.defaultLogArray removeObjectAtIndex:0];
+                }
             }
+            [self.defaultLogArray addObject:log];
         }
-        [self.defaultLogArray addObject:log];
+        else
+        {
+            //彩色
+            if ([self.colorLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
+                if (self.colorLogArray.count > 0) {
+                    [self.colorLogArray removeObjectAtIndex:0];
+                }
+            }
+            [self.colorLogArray addObject:log];
+        }
     }
-    else //////////////////////////////////////////////////////
+    else
     {
-        //彩色
-        if ([self.colorLogArray count] >= [[NetworkHelper shared] logMaxCount]) {
-            if (self.colorLogArray.count > 0) {
-                [self.colorLogArray removeObjectAtIndex:0];
+        //H5
+        if ([self.h5LogArray count] >= [[NetworkHelper shared] logMaxCount]) {
+            if (self.h5LogArray.count > 0) {
+                [self.h5LogArray removeObjectAtIndex:0];
             }
         }
-        [self.colorLogArray addObject:log];
+        [self.h5LogArray addObject:log];
     }
 }
 
 - (void)removeLog:(OCLogModel *)log
 {
-    if (log.color == [UIColor whiteColor] || log.color == nil)
+    if (log.h5LogType == H5LogTypeNone)
     {
-        //白色
-        [self.defaultLogArray removeObject:log];
+        if (log.color == [UIColor whiteColor] || log.color == nil) {
+            //白色
+            [self.defaultLogArray removeObject:log];
+        }else{
+            //彩色
+            [self.colorLogArray removeObject:log];
+        }
     }
     else
     {
-        //彩色
-        [self.colorLogArray removeObject:log];
+        //H5
+        [self.h5LogArray removeObject:log];
     }
 }
 
@@ -79,6 +98,11 @@
 - (void)resetColorLogs
 {
     [self.colorLogArray removeAllObjects];
+}
+
+- (void)resetH5Logs
+{
+    [self.h5LogArray removeAllObjects];
 }
 
 @end

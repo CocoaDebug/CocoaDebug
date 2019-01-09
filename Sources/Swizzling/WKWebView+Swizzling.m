@@ -49,6 +49,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
     [self log:configuration];
     [self error:configuration];
     [self warn:configuration];
+    [self debug:configuration];
     
     return [self replaced_initWithFrame:frame configuration:configuration];
 }
@@ -99,6 +100,21 @@ dispatch_async(dispatch_get_main_queue(), block);\
     [configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]];
 }
 
+- (void)debug:(WKWebViewConfiguration *)configuration
+{
+    [configuration.userContentController addScriptMessageHandler:self name:@"debug"];
+    //rewrite the method of console.debug
+    NSString *jsCode = @"console.debug = (function(oriLogFunc){\
+    return function(str)\
+    {\
+    window.webkit.messageHandlers.debug.postMessage(str);\
+    oriLogFunc.call(console,str);\
+    }\
+    })(console.debug);";
+    //injected the method when H5 starts to create the DOM tree
+    [configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]];
+}
+
 
 
 #pragma clang diagnostic push
@@ -106,7 +122,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"%@",message.body);
+    [ObjcLog logWithFile:"" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
 }
 
 #pragma clang diagnostic pop
