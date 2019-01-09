@@ -188,8 +188,9 @@ class LogViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         
-        segmentedControl.tintColor = Color.mainGreen
         deleteItem.tintColor = Color.mainGreen
+        segmentedControl.tintColor = Color.mainGreen
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
             self?.refreshLogs_notification()
