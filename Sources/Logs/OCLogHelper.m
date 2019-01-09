@@ -36,7 +36,7 @@
 {
     if (line == 0) {
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
-        return [NSString stringWithFormat:@"%@%@\n", fileName, function];
+        return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
     NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
