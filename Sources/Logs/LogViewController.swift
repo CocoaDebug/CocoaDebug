@@ -266,7 +266,13 @@ class LogViewController: UIViewController {
         
         deleteItem.tintColor = Color.mainGreen
         segmentedControl.tintColor = Color.mainGreen
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
+        
+        if UIScreen.main.bounds.size.width == 320 {
+            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
+        }else{
+            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
+        }
+        
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
             self?.refreshLogs_notification()
