@@ -26,7 +26,8 @@
     NSLog_UNICODE(@"unicode转换为中文");
     
     [self testHTTP];
-    [self test_html_console];
+    [self test_console_WKWebView];
+    [self test_console_UIWebView];
 }
 
 
@@ -83,10 +84,16 @@
 
 
 
-- (void)test_html_console {
-    UIWebView *webView = [UIWebView new];
+- (void)test_console_WKWebView {
+    WKWebView *webView = [WKWebView new];
     [self.view addSubview:webView];
     [webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
+}
+
+- (void)test_console_UIWebView {
+    UIWebView *webView = [UIWebView new];
+    [self.view addSubview:webView];
+    [webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index2" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 @end

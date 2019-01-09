@@ -21,7 +21,6 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 @implementation UIWebView (Swizzling)
 
-
 #pragma mark - life
 + (void)load
 {
@@ -31,8 +30,8 @@ dispatch_async(dispatch_get_main_queue(), block);\
         dispatch_once(&onceToken, ^{
             
             Class theClass = [self class];
-            SEL original_sel = @selector(webView:shouldStartLoadWithRequest:navigationType:);
-            SEL replaced_sel = @selector(replaced_webView:shouldStartLoadWithRequest:navigationType:);
+            SEL original_sel = @selector(initWithFrame:);
+            SEL replaced_sel = @selector(replaced_initWithFrame:);
             Method original_method = class_getInstanceMethod(theClass, original_sel);
             Method replaced_method = class_getInstanceMethod(theClass, replaced_sel);
             
@@ -43,28 +42,27 @@ dispatch_async(dispatch_get_main_queue(), block);\
     })
 }
 
-
-
 #pragma mark - replaced method
-- (BOOL)replaced_webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+- (instancetype)replaced_initWithFrame:(CGRect)frame {
     
-    
-    JSContext *context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"console"][@"log"] = ^(JSValue *message) {
-        [ObjcLog logWithFile:"" function:"log" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-    };
-    context[@"console"][@"error"] = ^(JSValue *message) {
-        [ObjcLog logWithFile:"" function:"error" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-    };
-    context[@"console"][@"warn"] = ^(JSValue *message) {
-        [ObjcLog logWithFile:"" function:"warn" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-    };
-    context[@"console"][@"debug"] = ^(JSValue *message) {
-        [ObjcLog logWithFile:"" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-    };
-    
-    
-    return [self replaced_webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        JSContext *context = [self valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+        context[@"console"][@"log"] = ^(JSValue *message) {
+            [ObjcLog logWithFile:"" function:"log" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+        };
+        context[@"console"][@"error"] = ^(JSValue *message) {
+            [ObjcLog logWithFile:"" function:"error" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+        };
+        context[@"console"][@"warn"] = ^(JSValue *message) {
+            [ObjcLog logWithFile:"" function:"warn" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+        };
+        context[@"console"][@"debug"] = ^(JSValue *message) {
+            [ObjcLog logWithFile:"" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+        };
+    });
+
+    return [self replaced_initWithFrame:frame];
 }
 
 @end
