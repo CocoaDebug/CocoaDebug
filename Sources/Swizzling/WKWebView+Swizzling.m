@@ -128,7 +128,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    [ObjcLog logWithFile:"" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
+    [ObjcLog logWithFile:"[WKWebView]" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
 }
 
 #pragma clang diagnostic pop
