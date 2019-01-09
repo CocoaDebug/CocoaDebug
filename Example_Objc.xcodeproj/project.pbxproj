@@ -185,6 +185,7 @@
 		3800C33A21E4F8EF006B4EF1 /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3800C28621E4F8EF006B4EF1 /* NSObject+CocoaDebug.m */; };
 		3800C33B21E4F8EF006B4EF1 /* WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3800C28821E4F8EF006B4EF1 /* WeakProxy.m */; };
 		3800C33C21E4F8EF006B4EF1 /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3800C28B21E4F8EF006B4EF1 /* FPSLabel.m */; };
+		3820FFBC21E62AD1001CAB32 /* UIWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820FFBB21E62AD1001CAB32 /* UIWebView+Swizzling.m */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
 		EA165F04204D2539001472C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F03204D2539001472C1 /* ViewController.m */; };
 		EA165F07204D2539001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F05204D2539001472C1 /* Main.storyboard */; };
@@ -428,6 +429,7 @@
 		3800C28921E4F8EF006B4EF1 /* FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSLabel.h; sourceTree = "<group>"; };
 		3800C28A21E4F8EF006B4EF1 /* WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakProxy.h; sourceTree = "<group>"; };
 		3800C28B21E4F8EF006B4EF1 /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
+		3820FFBB21E62AD1001CAB32 /* UIWebView+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Swizzling.m"; sourceTree = "<group>"; };
 		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA165EFF204D2539001472C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA165F00204D2539001472C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				3800C27821E4F8EF006B4EF1 /* WKWebView+Swizzling.m */,
+				3820FFBB21E62AD1001CAB32 /* UIWebView+Swizzling.m */,
 				3800C27921E4F8EF006B4EF1 /* NSObject+UIDebuggingInformationOverlay.m */,
 			);
 			path = Swizzling;
@@ -1115,6 +1118,7 @@
 				3800C32421E4F8EF006B4EF1 /* LogCell.swift in Sources */,
 				3800C29521E4F8EF006B4EF1 /* IgnoredURLsViewController.swift in Sources */,
 				EAF5805B204E7434001CA56D /* AFSecurityPolicy.m in Sources */,
+				3820FFBC21E62AD1001CAB32 /* UIWebView+Swizzling.m in Sources */,
 				EA165F0F204D2539001472C1 /* main.m in Sources */,
 				3800C32821E4F8EF006B4EF1 /* OCLogHelper.m in Sources */,
 				EAF58059204E7434001CA56D /* AFURLRequestSerialization.m in Sources */,

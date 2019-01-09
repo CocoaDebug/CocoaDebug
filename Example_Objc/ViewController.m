@@ -84,7 +84,7 @@
 
 
 - (void)test_html_console {
-    WKWebView *webView = [WKWebView new];
+    UIWebView *webView = [UIWebView new];
     [self.view addSubview:webView];
     [webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
 }

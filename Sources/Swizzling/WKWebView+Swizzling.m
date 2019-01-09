@@ -46,6 +46,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
     })
 }
 
+#pragma mark - replaced method
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
     [self log:configuration];
     [self error:configuration];
