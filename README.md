@@ -36,7 +36,7 @@
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
-- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`. (only support `WKWebView`, not support `UIWebView`)
+- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`. (support both `WKWebView` and `UIWebView`)
 
 ## Installation
 
