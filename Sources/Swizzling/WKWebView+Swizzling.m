@@ -58,6 +58,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #pragma mark - private
 - (void)log:(WKWebViewConfiguration *)configuration
 {
+    [configuration.userContentController removeScriptMessageHandlerForName:@"log"];
     [configuration.userContentController addScriptMessageHandler:self name:@"log"];
     //rewrite the method of console.log
     NSString *jsCode = @"console.log = (function(oriLogFunc){\
@@ -73,6 +74,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 - (void)error:(WKWebViewConfiguration *)configuration
 {
+    [configuration.userContentController removeScriptMessageHandlerForName:@"error"];
     [configuration.userContentController addScriptMessageHandler:self name:@"error"];
     //rewrite the method of console.error
     NSString *jsCode = @"console.error = (function(oriLogFunc){\
@@ -88,6 +90,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 - (void)warn:(WKWebViewConfiguration *)configuration
 {
+    [configuration.userContentController removeScriptMessageHandlerForName:@"warn"];
     [configuration.userContentController addScriptMessageHandler:self name:@"warn"];
     //rewrite the method of console.warn
     NSString *jsCode = @"console.warn = (function(oriLogFunc){\
@@ -103,6 +106,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 - (void)debug:(WKWebViewConfiguration *)configuration
 {
+    [configuration.userContentController removeScriptMessageHandlerForName:@"debug"];
     [configuration.userContentController addScriptMessageHandler:self name:@"debug"];
     //rewrite the method of console.debug
     NSString *jsCode = @"console.debug = (function(oriLogFunc){\

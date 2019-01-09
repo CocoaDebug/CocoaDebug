@@ -22,6 +22,10 @@ class ViewController: UIViewController {
         testHTTP()
         testRedirect()
         test_html_console()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {[weak self] in
+            self?.test_html_console2()
+        }
     }
     
     
@@ -93,6 +97,16 @@ class ViewController: UIViewController {
         self.view.addSubview(webView)
         do {
             let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index", ofType: "html") ?? "")
+            webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
+        } catch  {
+        }
+    }
+    
+    func test_html_console2() {
+        let webView = WKWebView()
+        self.view.addSubview(webView)
+        do {
+            let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index2", ofType: "html") ?? "")
             webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
         } catch  {
         }
