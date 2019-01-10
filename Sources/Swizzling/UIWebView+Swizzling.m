@@ -60,6 +60,9 @@ dispatch_async(dispatch_get_main_queue(), block);\
         context[@"console"][@"debug"] = ^(JSValue *message) {
             [ObjcLog logWithFile:"[UIWebView]" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
         };
+        context[@"console"][@"info"] = ^(JSValue *message) {
+            [ObjcLog logWithFile:"[UIWebView]" function:"info" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+        };
     });
 
     return [self replaced_initWithFrame:frame];

@@ -52,6 +52,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
     [self error:configuration];
     [self warn:configuration];
     [self debug:configuration];
+    [self info:configuration];
     
     return [self replaced_initWithFrame:frame configuration:configuration];
 }
@@ -117,6 +118,22 @@ dispatch_async(dispatch_get_main_queue(), block);\
     oriLogFunc.call(console,str);\
     }\
     })(console.debug);";
+    //injected the method when H5 starts to create the DOM tree
+    [configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]];
+}
+
+- (void)info:(WKWebViewConfiguration *)configuration
+{
+    [configuration.userContentController removeScriptMessageHandlerForName:@"info"];
+    [configuration.userContentController addScriptMessageHandler:self name:@"info"];
+    //rewrite the method of console.info
+    NSString *jsCode = @"console.info = (function(oriLogFunc){\
+    return function(str)\
+    {\
+    window.webkit.messageHandlers.info.postMessage(str);\
+    oriLogFunc.call(console,str);\
+    }\
+    })(console.info);";
     //injected the method when H5 starts to create the DOM tree
     [configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]];
 }
