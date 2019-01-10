@@ -9,6 +9,7 @@
 #import "ObjcLog.h"
 #import "OCLogHelper.h"
 #import "NSObject+CocoaDebug.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @implementation ObjcLog
 
@@ -36,6 +37,21 @@
         {
             NSLogv(format, args);
             [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color];
+        }
+        else if ([format isKindOfClass:[JSValue class]])
+        {
+            id format_ = [format toString];
+            if ([format_ isEqualToString:@"[object Object]"])
+            {
+                format_ = [format toDictionary];
+                NSLogv([NSString stringWithFormat:@"%@",format_], args);
+                [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format_] color:color];
+            }
+            else
+            {
+                NSLogv([NSString stringWithFormat:@"%@",format], args);
+                [OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color];
+            }
         }
         else
         {
