@@ -29,7 +29,7 @@ class CocoaDebugTabBarController: UITabBarController {
         CocoaDebugSettings.shared.visible = true
         let y = UIApplication.shared.statusBarFrame.size.height
         let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height-UIApplication.shared.statusBarFrame.size.height
+        let height = UIScreen.main.bounds.size.height - UIApplication.shared.statusBarFrame.size.height
         WindowHelper.shared.window?.frame = CGRect(x: 0, y: y, width: width, height: height)
     }
     
