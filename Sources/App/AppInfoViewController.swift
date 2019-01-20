@@ -22,6 +22,11 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var labelserverURL: UILabel!
     @IBOutlet weak var labelIOSVersion: UILabel!
     @IBOutlet weak var labelHtml: UILabel!
+    @IBOutlet weak var crashSwitch: UISwitch!
+    @IBOutlet weak var logSwitch: UISwitch!
+    @IBOutlet weak var networkSwitch: UISwitch!
+    @IBOutlet weak var htmlSwitch: UISwitch!
+    
     
     //MARK: - init
     override func viewDidLoad() {
@@ -46,6 +51,16 @@ class AppInfoViewController: UITableViewController {
         if UIScreen.main.bounds.size.width == 320 {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
+        
+        crashSwitch.isOn = CocoaDebugSettings.shared.disableCrashRecording
+        logSwitch.isOn = CocoaDebugSettings.shared.disableLogMonitoring
+        networkSwitch.isOn = CocoaDebugSettings.shared.disableNetworkMonitoring
+        htmlSwitch.isOn = CocoaDebugSettings.shared.disableHTMLConsoleMonitoring
+
+        crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
+        logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
+        networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
+        htmlSwitch.addTarget(self, action: #selector(htmlSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +68,23 @@ class AppInfoViewController: UITableViewController {
         let count = UserDefaults.standard.integer(forKey: "crashCount_CocoaDebug")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? .red : .white
+    }
+    
+    //MARK: - target action
+    @objc func crashSwitchChanged(mySwitch: UISwitch) {
+        CocoaDebugSettings.shared.disableCrashRecording = mySwitch.isOn
+    }
+    
+    @objc func logSwitchChanged(mySwitch: UISwitch) {
+        CocoaDebugSettings.shared.disableLogMonitoring = mySwitch.isOn
+    }
+    
+    @objc func networkSwitchChanged(mySwitch: UISwitch) {
+        CocoaDebugSettings.shared.disableNetworkMonitoring = mySwitch.isOn
+    }
+    
+    @objc func htmlSwitchChanged(mySwitch: UISwitch) {
+        CocoaDebugSettings.shared.disableHTMLConsoleMonitoring = mySwitch.isOn
     }
 }
 

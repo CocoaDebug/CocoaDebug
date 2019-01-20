@@ -601,7 +601,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Optional" id="RzW-bS-tRS" userLabel="Optional">
+                            <tableViewSection headerTitle="Optional (need to restart app)" id="RzW-bS-tRS" userLabel="Optional">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="DtA-Am-Bxe">
                                         <rect key="frame" x="0.0" y="663.5" width="375" height="44"/>
@@ -804,6 +804,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="bL5-HO-27l"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="crashSwitch" destination="oYM-Zg-0TE" id="p6h-tY-LSZ"/>
+                        <outlet property="htmlSwitch" destination="k9g-2G-DFt" id="TEW-Fv-5Ub"/>
                         <outlet property="labelBuildNumber" destination="N5q-Tu-CeT" id="W9d-GI-HdH"/>
                         <outlet property="labelBundleID" destination="MBd-UL-t4v" id="7aK-4x-XoF"/>
                         <outlet property="labelBundleName" destination="Unx-vn-qft" id="dRB-fY-TyH"/>
@@ -816,6 +818,8 @@
                         <outlet property="labelVersionNumber" destination="7Yi-0U-npR" id="cIg-RG-FLI"/>
                         <outlet property="labelignoredURLs" destination="5bR-ma-wZQ" id="Ab7-uR-wVL"/>
                         <outlet property="labelserverURL" destination="buG-N4-VY9" id="W1a-e8-npR"/>
+                        <outlet property="logSwitch" destination="Ssj-o9-QJs" id="BWf-MV-I6J"/>
+                        <outlet property="networkSwitch" destination="rnB-9b-x8i" id="yFO-ad-hxg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RmQ-L8-DSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
