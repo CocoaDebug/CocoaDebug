@@ -32,10 +32,12 @@ import Foundation
     @objc public static var disableNetworkMonitoring: Bool = false
     ///whether to disable the recording of crash logs in app. default value is `false`.
     @objc public static var disableCrashRecording: Bool = false
+    ///whether to disable the monitoring of HTML console.log/debug/warn/error/info in app. default value is `false`.
+    @objc public static var disableHTMLConsoleMonitoring: Bool = false
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, disableCrashRecording: disableCrashRecording, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, disableLogMonitoring: disableLogMonitoring, disableNetworkMonitoring: disableNetworkMonitoring)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, disableCrashRecording: disableCrashRecording, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, disableLogMonitoring: disableLogMonitoring, disableNetworkMonitoring: disableNetworkMonitoring, disableHTMLConsoleMonitoring: disableHTMLConsoleMonitoring)
     }
     
     //MARK: - CocoaDebug disable

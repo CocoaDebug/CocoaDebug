@@ -45,25 +45,28 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #pragma mark - replaced method
 - (instancetype)replaced_initWithFrame:(CGRect)frame {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        JSContext *context = [self valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-        context[@"console"][@"log"] = ^(JSValue *message) {
-            [ObjcLog logWithFile:"[UIWebView]" function:"log" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-        };
-        context[@"console"][@"error"] = ^(JSValue *message) {
-            [ObjcLog logWithFile:"[UIWebView]" function:"error" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-        };
-        context[@"console"][@"warn"] = ^(JSValue *message) {
-            [ObjcLog logWithFile:"[UIWebView]" function:"warn" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-        };
-        context[@"console"][@"debug"] = ^(JSValue *message) {
-            [ObjcLog logWithFile:"[UIWebView]" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-        };
-        context[@"console"][@"info"] = ^(JSValue *message) {
-            [ObjcLog logWithFile:"[UIWebView]" function:"info" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
-        };
-    });
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            JSContext *context = [self valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+            context[@"console"][@"log"] = ^(JSValue *message) {
+                [ObjcLog logWithFile:"[UIWebView]" function:"log" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            };
+            context[@"console"][@"error"] = ^(JSValue *message) {
+                [ObjcLog logWithFile:"[UIWebView]" function:"error" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            };
+            context[@"console"][@"warn"] = ^(JSValue *message) {
+                [ObjcLog logWithFile:"[UIWebView]" function:"warn" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            };
+            context[@"console"][@"debug"] = ^(JSValue *message) {
+                [ObjcLog logWithFile:"[UIWebView]" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            };
+            context[@"console"][@"info"] = ^(JSValue *message) {
+                [ObjcLog logWithFile:"[UIWebView]" function:"info" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            };
+        });
+    }
 
     return [self replaced_initWithFrame:frame];
 }

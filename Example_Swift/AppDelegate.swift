@@ -24,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
 //            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
 //            CocoaDebug.mainColor = "#fd9727" //default value is `#42d459`
-//            CocoaDebug.disableLogMonitoring = true //default value is `false`
-//            CocoaDebug.disableNetworkMonitoring = true //default value is `false`
-//            CocoaDebug.disableCrashRecording = true //default value is `false`
             CocoaDebug.enable()
         #endif
         

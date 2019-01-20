@@ -20,11 +20,11 @@
 
 - [x] Application memory usage and *FPS*.
 
-- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (optional)
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (**optional**)
 
-- [x] List of all the network requests sent by the application. (optional)
+- [x] List of all the network requests sent by the application. (**optional**)
 
-- [x] List crash errors. (optional)
+- [x] List crash errors. (**optional**)
 
 - [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
 
@@ -36,7 +36,7 @@
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
-- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`)
+- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`). (**optional**)
 
 ## Installation
 
@@ -123,12 +123,6 @@ When you initialize CocoaDebug, you can customize the following parameter values
 - `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is **nil**.
 
 - `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
-
-- `disableLogMonitoring` - Whether to disable the monitoring of Xcode logs in app. default value is **false**.
-
-- `disableNetworkMonitoring` - Whether to disable the monitoring of networks in app. default value is **false**.
-
-- `disableCrashRecording` - Whether to disable the recording of crash logs in app. default value is **false**.
 
 ## TODO
 

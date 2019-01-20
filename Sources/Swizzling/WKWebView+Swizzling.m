@@ -49,13 +49,16 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #pragma mark - replaced method
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
     
-    [configuration.userContentController removeAllUserScripts];
-    
-    [self log:configuration];
-    [self error:configuration];
-    [self warn:configuration];
-    [self debug:configuration];
-    [self info:configuration];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"])
+    {
+        [configuration.userContentController removeAllUserScripts];
+        
+        [self log:configuration];
+        [self error:configuration];
+        [self warn:configuration];
+        [self debug:configuration];
+        [self info:configuration];
+    }
     
     return [self replaced_initWithFrame:frame configuration:configuration];
 }
