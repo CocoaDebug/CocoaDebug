@@ -16,7 +16,10 @@ public class WindowHelper: NSObject {
     lazy var vc = CocoaDebugViewController()
     
     private override init() {
-        self.window = CocoaDebugWindow(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        let y = UIApplication.shared.statusBarFrame.size.height
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height - UIApplication.shared.statusBarFrame.size.height
+        self.window = CocoaDebugWindow(frame: CGRect(x: 0, y: y, width: width, height: height))
         super.init()
     }
 

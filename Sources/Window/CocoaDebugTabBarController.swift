@@ -27,11 +27,16 @@ class CocoaDebugTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         CocoaDebugSettings.shared.visible = true
+        let y = UIApplication.shared.statusBarFrame.size.height
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height - UIApplication.shared.statusBarFrame.size.height
+        WindowHelper.shared.window?.frame = CGRect(x: 0, y: y, width: width, height: height)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         CocoaDebugSettings.shared.visible = false
+        WindowHelper.shared.window?.frame = UIScreen.main.bounds
     }
     
     //MARK: - private
