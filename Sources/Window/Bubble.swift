@@ -13,8 +13,10 @@ protocol BubbleDelegate: class {
     func didTapBubble()
 }
 
-//https://httpstatuses.com/
+//https://httpcodes.co/status/
 private let _successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+private let _informationalStatusCodes = ["100","101","102","103","122"]
+private let _redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
 
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
@@ -95,8 +97,18 @@ class Bubble: UIView {
             let label = UILabel()
             label.text = content
             label.textAlignment = .center
-            label.textColor = .red
             label.adjustsFontSizeToFitWidth = true
+            
+            if _informationalStatusCodes.contains(content) {
+                label.textColor = "#4b8af7".hexColor
+            }
+            else if _redirectionStatusCodes.contains(content) {
+                label.textColor = "#d28f5a".hexColor
+            }
+            else {
+                label.textColor = .red
+            }
+            
             //step 2
             if #available(iOS 8.2, *) {
                 label.font = UIFont.systemFont(ofSize: 17, weight: .bold)

@@ -53,16 +53,27 @@ class NetworkCell: UITableViewCell {
                 requestTimeTextView.text = OCLoggerFormat.formatDate(startTime)
             }
             
-            //https://httpstatuses.com/
+            //https://httpcodes.co/status/
             let successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+            let informationalStatusCodes = ["100","101","102","103","122"]
+            let redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
             
             //状态码
             statusCodeLabel.text = httpModel?.statusCode
+            
             if successStatusCodes.contains(statusCodeLabel.text ?? "") {
                 statusCodeLabel.textColor = "#42d459".hexColor
-            }else{
+            }
+            else if informationalStatusCodes.contains(statusCodeLabel.text ?? "") {
+                statusCodeLabel.textColor = "#4b8af7".hexColor
+            }
+            else if redirectionStatusCodes.contains(statusCodeLabel.text ?? "") {
+                statusCodeLabel.textColor = "#d28f5a".hexColor
+            }
+            else{
                 statusCodeLabel.textColor = "#ff0000".hexColor
             }
+            
             if statusCodeLabel.text == "0" { //"0" means network unavailable
                 statusCodeLabel.text = "❌"
             }
