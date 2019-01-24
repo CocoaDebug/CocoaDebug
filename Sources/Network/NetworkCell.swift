@@ -86,11 +86,14 @@ class NetworkCell: UITableViewCell {
             }
             else
             {
-                //js
+                //js css
                 if let urlString = httpModel?.url.absoluteString {
                     if urlString.suffix(3) == ".js" {
                         imageLabel.isHidden = false
                         imageLabel.text = "JavaScript"
+                    }else if urlString.suffix(4) == ".css" {
+                        imageLabel.isHidden = false
+                        imageLabel.text = "CSS"
                     }else{
                         imageLabel.isHidden = true
                     }
