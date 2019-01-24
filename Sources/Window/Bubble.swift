@@ -103,7 +103,7 @@ class Bubble: UIView {
                 label.textColor = "#4b8af7".hexColor
             }
             else if _redirectionStatusCodes.contains(content) {
-                label.textColor = "#d28f5a".hexColor
+                label.textColor = "#ff9800".hexColor
             }
             else {
                 label.textColor = .red

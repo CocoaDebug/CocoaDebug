@@ -68,7 +68,7 @@ class NetworkCell: UITableViewCell {
                 statusCodeLabel.textColor = "#4b8af7".hexColor
             }
             else if redirectionStatusCodes.contains(statusCodeLabel.text ?? "") {
-                statusCodeLabel.textColor = "#d28f5a".hexColor
+                statusCodeLabel.textColor = "#ff9800".hexColor
             }
             else{
                 statusCodeLabel.textColor = "#ff0000".hexColor
@@ -79,10 +79,24 @@ class NetworkCell: UITableViewCell {
             }
             
             //是否显示图片label
-            if httpModel?.isImage == true {
+            if httpModel?.isImage == true
+            {
                 imageLabel.isHidden = false
-            }else{
-                imageLabel.isHidden = true
+                imageLabel.text = "Image"
+            }
+            else
+            {
+                //js
+                if let urlString = httpModel?.url.absoluteString {
+                    if urlString.suffix(3) == ".js" {
+                        imageLabel.isHidden = false
+                        imageLabel.text = "JavaScript"
+                    }else{
+                        imageLabel.isHidden = true
+                    }
+                }else{
+                    imageLabel.isHidden = true
+                }
             }
             
             //tag
