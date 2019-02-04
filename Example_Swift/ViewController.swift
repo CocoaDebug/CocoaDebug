@@ -19,9 +19,9 @@ class ViewController: UIViewController {
         print("hello world blue", color: UIColor.red)
         print_UNICODE("unicode转换为中文")
 
-        testHTTP()
-        testRedirect()
-        test_console_WKWebView()
+//        testHTTP()
+//        testRedirect()
+//        test_console_WKWebView()
         test_console_UIWebView()
     }
     
@@ -97,6 +97,10 @@ class ViewController: UIViewController {
             let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index", ofType: "html") ?? "")
             webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
         }catch{}
+        
+        if let request = URLRequest(urlString: "https://m.baidu.com/") {
+            webView.load(request)
+        }
     }
     
     func test_console_UIWebView() {
@@ -106,6 +110,10 @@ class ViewController: UIViewController {
             let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index2", ofType: "html") ?? "")
             webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
         }catch{}
+        
+        if let request = URLRequest(urlString: "https://m.baidu.com/") {
+            webView.loadRequest(request)
+        }
     }
 }
 
