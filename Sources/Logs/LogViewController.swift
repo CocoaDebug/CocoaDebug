@@ -66,7 +66,7 @@ class LogViewController: UIViewController {
                 guard let defaultSearchModels = defaultSearchModels else {return}
                 
                 for _ in defaultSearchModels {
-                    if let index = self.defaultSearchModels?.index(where: { (model) -> Bool in
+                    if let index = self.defaultSearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
                         self.defaultSearchModels?.remove(at: index)
@@ -86,7 +86,7 @@ class LogViewController: UIViewController {
                 guard let colorSearchModels = colorSearchModels else {return}
                 
                 for _ in colorSearchModels {
-                    if let index = self.colorSearchModels?.index(where: { (model) -> Bool in
+                    if let index = self.colorSearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
                         self.colorSearchModels?.remove(at: index)
@@ -106,7 +106,7 @@ class LogViewController: UIViewController {
                 guard let h5SearchModels = h5SearchModels else {return}
                 
                 for _ in h5SearchModels {
-                    if let index = self.h5SearchModels?.index(where: { (model) -> Bool in
+                    if let index = self.h5SearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
                         self.h5SearchModels?.remove(at: index)

@@ -6,7 +6,7 @@ public extension Int {
      Categorizes a status code.
      - returns: The NetworkingStatusCodeType of the status code.
      */
-    public func statusCodeType() -> Networking.StatusCodeType {
+    func statusCodeType() -> Networking.StatusCodeType {
         switch self {
         case URLError.cancelled.rawValue:
             return .cancelled
@@ -394,7 +394,7 @@ extension Networking {
 
     func data(for destinationURL: URL) -> Data {
         let path = destinationURL.path
-        guard let data = FileManager.default.contents(atPath: path) else { fatalError("Couldn't get image in destination url: \(url)") }
+        guard let data = FileManager.default.contents(atPath: path) else { fatalError("Couldn't get image in destination url: \(String(describing: url))") }
 
         return data
     }

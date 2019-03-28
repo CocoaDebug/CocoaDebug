@@ -36,7 +36,7 @@ class NetworkViewController: UIViewController {
             guard let searchModels = searchModels else {return}
             
             for _ in searchModels {
-                if let index = self.searchModels?.index(where: { (model) -> Bool in
+                if let index = self.searchModels?.firstIndex(where: { (model) -> Bool in
                     return !model.url.absoluteString.lowercased().contains(searchText.lowercased())//忽略大小写
                 }) {
                     self.searchModels?.remove(at: index)
@@ -234,7 +234,7 @@ extension NetworkViewController: UITableViewDelegate {
         
         guard let models = models else {return}
         
-        if let index = models.index(where: { (model_) -> Bool in
+        if let index = models.firstIndex(where: { (model_) -> Bool in
             return model_.isSelected == true
         }) {
             models[index].isSelected = false

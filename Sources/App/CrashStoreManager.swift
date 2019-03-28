@@ -29,7 +29,7 @@ class CrashStoreManager {
     }
     
     func removeCrash(_ model: CrashModel) {
-        if let index = self.crashArray.index(where: { (crash) -> Bool in
+        if let index = self.crashArray.firstIndex(where: { (crash) -> Bool in
             return crash.id == model.id
         }) {
             self.crashArray.remove(at: index)

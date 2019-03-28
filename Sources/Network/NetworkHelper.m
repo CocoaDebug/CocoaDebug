@@ -7,7 +7,7 @@
 //
 
 #import "NetworkHelper.h"
-#import "FLEXNetworkObserver.h"
+#import "CustomHTTPProtocol.h"
 #import "NSObject+CocoaDebug.h"
 
 @interface NetworkHelper()
@@ -41,13 +41,13 @@
 - (void)enable
 {
     self.isEnable = YES;
-    [FLEXNetworkObserver setEnabled:YES];
+    [NSURLProtocol registerClass:[CustomHTTPProtocol class]];
 }
 
 - (void)disable
 {
     self.isEnable = NO;
-    [FLEXNetworkObserver setEnabled:NO];
+    [NSURLProtocol unregisterClass:[CustomHTTPProtocol class]];
 }
 
 @end

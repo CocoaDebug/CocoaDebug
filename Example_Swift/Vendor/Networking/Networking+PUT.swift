@@ -10,7 +10,7 @@ public extension Networking {
      - returns: The request identifier.
      */
     @discardableResult
-    public func put(_ path: String, parameterType: ParameterType = .json, parameters: Any? = nil, completion: @escaping (_ json: Any?, _ error: NSError?) -> Void) -> String {
+    func put(_ path: String, parameterType: ParameterType = .json, parameters: Any? = nil, completion: @escaping (_ json: Any?, _ error: NSError?) -> Void) -> String {
         let requestID = request(.put, path: path, cacheName: nil, parameterType: parameterType, parameters: parameters, parts: nil, responseType: .json) { json, _, error in
             completion(json, error)
         }
@@ -26,7 +26,7 @@ public extension Networking {
      - returns: The request identifier.
      */
     @discardableResult
-    public func put(_ path: String, parameterType: ParameterType = .json, parameters: Any? = nil, completion: @escaping (_ json: Any?, _ headers: [AnyHashable: Any], _ error: NSError?) -> Void) -> String {
+    func put(_ path: String, parameterType: ParameterType = .json, parameters: Any? = nil, completion: @escaping (_ json: Any?, _ headers: [AnyHashable: Any], _ error: NSError?) -> Void) -> String {
         let requestID = request(.put, path: path, cacheName: nil, parameterType: parameterType, parameters: parameters, parts: nil, responseType: .json, completion: completion)
 
         return requestID
@@ -38,7 +38,7 @@ public extension Networking {
      - parameter response: An `Any` that will be returned when a PUT request is made to the specified path.
      - parameter statusCode: By default it's 200, if you provide any status code that is between 200 and 299 the response object will be returned, otherwise we will return an error containig the provided status code.
      */
-    public func fakePUT(_ path: String, response: Any?, statusCode: Int = 200) {
+    func fakePUT(_ path: String, response: Any?, statusCode: Int = 200) {
         fake(.put, path: path, response: response, responseType: .json, statusCode: statusCode)
     }
 
@@ -48,7 +48,7 @@ public extension Networking {
      - parameter fileName: The name of the file, whose contents will be registered as a reponse.
      - parameter bundle: The NSBundle where the file is located.
      */
-    public func fakePUT(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
+    func fakePUT(_ path: String, fileName: String, bundle: Bundle = Bundle.main) {
         fake(.put, path: path, fileName: fileName, bundle: bundle)
     }
 
@@ -56,7 +56,7 @@ public extension Networking {
      Cancels the PUT request for the specified path. This causes the request to complete with error code URLError.cancelled.
      - parameter path: The path for the cancelled PUT request.
      */
-    public func cancelPUT(_ path: String) {
+    func cancelPUT(_ path: String) {
         let url = try! self.url(for: path)
         cancelRequest(.data, requestType: .put, url: url)
     }

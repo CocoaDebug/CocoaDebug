@@ -22,10 +22,6 @@
 		3820022D21E637C4001CAB32 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3820015A21E637C4001CAB32 /* Device.swift */; };
 		3820022E21E637C4001CAB32 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3820015B21E637C4001CAB32 /* AboutViewController.swift */; };
 		3820022F21E637C4001CAB32 /* CrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3820015C21E637C4001CAB32 /* CrashCell.swift */; };
-		3820023021E637C4001CAB32 /* FLEXUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820015E21E637C4001CAB32 /* FLEXUtility.m */; };
-		3820023121E637C4001CAB32 /* FLEXNetworkTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820015F21E637C4001CAB32 /* FLEXNetworkTransaction.m */; };
-		3820023221E637C4001CAB32 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820016021E637C4001CAB32 /* FLEXNetworkRecorder.m */; };
-		3820023321E637C4001CAB32 /* FLEXNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820016421E637C4001CAB32 /* FLEXNetworkObserver.m */; };
 		3820023421E637C4001CAB32 /* NetworkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3820016721E637C4001CAB32 /* NetworkCell.xib */; };
 		3820023521E637C4001CAB32 /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3820016821E637C4001CAB32 /* Logs.storyboard */; };
 		3820023621E637C4001CAB32 /* _icon_file_type_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3820016A21E637C4001CAB32 /* _icon_file_type_app@2x.png */; };
@@ -187,6 +183,11 @@
 		382002D221E637C4001CAB32 /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3820022021E637C4001CAB32 /* FPSLabel.m */; };
 		3820FFBF21E635D9001CAB32 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBD21E635D9001CAB32 /* index2.html */; };
 		3820FFC021E635D9001CAB32 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBE21E635D9001CAB32 /* index.html */; };
+		38E6A947224C781C006A73C8 /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E6A940224C781C006A73C8 /* CustomHTTPProtocol.m */; };
+		38E6A948224C781C006A73C8 /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E6A942224C781C006A73C8 /* QNSURLSessionDemux.m */; };
+		38E6A949224C781C006A73C8 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E6A943224C781C006A73C8 /* CacheStoragePolicy.m */; };
+		38E6A94A224C781C006A73C8 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E6A944224C781C006A73C8 /* CanonicalRequest.m */; };
+		38E6A94D224C7909006A73C8 /* Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E6A94B224C7909006A73C8 /* Swizzling.m */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
 		EA165F04204D2539001472C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F03204D2539001472C1 /* ViewController.m */; };
 		EA165F07204D2539001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F05204D2539001472C1 /* Main.storyboard */; };
@@ -245,14 +246,6 @@
 		3820015A21E637C4001CAB32 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		3820015B21E637C4001CAB32 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3820015C21E637C4001CAB32 /* CrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashCell.swift; sourceTree = "<group>"; };
-		3820015E21E637C4001CAB32 /* FLEXUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXUtility.m; sourceTree = "<group>"; };
-		3820015F21E637C4001CAB32 /* FLEXNetworkTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkTransaction.m; sourceTree = "<group>"; };
-		3820016021E637C4001CAB32 /* FLEXNetworkRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkRecorder.m; sourceTree = "<group>"; };
-		3820016121E637C4001CAB32 /* FLEXNetworkObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkObserver.h; sourceTree = "<group>"; };
-		3820016221E637C4001CAB32 /* FLEXNetworkTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkTransaction.h; sourceTree = "<group>"; };
-		3820016321E637C4001CAB32 /* FLEXUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXUtility.h; sourceTree = "<group>"; };
-		3820016421E637C4001CAB32 /* FLEXNetworkObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkObserver.m; sourceTree = "<group>"; };
-		3820016521E637C4001CAB32 /* FLEXNetworkRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkRecorder.h; sourceTree = "<group>"; };
 		3820016721E637C4001CAB32 /* NetworkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkCell.xib; sourceTree = "<group>"; };
 		3820016821E637C4001CAB32 /* Logs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
 		3820016A21E637C4001CAB32 /* _icon_file_type_app@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_icon_file_type_app@2x.png"; sourceTree = "<group>"; };
@@ -432,6 +425,16 @@
 		3820022021E637C4001CAB32 /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
 		3820FFBD21E635D9001CAB32 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3820FFBE21E635D9001CAB32 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		38E6A93F224C781C006A73C8 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
+		38E6A940224C781C006A73C8 /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
+		38E6A941224C781C006A73C8 /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
+		38E6A942224C781C006A73C8 /* QNSURLSessionDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNSURLSessionDemux.m; sourceTree = "<group>"; };
+		38E6A943224C781C006A73C8 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
+		38E6A944224C781C006A73C8 /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
+		38E6A945224C781C006A73C8 /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
+		38E6A946224C781C006A73C8 /* QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNSURLSessionDemux.h; sourceTree = "<group>"; };
+		38E6A94B224C7909006A73C8 /* Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swizzling.m; sourceTree = "<group>"; };
+		38E6A94C224C7909006A73C8 /* Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swizzling.h; sourceTree = "<group>"; };
 		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA165EFF204D2539001472C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA165F00204D2539001472C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -485,9 +488,9 @@
 		3820014A21E637C4001CAB32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38E6A93E224C781C006A73C8 /* CustomHTTPProtocol */,
 				3820014B21E637C4001CAB32 /* Core */,
 				3820015021E637C4001CAB32 /* App */,
-				3820015D21E637C4001CAB32 /* FLEXNetwork */,
 				3820016621E637C4001CAB32 /* Resources */,
 				382001E321E637C4001CAB32 /* Network */,
 				382001F021E637C4001CAB32 /* Logs */,
@@ -528,21 +531,6 @@
 				3820015C21E637C4001CAB32 /* CrashCell.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		3820015D21E637C4001CAB32 /* FLEXNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				3820015E21E637C4001CAB32 /* FLEXUtility.m */,
-				3820015F21E637C4001CAB32 /* FLEXNetworkTransaction.m */,
-				3820016021E637C4001CAB32 /* FLEXNetworkRecorder.m */,
-				3820016121E637C4001CAB32 /* FLEXNetworkObserver.h */,
-				3820016221E637C4001CAB32 /* FLEXNetworkTransaction.h */,
-				3820016321E637C4001CAB32 /* FLEXUtility.h */,
-				3820016421E637C4001CAB32 /* FLEXNetworkObserver.m */,
-				3820016521E637C4001CAB32 /* FLEXNetworkRecorder.h */,
-			);
-			path = FLEXNetwork;
 			sourceTree = "<group>";
 		};
 		3820016621E637C4001CAB32 /* Resources */ = {
@@ -694,12 +682,12 @@
 			isa = PBXGroup;
 			children = (
 				382001E421E637C4001CAB32 /* JsonViewController.swift */,
+				382001EA21E637C4001CAB32 /* HttpModel.h */,
 				382001E521E637C4001CAB32 /* HttpModel.m */,
 				382001E621E637C4001CAB32 /* HttpDatasource.m */,
 				382001E721E637C4001CAB32 /* NetworkHelper.m */,
 				382001E821E637C4001CAB32 /* NetworkCell.swift */,
 				382001E921E637C4001CAB32 /* NetworkViewController.swift */,
-				382001EA21E637C4001CAB32 /* HttpModel.h */,
 				382001EB21E637C4001CAB32 /* HttpDatasource.h */,
 				382001EC21E637C4001CAB32 /* NetworkDetailViewController.swift */,
 				382001ED21E637C4001CAB32 /* NetworkDetailCell.swift */,
@@ -751,6 +739,8 @@
 		3820020B21E637C4001CAB32 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
+				38E6A94C224C7909006A73C8 /* Swizzling.h */,
+				38E6A94B224C7909006A73C8 /* Swizzling.m */,
 				3820020C21E637C4001CAB32 /* WKWebView+Swizzling.m */,
 				3820020E21E637C4001CAB32 /* UIWebView+Swizzling.m */,
 				3820020D21E637C4001CAB32 /* NSObject+UIDebuggingInformationOverlay.m */,
@@ -792,6 +782,21 @@
 				3820022021E637C4001CAB32 /* FPSLabel.m */,
 			);
 			path = FPS;
+			sourceTree = "<group>";
+		};
+		38E6A93E224C781C006A73C8 /* CustomHTTPProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				38E6A93F224C781C006A73C8 /* CacheStoragePolicy.h */,
+				38E6A940224C781C006A73C8 /* CustomHTTPProtocol.m */,
+				38E6A941224C781C006A73C8 /* CanonicalRequest.h */,
+				38E6A942224C781C006A73C8 /* QNSURLSessionDemux.m */,
+				38E6A943224C781C006A73C8 /* CacheStoragePolicy.m */,
+				38E6A944224C781C006A73C8 /* CanonicalRequest.m */,
+				38E6A945224C781C006A73C8 /* CustomHTTPProtocol.h */,
+				38E6A946224C781C006A73C8 /* QNSURLSessionDemux.h */,
+			);
+			path = CustomHTTPProtocol;
 			sourceTree = "<group>";
 		};
 		EA165EF3204D2539001472C1 = {
@@ -923,12 +928,12 @@
 				TargetAttributes = {
 					EA165EFB204D2539001472C1 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					EA6B27832059689C004D8E05 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = EA165EFB204D2539001472C1;
 					};
@@ -1102,17 +1107,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E6A947224C781C006A73C8 /* CustomHTTPProtocol.m in Sources */,
 				382002CC21E637C4001CAB32 /* CocoaDebugTabBarController.swift in Sources */,
 				382002B021E637C4001CAB32 /* HttpDatasource.m in Sources */,
 				382002C321E637C4001CAB32 /* Sandbox.m in Sources */,
 				EAF5805A204E7434001CA56D /* AFNetworkReachabilityManager.m in Sources */,
 				3820022321E637C4001CAB32 /* CocoaDebug+Extensions.swift in Sources */,
-				3820023221E637C4001CAB32 /* FLEXNetworkRecorder.m in Sources */,
 				382002CF21E637C4001CAB32 /* MemoryHelper.m in Sources */,
 				382002BA21E637C4001CAB32 /* LogViewController.swift in Sources */,
+				38E6A949224C781C006A73C8 /* CacheStoragePolicy.m in Sources */,
 				382002C821E637C4001CAB32 /* Bubble.swift in Sources */,
 				EAF58056204E7434001CA56D /* AFURLResponseSerialization.m in Sources */,
-				3820023021E637C4001CAB32 /* FLEXUtility.m in Sources */,
 				3820022F21E637C4001CAB32 /* CrashCell.swift in Sources */,
 				382002C121E637C4001CAB32 /* FilePreviewController.m in Sources */,
 				3820022421E637C4001CAB32 /* AppInfoViewController.swift in Sources */,
@@ -1133,6 +1138,7 @@
 				382002D021E637C4001CAB32 /* NSObject+CocoaDebug.m in Sources */,
 				3820022221E637C4001CAB32 /* CocoaDebugSettings.swift in Sources */,
 				382002B421E637C4001CAB32 /* NetworkDetailViewController.swift in Sources */,
+				38E6A94D224C7909006A73C8 /* Swizzling.m in Sources */,
 				382002C421E637C4001CAB32 /* MLBFileInfo.m in Sources */,
 				382002B221E637C4001CAB32 /* NetworkCell.swift in Sources */,
 				382002BC21E637C4001CAB32 /* OCLogModel.m in Sources */,
@@ -1140,17 +1146,16 @@
 				3820022D21E637C4001CAB32 /* Device.swift in Sources */,
 				3820022521E637C4001CAB32 /* DeviceModel.swift in Sources */,
 				EAF58057204E7434001CA56D /* AFHTTPSessionManager.m in Sources */,
-				3820023321E637C4001CAB32 /* FLEXNetworkObserver.m in Sources */,
 				382002B121E637C4001CAB32 /* NetworkHelper.m in Sources */,
 				382002CD21E637C4001CAB32 /* CocoaDebugWindow.swift in Sources */,
 				382002B721E637C4001CAB32 /* ObjcLog.m in Sources */,
 				382002B521E637C4001CAB32 /* NetworkDetailCell.swift in Sources */,
 				382002CE21E637C4001CAB32 /* Color.swift in Sources */,
-				3820023121E637C4001CAB32 /* FLEXNetworkTransaction.m in Sources */,
 				382002BE21E637C4001CAB32 /* OCLoggerFormat.m in Sources */,
 				382002D221E637C4001CAB32 /* FPSLabel.m in Sources */,
 				382002B321E637C4001CAB32 /* NetworkViewController.swift in Sources */,
 				3820022B21E637C4001CAB32 /* CrashListViewController.swift in Sources */,
+				38E6A94A224C781C006A73C8 /* CanonicalRequest.m in Sources */,
 				EAF58058204E7434001CA56D /* AFURLSessionManager.m in Sources */,
 				382002C021E637C4001CAB32 /* FileTableViewCell.m in Sources */,
 				EA165F01204D2539001472C1 /* AppDelegate.m in Sources */,
@@ -1166,6 +1171,7 @@
 				3820022121E637C4001CAB32 /* CocoaDebug.swift in Sources */,
 				382002C921E637C4001CAB32 /* WindowHelper.swift in Sources */,
 				3820022E21E637C4001CAB32 /* AboutViewController.swift in Sources */,
+				38E6A948224C781C006A73C8 /* QNSURLSessionDemux.m in Sources */,
 				382002C521E637C4001CAB32 /* WKWebView+Swizzling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1338,7 +1344,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Objc/Example_Objc-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1363,7 +1369,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Example_Objc/Example_Objc-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1381,7 +1387,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Objc.app/Example_Objc";
 			};
@@ -1399,7 +1405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Example.ObjcTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Objc.app/Example_Objc";
 			};

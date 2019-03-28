@@ -50,7 +50,11 @@ class NetworkCell: UITableViewCell {
             
             //请求时间
             if let startTime = httpModel?.startTime {
-                requestTimeTextView.text = OCLoggerFormat.formatDate(startTime)
+                if (startTime as NSString).doubleValue == 0 {
+                    requestTimeTextView.text = OCLoggerFormat.formatDate(Date())
+                }else{
+                    requestTimeTextView.text = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                }
             }
             
             //https://httpcodes.co/status/

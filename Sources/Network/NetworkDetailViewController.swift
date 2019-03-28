@@ -64,8 +64,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
             let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
-            if let imageData = httpModel?.imageData {
-                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: imageData))
+            if let responseData = httpModel?.responseData {
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
@@ -205,7 +205,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         var time: String = ""
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
-                time = OCLoggerFormat.formatDate(startTime)
+                if (startTime as NSString).doubleValue == 0 {
+                    time = OCLoggerFormat.formatDate(Date())
+                }else{
+                    time = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                }
             }
         }
         
