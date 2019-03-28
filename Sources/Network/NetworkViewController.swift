@@ -118,6 +118,14 @@ class NetworkViewController: UIViewController {
         textFieldInsideSearchBar.leftViewMode = .never
         
         reloadHttp(needScrollToEnd: true)
+        
+        if models?.count ?? 0 > CocoaDebugSettings.shared.networkLastIndex && CocoaDebugSettings.shared.networkLastIndex > 0 {
+            tableView.tableViewScrollToIndex(index: CocoaDebugSettings.shared.networkLastIndex, animated: false)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,12 +142,14 @@ class NetworkViewController: UIViewController {
         tableView.tableViewScrollToBottom(animated: true)
         searchBar.resignFirstResponder()
         reachEnd = true
+        CocoaDebugSettings.shared.networkLastIndex = 0
     }
     
     @IBAction func didTapUp(_ sender: Any) {
         tableView.tableViewScrollToHeader(animated: true)
         searchBar.resignFirstResponder()
         reachEnd = false
+        CocoaDebugSettings.shared.networkLastIndex = 0
     }
     
     
@@ -150,7 +160,8 @@ class NetworkViewController: UIViewController {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         CocoaDebugSettings.shared.networkSearchWord = nil
-        
+        CocoaDebugSettings.shared.networkLastIndex = 0
+
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
             self?.naviItem.title = "[0]"
@@ -250,6 +261,8 @@ extension NetworkViewController: UITableViewDelegate {
         vc.justCancelCallback = { [weak self] in
             self?.tableView.reloadData()
         }
+        
+        CocoaDebugSettings.shared.networkLastIndex = indexPath.row
     }
     
     @available(iOS 11.0, *)
@@ -283,6 +296,9 @@ extension NetworkViewController: UITableViewDelegate {
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
+            if CocoaDebugSettings.shared.networkLastIndex == indexPath.row {
+                CocoaDebugSettings.shared.networkLastIndex = 0
+            }
             completionHandler(true)
         }
         
@@ -307,6 +323,9 @@ extension NetworkViewController: UITableViewDelegate {
             self.models?.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            if CocoaDebugSettings.shared.networkLastIndex == indexPath.row {
+                CocoaDebugSettings.shared.networkLastIndex = 0
             }
         }
     }

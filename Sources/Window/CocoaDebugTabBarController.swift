@@ -115,8 +115,7 @@ class CocoaDebugTabBarController: UITabBarController {
 //MARK: - UITabBarDelegate
 extension CocoaDebugTabBarController {
     
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
-    {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard let items = self.tabBar.items else {return}
         
         for index in 0...items.count-1 {

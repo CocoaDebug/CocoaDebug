@@ -112,6 +112,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    @objc public var networkLastIndex: Int {
+        didSet {
+            UserDefaults.standard.set(networkLastIndex, forKey: "networkLastIndex_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
     @objc public var bubbleFrameX: Float {
         didSet {
             UserDefaults.standard.set(bubbleFrameX, forKey: "bubbleFrameX_CocoaDebug")
@@ -192,6 +198,7 @@ import Foundation
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
+        networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")
         bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_CocoaDebug")
         bubbleFrameY = UserDefaults.standard.float(forKey: "bubbleFrameY_CocoaDebug")
         logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_CocoaDebug")

@@ -212,6 +212,12 @@ extension UITableView {
         }
     }
     
+    func tableViewScrollToIndex(index: Int, animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
+            self.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: animated)
+        }
+    }
+    
     func tableViewScrollToHeader(animated: Bool) {
         self.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
     }
