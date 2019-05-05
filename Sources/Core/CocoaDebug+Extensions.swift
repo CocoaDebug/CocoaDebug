@@ -145,7 +145,7 @@ extension Data {
 
 extension Data {
     func dataToPrettyPrintString() -> String? {
-        return self.dataToDictionary()?.dictionaryToString()
+        return self.dataToDictionary()?.dictionaryToString() ?? String(data: self, encoding: .utf8)
     }
 }
 
