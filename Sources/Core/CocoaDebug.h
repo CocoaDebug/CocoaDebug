@@ -29,3 +29,4 @@
 #import "_CacheStoragePolicy.h"
 #import "_CanonicalRequest.h"
 #import "_Swizzling.h"
+#import "_GPBMessage.h"
