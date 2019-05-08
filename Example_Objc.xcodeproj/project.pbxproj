@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3820FFBF21E635D9001CAB32 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBD21E635D9001CAB32 /* index2.html */; };
 		3820FFC021E635D9001CAB32 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBE21E635D9001CAB32 /* index.html */; };
+		387429622283124500E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 387429612283124500E29D40 /* _TCPLogger.m */; };
 		387F3F092282C694001D66D8 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3DF22282C694001D66D8 /* CocoaDebug.swift */; };
 		387F3F0A2282C694001D66D8 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3DF32282C694001D66D8 /* CocoaDebugSettings.swift */; };
 		387F3F0B2282C694001D66D8 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3DF52282C694001D66D8 /* CocoaDebug+Extensions.swift */; };
@@ -253,6 +254,8 @@
 /* Begin PBXFileReference section */
 		3820FFBD21E635D9001CAB32 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3820FFBE21E635D9001CAB32 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		387429602283124500E29D40 /* _TCPLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
+		387429612283124500E29D40 /* _TCPLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
 		387F3DF22282C694001D66D8 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		387F3DF32282C694001D66D8 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		387F3DF42282C694001D66D8 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -797,6 +800,8 @@
 		387F3E962282C694001D66D8 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
+				387429602283124500E29D40 /* _TCPLogger.h */,
+				387429612283124500E29D40 /* _TCPLogger.m */,
 				387F3E972282C694001D66D8 /* _OCLogModel.h */,
 				387F3E982282C694001D66D8 /* _OCLogHelper.h */,
 				387F3E992282C694001D66D8 /* _OCLoggerFormat.m */,
@@ -1296,6 +1301,7 @@
 				EAF58059204E7434001CA56D /* AFURLRequestSerialization.m in Sources */,
 				387F3FC92282C694001D66D8 /* _GPBDictionary.m in Sources */,
 				387F3FAC2282C694001D66D8 /* _MLBFileInfo.m in Sources */,
+				387429622283124500E29D40 /* _TCPLogger.m in Sources */,
 				387F3FB72282C694001D66D8 /* Color.swift in Sources */,
 				387F3FD12282C694001D66D8 /* _GPBCodedOutputStream.m in Sources */,
 				387F3F962282C694001D66D8 /* NetworkDetailViewController.swift in Sources */,

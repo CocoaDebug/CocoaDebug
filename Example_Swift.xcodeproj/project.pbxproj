@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
+		3874295F2283108700E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
+		3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
+		3874296422831FF900E29D40 /* _TCPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3874295D2283108700E29D40 /* _TCPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F3A2A2282B493001D66D8 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39532282B492001D66D8 /* CocoaDebug.swift */; };
 		387F3A2B2282B493001D66D8 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39542282B492001D66D8 /* CocoaDebugSettings.swift */; };
 		387F3A2C2282B493001D66D8 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39562282B492001D66D8 /* CocoaDebug+Extensions.swift */; };
@@ -575,6 +578,8 @@
 /* Begin PBXFileReference section */
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		3874295D2283108700E29D40 /* _TCPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
+		3874295E2283108700E29D40 /* _TCPLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
 		387F39532282B492001D66D8 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		387F39542282B492001D66D8 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		387F39552282B492001D66D8 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -1219,6 +1224,8 @@
 				387F3A022282B493001D66D8 /* LogHelper.swift */,
 				387F3A032282B493001D66D8 /* _OCLogStoreManager.h */,
 				387F3A042282B493001D66D8 /* _ObjcLog.m */,
+				3874295D2283108700E29D40 /* _TCPLogger.h */,
+				3874295E2283108700E29D40 /* _TCPLogger.m */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -1670,6 +1677,7 @@
 				387F40412282DAF4001D66D8 /* _MemoryHelper.h in Headers */,
 				387F40422282DAF4001D66D8 /* _NSObject+Categories.h in Headers */,
 				387F40432282DAF4001D66D8 /* _FPSLabel.h in Headers */,
+				3874296422831FF900E29D40 /* _TCPLogger.h in Headers */,
 				387F40442282DAF4001D66D8 /* _WeakProxy.h in Headers */,
 				387F402F2282DAF4001D66D8 /* _HttpDatasource.h in Headers */,
 				387F40122282DAF4001D66D8 /* _SourceContext.pbobjc.h in Headers */,
@@ -2200,6 +2208,7 @@
 				EAF58012204E73C3001CA56D /* Notifications.swift in Sources */,
 				387F3DDF2282C63E001D66D8 /* _Struct.pbobjc.m in Sources */,
 				EAF58016204E73C3001CA56D /* SessionManager.swift in Sources */,
+				3874295F2283108700E29D40 /* _TCPLogger.m in Sources */,
 				EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */,
 				387F3DE82282C63E001D66D8 /* _GPBUnknownFieldSet.m in Sources */,
 				387F3DEC2282C63E001D66D8 /* _GPBDescriptor.m in Sources */,
@@ -2221,6 +2230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */,
 				387F40BF2282DB8C001D66D8 /* CocoaDebug.swift in Sources */,
 				387F40C02282DB8C001D66D8 /* CocoaDebugSettings.swift in Sources */,
 				387F40C12282DB8C001D66D8 /* CocoaDebug+Extensions.swift in Sources */,

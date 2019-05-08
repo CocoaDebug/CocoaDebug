@@ -34,6 +34,10 @@
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
+    if ([file isEqualToString:@"TCP"] && [function isEqualToString:@"TCP"] && line == 1) {
+        return @"TCP|TCP|1";
+    }
+    
     if (line == 0) {
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
@@ -54,7 +58,7 @@
     
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO];
-    if (line == 0) {
+    if (line == 0 && ![fileInfo isEqualToString:@"TCP|TCP|1"]) {
         newLog.h5LogType = H5LogTypeNotNone;
     }
     [[_OCLogStoreManager shared] addLog:newLog];
