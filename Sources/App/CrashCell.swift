@@ -21,7 +21,7 @@ class CrashCell: UITableViewCell {
         didSet {
             guard let crash = crash else {return}
             
-            if let formatDate = OCLoggerFormat.formatDate(crash.date) {
+            if let formatDate = _OCLoggerFormat.formatDate(crash.date) {
                 let content = "\("\(String(describing: formatDate))\n")\(crash.name ?? "unknown crash")"
                 
                 textview.text = content

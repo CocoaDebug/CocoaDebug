@@ -39,13 +39,13 @@ class Bubble: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        label.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
+        label.text = _MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
         return label
     }()
     
-    private lazy var _sublabel: FPSLabel? = {
+    private lazy var _sublabel: _FPSLabel? = {
         let xxx: CGFloat = -16/2 - 4
-        let sublabel = FPSLabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
+        let sublabel = _FPSLabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
         
         sublabel.adjustsFontSizeToFitWidth = true //sublabel.sizeToFit()
         return sublabel
@@ -245,7 +245,7 @@ class Bubble: UIView {
     
     //MARK: - target action
     @objc func timerMonitor() {
-        _label?.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
+        _label?.text = _MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
     }
     
     @objc func tap() {

@@ -20,7 +20,7 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var statusCodeView: UIView!
 
     
-    var httpModel: HttpModel? {
+    var httpModel: _HttpModel? {
         didSet {
             
             guard let serverURL = CocoaDebugSettings.shared.serverURL else {return}
@@ -51,9 +51,9 @@ class NetworkCell: UITableViewCell {
             //请求时间
             if let startTime = httpModel?.startTime {
                 if (startTime as NSString).doubleValue == 0 {
-                    requestTimeTextView.text = OCLoggerFormat.formatDate(Date())
+                    requestTimeTextView.text = _OCLoggerFormat.formatDate(Date())
                 }else{
-                    requestTimeTextView.text = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                    requestTimeTextView.text = _OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
             
