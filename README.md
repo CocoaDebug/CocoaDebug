@@ -38,6 +38,8 @@
 
 - [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`). (**optional**)
 
+- [x] Support `JSON` and Google's `Protocol buffers`
+
 ## Installation
 
 ### CocoaPods
