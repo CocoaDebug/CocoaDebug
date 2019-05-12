@@ -85,7 +85,7 @@ github "CocoaDebug/CocoaDebug"
 
 ### Objective-C
 	
-    //Step 1. (PrefixHeader.pch)
+    //Step 1. (AppDelegate.m)
     #ifdef DEBUG
         @import CocoaDebug;
     #endif
@@ -96,6 +96,11 @@ github "CocoaDebug/CocoaDebug"
     #endif
 	
     //Step 3. (PrefixHeader.pch)
+    #ifdef DEBUG
+        #import "_ObjcLog.h"
+    #endif
+	
+	//Step 4. (PrefixHeader.pch)
     #ifdef DEBUG
         #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
     #else
