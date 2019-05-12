@@ -143,12 +143,10 @@ class Bubble: UIView {
         self.layer.addSublayer(gradientLayer)
         
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {[weak self] in
-            if let memoryLabel = self?.memoryLabel, let fpsLabel = self?.fpsLabel, let cpuLabel = self?.cpuLabel {
-                self?.addSubview(memoryLabel)
-                self?.addSubview(fpsLabel)
-                self?.addSubview(cpuLabel)
-            }
+        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
+            self.addSubview(memoryLabel)
+            self.addSubview(fpsLabel)
+            self.addSubview(cpuLabel)
         }
         
         
