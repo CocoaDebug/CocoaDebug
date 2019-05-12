@@ -142,11 +142,15 @@ class Bubble: UIView {
         gradientLayer.colors = Color.colorGradientHead
         self.layer.addSublayer(gradientLayer)
         
-        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
-            self.addSubview(memoryLabel)
-            self.addSubview(fpsLabel)
-            self.addSubview(cpuLabel)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {[weak self] in
+            if let memoryLabel = self?.memoryLabel, let fpsLabel = self?.fpsLabel, let cpuLabel = self?.cpuLabel {
+                self?.addSubview(memoryLabel)
+                self?.addSubview(fpsLabel)
+                self?.addSubview(cpuLabel)
+            }
         }
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
