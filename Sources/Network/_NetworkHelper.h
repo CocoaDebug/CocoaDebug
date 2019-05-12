@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "_HttpDatasource.h"
-#import "_MemoryHelper.h"
 
 @interface _NetworkHelper : NSObject
 

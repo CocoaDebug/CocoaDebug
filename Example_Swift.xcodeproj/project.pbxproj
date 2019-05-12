@@ -9,6 +9,23 @@
 /* Begin PBXBuildFile section */
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
+		384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; };
+		384E2F14228847750031DFBF /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		384E2F2F22884E010031DFBF /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2522884E010031DFBF /* _WHDebugMonitor.m */; };
+		384E2F3022884E010031DFBF /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */; };
+		384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */; };
+		384E2F3222884E010031DFBF /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */; };
+		384E2F3322884E010031DFBF /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */; };
+		3870B7B422884F6F00D728BC /* _WHDebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3870B7B522884F6F00D728BC /* _WHDebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3870B7B622884F6F00D728BC /* _WHDebugFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3870B7B722884F6F00D728BC /* _WHDebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3870B7B822884F6F00D728BC /* _WHDebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3870B7B922884F8400D728BC /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2522884E010031DFBF /* _WHDebugMonitor.m */; };
+		3870B7BA22884F8400D728BC /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */; };
+		3870B7BB22884F8400D728BC /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */; };
+		3870B7BC22884F8400D728BC /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */; };
+		3870B7BD22884F8400D728BC /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */; };
 		3874295F2283108700E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296422831FF900E29D40 /* _TCPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3874295D2283108700E29D40 /* _TCPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -187,10 +204,7 @@
 		387F3AD62282B493001D66D8 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */; };
 		387F3AD72282B493001D66D8 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */; };
 		387F3AD82282B493001D66D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A202282B493001D66D8 /* Color.swift */; };
-		387F3AD92282B493001D66D8 /* _MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A212282B493001D66D8 /* _MemoryHelper.m */; };
 		387F3ADA2282B493001D66D8 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A242282B493001D66D8 /* _NSObject+Categories.m */; };
-		387F3ADB2282B493001D66D8 /* _WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A262282B493001D66D8 /* _WeakProxy.m */; };
-		387F3ADC2282B493001D66D8 /* _FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A292282B493001D66D8 /* _FPSLabel.m */; };
 		387F3DD82282C63E001D66D8 /* _GPBExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3D9A2282C63E001D66D8 /* _GPBExtensionRegistry.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		387F3DD92282C63E001D66D8 /* _GPBWellKnownTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3D9E2282C63E001D66D8 /* _GPBWellKnownTypes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		387F3DDA2282C63E001D66D8 /* _GPBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3DA12282C63E001D66D8 /* _GPBUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -261,10 +275,7 @@
 		387F40002282DADF001D66D8 /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A142282B493001D66D8 /* _Swizzling.m */; };
 		387F40012282DADF001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A152282B493001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m */; };
 		387F40022282DADF001D66D8 /* _WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A162282B493001D66D8 /* _WKWebView+Swizzling.m */; };
-		387F40032282DADF001D66D8 /* _MemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A212282B493001D66D8 /* _MemoryHelper.m */; };
 		387F40042282DADF001D66D8 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A242282B493001D66D8 /* _NSObject+Categories.m */; };
-		387F40052282DADF001D66D8 /* _WeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A262282B493001D66D8 /* _WeakProxy.m */; };
-		387F40062282DADF001D66D8 /* _FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A292282B493001D66D8 /* _FPSLabel.m */; };
 		387F40072282DAF4001D66D8 /* _GPBProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3D992282C63E001D66D8 /* _GPBProtocolBuffers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F40082282DAF4001D66D8 /* _GPBWireFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3D9B2282C63E001D66D8 /* _GPBWireFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F40092282DAF4001D66D8 /* _GPBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3D9C2282C63E001D66D8 /* _GPBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -323,10 +334,7 @@
 		387F403E2282DAF4001D66D8 /* _FileTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A0F2282B493001D66D8 /* _FileTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F403F2282DAF4001D66D8 /* _FilePreviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A102282B493001D66D8 /* _FilePreviewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F40402282DAF4001D66D8 /* _Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A172282B493001D66D8 /* _Swizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		387F40412282DAF4001D66D8 /* _MemoryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A1C2282B493001D66D8 /* _MemoryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F40422282DAF4001D66D8 /* _NSObject+Categories.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A232282B493001D66D8 /* _NSObject+Categories.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		387F40432282DAF4001D66D8 /* _FPSLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A272282B493001D66D8 /* _FPSLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		387F40442282DAF4001D66D8 /* _WeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 387F3A282282B493001D66D8 /* _WeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		387F40452282DB23001D66D8 /* _icon_file_type_app@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387F39682282B492001D66D8 /* _icon_file_type_app@2x.png */; };
 		387F40462282DB23001D66D8 /* _icon_file_type_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387F39692282B492001D66D8 /* _icon_file_type_close@2x.png */; };
 		387F40472282DB23001D66D8 /* _icon_file_type_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387F396A2282B492001D66D8 /* _icon_file_type_network@2x.png */; };
@@ -569,6 +577,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				384E2F14228847750031DFBF /* RevealServer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +587,17 @@
 /* Begin PBXFileReference section */
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		384E2F12228847750031DFBF /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
+		384E2F2522884E010031DFBF /* _WHDebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMonitor.m; sourceTree = "<group>"; };
+		384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugCpuMonitor.h; sourceTree = "<group>"; };
+		384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMemoryMonitor.h; sourceTree = "<group>"; };
+		384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugConsoleLabel.m; sourceTree = "<group>"; };
+		384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugFPSMonitor.h; sourceTree = "<group>"; };
+		384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMonitor.h; sourceTree = "<group>"; };
+		384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMemoryMonitor.m; sourceTree = "<group>"; };
+		384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
+		384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
+		384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
 		3874295D2283108700E29D40 /* _TCPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
 		3874295E2283108700E29D40 /* _TCPLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
 		387F39532282B492001D66D8 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -771,18 +791,12 @@
 		387F3A192282B493001D66D8 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		387F3A1A2282B493001D66D8 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugNavigationController.swift; sourceTree = "<group>"; };
-		387F3A1C2282B493001D66D8 /* _MemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MemoryHelper.h; sourceTree = "<group>"; };
 		387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugViewController.swift; sourceTree = "<group>"; };
 		387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugTabBarController.swift; sourceTree = "<group>"; };
 		387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		387F3A202282B493001D66D8 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		387F3A212282B493001D66D8 /* _MemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MemoryHelper.m; sourceTree = "<group>"; };
 		387F3A232282B493001D66D8 /* _NSObject+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+Categories.h"; sourceTree = "<group>"; };
 		387F3A242282B493001D66D8 /* _NSObject+Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+Categories.m"; sourceTree = "<group>"; };
-		387F3A262282B493001D66D8 /* _WeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WeakProxy.m; sourceTree = "<group>"; };
-		387F3A272282B493001D66D8 /* _FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FPSLabel.h; sourceTree = "<group>"; };
-		387F3A282282B493001D66D8 /* _WeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WeakProxy.h; sourceTree = "<group>"; };
-		387F3A292282B493001D66D8 /* _FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FPSLabel.m; sourceTree = "<group>"; };
 		387F3D992282C63E001D66D8 /* _GPBProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBProtocolBuffers.h; sourceTree = "<group>"; };
 		387F3D9A2282C63E001D66D8 /* _GPBExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBExtensionRegistry.m; sourceTree = "<group>"; };
 		387F3D9B2282C63E001D66D8 /* _GPBWireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBWireFormat.h; sourceTree = "<group>"; };
@@ -960,6 +974,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,9 +995,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		384E2F2422884E010031DFBF /* WHDebugTool */ = {
+			isa = PBXGroup;
+			children = (
+				384E2F2522884E010031DFBF /* _WHDebugMonitor.m */,
+				384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */,
+				384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */,
+				384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */,
+				384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */,
+				384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */,
+				384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */,
+				384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */,
+				384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */,
+				384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */,
+			);
+			path = WHDebugTool;
+			sourceTree = "<group>";
+		};
 		387F39512282B492001D66D8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				384E2F2422884E010031DFBF /* WHDebugTool */,
 				387F3D982282C63E001D66D8 /* protobuf */,
 				387F39522282B492001D66D8 /* Core */,
 				387F39572282B492001D66D8 /* App */,
@@ -994,7 +1027,6 @@
 				387F3A122282B493001D66D8 /* Swizzling */,
 				387F3A182282B493001D66D8 /* Window */,
 				387F3A222282B493001D66D8 /* Categories */,
-				387F3A252282B493001D66D8 /* FPS */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1267,12 +1299,10 @@
 				387F3A192282B493001D66D8 /* Bubble.swift */,
 				387F3A1A2282B493001D66D8 /* WindowHelper.swift */,
 				387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */,
-				387F3A1C2282B493001D66D8 /* _MemoryHelper.h */,
 				387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */,
 				387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */,
 				387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */,
 				387F3A202282B493001D66D8 /* Color.swift */,
-				387F3A212282B493001D66D8 /* _MemoryHelper.m */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -1284,17 +1314,6 @@
 				387F3A242282B493001D66D8 /* _NSObject+Categories.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		387F3A252282B493001D66D8 /* FPS */ = {
-			isa = PBXGroup;
-			children = (
-				387F3A262282B493001D66D8 /* _WeakProxy.m */,
-				387F3A272282B493001D66D8 /* _FPSLabel.h */,
-				387F3A282282B493001D66D8 /* _WeakProxy.h */,
-				387F3A292282B493001D66D8 /* _FPSLabel.m */,
-			);
-			path = FPS;
 			sourceTree = "<group>";
 		};
 		387F3D982282C63E001D66D8 /* protobuf */ = {
@@ -1385,6 +1404,7 @@
 		EA1659CA204D1B14001472C1 = {
 			isa = PBXGroup;
 			children = (
+				384E2F12228847750031DFBF /* RevealServer.framework */,
 				387F39512282B492001D66D8 /* Sources */,
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
 				EA72671C20F0B7D4004D1D6F /* CocoaDebug */,
@@ -1669,16 +1689,18 @@
 				387F40392282DAF4001D66D8 /* _OCLogStoreManager.h in Headers */,
 				387F403A2282DAF4001D66D8 /* _Sandbox.h in Headers */,
 				387F403B2282DAF4001D66D8 /* _SandboxHelper.h in Headers */,
+				3870B7B422884F6F00D728BC /* _WHDebugCpuMonitor.h in Headers */,
+				3870B7B522884F6F00D728BC /* _WHDebugMemoryMonitor.h in Headers */,
+				3870B7B622884F6F00D728BC /* _WHDebugFPSMonitor.h in Headers */,
+				3870B7B722884F6F00D728BC /* _WHDebugMonitor.h in Headers */,
+				3870B7B822884F6F00D728BC /* _WHDebugConsoleLabel.h in Headers */,
 				387F403C2282DAF4001D66D8 /* _MLBFileInfo.h in Headers */,
 				387F403D2282DAF4001D66D8 /* _SandboxViewController.h in Headers */,
 				387F403E2282DAF4001D66D8 /* _FileTableViewCell.h in Headers */,
 				387F403F2282DAF4001D66D8 /* _FilePreviewController.h in Headers */,
 				387F40402282DAF4001D66D8 /* _Swizzling.h in Headers */,
-				387F40412282DAF4001D66D8 /* _MemoryHelper.h in Headers */,
 				387F40422282DAF4001D66D8 /* _NSObject+Categories.h in Headers */,
-				387F40432282DAF4001D66D8 /* _FPSLabel.h in Headers */,
 				3874296422831FF900E29D40 /* _TCPLogger.h in Headers */,
-				387F40442282DAF4001D66D8 /* _WeakProxy.h in Headers */,
 				387F402F2282DAF4001D66D8 /* _HttpDatasource.h in Headers */,
 				387F40122282DAF4001D66D8 /* _SourceContext.pbobjc.h in Headers */,
 				387F40132282DAF4001D66D8 /* _Api.pbobjc.h in Headers */,
@@ -2110,7 +2132,9 @@
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
 				EAF5802E204E73C3001CA56D /* Operation.swift in Sources */,
 				387F3DDB2282C63E001D66D8 /* _GPBExtensionInternals.m in Sources */,
+				384E2F2F22884E010031DFBF /* _WHDebugMonitor.m in Sources */,
 				387F3A372282B493001D66D8 /* AboutViewController.swift in Sources */,
+				384E2F3022884E010031DFBF /* _WHDebugConsoleLabel.m in Sources */,
 				EAF58020204E73C3001CA56D /* Dictionary+FormURLEncoded.swift in Sources */,
 				387F3AD12282B493001D66D8 /* _WKWebView+Swizzling.m in Sources */,
 				EAF5803C204E73C3001CA56D /* ASIS3Request.m in Sources */,
@@ -2155,6 +2179,7 @@
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				387F3AC82282B493001D66D8 /* _SandboxViewController.m in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
+				384E2F3222884E010031DFBF /* _WHDebugCpuMonitor.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
 				387F3DDE2282C63E001D66D8 /* _Any.pbobjc.m in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
@@ -2199,12 +2224,10 @@
 				387F3AD62282B493001D66D8 /* CocoaDebugTabBarController.swift in Sources */,
 				EAF58038204E73C3001CA56D /* ASICloudFilesRequest.m in Sources */,
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
+				384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */,
 				387F3A2F2282B493001D66D8 /* CrashStoreManager.swift in Sources */,
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
-				387F3AD92282B493001D66D8 /* _MemoryHelper.m in Sources */,
-				387F3ADB2282B493001D66D8 /* _WeakProxy.m in Sources */,
 				EAF5800A204E73C3001CA56D /* MultipartFormData.swift in Sources */,
-				387F3ADC2282B493001D66D8 /* _FPSLabel.m in Sources */,
 				EAF58012204E73C3001CA56D /* Notifications.swift in Sources */,
 				387F3DDF2282C63E001D66D8 /* _Struct.pbobjc.m in Sources */,
 				EAF58016204E73C3001CA56D /* SessionManager.swift in Sources */,
@@ -2213,6 +2236,7 @@
 				387F3DE82282C63E001D66D8 /* _GPBUnknownFieldSet.m in Sources */,
 				387F3DEC2282C63E001D66D8 /* _GPBDescriptor.m in Sources */,
 				387F3ABB2282B493001D66D8 /* _HttpDatasource.m in Sources */,
+				384E2F3322884E010031DFBF /* _WHDebugFPSMonitor.m in Sources */,
 				387F3AD22282B493001D66D8 /* Bubble.swift in Sources */,
 				EAF5802C204E73C3001CA56D /* Upload.swift in Sources */,
 			);
@@ -2230,6 +2254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3870B7B922884F8400D728BC /* _WHDebugMonitor.m in Sources */,
+				3870B7BA22884F8400D728BC /* _WHDebugConsoleLabel.m in Sources */,
+				3870B7BB22884F8400D728BC /* _WHDebugMemoryMonitor.m in Sources */,
+				3870B7BC22884F8400D728BC /* _WHDebugCpuMonitor.m in Sources */,
+				3870B7BD22884F8400D728BC /* _WHDebugFPSMonitor.m in Sources */,
 				3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */,
 				387F40BF2282DB8C001D66D8 /* CocoaDebug.swift in Sources */,
 				387F40C02282DB8C001D66D8 /* CocoaDebugSettings.swift in Sources */,
@@ -2308,10 +2337,7 @@
 				387F40002282DADF001D66D8 /* _Swizzling.m in Sources */,
 				387F40012282DADF001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				387F40022282DADF001D66D8 /* _WKWebView+Swizzling.m in Sources */,
-				387F40032282DADF001D66D8 /* _MemoryHelper.m in Sources */,
 				387F40042282DADF001D66D8 /* _NSObject+Categories.m in Sources */,
-				387F40052282DADF001D66D8 /* _WeakProxy.m in Sources */,
-				387F40062282DADF001D66D8 /* _FPSLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,9 @@ public class WindowHelper: NSObject {
             self.window?.rootViewController = self.vc
             self.window?.delegate = self
             self.window?.isHidden = false
+            _WHDebugFPSMonitor.sharedInstance()?.startMonitoring()
+            _WHDebugMemoryMonitor.sharedInstance()?.startMonitoring()
+            _WHDebugCpuMonitor.sharedInstance()?.startMonitoring()
         }
     }
 
@@ -36,6 +39,9 @@ public class WindowHelper: NSObject {
             self.window?.rootViewController = nil
             self.window?.delegate = nil
             self.window?.isHidden = true
+            _WHDebugFPSMonitor.sharedInstance()?.stopMonitoring()
+            _WHDebugMemoryMonitor.sharedInstance()?.stopMonitoring()
+            _WHDebugCpuMonitor.sharedInstance()?.stopMonitoring()
         }
     }
 }
