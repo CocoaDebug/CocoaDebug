@@ -1,9 +1,9 @@
 //
-//  Sandboxer-Header.h
 //  Example
+//  man
 //
-//  Created by meilbn on 01/08/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #ifndef Sandboxer_Header_h

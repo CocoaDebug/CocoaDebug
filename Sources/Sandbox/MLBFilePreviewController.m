@@ -1,9 +1,9 @@
 //
-//  MLBFilePreviewController.m
 //  Example
+//  man
 //
-//  Created by meilbn on 20/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "MLBFilePreviewController.h"
