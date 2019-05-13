@@ -158,7 +158,7 @@ import Foundation
         didSet {
             UserDefaults.standard.set(mainColor, forKey: "mainColor_CocoaDebug")
             UserDefaults.standard.synchronize()
-            _NetworkHelper.shared().mainColor = mainColor.hexColor
+            NetworkHelper.shared().mainColor = mainColor.hexColor
         }
     }
     @objc public var tabBarControllers: [UIViewController]? = nil
@@ -170,17 +170,17 @@ import Foundation
     //objc
     @objc public var logMaxCount: Int {
         didSet {
-            _NetworkHelper.shared().logMaxCount = logMaxCount
+            NetworkHelper.shared().logMaxCount = logMaxCount
         }
     }
     @objc public var onlyURLs: [String]? = nil {
         didSet {
-            _NetworkHelper.shared().onlyURLs = onlyURLs
+            NetworkHelper.shared().onlyURLs = onlyURLs
         }
     }
     @objc public var ignoredURLs: [String]? = nil {
         didSet {
-            _NetworkHelper.shared().ignoredURLs = ignoredURLs
+            NetworkHelper.shared().ignoredURLs = ignoredURLs
         }
     }
     
@@ -208,8 +208,8 @@ import Foundation
         mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"
 
         //objc
-        logMaxCount = _NetworkHelper.shared().logMaxCount
-        onlyURLs = _NetworkHelper.shared().onlyURLs
-        ignoredURLs = _NetworkHelper.shared().ignoredURLs
+        logMaxCount = NetworkHelper.shared().logMaxCount
+        onlyURLs = NetworkHelper.shared().onlyURLs
+        ignoredURLs = NetworkHelper.shared().ignoredURLs
     }
 }

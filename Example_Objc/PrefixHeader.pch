@@ -6,7 +6,7 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "_ObjcLog.h"
+#import "ObjcLog.h"
 
 
 
@@ -17,11 +17,11 @@
  */
 #ifdef DEBUG
     //white color
-    #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-    #define NSLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+    #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define NSLog_UNICODE(fmt, ...) [ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
     //red color
-    #define RedLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-    #define RedLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+    #define RedLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define RedLog_UNICODE(fmt, ...) [ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
     //white color
     #define NSLog(fmt, ...) nil

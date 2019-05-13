@@ -33,21 +33,21 @@ class LogViewController: UIViewController {
     
     @IBOutlet weak var defaultTableView: UITableView!
     @IBOutlet weak var defaultSearchBar: UISearchBar!
-    lazy var defaultModels: [_OCLogModel] = [_OCLogModel]()
-    var defaultCacheModels: Array<_OCLogModel>?
-    var defaultSearchModels: Array<_OCLogModel>?
+    lazy var defaultModels: [OCLogModel] = [OCLogModel]()
+    var defaultCacheModels: Array<OCLogModel>?
+    var defaultSearchModels: Array<OCLogModel>?
     
     @IBOutlet weak var colorTableView: UITableView!
     @IBOutlet weak var colorSearchBar: UISearchBar!
-    lazy var colorModels: [_OCLogModel] = [_OCLogModel]()
-    var colorCacheModels: Array<_OCLogModel>?
-    var colorSearchModels: Array<_OCLogModel>?
+    lazy var colorModels: [OCLogModel] = [OCLogModel]()
+    var colorCacheModels: Array<OCLogModel>?
+    var colorSearchModels: Array<OCLogModel>?
     
     @IBOutlet weak var h5TableView: UITableView!
     @IBOutlet weak var h5SearchBar: UISearchBar!
-    lazy var h5Models: [_OCLogModel] = [_OCLogModel]()
-    var h5CacheModels: Array<_OCLogModel>?
-    var h5SearchModels: Array<_OCLogModel>?
+    lazy var h5Models: [OCLogModel] = [OCLogModel]()
+    var h5CacheModels: Array<OCLogModel>?
+    var h5SearchModels: Array<OCLogModel>?
     
     
     
@@ -139,8 +139,8 @@ class LogViewController: UIViewController {
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().defaultLogArray {
-                defaultModels = arr as! [_OCLogModel]
+            if let arr = OCLogStoreManager.shared().defaultLogArray {
+                defaultModels = arr as! [OCLogModel]
             }
             
             self.defaultCacheModels = self.defaultModels
@@ -183,8 +183,8 @@ class LogViewController: UIViewController {
             
             if needReloadData == false && colorModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().colorLogArray {
-                colorModels = arr as! [_OCLogModel]
+            if let arr = OCLogStoreManager.shared().colorLogArray {
+                colorModels = arr as! [OCLogModel]
             }
             
             self.colorCacheModels = self.colorModels
@@ -227,8 +227,8 @@ class LogViewController: UIViewController {
             
             if needReloadData == false && h5Models.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().h5LogArray {
-                h5Models = arr as! [_OCLogModel]
+            if let arr = OCLogStoreManager.shared().h5LogArray {
+                h5Models = arr as! [OCLogModel]
             }
             
             self.h5CacheModels = self.h5Models
@@ -414,7 +414,7 @@ class LogViewController: UIViewController {
             defaultSearchBar.resignFirstResponder()
             CocoaDebugSettings.shared.logSearchWordDefault = nil
             
-            _OCLogStoreManager.shared().resetDefaultLogs()
+            OCLogStoreManager.shared().resetDefaultLogs()
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
@@ -428,7 +428,7 @@ class LogViewController: UIViewController {
             colorSearchBar.resignFirstResponder()
             CocoaDebugSettings.shared.logSearchWordColor = nil
             
-            _OCLogStoreManager.shared().resetColorLogs()
+            OCLogStoreManager.shared().resetColorLogs()
             
             dispatch_main_async_safe { [weak self] in
                 self?.colorTableView.reloadData()
@@ -442,7 +442,7 @@ class LogViewController: UIViewController {
             h5SearchBar.resignFirstResponder()
             CocoaDebugSettings.shared.logSearchWordH5 = nil
             
-            _OCLogStoreManager.shared().resetH5Logs()
+            OCLogStoreManager.shared().resetH5Logs()
             
             dispatch_main_async_safe { [weak self] in
                 self?.h5TableView.reloadData()
@@ -568,7 +568,7 @@ extension LogViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        var model: _OCLogModel
+        var model: OCLogModel
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
@@ -651,7 +651,7 @@ extension LogViewController: UITableViewDelegate {
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
                 guard let models = self?.defaultModels else {return}
-                _OCLogStoreManager.shared().removeLog(models[indexPath.row])
+                OCLogStoreManager.shared().removeLog(models[indexPath.row])
                 self?.defaultModels.remove(at: indexPath.row)
                 self?.dispatch_main_async_safe { [weak self] in
                     self?.defaultTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -666,7 +666,7 @@ extension LogViewController: UITableViewDelegate {
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
                 guard let models = self?.colorModels else {return}
-                _OCLogStoreManager.shared().removeLog(models[indexPath.row])
+                OCLogStoreManager.shared().removeLog(models[indexPath.row])
                 self?.colorModels.remove(at: indexPath.row)
                 self?.dispatch_main_async_safe { [weak self] in
                     self?.colorTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -681,7 +681,7 @@ extension LogViewController: UITableViewDelegate {
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
                 guard let models = self?.h5Models else {return}
-                _OCLogStoreManager.shared().removeLog(models[indexPath.row])
+                OCLogStoreManager.shared().removeLog(models[indexPath.row])
                 self?.h5Models.remove(at: indexPath.row)
                 self?.dispatch_main_async_safe { [weak self] in
                     self?.h5TableView.deleteRows(at: [indexPath], with: .automatic)
@@ -708,7 +708,7 @@ extension LogViewController: UITableViewDelegate {
         if tableView == defaultTableView
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(defaultModels[indexPath.row])
+                OCLogStoreManager.shared().removeLog(defaultModels[indexPath.row])
                 self.defaultModels.remove(at: indexPath.row)
                 self.dispatch_main_async_safe { [weak self] in
                     self?.defaultTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -718,7 +718,7 @@ extension LogViewController: UITableViewDelegate {
         else if tableView == colorTableView
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(colorModels[indexPath.row])
+                OCLogStoreManager.shared().removeLog(colorModels[indexPath.row])
                 self.colorModels.remove(at: indexPath.row)
                 self.dispatch_main_async_safe { [weak self] in
                     self?.colorTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -728,7 +728,7 @@ extension LogViewController: UITableViewDelegate {
         else
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(h5Models[indexPath.row])
+                OCLogStoreManager.shared().removeLog(h5Models[indexPath.row])
                 self.h5Models.remove(at: indexPath.row)
                 self.dispatch_main_async_safe { [weak self] in
                     self?.h5TableView.deleteRows(at: [indexPath], with: .automatic)

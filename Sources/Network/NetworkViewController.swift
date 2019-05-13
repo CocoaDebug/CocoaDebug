@@ -14,9 +14,9 @@ class NetworkViewController: UIViewController {
     var firstIn: Bool = true
     var reloadDataFinish: Bool = true
     
-    var models: Array<_HttpModel>?
-    var cacheModels: Array<_HttpModel>?
-    var searchModels: Array<_HttpModel>?
+    var models: Array<HttpModel>?
+    var cacheModels: Array<HttpModel>?
+    var searchModels: Array<HttpModel>?
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -60,7 +60,7 @@ class NetworkViewController: UIViewController {
         }
         
         
-        self.models = (_HttpDatasource.shared().httpModels as NSArray as? [_HttpModel])
+        self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
         
         self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
@@ -154,7 +154,7 @@ class NetworkViewController: UIViewController {
     
     
     @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
-        _HttpDatasource.shared().reset()
+        HttpDatasource.shared().reset()
         models = []
         cacheModels = []
         searchBar.text = nil
@@ -291,7 +291,7 @@ extension NetworkViewController: UITableViewDelegate {
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
             guard let models = self?.models else {return}
-            _HttpDatasource.shared().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self?.models?.remove(at: indexPath.row)
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -319,7 +319,7 @@ extension NetworkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let models = self.models else {return}
-            _HttpDatasource.shared().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self.models?.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)

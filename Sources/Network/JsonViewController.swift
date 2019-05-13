@@ -21,7 +21,7 @@ class JsonViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var editType: EditType  = .unknown
-    var httpModel: _HttpModel?
+    var httpModel: HttpModel?
     var detailModel: NetworkDetailModel?
     
     //编辑过的url

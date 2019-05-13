@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AFURLSessionManager.h"
 #import <WebKit/WebKit.h>
-#import "_TCPLogger.h"
+#import "TCPLogger.h"
 
 @interface ViewController ()
 
@@ -30,10 +30,7 @@
     [self test_console_WKWebView];
     [self test_console_UIWebView];
     
-    
-    //TCP
-    [_TCPLogger logWithString:@"tcp messages...."];
-    
+    [TCPLogger logWithString:@"tcp messages...."];
 }
 
 

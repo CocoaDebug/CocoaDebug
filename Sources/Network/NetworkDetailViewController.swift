@@ -14,7 +14,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     @IBOutlet weak var closeItem: UIBarButtonItem!
     
-    var httpModel: _HttpModel?
+    var httpModel: HttpModel?
     
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
@@ -206,9 +206,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if let httpModel = httpModel {
             if let startTime = httpModel.startTime {
                 if (startTime as NSString).doubleValue == 0 {
-                    time = _OCLoggerFormat.formatDate(Date())
+                    time = OCLoggerFormat.formatDate(Date())
                 }else{
-                    time = _OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                    time = OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
         }
