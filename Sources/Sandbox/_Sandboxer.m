@@ -8,11 +8,9 @@
 
 #import "_Sandboxer.h"
 #import "_MLBDirectoryContentsTableViewController.h"
-#import "_NSBundle+Sandboxer.h"
 
 @interface _Sandboxer ()
 
-//@property (class, readwrite, strong) _Sandboxer *shared;
 @property (strong, nonatomic) UINavigationController *homeDirectoryNavigationController;
 
 @end
@@ -61,7 +59,7 @@
 
 - (NSString *)homeTitle {
     if (nil == _homeTitle) {
-        _homeTitle = [NSBundle mlb_localizedStringForKey:@"home"];
+        _homeTitle = @"Sandbox";
     }
     
     return _homeTitle;
@@ -77,24 +75,6 @@
     }
     
     return _homeDirectoryNavigationController;
-}
-
-#pragma mark - Public Methods
-
-- (void)trigger {
-    UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    if (rootViewController.presentedViewController) {
-        if (rootViewController.presentedViewController == self.homeDirectoryNavigationController) {
-            self.homeDirectoryNavigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self.homeDirectoryNavigationController dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            [rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
-                [rootViewController presentViewController:self.homeDirectoryNavigationController animated:YES completion:nil];
-            }];
-        }
-    } else {
-        [rootViewController presentViewController:self.homeDirectoryNavigationController animated:YES completion:nil];
-    }
 }
 
 @end

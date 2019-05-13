@@ -7,7 +7,6 @@
 //
 
 #import "_MLBImageResources.h"
-#import "_NSBundle+Sandboxer.h"
 
 @implementation _MLBImageResources
 
@@ -20,7 +19,7 @@
 }
 
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName fileType:(NSString * _Nonnull)fileType inDirectory:(NSString * _Nullable)directory {
-    NSBundle *bundle = [NSBundle sandboxerBundle];
+    NSBundle *bundle = [NSBundle mainBundle];
     
     /* 默认系统会选择最适合的分辨率的那张图片，但是最低分辨率的图片必须存在，也就是 @1x 的图片，如果不存在，就会返回 nil。
        但是有时候不想要 @1x 的图片，所以就只能自己判断了。

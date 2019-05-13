@@ -15,7 +15,6 @@
 
 @interface _MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
-//@property (strong, nonatomic) QLPreviewController *previewController;
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) WKWebView *wkWebView;
 
@@ -44,7 +43,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-//    self.previewController.view.frame = self.view.bounds;
+
     if (self.wkWebView) {
         self.wkWebView.frame = self.view.bounds;
     }
@@ -79,12 +78,6 @@
 }
 
 - (void)setupViews {
-//    self.previewController = [[QLPreviewController alloc] init];
-//    [self addChildViewController:self.previewController];
-//    [self.previewController willMoveToParentViewController:self];
-//    [self.view addSubview:self.previewController.view];
-//    [self.previewController didMoveToParentViewController:self];
-//    self.previewController.dataSource = self;
     
     if ([_Sandboxer shared].isShareable) {
         UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharingAction)];

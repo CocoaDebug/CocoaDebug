@@ -11,7 +11,6 @@
 #import "_SandboxerHelper.h"
 #import "_Sandboxer-Header.h"
 #import <QuickLook/QuickLook.h>
-//#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface _MLBFileInfo ()
 
@@ -61,10 +60,6 @@
 
 - (NSString *)typeImageName {
     if (!_typeImageName) {
-//        NSString *fileExtension = [self.URL pathExtension];
-//        NSString *UTI = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtension, NULL);
-//        NSString *contentType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)UTI, kUTTagClassMIMEType);
-//        ////NSLog(@"%@, UTI = %@, contentType = %@", self.URL.lastPathComponent, UTI, contentType);
         
         switch (self.type) {
             case _MLBFileTypeUnknown: _typeImageName = @"icon_file_type_default"; break;
@@ -179,21 +174,6 @@
 
 #pragma mark - Public Methods
 
-//+ (BOOL)isDirectoryWithFileURL:(NSURL *)url {
-//    NSNumber *isDir;
-//    NSError *error;
-//    BOOL rtn = [url getResourceValue:&isDir forKey:NSURLIsDirectoryKey error:&error];
-//    if (!rtn) {
-//        ////NSLog(@"%@, getResourceValue failed", NSStringFromSelector(_cmd));
-//    }
-//    
-//    if (error) {
-//        ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
-//    }
-//    
-//    return isDir.boolValue;
-//}
-
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL {
     NSError *error;
     NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:&error];
@@ -206,7 +186,7 @@
 
 + (NSMutableArray<_MLBFileInfo *> *)contentsOfDirectoryAtURL:(NSURL *)URL {
 //    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
-    NSMutableArray *fileInfos = @[].mutableCopy;
+    NSMutableArray *fileInfos = [NSMutableArray array];
     BOOL isDir = NO;
     BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:URL.path isDirectory:&isDir];
     if (isExists && isDir) {
@@ -246,19 +226,6 @@
     
     return count;
 }
-
-//+ (_MLBFileType)fileTypeWithExtension:(NSString *)extension {
-//    _MLBFileType type = _MLBFileTypeUnknown;
-//    
-//    if (extension == nil || [extension isEqualToString:@""]) {
-//        return type;
-//    }
-//    
-//    CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef _Nonnull)(extension), NULL);
-//    if (UTTypeConformsTo(uti, kUTTypeGIF)) {
-//        
-//    }
-//}
 
 + (_MLBFileType)fileTypeWithExtension:(NSString *)extension {
     _MLBFileType type = _MLBFileTypeUnknown;
