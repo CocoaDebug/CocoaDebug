@@ -181,7 +181,7 @@ class Bubble: UIView {
         let oldSize = CGSize(width: newSize.height, height: newSize.width)
         let percent = center.y / oldSize.height * 100
         let newOrigin = newSize.height * percent / 100
-        let originX = frame.origin.x < newSize.height / 2 ? _width/8*3 : newSize.width - _width/8*3
+        let originX = frame.origin.x < newSize.height / 2 ? _width/8*3.2 : newSize.width - _width/8*3.2
         self.center = CGPoint(x: originX, y: newOrigin)
     }
     
@@ -297,11 +297,11 @@ class Bubble: UIView {
             let location = panner.location(in: self.superview)
             let velocity = panner.velocity(in: self.superview)
             
-            var finalX: Double = Double(self.width/8*3)
+            var finalX: Double = Double(self.width/8*3.2)
             var finalY: Double = Double(location.y)
             
             if location.x > UIScreen.main.bounds.size.width / 2 {
-                finalX = Double(UIScreen.main.bounds.size.width) - Double(self.width/8*3)
+                finalX = Double(UIScreen.main.bounds.size.width) - Double(self.width/8*3.2)
             }
             
             self.changeSideDisplay()
@@ -317,10 +317,10 @@ class Bubble: UIView {
                 finalY += Double(velocity.y) * durationAnimation
             }
             
-            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5) {
-                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5)
-            } else if finalY < Double(self.height/8*5) + 20 {
-                finalY = Double(self.height/8*5) + 20 //status bar height
+            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6) {
+                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6)
+            } else if finalY < Double(self.height/8*6) - 40 {
+                finalY = Double(self.height/8*6) - 40 //status bar height ?? 20
             }
             
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in
