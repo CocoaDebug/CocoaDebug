@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Sandboxer : NSObject
+@interface _Sandboxer : NSObject
 
-@property (class, nonatomic, readonly, strong) Sandboxer *shared;
+@property (class, nonatomic, readonly, strong) _Sandboxer *shared;
 
 @property (nonatomic, assign, getter=isSystemFilesHidden) BOOL systemFilesHidden; // Default is YES
 @property (nonatomic, copy) NSURL *homeFileURL; // Default is Home Directory
@@ -24,7 +24,7 @@
 @property (nonatomic, assign, getter=isFileDeletable) BOOL fileDeletable; // Default is NO
 @property (nonatomic, assign, getter=isDirectoryDeletable) BOOL directoryDeletable; // Default is NO
 
-- (instancetype)init __attribute__((unavailable("Use [Sandboxer shared] or Sandboxer.shared instead.")));
+- (instancetype)init __attribute__((unavailable("Use [_Sandboxer shared] or _Sandboxer.shared instead.")));
 
 - (void)trigger;
 

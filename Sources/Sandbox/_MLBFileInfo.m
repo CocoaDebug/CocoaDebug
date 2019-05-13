@@ -6,41 +6,41 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "MLBFileInfo.h"
-#import "Sandboxer.h"
-#import "SandboxerHelper.h"
-#import "Sandboxer-Header.h"
+#import "_MLBFileInfo.h"
+#import "_Sandboxer.h"
+#import "_SandboxerHelper.h"
+#import "_Sandboxer-Header.h"
 #import <QuickLook/QuickLook.h>
 //#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface MLBFileInfo ()
+@interface _MLBFileInfo ()
 
 @property (nonatomic, strong, readwrite) NSString *typeImageName;
 
 @end
 
-@implementation MLBFileInfo
+@implementation _MLBFileInfo
 
 - (instancetype)initWithFileURL:(NSURL *)URL {
     if (self = [super init]) {
         self.URL = URL;
         self.displayName = URL.lastPathComponent;
-        self.attributes = [MLBFileInfo attributesWithFileURL:URL];
+        self.attributes = [_MLBFileInfo attributesWithFileURL:URL];
         
         if ([self.attributes.fileType isEqualToString:NSFileTypeDirectory]) {
-            self.type = MLBFileTypeDirectory;
-            self.filesCount = [MLBFileInfo contentCountOfDirectoryAtURL:URL];
+            self.type = _MLBFileTypeDirectory;
+            self.filesCount = [_MLBFileInfo contentCountOfDirectoryAtURL:URL];
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFolder:URL.path]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [_SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [_SandboxerHelper sizeOfFolder:URL.path]];
             }
         } else {
             self.extension = URL.pathExtension;
-            self.type = [MLBFileInfo fileTypeWithExtension:self.extension];
+            self.type = [_MLBFileInfo fileTypeWithExtension:self.extension];
             self.filesCount = 0;
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFile:URL.path]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [_SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [_SandboxerHelper sizeOfFile:URL.path]];
             }
         }
         
@@ -56,7 +56,7 @@
 #pragma mark - Getters
 
 - (BOOL)isDirectory {
-    return self.type == MLBFileTypeDirectory;
+    return self.type == _MLBFileTypeDirectory;
 }
 
 - (NSString *)typeImageName {
@@ -67,74 +67,74 @@
 //        ////NSLog(@"%@, UTI = %@, contentType = %@", self.URL.lastPathComponent, UTI, contentType);
         
         switch (self.type) {
-            case MLBFileTypeUnknown: _typeImageName = @"icon_file_type_default"; break;
-            case MLBFileTypeDirectory: _typeImageName = self.filesCount == 0 ? @"icon_file_type_folder_empty" : @"icon_file_type_folder_not_empty"; break;
+            case _MLBFileTypeUnknown: _typeImageName = @"icon_file_type_default"; break;
+            case _MLBFileTypeDirectory: _typeImageName = self.filesCount == 0 ? @"icon_file_type_folder_empty" : @"icon_file_type_folder_not_empty"; break;
             // Image
-            case MLBFileTypeJPG: _typeImageName = @"icon_file_type_jpg"; break;
-            case MLBFileTypePNG: _typeImageName = @"icon_file_type_png"; break;
-            case MLBFileTypeGIF: _typeImageName = @"icon_file_type_gif"; break;
-            case MLBFileTypeSVG: _typeImageName = @"icon_file_type_svg"; break;
-            case MLBFileTypeBMP: _typeImageName = @"icon_file_type_bmp"; break;
-            case MLBFileTypeTIF: _typeImageName = @"icon_file_type_tif"; break;
+            case _MLBFileTypeJPG: _typeImageName = @"icon_file_type_jpg"; break;
+            case _MLBFileTypePNG: _typeImageName = @"icon_file_type_png"; break;
+            case _MLBFileTypeGIF: _typeImageName = @"icon_file_type_gif"; break;
+            case _MLBFileTypeSVG: _typeImageName = @"icon_file_type_svg"; break;
+            case _MLBFileTypeBMP: _typeImageName = @"icon_file_type_bmp"; break;
+            case _MLBFileTypeTIF: _typeImageName = @"icon_file_type_tif"; break;
             // Audio
-            case MLBFileTypeMP3: _typeImageName = @"icon_file_type_mp3"; break;
-            case MLBFileTypeAAC: _typeImageName = @"icon_file_type_aac"; break;
-            case MLBFileTypeWAV: _typeImageName = @"icon_file_type_wav"; break;
-            case MLBFileTypeOGG: _typeImageName = @"icon_file_type_ogg"; break;
+            case _MLBFileTypeMP3: _typeImageName = @"icon_file_type_mp3"; break;
+            case _MLBFileTypeAAC: _typeImageName = @"icon_file_type_aac"; break;
+            case _MLBFileTypeWAV: _typeImageName = @"icon_file_type_wav"; break;
+            case _MLBFileTypeOGG: _typeImageName = @"icon_file_type_ogg"; break;
             // Video
-            case MLBFileTypeMP4: _typeImageName = @"icon_file_type_mp4"; break;
-            case MLBFileTypeAVI: _typeImageName = @"icon_file_type_avi"; break;
-            case MLBFileTypeFLV: _typeImageName = @"icon_file_type_flv"; break;
-            case MLBFileTypeMIDI: _typeImageName = @"icon_file_type_midi"; break;
-            case MLBFileTypeMOV: _typeImageName = @"icon_file_type_mov"; break;
-            case MLBFileTypeMPG: _typeImageName = @"icon_file_type_mpg"; break;
-            case MLBFileTypeWMV: _typeImageName = @"icon_file_type_wmv"; break;
+            case _MLBFileTypeMP4: _typeImageName = @"icon_file_type_mp4"; break;
+            case _MLBFileTypeAVI: _typeImageName = @"icon_file_type_avi"; break;
+            case _MLBFileTypeFLV: _typeImageName = @"icon_file_type_flv"; break;
+            case _MLBFileTypeMIDI: _typeImageName = @"icon_file_type_midi"; break;
+            case _MLBFileTypeMOV: _typeImageName = @"icon_file_type_mov"; break;
+            case _MLBFileTypeMPG: _typeImageName = @"icon_file_type_mpg"; break;
+            case _MLBFileTypeWMV: _typeImageName = @"icon_file_type_wmv"; break;
             // Apple
-            case MLBFileTypeDMG: _typeImageName = @"icon_file_type_dmg"; break;
-            case MLBFileTypeIPA: _typeImageName = @"icon_file_type_ipa"; break;
-            case MLBFileTypeNumbers: _typeImageName = @"icon_file_type_numbers"; break;
-            case MLBFileTypePages: _typeImageName = @"icon_file_type_pages"; break;
-            case MLBFileTypeKeynote: _typeImageName = @"icon_file_type_keynote"; break;
+            case _MLBFileTypeDMG: _typeImageName = @"icon_file_type_dmg"; break;
+            case _MLBFileTypeIPA: _typeImageName = @"icon_file_type_ipa"; break;
+            case _MLBFileTypeNumbers: _typeImageName = @"icon_file_type_numbers"; break;
+            case _MLBFileTypePages: _typeImageName = @"icon_file_type_pages"; break;
+            case _MLBFileTypeKeynote: _typeImageName = @"icon_file_type_keynote"; break;
             // Google
-            case MLBFileTypeAPK: _typeImageName = @"icon_file_type_apk"; break;
+            case _MLBFileTypeAPK: _typeImageName = @"icon_file_type_apk"; break;
             // Microsoft
-            case MLBFileTypeWord: _typeImageName = @"icon_file_type_doc"; break;
-            case MLBFileTypeExcel: _typeImageName = @"icon_file_type_xls"; break;
-            case MLBFileTypePPT: _typeImageName = @"icon_file_type_ppt"; break;
-            case MLBFileTypeEXE: _typeImageName = @"icon_file_type_exe"; break;
-            case MLBFileTypeDLL: _typeImageName = @"icon_file_type_dll"; break;
+            case _MLBFileTypeWord: _typeImageName = @"icon_file_type_doc"; break;
+            case _MLBFileTypeExcel: _typeImageName = @"icon_file_type_xls"; break;
+            case _MLBFileTypePPT: _typeImageName = @"icon_file_type_ppt"; break;
+            case _MLBFileTypeEXE: _typeImageName = @"icon_file_type_exe"; break;
+            case _MLBFileTypeDLL: _typeImageName = @"icon_file_type_dll"; break;
             // Document
-            case MLBFileTypeTXT: _typeImageName = @"icon_file_type_txt"; break;
-            case MLBFileTypeRTF: _typeImageName = @"icon_file_type_rtf"; break;
-            case MLBFileTypePDF: _typeImageName = @"icon_file_type_pdf"; break;
-            case MLBFileTypeZIP: _typeImageName = @"icon_file_type_zip"; break;
-            case MLBFileType7z: _typeImageName = @"icon_file_type_7z"; break;
-            case MLBFileTypeCVS: _typeImageName = @"icon_file_type_cvs"; break;
-            case MLBFileTypeMD: _typeImageName = @"icon_file_type_md"; break;
+            case _MLBFileTypeTXT: _typeImageName = @"icon_file_type_txt"; break;
+            case _MLBFileTypeRTF: _typeImageName = @"icon_file_type_rtf"; break;
+            case _MLBFileTypePDF: _typeImageName = @"icon_file_type_pdf"; break;
+            case _MLBFileTypeZIP: _typeImageName = @"icon_file_type_zip"; break;
+            case _MLBFileType7z: _typeImageName = @"icon_file_type_7z"; break;
+            case _MLBFileTypeCVS: _typeImageName = @"icon_file_type_cvs"; break;
+            case _MLBFileTypeMD: _typeImageName = @"icon_file_type_md"; break;
             // Programming
-            case MLBFileTypeSwift: _typeImageName = @"icon_file_type_swift"; break;
-            case MLBFileTypeJava: _typeImageName = @"icon_file_type_java"; break;
-            case MLBFileTypeC: _typeImageName = @"icon_file_type_c"; break;
-            case MLBFileTypeCPP: _typeImageName = @"icon_file_type_cpp"; break;
-            case MLBFileTypePHP: _typeImageName = @"icon_file_type_php"; break;
-            case MLBFileTypeJSON: _typeImageName = @"icon_file_type_json"; break;
-            case MLBFileTypePList: _typeImageName = @"icon_file_type_plist"; break;
-            case MLBFileTypeXML: _typeImageName = @"icon_file_type_xml"; break;
-            case MLBFileTypeDatabase: _typeImageName = @"icon_file_type_db"; break;
-            case MLBFileTypeJS: _typeImageName = @"icon_file_type_js"; break;
-            case MLBFileTypeHTML: _typeImageName = @"icon_file_type_html"; break;
-            case MLBFileTypeCSS: _typeImageName = @"icon_file_type_css"; break;
-            case MLBFileTypeBIN: _typeImageName = @"icon_file_type_bin"; break;
-            case MLBFileTypeDat: _typeImageName = @"icon_file_type_dat"; break;
-            case MLBFileTypeSQL: _typeImageName = @"icon_file_type_sql"; break;
-            case MLBFileTypeJAR: _typeImageName = @"icon_file_type_jar"; break;
+            case _MLBFileTypeSwift: _typeImageName = @"icon_file_type_swift"; break;
+            case _MLBFileTypeJava: _typeImageName = @"icon_file_type_java"; break;
+            case _MLBFileTypeC: _typeImageName = @"icon_file_type_c"; break;
+            case _MLBFileTypeCPP: _typeImageName = @"icon_file_type_cpp"; break;
+            case _MLBFileTypePHP: _typeImageName = @"icon_file_type_php"; break;
+            case _MLBFileTypeJSON: _typeImageName = @"icon_file_type_json"; break;
+            case _MLBFileTypePList: _typeImageName = @"icon_file_type_plist"; break;
+            case _MLBFileTypeXML: _typeImageName = @"icon_file_type_xml"; break;
+            case _MLBFileTypeDatabase: _typeImageName = @"icon_file_type_db"; break;
+            case _MLBFileTypeJS: _typeImageName = @"icon_file_type_js"; break;
+            case _MLBFileTypeHTML: _typeImageName = @"icon_file_type_html"; break;
+            case _MLBFileTypeCSS: _typeImageName = @"icon_file_type_css"; break;
+            case _MLBFileTypeBIN: _typeImageName = @"icon_file_type_bin"; break;
+            case _MLBFileTypeDat: _typeImageName = @"icon_file_type_dat"; break;
+            case _MLBFileTypeSQL: _typeImageName = @"icon_file_type_sql"; break;
+            case _MLBFileTypeJAR: _typeImageName = @"icon_file_type_jar"; break;
             // Adobe
-            case MLBFileTypeFlash: _typeImageName = @"icon_file_type_fla"; break;
-            case MLBFileTypePSD: _typeImageName = @"icon_file_type_psd"; break;
-            case MLBFileTypeEPS: _typeImageName = @"icon_file_type_eps"; break;
+            case _MLBFileTypeFlash: _typeImageName = @"icon_file_type_fla"; break;
+            case _MLBFileTypePSD: _typeImageName = @"icon_file_type_psd"; break;
+            case _MLBFileTypeEPS: _typeImageName = @"icon_file_type_eps"; break;
             // Other
-            case MLBFileTypeTTF: _typeImageName = @"icon_file_type_ttf"; break;
-            case MLBFileTypeTorrent: _typeImageName = @"icon_file_type_torrent"; break;
+            case _MLBFileTypeTTF: _typeImageName = @"icon_file_type_ttf"; break;
+            case _MLBFileTypeTorrent: _typeImageName = @"icon_file_type_torrent"; break;
         }
     }
     
@@ -147,30 +147,30 @@
 
 - (BOOL)isCanPreviewInWebView {
     if (// Image
-        self.type == MLBFileTypePNG ||
-        self.type == MLBFileTypeJPG ||
-        self.type == MLBFileTypeGIF ||
-        self.type == MLBFileTypeSVG ||
-        self.type == MLBFileTypeBMP ||
+        self.type == _MLBFileTypePNG ||
+        self.type == _MLBFileTypeJPG ||
+        self.type == _MLBFileTypeGIF ||
+        self.type == _MLBFileTypeSVG ||
+        self.type == _MLBFileTypeBMP ||
         // Audio
-        self.type == MLBFileTypeWAV ||
+        self.type == _MLBFileTypeWAV ||
         // Apple
-        self.type == MLBFileTypeNumbers ||
-        self.type == MLBFileTypePages ||
-        self.type == MLBFileTypeKeynote ||
+        self.type == _MLBFileTypeNumbers ||
+        self.type == _MLBFileTypePages ||
+        self.type == _MLBFileTypeKeynote ||
         // Microsoft
-        self.type == MLBFileTypeWord ||
-        self.type == MLBFileTypeExcel ||
+        self.type == _MLBFileTypeWord ||
+        self.type == _MLBFileTypeExcel ||
         // Document
-        self.type == MLBFileTypeTXT || // 编码问题
-        self.type == MLBFileTypePDF ||
-        self.type == MLBFileTypeMD ||
+        self.type == _MLBFileTypeTXT || // 编码问题
+        self.type == _MLBFileTypePDF ||
+        self.type == _MLBFileTypeMD ||
         // Programming
-        self.type == MLBFileTypeJava ||
-        self.type == MLBFileTypeSwift ||
-        self.type == MLBFileTypeCSS ||
+        self.type == _MLBFileTypeJava ||
+        self.type == _MLBFileTypeSwift ||
+        self.type == _MLBFileTypeCSS ||
         // Adobe
-        self.type == MLBFileTypePSD) {
+        self.type == _MLBFileTypePSD) {
         return YES;
     }
     
@@ -204,7 +204,7 @@
     return attributes;
 }
 
-+ (NSMutableArray<MLBFileInfo *> *)contentsOfDirectoryAtURL:(NSURL *)URL {
++ (NSMutableArray<_MLBFileInfo *> *)contentsOfDirectoryAtURL:(NSURL *)URL {
 //    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
     NSMutableArray *fileInfos = @[].mutableCopy;
     BOOL isDir = NO;
@@ -214,8 +214,8 @@
         NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
         if (!error) {
             for (NSString *name in contents) {
-                if (Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
-                MLBFileInfo *fileInfo = [[MLBFileInfo alloc] initWithFileURL:[URL URLByAppendingPathComponent:name]];
+                if (_Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
+                _MLBFileInfo *fileInfo = [[_MLBFileInfo alloc] initWithFileURL:[URL URLByAppendingPathComponent:name]];
                 [fileInfos addObject:fileInfo];
             }
         } else {
@@ -236,7 +236,7 @@
         NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
         if (!error) {
             for (NSString *name in contents) {
-                if (Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
+                if (_Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 count++;
             }
         } else {
@@ -247,8 +247,8 @@
     return count;
 }
 
-//+ (MLBFileType)fileTypeWithExtension:(NSString *)extension {
-//    MLBFileType type = MLBFileTypeUnknown;
+//+ (_MLBFileType)fileTypeWithExtension:(NSString *)extension {
+//    _MLBFileType type = _MLBFileTypeUnknown;
 //    
 //    if (extension == nil || [extension isEqualToString:@""]) {
 //        return type;
@@ -260,146 +260,146 @@
 //    }
 //}
 
-+ (MLBFileType)fileTypeWithExtension:(NSString *)extension {
-    MLBFileType type = MLBFileTypeUnknown;
++ (_MLBFileType)fileTypeWithExtension:(NSString *)extension {
+    _MLBFileType type = _MLBFileTypeUnknown;
     
-    if (MLBIsStringEmpty(extension)) {
+    if (_MLBIsStringEmpty(extension)) {
         return type;
     }
     
     // Image
     if ([extension compare:@"jpg" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeJPG;
+        type = _MLBFileTypeJPG;
     } else if ([extension compare:@"png" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePNG;
+        type = _MLBFileTypePNG;
     } else if ([extension compare:@"gif" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeGIF;
+        type = _MLBFileTypeGIF;
     } else if ([extension compare:@"svg" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeSVG;
+        type = _MLBFileTypeSVG;
     } else if ([extension compare:@"bmp" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeBMP;
+        type = _MLBFileTypeBMP;
     } else if ([extension compare:@"tif" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeTIF;
+        type = _MLBFileTypeTIF;
     }
     // Audio
     else if ([extension compare:@"mp3" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMP3;
+        type = _MLBFileTypeMP3;
     } else if ([extension compare:@"aac" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeAAC;
+        type = _MLBFileTypeAAC;
     } else if ([extension compare:@"wav" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeWAV;
+        type = _MLBFileTypeWAV;
     } else if ([extension compare:@"ogg" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeOGG;
+        type = _MLBFileTypeOGG;
     }
     // Video
     else if ([extension compare:@"mp4" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMP4;
+        type = _MLBFileTypeMP4;
     } else if ([extension compare:@"avi" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeAVI;
+        type = _MLBFileTypeAVI;
     } else if ([extension compare:@"flv" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeFLV;
+        type = _MLBFileTypeFLV;
     } else if ([extension compare:@"midi" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMIDI;
+        type = _MLBFileTypeMIDI;
     } else if ([extension compare:@"mov" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMOV;
+        type = _MLBFileTypeMOV;
     } else if ([extension compare:@"mpg" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMPG;
+        type = _MLBFileTypeMPG;
     } else if ([extension compare:@"wmv" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeWMV;
+        type = _MLBFileTypeWMV;
     }
     // Apple
     else if ([extension compare:@"dmg" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeDMG;
+        type = _MLBFileTypeDMG;
     } else if ([extension compare:@"ipa" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeIPA;
+        type = _MLBFileTypeIPA;
     } else if ([extension compare:@"numbers" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeNumbers;
+        type = _MLBFileTypeNumbers;
     } else if ([extension compare:@"pages" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePages;
+        type = _MLBFileTypePages;
     } else if ([extension compare:@"key" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeKeynote;
+        type = _MLBFileTypeKeynote;
     }
     // Google
     else if ([extension compare:@"apk" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeAPK;
+        type = _MLBFileTypeAPK;
     }
     // Microsoft
     else if ([extension compare:@"doc" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
              [extension compare:@"docx" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeWord;
+        type = _MLBFileTypeWord;
     } else if ([extension compare:@"xls" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
                [extension compare:@"xlsx" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeExcel;
+        type = _MLBFileTypeExcel;
     } else if ([extension compare:@"ppt" options:NSCaseInsensitiveSearch] == NSOrderedSame ||
                [extension compare:@"pptx" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePPT;
+        type = _MLBFileTypePPT;
     } else if ([extension compare:@"exe" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeEXE;
+        type = _MLBFileTypeEXE;
     } else if ([extension compare:@"dll" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeDLL;
+        type = _MLBFileTypeDLL;
     }
     // Document
     else if ([extension compare:@"txt" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeTXT;
+        type = _MLBFileTypeTXT;
     } else if ([extension compare:@"rtf" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeRTF;
+        type = _MLBFileTypeRTF;
     } else if ([extension compare:@"pdf" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePDF;
+        type = _MLBFileTypePDF;
     } else if ([extension compare:@"zip" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeZIP;
+        type = _MLBFileTypeZIP;
     } else if ([extension compare:@"7z" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileType7z;
+        type = _MLBFileType7z;
     } else if ([extension compare:@"cvs" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeCVS;
+        type = _MLBFileTypeCVS;
     } else if ([extension compare:@"md" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeMD;
+        type = _MLBFileTypeMD;
     }
     // Programming
     else if ([extension compare:@"swift" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeSwift;
+        type = _MLBFileTypeSwift;
     } else if ([extension compare:@"java" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeJava;
+        type = _MLBFileTypeJava;
     } else if ([extension compare:@"c" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeC;
+        type = _MLBFileTypeC;
     } else if ([extension compare:@"cpp" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeCPP;
+        type = _MLBFileTypeCPP;
     } else if ([extension compare:@"php" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePHP;
+        type = _MLBFileTypePHP;
     } else if ([extension compare:@"json" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeJSON;
+        type = _MLBFileTypeJSON;
     } else if ([extension compare:@"plist" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePList;
+        type = _MLBFileTypePList;
     } else if ([extension compare:@"xml" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeXML;
+        type = _MLBFileTypeXML;
     } else if ([extension compare:@"db" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeDatabase;
+        type = _MLBFileTypeDatabase;
     } else if ([extension compare:@"js" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeJS;
+        type = _MLBFileTypeJS;
     } else if ([extension compare:@"html" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeHTML;
+        type = _MLBFileTypeHTML;
     } else if ([extension compare:@"css" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeCSS;
+        type = _MLBFileTypeCSS;
     } else if ([extension compare:@"bin" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeBIN;
+        type = _MLBFileTypeBIN;
     } else if ([extension compare:@"dat" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeDat;
+        type = _MLBFileTypeDat;
     } else if ([extension compare:@"sql" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeSQL;
+        type = _MLBFileTypeSQL;
     } else if ([extension compare:@"jar" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeJAR;
+        type = _MLBFileTypeJAR;
     }
     // Adobe
     else if ([extension compare:@"psd" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypePSD;
+        type = _MLBFileTypePSD;
     }
     else if ([extension compare:@"eps" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeEPS;
+        type = _MLBFileTypeEPS;
     }
     // Other
     else if ([extension compare:@"ttf" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeTTF;
+        type = _MLBFileTypeTTF;
     } else if ([extension compare:@"torrent" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-        type = MLBFileTypeTorrent;
+        type = _MLBFileTypeTorrent;
     }
     
     return type;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SandboxerHelper : NSObject
+@interface _SandboxerHelper : NSObject
 
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date;
 

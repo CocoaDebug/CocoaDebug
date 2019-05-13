@@ -6,10 +6,10 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "MLBImageResources.h"
-#import "NSBundle+Sandboxer.h"
+#import "_MLBImageResources.h"
+#import "_NSBundle+Sandboxer.h"
 
-@implementation MLBImageResources
+@implementation _MLBImageResources
 
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName {
     return [self imageNamed:imageName fileType:@"png" inDirectory:nil];

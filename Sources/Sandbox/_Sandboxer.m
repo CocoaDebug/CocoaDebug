@@ -6,26 +6,26 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "Sandboxer.h"
-#import "MLBDirectoryContentsTableViewController.h"
-#import "NSBundle+Sandboxer.h"
+#import "_Sandboxer.h"
+#import "_MLBDirectoryContentsTableViewController.h"
+#import "_NSBundle+Sandboxer.h"
 
-@interface Sandboxer ()
+@interface _Sandboxer ()
 
-//@property (class, readwrite, strong) Sandboxer *shared;
+//@property (class, readwrite, strong) _Sandboxer *shared;
 @property (strong, nonatomic) UINavigationController *homeDirectoryNavigationController;
 
 @end
 
-@implementation Sandboxer
+@implementation _Sandboxer
 
 @synthesize homeTitle = _homeTitle;
 
-+ (Sandboxer *)shared {
-    static Sandboxer *_sharedInstance = nil;
++ (_Sandboxer *)shared {
+    static _Sandboxer *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [[Sandboxer alloc] _init];
+        _sharedInstance = [[_Sandboxer alloc] _init];
     });
     
     return _sharedInstance;
@@ -69,9 +69,9 @@
 
 - (UINavigationController *)homeDirectoryNavigationController {
     if (!_homeDirectoryNavigationController) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
+        _MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[_MLBDirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.homeDirectory = YES;
-        directoryContentsTableViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+        directoryContentsTableViewController.fileInfo = [[_MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
         directoryContentsTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:directoryContentsTableViewController];
     }

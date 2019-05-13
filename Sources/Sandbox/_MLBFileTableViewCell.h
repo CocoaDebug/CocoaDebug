@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class MLBFileInfo;
+UIKIT_EXTERN NSString *const _MLBFileTableViewCellReuseIdentifier;
 
-@interface MLBFilePreviewController : UIViewController
-
-@property (nonatomic, strong) MLBFileInfo *fileInfo;
+@interface _MLBFileTableViewCell : UITableViewCell
 
 @end

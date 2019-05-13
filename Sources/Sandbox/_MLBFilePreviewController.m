@@ -6,14 +6,14 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "MLBFilePreviewController.h"
-#import "MLBFileInfo.h"
+#import "_MLBFilePreviewController.h"
+#import "_MLBFileInfo.h"
 #import <QuickLook/QuickLook.h>
 #import <WebKit/WebKit.h>
-#import "Sandboxer-Header.h"
-#import "Sandboxer.h"
+#import "_Sandboxer-Header.h"
+#import "_Sandboxer.h"
 
-@interface MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface _MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 //@property (strong, nonatomic) QLPreviewController *previewController;
 @property (strong, nonatomic) UIWebView *webView;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation MLBFilePreviewController
+@implementation _MLBFilePreviewController
 
 #pragma mark - View Lifecycle
 
@@ -86,13 +86,13 @@
 //    [self.previewController didMoveToParentViewController:self];
 //    self.previewController.dataSource = self;
     
-    if ([Sandboxer shared].isShareable) {
+    if ([_Sandboxer shared].isShareable) {
         UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharingAction)];
         self.navigationItem.rightBarButtonItem = shareItem;
     }
     
     if (self.fileInfo.isCanPreviewInWebView) {
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        if (_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
             self.wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
             self.wkWebView.backgroundColor = [UIColor whiteColor];
             self.wkWebView.navigationDelegate = self;
@@ -105,7 +105,7 @@
         }
     } else {
         switch (self.fileInfo.type) {
-            case MLBFileTypePList: {
+            case _MLBFileTypePList: {
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;
@@ -125,7 +125,7 @@
 
 - (void)loadFile {
     if (self.fileInfo.isCanPreviewInWebView) {
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        if (_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
             if (@available(iOS 9.0, *)) {
                 [self.wkWebView loadFileURL:self.fileInfo.URL allowingReadAccessToURL:self.fileInfo.URL];
             } else {
@@ -136,7 +136,7 @@
         }
     } else {
         switch (self.fileInfo.type) {
-            case MLBFileTypePList: {
+            case _MLBFileTypePList: {
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];
@@ -162,7 +162,7 @@
 }
 
 - (void)sharingAction {
-    if (![Sandboxer shared].isShareable) { return; }
+    if (![_Sandboxer shared].isShareable) { return; }
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     } else {

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MLBFileInfo.h"
+#import "_MLBFileInfo.h"
 
-@interface MLBDirectoryContentsTableViewController : UITableViewController
+@interface _MLBDirectoryContentsTableViewController : UITableViewController
 
 @property (nonatomic, assign, getter=isHomeDirectory) BOOL homeDirectory;
-@property (nonatomic, strong) MLBFileInfo *fileInfo;
+@property (nonatomic, strong) _MLBFileInfo *fileInfo;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MLBImageResources : NSObject
+@interface _MLBImageResources : NSObject
 
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName;
 

@@ -53,12 +53,12 @@ class CocoaDebugTabBarController: UITabBarController {
         let app = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
-        Sandboxer.shared.isSystemFilesHidden = false
-        Sandboxer.shared.isExtensionHidden = false
-        Sandboxer.shared.isShareable = true
-        Sandboxer.shared.isFileDeletable = true
-        Sandboxer.shared.isDirectoryDeletable = true
-        guard let sandbox = Sandboxer.shared.homeDirectoryNavigationController() else {return}
+        _Sandboxer.shared.isSystemFilesHidden = false
+        _Sandboxer.shared.isExtensionHidden = false
+        _Sandboxer.shared.isShareable = true
+        _Sandboxer.shared.isFileDeletable = true
+        _Sandboxer.shared.isDirectoryDeletable = true
+        guard let sandbox = _Sandboxer.shared.homeDirectoryNavigationController() else {return}
         sandbox.tabBarItem.title = "Sandbox"
         sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         

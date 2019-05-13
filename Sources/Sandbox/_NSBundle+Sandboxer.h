@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSBundle (Sandboxer)
+@interface NSBundle (_Sandboxer)
 
 @property (class, nonatomic, readonly, strong) NSBundle *sandboxerBundle;
 

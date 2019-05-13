@@ -6,9 +6,9 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "SandboxerHelper.h"
+#import "_SandboxerHelper.h"
 
-@implementation SandboxerHelper
+@implementation _SandboxerHelper
 
 + (NSDateFormatter *)fileModificationDateFormatter {
     static NSDateFormatter *_fileModificationDateFormatter;
@@ -24,7 +24,7 @@
 
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date {
     if (!date) { return @""; }
-    return [[SandboxerHelper fileModificationDateFormatter] stringFromDate:date];
+    return [[_SandboxerHelper fileModificationDateFormatter] stringFromDate:date];
 }
 
 //liman
