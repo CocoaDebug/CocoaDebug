@@ -53,23 +53,23 @@ class CocoaDebugTabBarController: UITabBarController {
         let app = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
-        _Sandbox.shared.isSystemFilesHidden = false
-        _Sandbox.shared.isExtensionHidden = false
-        _Sandbox.shared.isShareable = true
-        _Sandbox.shared.isFileDeletable = true
-        _Sandbox.shared.isDirectoryDeletable = true
-        guard let sandbox = _Sandbox.shared.homeDirectoryNavigationController() else {return}
-        sandbox.tabBarItem.title = "Sandbox"
-        sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
+//        Sandbox.shared.isSystemFilesHidden = false
+//        _Sandbox.shared.isExtensionHidden = false
+//        _Sandbox.shared.isShareable = true
+//        _Sandbox.shared.isFileDeletable = true
+//        _Sandbox.shared.isDirectoryDeletable = true
+//        guard let sandbox = _Sandbox.shared.homeDirectoryNavigationController() else {return}
+//        sandbox.tabBarItem.title = "Sandbox"
+//        sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         
         //3.
         guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
-            self.viewControllers = [logs, network, app, sandbox]
+            self.viewControllers = [logs, network, app]
             return
         }
         
         //4.添加额外的控制器
-        var temp = [logs, network, app, sandbox]
+        var temp = [logs, network, app]
         
         for vc in tabBarControllers {
             
