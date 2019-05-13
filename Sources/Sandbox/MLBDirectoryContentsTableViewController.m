@@ -14,6 +14,7 @@
 #import <QuickLook/QuickLook.h>
 #import "Sandboxer-Header.h"
 #import "NSBundle+Sandboxer.h"
+#import "_NetworkHelper.h"
 
 @interface MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UIAlertViewDelegate>
 
@@ -40,23 +41,59 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     BOOL _isFirstAppear;
 }
 
+//liman
+- (void)customNavigationBar
+{
+    //****** 以下代码从LogNavigationViewController.swift复制 ******
+    self.navigationController.navigationBar.translucent = NO;
+    
+    self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+                                                                    NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
+                                                                    NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+                                                                    };
+    
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"_icon_file_type_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    leftItem.tintColor = [_NetworkHelper shared].mainColor;
+    self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
+}
+
+- (void)exit {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//    if (MLBIsStringEmpty(self.title)) {
+//        if (self.isHomeDirectory) {
+//            self.title = [NSBundle mlb_localizedStringForKey:@"home"];
+//        } else {
+//            self.title = self.fileInfo.displayName;
+//        }
+//    }
+    
+//    if (self.isHomeDirectory) {
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(dismissAction)];
+//    }
+    
+    
+    //liman
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    //liman
     if (MLBIsStringEmpty(self.title)) {
         if (self.isHomeDirectory) {
-            self.title = [NSBundle mlb_localizedStringForKey:@"home"];
+            [self customNavigationBar];//liman
+            self.title = @"Sandbox";
         } else {
             self.title = self.fileInfo.displayName;
         }
     }
     
-    //liman
-//    if (self.isHomeDirectory) {
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(dismissAction)];
-//    }
     
     [self initDatas];
     [self setupViews];
@@ -168,6 +205,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (fileInfo.isDirectory) {
         MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.fileInfo = fileInfo;
+        directoryContentsTableViewController.hidesBottomBarWhenPushed = YES;//liman
         return directoryContentsTableViewController;
     } else {
         if ([Sandboxer shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
@@ -176,11 +214,13 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
+            previewController.hidesBottomBarWhenPushed = YES;//liman
             return previewController;
         } else {
             ////NSLog(@"Quick Look can not preview this file");
             MLBFilePreviewController *filePreviewController = [[MLBFilePreviewController alloc] init];
             filePreviewController.fileInfo = fileInfo;
+            filePreviewController.hidesBottomBarWhenPushed = YES;//liman
             return filePreviewController;
         }
     }
@@ -297,6 +337,14 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (nil == self.deleteAllItem) {
         self.deleteAllItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete_all"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllAction)];
         self.deleteItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelectedFilesAction)];
+        
+        //liman
+        [self.deleteAllItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]} forState:UIControlStateNormal];
+        [self.deleteItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]} forState:UIControlStateNormal];
+        [self.deleteAllItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:209/255.0 green:157/255.0 blue:157/255.0 alpha:1.0]} forState:UIControlStateHighlighted];
+        [self.deleteItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:209/255.0 green:157/255.0 blue:157/255.0 alpha:1.0]} forState:UIControlStateHighlighted];
+        
+        
         [self setToolbarItems:@[self.deleteAllItem,
                                 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                                 self.deleteItem] animated:YES];
