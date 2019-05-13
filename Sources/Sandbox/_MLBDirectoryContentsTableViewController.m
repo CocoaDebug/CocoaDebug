@@ -241,7 +241,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (NSString *)messageForDeleteWithFileCount:(NSInteger)fileCount directoryCount:(NSInteger)directoryCount {
     NSMutableString *message = [NSMutableString stringWithString:@"Are you sure to delete"];
     if ([_Sandboxer shared].isFileDeletable && fileCount > 0) {
-        [message appendFormat:@"%ld files", fileCount];
+        [message appendFormat:@"%ld files", (long)fileCount];
     }
     
     if ([_Sandboxer shared].isDirectoryDeletable && directoryCount > 0) {
@@ -249,7 +249,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [message appendString:@","];
         }
         
-        [message appendFormat:@"%ld directories", directoryCount];
+        [message appendFormat:@"%ld directories", (long)directoryCount];
     }
     
     [message appendString:@"?"];
@@ -467,7 +467,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         self.deletingFileInfo = fileInfo;
         NSMutableString *message = [NSMutableString string];
         if (fileInfo.isDirectory) {
-            [message appendFormat:@"Are you sure to delete this directory(including %ld files(or directories) inside)?", fileInfo.filesCount];
+            [message appendFormat:@"Are you sure to delete this directory(including %lu files(or directories) inside)?", (unsigned long)fileInfo.filesCount];
         } else {
             [message appendString:@"Are you sure to delete this file?"];
         }
