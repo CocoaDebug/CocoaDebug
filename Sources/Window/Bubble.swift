@@ -29,17 +29,26 @@ class Bubble: UIView {
     
     public let width: CGFloat = _width
     public let height: CGFloat = _height
+    private var timer: Timer? 
     
-    private lazy var memoryLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:4, width:_width, height:16))
+    
+    private lazy var _label: UILabel? = {
+        let xxx: CGFloat = 16/2
+        let label = UILabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
+        label.textColor = Color.mainGreen
+        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
+        return label
     }()
     
-    private lazy var fpsLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:24, width:_width, height:16))
-    }()
-    
-    private lazy var cpuLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:44, width:_width, height:16))
+    private lazy var _sublabel: FPSLabel? = {
+        let xxx: CGFloat = -16/2 - 4
+        let sublabel = FPSLabel(frame: CGRect(x:_width/8, y:_height/2 - 16/2 - xxx, width:_width/8*6, height:16))
+        
+        sublabel.adjustsFontSizeToFitWidth = true //sublabel.sizeToFit()
+        return sublabel
     }()
     
     
@@ -48,7 +57,7 @@ class Bubble: UIView {
         if CocoaDebugSettings.shared.bubbleFrameX != 0 && CocoaDebugSettings.shared.bubbleFrameY != 0 {
             return CGPoint(x: CGFloat(CocoaDebugSettings.shared.bubbleFrameX), y: CGFloat(CocoaDebugSettings.shared.bubbleFrameY))
         }
-        return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*6, y: UIScreen.main.bounds.size.height/2 - _height/2)
+        return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
     }
     
     static var size: CGSize {return CGSize(width: _width, height: _height)}
@@ -131,24 +140,21 @@ class Bubble: UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.8
-        self.layer.cornerRadius = 1
+        self.layer.cornerRadius = _height/2
         self.layer.shadowOffset = CGSize.zero
-        self.layer.masksToBounds = true
         self.sizeToFit()
+        self.layer.masksToBounds = true
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.cornerRadius = 1
+        gradientLayer.cornerRadius = _height/2
         gradientLayer.colors = Color.colorGradientHead
         self.layer.addSublayer(gradientLayer)
         
-        
-        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
-            self.addSubview(memoryLabel)
-            self.addSubview(fpsLabel)
-            self.addSubview(cpuLabel)
+        if let _label = _label, let _sublabel = _sublabel {
+            self.addSubview(_label)
+            self.addSubview(_sublabel)
         }
-        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
@@ -198,18 +204,12 @@ class Bubble: UIView {
         //网络通知
         NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.reloadHttp_notification(notification)
-        }
+        }        
         
-        //
-        WHDebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.fpsLabel?.update(with: .FPS, value: value)
-        }
-        WHDebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.memoryLabel?.update(with: .memory, value: value)
-        }
-        WHDebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.cpuLabel?.update(with: .CPU, value: value)
-        }
+        //内存监控
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerMonitor), userInfo: nil, repeats: true)
+        guard let timer = timer else {return}
+        RunLoop.current.add(timer, forMode: .common)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -218,6 +218,7 @@ class Bubble: UIView {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        timer?.invalidate()
     }
     
     //MARK: - notification
@@ -243,6 +244,10 @@ class Bubble: UIView {
     }
     
     //MARK: - target action
+    @objc func timerMonitor() {
+        _label?.text = MemoryHelper.shared().appUsedMemoryAndFreeMemory().components(separatedBy: "  ").first
+    }
+    
     @objc func tap() {
         delegate?.didTapBubble()
     }
@@ -317,10 +322,10 @@ class Bubble: UIView {
                 finalY += Double(velocity.y) * durationAnimation
             }
             
-            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6) {
-                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6)
-            } else if finalY < Double(self.height/8*6) + 20 {
-                finalY = Double(self.height/8*6) + 20 //status bar height
+            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5) {
+                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5)
+            } else if finalY < Double(self.height/8*5) + 20 {
+                finalY = Double(self.height/8*5) + 20 //status bar height
             }
             
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in

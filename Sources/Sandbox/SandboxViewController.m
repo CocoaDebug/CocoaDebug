@@ -14,6 +14,7 @@
 #import "FileTableViewCell.h"
 #import "Sandbox.h"
 #import <QuickLook/QuickLook.h>
+#import "FPSLabel.h"
 #import "NetworkHelper.h"
 
 #define MLBIsStringEmpty(string)                    (nil == string || (NSNull *)string == [NSNull null] || [@"" isEqualToString:string])

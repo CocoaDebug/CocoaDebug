@@ -19,9 +19,9 @@ class ViewController: UIViewController {
         print("hello world blue", color: UIColor.red)
         print_UNICODE("unicode转换为中文")
 
-        testHTTP()
-        testRedirect()
-        test_console_WKWebView()
+//        testHTTP()
+//        testRedirect()
+//        test_console_WKWebView()
         test_console_UIWebView()
     }
     
