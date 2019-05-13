@@ -17,10 +17,10 @@
 
 @interface MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) UISearchController *searchController;
+//@property (strong, nonatomic) UISearchController *searchController;
 
 @property (strong, nonatomic) NSMutableArray<MLBFileInfo *> *dataSource;
-@property (strong, nonatomic) NSMutableArray<MLBFileInfo *> *filteredDataSource;
+//@property (strong, nonatomic) NSMutableArray<MLBFileInfo *> *filteredDataSource;
 
 @property (strong, nonatomic) MLBFileInfo *previewingFileInfo;
 @property (strong, nonatomic) MLBFileInfo *deletingFileInfo;
@@ -100,19 +100,19 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.tableView registerClass:[MLBFileTableViewCell class] forCellReuseIdentifier:MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-        self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
-        self.searchController.dimsBackgroundDuringPresentation = NO;
-        self.searchController.searchResultsUpdater = self;
-        self.searchController.searchBar.delegate = self;
-        self.searchController.delegate = self;
-        
-        self.tableView.tableHeaderView = self.searchController.searchBar;
-    } else {
-        
-    }
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+//        self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+//        self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//        self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+//        self.searchController.dimsBackgroundDuringPresentation = NO;
+//        self.searchController.searchResultsUpdater = self;
+//        self.searchController.searchBar.delegate = self;
+//        self.searchController.delegate = self;
+//
+//        self.tableView.tableHeaderView = self.searchController.searchBar;
+//    } else {
+//
+//    }
 }
 
 - (void)registerForPreviewing {
@@ -137,29 +137,29 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [self updateToolbarItems];
             if (self->_isFirstAppear) {
                 self->_isFirstAppear = NO;
-                if (self.searchController) {
-                    CGPoint point = CGPointMake(0, CGRectGetHeight(self.searchController.searchBar.frame) - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) - CGRectGetHeight(self.navigationController.navigationBar.frame));
-                    [self.tableView setContentOffset:point animated:NO];
-                }
+//                if (self.searchController) {
+//                    CGPoint point = CGPointMake(0, CGRectGetHeight(self.searchController.searchBar.frame) - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame) - CGRectGetHeight(self.navigationController.navigationBar.frame));
+//                    [self.tableView setContentOffset:point animated:NO];
+//                }
             }
         });
     });
 }
 
 - (void)filterContentsForSearchText:(NSString *)text {
-    if (nil == self.filteredDataSource) {
-        self.filteredDataSource = [NSMutableArray array];
-    }
-    
-    [self.filteredDataSource removeAllObjects];
-    [self.filteredDataSource addObjectsFromArray:[self.dataSource filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.displayName CONTAINS[cd] %@", text]]];
+//    if (nil == self.filteredDataSource) {
+//        self.filteredDataSource = [NSMutableArray array];
+//    }
+//
+//    [self.filteredDataSource removeAllObjects];
+//    [self.filteredDataSource addObjectsFromArray:[self.dataSource filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.displayName CONTAINS[cd] %@", text]]];
     [self.tableView reloadData];
 }
 
 - (MLBFileInfo *)fileInfoAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.searchController && self.searchController.isActive) {
-        return self.filteredDataSource[indexPath.row];
-    }
+//    if (self.searchController && self.searchController.isActive) {
+//        return self.filteredDataSource[indexPath.row];
+//    }
     
     return self.dataSource[indexPath.row];
 }
@@ -287,10 +287,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.tableView.editing = YES;
     self.editItem.title = [NSBundle mlb_localizedStringForKey:@"cancel"];
     self.editItem.style = UIBarButtonItemStyleDone;
-    if (self.searchController) {
-        self.searchController.searchBar.userInteractionEnabled = NO;
-        self.searchController.searchBar.alpha = 0.4;
-    }
+//    if (self.searchController) {
+//        self.searchController.searchBar.userInteractionEnabled = NO;
+//        self.searchController.searchBar.alpha = 0.4;
+//    }
     
     [self.navigationController setToolbarHidden:NO animated:YES];
     
@@ -310,10 +310,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.tableView.editing = NO;
     self.editItem.title = @"Edit";
     self.editItem.style = UIBarButtonItemStylePlain;
-    if (self.searchController) {
-        self.searchController.searchBar.userInteractionEnabled = YES;
-        self.searchController.searchBar.alpha = 1.0;
-    }
+//    if (self.searchController) {
+//        self.searchController.searchBar.userInteractionEnabled = YES;
+//        self.searchController.searchBar.alpha = 1.0;
+//    }
     
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
@@ -399,12 +399,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)deleteSelectedFile {
     if ([self deleteFile:self.deletingFileInfo]) {
         NSInteger index = -1;
-        if (self.searchController && self.searchController.isActive) {
-            index = [self.filteredDataSource indexOfObject:self.deletingFileInfo];
-            [self.filteredDataSource removeObject:self.deletingFileInfo];
-        } else {
+//        if (self.searchController && self.searchController.isActive) {
+//            index = [self.filteredDataSource indexOfObject:self.deletingFileInfo];
+//            [self.filteredDataSource removeObject:self.deletingFileInfo];
+//        } else {
             index = [self.dataSource indexOfObject:self.deletingFileInfo];
-        }
+//        }
         
         [self.dataSource removeObject:self.deletingFileInfo];
         if (index >= 0) {
@@ -438,11 +438,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.searchController && self.searchController.isActive) {
-        return self.filteredDataSource.count;
-    } else {
+//    if (self.searchController && self.searchController.isActive) {
+//        return self.filteredDataSource.count;
+//    } else {
         return self.dataSource.count;
-    }
+//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -504,9 +504,9 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [self updateToolbarDeleteItem];
         }
     } else {
-        if (self.searchController) {
-            self.searchController.active = NO;
-        }
+//        if (self.searchController) {
+//            self.searchController.active = NO;
+//        }
         
         [self.navigationController pushViewController:[self viewControllerWithFileInfo:fileInfo] animated:YES];
     }
