@@ -322,7 +322,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.disableHTMLConsoleMonitoring = disableHTMLConsoleMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         
-        let _ = OCLogStoreManager.shared()
+        let _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
@@ -336,26 +336,26 @@ extension CocoaDebug {
         //log
         if disableLogMonitoring == true {
             LogHelper.shared.enable = false
-            OCLogHelper.shared()?.enable = false
+            _OCLogHelper.shared()?.enable = false
         }else{
             LogHelper.shared.enable = true
-            OCLogHelper.shared()?.enable = true
+            _OCLogHelper.shared()?.enable = true
         }
         
         //network
         if disableNetworkMonitoring == true {
-            NetworkHelper.shared().disable()
+            _NetworkHelper.shared().disable()
         }else{
-            NetworkHelper.shared().enable()
+            _NetworkHelper.shared().enable()
         }
     }
     
     ///deinit
     static func deinitializationMethod() {
         WindowHelper.shared.disable()
-        NetworkHelper.shared().disable()
+        _NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
-        OCLogHelper.shared()?.enable = false
+        _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false

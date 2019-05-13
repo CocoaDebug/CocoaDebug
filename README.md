@@ -38,6 +38,8 @@
 
 - [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`). (**optional**)
 
+- [x] Support `JSON` and Google's `Protocol buffers`
+
 ## Installation
 
 ### CocoaPods
@@ -93,14 +95,14 @@ github "CocoaDebug/CocoaDebug"
         [CocoaDebug enable];
     #endif
 	
-	//Step 3. (PrefixHeader.pch)
-    #ifdef DEBUG
-        #import "ObjcLog.h"
-    #endif
-    
     //Step 3. (PrefixHeader.pch)
     #ifdef DEBUG
-        #define NSLog(fmt, ...) [ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+        #import "_ObjcLog.h"
+    #endif
+	
+	//Step 4. (PrefixHeader.pch)
+    #ifdef DEBUG
+        #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
     #else
         #define NSLog(fmt, ...) nil
     #endif

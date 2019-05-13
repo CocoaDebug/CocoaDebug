@@ -30,16 +30,16 @@ class Bubble: UIView {
     public let width: CGFloat = _width
     public let height: CGFloat = _height
     
-    private lazy var memoryLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:4, width:_width, height:16))
+    private lazy var memoryLabel: _WHDebugConsoleLabel? = {
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:4, width:_width, height:16))
     }()
     
-    private lazy var fpsLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:24, width:_width, height:16))
+    private lazy var fpsLabel: _WHDebugConsoleLabel? = {
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:24, width:_width, height:16))
     }()
     
-    private lazy var cpuLabel: WHDebugConsoleLabel? = {
-        return WHDebugConsoleLabel(frame: CGRect(x:0, y:44, width:_width, height:16))
+    private lazy var cpuLabel: _WHDebugConsoleLabel? = {
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:44, width:_width, height:16))
     }()
     
     
@@ -48,7 +48,7 @@ class Bubble: UIView {
         if CocoaDebugSettings.shared.bubbleFrameX != 0 && CocoaDebugSettings.shared.bubbleFrameY != 0 {
             return CGPoint(x: CGFloat(CocoaDebugSettings.shared.bubbleFrameX), y: CGFloat(CocoaDebugSettings.shared.bubbleFrameY))
         }
-        return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*6, y: UIScreen.main.bounds.size.height/2 - _height/2)
+        return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
     }
     
     static var size: CGSize {return CGSize(width: _width, height: _height)}
@@ -201,13 +201,13 @@ class Bubble: UIView {
         }
         
         //
-        WHDebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+        _WHDebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.fpsLabel?.update(with: .FPS, value: value)
         }
-        WHDebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+        _WHDebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.memoryLabel?.update(with: .memory, value: value)
         }
-        WHDebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+        _WHDebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.cpuLabel?.update(with: .CPU, value: value)
         }
     }
@@ -317,10 +317,10 @@ class Bubble: UIView {
                 finalY += Double(velocity.y) * durationAnimation
             }
             
-            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6) {
-                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6)
-            } else if finalY < Double(self.height/8*6) + 20 {
-                finalY = Double(self.height/8*6) + 20 //status bar height
+            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5) {
+                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*5)
+            } else if finalY < Double(self.height/8*5) + 20 {
+                finalY = Double(self.height/8*5) + 20 //status bar height
             }
             
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in
