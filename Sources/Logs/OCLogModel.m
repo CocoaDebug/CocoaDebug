@@ -16,6 +16,10 @@
 {
     if (self = [super init]) {
         
+        if ([fileInfo isEqualToString:@"TCP|TCP|1"]) {
+            fileInfo = @"TCP\n";
+        }
+        
         self.Id = [[NSUUID UUID] UUIDString];
         self.fileInfo = fileInfo;
         self.date = [NSDate date];
