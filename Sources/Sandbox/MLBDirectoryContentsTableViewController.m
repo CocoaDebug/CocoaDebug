@@ -498,8 +498,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     cell.imageView.image = [MLBImageResources fileTypeImageNamed:fileInfo.typeImageName];
     cell.textLabel.text = [Sandboxer shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
-    cell.detailTextLabel.text = fileInfo.modificationDateText;
+//    cell.detailTextLabel.text = fileInfo.modificationDateText;
     cell.accessoryType = fileInfo.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+    
+    //liman
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:fileInfo.modificationDateText];
+    if ([attributedString length] >= 25) {
+        [attributedString setAttributes:@{NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 25)];
+    }
+    cell.detailTextLabel.attributedText = [attributedString copy];
     
     return cell;
 }
