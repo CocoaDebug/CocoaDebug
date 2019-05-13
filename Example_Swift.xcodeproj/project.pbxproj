@@ -26,6 +26,15 @@
 		3870B7BB22884F8400D728BC /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */; };
 		3870B7BC22884F8400D728BC /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */; };
 		3870B7BD22884F8400D728BC /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */; };
+		38715BE322896E8700322BC2 /* MLBFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BD422896E8700322BC2 /* MLBFileTableViewCell.m */; };
+		38715BE422896E8700322BC2 /* SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BD622896E8700322BC2 /* SandboxerHelper.m */; };
+		38715BE522896E8700322BC2 /* Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BDC22896E8700322BC2 /* Sandboxer.m */; };
+		38715BE622896E8700322BC2 /* NSBundle+Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BDD22896E8700322BC2 /* NSBundle+Sandboxer.m */; };
+		38715BE722896E8700322BC2 /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BDE22896E8700322BC2 /* MLBFileInfo.m */; };
+		38715BE822896E8700322BC2 /* MLBImageResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BDF22896E8700322BC2 /* MLBImageResources.m */; };
+		38715BE922896E8700322BC2 /* MLBFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BE122896E8700322BC2 /* MLBFilePreviewController.m */; };
+		38715BEA22896E8700322BC2 /* MLBDirectoryContentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BE222896E8700322BC2 /* MLBDirectoryContentsTableViewController.m */; };
+		38715BEC22896F2800322BC2 /* SandboxerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38715BEB22896F2800322BC2 /* SandboxerResources.bundle */; };
 		3874295F2283108700E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296422831FF900E29D40 /* _TCPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3874295D2283108700E29D40 /* _TCPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -580,6 +589,24 @@
 		384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
 		384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
 		384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
+		38715BD222896E8700322BC2 /* NSBundle+Sandboxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Sandboxer.h"; sourceTree = "<group>"; };
+		38715BD322896E8700322BC2 /* MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileInfo.h; sourceTree = "<group>"; };
+		38715BD422896E8700322BC2 /* MLBFileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileTableViewCell.m; sourceTree = "<group>"; };
+		38715BD522896E8700322BC2 /* Sandboxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandboxer.h; sourceTree = "<group>"; };
+		38715BD622896E8700322BC2 /* SandboxerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxerHelper.m; sourceTree = "<group>"; };
+		38715BD722896E8700322BC2 /* MLBImageResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBImageResources.h; sourceTree = "<group>"; };
+		38715BD822896E8700322BC2 /* Sandboxer-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sandboxer-Header.h"; sourceTree = "<group>"; };
+		38715BD922896E8700322BC2 /* MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
+		38715BDA22896E8700322BC2 /* MLBFilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFilePreviewController.h; sourceTree = "<group>"; };
+		38715BDB22896E8700322BC2 /* MLBFileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileTableViewCell.h; sourceTree = "<group>"; };
+		38715BDC22896E8700322BC2 /* Sandboxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sandboxer.m; sourceTree = "<group>"; };
+		38715BDD22896E8700322BC2 /* NSBundle+Sandboxer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Sandboxer.m"; sourceTree = "<group>"; };
+		38715BDE22896E8700322BC2 /* MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileInfo.m; sourceTree = "<group>"; };
+		38715BDF22896E8700322BC2 /* MLBImageResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBImageResources.m; sourceTree = "<group>"; };
+		38715BE022896E8700322BC2 /* SandboxerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxerHelper.h; sourceTree = "<group>"; };
+		38715BE122896E8700322BC2 /* MLBFilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFilePreviewController.m; sourceTree = "<group>"; };
+		38715BE222896E8700322BC2 /* MLBDirectoryContentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBDirectoryContentsTableViewController.m; sourceTree = "<group>"; };
+		38715BEB22896F2800322BC2 /* SandboxerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SandboxerResources.bundle; sourceTree = "<group>"; };
 		3874295D2283108700E29D40 /* _TCPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
 		3874295E2283108700E29D40 /* _TCPLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
 		387F39532282B492001D66D8 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
@@ -982,9 +1009,35 @@
 			path = WHDebugTool;
 			sourceTree = "<group>";
 		};
+		38715BD122896E8700322BC2 /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				38715BEB22896F2800322BC2 /* SandboxerResources.bundle */,
+				38715BD822896E8700322BC2 /* Sandboxer-Header.h */,
+				38715BD322896E8700322BC2 /* MLBFileInfo.h */,
+				38715BDE22896E8700322BC2 /* MLBFileInfo.m */,
+				38715BE022896E8700322BC2 /* SandboxerHelper.h */,
+				38715BD622896E8700322BC2 /* SandboxerHelper.m */,
+				38715BDB22896E8700322BC2 /* MLBFileTableViewCell.h */,
+				38715BD422896E8700322BC2 /* MLBFileTableViewCell.m */,
+				38715BDA22896E8700322BC2 /* MLBFilePreviewController.h */,
+				38715BE122896E8700322BC2 /* MLBFilePreviewController.m */,
+				38715BD522896E8700322BC2 /* Sandboxer.h */,
+				38715BDC22896E8700322BC2 /* Sandboxer.m */,
+				38715BD222896E8700322BC2 /* NSBundle+Sandboxer.h */,
+				38715BDD22896E8700322BC2 /* NSBundle+Sandboxer.m */,
+				38715BD722896E8700322BC2 /* MLBImageResources.h */,
+				38715BDF22896E8700322BC2 /* MLBImageResources.m */,
+				38715BD922896E8700322BC2 /* MLBDirectoryContentsTableViewController.h */,
+				38715BE222896E8700322BC2 /* MLBDirectoryContentsTableViewController.m */,
+			);
+			path = Sandbox;
+			sourceTree = "<group>";
+		};
 		387F39512282B492001D66D8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38715BD122896E8700322BC2 /* Sandbox */,
 				384E2F2422884E010031DFBF /* WHDebugTool */,
 				387F3D982282C63E001D66D8 /* protobuf */,
 				387F39522282B492001D66D8 /* Core */,
@@ -1795,6 +1848,7 @@
 				387F3A3C2282B493001D66D8 /* _icon_file_type_close@2x.png in Resources */,
 				387F3A3E2282B493001D66D8 /* _icon_file_type_sandbox@2x.png in Resources */,
 				387F3A732282B493001D66D8 /* icon_file_type_dmg@2x.png in Resources */,
+				38715BEC22896F2800322BC2 /* SandboxerResources.bundle in Resources */,
 				387F3AA42282B493001D66D8 /* icon_file_type_7z@3x.png in Resources */,
 				387F3A7F2282B493001D66D8 /* icon_file_type_gif@2x.png in Resources */,
 				387F3A482282B493001D66D8 /* icon_file_type_zip@3x.png in Resources */,
@@ -2062,6 +2116,7 @@
 				EAF58046204E73C3001CA56D /* ASIWebPageRequest.m in Sources */,
 				387F3AC72282B493001D66D8 /* _ObjcLog.m in Sources */,
 				EAF58014204E73C3001CA56D /* Alamofire.swift in Sources */,
+				38715BE822896E8700322BC2 /* MLBImageResources.m in Sources */,
 				387F3DE02282C63E001D66D8 /* _Type.pbobjc.m in Sources */,
 				EAF58026204E73C3001CA56D /* Deprecated.swift in Sources */,
 				EAF5803F204E73C3001CA56D /* ASIHTTPRequest.m in Sources */,
@@ -2071,11 +2126,14 @@
 				EAF58035204E73C3001CA56D /* ASICloudFilesCDNRequest.m in Sources */,
 				387F3ADA2282B493001D66D8 /* _NSObject+Categories.m in Sources */,
 				EAF58025204E73C3001CA56D /* Networking+POST.swift in Sources */,
+				38715BE522896E8700322BC2 /* Sandboxer.m in Sources */,
 				387F3AC02282B493001D66D8 /* _OCLoggerFormat.m in Sources */,
 				EAF5801C204E73C3001CA56D /* Networking+GET.swift in Sources */,
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
 				EAF5802E204E73C3001CA56D /* Operation.swift in Sources */,
 				387F3DDB2282C63E001D66D8 /* _GPBExtensionInternals.m in Sources */,
+				38715BE322896E8700322BC2 /* MLBFileTableViewCell.m in Sources */,
+				38715BE622896E8700322BC2 /* NSBundle+Sandboxer.m in Sources */,
 				384E2F2F22884E010031DFBF /* _WHDebugMonitor.m in Sources */,
 				387F3A372282B493001D66D8 /* AboutViewController.swift in Sources */,
 				384E2F3022884E010031DFBF /* _WHDebugConsoleLabel.m in Sources */,
@@ -2084,6 +2142,7 @@
 				EAF5803C204E73C3001CA56D /* ASIS3Request.m in Sources */,
 				387F3A2A2282B493001D66D8 /* CocoaDebug.swift in Sources */,
 				EAF5800D204E73C3001CA56D /* DispatchQueue+Alamofire.swift in Sources */,
+				38715BE922896E8700322BC2 /* MLBFilePreviewController.m in Sources */,
 				387F3AB52282B493001D66D8 /* NetworkCell.swift in Sources */,
 				EAF5803E204E73C3001CA56D /* ASIS3BucketObject.m in Sources */,
 				387F3AB62282B493001D66D8 /* NetworkViewController.swift in Sources */,
@@ -2108,6 +2167,7 @@
 				387F3AC52282B493001D66D8 /* LogViewController.swift in Sources */,
 				387F3DEA2282C63E001D66D8 /* _GPBWireFormat.m in Sources */,
 				387F3AD52282B493001D66D8 /* CocoaDebugViewController.swift in Sources */,
+				38715BE722896E8700322BC2 /* MLBFileInfo.m in Sources */,
 				EAF58044204E73C3001CA56D /* ASINetworkQueue.m in Sources */,
 				EAF58010204E73C3001CA56D /* AFError.swift in Sources */,
 				387F3DD82282C63E001D66D8 /* _GPBExtensionRegistry.m in Sources */,
@@ -2154,6 +2214,7 @@
 				387F3DE52282C63E001D66D8 /* _FieldMask.pbobjc.m in Sources */,
 				EAF5800B204E73C3001CA56D /* NetworkReachabilityManager.swift in Sources */,
 				387F3DDA2282C63E001D66D8 /* _GPBUtilities.m in Sources */,
+				38715BEA22896E8700322BC2 /* MLBDirectoryContentsTableViewController.m in Sources */,
 				EAF58037204E73C3001CA56D /* ASICloudFilesObject.m in Sources */,
 				EAF5801B204E73C3001CA56D /* Networking+DELETE.swift in Sources */,
 				EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */,
@@ -2164,6 +2225,7 @@
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
 				384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */,
 				387F3A2F2282B493001D66D8 /* CrashStoreManager.swift in Sources */,
+				38715BE422896E8700322BC2 /* SandboxerHelper.m in Sources */,
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
 				EAF5800A204E73C3001CA56D /* MultipartFormData.swift in Sources */,
 				EAF58012204E73C3001CA56D /* Notifications.swift in Sources */,

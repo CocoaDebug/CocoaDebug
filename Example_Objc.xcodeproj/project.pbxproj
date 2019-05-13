@@ -168,12 +168,6 @@
 		3870B97922884FC000D728BC /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870B86F22884FBF00D728BC /* LogViewController.swift */; };
 		3870B97A22884FC000D728BC /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87122884FBF00D728BC /* LogHelper.swift */; };
 		3870B97B22884FC000D728BC /* _ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87322884FBF00D728BC /* _ObjcLog.m */; };
-		3870B97C22884FC000D728BC /* _SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87522884FBF00D728BC /* _SandboxViewController.m */; };
-		3870B97D22884FC000D728BC /* _FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87822884FBF00D728BC /* _FileTableViewCell.m */; };
-		3870B97E22884FC000D728BC /* _FilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87922884FBF00D728BC /* _FilePreviewController.m */; };
-		3870B97F22884FC000D728BC /* _Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87B22884FBF00D728BC /* _Sandbox.m */; };
-		3870B98022884FC000D728BC /* _SandboxHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B87D22884FBF00D728BC /* _SandboxHelper.m */; };
-		3870B98122884FC000D728BC /* _MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B88022884FBF00D728BC /* _MLBFileInfo.m */; };
 		3870B98222884FC000D728BC /* _UIWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B88222884FBF00D728BC /* _UIWebView+Swizzling.m */; };
 		3870B98322884FC000D728BC /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B88322884FBF00D728BC /* _Swizzling.m */; };
 		3870B98422884FC000D728BC /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3870B88422884FBF00D728BC /* _NSObject+UIDebuggingInformationOverlay.m */; };
@@ -429,18 +423,6 @@
 		3870B87122884FBF00D728BC /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		3870B87222884FBF00D728BC /* _OCLogStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogStoreManager.h; sourceTree = "<group>"; };
 		3870B87322884FBF00D728BC /* _ObjcLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ObjcLog.m; sourceTree = "<group>"; };
-		3870B87522884FBF00D728BC /* _SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SandboxViewController.m; sourceTree = "<group>"; };
-		3870B87622884FBF00D728BC /* _Sandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Sandbox.h; sourceTree = "<group>"; };
-		3870B87722884FBF00D728BC /* _SandboxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SandboxHelper.h; sourceTree = "<group>"; };
-		3870B87822884FBF00D728BC /* _FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FileTableViewCell.m; sourceTree = "<group>"; };
-		3870B87922884FBF00D728BC /* _FilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FilePreviewController.m; sourceTree = "<group>"; };
-		3870B87A22884FBF00D728BC /* _MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBFileInfo.h; sourceTree = "<group>"; };
-		3870B87B22884FBF00D728BC /* _Sandbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Sandbox.m; sourceTree = "<group>"; };
-		3870B87C22884FBF00D728BC /* _SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SandboxViewController.h; sourceTree = "<group>"; };
-		3870B87D22884FBF00D728BC /* _SandboxHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SandboxHelper.m; sourceTree = "<group>"; };
-		3870B87E22884FBF00D728BC /* _FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FileTableViewCell.h; sourceTree = "<group>"; };
-		3870B87F22884FBF00D728BC /* _FilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FilePreviewController.h; sourceTree = "<group>"; };
-		3870B88022884FBF00D728BC /* _MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBFileInfo.m; sourceTree = "<group>"; };
 		3870B88222884FBF00D728BC /* _UIWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_UIWebView+Swizzling.m"; sourceTree = "<group>"; };
 		3870B88322884FBF00D728BC /* _Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Swizzling.m; sourceTree = "<group>"; };
 		3870B88422884FBF00D728BC /* _NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
@@ -584,7 +566,6 @@
 				3870B84E22884FBF00D728BC /* Network */,
 				3870B85B22884FBF00D728BC /* CustomHTTPProtocol */,
 				3870B86422884FBF00D728BC /* Logs */,
-				3870B87422884FBF00D728BC /* Sandbox */,
 				3870B88122884FBF00D728BC /* Swizzling */,
 				3870B88722884FBF00D728BC /* Window */,
 				3870B88F22884FBF00D728BC /* WHDebugTool */,
@@ -823,25 +804,6 @@
 				3870B87322884FBF00D728BC /* _ObjcLog.m */,
 			);
 			path = Logs;
-			sourceTree = "<group>";
-		};
-		3870B87422884FBF00D728BC /* Sandbox */ = {
-			isa = PBXGroup;
-			children = (
-				3870B87522884FBF00D728BC /* _SandboxViewController.m */,
-				3870B87622884FBF00D728BC /* _Sandbox.h */,
-				3870B87722884FBF00D728BC /* _SandboxHelper.h */,
-				3870B87822884FBF00D728BC /* _FileTableViewCell.m */,
-				3870B87922884FBF00D728BC /* _FilePreviewController.m */,
-				3870B87A22884FBF00D728BC /* _MLBFileInfo.h */,
-				3870B87B22884FBF00D728BC /* _Sandbox.m */,
-				3870B87C22884FBF00D728BC /* _SandboxViewController.h */,
-				3870B87D22884FBF00D728BC /* _SandboxHelper.m */,
-				3870B87E22884FBF00D728BC /* _FileTableViewCell.h */,
-				3870B87F22884FBF00D728BC /* _FilePreviewController.h */,
-				3870B88022884FBF00D728BC /* _MLBFileInfo.m */,
-			);
-			path = Sandbox;
 			sourceTree = "<group>";
 		};
 		3870B88122884FBF00D728BC /* Swizzling */ = {
@@ -1284,8 +1246,6 @@
 				3870B9A822884FC000D728BC /* _GPBRootObject.m in Sources */,
 				3870B99022884FC000D728BC /* _WHDebugCpuMonitor.m in Sources */,
 				3870B9AA22884FC000D728BC /* _GPBCodedOutputStream.m in Sources */,
-				3870B97E22884FC000D728BC /* _FilePreviewController.m in Sources */,
-				3870B97D22884FC000D728BC /* _FileTableViewCell.m in Sources */,
 				3870B98B22884FC000D728BC /* CocoaDebugWindow.swift in Sources */,
 				3870B98322884FC000D728BC /* _Swizzling.m in Sources */,
 				3870B97A22884FC000D728BC /* LogHelper.swift in Sources */,
@@ -1335,13 +1295,11 @@
 				3870B9A422884FC000D728BC /* _GPBMessage.m in Sources */,
 				3870B97822884FC000D728BC /* LogCell.swift in Sources */,
 				3870B8E922884FBF00D728BC /* Device.swift in Sources */,
-				3870B97C22884FC000D728BC /* _SandboxViewController.m in Sources */,
 				3870B8E122884FBF00D728BC /* DeviceModel.swift in Sources */,
 				EAF58057204E7434001CA56D /* AFHTTPSessionManager.m in Sources */,
 				3870B99822884FC000D728BC /* _Timestamp.pbobjc.m in Sources */,
 				3870B96B22884FC000D728BC /* NetworkDetailCell.swift in Sources */,
 				3870B8E722884FBF00D728BC /* CrashListViewController.swift in Sources */,
-				3870B98022884FC000D728BC /* _SandboxHelper.m in Sources */,
 				EAF58058204E7434001CA56D /* AFURLSessionManager.m in Sources */,
 				EA165F01204D2539001472C1 /* AppDelegate.m in Sources */,
 				3870B96922884FC000D728BC /* NetworkViewController.swift in Sources */,
@@ -1353,7 +1311,6 @@
 				3870B98922884FC000D728BC /* CocoaDebugViewController.swift in Sources */,
 				3870B8E422884FBF00D728BC /* AppInfo.swift in Sources */,
 				3870B97322884FC000D728BC /* _OCLoggerFormat.m in Sources */,
-				3870B97F22884FC000D728BC /* _Sandbox.m in Sources */,
 				3870B97122884FC000D728BC /* _CacheStoragePolicy.m in Sources */,
 				3870B98622884FC000D728BC /* Bubble.swift in Sources */,
 				3870B96622884FC000D728BC /* JsonViewController.swift in Sources */,
@@ -1372,7 +1329,6 @@
 				3870B99522884FC000D728BC /* _GPBUtilities.m in Sources */,
 				3870B9A622884FC000D728BC /* _GPBArray.m in Sources */,
 				3870B99B22884FC000D728BC /* _Type.pbobjc.m in Sources */,
-				3870B98122884FC000D728BC /* _MLBFileInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
