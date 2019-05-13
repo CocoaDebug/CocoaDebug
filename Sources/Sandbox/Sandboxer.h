@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Sandboxer : NSObject
 
@@ -26,5 +27,8 @@
 - (instancetype)init __attribute__((unavailable("Use [Sandboxer shared] or Sandboxer.shared instead.")));
 
 - (void)trigger;
+
+//liman
+- (UINavigationController *)homeDirectoryNavigationController;
 
 @end

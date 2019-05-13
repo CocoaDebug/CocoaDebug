@@ -197,39 +197,39 @@
 #pragma mark - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ////NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ////NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
+    ////NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
     [self.activityIndicatorView stopAnimating];
 }
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ////NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView startAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ////NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    ////NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
+    ////NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
     [self.activityIndicatorView stopAnimating];
 }
 

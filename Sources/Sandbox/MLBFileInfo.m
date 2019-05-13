@@ -26,15 +26,27 @@
         self.URL = URL;
         self.displayName = URL.lastPathComponent;
         self.attributes = [MLBFileInfo attributesWithFileURL:URL];
-        self.modificationDateText = [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate];
         
         if ([self.attributes.fileType isEqualToString:NSFileTypeDirectory]) {
             self.type = MLBFileTypeDirectory;
             self.filesCount = [MLBFileInfo contentCountOfDirectoryAtURL:URL];
+            //liman
+            if ([URL isFileURL]) {
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFolder:URL.path]];
+            }
         } else {
             self.extension = URL.pathExtension;
             self.type = [MLBFileInfo fileTypeWithExtension:self.extension];
             self.filesCount = 0;
+            //liman
+            if ([URL isFileURL]) {
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFile:URL.path]];
+            }
+        }
+        
+        //liman
+        if ([self.modificationDateText containsString:@"[] "]) {
+            self.modificationDateText = [[self.modificationDateText mutableCopy] stringByReplacingOccurrencesOfString:@"[] " withString:@""];
         }
     }
     
@@ -52,7 +64,7 @@
 //        NSString *fileExtension = [self.URL pathExtension];
 //        NSString *UTI = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)fileExtension, NULL);
 //        NSString *contentType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)UTI, kUTTagClassMIMEType);
-//        NSLog(@"%@, UTI = %@, contentType = %@", self.URL.lastPathComponent, UTI, contentType);
+//        ////NSLog(@"%@, UTI = %@, contentType = %@", self.URL.lastPathComponent, UTI, contentType);
         
         switch (self.type) {
             case MLBFileTypeUnknown: _typeImageName = @"icon_file_type_default"; break;
@@ -172,11 +184,11 @@
 //    NSError *error;
 //    BOOL rtn = [url getResourceValue:&isDir forKey:NSURLIsDirectoryKey error:&error];
 //    if (!rtn) {
-//        NSLog(@"%@, getResourceValue failed", NSStringFromSelector(_cmd));
+//        ////NSLog(@"%@, getResourceValue failed", NSStringFromSelector(_cmd));
 //    }
 //    
 //    if (error) {
-//        NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//        ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
 //    }
 //    
 //    return isDir.boolValue;
@@ -186,14 +198,14 @@
     NSError *error;
     NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:&error];
     if (error) {
-        NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//        ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
     }
     
     return attributes;
 }
 
 + (NSMutableArray<MLBFileInfo *> *)contentsOfDirectoryAtURL:(NSURL *)URL {
-//    NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
+//    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
     NSMutableArray *fileInfos = @[].mutableCopy;
     BOOL isDir = NO;
     BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:URL.path isDirectory:&isDir];
@@ -207,7 +219,7 @@
                 [fileInfos addObject:fileInfo];
             }
         } else {
-            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//            ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     
@@ -215,7 +227,7 @@
 }
 
 + (NSUInteger)contentCountOfDirectoryAtURL:(NSURL *)URL {
-//    NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
+//    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
     NSUInteger count = 0;
     BOOL isDir = NO;
     BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:URL.path isDirectory:&isDir];
@@ -228,7 +240,7 @@
                 count++;
             }
         } else {
-            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//            ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     

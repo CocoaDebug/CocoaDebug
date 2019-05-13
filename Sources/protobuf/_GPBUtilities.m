@@ -565,16 +565,18 @@ void _GPBSetRetainedObjectIvarWithFieldInternal(_GPBMessage *self,
     // field, and fall back on the default value. The warning below will only
     // appear in debug, but the could should be changed so the intention is
     // clear.
-    NSString *hasSel = NSStringFromSelector(field->hasOrCountSel_);
-    NSString *propName = field.name;
-    NSString *className = self.descriptor.name;
-    NSLog(@"warning: '%@.%@ = nil;' is not clearly defined for fields with "
-          @"default values. Please use '%@.%@ = %@' if you want to set it to "
-          @"empty, or call '%@.%@ = NO' to reset it to it's default value of "
-          @"'%@'. Defaulting to resetting default value.",
-          className, propName, className, propName,
-          (fieldType == _GPBDataTypeString) ? @"@\"\"" : @"_GPBEmptyNSData()",
-          className, hasSel, field.defaultValue.valueString);
+      
+//    NSString *hasSel = NSStringFromSelector(field->hasOrCountSel_);
+//    NSString *propName = field.name;
+//    NSString *className = self.descriptor.name;
+      
+//    //NSLog(@"warning: '%@.%@ = nil;' is not clearly defined for fields with "
+//          @"default values. Please use '%@.%@ = %@' if you want to set it to "
+//          @"empty, or call '%@.%@ = NO' to reset it to it's default value of "
+//          @"'%@'. Defaulting to resetting default value.",
+//          className, propName, className, propName,
+//          (fieldType == _GPBDataTypeString) ? @"@\"\"" : @"_GPBEmptyNSData()",
+//          className, hasSel, field.defaultValue.valueString);
     // Note: valueString, depending on the type, it could easily be
     // valueData/valueMessage.
   }

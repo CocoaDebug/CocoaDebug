@@ -1235,10 +1235,11 @@ static _GPBUnknownFieldSet *GetOrMakeUnknownFields(_GPBMessage *self) {
     // This really shouldn't happen. The only way writeToCodedOutputStream:
     // could throw is if something in the library has a bug and the
     // serializedSize was wrong.
-#ifdef DEBUG
-    NSLog(@"%@: Internal exception while building message data: %@",
-          [self class], exception);
-#endif
+      
+//#ifdef DEBUG
+//    NSLog(@"%@: Internal exception while building message data: %@",
+//          [self class], exception);
+//#endif
     data = nil;
   }
   [stream release];
@@ -1259,10 +1260,12 @@ static _GPBUnknownFieldSet *GetOrMakeUnknownFields(_GPBMessage *self) {
     // This really shouldn't happen.  The only way writeToCodedOutputStream:
     // could throw is if something in the library has a bug and the
     // serializedSize was wrong.
-#ifdef DEBUG
-    NSLog(@"%@: Internal exception while building message delimitedData: %@",
-          [self class], exception);
-#endif
+      
+//#ifdef DEBUG
+//    NSLog(@"%@: Internal exception while building message delimitedData: %@",
+//          [self class], exception);
+//#endif
+      
     // If it happens, truncate.
     data.length = 0;
   }
@@ -3266,10 +3269,11 @@ static void ResolveIvarSet(__unsafe_unretained _GPBFieldDescriptor *field,
     // _GPBMessageDropUnknownFieldsRecursively()), but that has the potential to
     // be expensive and could slow down serialization in DEBUG enought to cause
     // developers other problems.
-    NSLog(@"Warning: writing out a _GPBMessage (%@) via NSCoding and it"
-          @" has %ld extensions; when read back in, those fields will be"
-          @" in the unknownFields property instead.",
-          [self class], (long)extensionMap_.count);
+      
+//    NSLog(@"Warning: writing out a _GPBMessage (%@) via NSCoding and it"
+//          @" has %ld extensions; when read back in, those fields will be"
+//          @" in the unknownFields property instead.",
+//          [self class], (long)extensionMap_.count);
   }
 #endif
   NSData *data = [self data];

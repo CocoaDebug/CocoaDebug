@@ -704,7 +704,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)cancelOnRequestThread
 {
 	#if DEBUG_REQUEST_STATUS
-	//NSLog(@"[STATUS] Request cancelled: %@",self);
+	//////NSLog(@"[STATUS] Request cancelled: %@",self);
 	#endif
     
 	[[self cancelledLock] lock];
@@ -794,7 +794,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)startSynchronous
 {
 #if DEBUG_REQUEST_STATUS || DEBUG_THROTTLING
-	//NSLog(@"[STATUS] Starting synchronous request %@",self);
+	//////NSLog(@"[STATUS] Starting synchronous request %@",self);
 #endif
 	[self setSynchronous:YES];
 	[self setRunLoopMode:ASIHTTPRequestRunLoopMode];
@@ -819,7 +819,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)startAsynchronous
 {
 #if DEBUG_REQUEST_STATUS || DEBUG_THROTTLING
-	//NSLog(@"[STATUS] Starting asynchronous request %@",self);
+	//////NSLog(@"[STATUS] Starting asynchronous request %@",self);
 #endif
 	[sharedQueue addOperation:self];
 }
@@ -972,7 +972,7 @@ static NSOperationQueue *sharedQueue = nil;
 	// Do we want to send credentials before we are asked for them?
 	if (![self shouldPresentCredentialsBeforeChallenge]) {
 		#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ will not send credentials to the server until it asks for them",self);
+		//////NSLog(@"[AUTH] Request %@ will not send credentials to the server until it asks for them",self);
 		#endif
 		return;
 	}
@@ -987,7 +987,7 @@ static NSOperationQueue *sharedQueue = nil;
 			[self addBasicAuthenticationHeaderWithUsername:[self username] andPassword:[self password]];
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ has a username and password set, and was manually configured to use BASIC. Will send credentials without waiting for an authentication challenge",self);	
+			//////NSLog(@"[AUTH] Request %@ has a username and password set, and was manually configured to use BASIC. Will send credentials without waiting for an authentication challenge",self);	
 			#endif
 
 		} else {
@@ -1006,12 +1006,12 @@ static NSOperationQueue *sharedQueue = nil;
 						if (CFHTTPMessageApplyCredentialDictionary(request, (CFHTTPAuthenticationRef)[credentials objectForKey:@"Authentication"], (CFDictionaryRef)[credentials objectForKey:@"Credentials"], NULL)) {
 							[self setAuthenticationScheme:[credentials objectForKey:@"AuthenticationScheme"]];
 							#if DEBUG_HTTP_AUTHENTICATION
-							//NSLog(@"[AUTH] Request %@ found cached credentials (%@), will reuse without waiting for an authentication challenge",self,[credentials objectForKey:@"AuthenticationScheme"]);
+							//////NSLog(@"[AUTH] Request %@ found cached credentials (%@), will reuse without waiting for an authentication challenge",self,[credentials objectForKey:@"AuthenticationScheme"]);
 							#endif
 						} else {
 							[[self class] removeAuthenticationCredentialsFromSessionStore:[credentials objectForKey:@"Credentials"]];
 							#if DEBUG_HTTP_AUTHENTICATION
-							//NSLog(@"[AUTH] Failed to apply cached credentials to request %@. These will be removed from the session store, and this request will wait for an authentication challenge",self);
+							//////NSLog(@"[AUTH] Failed to apply cached credentials to request %@. These will be removed from the session store, and this request will wait for an authentication challenge",self);
 							#endif
 						}
 
@@ -1021,7 +1021,7 @@ static NSOperationQueue *sharedQueue = nil;
 						NSDictionary *usernameAndPassword = [credentials objectForKey:@"Credentials"];
 						[self addBasicAuthenticationHeaderWithUsername:[usernameAndPassword objectForKey:(NSString *)kCFHTTPAuthenticationUsername] andPassword:[usernameAndPassword objectForKey:(NSString *)kCFHTTPAuthenticationPassword]];
 						#if DEBUG_HTTP_AUTHENTICATION
-						//NSLog(@"[AUTH] Request %@ found cached BASIC credentials from a previous request. Will send credentials without waiting for an authentication challenge",self);
+						//////NSLog(@"[AUTH] Request %@ found cached BASIC credentials from a previous request. Will send credentials without waiting for an authentication challenge",self);
 						#endif
 					}
 				}
@@ -1312,7 +1312,7 @@ static NSOperationQueue *sharedQueue = nil;
 			// Check if we should have expired this connection
 			} else if ([[[self connectionInfo] objectForKey:@"expires"] timeIntervalSinceNow] < 0) {
 				#if DEBUG_PERSISTENT_CONNECTIONS
-				//NSLog(@"[CONNECTION] Not re-using connection #%i because it has expired",[[[self connectionInfo] objectForKey:@"id"] intValue]);
+				//////NSLog(@"[CONNECTION] Not re-using connection #%i because it has expired",[[[self connectionInfo] objectForKey:@"id"] intValue]);
 				#endif
 				[persistentConnectionsPool removeObject:[self connectionInfo]];
 				[self setConnectionInfo:nil];
@@ -1320,7 +1320,7 @@ static NSOperationQueue *sharedQueue = nil;
 			} else if ([[self connectionInfo] objectForKey:@"request"] != nil) {
                 //Some other request reused this connection already - we'll have to create a new one
 				#if DEBUG_PERSISTENT_CONNECTIONS
-                //NSLog(@"%@ - Not re-using connection #%i for request #%i because it is already used by request #%i",self,[[[self connectionInfo] objectForKey:@"id"] intValue],[[self requestID] intValue],[[[self connectionInfo] objectForKey:@"request"] intValue]);
+                //////NSLog(@"%@ - Not re-using connection #%i for request #%i because it is already used by request #%i",self,[[[self connectionInfo] objectForKey:@"id"] intValue],[[self requestID] intValue],[[[self connectionInfo] objectForKey:@"request"] intValue]);
 				#endif
                 [self setConnectionInfo:nil];
             }
@@ -1364,7 +1364,7 @@ static NSOperationQueue *sharedQueue = nil;
 		CFReadStreamSetProperty((CFReadStreamRef)[self readStream],  kCFStreamPropertyHTTPAttemptPersistentConnection, kCFBooleanTrue);
 		
 		#if DEBUG_PERSISTENT_CONNECTIONS
-		//NSLog(@"[CONNECTION] Request #%@ will use connection #%i",[self requestID],[[[self connectionInfo] objectForKey:@"id"] intValue]);
+		//////NSLog(@"[CONNECTION] Request #%@ will use connection #%i",[self requestID],[[[self connectionInfo] objectForKey:@"id"] intValue]);
 		#endif
 		
 		
@@ -1375,7 +1375,7 @@ static NSOperationQueue *sharedQueue = nil;
 	
 	} else {
 		#if DEBUG_PERSISTENT_CONNECTIONS
-		//NSLog(@"[CONNECTION] Request %@ will not use a persistent connection",self);
+		//////NSLog(@"[CONNECTION] Request %@ will not use a persistent connection",self);
 		#endif
 	}
 	
@@ -1552,7 +1552,7 @@ static NSOperationQueue *sharedQueue = nil;
 						
 				#if DEBUG_REQUEST_STATUS
 				if ([self totalBytesSent] == [self postLength]) {
-					//NSLog(@"[STATUS] Request %@ finished uploading data",self);
+					//////NSLog(@"[STATUS] Request %@ finished uploading data",self);
 				}
 				#endif
 			}
@@ -2009,7 +2009,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)requestFinished
 {
 #if DEBUG_REQUEST_STATUS || DEBUG_THROTTLING
-	//NSLog(@"[STATUS] Request finished: %@",self);
+	//////NSLog(@"[STATUS] Request finished: %@",self);
 #endif
 	if ([self error] || [self mainRequest]) {
 		return;
@@ -2076,7 +2076,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)failWithError:(NSError *)theError
 {
 #if DEBUG_REQUEST_STATUS || DEBUG_THROTTLING
-	//NSLog(@"[STATUS] Request %@: %@",self,(theError == ASIRequestCancelledError ? @"Cancelled" : @"Failed"));
+	//////NSLog(@"[STATUS] Request %@: %@",self,(theError == ASIRequestCancelledError ? @"Cancelled" : @"Failed"));
 #endif
 	[self setComplete:YES];
 	
@@ -2084,7 +2084,7 @@ static NSOperationQueue *sharedQueue = nil;
 	if (theError && [theError code] != ASIAuthenticationErrorType && [theError code] != ASITooMuchRedirectionErrorType) {
 		[connectionsLock lock];
 		#if DEBUG_PERSISTENT_CONNECTIONS
-		//NSLog(@"[CONNECTION] Request #%@ failed and will invalidate connection #%@",[self requestID],[[self connectionInfo] objectForKey:@"id"]);
+		//////NSLog(@"[CONNECTION] Request #%@ failed and will invalidate connection #%@",[self requestID],[[self connectionInfo] objectForKey:@"id"]);
 		#endif
 		[[self connectionInfo] removeObjectForKey:@"request"];
 		[persistentConnectionsPool removeObject:[self connectionInfo]];
@@ -2152,7 +2152,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 	#if DEBUG_REQUEST_STATUS
 	if ([self totalBytesSent] == [self postLength]) {
-		//NSLog(@"[STATUS] Request %@ received response headers",self);
+		//////NSLog(@"[STATUS] Request %@ received response headers",self);
 	}
 	#endif		
 
@@ -2180,7 +2180,7 @@ static NSOperationQueue *sharedQueue = nil;
 	} else {
 		#if DEBUG_HTTP_AUTHENTICATION
 		if ([self authenticationScheme]) {
-			//NSLog(@"[AUTH] Request %@ has passed %@ authentication",self,[self authenticationScheme]);
+			//////NSLog(@"[AUTH] Request %@ has passed %@ authentication",self,[self authenticationScheme]);
 		}
 		#endif
 	}
@@ -2192,7 +2192,7 @@ static NSOperationQueue *sharedQueue = nil;
 		if (!requestAuthentication && [[self authenticationScheme] isEqualToString:(NSString *)kCFHTTPAuthenticationSchemeBasic] && [self username] && [self password] && [self useSessionPersistence]) {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ passed BASIC authentication, and will save credentials in the session store for future use",self);
+			//////NSLog(@"[AUTH] Request %@ passed BASIC authentication, and will save credentials in the session store for future use",self);
 			#endif
 			
 			NSMutableDictionary *newCredentials = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -2286,7 +2286,7 @@ static NSOperationQueue *sharedQueue = nil;
 						[self setConnectionCanBeReused:YES];
 						[self setPersistentConnectionTimeoutSeconds:timeout];
 						#if DEBUG_PERSISTENT_CONNECTIONS
-							//NSLog(@"[CONNECTION] Got a keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
+							//////NSLog(@"[CONNECTION] Got a keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
 						#endif					
 					}
 				
@@ -2294,7 +2294,7 @@ static NSOperationQueue *sharedQueue = nil;
 				} else {
 					[self setConnectionCanBeReused:YES];
 					#if DEBUG_PERSISTENT_CONNECTIONS
-						//NSLog(@"[CONNECTION] Got no keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
+						//////NSLog(@"[CONNECTION] Got no keep-alive header, will keep this connection open for %f seconds", [self persistentConnectionTimeoutSeconds]);
 					#endif
 				}
 			}
@@ -2358,7 +2358,7 @@ static NSOperationQueue *sharedQueue = nil;
 	[self setRequestCookies:[NSMutableArray array]];
 
 	#if DEBUG_REQUEST_STATUS
-	//NSLog(@"[STATUS] Request will redirect (code: %i): %@",responseCode,self);
+	//////NSLog(@"[STATUS] Request will redirect (code: %i): %@",responseCode,self);
 	#endif
 
 	return YES;
@@ -2547,7 +2547,7 @@ static NSOperationQueue *sharedQueue = nil;
 	if (user && pass) {
 
 		#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ will use credentials set on its url",self);
+		//////NSLog(@"[AUTH] Request %@ will use credentials set on its url",self);
 		#endif
 
 	} else {
@@ -2558,7 +2558,7 @@ static NSOperationQueue *sharedQueue = nil;
 			pass = [[self mainRequest] password];
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ will use credentials from its parent request",self);
+			//////NSLog(@"[AUTH] Request %@ will use credentials from its parent request",self);
 			#endif
 
 		// Let's try to use the ones set in this object
@@ -2567,7 +2567,7 @@ static NSOperationQueue *sharedQueue = nil;
 			pass = [self password];
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ will use username and password properties as credentials",self);
+			//////NSLog(@"[AUTH] Request %@ will use username and password properties as credentials",self);
 			#endif
 		}		
 	}
@@ -2580,7 +2580,7 @@ static NSOperationQueue *sharedQueue = nil;
 			pass = [authenticationCredentials password];
 			#if DEBUG_HTTP_AUTHENTICATION
 			if (user && pass) {
-				//NSLog(@"[AUTH] Request %@ will use credentials from the keychain",self);
+				//////NSLog(@"[AUTH] Request %@ will use credentials from the keychain",self);
 			}
 			#endif
 		}
@@ -2616,7 +2616,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)retryUsingSuppliedCredentials
 {
 	#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ received credentials from its delegate or an ASIAuthenticationDialog, will retry",self);
+		//////NSLog(@"[AUTH] Request %@ received credentials from its delegate or an ASIAuthenticationDialog, will retry",self);
 	#endif
 	//If the url was changed by the delegate, our CFHTTPMessageRef will be NULL and we'll go back to the start
 	if (!request) {
@@ -2630,7 +2630,7 @@ static NSOperationQueue *sharedQueue = nil;
 - (void)cancelAuthentication
 {
 	#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ had authentication cancelled by its delegate or an ASIAuthenticationDialog",self);
+		//////NSLog(@"[AUTH] Request %@ had authentication cancelled by its delegate or an ASIAuthenticationDialog",self);
 	#endif
 	[self performSelector:@selector(failAuthentication) onThread:[[self class] threadForRequest:self] withObject:nil waitUntilDone:NO];
 }
@@ -2955,7 +2955,7 @@ static NSOperationQueue *sharedQueue = nil;
 	
 	if (!requestAuthentication) {
 		#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ failed to read authentication information from response headers",self);
+		//////NSLog(@"[AUTH] Request %@ failed to read authentication information from response headers",self);
 		#endif
 
 		[self cancelLoad];
@@ -2977,9 +2977,9 @@ static NSOperationQueue *sharedQueue = nil;
 			realm = @"";
 		}
 		if ([self authenticationScheme] != (NSString *)kCFHTTPAuthenticationSchemeNTLM || [self authenticationRetryCount] == 0) {
-			//NSLog(@"[AUTH] Request %@ received 401 challenge and must authenticate using %@%@",self,[self authenticationScheme],realm);
+			//////NSLog(@"[AUTH] Request %@ received 401 challenge and must authenticate using %@%@",self,[self authenticationScheme],realm);
 		} else {
-			//NSLog(@"[AUTH] Request %@ NTLM handshake step %i",self,[self authenticationRetryCount]+1);
+			//////NSLog(@"[AUTH] Request %@ NTLM handshake step %i",self,[self authenticationRetryCount]+1);
 		}
 	#endif
 
@@ -2994,7 +2994,7 @@ static NSOperationQueue *sharedQueue = nil;
 		if (err.domain == kCFStreamErrorDomainHTTP && (err.error == kCFStreamErrorHTTPAuthenticationBadUserName || err.error == kCFStreamErrorHTTPAuthenticationBadPassword)) {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ had bad credentials, will remove them from the session store if they are cached",self);
+			//////NSLog(@"[AUTH] Request %@ had bad credentials, will remove them from the session store if they are cached",self);
 			#endif
 
 			// Prevent more than one request from asking for credentials at once
@@ -3008,7 +3008,7 @@ static NSOperationQueue *sharedQueue = nil;
 			if ([self error] || [self isCancelled]) {
 
 				#if DEBUG_HTTP_AUTHENTICATION
-				//NSLog(@"[AUTH] Request %@ failed or was cancelled while waiting to access credentials",self);
+				//////NSLog(@"[AUTH] Request %@ failed or was cancelled while waiting to access credentials",self);
 				#endif
 
 				[delegateAuthenticationLock unlock];
@@ -3021,7 +3021,7 @@ static NSOperationQueue *sharedQueue = nil;
 				if (credentials && [self applyCredentials:[credentials objectForKey:@"Credentials"]]) {
 
 					#if DEBUG_HTTP_AUTHENTICATION
-					//NSLog(@"[AUTH] Request %@ will reuse cached credentials from the session (%@)",self,[credentials objectForKey:@"AuthenticationScheme"]);
+					//////NSLog(@"[AUTH] Request %@ will reuse cached credentials from the session (%@)",self,[credentials objectForKey:@"AuthenticationScheme"]);
 					#endif
 
 					[delegateAuthenticationLock unlock];
@@ -3035,7 +3035,7 @@ static NSOperationQueue *sharedQueue = nil;
 			if ([self willAskDelegateForCredentials]) {
 
 				#if DEBUG_HTTP_AUTHENTICATION
-				//NSLog(@"[AUTH] Request %@ will ask its delegate for credentials to use",self);
+				//////NSLog(@"[AUTH] Request %@ will ask its delegate for credentials to use",self);
 				#endif
 
 				[delegateAuthenticationLock unlock];
@@ -3044,7 +3044,7 @@ static NSOperationQueue *sharedQueue = nil;
 			if ([self showAuthenticationDialog]) {
 
 				#if DEBUG_HTTP_AUTHENTICATION
-				//NSLog(@"[AUTH] Request %@ will ask ASIAuthenticationDialog for credentials",self);
+				//////NSLog(@"[AUTH] Request %@ will ask ASIAuthenticationDialog for credentials",self);
 				#endif
 
 				[delegateAuthenticationLock unlock];
@@ -3054,7 +3054,7 @@ static NSOperationQueue *sharedQueue = nil;
 		}
 
 		#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ has no credentials to present and must give up",self);
+		//////NSLog(@"[AUTH] Request %@ has no credentials to present and must give up",self);
 		#endif
 
 		[self cancelLoad];
@@ -3072,7 +3072,7 @@ static NSOperationQueue *sharedQueue = nil;
 			// We've failed NTLM authentication twice, we should assume our credentials are wrong
 		} else if ([self authenticationScheme] == (NSString *)kCFHTTPAuthenticationSchemeNTLM && [self authenticationRetryCount ] == 2) {
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ has failed NTLM authentication",self);
+			//////NSLog(@"[AUTH] Request %@ has failed NTLM authentication",self);
 			#endif
 
 			[self failWithError:ASIAuthenticationError];
@@ -3080,7 +3080,7 @@ static NSOperationQueue *sharedQueue = nil;
 		} else {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ had credentials and they were not marked as bad, but we got a 401 all the same.",self);
+			//////NSLog(@"[AUTH] Request %@ had credentials and they were not marked as bad, but we got a 401 all the same.",self);
 			#endif
 
 			[self failWithError:[NSError errorWithDomain:NetworkRequestErrorDomain code:ASIInternalErrorWhileApplyingCredentialsType userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"Failed to apply credentials to request",NSLocalizedDescriptionKey,nil]]];
@@ -3096,7 +3096,7 @@ static NSOperationQueue *sharedQueue = nil;
 		if ([self error] || [self isCancelled]) {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ failed or was cancelled while waiting to access credentials",self);
+			//////NSLog(@"[AUTH] Request %@ failed or was cancelled while waiting to access credentials",self);
 			#endif
 
 			[delegateAuthenticationLock unlock];
@@ -3109,7 +3109,7 @@ static NSOperationQueue *sharedQueue = nil;
 			if (credentials && [self applyCredentials:[credentials objectForKey:@"Credentials"]]) {
 
 				#if DEBUG_HTTP_AUTHENTICATION
-				//NSLog(@"[AUTH] Request %@ will reuse cached credentials from the session (%@)",self,[credentials objectForKey:@"AuthenticationScheme"]);
+				//////NSLog(@"[AUTH] Request %@ will reuse cached credentials from the session (%@)",self,[credentials objectForKey:@"AuthenticationScheme"]);
 				#endif
 
 				[delegateAuthenticationLock unlock];
@@ -3129,7 +3129,7 @@ static NSOperationQueue *sharedQueue = nil;
 				[self startRequest];
 			} else {
 				#if DEBUG_HTTP_AUTHENTICATION
-				//NSLog(@"[AUTH] Request %@ failed to apply credentials",self);
+				//////NSLog(@"[AUTH] Request %@ failed to apply credentials",self);
 				#endif
 				[delegateAuthenticationLock unlock];
 				[self failWithError:[NSError errorWithDomain:NetworkRequestErrorDomain code:ASIInternalErrorWhileApplyingCredentialsType userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"Failed to apply credentials to request",NSLocalizedDescriptionKey,nil]]];
@@ -3139,7 +3139,7 @@ static NSOperationQueue *sharedQueue = nil;
 		if ([self willAskDelegateForCredentials]) {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ will ask its delegate for credentials to use",self);
+			//////NSLog(@"[AUTH] Request %@ will ask its delegate for credentials to use",self);
 			#endif
 
 			[delegateAuthenticationLock unlock];
@@ -3148,7 +3148,7 @@ static NSOperationQueue *sharedQueue = nil;
 		if ([self showAuthenticationDialog]) {
 
 			#if DEBUG_HTTP_AUTHENTICATION
-			//NSLog(@"[AUTH] Request %@ will ask ASIAuthenticationDialog for credentials",self);
+			//////NSLog(@"[AUTH] Request %@ will ask ASIAuthenticationDialog for credentials",self);
 			#endif
 
 			[delegateAuthenticationLock unlock];
@@ -3156,7 +3156,7 @@ static NSOperationQueue *sharedQueue = nil;
 		}
 
 		#if DEBUG_HTTP_AUTHENTICATION
-		//NSLog(@"[AUTH] Request %@ has no credentials to present and must give up",self);
+		//////NSLog(@"[AUTH] Request %@ has no credentials to present and must give up",self);
 		#endif
 		[delegateAuthenticationLock unlock];
 		[self failWithError:ASIAuthenticationError];
@@ -3397,7 +3397,7 @@ static NSOperationQueue *sharedQueue = nil;
 {	
 
 #if DEBUG_REQUEST_STATUS
-	//NSLog(@"[STATUS] Request %@ finished downloading data (%qu bytes)",self, [self totalBytesRead]);
+	//////NSLog(@"[STATUS] Request %@ finished downloading data (%qu bytes)",self, [self totalBytesRead]);
 #endif
 	[self setStatusTimer:nil];
 	[self setDownloadComplete:YES];
@@ -3495,7 +3495,7 @@ static NSOperationQueue *sharedQueue = nil;
 	}
 	#if DEBUG_PERSISTENT_CONNECTIONS
 	if ([self requestID]) {
-		//NSLog(@"[CONNECTION] Request #%@ finished using connection #%@",[self requestID], [[self connectionInfo] objectForKey:@"id"]);
+		//////NSLog(@"[CONNECTION] Request #%@ finished using connection #%@",[self requestID], [[self connectionInfo] objectForKey:@"id"]);
 	}
 	#endif
 	[[self connectionInfo] removeObjectForKey:@"request"];
@@ -3634,7 +3634,7 @@ static NSOperationQueue *sharedQueue = nil;
 		[self setWillRetryRequest:NO];
 
 		#if DEBUG_PERSISTENT_CONNECTIONS
-			//NSLog(@"[CONNECTION] Request attempted to use connection #%@, but it has been closed - will retry with a new connection", [[self connectionInfo] objectForKey:@"id"]);
+			//////NSLog(@"[CONNECTION] Request attempted to use connection #%@, but it has been closed - will retry with a new connection", [[self connectionInfo] objectForKey:@"id"]);
 		#endif
 		[connectionsLock lock];
 		[[self connectionInfo] removeObjectForKey:@"request"];
@@ -3646,7 +3646,7 @@ static NSOperationQueue *sharedQueue = nil;
 		return YES;
 	}
 	#if DEBUG_PERSISTENT_CONNECTIONS
-		//NSLog(@"[CONNECTION] Request attempted to use connection #%@, but it has been closed - we have already retried with a new connection, so we must give up", [[self connectionInfo] objectForKey:@"id"]);
+		//////NSLog(@"[CONNECTION] Request attempted to use connection #%@, but it has been closed - we have already retried with a new connection, so we must give up", [[self connectionInfo] objectForKey:@"id"]);
 	#endif	
 	return NO;
 }
@@ -4039,7 +4039,7 @@ static NSOperationQueue *sharedQueue = nil;
 		NSDictionary *existingConnection = [persistentConnectionsPool objectAtIndex:i];
 		if (![existingConnection objectForKey:@"request"] && [[existingConnection objectForKey:@"expires"] timeIntervalSinceNow] <= 0) {
 #if DEBUG_PERSISTENT_CONNECTIONS
-			//NSLog(@"[CONNECTION] Closing connection #%i because it has expired",[[existingConnection objectForKey:@"id"] intValue]);
+			//////NSLog(@"[CONNECTION] Closing connection #%i because it has expired",[[existingConnection objectForKey:@"id"] intValue]);
 #endif
 			NSInputStream *stream = [existingConnection objectForKey:@"stream"];
 			if (stream) {
@@ -4495,14 +4495,14 @@ static NSOperationQueue *sharedQueue = nil;
 				if ([self readStreamIsScheduled]) {
 					[self unscheduleReadStream];
 					#if DEBUG_THROTTLING
-					//NSLog(@"[THROTTLING] Sleeping request %@ until after %@",self,throttleWakeUpTime);
+					//////NSLog(@"[THROTTLING] Sleeping request %@ until after %@",self,throttleWakeUpTime);
 					#endif
 				}
 			} else {
 				if (![self readStreamIsScheduled]) {
 					[self scheduleReadStream];
 					#if DEBUG_THROTTLING
-					//NSLog(@"[THROTTLING] Waking up request %@",self);
+					//////NSLog(@"[THROTTLING] Waking up request %@",self);
 					#endif
 				}
 			}
@@ -4565,7 +4565,7 @@ static NSOperationQueue *sharedQueue = nil;
 		}
 	}
 	#if DEBUG_THROTTLING
-	//NSLog(@"[THROTTLING] ===Used: %u bytes of bandwidth in last measurement period===",bandwidthUsedInLastSecond);
+	//////NSLog(@"[THROTTLING] ===Used: %u bytes of bandwidth in last measurement period===",bandwidthUsedInLastSecond);
 	#endif
 	[bandwidthUsageTracker addObject:[NSNumber numberWithUnsignedLong:bandwidthUsedInLastSecond]];
 	[bandwidthMeasurementDate release];

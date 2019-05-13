@@ -25,3 +25,4 @@
 #import "_WHDebugMemoryMonitor.h"
 #import "_WHDebugCpuMonitor.h"
 #import "_WHDebugConsoleLabel.h"
+#import "Sandboxer.h"

@@ -23,7 +23,22 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
 }
 
 - (void)setupViews {
-    self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    
+    //liman
+    self.backgroundColor = [UIColor blackColor];
+    self.contentView.backgroundColor = [UIColor blackColor];
+    
+    self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
+    
+    self.detailTextLabel.textColor = [UIColor grayColor];
+    self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.detailTextLabel.font = [UIFont boldSystemFontOfSize:12];
+    //    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *selectedView = [[UIView alloc] init];
+    selectedView.backgroundColor = [UIColor clearColor];
+    self.selectedBackgroundView = selectedView;
 }
 
 #pragma mark - Action

@@ -49,7 +49,7 @@ static ASIHTTPRequestClient *_sharedClient = nil;
         NSData *data=[request responseData];
         NSError *error = nil;
         id result=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        //NSLog(@"result= %@",result);
+        //////NSLog(@"result= %@",result);
         
         success(request, result);
         
@@ -88,7 +88,7 @@ static ASIHTTPRequestClient *_sharedClient = nil;
         NSData *data=[request responseData];
         NSError *error = nil;
         id result=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        //NSLog(@"result= %@",result);
+        //////NSLog(@"result= %@",result);
         
         success(request, result);
         
@@ -131,7 +131,7 @@ static ASIHTTPRequestClient *_sharedClient = nil;
         NSData *data=[request responseData];
         NSError *error = nil;
         id result=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        //NSLog(@"result= %@",result);
+        //////NSLog(@"result= %@",result);
         
         success(request, result);
         
@@ -142,7 +142,7 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     }];
     
     [request startAsynchronous];
-     //NSLog(@"ASIHTTPRequestClient GET: %@",[request url]);
+     //////NSLog(@"ASIHTTPRequestClient GET: %@",[request url]);
     return request;
 }
 
@@ -183,8 +183,8 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    ////NSLog(@"ASIHTTPRequestClient 下载文件:%@ ",path);
-    ////NSLog(@"ASIHTTPRequestClient 保存路径:%@",filePath);
+    ////////NSLog(@"ASIHTTPRequestClient 下载文件:%@ ",path);
+    ////////NSLog(@"ASIHTTPRequestClient 保存路径:%@",filePath);
     
     return request;
 }
@@ -251,12 +251,12 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    ////NSLog(@"ASIClient 下载文件:%@ ",path);
-   // //NSLog(@"ASIClient 保存路径:%@",filePath);
+    ////////NSLog(@"ASIClient 下载文件:%@ ",path);
+   // //////NSLog(@"ASIClient 保存路径:%@",filePath);
     
     if (downProgress >0 && downProgress) {
         if (downProgress >=1.0) downProgress = 0.9999;
-        //NSLog(@"ASIHTTPRequestClient 上次下载已完成:%.2f/100",downProgress*100);
+        //////NSLog(@"ASIHTTPRequestClient 上次下载已完成:%.2f/100",downProgress*100);
     }
     return request;
 
@@ -299,8 +299,8 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    //NSLog(@"ASIHTTPRequestClient 文件上传:%@ file=%@ key=%@",urlString,filePath,fileKey);
-    //NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
+    //////NSLog(@"ASIHTTPRequestClient 文件上传:%@ file=%@ key=%@",urlString,filePath,fileKey);
+    //////NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
     
     return request;
 
@@ -341,8 +341,8 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     
     [request startAsynchronous];
     
-    //NSLog(@"ASIHTTPRequestClient 文件上传:%@ size=%.2f MB  key=%@",urlString,fileData.length/1024.0/1024.0,dataKey);
-    //NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
+    //////NSLog(@"ASIHTTPRequestClient 文件上传:%@ size=%.2f MB  key=%@",urlString,fileData.length/1024.0/1024.0,dataKey);
+    //////NSLog(@"ASIHTTPRequestClient 文件上传参数:%@",params);
     
     return request;
 }

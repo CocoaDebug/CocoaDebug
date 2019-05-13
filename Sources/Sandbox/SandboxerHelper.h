@@ -12,4 +12,11 @@
 
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date;
 
+//liman
+
+//Get Folder Size
++ (NSString *)sizeOfFolder:(NSString *)folderPath;
+//Get File Size
++ (NSString *)sizeOfFile:(NSString *)filePath;
+
 @end

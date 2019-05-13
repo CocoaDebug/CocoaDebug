@@ -53,14 +53,22 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         }
     }
     
-    if (self.isHomeDirectory) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(dismissAction)];
-    }
+    //liman
+//    if (self.isHomeDirectory) {
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"close"] style:UIBarButtonItemStyleDone target:self action:@selector(dismissAction)];
+//    }
     
     [self initDatas];
     [self setupViews];
     [self registerForPreviewing];
     [self loadDirectoryContents];
+    
+    
+    //liman
+    self.view.backgroundColor = [UIColor blackColor];
+    self.tableView.backgroundColor = [UIColor blackColor];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -163,14 +171,14 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         return directoryContentsTableViewController;
     } else {
         if ([Sandboxer shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
-            NSLog(@"Quick Look can preview this file");
+            ////NSLog(@"Quick Look can preview this file");
             self.previewingFileInfo = fileInfo;
             
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
             return previewController;
         } else {
-            NSLog(@"Quick Look can not preview this file");
+            ////NSLog(@"Quick Look can not preview this file");
             MLBFilePreviewController *filePreviewController = [[MLBFilePreviewController alloc] init];
             filePreviewController.fileInfo = fileInfo;
             return filePreviewController;
@@ -330,12 +338,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)deleteSelectedFilesAction {
-    NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
+    ////NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
     NSInteger fileCount = 0;
     NSInteger directoryCount = 0;
     for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
         MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
-        NSLog(@"mlb - Delete file: %@", fileInfo.displayName);
+        ////NSLog(@"mlb - Delete file: %@", fileInfo.displayName);
         if (fileInfo.isDirectory) {
             directoryCount++;
         } else {
@@ -355,12 +363,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)deleteAllFiles {
-    NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
+    ////NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
     NSMutableArray<MLBFileInfo *> *deletedFileInfos = [NSMutableArray arrayWithCapacity:self.dataSource.count];
     NSMutableArray<NSIndexPath *> *deletedIndexPaths = [NSMutableArray arrayWithCapacity:self.dataSource.count];
     [self.dataSource enumerateObjectsWithOptions:NSEnumerationReverse | NSEnumerationConcurrent usingBlock:^(MLBFileInfo * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([self deleteFile:obj]) {
-            NSLog(@"mlb - %@, idx = %lu, obj = %@", NSStringFromSelector(_cmd), (unsigned long)idx, obj.displayName);
+            ////NSLog(@"mlb - %@, idx = %lu, obj = %@", NSStringFromSelector(_cmd), (unsigned long)idx, obj.displayName);
             [deletedIndexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:0]];
             [deletedFileInfos addObject:obj];
         }
@@ -373,7 +381,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)deleteSelectedFiles {
-    NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
+    ////NSLog(@"mlb - %@, title = %@", NSStringFromSelector(_cmd), self.title);
     NSMutableArray<MLBFileInfo *> *deletedFileInfos = [NSMutableArray arrayWithCapacity:self.tableView.indexPathsForSelectedRows.count];
     for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
         MLBFileInfo *fileInfo = self.dataSource[indexPath.row];
@@ -417,10 +425,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtURL:fileInfo.URL error:&error];
         if (error) {
-            NSLog(@"mlb - %@, file path: %@, error: %@", NSStringFromSelector(_cmd), fileInfo.URL.path, error.localizedDescription);
+            ////NSLog(@"mlb - %@, file path: %@, error: %@", NSStringFromSelector(_cmd), fileInfo.URL.path, error.localizedDescription);
             return NO;
         } else {
-            NSLog(@"mlb - %@, file deleted", NSStringFromSelector(_cmd));
+            ////NSLog(@"mlb - %@, file deleted", NSStringFromSelector(_cmd));
         }
     }
     
@@ -459,7 +467,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"Clicked delete editing style");
+        ////NSLog(@"Clicked delete editing style");
         self.deletingFileInfo = fileInfo;
         NSMutableString *message = [NSMutableString string];
         if (fileInfo.isDirectory) {
