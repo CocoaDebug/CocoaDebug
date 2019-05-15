@@ -22,6 +22,7 @@
 - (void)setDefault {
     self.textAlignment = NSTextAlignmentCenter;
     self.userInteractionEnabled = NO;
+    self.adjustsFontSizeToFitWidth = YES;
     
     _font = [UIFont fontWithName:@"Menlo" size:14];
     if (_font) {
