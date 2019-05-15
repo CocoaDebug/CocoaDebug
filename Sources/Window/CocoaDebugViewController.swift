@@ -10,7 +10,7 @@ import UIKit
 
 class CocoaDebugViewController: UIViewController {
 
-    var bubble = Bubble(frame: CGRect(origin: Bubble.originalPosition, size: Bubble.size))
+    var bubble = Bubble(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: Bubble.size))
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -23,6 +23,7 @@ class CocoaDebugViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bubble.center = Bubble.originalPosition
         self.bubble.delegate = self
         self.view.backgroundColor = .clear
     }

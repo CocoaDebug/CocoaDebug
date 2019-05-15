@@ -18,8 +18,8 @@ private let _successStatusCodes = ["200","201","202","203","204","205","206","20
 private let _informationalStatusCodes = ["100","101","102","103","122"]
 private let _redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
 
-private let _width: CGFloat = 130/2
-private let _height: CGFloat = 130/2
+private let _width: CGFloat = 60
+private let _height: CGFloat = 60
 
 class Bubble: UIView {
     
@@ -31,15 +31,15 @@ class Bubble: UIView {
     public let height: CGFloat = _height
     
     private lazy var memoryLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:4, width:_width, height:16))
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
     }()
     
     private lazy var fpsLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:24, width:_width, height:16))
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
     }()
     
     private lazy var cpuLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:44, width:_width, height:16))
+        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
     }()
     
     
@@ -48,7 +48,7 @@ class Bubble: UIView {
         if CocoaDebugSettings.shared.bubbleFrameX != 0 && CocoaDebugSettings.shared.bubbleFrameY != 0 {
             return CGPoint(x: CGFloat(CocoaDebugSettings.shared.bubbleFrameX), y: CGFloat(CocoaDebugSettings.shared.bubbleFrameY))
         }
-        return CGPoint(x: UIScreen.main.bounds.size.width - _width/8*7, y: UIScreen.main.bounds.size.height/2 - _height/2)
+        return CGPoint(x: 1.875 + _width/2, y: 200)
     }
     
     static var size: CGSize {return CGSize(width: _width, height: _height)}
@@ -131,14 +131,14 @@ class Bubble: UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.8
-        self.layer.cornerRadius = 1
+        self.layer.cornerRadius = 10
         self.layer.shadowOffset = CGSize.zero
         self.layer.masksToBounds = true
         self.sizeToFit()
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.cornerRadius = 1
+        gradientLayer.cornerRadius = 10
         gradientLayer.colors = Color.colorGradientHead
         self.layer.addSublayer(gradientLayer)
         
@@ -181,7 +181,7 @@ class Bubble: UIView {
         let oldSize = CGSize(width: newSize.height, height: newSize.width)
         let percent = center.y / oldSize.height * 100
         let newOrigin = newSize.height * percent / 100
-        let originX = frame.origin.x < newSize.height / 2 ? _width/8*3.2 : newSize.width - _width/8*3.2
+        let originX = frame.origin.x < newSize.height / 2 ? _width/8*4.25 : newSize.width - _width/8*4.25
         self.center = CGPoint(x: originX, y: newOrigin)
     }
     
@@ -297,11 +297,11 @@ class Bubble: UIView {
             let location = panner.location(in: self.superview)
             let velocity = panner.velocity(in: self.superview)
             
-            var finalX: Double = Double(self.width/8*3.2)
+            var finalX: Double = Double(self.width/8*4.25)
             var finalY: Double = Double(location.y)
             
             if location.x > UIScreen.main.bounds.size.width / 2 {
-                finalX = Double(UIScreen.main.bounds.size.width) - Double(self.width/8*3.2)
+                finalX = Double(UIScreen.main.bounds.size.width) - Double(self.width/8*4.25)
             }
             
             self.changeSideDisplay()
@@ -317,19 +317,18 @@ class Bubble: UIView {
                 finalY += Double(velocity.y) * durationAnimation
             }
             
-            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6) {
-                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6)
-            } else if finalY < Double(self.height/8*6) - 40 {
-                finalY = Double(self.height/8*6) - 40 //status bar height ?? 20
+            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6.9) {
+                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6.9)
+            } else if finalY < Double(self.height/8*6.9) - 40 {
+                finalY = Double(self.height/8*6.9) - 40 //status bar height ?? 20
             }
             
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in
                 self?.center = CGPoint(x: finalX, y: finalY)
                 self?.transform = CGAffineTransform.identity
-                }, completion: { [weak self] _ in
-                    guard let x = self?.frame.origin.x, let y = self?.frame.origin.y else {return}
-                    CocoaDebugSettings.shared.bubbleFrameX = Float(x)
-                    CocoaDebugSettings.shared.bubbleFrameY = Float(y)
+                }, completion: { _ in
+                    CocoaDebugSettings.shared.bubbleFrameX = Float(finalX)
+                    CocoaDebugSettings.shared.bubbleFrameY = Float(finalY)
             })
         }
     }
