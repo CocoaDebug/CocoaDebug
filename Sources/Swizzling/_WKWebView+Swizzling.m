@@ -6,15 +6,6 @@
 //  Copyright © 2019年 man. All rights reserved.
 //
 
-#define dispatch_main_async_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_async(dispatch_get_main_queue(), block);\
-}
-
-
-
 #import <WebKit/WebKit.h>
 #import <objc/runtime.h>
 #import "_ObjcLog.h"
@@ -28,22 +19,19 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #pragma mark - life
 + (void)load
 {
-    dispatch_main_async_safe(^{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-            Class theClass = [self class];
-            SEL original_sel = @selector(initWithFrame:configuration:);
-            SEL replaced_sel = @selector(replaced_initWithFrame:configuration:);
-            Method original_method = class_getInstanceMethod(theClass, original_sel);
-            Method replaced_method = class_getInstanceMethod(theClass, replaced_sel);
-            
-            if (!class_addMethod(theClass, original_sel, method_getImplementation(replaced_method), method_getTypeEncoding(replaced_method))) {
-                method_exchangeImplementations(original_method, replaced_method);
-            }
-        });
-    })
+        Class theClass = [self class];
+        SEL original_sel = @selector(initWithFrame:configuration:);
+        SEL replaced_sel = @selector(replaced_initWithFrame:configuration:);
+        Method original_method = class_getInstanceMethod(theClass, original_sel);
+        Method replaced_method = class_getInstanceMethod(theClass, replaced_sel);
+        
+        if (!class_addMethod(theClass, original_sel, method_getImplementation(replaced_method), method_getTypeEncoding(replaced_method))) {
+            method_exchangeImplementations(original_method, replaced_method);
+        }
+    });
 }
 
 #pragma mark - replaced method
@@ -51,6 +39,10 @@ dispatch_async(dispatch_get_main_queue(), block);\
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"])
     {
+        //WKWebView
+        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"----------------------------------------------------------------------------"];
+        
+        //
         [configuration.userContentController removeAllUserScripts];
         
         [self log:configuration];

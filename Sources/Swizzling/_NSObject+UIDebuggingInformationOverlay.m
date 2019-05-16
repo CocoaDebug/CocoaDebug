@@ -6,14 +6,6 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#define dispatch_main_async_safe(block)\
-if ([NSThread isMainThread]) {\
-block();\
-} else {\
-dispatch_async(dispatch_get_main_queue(), block);\
-}
-
-
 
 //***************** Private API *****************
 #pragma clang diagnostic push
@@ -49,18 +41,15 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 + (void)load
 {
-    dispatch_main_async_safe(^{
-        
-        if (@available(iOS 11.0, *)) {
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
-                Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
-                [_FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
-            });
-        } else {
-            // Fallback on earlier versions
-        }
-    })
+    if (@available(iOS 11.0, *)) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
+            [_FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
+        });
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 + (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod
