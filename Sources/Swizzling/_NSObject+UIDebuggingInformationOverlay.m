@@ -27,8 +27,7 @@
 
 @implementation _FakeWindowClass
 
-- (instancetype)initSwizzled
-{
+- (instancetype)initSwizzled {
   if (self = [super init]) {
       [self _setWindowControlsStatusBarOrientation:NO];
   }
@@ -39,8 +38,7 @@
 
 @implementation NSObject (_UIDebuggingInformationOverlay)
 
-+ (void)load
-{
++ (void)load {
     if (@available(iOS 11.0, *)) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -52,8 +50,7 @@
     }
 }
 
-+ (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod
-{
++ (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod {
     Method originalMethod;
     Method swizzledMethod;
 
@@ -65,8 +62,7 @@
         swizzledMethod = class_getInstanceMethod([self class], swizzledSelector);
     }
     
-    if (!class_addMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod)))
-    {
+    if (!class_addMethod([self class], swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))) {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }

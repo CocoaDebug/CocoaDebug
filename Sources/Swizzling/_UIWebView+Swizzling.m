@@ -13,30 +13,42 @@
 @implementation UIWebView (_Swizzling)
 
 #pragma mark - life
-+ (void)load
-{
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        Class theClass = [self class];
         SEL original_sel = @selector(initWithFrame:);
         SEL replaced_sel = @selector(replaced_initWithFrame:);
-        Method original_method = class_getInstanceMethod(theClass, original_sel);
-        Method replaced_method = class_getInstanceMethod(theClass, replaced_sel);
-        
-        if (!class_addMethod(theClass, original_sel, method_getImplementation(replaced_method), method_getTypeEncoding(replaced_method))) {
+        Method original_method = class_getInstanceMethod([self class], original_sel);
+        Method replaced_method = class_getInstanceMethod([self class], replaced_sel);
+        if (!class_addMethod([self class], original_sel, method_getImplementation(replaced_method), method_getTypeEncoding(replaced_method))) {
             method_exchangeImplementations(original_method, replaced_method);
+        }
+        
+        /*********************************************************************************************************************************/
+        
+        SEL original_sel2 = NSSelectorFromString(@"dealloc");
+        SEL replaced_sel2 = @selector(replaced_dealloc);
+        Method original_method2 = class_getInstanceMethod([self class], original_sel2);
+        Method replaced_method2 = class_getInstanceMethod([self class], replaced_sel2);
+        if (!class_addMethod([self class], original_sel2, method_getImplementation(replaced_method2), method_getTypeEncoding(replaced_method2))) {
+            method_exchangeImplementations(original_method2, replaced_method2);
         }
     });
 }
 
 #pragma mark - replaced method
-- (instancetype)replaced_initWithFrame:(CGRect)frame {
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"])
-    {
+- (void)replaced_dealloc {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //UIWebView
-        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"----------------------------------------------------------------------------"];
+        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"dealloc"];
+    }
+}
+
+- (instancetype)replaced_initWithFrame:(CGRect)frame {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
+        //UIWebView
+        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"initWithFrame:"];
         
         //
         dispatch_async(dispatch_get_main_queue(), ^{

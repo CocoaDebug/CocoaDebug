@@ -890,8 +890,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 #pragma mark -
 //liman
-+ (void)load
-{
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -902,8 +901,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 }
 
 //处理500,404等错误
-- (_HttpModel *)handleError:(NSError *)error model:(_HttpModel *)model
-{
+- (_HttpModel *)handleError:(NSError *)error model:(_HttpModel *)model {
     if (!error) {
         //https://httpcodes.co/status/
         switch (model.statusCode.integerValue) {
