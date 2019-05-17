@@ -48,7 +48,7 @@
 - (instancetype)replaced_initWithFrame:(CGRect)frame {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //UIWebView
-        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"initWithFrame:"];
+        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"init"];
         
         //
         dispatch_async(dispatch_get_main_queue(), ^{

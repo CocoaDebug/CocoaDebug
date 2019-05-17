@@ -461,6 +461,8 @@
 		3874295F2283108700E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3874295E2283108700E29D40 /* _TCPLogger.m */; };
 		3874296422831FF900E29D40 /* _TCPLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3874295D2283108700E29D40 /* _TCPLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */; };
+		3875C6FA228F1A4800F6B626 /* WKWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */; };
 		387F3A2A2282B493001D66D8 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39532282B492001D66D8 /* CocoaDebug.swift */; };
 		387F3A2B2282B493001D66D8 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39542282B492001D66D8 /* CocoaDebugSettings.swift */; };
 		387F3A2C2282B493001D66D8 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39562282B492001D66D8 /* CocoaDebug+Extensions.swift */; };
@@ -951,6 +953,8 @@
 		38715E2F2289A3B500322BC2 /* icon_file_type_js@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_file_type_js@3x.png"; sourceTree = "<group>"; };
 		3874295D2283108700E29D40 /* _TCPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
 		3874295E2283108700E29D40 /* _TCPLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
+		3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewTestController.swift; sourceTree = "<group>"; };
+		3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewTestController.swift; sourceTree = "<group>"; };
 		387F39532282B492001D66D8 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		387F39542282B492001D66D8 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		387F39552282B492001D66D8 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -1656,6 +1660,8 @@
 				EAF57FA3204E73C2001CA56D /* Vendor */,
 				EA1659D6204D1B14001472C1 /* AppDelegate.swift */,
 				EA1659D8204D1B14001472C1 /* ViewController.swift */,
+				3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */,
+				3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */,
 				EA1659DA204D1B14001472C1 /* Main.storyboard */,
 				EA1659DD204D1B14001472C1 /* Assets.xcassets */,
 				EA1659DF204D1B14001472C1 /* LaunchScreen.storyboard */,
@@ -2440,6 +2446,7 @@
 				EAF5802A204E73C3001CA56D /* Request2.swift in Sources */,
 				EAF5801E204E73C3001CA56D /* NSFileManager+Helpers.swift in Sources */,
 				38715C3E2289805F00322BC2 /* _GPBUnknownFieldSet.m in Sources */,
+				3875C6FA228F1A4800F6B626 /* WKWebViewTestController.swift in Sources */,
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
 				387F3AC62282B493001D66D8 /* LogHelper.swift in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
@@ -2564,6 +2571,7 @@
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
 				384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */,
 				387F3A2F2282B493001D66D8 /* CrashStoreManager.swift in Sources */,
+				3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */,
 				38715BE422896E8700322BC2 /* _SandboxerHelper.m in Sources */,
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
 				EAF5800A204E73C3001CA56D /* MultipartFormData.swift in Sources */,

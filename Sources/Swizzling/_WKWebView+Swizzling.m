@@ -52,7 +52,7 @@
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //WKWebView
-        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"initWithFrame:"];
+        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"init"];
         
         //
         [configuration.userContentController removeAllUserScripts];
