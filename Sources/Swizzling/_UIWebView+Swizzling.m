@@ -9,6 +9,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <objc/runtime.h>
 #import "_ObjcLog.h"
+#import "_NetworkHelper.h"
 
 @implementation UIWebView (_Swizzling)
 
@@ -41,14 +42,14 @@
 - (void)replaced_dealloc {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //UIWebView
-        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"dealloc"];
+        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor redColor] unicodeToChinese:NO message:@"-------------------------------- dealloc --------------------------------"];
     }
 }
 
 - (instancetype)replaced_initWithFrame:(CGRect)frame {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //UIWebView
-        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"init"];
+        [_ObjcLog logWithFile:"[UIWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor unicodeToChinese:NO message:@"----------------------------------- init -----------------------------------"];
         
         //
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -18,5 +18,3 @@ IMP replaceMethod(SEL selector, IMP newImpl, Class affectedClass, BOOL isClassMe
 
     return origImpl;
 }
-
-

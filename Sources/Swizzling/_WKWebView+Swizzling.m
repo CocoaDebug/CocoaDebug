@@ -9,6 +9,7 @@
 #import <WebKit/WebKit.h>
 #import <objc/runtime.h>
 #import "_ObjcLog.h"
+#import "_NetworkHelper.h"
 
 @interface WKWebView () <WKScriptMessageHandler>
 
@@ -45,14 +46,14 @@
 - (void)replaced_dealloc {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //WKWebView
-        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"dealloc"];
+        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor redColor] unicodeToChinese:NO message:@"-------------------------------- dealloc --------------------------------"];
     }
 }
 
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
         //WKWebView
-        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:@"init"];
+        [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor unicodeToChinese:NO message:@"----------------------------------- init -----------------------------------"];
         
         //
         [configuration.userContentController removeAllUserScripts];

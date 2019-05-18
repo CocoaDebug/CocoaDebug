@@ -18,6 +18,7 @@ class UIWebViewTestController: UIViewController {
         webView.loadRequest(URLRequest(urlString: "https://m.baidu.com/")!)
         
         
+        //log
 //        do{
 //            let str = try String.init(contentsOfFile: Bundle.main.path(forResource: "index2", ofType: "html") ?? "")
 //            webView.loadHTMLString(str, baseURL: Bundle.main.bundleURL)
