@@ -98,6 +98,7 @@ github "CocoaDebug/CocoaDebug"
     //Step 3. (PrefixHeader.pch)
     #ifdef DEBUG
         #import "_ObjcLog.h"
+        //#import <CocoaDebug/_ObjcLog.h> //if use framework
     #endif
 	
 	//Step 4. (PrefixHeader.pch)
