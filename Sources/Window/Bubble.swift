@@ -294,6 +294,14 @@ class Bubble: UIView {
         
         if panner.state == .ended || panner.state == .cancelled {
             
+            var frameInset: UIEdgeInsets
+
+            if #available(iOS 11.0, *) {
+                frameInset = UIApplication.shared.keyWindow?.safeAreaInsets ?? UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
+            } else {
+                frameInset = UIDevice.current.orientation.isPortrait ? UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0) : .zero
+            }
+            
             let location = panner.location(in: self.superview)
             let velocity = panner.velocity(in: self.superview)
             
@@ -317,10 +325,10 @@ class Bubble: UIView {
                 finalY += Double(velocity.y) * durationAnimation
             }
             
-            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6.9) {
-                finalY = Double(UIScreen.main.bounds.size.height) - Double(self.height/8*6.9)
-            } else if finalY < Double(self.height/8*6.9) - 40 {
-                finalY = Double(self.height/8*6.9) - 40 //status bar height ?? 20
+            if finalY > Double(UIScreen.main.bounds.size.height) - Double(self.height/8*4.25) {
+                finalY = Double(UIScreen.main.bounds.size.height) - Double(frameInset.bottom) - Double(self.height/8*4.25)
+            } else if finalY < Double(self.height/8*4.25) + Double(frameInset.top)  {
+                finalY = Double(self.height/8*4.25) + Double(frameInset.top)
             }
             
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in
