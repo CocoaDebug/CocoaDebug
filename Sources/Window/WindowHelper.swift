@@ -17,6 +17,8 @@ public class WindowHelper: NSObject {
     
     private override init() {
         self.window = CocoaDebugWindow(frame: UIScreen.main.bounds)
+        // This is for making the window not to effect the StatusBarStyle
+        self.window?.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
     }
 
