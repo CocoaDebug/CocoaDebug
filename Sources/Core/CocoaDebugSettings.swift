@@ -76,16 +76,16 @@ import Foundation
             
             if showBubbleAndWindow == true
             {
-                if x > 0 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*7
+                if x > UIScreen.main.bounds.size.width/2 {
+                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
                 }else{
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*7
+                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
                 }
                 WindowHelper.shared.enable()
             }
             else
             {
-                if x > 0 {
+                if x > UIScreen.main.bounds.size.width/2 {
                     WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
                 }else{
                     WindowHelper.shared.vc.bubble.frame.origin.x = -width
