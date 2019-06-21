@@ -34,6 +34,10 @@ class CocoaDebugTabBarController: UITabBarController {
         super.viewWillDisappear(animated)
         CocoaDebugSettings.shared.visible = false
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        WindowHelper.shared.displayedList = false
+    }
     
     //MARK: - private
     func setChildControllers() {
