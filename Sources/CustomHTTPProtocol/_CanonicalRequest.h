@@ -1,5 +1,5 @@
 /*
-     File: CanonicalRequest.h
+     File: _CanonicalRequest.h
  Abstract: A function for creating canonical HTTP/HTTPS requests.
   Version: 1.1
  

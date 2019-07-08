@@ -1,5 +1,5 @@
 /*
-     File: CustomHTTPProtocol.m
+     File: _CustomHTTPProtocol.m
  Abstract: An NSURLProtocol subclass that overrides the built-in HTTP/HTTPS protocol.
   Version: 1.1
  
@@ -100,7 +100,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
 // I use the following typedef to keep myself sane in the face of the wacky 
 // Objective-C block syntax.
 
-typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential);
+typedef void (^_ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential);
 
 @interface _CustomHTTPProtocol () <NSURLSessionDataDelegate>
 
@@ -119,7 +119,7 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 @property (atomic, assign, readwrite) NSTimeInterval                    startTime;          ///< The start time of the request; written by client thread only; read by any thread.
 @property (atomic, strong, readwrite) NSURLSessionDataTask *            task;               ///< The NSURLSession task for that request; client thread only.
 @property (atomic, strong, readwrite) NSURLAuthenticationChallenge *    pendingChallenge;
-@property (atomic, copy,   readwrite) ChallengeCompletionHandler        pendingChallengeCompletionHandler;  ///< The completion handler that matches pendingChallenge; main thread only.
+@property (atomic, copy,   readwrite) _ChallengeCompletionHandler        pendingChallengeCompletionHandler;  ///< The completion handler that matches pendingChallenge; main thread only.
 
 //liman
 @property (atomic, strong) NSURLResponse         *response;
@@ -135,16 +135,16 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 /*! The backing store for the class delegate.  This is protected by @synchronized on the class.
  */
 
-static id<CustomHTTPProtocolDelegate> sDelegate;
+static id<_CustomHTTPProtocolDelegate> sDelegate;
 
 + (void)start
 {
     [NSURLProtocol registerClass:self];
 }
 
-+ (id<CustomHTTPProtocolDelegate>)delegate
++ (id<_CustomHTTPProtocolDelegate>)delegate
 {
-    id<CustomHTTPProtocolDelegate> result;
+    id<_CustomHTTPProtocolDelegate> result;
 
     @synchronized (self) {
         result = sDelegate;
@@ -152,7 +152,7 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
     return result;
 }
 
-+ (void)setDelegate:(id<CustomHTTPProtocolDelegate>)newValue
++ (void)setDelegate:(id<_CustomHTTPProtocolDelegate>)newValue
 {
     @synchronized (self) {
         sDelegate = newValue;
@@ -521,7 +521,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+- (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(_ChallengeCompletionHandler)completionHandler
 {
     //assert(challenge != nil);
     //assert(completionHandler != nil);
@@ -542,7 +542,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+- (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(_ChallengeCompletionHandler)completionHandler
 {
     //assert(challenge != nil);
     //assert(completionHandler != nil);
@@ -561,7 +561,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         //assert(NO);
         [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
     } else {
-        id<CustomHTTPProtocolDelegate>  strongDelegate;
+        id<_CustomHTTPProtocolDelegate>  strongDelegate;
 
         strongDelegate = [[self class] delegate];
 
@@ -599,7 +599,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+- (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(_ChallengeCompletionHandler)completionHandler
 {
     #pragma unused(challenge)
     //assert(challenge != nil);
@@ -635,7 +635,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
             //
             // [[self class] customHTTPProtocol:self logWithFormat:@"challenge not cancelled; no challenge pending"];
         } else {
-            id<CustomHTTPProtocolDelegate>  strongeDelegate;
+            id<_CustomHTTPProtocolDelegate>  strongeDelegate;
             NSURLAuthenticationChallenge *  challenge;
 
             strongeDelegate = [[self class] delegate];
@@ -666,7 +666,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         // This should never happen, and we want to know if it does, at least in the debug build.
         //assert(NO);
     } else {
-        ChallengeCompletionHandler  completionHandler;
+        _ChallengeCompletionHandler  completionHandler;
         
         // We clear out our record of the pending challenge and then pass the real work 
         // over to the client thread (which ensures that the challenge is resolved on 
@@ -751,7 +751,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
 {
     BOOL        result;
-    id<CustomHTTPProtocolDelegate> strongeDelegate;
+    id<_CustomHTTPProtocolDelegate> strongeDelegate;
 
     #pragma unused(session)
     #pragma unused(task)

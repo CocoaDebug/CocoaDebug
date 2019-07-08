@@ -1,5 +1,5 @@
 /*
-     File: CacheStoragePolicy.h
+     File: _CacheStoragePolicy.h
  Abstract: A function to determine the cache storage policy for a request.
   Version: 1.1
  

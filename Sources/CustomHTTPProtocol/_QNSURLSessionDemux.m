@@ -1,5 +1,5 @@
 /*
-     File: QNSURLSessionDemux.m
+     File: _QNSURLSessionDemux.m
  Abstract: A general class to demux NSURLSession delegate callbacks.
   Version: 1.1
  
@@ -136,10 +136,10 @@
 
         self->_sessionDelegateQueue = [[NSOperationQueue alloc] init];
         [self->_sessionDelegateQueue setMaxConcurrentOperationCount:1];
-        [self->_sessionDelegateQueue setName:@"QNSURLSessionDemux"];
+        [self->_sessionDelegateQueue setName:@"_QNSURLSessionDemux"];
 
         self->_session = [NSURLSession sessionWithConfiguration:self->_configuration delegate:self delegateQueue:self->_sessionDelegateQueue];
-        self->_session.sessionDescription = @"QNSURLSessionDemux";
+        self->_session.sessionDescription = @"_QNSURLSessionDemux";
     }
     return self;
 }

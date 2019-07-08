@@ -1,5 +1,5 @@
 /*
-     File: CustomHTTPProtocol.h
+     File: _CustomHTTPProtocol.h
  Abstract: An NSURLProtocol subclass that overrides the built-in HTTP/HTTPS protocol.
   Version: 1.1
  
@@ -47,7 +47,7 @@
 
 @import Foundation;
 
-@protocol CustomHTTPProtocolDelegate;
+@protocol _CustomHTTPProtocolDelegate;
 
 /*! An NSURLProtocol subclass that overrides the built-in HTTP/HTTPS protocol to intercept 
  *  authentication challenges for subsystems, ilke UIWebView, that don't otherwise allow it.  
@@ -55,7 +55,7 @@
  *  If you don't call +start the class is completely benign.
  *
  *  The really tricky stuff here is related to the authentication challenge delegate 
- *  callbacks; see the docs for CustomHTTPProtocolDelegate for the details.
+ *  callbacks; see the docs for _CustomHTTPProtocolDelegate for the details.
  */
 
 @interface _CustomHTTPProtocol : NSURLProtocol
@@ -76,12 +76,12 @@
  *  \param newValue The new delegate to use; may be nil.
  */
 
-+ (void)setDelegate:(id<CustomHTTPProtocolDelegate>)newValue;
++ (void)setDelegate:(id<_CustomHTTPProtocolDelegate>)newValue;
 
 /*! Returns the class delegate.
  */
 
-+ (id<CustomHTTPProtocolDelegate>)delegate;
++ (id<_CustomHTTPProtocolDelegate>)delegate;
 
 @property (atomic, strong, readonly ) NSURLAuthenticationChallenge *    pendingChallenge;   ///< The current authentication challenge; it's only safe to access this from the main thread.
 
@@ -130,7 +130,7 @@
  *  but that would make it harder for clients and require a major rework of my implementation.
  */
 
-@protocol CustomHTTPProtocolDelegate <NSObject>
+@protocol _CustomHTTPProtocolDelegate <NSObject>
 
 @optional
 

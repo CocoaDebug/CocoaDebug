@@ -1,5 +1,5 @@
 /*
-     File: CacheStoragePolicy.m
+     File: _CacheStoragePolicy.m
  Abstract: A function to determine the cache storage policy for a request.
   Version: 1.1
  

@@ -1,5 +1,5 @@
 /*
-     File: CanonicalRequest.m
+     File: _CanonicalRequest.m
  Abstract: A function for creating canonical HTTP/HTTPS requests.
   Version: 1.1
  
