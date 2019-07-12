@@ -175,11 +175,7 @@
 #pragma mark - Public Methods
 
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL {
-    NSError *error;
-    NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:&error];
-    if (error) {
-//        ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
-    }
+    NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:nil];
     
     return attributes;
 }
@@ -198,8 +194,6 @@
                 _MLBFileInfo *fileInfo = [[_MLBFileInfo alloc] initWithFileURL:[URL URLByAppendingPathComponent:name]];
                 [fileInfos addObject:fileInfo];
             }
-        } else {
-//            ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     
@@ -219,8 +213,6 @@
                 if (_Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 count++;
             }
-        } else {
-//            ////NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     

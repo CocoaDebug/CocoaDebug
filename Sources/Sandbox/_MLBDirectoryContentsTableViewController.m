@@ -418,10 +418,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtURL:fileInfo.URL error:&error];
         if (error) {
-            ////NSLog(@"mlb - %@, file path: %@, error: %@", NSStringFromSelector(_cmd), fileInfo.URL.path, error.localizedDescription);
             return NO;
-        } else {
-            ////NSLog(@"mlb - %@, file deleted", NSStringFromSelector(_cmd));
         }
     }
     

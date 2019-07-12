@@ -133,12 +133,17 @@
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];
-                    NSError *error;
-                    NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:&error] description];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.activityIndicatorView stopAnimating];
-                        self.textView.text = content;
-                    });
+                    if (data) {
+                        NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:nil] description];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.activityIndicatorView stopAnimating];
+                            self.textView.text = content;
+                        });
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.activityIndicatorView stopAnimating];
+                        });
+                    }
                 });
                 break;
             }
