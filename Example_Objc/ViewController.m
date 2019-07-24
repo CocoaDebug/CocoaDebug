@@ -10,12 +10,19 @@
 #import "AFURLSessionManager.h"
 #import <WebKit/WebKit.h>
 #import "_TCPLogger.h"
+#import "Example_Objc-Swift.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    #ifdef DEBUG
+        [CocoaDebug presentWithFatherController:self];
+    #endif
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

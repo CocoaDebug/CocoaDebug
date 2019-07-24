@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: CocoaDebugViewController.self))
-        guard let vc = storyboard.instantiateInitialViewController() else {return}
-        self.present(vc, animated: true, completion: nil)
+        #if DEBUG
+            CocoaDebug.present(fatherController: self)
+        #endif
     }
     
     override func viewDidLoad() {
