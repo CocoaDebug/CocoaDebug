@@ -110,14 +110,14 @@ class NetworkCell: UITableViewCell {
             if httpModel?.isTag == true {
                 self.contentView.backgroundColor = "#007aff".hexColor
             }else{
-                self.contentView.backgroundColor = .black
+                self.contentView.backgroundColor = .white
             }
             
             //isSelected
             if httpModel?.isSelected == true {
-                statusCodeView.backgroundColor = "#222222".hexColor
+                statusCodeView.backgroundColor = "#e1e3e6".hexColor
             }else{
-                statusCodeView.backgroundColor = "#333333".hexColor
+                statusCodeView.backgroundColor = "#efeff4".hexColor
             }
         }
     }

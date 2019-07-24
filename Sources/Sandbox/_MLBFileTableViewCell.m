@@ -25,10 +25,10 @@ NSString *const _MLBFileTableViewCellReuseIdentifier = @"_MLBFileCell";
 - (void)setupViews {
     
     //liman
-    self.backgroundColor = [UIColor blackColor];
-    self.contentView.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor whiteColor];
+    self.contentView.backgroundColor = [UIColor whiteColor];
     
-    self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.textColor = [UIColor blackColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
     
     self.detailTextLabel.textColor = [UIColor grayColor];

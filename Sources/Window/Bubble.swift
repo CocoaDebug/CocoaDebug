@@ -127,8 +127,8 @@ class Bubble: UIView {
     
     
     fileprivate func initLayer() {
-        self.backgroundColor = .black
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.backgroundColor = .white
+        self.layer.shadowColor = UIColor.white.cgColor
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.8
         self.layer.cornerRadius = 10

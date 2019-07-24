@@ -34,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     
     [self initDatas];
     [self setupViews];
@@ -87,12 +87,12 @@
     if (self.fileInfo.isCanPreviewInWebView) {
         if (_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
             self.wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-            self.wkWebView.backgroundColor = [UIColor whiteColor];
+            self.wkWebView.backgroundColor = [UIColor blackColor];
             self.wkWebView.navigationDelegate = self;
             [self.view addSubview:self.wkWebView];
         } else {
             self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-            self.webView.backgroundColor = [UIColor whiteColor];
+            self.webView.backgroundColor = [UIColor blackColor];
             self.webView.delegate = self;
             [self.view addSubview:self.webView];
         }

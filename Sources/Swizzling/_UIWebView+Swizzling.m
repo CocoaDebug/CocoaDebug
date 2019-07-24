@@ -57,19 +57,19 @@
         
         JSContext *context = [self valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
         context[@"console"][@"log"] = ^(JSValue *message) {
-            [_ObjcLog logWithFile:"[UIWebView]" function:"log" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            [_ObjcLog logWithFile:"[UIWebView]" function:"log" line:0 color:[UIColor blackColor] unicodeToChinese:NO message:message];
         };
         context[@"console"][@"error"] = ^(JSValue *message) {
-            [_ObjcLog logWithFile:"[UIWebView]" function:"error" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            [_ObjcLog logWithFile:"[UIWebView]" function:"error" line:0 color:[UIColor blackColor] unicodeToChinese:NO message:message];
         };
         context[@"console"][@"warn"] = ^(JSValue *message) {
-            [_ObjcLog logWithFile:"[UIWebView]" function:"warn" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            [_ObjcLog logWithFile:"[UIWebView]" function:"warn" line:0 color:[UIColor blackColor] unicodeToChinese:NO message:message];
         };
         context[@"console"][@"debug"] = ^(JSValue *message) {
-            [_ObjcLog logWithFile:"[UIWebView]" function:"debug" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            [_ObjcLog logWithFile:"[UIWebView]" function:"debug" line:0 color:[UIColor blackColor] unicodeToChinese:NO message:message];
         };
         context[@"console"][@"info"] = ^(JSValue *message) {
-            [_ObjcLog logWithFile:"[UIWebView]" function:"info" line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message];
+            [_ObjcLog logWithFile:"[UIWebView]" function:"info" line:0 color:[UIColor blackColor] unicodeToChinese:NO message:message];
         };
     });
 

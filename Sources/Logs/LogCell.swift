@@ -26,7 +26,7 @@ class LogCell: UITableViewCell {
             if model.isTag == true {
                 self.contentView.backgroundColor = "#007aff".hexColor
             }else{
-                self.contentView.backgroundColor = .black
+                self.contentView.backgroundColor = .white
             }
         }
     }

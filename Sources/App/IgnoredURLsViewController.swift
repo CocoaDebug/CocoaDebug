@@ -33,8 +33,8 @@ extension IgnoredURLsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = models?[indexPath.row]
-        cell.textLabel?.textColor = .white
-        cell.contentView.backgroundColor = .black
+        cell.textLabel?.textColor = .black
+        cell.contentView.backgroundColor = .white
         cell.selectionStyle = .none
         
         return cell

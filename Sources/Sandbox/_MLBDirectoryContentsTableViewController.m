@@ -64,7 +64,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [super viewDidLoad];
     
     //liman
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     //liman
@@ -84,8 +84,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     
     //liman
-    self.view.backgroundColor = [UIColor blackColor];
-    self.tableView.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -117,7 +117,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView registerClass:[_MLBFileTableViewCell class] forCellReuseIdentifier:_MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;

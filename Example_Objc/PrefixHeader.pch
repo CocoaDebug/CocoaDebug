@@ -16,14 +16,14 @@
  * 以上2个特征可以自己定制
  */
 #ifdef DEBUG
-    //white color
-    #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-    #define NSLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+    //black color
+    #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor blackColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define NSLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor blackColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
     //red color
     #define RedLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
     #define RedLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
 #else
-    //white color
+    //black color
     #define NSLog(fmt, ...) nil
     #define NSLog_UNICODE(fmt, ...) nil
     //red color
