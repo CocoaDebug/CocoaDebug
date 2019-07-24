@@ -69,10 +69,5 @@
 #import "_Sandboxer.h"
 #import "_SandboxerHelper.h"
 #import "_Swizzling.h"
-#import "_WHDebugConsoleLabel.h"
-#import "_WHDebugCpuMonitor.h"
-#import "_WHDebugFPSMonitor.h"
-#import "_WHDebugMemoryMonitor.h"
-#import "_WHDebugMonitor.h"
 
 

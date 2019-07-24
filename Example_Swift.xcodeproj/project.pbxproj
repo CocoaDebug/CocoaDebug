@@ -12,21 +12,6 @@
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
 		384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; };
 		384E2F14228847750031DFBF /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		384E2F2F22884E010031DFBF /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2522884E010031DFBF /* _WHDebugMonitor.m */; };
-		384E2F3022884E010031DFBF /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */; };
-		384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */; };
-		384E2F3222884E010031DFBF /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */; };
-		384E2F3322884E010031DFBF /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */; };
-		3870B7B422884F6F00D728BC /* _WHDebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3870B7B522884F6F00D728BC /* _WHDebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3870B7B622884F6F00D728BC /* _WHDebugFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3870B7B722884F6F00D728BC /* _WHDebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3870B7B822884F6F00D728BC /* _WHDebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3870B7B922884F8400D728BC /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2522884E010031DFBF /* _WHDebugMonitor.m */; };
-		3870B7BA22884F8400D728BC /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */; };
-		3870B7BB22884F8400D728BC /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */; };
-		3870B7BC22884F8400D728BC /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */; };
-		3870B7BD22884F8400D728BC /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */; };
 		38715BE322896E8700322BC2 /* _MLBFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BD422896E8700322BC2 /* _MLBFileTableViewCell.m */; };
 		38715BE422896E8700322BC2 /* _SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BD622896E8700322BC2 /* _SandboxerHelper.m */; };
 		38715BE522896E8700322BC2 /* _Sandboxer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38715BDC22896E8700322BC2 /* _Sandboxer.m */; };
@@ -518,12 +503,9 @@
 		387F3ACF2282B493001D66D8 /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A142282B493001D66D8 /* _Swizzling.m */; };
 		387F3AD02282B493001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A152282B493001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m */; };
 		387F3AD12282B493001D66D8 /* _WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A162282B493001D66D8 /* _WKWebView+Swizzling.m */; };
-		387F3AD22282B493001D66D8 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A192282B493001D66D8 /* Bubble.swift */; };
-		387F3AD32282B493001D66D8 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1A2282B493001D66D8 /* WindowHelper.swift */; };
 		387F3AD42282B493001D66D8 /* CocoaDebugNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */; };
 		387F3AD52282B493001D66D8 /* CocoaDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */; };
 		387F3AD62282B493001D66D8 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */; };
-		387F3AD72282B493001D66D8 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */; };
 		387F3AD82282B493001D66D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A202282B493001D66D8 /* Color.swift */; };
 		387F3ADA2282B493001D66D8 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A242282B493001D66D8 /* _NSObject+Categories.m */; };
 		387F3FED2282DADF001D66D8 /* _HttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 387F39E32282B493001D66D8 /* _HttpModel.m */; };
@@ -596,12 +578,9 @@
 		387F40D42282DB8C001D66D8 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F39FF2282B493001D66D8 /* LogCell.swift */; };
 		387F40D52282DB8C001D66D8 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A002282B493001D66D8 /* LogViewController.swift */; };
 		387F40D62282DB8C001D66D8 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A022282B493001D66D8 /* LogHelper.swift */; };
-		387F40D72282DB8C001D66D8 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A192282B493001D66D8 /* Bubble.swift */; };
-		387F40D82282DB8C001D66D8 /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1A2282B493001D66D8 /* WindowHelper.swift */; };
 		387F40D92282DB8C001D66D8 /* CocoaDebugNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */; };
 		387F40DA2282DB8C001D66D8 /* CocoaDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */; };
 		387F40DB2282DB8C001D66D8 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */; };
-		387F40DC2282DB8C001D66D8 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */; };
 		387F40DD2282DB8C001D66D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F3A202282B493001D66D8 /* Color.swift */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
@@ -704,16 +683,6 @@
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		384E2F12228847750031DFBF /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
-		384E2F2522884E010031DFBF /* _WHDebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMonitor.m; sourceTree = "<group>"; };
-		384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugCpuMonitor.h; sourceTree = "<group>"; };
-		384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMemoryMonitor.h; sourceTree = "<group>"; };
-		384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugConsoleLabel.m; sourceTree = "<group>"; };
-		384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugFPSMonitor.h; sourceTree = "<group>"; };
-		384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMonitor.h; sourceTree = "<group>"; };
-		384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMemoryMonitor.m; sourceTree = "<group>"; };
-		384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
-		384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
-		384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
 		38715BD322896E8700322BC2 /* _MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBFileInfo.h; sourceTree = "<group>"; };
 		38715BD422896E8700322BC2 /* _MLBFileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBFileTableViewCell.m; sourceTree = "<group>"; };
 		38715BD522896E8700322BC2 /* _Sandboxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Sandboxer.h; sourceTree = "<group>"; };
@@ -1025,12 +994,9 @@
 		387F3A152282B493001D66D8 /* _NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
 		387F3A162282B493001D66D8 /* _WKWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_WKWebView+Swizzling.m"; sourceTree = "<group>"; };
 		387F3A172282B493001D66D8 /* _Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Swizzling.h; sourceTree = "<group>"; };
-		387F3A192282B493001D66D8 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
-		387F3A1A2282B493001D66D8 /* WindowHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
 		387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugNavigationController.swift; sourceTree = "<group>"; };
 		387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugViewController.swift; sourceTree = "<group>"; };
 		387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugTabBarController.swift; sourceTree = "<group>"; };
-		387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		387F3A202282B493001D66D8 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		387F3A232282B493001D66D8 /* _NSObject+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+Categories.h"; sourceTree = "<group>"; };
 		387F3A242282B493001D66D8 /* _NSObject+Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+Categories.m"; sourceTree = "<group>"; };
@@ -1170,23 +1136,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		384E2F2422884E010031DFBF /* WHDebugTool */ = {
-			isa = PBXGroup;
-			children = (
-				384E2F2522884E010031DFBF /* _WHDebugMonitor.m */,
-				384E2F2622884E010031DFBF /* _WHDebugCpuMonitor.h */,
-				384E2F2722884E010031DFBF /* _WHDebugMemoryMonitor.h */,
-				384E2F2822884E010031DFBF /* _WHDebugConsoleLabel.m */,
-				384E2F2922884E010031DFBF /* _WHDebugFPSMonitor.h */,
-				384E2F2A22884E010031DFBF /* _WHDebugMonitor.h */,
-				384E2F2B22884E010031DFBF /* _WHDebugMemoryMonitor.m */,
-				384E2F2C22884E010031DFBF /* _WHDebugCpuMonitor.m */,
-				384E2F2D22884E010031DFBF /* _WHDebugConsoleLabel.h */,
-				384E2F2E22884E010031DFBF /* _WHDebugFPSMonitor.m */,
-			);
-			path = WHDebugTool;
-			sourceTree = "<group>";
-		};
 		38715BD122896E8700322BC2 /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -1460,7 +1409,6 @@
 			children = (
 				38715BEE2289805E00322BC2 /* protobuf */,
 				38715BD122896E8700322BC2 /* Sandbox */,
-				384E2F2422884E010031DFBF /* WHDebugTool */,
 				387F39522282B492001D66D8 /* Core */,
 				387F39572282B492001D66D8 /* App */,
 				387F39642282B492001D66D8 /* Resources */,
@@ -1606,12 +1554,9 @@
 		387F3A182282B493001D66D8 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				387F3A192282B493001D66D8 /* Bubble.swift */,
-				387F3A1A2282B493001D66D8 /* WindowHelper.swift */,
 				387F3A1B2282B493001D66D8 /* CocoaDebugNavigationController.swift */,
 				387F3A1D2282B493001D66D8 /* CocoaDebugViewController.swift */,
 				387F3A1E2282B493001D66D8 /* CocoaDebugTabBarController.swift */,
-				387F3A1F2282B493001D66D8 /* CocoaDebugWindow.swift */,
 				387F3A202282B493001D66D8 /* Color.swift */,
 			);
 			path = Window;
@@ -1886,11 +1831,6 @@
 				387F40372282DAF4001D66D8 /* _ObjcLog.h in Headers */,
 				387F40382282DAF4001D66D8 /* _OCLoggerFormat.h in Headers */,
 				387F40392282DAF4001D66D8 /* _OCLogStoreManager.h in Headers */,
-				3870B7B422884F6F00D728BC /* _WHDebugCpuMonitor.h in Headers */,
-				3870B7B522884F6F00D728BC /* _WHDebugMemoryMonitor.h in Headers */,
-				3870B7B622884F6F00D728BC /* _WHDebugFPSMonitor.h in Headers */,
-				3870B7B722884F6F00D728BC /* _WHDebugMonitor.h in Headers */,
-				3870B7B822884F6F00D728BC /* _WHDebugConsoleLabel.h in Headers */,
 				387F40402282DAF4001D66D8 /* _Swizzling.h in Headers */,
 				387F40422282DAF4001D66D8 /* _NSObject+Categories.h in Headers */,
 				3874296422831FF900E29D40 /* _TCPLogger.h in Headers */,
@@ -2475,7 +2415,6 @@
 				EAF58026204E73C3001CA56D /* Deprecated.swift in Sources */,
 				EAF5803F204E73C3001CA56D /* ASIHTTPRequest.m in Sources */,
 				38715C422289805F00322BC2 /* _GPBDescriptor.m in Sources */,
-				387F3AD72282B493001D66D8 /* CocoaDebugWindow.swift in Sources */,
 				EAF58035204E73C3001CA56D /* ASICloudFilesCDNRequest.m in Sources */,
 				38715C2F2289805E00322BC2 /* _GPBWellKnownTypes.m in Sources */,
 				387F3ADA2282B493001D66D8 /* _NSObject+Categories.m in Sources */,
@@ -2486,9 +2425,7 @@
 				EAF5802B204E73C3001CA56D /* StatusCode.swift in Sources */,
 				EAF5802E204E73C3001CA56D /* Operation.swift in Sources */,
 				38715BE322896E8700322BC2 /* _MLBFileTableViewCell.m in Sources */,
-				384E2F2F22884E010031DFBF /* _WHDebugMonitor.m in Sources */,
 				387F3A372282B493001D66D8 /* AboutViewController.swift in Sources */,
-				384E2F3022884E010031DFBF /* _WHDebugConsoleLabel.m in Sources */,
 				EAF58020204E73C3001CA56D /* Dictionary+FormURLEncoded.swift in Sources */,
 				387F3AD12282B493001D66D8 /* _WKWebView+Swizzling.m in Sources */,
 				EAF5803C204E73C3001CA56D /* ASIS3Request.m in Sources */,
@@ -2511,7 +2448,6 @@
 				387F3ACE2282B493001D66D8 /* _UIWebView+Swizzling.m in Sources */,
 				EAF58027204E73C3001CA56D /* Networking+Download.swift in Sources */,
 				387F3AB82282B493001D66D8 /* NetworkDetailCell.swift in Sources */,
-				387F3AD32282B493001D66D8 /* WindowHelper.swift in Sources */,
 				387F3ABE2282B493001D66D8 /* _CacheStoragePolicy.m in Sources */,
 				387F3AC52282B493001D66D8 /* LogViewController.swift in Sources */,
 				38715C412289805F00322BC2 /* _GPBArray.m in Sources */,
@@ -2529,7 +2465,6 @@
 				EAF58022204E73C3001CA56D /* JSON.swift in Sources */,
 				EAF58023204E73C3001CA56D /* NetworkingImage.swift in Sources */,
 				EAF58036204E73C3001CA56D /* ASICloudFilesObjectRequest.m in Sources */,
-				384E2F3222884E010031DFBF /* _WHDebugCpuMonitor.m in Sources */,
 				EAF58015204E73C3001CA56D /* Request.swift in Sources */,
 				38715C442289805F00322BC2 /* _GPBCodedInputStream.m in Sources */,
 				EAF58019204E73C3001CA56D /* SessionDelegate.swift in Sources */,
@@ -2573,7 +2508,6 @@
 				387F3AD62282B493001D66D8 /* CocoaDebugTabBarController.swift in Sources */,
 				EAF58038204E73C3001CA56D /* ASICloudFilesRequest.m in Sources */,
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
-				384E2F3122884E010031DFBF /* _WHDebugMemoryMonitor.m in Sources */,
 				387F3A2F2282B493001D66D8 /* CrashStoreManager.swift in Sources */,
 				3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */,
 				38715BE422896E8700322BC2 /* _SandboxerHelper.m in Sources */,
@@ -2585,8 +2519,6 @@
 				EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */,
 				38715C302289805E00322BC2 /* _GPBUtilities.m in Sources */,
 				387F3ABB2282B493001D66D8 /* _HttpDatasource.m in Sources */,
-				384E2F3322884E010031DFBF /* _WHDebugFPSMonitor.m in Sources */,
-				387F3AD22282B493001D66D8 /* Bubble.swift in Sources */,
 				EAF5802C204E73C3001CA56D /* Upload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2634,11 +2566,6 @@
 				38715EF02289A9F900322BC2 /* _Sandboxer.m in Sources */,
 				38715EF12289A9F900322BC2 /* _MLBImageResources.m in Sources */,
 				38715EF22289A9F900322BC2 /* _MLBDirectoryContentsTableViewController.m in Sources */,
-				3870B7B922884F8400D728BC /* _WHDebugMonitor.m in Sources */,
-				3870B7BA22884F8400D728BC /* _WHDebugConsoleLabel.m in Sources */,
-				3870B7BB22884F8400D728BC /* _WHDebugMemoryMonitor.m in Sources */,
-				3870B7BC22884F8400D728BC /* _WHDebugCpuMonitor.m in Sources */,
-				3870B7BD22884F8400D728BC /* _WHDebugFPSMonitor.m in Sources */,
 				3874296322831FEF00E29D40 /* _TCPLogger.m in Sources */,
 				387F40BF2282DB8C001D66D8 /* CocoaDebug.swift in Sources */,
 				387F40C02282DB8C001D66D8 /* CocoaDebugSettings.swift in Sources */,
@@ -2664,12 +2591,9 @@
 				387F40D42282DB8C001D66D8 /* LogCell.swift in Sources */,
 				387F40D52282DB8C001D66D8 /* LogViewController.swift in Sources */,
 				387F40D62282DB8C001D66D8 /* LogHelper.swift in Sources */,
-				387F40D72282DB8C001D66D8 /* Bubble.swift in Sources */,
-				387F40D82282DB8C001D66D8 /* WindowHelper.swift in Sources */,
 				387F40D92282DB8C001D66D8 /* CocoaDebugNavigationController.swift in Sources */,
 				387F40DA2282DB8C001D66D8 /* CocoaDebugViewController.swift in Sources */,
 				387F40DB2282DB8C001D66D8 /* CocoaDebugTabBarController.swift in Sources */,
-				387F40DC2282DB8C001D66D8 /* CocoaDebugWindow.swift in Sources */,
 				387F40DD2282DB8C001D66D8 /* Color.swift in Sources */,
 				387F3FED2282DADF001D66D8 /* _HttpModel.m in Sources */,
 				387F3FEE2282DADF001D66D8 /* _NetworkHelper.m in Sources */,
