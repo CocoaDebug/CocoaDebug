@@ -41,8 +41,14 @@
     //TCP
     [_TCPLogger logWithString:@"tcp messages...."];
     
+    //save image
+    [self saveImage:[UIImage imageNamed:@"111.png"]];
 }
 
+- (void)saveImage:(UIImage *)image {
+    NSString *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/111"];
+    [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+}
 
 - (void)testHTTP {
     
