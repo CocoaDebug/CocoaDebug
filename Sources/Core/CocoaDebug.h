@@ -65,6 +65,7 @@
 #import "_MLBFilePreviewController.h"
 #import "_MLBFileTableViewCell.h"
 #import "_MLBImageResources.h"
+#import "_MLBImageController.h"
 #import "_Sandboxer-Header.h"
 #import "_Sandboxer.h"
 #import "_SandboxerHelper.h"

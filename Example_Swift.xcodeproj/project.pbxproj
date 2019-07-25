@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38034EB022E9BBA6002E9731 /* _MLBImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38034EAF22E9BBA6002E9731 /* _MLBImageController.m */; };
+		38034EB122E9BBD6002E9731 /* _MLBImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38034EAF22E9BBA6002E9731 /* _MLBImageController.m */; };
+		38034EB222E9BBDE002E9731 /* _MLBImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 38034EAE22E9BBA5002E9731 /* _MLBImageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
 		384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; };
@@ -699,6 +702,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38034EAE22E9BBA5002E9731 /* _MLBImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBImageController.h; sourceTree = "<group>"; };
+		38034EAF22E9BBA6002E9731 /* _MLBImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBImageController.m; sourceTree = "<group>"; };
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		384E2F12228847750031DFBF /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
@@ -1188,6 +1193,8 @@
 		38715BD122896E8700322BC2 /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				38034EAE22E9BBA5002E9731 /* _MLBImageController.h */,
+				38034EAF22E9BBA6002E9731 /* _MLBImageController.m */,
 				38715BD822896E8700322BC2 /* _Sandboxer-Header.h */,
 				38715BD322896E8700322BC2 /* _MLBFileInfo.h */,
 				38715BDE22896E8700322BC2 /* _MLBFileInfo.m */,
@@ -1933,6 +1940,7 @@
 				38715F1A2289AA1000322BC2 /* _MLBFileInfo.h in Headers */,
 				38715F1B2289AA1000322BC2 /* _SandboxerHelper.h in Headers */,
 				38715F1C2289AA1000322BC2 /* _MLBFileTableViewCell.h in Headers */,
+				38034EB222E9BBDE002E9731 /* _MLBImageController.h in Headers */,
 				38715F1D2289AA1000322BC2 /* _MLBFilePreviewController.h in Headers */,
 				38715F1E2289AA1000322BC2 /* _Sandboxer.h in Headers */,
 				38715F1F2289AA1000322BC2 /* _MLBImageResources.h in Headers */,
@@ -2450,6 +2458,7 @@
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
 				387F3AC62282B493001D66D8 /* LogHelper.swift in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
+				38034EB022E9BBA6002E9731 /* _MLBImageController.m in Sources */,
 				38715C3C2289805F00322BC2 /* _Wrappers.pbobjc.m in Sources */,
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
@@ -2599,6 +2608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38034EB122E9BBD6002E9731 /* _MLBImageController.m in Sources */,
 				38715ED42289A9F900322BC2 /* _GPBExtensionRegistry.m in Sources */,
 				38715ED52289A9F900322BC2 /* _GPBWellKnownTypes.m in Sources */,
 				38715ED62289A9F900322BC2 /* _GPBUtilities.m in Sources */,
