@@ -64,21 +64,21 @@
     
     if (self.flag)
     {
-        self.view.backgroundColor = [UIColor blackColor];
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
             self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y);
+            self.view.backgroundColor = [UIColor blackColor];
         }];
     }
     else
     {
-        self.view.backgroundColor = [UIColor whiteColor];
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
             [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
                 self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 111);
+                self.view.backgroundColor = [UIColor whiteColor];
             }];
         }
         else
@@ -93,6 +93,7 @@
             
             [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
                 self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - (iPhoneX ? 132 : 96));
+                self.view.backgroundColor = [UIColor whiteColor];
             }];
         }
     }
