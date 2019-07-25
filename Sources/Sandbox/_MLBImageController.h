@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "_MLBFileInfo.h"
 
 @interface _MLBImageController : UIViewController
 
-- (instancetype)initWithImage:(UIImage *)image imageTitle:(NSString *)imageTitle;
+- (instancetype)initWithImage:(UIImage *)image fileInfo:(_MLBFileInfo *)fileInfo;
 
 @end
-
-NS_ASSUME_NONNULL_END

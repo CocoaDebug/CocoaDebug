@@ -185,7 +185,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
                 if (data) {
                     UIImage *image = [UIImage imageWithData:data];
                     if (image) {
-                        return [[_MLBImageController alloc] initWithImage:image imageTitle:fileInfo.displayName];
+                        return [[_MLBImageController alloc] initWithImage:image fileInfo:fileInfo];
                     }
                 }
             }

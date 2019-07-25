@@ -7,22 +7,36 @@
 //
 
 #import "_MLBImageController.h"
+#import "_Sandboxer.h"
 
-@interface _MLBImageController ()
+@interface _MLBImageController () <UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, copy) NSString *imageTitle;
+@property (nonatomic, strong) _MLBFileInfo *fileInfo;
+@property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic, assign) BOOL flag;
 
 @end
 
 @implementation _MLBImageController
 
-- (instancetype)initWithImage:(UIImage *)image imageTitle:(NSString *)imageTitle {
+#pragma mark - Getters
+- (UIDocumentInteractionController *)documentInteractionController {
+    if (!_documentInteractionController) {
+        _documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:self.fileInfo.URL];
+        _documentInteractionController.delegate = self;
+        _documentInteractionController.name = self.fileInfo.displayName;
+    }
+    
+    return _documentInteractionController;
+}
+
+#pragma mark - init
+- (instancetype)initWithImage:(UIImage *)image fileInfo:(_MLBFileInfo *)fileInfo {
     if (self = [super init]) {
         self.image = image;
-        self.imageTitle = imageTitle;
+        self.fileInfo = fileInfo;
     }
     return self;
 }
@@ -30,8 +44,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if ([_Sandboxer shared].isShareable) {
+        UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sharingAction)];
+        self.navigationItem.rightBarButtonItem = shareItem;
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = self.imageTitle;
+    self.title = self.fileInfo.displayName;
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
     self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height - [[UIApplication sharedApplication] statusBarFrame].size.height);
@@ -39,6 +58,7 @@
     [self.view addSubview:self.imageView];
 }
 
+#pragma mark - touchesBegan
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     self.flag = !self.flag;
     
@@ -75,6 +95,29 @@
                 self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - (iPhoneX ? 132 : 96));
             }];
         }
+    }
+}
+
+#pragma mark - UIDocumentInteractionControllerDelegate
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
+    return self.navigationController;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller {
+    return self.view.bounds;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller {
+    return self.view;
+}
+
+#pragma mark - target action
+- (void)sharingAction {
+    if (![_Sandboxer shared].isShareable) { return; }
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    } else {
+        [self.documentInteractionController presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
 }
 
