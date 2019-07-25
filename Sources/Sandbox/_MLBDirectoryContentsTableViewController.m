@@ -17,6 +17,7 @@
 #import <QuickLook/QuickLook.h>
 #import "_Sandboxer-Header.h"
 #import "_NetworkHelper.h"
+#import "_MLBImageController.h"
 
 @interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UIAlertViewDelegate>
 
@@ -171,15 +172,25 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         return directoryContentsTableViewController;
     } else {
         if ([_Sandboxer shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
-            ////NSLog(@"Quick Look can preview this file");
+            //NSLog(@"Quick Look can preview this file");
             self.previewingFileInfo = fileInfo;
-            
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
             previewController.hidesBottomBarWhenPushed = YES;//liman
             return previewController;
         } else {
-            ////NSLog(@"Quick Look can not preview this file");
+            
+            if (fileInfo.URL) {
+                NSData *data = [NSData dataWithContentsOfURL:fileInfo.URL];
+                if (data) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    if (image) {
+                        return [[_MLBImageController alloc] initWithImage:image imageTitle:fileInfo.displayName];
+                    }
+                }
+            }
+            
+            //NSLog(@"Quick Look can not preview this file");
             _MLBFilePreviewController *filePreviewController = [[_MLBFilePreviewController alloc] init];
             filePreviewController.fileInfo = fileInfo;
             filePreviewController.hidesBottomBarWhenPushed = YES;//liman
