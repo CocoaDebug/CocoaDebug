@@ -45,7 +45,7 @@
 
 
 + (void)logWithString:(NSString *)string {
-    [[_OCLogHelper shared] handleLogWithFile:@"TCP" function:@"TCP" line:1 message:string color:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+    [[_OCLogHelper shared] handleLogWithFile:@"TCP" function:@"TCP" line:1 message:string color:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
 }
 
 
