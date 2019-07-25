@@ -179,13 +179,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             previewController.hidesBottomBarWhenPushed = YES;//liman
             return previewController;
         } else {
-            
+            //liman
             if (fileInfo.URL) {
                 NSData *data = [NSData dataWithContentsOfURL:fileInfo.URL];
                 if (data) {
                     UIImage *image = [UIImage imageWithData:data];
                     if (image) {
-                        return [[_MLBImageController alloc] initWithImage:image fileInfo:fileInfo];
+                        _MLBImageController *vc = [[_MLBImageController alloc] initWithImage:image fileInfo:fileInfo];
+                        vc.hidesBottomBarWhenPushed = YES;//liman
+                        return vc;
                     }
                 }
             }
