@@ -38,7 +38,9 @@ import Foundation
     }
 
     //MARK: - CocoaDebug present
-    @objc public static func present(fatherController: UIViewController) {
+    @objc public static func present(fatherController: UIViewController, index: Int) {
+        CocoaDebugSettings.shared.tabBarSelectItem = index
+        
         let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: CocoaDebugViewController.self))
         guard let vc = storyboard.instantiateInitialViewController() else {return}
         fatherController.present(vc, animated: true, completion: nil)

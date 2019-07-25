@@ -20,7 +20,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     #ifdef DEBUG
-        [CocoaDebug presentWithFatherController:self];
+        [CocoaDebug presentWithFatherController:self index:1];
     #endif
 }
 
