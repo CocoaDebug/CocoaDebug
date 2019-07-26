@@ -43,6 +43,11 @@
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
+    if (line == 999999999) {
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+        return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
+    }
+    
     NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }

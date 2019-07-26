@@ -265,6 +265,7 @@
 		38AA088722EAE93B0061214D /* _GPBRootObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AA077F22EAE93B0061214D /* _GPBRootObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		38AA088822EAE93B0061214D /* _GPBCodedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AA078022EAE93B0061214D /* _GPBCodedInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		38AA088922EAE93B0061214D /* _GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AA078322EAE93B0061214D /* _GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AA088B22EAEBBA0061214D /* _NSLogHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AA088A22EAEBBA0061214D /* _NSLogHook.m */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
 		EA165F04204D2539001472C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F03204D2539001472C1 /* ViewController.m */; };
 		EA165F07204D2539001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F05204D2539001472C1 /* Main.storyboard */; };
@@ -626,6 +627,7 @@
 		38AA078722EAE93B0061214D /* _GPBUnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUnknownFieldSet.h; sourceTree = "<group>"; };
 		38AA078822EAE93B0061214D /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
 		38AA078922EAE93B0061214D /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
+		38AA088A22EAEBBA0061214D /* _NSLogHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NSLogHook.m; sourceTree = "<group>"; };
 		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA165EFF204D2539001472C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA165F00204D2539001472C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -969,6 +971,8 @@
 		38AA071A22EAE93B0061214D /* Logs */ = {
 			isa = PBXGroup;
 			children = (
+				38AA088A22EAEBBA0061214D /* _NSLogHook.m */,
+				38AA072922EAE93B0061214D /* _ObjcLog.m */,
 				38AA071B22EAE93B0061214D /* _TCPLogger.h */,
 				38AA071C22EAE93B0061214D /* _OCLogModel.h */,
 				38AA071D22EAE93B0061214D /* _OCLogHelper.h */,
@@ -983,7 +987,6 @@
 				38AA072622EAE93B0061214D /* _OCLoggerFormat.h */,
 				38AA072722EAE93B0061214D /* LogHelper.swift */,
 				38AA072822EAE93B0061214D /* _OCLogStoreManager.h */,
-				38AA072922EAE93B0061214D /* _ObjcLog.m */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -1523,6 +1526,7 @@
 				38AA079622EAE93B0061214D /* Device.swift in Sources */,
 				38AA088422EAE93B0061214D /* _GPBWireFormat.m in Sources */,
 				38AA086C22EAE93B0061214D /* _WKWebView+Swizzling.m in Sources */,
+				38AA088B22EAEBBA0061214D /* _NSLogHook.m in Sources */,
 				38AA085E22EAE93B0061214D /* LogViewController.swift in Sources */,
 				38AA085622EAE93B0061214D /* _CacheStoragePolicy.m in Sources */,
 				38AA078E22EAE93B0061214D /* DeviceModel.swift in Sources */,
