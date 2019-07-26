@@ -38,9 +38,9 @@
 {
     if (log.h5LogType == H5LogTypeNone)
     {
-        if (log.color == [UIColor blackColor] || log.color == nil)
+        if (log.color == [UIColor whiteColor] || log.color == nil)
         {
-            //黑色
+            //白色
             if ([self.defaultLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
                 if (self.defaultLogArray.count > 0) {
                     [self.defaultLogArray removeObjectAtIndex:0];
@@ -75,8 +75,8 @@
 {
     if (log.h5LogType == H5LogTypeNone)
     {
-        if (log.color == [UIColor blackColor] || log.color == nil) {
-            //黑色
+        if (log.color == [UIColor whiteColor] || log.color == nil) {
+            //白色
             [self.defaultLogArray removeObject:log];
         }else{
             //彩色

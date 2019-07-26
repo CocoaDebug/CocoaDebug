@@ -66,6 +66,34 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    @objc public var showBubbleAndWindow: Bool = false {
+        didSet {
+            UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
+            UserDefaults.standard.synchronize()
+            
+            let x = WindowHelper.shared.vc.bubble.frame.origin.x
+            let width = WindowHelper.shared.vc.bubble.frame.size.width
+            
+            if showBubbleAndWindow == true
+            {
+                if x > UIScreen.main.bounds.size.width/2 {
+                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
+                }else{
+                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
+                }
+                WindowHelper.shared.enable()
+            }
+            else
+            {
+                if x > UIScreen.main.bounds.size.width/2 {
+                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
+                }else{
+                    WindowHelper.shared.vc.bubble.frame.origin.x = -width
+                }
+                WindowHelper.shared.disable()
+            }
+        }
+    }
     @objc public var serverURL: String? = nil {
         didSet {
             UserDefaults.standard.set(serverURL, forKey: "serverURL_CocoaDebug")
@@ -163,6 +191,7 @@ import Foundation
         firstIn = UserDefaults.standard.string(forKey: "firstIn_CocoaDebug")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
+        showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         disableCrashRecording = UserDefaults.standard.bool(forKey: "disableCrashRecording_CocoaDebug")
         disableHTMLConsoleMonitoring = UserDefaults.standard.bool(forKey: "disableHTMLConsoleMonitoring_CocoaDebug")
         disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")

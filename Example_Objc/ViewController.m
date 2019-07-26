@@ -10,7 +10,6 @@
 #import "AFURLSessionManager.h"
 #import <WebKit/WebKit.h>
 #import "_TCPLogger.h"
-#import "Example_Objc-Swift.h"
 
 @interface ViewController ()
 
@@ -18,20 +17,14 @@
 
 @implementation ViewController
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    #ifdef DEBUG
-        [CocoaDebug presentWithFatherController:self index:0];
-    #endif
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     NSLog(@"hello world");
-    NSLog(@"hello world red");
-    NSLog(@"hello world yellow");
+    RedLog(@"hello world red");
+    RedLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
-    NSLog(@"unicode转换为中文");
+    NSLog_UNICODE(@"unicode转换为中文");
     
     [self testHTTP];
     [self test_console_WKWebView];
@@ -61,10 +54,10 @@
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(error.localizedDescription);
         } else {
-            NSLog(@"%@",response);
-            NSLog(@"%@", responseObject);
+            RedLog(@"%@",response);
+            NSLog(responseObject);
         }
     }];
     [dataTask resume];
@@ -78,9 +71,9 @@
         NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
         NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
         if (error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(error.localizedDescription);
         }else{
-            NSLog(@"%@", responseString);
+            NSLog(responseString);
         }
     });
     
@@ -95,7 +88,7 @@
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
             NSLog(@"%@",responseDictionary);
         }else{
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(error.localizedDescription);
         }
     }];
     [dataTask_ resume];

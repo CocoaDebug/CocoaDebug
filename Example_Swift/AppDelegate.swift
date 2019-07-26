@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 //normal print
-public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .black) {
+public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
     #if DEBUG
         swiftLog(file, function, line, message, color, false)
     #endif
@@ -45,7 +45,7 @@ public func print<T>(file: String = #file, function: String = #function, line: I
 
 
 //unicode print
-public func print_UNICODE<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .black) {
+public func print_UNICODE<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
     #if DEBUG
         swiftLog(file, function, line, message, color, true)
     #endif

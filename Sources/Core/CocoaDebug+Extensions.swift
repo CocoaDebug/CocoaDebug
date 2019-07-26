@@ -245,6 +245,32 @@ extension UITableView {
     }
 }
 
+///shake
+extension UIWindow {
+    
+    open override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+//    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+//        super.motionEnded(motion, with: event)
+//    }
+//
+//    open override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+//        super.motionCancelled(motion, with: event)
+//    }
+    
+    open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionBegan(motion, with: event)
+        
+        if CocoaDebugSettings.shared.responseShake == false {return}
+        if motion == .motionShake {
+            if CocoaDebugSettings.shared.visible == true { return }
+            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
+        }
+    }
+}
+
 
 ///CocoaDebug
 extension CocoaDebug {
@@ -280,8 +306,13 @@ extension CocoaDebug {
         }
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
+            CocoaDebugSettings.shared.showBubbleAndWindow = true
+        }else{//not first launch
+            CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
-
+        if CocoaDebugSettings.shared.showBubbleAndWindow == true {
+            WindowHelper.shared.enable()
+        }
         
         CocoaDebugSettings.shared.visible = false
         CocoaDebugSettings.shared.logSearchWordDefault = nil
@@ -321,6 +352,7 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
+        WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         LogHelper.shared.enable = false
         _OCLogHelper.shared()?.enable = false

@@ -1,35 +1,35 @@
-////
-////  Example
-////  man
-////
-////  Created by man on 11/11/2018.
-////  Copyright © 2018 man. All rights reserved.
-////
 //
-//#import "_ObjcLog.h"
+//  Example
+//  man
 //
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
-//
-///**
-// * 日志颜色
-// * Unicode转中文
-// * 以上2个特征可以自己定制
-// */
-//#ifdef DEBUG
-//    //black color
-//    #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor blackColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-//    #define NSLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor blackColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
-//    //red color
-//    #define RedLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-//    #define RedLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
-//#else
-//    //black color
-//    #define NSLog(fmt, ...) nil
-//    #define NSLog_UNICODE(fmt, ...) nil
-//    //red color
-//    #define RedLog(fmt, ...) nil
-//    #define RedLog_UNICODE(fmt, ...) nil
-//#endif
-//
-//
-//
+
+#import "_ObjcLog.h"
+
+
+
+/**
+ * 日志颜色
+ * Unicode转中文
+ * 以上2个特征可以自己定制
+ */
+#ifdef DEBUG
+    //white color
+    #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define NSLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+    //red color
+    #define RedLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
+    #define RedLog_UNICODE(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor redColor] unicodeToChinese:YES message:(fmt), ##__VA_ARGS__]
+#else
+    //white color
+    #define NSLog(fmt, ...) nil
+    #define NSLog_UNICODE(fmt, ...) nil
+    //red color
+    #define RedLog(fmt, ...) nil
+    #define RedLog_UNICODE(fmt, ...) nil
+#endif
+
+
+

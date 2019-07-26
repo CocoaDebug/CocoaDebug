@@ -67,7 +67,7 @@ class AppInfoViewController: UITableViewController {
         super.viewWillAppear(animated)
         let count = UserDefaults.standard.integer(forKey: "crashCount_CocoaDebug")
         labelCrashCount.text = "\(count)"
-        labelCrashCount.textColor = count > 0 ? .red : .black
+        labelCrashCount.textColor = count > 0 ? .red : .white
     }
     
     //MARK: - target action
