@@ -148,7 +148,7 @@ extension Data {
         
         //1.pretty json
         if let str = self.dataToDictionary()?.dictionaryToString() {
-            return str;
+            return str
         } else {
             //2.protobuf
             if let message = try? _GPBMessage.parse(from: self) {
