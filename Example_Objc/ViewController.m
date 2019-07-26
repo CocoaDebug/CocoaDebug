@@ -21,10 +21,10 @@
     [super viewDidLoad];
     
     NSLog(@"hello world");
-    RedLog(@"hello world red");
-    RedLog(@"hello world yellow");
+    NSLog(@"hello world red");
+    NSLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
-    NSLog_UNICODE(@"unicode转换为中文");
+    NSLog(@"unicode转换为中文");
     
     [self testHTTP];
     [self test_console_WKWebView];
@@ -54,10 +54,10 @@
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
-            NSLog(error.localizedDescription);
+            NSLog(@"%@", error.localizedDescription);
         } else {
-            RedLog(@"%@",response);
-            NSLog(responseObject);
+            NSLog(@"%@",response);
+            NSLog(@"%@", responseObject);
         }
     }];
     [dataTask resume];
@@ -71,9 +71,9 @@
         NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
         NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
         if (error) {
-            NSLog(error.localizedDescription);
+            NSLog(@"%@", error.localizedDescription);
         }else{
-            NSLog(responseString);
+            NSLog(@"%@", responseString);
         }
     });
     
@@ -88,7 +88,7 @@
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
             NSLog(@"%@",responseDictionary);
         }else{
-            NSLog(error.localizedDescription);
+            NSLog(@"%@", error.localizedDescription);
         }
     }];
     [dataTask_ resume];
