@@ -20,7 +20,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     #ifdef DEBUG
-        [CocoaDebug presentWithFatherController:self index:1];
+        [CocoaDebug presentWithFatherController:self index:0];
     #endif
 }
 
@@ -28,10 +28,10 @@
     [super viewDidLoad];
     
     NSLog(@"hello world");
-//    RedLog(@"hello world red");
-//    RedLog(@"hello world yellow");
+    NSLog(@"hello world red");
+    NSLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
-//    NSLog_UNICODE(@"unicode转换为中文");
+    NSLog(@"unicode转换为中文");
     
     [self testHTTP];
     [self test_console_WKWebView];
@@ -63,7 +63,7 @@
         if (error) {
             NSLog(@"%@", error.localizedDescription);
         } else {
-//            RedLog(@"%@",response);
+            NSLog(@"%@",response);
             NSLog(@"%@", responseObject);
         }
     }];

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         #if DEBUG
-            CocoaDebug.present(fatherController: self)
+            CocoaDebug.present(fatherController: self, index: 0)
         #endif
     }
     
