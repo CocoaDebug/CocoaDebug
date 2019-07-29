@@ -19,6 +19,7 @@
 
 static void (*orig_nslog)(NSString *format, ...);
 
+
 void my_nslog(NSString *format, ...) {
     /*方法一*/
 //    va_list vl;
@@ -40,9 +41,15 @@ void my_nslog(NSString *format, ...) {
     va_end(va);
 }
 
+
 + (void)load {
-    struct rebinding nslog_rebinding = {"NSLog",my_nslog,(void*)&orig_nslog};
-    rebind_symbols((struct rebinding[1]){nslog_rebinding}, 1);
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            struct rebinding nslog_rebinding = {"NSLog",my_nslog,(void*)&orig_nslog};
+            rebind_symbols((struct rebinding[1]){nslog_rebinding}, 1);
+        });
+    }
 }
 
 @end
