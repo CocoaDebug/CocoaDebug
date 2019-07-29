@@ -94,19 +94,6 @@ github "CocoaDebug/CocoaDebug"
     #ifdef DEBUG
         [CocoaDebug enable];
     #endif
-	
-    //Step 3. (PrefixHeader.pch)
-    #ifdef DEBUG
-        #import "_ObjcLog.h"
-        //#import <CocoaDebug/_ObjcLog.h> //if use framework
-    #endif
-	
-	//Step 4. (PrefixHeader.pch)
-    #ifdef DEBUG
-        #define NSLog(fmt, ...) [_ObjcLog logWithFile:__FILE__ function:__FUNCTION__ line:__LINE__ color:[UIColor whiteColor] unicodeToChinese:NO message:(fmt), ##__VA_ARGS__]
-    #else
-        #define NSLog(fmt, ...) nil
-    #endif
 
 > Please check `Example_Swift.xcodeproj` and `Example_Objc.xcodeproj` for more advanced usage.
 
