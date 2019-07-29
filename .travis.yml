@@ -1,5 +1,7 @@
 before_install:
   - brew update
+  - brew install gcc || brew link --overwrite gcc
+  - brew upgrade
   - brew outdated xctool || brew upgrade xctool
 osx_image: xcode10.2
 language: objective-c
