@@ -9,23 +9,23 @@ Pod::Spec.new do |s|
   s.resources           = "Sources/**/*.{png,xib,storyboard}"
   s.frameworks          = 'UIKit', 'Foundation'
   s.requires_arc        = true
-  s.swift_version       = '5.0'
   s.platform            = :ios, "8.0"
-  s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => '0.8.0' }
+  s.swift_version       = '5.0'
   s.version             = '0.8.0'
-  s.requires_arc = false
-  s.requires_arc = 
-    [
-    'Classes/App', 
-    'Classes/Categories', 
-    'Classes/Core', 
-    'Classes/CustomHTTPProtocol', 
-    'Classes/Logs',
-    'Classes/Network',
-    'Classes/Sandbox',
-    'Classes/Swizzling',
-    'Classes/WHDebugTool', 
-    'Classes/Window'
-    ]
+  s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
+  s.requires_arc        = false
+  s.requires_arc        = 
+                          [
+                          'Classes/App', 
+                          'Classes/Categories', 
+                          'Classes/Core', 
+                          'Classes/CustomHTTPProtocol', 
+                          'Classes/Logs',
+                          'Classes/Network',
+                          'Classes/Sandbox',
+                          'Classes/Swizzling',
+                          'Classes/WHDebugTool', 
+                          'Classes/Window'
+                          ]
 
 end
