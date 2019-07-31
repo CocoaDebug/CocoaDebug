@@ -75,6 +75,6 @@
 #import "_WHDebugFPSMonitor.h"
 #import "_WHDebugMemoryMonitor.h"
 #import "_WHDebugMonitor.h"
-#include "_fishhook.h"
+#import "_fishhook.h"
 
 
