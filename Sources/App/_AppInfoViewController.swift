@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppInfoViewController: UITableViewController {
+class _AppInfoViewController: UITableViewController {
     
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
@@ -34,13 +34,13 @@ class AppInfoViewController: UITableViewController {
         
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
 
-        labelVersionNumber.text = AppInfo.versionNumber
-        labelBuildNumber.text = AppInfo.buildNumber
-        labelBundleName.text = AppInfo.bundleName
+        labelVersionNumber.text = _AppInfo.versionNumber
+        labelBuildNumber.text = _AppInfo.buildNumber
+        labelBundleName.text = _AppInfo.bundleName
 
-        labelScreenResolution.text = Device.screenResolution
-        labelScreenSize.text = "\(Device.screenSize)"
-        labelDeviceModel.text = "\(Device.deviceModel)"
+        labelScreenResolution.text = _Device.screenResolution
+        labelScreenSize.text = "\(_Device.screenSize)"
+        labelDeviceModel.text = "\(_Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
         labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
@@ -89,7 +89,7 @@ class AppInfoViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension AppInfoViewController {
+extension _AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
@@ -127,7 +127,7 @@ extension AppInfoViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 2 {
-            UIPasteboard.general.string = AppInfo.bundleName
+            UIPasteboard.general.string = _AppInfo.bundleName
             
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)

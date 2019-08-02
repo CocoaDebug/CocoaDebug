@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum DeviceModel {
+enum _DeviceModel {
 
     case iPhone4
     case iPhone4S
@@ -48,7 +48,7 @@ enum DeviceModel {
     case iPhoneXSMax
     case iPhoneXR
 
-    static var current: DeviceModel {
+    static var current: _DeviceModel {
         var systemInfo = utsname()
         uname(&systemInfo)
 

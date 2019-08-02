@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NetworkViewController: UIViewController {
+class _NetworkViewController: UIViewController {
     
     var reachEnd: Bool = true
     var firstIn: Bool = true
@@ -94,7 +94,7 @@ class NetworkViewController: UIViewController {
         
         
         naviItem.title = "[0]"
-        deleteItem.tintColor = Color.mainGreen
+        deleteItem.tintColor = _Color.mainGreen
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.reloadHttp_notification(notification)
@@ -181,7 +181,7 @@ class NetworkViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension NetworkViewController: UITableViewDataSource {
+extension _NetworkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = models?.count {
@@ -192,8 +192,8 @@ extension NetworkViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
-            as! NetworkCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "_NetworkCell", for: indexPath)
+            as! _NetworkCell
         
         cell.httpModel = models?[indexPath.row]
         return cell
@@ -201,7 +201,7 @@ extension NetworkViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension NetworkViewController: UITableViewDelegate {
+extension _NetworkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -254,7 +254,7 @@ extension NetworkViewController: UITableViewDelegate {
         let model = models[indexPath.row]
         model.isSelected = true
         
-        let vc: NetworkDetailViewController = NetworkDetailViewController.instanceFromStoryBoard()
+        let vc: _NetworkDetailViewController = _NetworkDetailViewController.instanceFromStoryBoard()
         vc.httpModel = model
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -332,7 +332,7 @@ extension NetworkViewController: UITableViewDelegate {
 }
 
 //MARK: - UIScrollViewDelegate
-extension NetworkViewController: UIScrollViewDelegate {
+extension _NetworkViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
@@ -344,7 +344,7 @@ extension NetworkViewController: UIScrollViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension NetworkViewController: UISearchBarDelegate {
+extension _NetworkViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {

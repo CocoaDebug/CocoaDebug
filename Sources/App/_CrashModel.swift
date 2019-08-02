@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CrashModel: NSObject, NSCoding {
+class _CrashModel: NSObject, NSCoding {
     
     let id: String
     var date: Date

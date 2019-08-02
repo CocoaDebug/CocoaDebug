@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NetworkDetailModel {
+struct _NetworkDetailModel {
     var title: String?
     var content: String?
     var image: UIImage?

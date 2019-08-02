@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogViewController: UIViewController {
+class _LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
     var reachEndColor: Bool = true
@@ -264,8 +264,8 @@ class LogViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         
-        deleteItem.tintColor = Color.mainGreen
-        segmentedControl.tintColor = Color.mainGreen
+        deleteItem.tintColor = _Color.mainGreen
+        segmentedControl.tintColor = _Color.mainGreen
         
         if UIScreen.main.bounds.size.width == 320 {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
@@ -511,7 +511,7 @@ class LogViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension LogViewController: UITableViewDataSource {
+extension _LogViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
@@ -532,7 +532,7 @@ extension LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
+                as! _LogCell
             cell.model = defaultModels[indexPath.row]
             return cell
         }
@@ -544,7 +544,7 @@ extension LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
+                as! _LogCell
             cell.model = colorModels[indexPath.row]
             return cell
         }
@@ -556,7 +556,7 @@ extension LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
+                as! _LogCell
             cell.model = h5Models[indexPath.row]
             return cell
         }
@@ -564,7 +564,7 @@ extension LogViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension LogViewController: UITableViewDelegate {
+extension _LogViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -739,7 +739,7 @@ extension LogViewController: UITableViewDelegate {
 }
 
 //MARK: - UIScrollViewDelegate
-extension LogViewController: UIScrollViewDelegate {
+extension _LogViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
@@ -763,7 +763,7 @@ extension LogViewController: UIScrollViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension LogViewController: UISearchBarDelegate {
+extension _LogViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {

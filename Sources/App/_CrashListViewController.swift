@@ -8,28 +8,28 @@
 
 import UIKit
 
-class CrashListViewController: UITableViewController {
+class _CrashListViewController: UITableViewController {
 
-    lazy var models: [CrashModel] = [CrashModel]()
+    lazy var models: [_CrashModel] = [_CrashModel]()
     
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(CrashListViewController.deleteCrashes))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(_CrashListViewController.deleteCrashes))
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        models = CrashStoreManager.shared.crashArray
+        models = _CrashStoreManager.shared.crashArray
         tableView.reloadData()
     }
     
     //MARK: - target action
     @objc func deleteCrashes() {
         models = []
-        CrashStoreManager.shared.resetCrashs()
+        _CrashStoreManager.shared.resetCrashs()
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -38,7 +38,7 @@ class CrashListViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension CrashListViewController {
+extension _CrashListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -52,19 +52,19 @@ extension CrashListViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
-            as! CrashCell
+            as! _CrashCell
         cell.crash = models[indexPath.row]
         return cell
     }
 }
 
 //MARK: - UITableViewDelegate
-extension CrashListViewController {
+extension _CrashListViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = CrashDetailViewController.instanceFromStoryBoard()
+        let vc = _CrashDetailViewController.instanceFromStoryBoard()
         vc.crash = models[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -75,7 +75,7 @@ extension CrashListViewController {
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
             guard let models = self?.models else {return}
-            CrashStoreManager.shared.removeCrash(models[indexPath.row])
+            _CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self?.models.remove(at: indexPath.row)
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -98,7 +98,7 @@ extension CrashListViewController {
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            CrashStoreManager.shared.removeCrash(models[indexPath.row])
+            _CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self.models.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)

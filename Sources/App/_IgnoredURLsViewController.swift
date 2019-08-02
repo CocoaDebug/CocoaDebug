@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class IgnoredURLsViewController: UITableViewController {
+class _IgnoredURLsViewController: UITableViewController {
     
     var models: Array<String>?
     
@@ -24,7 +24,7 @@ class IgnoredURLsViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension IgnoredURLsViewController {
+extension _IgnoredURLsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0

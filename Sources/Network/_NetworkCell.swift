@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NetworkCell: UITableViewCell {
+class _NetworkCell: UITableViewCell {
     
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!
@@ -126,8 +126,8 @@ class NetworkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageLabel.backgroundColor = Color.mainGreen
-        requestTimeTextView.textColor = Color.mainGreen
+        imageLabel.backgroundColor = _Color.mainGreen
+        requestTimeTextView.textColor = _Color.mainGreen
         
         requestTimeTextView.textContainer.lineFragmentPadding = 0
         requestTimeTextView.textContainerInset = .zero

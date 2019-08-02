@@ -36,9 +36,9 @@ import Foundation
             UserDefaults.standard.synchronize()
             
             if disableCrashRecording == false {
-                CrashLogger.shared.enable = true
+                _CrashLogger.shared.enable = true
             }else{
-                CrashStoreManager.shared.resetCrashs()
+                _CrashStoreManager.shared.resetCrashs()
             }
         }
     }
@@ -71,26 +71,26 @@ import Foundation
             UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
             UserDefaults.standard.synchronize()
             
-            let x = WindowHelper.shared.vc.bubble.frame.origin.x
-            let width = WindowHelper.shared.vc.bubble.frame.size.width
+            let x = _WindowHelper.shared.vc.bubble.frame.origin.x
+            let width = _WindowHelper.shared.vc.bubble.frame.size.width
             
             if showBubbleAndWindow == true
             {
                 if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
+                    _WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
                 }else{
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
+                    _WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
                 }
-                WindowHelper.shared.enable()
+                _WindowHelper.shared.enable()
             }
             else
             {
                 if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
+                    _WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
                 }else{
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width
+                    _WindowHelper.shared.vc.bubble.frame.origin.x = -width
                 }
-                WindowHelper.shared.disable()
+                _WindowHelper.shared.disable()
             }
         }
     }

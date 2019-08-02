@@ -8,17 +8,17 @@
 
 import Foundation
 
-class CrashStoreManager {
+class _CrashStoreManager {
     
-    lazy var crashArray: [CrashModel] = [CrashModel]()
+    lazy var crashArray: [_CrashModel] = [_CrashModel]()
     
-    static let shared = CrashStoreManager()
+    static let shared = _CrashStoreManager()
     private init() {
         crashArray = self.getCrashs()
     }
     
     //MARK: - public
-    func addCrash(_ crash: CrashModel) {
+    func addCrash(_ crash: _CrashModel) {
         if self.crashArray.count >= CocoaDebugSettings.shared.logMaxCount {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
@@ -28,7 +28,7 @@ class CrashStoreManager {
         archiveCrashs(self.crashArray)
     }
     
-    func removeCrash(_ model: CrashModel) {
+    func removeCrash(_ model: _CrashModel) {
         if let index = self.crashArray.firstIndex(where: { (crash) -> Bool in
             return crash.id == model.id
         }) {
@@ -45,19 +45,19 @@ class CrashStoreManager {
     }
     
     //MARK: - private
-    private func archiveCrashs(_ crashs: [CrashModel]) {
+    private func archiveCrashs(_ crashs: [_CrashModel]) {
         let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
         UserDefaults.standard.set(dataArchive, forKey: "crashArchive_CocoaDebug")
         UserDefaults.standard.set(crashs.count, forKey: "crashCount_CocoaDebug")
         UserDefaults.standard.synchronize()
     }
     
-    private func getCrashs() -> [CrashModel] {
+    private func getCrashs() -> [_CrashModel] {
         guard let data = UserDefaults.standard.object(forKey: "crashArchive_CocoaDebug") as? Data else {return []}
         do {
             if #available(iOS 9.0, *) {
                 let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-                return dataArchive as! [CrashModel]
+                return dataArchive as! [_CrashModel]
             } else {
                 // Fallback on earlier versions
                 return []

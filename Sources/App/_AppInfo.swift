@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct AppInfo {
+struct _AppInfo {
 
     static var versionNumber: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String

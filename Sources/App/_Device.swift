@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Device {
+struct _Device {
 
     var osVersion: String?
     static var screenResolution: String? {
@@ -16,7 +16,7 @@ struct Device {
         let dimension = UIScreen.main.bounds
         return "\(dimension.size.width*scale)*\(dimension.size.height*scale)"
     }
-    static var deviceModel: DeviceModel = DeviceModel.current
+    static var deviceModel: _DeviceModel = _DeviceModel.current
 
     var getScreenSize: String?
     var aspectRatio: String?

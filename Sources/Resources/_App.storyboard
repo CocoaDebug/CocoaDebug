@@ -12,7 +12,7 @@
         <!--Details-->
         <scene sceneID="Ln3-aw-eLd">
             <objects>
-                <tableViewController storyboardIdentifier="CrashDetailViewController" title="Details" id="0sO-85-dbe" customClass="CrashDetailViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="_CrashDetailViewController" title="Details" id="0sO-85-dbe" customClass="_CrashDetailViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="37c-ry-al7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,13 +125,13 @@
         <!--Crash-->
         <scene sceneID="DuA-BW-Szs">
             <objects>
-                <tableViewController storyboardIdentifier="CrashListViewController" title="Crash" hidesBottomBarWhenPushed="YES" id="wXt-DM-5Pz" customClass="CrashListViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="_CrashListViewController" title="Crash" hidesBottomBarWhenPushed="YES" id="wXt-DM-5Pz" customClass="_CrashListViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="adV-LP-Xiu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CrashCell" id="Me6-d9-qI1" customClass="CrashCell" customModule="CocoaDebug" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CrashCell" id="Me6-d9-qI1" customClass="_CrashCell" customModule="Example_Objc" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Me6-d9-qI1" id="H71-A4-KNM">
@@ -183,7 +183,7 @@
         <!--Ignored URLs-->
         <scene sceneID="OGh-yx-4BT">
             <objects>
-                <tableViewController storyboardIdentifier="IgnoredURLsViewController" title="Ignored URLs" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="IgnoredURLsViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="_IgnoredURLsViewController" title="Ignored URLs" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="_IgnoredURLsViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wcd-XR-9Vs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
         <!--App-->
         <scene sceneID="PWc-Aa-Ldz">
             <objects>
-                <navigationController storyboardIdentifier="App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="CocoaDebugNavigationController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="_App" automaticallyAdjustsScrollViewInsets="NO" id="OYf-mT-x66" customClass="CocoaDebugNavigationController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="App" image="_icon_file_type_app" selectedImage="_icon_file_type_app" id="bj0-w7-cGx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LTO-vU-VsB">
@@ -237,7 +237,7 @@
         <!--App-->
         <scene sceneID="bwZ-u7-a4K">
             <objects>
-                <tableViewController storyboardIdentifier="AppInfoViewController" title="App" id="jF1-Ov-37R" customClass="AppInfoViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="_AppInfoViewController" title="App" id="jF1-Ov-37R" customClass="_AppInfoViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vkj-g7-DtV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -617,7 +617,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oYM-Zg-0TE">
-                                                    <rect key="frame" x="314" y="7" width="53" height="31"/>
+                                                    <rect key="frame" x="539" y="7" width="53" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="51" id="2EO-PA-UMz"/>
                                                         <constraint firstAttribute="height" constant="31" id="okO-UR-jYC"/>
@@ -647,7 +647,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssj-o9-QJs">
-                                                    <rect key="frame" x="314" y="7" width="53" height="31"/>
+                                                    <rect key="frame" x="539" y="7" width="53" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="51" id="fz1-Rz-nfr"/>
                                                         <constraint firstAttribute="height" constant="31" id="tPG-6C-aFs"/>
@@ -677,7 +677,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rnB-9b-x8i">
-                                                    <rect key="frame" x="314" y="7" width="53" height="31"/>
+                                                    <rect key="frame" x="539" y="7" width="53" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="LeT-67-2dt"/>
                                                         <constraint firstAttribute="width" constant="51" id="hg8-FM-ebm"/>
@@ -707,7 +707,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-2G-DFt">
-                                                    <rect key="frame" x="314" y="7" width="53" height="31"/>
+                                                    <rect key="frame" x="539" y="7" width="53" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="51" id="5iH-nX-Sgf"/>
                                                         <constraint firstAttribute="height" constant="31" id="Ohc-WB-zDW"/>
@@ -744,7 +744,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bR-ma-wZQ">
-                                                    <rect key="frame" x="230" y="11" width="111" height="20.5"/>
+                                                    <rect key="frame" x="455" y="11" width="111" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="111" id="eV0-Gy-lkc"/>
                                                     </constraints>
@@ -829,7 +829,7 @@
         <!--About-->
         <scene sceneID="GVK-bH-MrX">
             <objects>
-                <tableViewController storyboardIdentifier="AboutViewController" title="About" hidesBottomBarWhenPushed="YES" id="FV0-KU-C1g" customClass="AboutViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="_AboutViewController" title="About" hidesBottomBarWhenPushed="YES" id="FV0-KU-C1g" customClass="_AboutViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vea-k2-6Ll">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -12,7 +12,7 @@
         <!--Logs-->
         <scene sceneID="afz-qj-lGc">
             <objects>
-                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="CocoaDebugNavigationController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="_Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="CocoaDebugNavigationController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Logs" image="_icon_file_type_logs" selectedImage="_icon_file_type_logs" id="Uuf-aW-P9g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EEW-tV-ACR">
@@ -35,7 +35,7 @@
         <!--Log View Controller-->
         <scene sceneID="b3U-lr-JR7">
             <objects>
-                <viewController storyboardIdentifier="LogViewController" id="b1x-pw-stc" customClass="_LogViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="_LogViewController" id="b1x-pw-stc" customClass="_LogViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UzN-vB-IsZ"/>
                         <viewControllerLayoutGuide type="bottom" id="tUW-lE-b31"/>
@@ -254,7 +254,7 @@
                             </barButtonItem>
                         </leftBarButtonItems>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RqA-gF-lv2">
-                            <rect key="frame" x="97" y="7" width="176" height="30"/>
+                            <rect key="frame" x="99.5" y="7" width="176" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Log"/>
