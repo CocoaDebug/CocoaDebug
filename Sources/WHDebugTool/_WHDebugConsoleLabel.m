@@ -8,10 +8,14 @@
 
 #import "_WHDebugConsoleLabel.h"
 
-@implementation _WHDebugConsoleLabel {
-    UIFont *_font;
-    UIFont *_subFont;
-}
+@interface _WHDebugConsoleLabel ()
+
+@property (nonatomic, strong) UIFont *mainFont;
+@property (nonatomic, strong) UIFont *subFont;
+
+@end
+
+@implementation _WHDebugConsoleLabel
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -24,12 +28,12 @@
     self.userInteractionEnabled = NO;
     self.adjustsFontSizeToFitWidth = YES;
     
-    _font = [UIFont fontWithName:@"Menlo" size:14];
-    if (_font) {
-        _subFont = [UIFont fontWithName:@"Menlo" size:4];
+    self.mainFont = [UIFont fontWithName:@"Menlo" size:14];
+    if (self.mainFont) {
+        self.subFont = [UIFont fontWithName:@"Menlo" size:4];
     } else {
-        _font = [UIFont fontWithName:@"Courier" size:14];
-        _subFont = [UIFont fontWithName:@"Courier" size:4];
+        self.mainFont = [UIFont fontWithName:@"Courier" size:14];
+        self.subFont = [UIFont fontWithName:@"Courier" size:4];
     }
 }
 
@@ -57,8 +61,8 @@
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d FPS",(int)round(fps)]];
     [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, text.length - 3)];
     [text addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(text.length - 3, 3)];
-    [text addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, text.length)];
-    [text addAttribute:NSFontAttributeName value:_subFont range:NSMakeRange(text.length - 4, 1)];
+    [text addAttribute:NSFontAttributeName value:self.mainFont range:NSMakeRange(0, text.length)];
+    [text addAttribute:NSFontAttributeName value:self.subFont range:NSMakeRange(text.length - 4, 1)];
     return text;
 }
 
@@ -68,8 +72,8 @@
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.1f M",memory]];
     [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, text.length - 1)];
     [text addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(text.length - 1, 1)];
-    [text addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, text.length)];
-    [text addAttribute:NSFontAttributeName value:_subFont range:NSMakeRange(text.length - 2, 1)];
+    [text addAttribute:NSFontAttributeName value:self.mainFont range:NSMakeRange(0, text.length)];
+    [text addAttribute:NSFontAttributeName value:self.subFont range:NSMakeRange(text.length - 2, 1)];
     return text;
 }
 
@@ -79,8 +83,8 @@
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d%% CPU",(int)round(cpu)]];
     [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, text.length - 3)];
     [text addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(text.length - 3, 3)];
-    [text addAttribute:NSFontAttributeName value:_font range:NSMakeRange(0, text.length)];
-    [text addAttribute:NSFontAttributeName value:_subFont range:NSMakeRange(text.length - 4, 1)];
+    [text addAttribute:NSFontAttributeName value:self.mainFont range:NSMakeRange(0, text.length)];
+    [text addAttribute:NSFontAttributeName value:self.subFont range:NSMakeRange(text.length - 4, 1)];
     return text;
 }
 
