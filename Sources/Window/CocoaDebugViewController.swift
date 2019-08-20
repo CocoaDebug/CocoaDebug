@@ -46,7 +46,7 @@ extension CocoaDebugViewController: BubbleDelegate {
     
     func didTapBubble() {
         _WindowHelper.shared.displayedList = true
-        let storyboard = UIStoryboard(name: "_Manager", bundle: Bundle(for: CocoaDebugViewController.self))
+        let storyboard = UIStoryboard(name: "_Manager", bundle: Bundle(for: CocoaDebug.self))
         guard let vc = storyboard.instantiateInitialViewController() else {return}
         self.present(vc, animated: true, completion: nil)
     }
