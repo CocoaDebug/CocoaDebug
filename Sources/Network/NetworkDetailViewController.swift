@@ -283,7 +283,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        closeItem.tintColor = _Color.mainGreen
+        closeItem.tintColor = Color.mainGreen
         
         //确定request格式(JSON/Form)
         detectRequestSerializer()

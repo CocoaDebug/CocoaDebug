@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct _Color {
+struct Color {
 
     static var colorGradientHead: [CGColor] {
         return [UIColor(red:0.25, green:0.25, blue:0.25, alpha:1.00).cgColor,

@@ -10,52 +10,52 @@ import UIKit
 import Darwin
 
 func exceptionHandler(exception: NSException) {
-    if _CrashLogger.shared.crashed {
+    if CrashLogger.shared.crashed {
         return
     }
-    _CrashLogger.shared.crashed = true
-    _CrashLogger.addCrash(name: exception.name.rawValue, reason: exception.reason)
+    CrashLogger.shared.crashed = true
+    CrashLogger.addCrash(name: exception.name.rawValue, reason: exception.reason)
 }
 
 func handleSignal(signal: Int32) {
-    if _CrashLogger.shared.crashed {
+    if CrashLogger.shared.crashed {
         return
     }
-    _CrashLogger.shared.crashed = true
+    CrashLogger.shared.crashed = true
     switch signal {
     case SIGILL:
-        _CrashLogger.addCrash(name: "SIGILL", reason: nil)
+        CrashLogger.addCrash(name: "SIGILL", reason: nil)
     case SIGABRT:
-        _CrashLogger.addCrash(name: "SIGABRT", reason: nil)
+        CrashLogger.addCrash(name: "SIGABRT", reason: nil)
     case SIGFPE:
-        _CrashLogger.addCrash(name: "SIGFPE", reason: nil)
+        CrashLogger.addCrash(name: "SIGFPE", reason: nil)
     case SIGBUS:
-        _CrashLogger.addCrash(name: "SIGBUS", reason: nil)
+        CrashLogger.addCrash(name: "SIGBUS", reason: nil)
     case SIGSEGV:
-        _CrashLogger.addCrash(name: "SIGSEGV", reason: nil)
+        CrashLogger.addCrash(name: "SIGSEGV", reason: nil)
     case SIGSYS:
-        _CrashLogger.addCrash(name: "SIGSYS", reason: nil)
+        CrashLogger.addCrash(name: "SIGSYS", reason: nil)
     case SIGPIPE:
-        _CrashLogger.addCrash(name: "SIGPIPE", reason: nil)
+        CrashLogger.addCrash(name: "SIGPIPE", reason: nil)
     case SIGTRAP:
-        _CrashLogger.addCrash(name: "SIGTRAP", reason: nil)
+        CrashLogger.addCrash(name: "SIGTRAP", reason: nil)
     default: break
     }
 }
 
-class _CrashLogger {
+class CrashLogger {
 
-    static let shared = _CrashLogger()
+    static let shared = CrashLogger()
     private init() {}
     
     var crashed = false
     var enable: Bool = false {
         didSet {
             if enable {
-                _CrashLogger.register()
+                CrashLogger.register()
             }
             else {
-                _CrashLogger.unregister()
+                CrashLogger.unregister()
             }
         }
     }
@@ -85,7 +85,7 @@ class _CrashLogger {
     }
 
     static func addCrash(name: String, reason: String?) {
-        let newCrash = _CrashModel(name: name, reason: reason)
-        _CrashStoreManager.shared.addCrash(newCrash)
+        let newCrash = CrashModel(name: name, reason: reason)
+        CrashStoreManager.shared.addCrash(newCrash)
     }
 }

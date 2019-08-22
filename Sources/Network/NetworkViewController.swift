@@ -94,7 +94,7 @@ class NetworkViewController: UIViewController {
         
         
         naviItem.title = "[0]"
-        deleteItem.tintColor = _Color.mainGreen
+        deleteItem.tintColor = Color.mainGreen
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.reloadHttp_notification(notification)

@@ -13,7 +13,7 @@ class CrashDetailViewController: UITableViewController {
         @IBOutlet weak var textviewName: UITextView!
     @IBOutlet weak var textviewReason: UITextView!
     @IBOutlet weak var textviewStackTraces: UITextView!
-    var crash: _CrashModel?
+    var crash: CrashModel?
 
     static func instanceFromStoryBoard() -> CrashDetailViewController {
         let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self))

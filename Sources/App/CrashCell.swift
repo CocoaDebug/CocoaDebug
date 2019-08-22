@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _CrashCell: UITableViewCell {
+class CrashCell: UITableViewCell {
 
     @IBOutlet weak var textview: UITextView!
 
@@ -17,7 +17,7 @@ class _CrashCell: UITableViewCell {
         textview.isUserInteractionEnabled = false
     }
 
-    var crash: _CrashModel? {
+    var crash: CrashModel? {
         didSet {
             guard let crash = crash else {return}
             
@@ -31,7 +31,7 @@ class _CrashCell: UITableViewCell {
                                     value: UIColor.white, range: NSMakeRange(0, content.count))
                 
                 let range = NSMakeRange(0, formatDate.count)
-                attstr.addAttribute(.foregroundColor, value: _Color.mainGreen, range: range)
+                attstr.addAttribute(.foregroundColor, value: Color.mainGreen, range: range)
                 attstr.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 12), range: range)
                 
                 textview.attributedText = attstr

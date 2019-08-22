@@ -8,8 +8,8 @@
 
 import UIKit
 
-public class _WindowHelper: NSObject {
-    public static let shared = _WindowHelper()
+public class WindowHelper: NSObject {
+    public static let shared = WindowHelper()
     
     var window: CocoaDebugWindow?
     var displayedList = false

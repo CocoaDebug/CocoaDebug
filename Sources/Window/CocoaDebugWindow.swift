@@ -32,7 +32,7 @@ class CocoaDebugWindow: UIWindow {
     }
 }
 
-extension _WindowHelper: WindowDelegate {
+extension WindowHelper: WindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
         return self.vc.shouldReceive(point: point)
     }

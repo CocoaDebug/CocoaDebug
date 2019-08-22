@@ -38,9 +38,9 @@ class AppInfoViewController: UITableViewController {
         labelBuildNumber.text = AppInfo.buildNumber
         labelBundleName.text = AppInfo.bundleName
 
-        labelScreenResolution.text = _Device.screenResolution
-        labelScreenSize.text = "\(_Device.screenSize)"
-        labelDeviceModel.text = "\(_Device.deviceModel)"
+        labelScreenResolution.text = Device.screenResolution
+        labelScreenSize.text = "\(Device.screenSize)"
+        labelDeviceModel.text = "\(Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
         labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)

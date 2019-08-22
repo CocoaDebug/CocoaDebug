@@ -126,8 +126,8 @@ class NetworkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageLabel.backgroundColor = _Color.mainGreen
-        requestTimeTextView.textColor = _Color.mainGreen
+        imageLabel.backgroundColor = Color.mainGreen
+        requestTimeTextView.textColor = Color.mainGreen
         
         requestTimeTextView.textContainer.lineFragmentPadding = 0
         requestTimeTextView.textContainerInset = .zero

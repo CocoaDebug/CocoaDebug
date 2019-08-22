@@ -10,7 +10,7 @@ import UIKit
 
 class CrashListViewController: UITableViewController {
 
-    lazy var models: [_CrashModel] = [_CrashModel]()
+    lazy var models: [CrashModel] = [CrashModel]()
     
     //MARK: - init
     override func viewDidLoad() {
@@ -22,14 +22,14 @@ class CrashListViewController: UITableViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        models = _CrashStoreManager.shared.crashArray
+        models = CrashStoreManager.shared.crashArray
         tableView.reloadData()
     }
     
     //MARK: - target action
     @objc func deleteCrashes() {
         models = []
-        _CrashStoreManager.shared.resetCrashs()
+        CrashStoreManager.shared.resetCrashs()
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
@@ -52,7 +52,7 @@ extension CrashListViewController {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
-            as! _CrashCell
+            as! CrashCell
         cell.crash = models[indexPath.row]
         return cell
     }
@@ -75,7 +75,7 @@ extension CrashListViewController {
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
             guard let models = self?.models else {return}
-            _CrashStoreManager.shared.removeCrash(models[indexPath.row])
+            CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self?.models.remove(at: indexPath.row)
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -98,7 +98,7 @@ extension CrashListViewController {
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            _CrashStoreManager.shared.removeCrash(models[indexPath.row])
+            CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self.models.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)

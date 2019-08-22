@@ -21,7 +21,7 @@ class CocoaDebugTabBarController: UITabBarController {
         setChildControllers()
         
         self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem 
-        self.tabBar.tintColor = _Color.mainGreen
+        self.tabBar.tintColor = Color.mainGreen
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +36,7 @@ class CocoaDebugTabBarController: UITabBarController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        _WindowHelper.shared.displayedList = false
+        WindowHelper.shared.displayedList = false
     }
     
     //MARK: - private
@@ -74,9 +74,9 @@ class CocoaDebugTabBarController: UITabBarController {
             //****** 以下代码从NavigationController.swift复制 ******
             nav.navigationBar.isTranslucent = false
             
-            nav.navigationBar.tintColor = _Color.mainGreen
+            nav.navigationBar.tintColor = Color.mainGreen
             nav.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
-                                                     .foregroundColor: _Color.mainGreen]
+                                                     .foregroundColor: Color.mainGreen]
             
             let selector = #selector(CocoaDebugNavigationController.exit)
             
@@ -84,7 +84,7 @@ class CocoaDebugTabBarController: UITabBarController {
             let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
             let leftItem = UIBarButtonItem(image: image,
                                              style: .done, target: self, action: selector)
-            leftItem.tintColor = _Color.mainGreen
+            leftItem.tintColor = Color.mainGreen
             nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
             //****** 以上代码从NavigationController.swift复制 ******
             

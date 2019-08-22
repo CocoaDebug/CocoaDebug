@@ -21,7 +21,7 @@ private let _redirectionStatusCodes = ["300","301","302","303","304","305","306"
 private let _width: CGFloat = 60
 private let _height: CGFloat = 60
 
-class _Bubble: UIView {
+class Bubble: UIView {
     
     var hasPerformedSetup: Bool = false//liman
     
@@ -139,7 +139,7 @@ class _Bubble: UIView {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.cornerRadius = 10
-        gradientLayer.colors = _Color.colorGradientHead
+        gradientLayer.colors = Color.colorGradientHead
         self.layer.addSublayer(gradientLayer)
         
         
@@ -150,18 +150,18 @@ class _Bubble: UIView {
         }
         
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(_Bubble.tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
         
         // ***************** Private API *****************
         if #available(iOS 11.0, *) {
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(_Bubble.longPress(sender:)))
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress(sender:)))
             self.addGestureRecognizer(longPress)
             tapGesture.require(toFail: longPress)
         } else {
             // Fallback on earlier versions
             if #available(iOS 10.0, *) {
-                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(_Bubble.longPress2(sender:)))
+                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress2(sender:)))
                 self.addGestureRecognizer(longPress)
                 tapGesture.require(toFail: longPress)
             } else {
@@ -191,7 +191,7 @@ class _Bubble: UIView {
         initLayer()
         
         //添加手势
-        let selector = #selector(_Bubble.panDidFire(panner:))
+        let selector = #selector(Bubble.panDidFire(panner:))
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
