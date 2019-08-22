@@ -335,10 +335,10 @@ extension CocoaDebug {
         
         //log
         if disableLogMonitoring == true {
-            _LogHelper.shared.enable = false
+            LogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
         }else{
-            _LogHelper.shared.enable = true
+            LogHelper.shared.enable = true
             _OCLogHelper.shared()?.enable = true
         }
         
@@ -354,7 +354,7 @@ extension CocoaDebug {
     static func deinitializationMethod() {
         _WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
-        _LogHelper.shared.enable = false
+        LogHelper.shared.enable = false
         _OCLogHelper.shared()?.enable = false
         _CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false

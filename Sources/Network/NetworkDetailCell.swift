@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class _NetworkDetailCell: UITableViewCell {
+class NetworkDetailCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
@@ -24,9 +24,9 @@ class _NetworkDetailCell: UITableViewCell {
     //-12.5
     
     
-    var tapEditViewCallback:((_NetworkDetailModel?) -> Void)?
+    var tapEditViewCallback:((NetworkDetailModel?) -> Void)?
     
-    var detailModel: _NetworkDetailModel? {
+    var detailModel: NetworkDetailModel? {
         didSet {
             
             titleLabel.text = detailModel?.title

@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class _LogHelper: NSObject {
+public class LogHelper: NSObject {
     
     var enable: Bool = true
     
-    @objc static let shared = _LogHelper()
+    @objc static let shared = LogHelper()
     private override init() {}
     
     

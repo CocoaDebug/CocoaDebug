@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _LogCell: UITableViewCell {
+class LogCell: UITableViewCell {
 
     @IBOutlet weak var labelContent: UITextView!
     @IBOutlet weak var viewTypeLogColor: UIView!

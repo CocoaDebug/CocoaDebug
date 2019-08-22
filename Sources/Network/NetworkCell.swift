@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class _NetworkCell: UITableViewCell {
+class NetworkCell: UITableViewCell {
     
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!

@@ -15,23 +15,23 @@ enum EditType {
 import Foundation
 import UIKit
 
-class _JsonViewController: UIViewController {
+class JsonViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     
     var editType: EditType  = .unknown
     var httpModel: _HttpModel?
-    var detailModel: _NetworkDetailModel?
+    var detailModel: NetworkDetailModel?
     
     //编辑过的url
     var editedURLString: String?
     //编辑过的content
     var editedContent: String?
     
-    static func instanceFromStoryBoard() -> _JsonViewController {
-        let storyboard = UIStoryboard(name: "_Network", bundle: Bundle(for: CocoaDebug.self))
-        return storyboard.instantiateViewController(withIdentifier: "_JsonViewController") as! _JsonViewController
+    static func instanceFromStoryBoard() -> JsonViewController {
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
+        return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
     }
     
     //MARK: - tool

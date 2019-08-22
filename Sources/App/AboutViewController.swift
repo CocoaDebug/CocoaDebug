@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class _AboutViewController: UITableViewController {
+class AboutViewController: UITableViewController {
     
     
     //MARK: - init

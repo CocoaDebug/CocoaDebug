@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _LogViewController: UIViewController {
+class LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
     var reachEndColor: Bool = true
@@ -511,7 +511,7 @@ class _LogViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension _LogViewController: UITableViewDataSource {
+extension LogViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
@@ -532,7 +532,7 @@ extension _LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! _LogCell
+                as! LogCell
             cell.model = defaultModels[indexPath.row]
             return cell
         }
@@ -544,7 +544,7 @@ extension _LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! _LogCell
+                as! LogCell
             cell.model = colorModels[indexPath.row]
             return cell
         }
@@ -556,7 +556,7 @@ extension _LogViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! _LogCell
+                as! LogCell
             cell.model = h5Models[indexPath.row]
             return cell
         }
@@ -564,7 +564,7 @@ extension _LogViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension _LogViewController: UITableViewDelegate {
+extension LogViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -739,7 +739,7 @@ extension _LogViewController: UITableViewDelegate {
 }
 
 //MARK: - UIScrollViewDelegate
-extension _LogViewController: UIScrollViewDelegate {
+extension LogViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
@@ -763,7 +763,7 @@ extension _LogViewController: UIScrollViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension _LogViewController: UISearchBarDelegate {
+extension LogViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {

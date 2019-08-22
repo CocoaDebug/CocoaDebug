@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _NetworkViewController: UIViewController {
+class NetworkViewController: UIViewController {
     
     var reachEnd: Bool = true
     var firstIn: Bool = true
@@ -181,7 +181,7 @@ class _NetworkViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension _NetworkViewController: UITableViewDataSource {
+extension NetworkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = models?.count {
@@ -192,8 +192,8 @@ extension _NetworkViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "_NetworkCell", for: indexPath)
-            as! _NetworkCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell", for: indexPath)
+            as! NetworkCell
         
         cell.httpModel = models?[indexPath.row]
         return cell
@@ -201,7 +201,7 @@ extension _NetworkViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension _NetworkViewController: UITableViewDelegate {
+extension NetworkViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -254,7 +254,7 @@ extension _NetworkViewController: UITableViewDelegate {
         let model = models[indexPath.row]
         model.isSelected = true
         
-        let vc: _NetworkDetailViewController = _NetworkDetailViewController.instanceFromStoryBoard()
+        let vc: NetworkDetailViewController = NetworkDetailViewController.instanceFromStoryBoard()
         vc.httpModel = model
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -332,7 +332,7 @@ extension _NetworkViewController: UITableViewDelegate {
 }
 
 //MARK: - UIScrollViewDelegate
-extension _NetworkViewController: UIScrollViewDelegate {
+extension NetworkViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
@@ -344,7 +344,7 @@ extension _NetworkViewController: UIScrollViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension _NetworkViewController: UISearchBarDelegate {
+extension NetworkViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {

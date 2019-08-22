@@ -8,16 +8,16 @@
 
 import UIKit
 
-class _CrashDetailViewController: UITableViewController {
+class CrashDetailViewController: UITableViewController {
     
         @IBOutlet weak var textviewName: UITextView!
     @IBOutlet weak var textviewReason: UITextView!
     @IBOutlet weak var textviewStackTraces: UITextView!
     var crash: _CrashModel?
 
-    static func instanceFromStoryBoard() -> _CrashDetailViewController {
-        let storyboard = UIStoryboard(name: "_App", bundle: Bundle(for: CocoaDebug.self))
-        return storyboard.instantiateViewController(withIdentifier: "_CrashDetailViewController") as! _CrashDetailViewController
+    static func instanceFromStoryBoard() -> CrashDetailViewController {
+        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self))
+        return storyboard.instantiateViewController(withIdentifier: "CrashDetailViewController") as! CrashDetailViewController
     }
     
     //MARK - init
@@ -39,7 +39,7 @@ class _CrashDetailViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension _CrashDetailViewController {
+extension CrashDetailViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

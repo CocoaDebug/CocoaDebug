@@ -10,25 +10,25 @@ import Foundation
 import UIKit
 import MessageUI
 
-class _NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var closeItem: UIBarButtonItem!
     
     var httpModel: _HttpModel?
     
-    lazy var detailModels: [_NetworkDetailModel] = [_NetworkDetailModel]()
+    lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
     lazy var requestDictionary: [String: Any]? = Dictionary()
     
-    var headerCell: _NetworkCell?
+    var headerCell: NetworkCell?
     
     var messageBody: String = ""
 
     var justCancelCallback:(() -> Void)?
     
-    static func instanceFromStoryBoard() -> _NetworkDetailViewController {
-        let storyboard = UIStoryboard(name: "_Network", bundle: Bundle(for: CocoaDebug.self))
-        return storyboard.instantiateViewController(withIdentifier: "_NetworkDetailViewController") as! _NetworkDetailViewController
+    static func instanceFromStoryBoard() -> NetworkDetailViewController {
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
+        return storyboard.instantiateViewController(withIdentifier: "NetworkDetailViewController") as! NetworkDetailViewController
     }
     
     
@@ -59,34 +59,34 @@ class _NetworkDetailViewController: UITableViewController, MFMailComposeViewCont
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model_1 = _NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
-            let model_3 = _NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var model_5 = _NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let model_6 = _NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model_7 = _NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
-                model_5 = _NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
-            let model_8 = _NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model_9 = _NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model_2 = _NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model_2 = _NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model_2.requestHeaderFields = requestHeaderFields
                     model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var model_4 = _NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model_4 = _NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model_4.responseHeaderFields = responseHeaderFields
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            let model_0 = _NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
@@ -102,31 +102,31 @@ class _NetworkDetailViewController: UITableViewController, MFMailComposeViewCont
         else{
             //非图片:
             //1.主要
-            let model_1 = _NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
-            let model_3 = _NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let model_5 = _NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let model_6 = _NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model_7 = _NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             //2.次要
-            let model_8 = _NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model_9 = _NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model_2 = _NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model_2 = _NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model_2.requestHeaderFields = requestHeaderFields
                     model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var model_4 = _NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model_4 = _NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model_4.responseHeaderFields = responseHeaderFields
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            let model_0 = _NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
@@ -298,11 +298,11 @@ class _NetworkDetailViewController: UITableViewController, MFMailComposeViewCont
         
         //使用单独的xib-cell文件, 必须注册, 否则崩溃
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "_NetworkCell", bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: "_NetworkCell")
+        let nib = UINib(nibName: "NetworkCell", bundle: bundle)
+        tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
         
         //header
-        headerCell = bundle.loadNibNamed(String(describing: _NetworkCell.self), owner: nil, options: nil)?.first as? _NetworkCell
+        headerCell = bundle.loadNibNamed(String(describing: NetworkCell.self), owner: nil, options: nil)?.first as? NetworkCell
         headerCell?.httpModel = httpModel
     }
     
@@ -382,7 +382,7 @@ class _NetworkDetailViewController: UITableViewController, MFMailComposeViewCont
 }
 
 //MARK: - UITableViewDataSource
-extension _NetworkDetailViewController {
+extension NetworkDetailViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return detailModels.count
@@ -390,12 +390,12 @@ extension _NetworkDetailViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkDetailCell", for: indexPath)
-            as! _NetworkDetailCell
+            as! NetworkDetailCell
         cell.detailModel = detailModels[indexPath.row]
         
         //2.点击了编辑view
         cell.tapEditViewCallback = { [weak self] detailModel in
-            let vc = _JsonViewController.instanceFromStoryBoard()
+            let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
             self?.navigationController?.pushViewController(vc, animated: true)
         }
@@ -405,7 +405,7 @@ extension _NetworkDetailViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension _NetworkDetailViewController {
+extension NetworkDetailViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -477,7 +477,7 @@ extension _NetworkDetailViewController {
 }
 
 //MARK: - MFMailComposeViewControllerDelegate
-extension _NetworkDetailViewController {
+extension NetworkDetailViewController {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         

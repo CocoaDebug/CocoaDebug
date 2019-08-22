@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _AppInfoViewController: UITableViewController {
+class AppInfoViewController: UITableViewController {
     
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
@@ -34,9 +34,9 @@ class _AppInfoViewController: UITableViewController {
         
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
 
-        labelVersionNumber.text = _AppInfo.versionNumber
-        labelBuildNumber.text = _AppInfo.buildNumber
-        labelBundleName.text = _AppInfo.bundleName
+        labelVersionNumber.text = AppInfo.versionNumber
+        labelBuildNumber.text = AppInfo.buildNumber
+        labelBundleName.text = AppInfo.bundleName
 
         labelScreenResolution.text = _Device.screenResolution
         labelScreenSize.text = "\(_Device.screenSize)"
@@ -89,7 +89,7 @@ class _AppInfoViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension _AppInfoViewController {
+extension AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
@@ -127,7 +127,7 @@ extension _AppInfoViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 2 {
-            UIPasteboard.general.string = _AppInfo.bundleName
+            UIPasteboard.general.string = AppInfo.bundleName
             
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)

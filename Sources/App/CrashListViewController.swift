@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _CrashListViewController: UITableViewController {
+class CrashListViewController: UITableViewController {
 
     lazy var models: [_CrashModel] = [_CrashModel]()
     
@@ -16,7 +16,7 @@ class _CrashListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(_CrashListViewController.deleteCrashes))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(CrashListViewController.deleteCrashes))
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,7 +38,7 @@ class _CrashListViewController: UITableViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension _CrashListViewController {
+extension CrashListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -59,12 +59,12 @@ extension _CrashListViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension _CrashListViewController {
+extension CrashListViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = _CrashDetailViewController.instanceFromStoryBoard()
+        let vc = CrashDetailViewController.instanceFromStoryBoard()
         vc.crash = models[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
