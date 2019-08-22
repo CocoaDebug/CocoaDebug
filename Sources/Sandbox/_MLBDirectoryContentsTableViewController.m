@@ -81,7 +81,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     [self setupViews];
     [self registerForPreviewing];
-    [self loadDirectoryContents];
     
     
     //liman
