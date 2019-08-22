@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
-		384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; };
-		384E2F14228847750031DFBF /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 384E2F12228847750031DFBF /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3863999322F43020009B1CF5 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3863987622F4301F009B1CF5 /* CocoaDebug.swift */; };
 		3863999422F43020009B1CF5 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3863987722F4301F009B1CF5 /* CocoaDebugSettings.swift */; };
 		3863999522F43020009B1CF5 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3863987922F4301F009B1CF5 /* CocoaDebug+Extensions.swift */; };
@@ -615,7 +613,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				384E2F14228847750031DFBF /* RevealServer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,7 +622,6 @@
 /* Begin PBXFileReference section */
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		384E2F12228847750031DFBF /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
 		3863987622F4301F009B1CF5 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3863987722F4301F009B1CF5 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		3863987822F4301F009B1CF5 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -1015,7 +1011,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				384E2F13228847750031DFBF /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,7 +1434,6 @@
 			isa = PBXGroup;
 			children = (
 				3863987422F4301F009B1CF5 /* Sources */,
-				384E2F12228847750031DFBF /* RevealServer.framework */,
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
 				EA72671C20F0B7D4004D1D6F /* CocoaDebug */,
 				EA6B277720596883004D8E05 /* Example_SwiftTests */,
