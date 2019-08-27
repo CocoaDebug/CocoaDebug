@@ -17,7 +17,7 @@ class CrashCell: UITableViewCell {
         textview.isUserInteractionEnabled = false
     }
 
-    var crash: CrashModel? {
+    var crash: _CrashModel? {
         didSet {
             guard let crash = crash else {return}
             

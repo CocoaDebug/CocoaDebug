@@ -311,7 +311,7 @@ extension CocoaDebug {
             CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
         if CocoaDebugSettings.shared.showBubbleAndWindow == true {
-            WindowHelper.shared.enable()
+            _WindowHelper.shared.enable()
         }
         
         CocoaDebugSettings.shared.visible = false
@@ -335,10 +335,10 @@ extension CocoaDebug {
         
         //log
         if disableLogMonitoring == true {
-            LogHelper.shared.enable = false
+            _LogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
         }else{
-            LogHelper.shared.enable = true
+            _LogHelper.shared.enable = true
             _OCLogHelper.shared()?.enable = true
         }
         
@@ -352,9 +352,9 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
-        WindowHelper.shared.disable()
+        _WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
-        LogHelper.shared.enable = false
+        _LogHelper.shared.enable = false
         _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false

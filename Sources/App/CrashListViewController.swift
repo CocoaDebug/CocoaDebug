@@ -10,7 +10,7 @@ import UIKit
 
 class CrashListViewController: UITableViewController {
 
-    lazy var models: [CrashModel] = [CrashModel]()
+    lazy var models: [_CrashModel] = [_CrashModel]()
     
     //MARK: - init
     override func viewDidLoad() {

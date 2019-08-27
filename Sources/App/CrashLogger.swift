@@ -85,7 +85,7 @@ class CrashLogger {
     }
 
     static func addCrash(name: String, reason: String?) {
-        let newCrash = CrashModel(name: name, reason: reason)
+        let newCrash = _CrashModel(name: name, reason: reason)
         CrashStoreManager.shared.addCrash(newCrash)
     }
 }

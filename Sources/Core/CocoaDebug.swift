@@ -51,7 +51,7 @@ public func swiftLog<T>(_ file: String = #file,
     if message is NSString && unicodeToChinese == true {
         if let _message = NSString.unicode(toChinese: message as? String) {
             Swift.print(_message)
-            LogHelper.shared.handleLog(file: file, function: function, line: line, message: _message, color: color)
+            _LogHelper.shared.handleLog(file: file, function: function, line: line, message: _message, color: color)
             return
         }
     }
@@ -59,7 +59,7 @@ public func swiftLog<T>(_ file: String = #file,
     
     
     Swift.print(message)
-    LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    _LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
 
 
