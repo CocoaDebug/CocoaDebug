@@ -65,7 +65,7 @@ github "CocoaDebug/CocoaDebug"
 
 ### Swift
 	
-	 //AppDelegate.swift
+	//AppDelegate.swift
 	 
     #if DEBUG
         import CocoaDebug
@@ -84,7 +84,7 @@ github "CocoaDebug/CocoaDebug"
 
 ### Objective-C
 	
-	 //AppDelegate.m
+	//AppDelegate.m
 	 
     #ifdef DEBUG
         @import CocoaDebug;
