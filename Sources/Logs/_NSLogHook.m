@@ -11,11 +11,11 @@
 #import "_fishhook.h"
 #import "_OCLogHelper.h"
 
-@interface NSLogHook : NSObject
+@interface _NSLogHook : NSObject
 
 @end
 
-@implementation NSLogHook
+@implementation _NSLogHook
 
 static void (*orig_nslog)(NSString *format, ...);
 
