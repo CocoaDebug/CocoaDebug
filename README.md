@@ -20,11 +20,11 @@
 
 - [x] Application memory usage and *FPS*.
 
-- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode. (**optional**)
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
 
-- [x] List of all the network requests sent by the application. (**optional**)
+- [x] List of all the network requests sent by the application.
 
-- [x] List crash errors. (**optional**)
+- [x] List crash errors.
 
 - [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
 
@@ -36,7 +36,7 @@
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
-- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`). (**optional**)
+- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`).
 
 - [x] Support `JSON` and Google's `Protocol buffers`
 
