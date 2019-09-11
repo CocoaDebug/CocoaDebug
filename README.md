@@ -45,9 +45,6 @@
 ### CocoaPods
 
 ```ruby
-platform :ios, '8.0'
-use_frameworks!
-
 target 'YourTargetName' do
     pod 'CocoaDebug', :configurations => ['Debug']
 end
