@@ -132,6 +132,7 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -141,6 +142,7 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied bundle id to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -154,6 +156,7 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied server to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
             self.present(alert, animated: true, completion: nil)
         }
     }

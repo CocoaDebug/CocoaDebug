@@ -341,6 +341,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
             [self deleteAllFiles];
         }];
+        if (@available(iOS 13, *)) {alertController.modalPresentationStyle = UIModalPresentationFullScreen;}
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
         [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteAllAlertViewTag] show];
@@ -366,6 +367,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
             [self deleteSelectedFiles];
         }];
+        if (@available(iOS 13, *)) {alertController.modalPresentationStyle = UIModalPresentationFullScreen;}
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
         [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteSelectedAlertViewTag] show];
@@ -487,6 +489,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 [self deleteSelectedFile];
             }]];
+            if (@available(iOS 13, *)) {alertController.modalPresentationStyle = UIModalPresentationFullScreen;}
             [self presentViewController:alertController animated:YES completion:nil];
         } else {
             [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteAlertViewTag] show];

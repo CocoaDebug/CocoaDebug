@@ -258,6 +258,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
+                if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
                 self.present(alert, animated: true, completion: nil)
             }else{
                 //copy to clipboard
@@ -356,6 +357,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         // create an action
         let firstAction: UIAlertAction = UIAlertAction(title: "share via email", style: .default) { [weak self] action -> Void in
             if let mailComposeViewController = self?.configureMailComposer() {
+                if #available(iOS 13, *) {mailComposeViewController.modalPresentationStyle = .fullScreen}
                 self?.present(mailComposeViewController, animated: true, completion: nil)
             }
         }
@@ -375,6 +377,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         actionSheetController.addAction(cancelAction)
         
         // present an actionSheet...
+        if #available(iOS 13, *) {actionSheetController.modalPresentationStyle = .fullScreen}
         present(actionSheetController, animated: true, completion: nil)
     }
     
@@ -505,6 +508,7 @@ extension NetworkDetailViewController {
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
+                if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
                 self.present(alert, animated: true, completion: nil)
             }else{
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
