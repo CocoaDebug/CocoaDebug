@@ -21,24 +21,25 @@ static void (*orig_nslog)(NSString *format, ...);
 
 
 void my_nslog(NSString *format, ...) {
-    /*方法一*/
-//    va_list vl;
-//    va_start(vl, format);
-//    NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
+    
+    /* 方法1 */
+    va_list vl;
+    va_start(vl, format);
+    NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
 //    va_end(vl);
-//    orig_nslog(str);
+    orig_nslog(str);
     
-    /*方法二*/
-    va_list va;
-    va_start(va, format);
-    NSLogv(format, va);
+    
+    /* 方法2 */
+//    va_list va;
+//    va_start(va, format);
+//    NSLogv(format, va);
 //    va_end(va);
-    
-    
-    
-    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:[[NSString alloc] initWithFormat:format arguments:va] color:[UIColor whiteColor]];
-    
-    va_end(va);
+
+
+    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor]];
+
+    va_end(vl);
 }
 
 
