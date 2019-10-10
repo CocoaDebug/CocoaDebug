@@ -19,8 +19,8 @@ struct NetworkDetailModel {
     var responseHeaderFields: [String: Any]?
     
     init(title: String? = nil, content: String? = "", _ image: UIImage? = nil) {
-        self.title = title
-        self.content = content
+        self.title = title?.replacingOccurrences(of: "\\/", with: "/")
+        self.content = content?.replacingOccurrences(of: "\\/", with: "/")
         self.image = image
     }
 }

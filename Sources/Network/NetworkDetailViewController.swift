@@ -92,7 +92,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 if !requestHeaderFields.isEmpty {
                     model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model_2.requestHeaderFields = requestHeaderFields
-                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
             var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -100,7 +100,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 if !responseHeaderFields.isEmpty {
                     model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model_4.responseHeaderFields = responseHeaderFields
-                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
             let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
@@ -132,7 +132,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 if !requestHeaderFields.isEmpty {
                     model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
                     model_2.requestHeaderFields = requestHeaderFields
-                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
             var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
@@ -140,7 +140,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 if !responseHeaderFields.isEmpty {
                     model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
                     model_4.responseHeaderFields = responseHeaderFields
-                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
             let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
