@@ -223,21 +223,23 @@ class Bubble: UIView {
     //网络通知
     @objc func reloadHttp_notification(_ notification: Notification) {
         
-        guard let userInfo = notification.userInfo else {return}
-        let statusCode = userInfo["statusCode"] as? String
-        
-        if _successStatusCodes.contains(statusCode ?? "") {
-            initLabelEvent("🚀", true)
-            initLabelEvent("🚀", false)
-        }
-        else if statusCode == "0" { //"0" means network unavailable
-            initLabelEvent("❌", true)
-            initLabelEvent("❌", false)
-        }
-        else{
-            guard let statusCode = statusCode else {return}
-            initLabelEvent(statusCode, true)
-            initLabelEvent(statusCode, false)
+        dispatch_main_async_safe { [weak self] in
+            guard let userInfo = notification.userInfo else {return}
+            let statusCode = userInfo["statusCode"] as? String
+            
+            if _successStatusCodes.contains(statusCode ?? "") {
+                self?.initLabelEvent("🚀", true)
+                self?.initLabelEvent("🚀", false)
+            }
+            else if statusCode == "0" { //"0" means network unavailable
+                self?.initLabelEvent("❌", true)
+                self?.initLabelEvent("❌", false)
+            }
+            else{
+                guard let statusCode = statusCode else {return}
+                self?.initLabelEvent(statusCode, true)
+                self?.initLabelEvent(statusCode, false)
+            }
         }
     }
     
