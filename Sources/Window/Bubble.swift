@@ -195,10 +195,8 @@ class Bubble: UIView {
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
-        //网络通知
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
-            self?.reloadHttp_notification(notification)
-        }
+        //notification
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
         
         //
         _WHDebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
@@ -217,6 +215,7 @@ class Bubble: UIView {
     }
     
     deinit {
+        //notification
         NotificationCenter.default.removeObserver(self)
     }
     

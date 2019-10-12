@@ -327,14 +327,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name("motionShake_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
-//            self?.motionShake_notification()
-//        }
+        //notification
+//        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_SSPDebug"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        //notification
 //        NotificationCenter.default.removeObserver(self)
 
         if let justCancelCallback = justCancelCallback {

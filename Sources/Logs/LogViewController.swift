@@ -273,12 +273,9 @@ class LogViewController: UIViewController {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
         }
         
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (_) in
-            self?.refreshLogs_notification()
-        }
-        
-        
+        //notification
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_SSPDebug"), object: nil)
+
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
@@ -357,6 +354,7 @@ class LogViewController: UIViewController {
     }
     
     deinit {
+        //notification
         NotificationCenter.default.removeObserver(self)
     }
 

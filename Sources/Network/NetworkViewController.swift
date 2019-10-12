@@ -96,9 +96,8 @@ class NetworkViewController: UIViewController {
         naviItem.title = "[0]"
         deleteItem.tintColor = Color.mainGreen
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
-            self?.reloadHttp_notification(notification)
-        }
+        //notification
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification), name: NSNotification.Name(rawValue: "reloadHttp_SSPDebug"), object: nil)
         
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
@@ -134,6 +133,7 @@ class NetworkViewController: UIViewController {
     }
     
     deinit {
+        //notification
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -174,7 +174,7 @@ class NetworkViewController: UIViewController {
     
     
     //MARK: - notification
-    @objc func reloadHttp_notification(_ notification: Notification) {
+    @objc func reloadHttp_notification() {
         
         reloadHttp(needScrollToEnd: reachEnd)
     }
