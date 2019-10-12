@@ -175,7 +175,7 @@
 #pragma mark - Public Methods
 
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL {
-    NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:nil];
+    NSDictionary<NSString *, id> *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:URL.path error:nil];
     
     return attributes;
 }
@@ -184,11 +184,10 @@
 //    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
     NSMutableArray *fileInfos = [NSMutableArray array];
     BOOL isDir = NO;
-    BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:URL.path isDirectory:&isDir];
+    BOOL isExists = [[NSFileManager defaultManager] fileExistsAtPath:URL.path isDirectory:&isDir];
     if (isExists && isDir) {
-        NSError *error;
-        NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
-        if (!error) {
+        NSArray<NSString *> *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:URL.path error:nil];
+        if ([contents count] > 0) {
             for (NSString *name in contents) {
                 if (_Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 _MLBFileInfo *fileInfo = [[_MLBFileInfo alloc] initWithFileURL:[URL URLByAppendingPathComponent:name]];
@@ -204,11 +203,10 @@
 //    ////NSLog(@"%@, url = %@", NSStringFromSelector(_cmd), URL.path);
     NSUInteger count = 0;
     BOOL isDir = NO;
-    BOOL isExists = [NSFileManager.defaultManager fileExistsAtPath:URL.path isDirectory:&isDir];
+    BOOL isExists = [[NSFileManager defaultManager] fileExistsAtPath:URL.path isDirectory:&isDir];
     if (isExists && isDir) {
-        NSError *error;
-        NSArray<NSString *> *contents = [NSFileManager.defaultManager contentsOfDirectoryAtPath:URL.path error:&error];
-        if (!error) {
+        NSArray<NSString *> *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:URL.path error:nil];
+        if ([contents count] > 0) {
             for (NSString *name in contents) {
                 if (_Sandboxer.shared.isSystemFilesHidden && [name hasPrefix:@"."]) { continue; }
                 count++;
