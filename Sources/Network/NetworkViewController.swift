@@ -88,7 +88,9 @@ class NetworkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.searchTextField.backgroundColor = .white
+        if #available(iOS 13, *) {
+            searchBar.searchTextField.backgroundColor = .white
+        }
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
         tap.cancelsTouchesInView = false

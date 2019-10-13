@@ -259,10 +259,12 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        defaultSearchBar.searchTextField.backgroundColor = .white
-        colorSearchBar.searchTextField.backgroundColor = .white
-        h5SearchBar.searchTextField.backgroundColor = .white
-
+        if #available(iOS 13, *) {
+            defaultSearchBar.searchTextField.backgroundColor = .white
+            colorSearchBar.searchTextField.backgroundColor = .white
+            h5SearchBar.searchTextField.backgroundColor = .white
+        }
+        
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
