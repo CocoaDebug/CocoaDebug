@@ -10,7 +10,7 @@
         <!--Logs-->
         <scene sceneID="afz-qj-lGc">
             <objects>
-                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="CocoaDebugNavigationController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Logs" automaticallyAdjustsScrollViewInsets="NO" id="3CJ-ep-uee" customClass="CocoaDebugNavigationController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Logs" image="_icon_file_type_logs" selectedImage="_icon_file_type_logs" id="Uuf-aW-P9g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EEW-tV-ACR">
@@ -33,7 +33,7 @@
         <!--Log View Controller-->
         <scene sceneID="b3U-lr-JR7">
             <objects>
-                <viewController storyboardIdentifier="LogViewController" id="b1x-pw-stc" customClass="LogViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogViewController" id="b1x-pw-stc" customClass="LogViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UzN-vB-IsZ"/>
                         <viewControllerLayoutGuide type="bottom" id="tUW-lE-b31"/>
@@ -60,7 +60,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="CMU-Yb-WmC" customClass="LogCell" customModule="Example_Objc" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="CMU-Yb-WmC" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMU-Yb-WmC" id="Mwi-RZ-tis">
@@ -119,7 +119,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="jvF-DW-uiK" customClass="LogCell" customModule="Example_Objc" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="jvF-DW-uiK" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jvF-DW-uiK" id="y1t-vs-uq4">
@@ -178,7 +178,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="Mjr-Ie-lPw" customClass="LogCell" customModule="Example_Objc" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="Mjr-Ie-lPw" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mjr-Ie-lPw" id="v62-ik-jvT">
