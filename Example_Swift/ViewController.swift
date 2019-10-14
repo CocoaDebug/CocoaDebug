@@ -12,7 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Example"
+
         print("hello world")
         print("hello world red", color: .red)
         print("hello world blue", color: UIColor.red)

@@ -384,7 +384,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     //MARK: - notification
 //    @objc func motionShake_notification() {
+//        dispatch_main_async_safe { [weak self] in
 //
+//        }
 //    }
     
     

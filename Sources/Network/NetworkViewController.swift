@@ -90,6 +90,7 @@ class NetworkViewController: UIViewController {
         
         if #available(iOS 13, *) {
             searchBar.searchTextField.backgroundColor = .white
+            searchBar.searchTextField.leftView = nil
         }
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
@@ -179,8 +180,9 @@ class NetworkViewController: UIViewController {
     
     //MARK: - notification
     @objc func reloadHttp_notification() {
-        
-        reloadHttp(needScrollToEnd: reachEnd)
+        dispatch_main_async_safe { [weak self] in
+            self?.reloadHttp(needScrollToEnd: self?.reachEnd ?? true)
+        }
     }
 }
 

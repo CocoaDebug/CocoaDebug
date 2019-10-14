@@ -263,6 +263,10 @@ class LogViewController: UIViewController {
             defaultSearchBar.searchTextField.backgroundColor = .white
             colorSearchBar.searchTextField.backgroundColor = .white
             h5SearchBar.searchTextField.backgroundColor = .white
+            
+            defaultSearchBar.searchTextField.leftView = nil
+            colorSearchBar.searchTextField.leftView = nil
+            h5SearchBar.searchTextField.leftView = nil
         }
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
@@ -503,13 +507,14 @@ class LogViewController: UIViewController {
     
     //MARK: - notification
     @objc func refreshLogs_notification() {
-        
-        if selectedSegmentIndex == 0 {
-            reloadLogs(needScrollToEnd: reachEndDefault, needReloadData: true)
-        }else if selectedSegmentIndex == 1 {
-            reloadLogs(needScrollToEnd: reachEndColor, needReloadData: true)
-        }else{
-            reloadLogs(needScrollToEnd: reachEndH5, needReloadData: true)
+        dispatch_main_async_safe { [weak self] in
+            if self?.selectedSegmentIndex == 0 {
+                self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
+            }else if self?.selectedSegmentIndex == 1 {
+                self?.reloadLogs(needScrollToEnd: self?.reachEndColor ?? true, needReloadData: true)
+            }else{
+                self?.reloadLogs(needScrollToEnd: self?.reachEndH5 ?? true, needReloadData: true)
+            }
         }
     }
 }

@@ -19,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"Example";
+
     NSLog(@"hello world");
     NSLog(@"hello world red");
     NSLog(@"hello world yellow");
