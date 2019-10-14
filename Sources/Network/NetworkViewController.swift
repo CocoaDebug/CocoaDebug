@@ -88,11 +88,6 @@ class NetworkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13, *) {
-            searchBar.searchTextField.backgroundColor = .white
-            searchBar.searchTextField.leftView = nil
-        }
-        
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -120,6 +115,9 @@ class NetworkViewController: UIViewController {
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar.leftViewMode = .never
+        textFieldInsideSearchBar.leftView = nil
+        textFieldInsideSearchBar.backgroundColor = .white
+        
         
         reloadHttp(needScrollToEnd: true)
         

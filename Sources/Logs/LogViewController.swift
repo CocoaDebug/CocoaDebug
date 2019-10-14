@@ -259,16 +259,6 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13, *) {
-            defaultSearchBar.searchTextField.backgroundColor = .white
-            colorSearchBar.searchTextField.backgroundColor = .white
-            h5SearchBar.searchTextField.backgroundColor = .white
-            
-            defaultSearchBar.searchTextField.leftView = nil
-            colorSearchBar.searchTextField.leftView = nil
-            h5SearchBar.searchTextField.leftView = nil
-        }
-        
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(didTapView))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -348,12 +338,18 @@ class LogViewController: UIViewController {
         //hide searchBar icon
         let textFieldInsideSearchBar = defaultSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar.leftViewMode = .never
+        textFieldInsideSearchBar.leftView = nil
+        textFieldInsideSearchBar.backgroundColor = .white
         
         let textFieldInsideSearchBar2 = colorSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
+        textFieldInsideSearchBar2.leftView = nil
+        textFieldInsideSearchBar2.backgroundColor = .white
         
         let textFieldInsideSearchBar3 = h5SearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar3.leftViewMode = .never
+        textFieldInsideSearchBar3.leftView = nil
+        textFieldInsideSearchBar3.backgroundColor = .white
     }
     
     override func viewWillDisappear(_ animated: Bool) {
