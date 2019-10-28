@@ -15,7 +15,7 @@
 }
 
 + (UIImage * _Nullable)fileTypeImageNamed:(NSString * _Nonnull)imageName {
-    return [self imageNamed:imageName fileType:@"png" inDirectory:@"FileType"];
+    return [self imageNamed:imageName fileType:@"png" inDirectory:nil];
 }
 
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName fileType:(NSString * _Nonnull)fileType inDirectory:(NSString * _Nullable)directory {
