@@ -13,8 +13,6 @@
 #import "_Sandboxer-Header.h"
 #import "_Sandboxer.h"
 
-#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
-
 @interface _MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (strong, nonatomic) UIWebView *webView;
@@ -26,8 +24,6 @@
 
 @property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
 
-@property (assign, nonatomic) BOOL viewDidAppeared;
-
 @end
 
 @implementation _MLBFilePreviewController
@@ -36,19 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initDatas];
     [self setupViews];
     [self loadFile];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    self.viewDidAppeared = YES;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -152,27 +142,14 @@
                     }else{
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self.activityIndicatorView stopAnimating];
-                            
-                            if (self.viewDidAppeared) {
-                                [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                            } else {
-                                GCD_DELAY_AFTER(0.3, ^{
-                                    [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                                });
-                            }
+                            [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                         });
                     }
                 });
                 break;
             }
             default: {
-                if (self.viewDidAppeared) {
-                    [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                } else {
-                    GCD_DELAY_AFTER(0.3, ^{
-                        [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                    });
-                }
+                [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             }
                 break;
         }
