@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38053E532368460F00AA04A6 /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38053E522368460F00AA04A6 /* RevealServer.framework */; };
+		38053E542368460F00AA04A6 /* RevealServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38053E522368460F00AA04A6 /* RevealServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
 		3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */; };
@@ -611,6 +613,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38053E542368460F00AA04A6 /* RevealServer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,6 +621,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38053E522368460F00AA04A6 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevealServer.framework; path = "../../Library/Application Support/Reveal/RevealServer/iOS/RevealServer.framework"; sourceTree = "<group>"; };
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewTestController.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38053E532368460F00AA04A6 /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1352,6 +1357,7 @@
 				387FB562230EA02000DB7985 /* _Sandboxer-Header.h */,
 				387FB563230EA02000DB7985 /* _MLBFilePreviewController.h */,
 				387FB564230EA02000DB7985 /* _MLBFileInfo.h */,
+				387FB56D230EA02000DB7985 /* _MLBDirectoryContentsTableViewController.h */,
 				387FB565230EA02000DB7985 /* _MLBDirectoryContentsTableViewController.m */,
 				387FB566230EA02000DB7985 /* _MLBImageResources.h */,
 				387FB567230EA02000DB7985 /* _MLBImageController.m */,
@@ -1360,7 +1366,6 @@
 				387FB56A230EA02000DB7985 /* _Sandboxer.m */,
 				387FB56B230EA02000DB7985 /* _MLBFilePreviewController.m */,
 				387FB56C230EA02000DB7985 /* _MLBImageResources.m */,
-				387FB56D230EA02000DB7985 /* _MLBDirectoryContentsTableViewController.h */,
 				387FB56E230EA02000DB7985 /* _MLBFileInfo.m */,
 			);
 			path = Sandbox;
@@ -1421,6 +1426,7 @@
 		38B5614C21CCC4CB00BB276A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38053E522368460F00AA04A6 /* RevealServer.framework */,
 				38B5614D21CCC4CB00BB276A /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -2557,6 +2563,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"${SDK_DIR}/usr/include/libxml2",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Application\\ Support/Reveal/RevealServer/iOS",
 				);
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = Example_Swift/Info.plist;
@@ -2584,6 +2591,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"${SDK_DIR}/usr/include/libxml2",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Application\\ Support/Reveal/RevealServer/iOS",
 				);
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = Example_Swift/Info.plist;

@@ -19,7 +19,7 @@
 #import "_NetworkHelper.h"
 #import "_MLBImageController.h"
 
-@interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UIAlertViewDelegate>
+@interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource;
 @property (strong, nonatomic) _MLBFileInfo *previewingFileInfo;
@@ -29,6 +29,9 @@
 @property (strong, nonatomic) UIBarButtonItem *editItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteAllItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteItem;
+
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UISearchBar *searchBar;
 
 @end
 
@@ -102,6 +105,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (self.tableView.isEditing) {
         [self.navigationController setToolbarHidden:YES animated:YES];
     }
+    
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - Private Methods
@@ -117,11 +122,26 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 56, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 56) style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView registerClass:[_MLBFileTableViewCell class] forCellReuseIdentifier:_MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
-
+    [self.view addSubview:self.tableView];
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 56)];
+    self.searchBar.delegate = self;
+    self.searchBar.barTintColor = [UIColor blackColor];
+    [self.view addSubview:self.searchBar];
+    
+    //hide searchBar icon
+    UITextField *textFieldInsideSearchBar = [self.searchBar valueForKey:@"searchField"];
+    textFieldInsideSearchBar.leftViewMode = UITextFieldViewModeNever;
+    textFieldInsideSearchBar.leftView = nil;
+    textFieldInsideSearchBar.backgroundColor = [UIColor whiteColor];
+    textFieldInsideSearchBar.returnKeyType = UIReturnKeySearch;
 }
 
 - (void)registerForPreviewing {
@@ -157,6 +177,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             }
         });
     });
+    
+    [self.searchBar resignFirstResponder];
 }
 
 - (_MLBFileInfo *)fileInfoAtIndexPath:(NSIndexPath *)indexPath {
@@ -290,6 +312,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     } else {
         [self endEditing];
     }
+    
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)beginEditing {
@@ -514,6 +538,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     } else {
         [self.navigationController pushViewController:[self viewControllerWithFileInfo:fileInfo] animated:YES];
     }
+    
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -585,6 +611,16 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     [self showViewController:viewControllerToCommit sender:self];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.searchBar resignFirstResponder];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.searchBar resignFirstResponder];
 }
 
 @end
