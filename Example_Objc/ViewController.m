@@ -35,13 +35,29 @@
     //TCP
     [_TCPLogger logWithString:@"tcp messages...."];
     
+    
     //save image
     [self saveImage:[UIImage imageNamed:@"111.png"]];
+    
+    //save txt
+    [self saveTXT:@"hahahahahahahaha"];
 }
 
 - (void)saveImage:(UIImage *)image {
     NSString *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/111"];
     [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+}
+
+- (void)saveTXT:(NSString *)txt {
+    NSArray *documentArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [documentArray firstObject];
+    NSLog(@"documentPath = %@",documentPath);
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"ios.txt"];
+    [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+    
+    NSString *iOSPath = [documentPath stringByAppendingPathComponent:@"ios.txt"];
+    NSString *content = txt;
+    [content writeToFile:iOSPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void)testHTTP {
