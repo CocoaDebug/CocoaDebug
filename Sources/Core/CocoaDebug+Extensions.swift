@@ -149,18 +149,8 @@ extension Data {
         if let str = self.dataToDictionary()?.dictionaryToString() {
             return str
         } else {
-            //2.protobuf
-            if let message = try? _GPBMessage.parse(from: self) {
-                if message.serializedSize() > 0 {
-                    return message.description
-                } else {
-                    //3.utf-8 string
-                    return String(data: self, encoding: .utf8)
-                }
-            } else {
-                //3.utf-8 string
-                return String(data: self, encoding: .utf8)
-            }
+            //3.utf-8 string
+            return String(data: self, encoding: .utf8)
         }
     }
 }
