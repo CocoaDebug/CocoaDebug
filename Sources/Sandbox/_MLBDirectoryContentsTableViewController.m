@@ -22,6 +22,9 @@
 @interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource;
+@property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource_cache;
+@property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource_search;
+
 @property (strong, nonatomic) _MLBFileInfo *previewingFileInfo;
 @property (strong, nonatomic) _MLBFileInfo *deletingFileInfo;
 
@@ -134,6 +137,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
     self.searchBar.delegate = self;
     self.searchBar.barTintColor = [UIColor blackColor];
+    self.searchBar.enablesReturnKeyAutomatically = NO;
     [self.view addSubview:self.searchBar];
     
     //hide searchBar icon
@@ -141,7 +145,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     textFieldInsideSearchBar.leftViewMode = UITextFieldViewModeNever;
     textFieldInsideSearchBar.leftView = nil;
     textFieldInsideSearchBar.backgroundColor = [UIColor whiteColor];
-    textFieldInsideSearchBar.returnKeyType = UIReturnKeySearch;
+    textFieldInsideSearchBar.returnKeyType = UIReturnKeyDefault;
 }
 
 - (void)registerForPreviewing {
@@ -166,6 +170,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         NSMutableArray<_MLBFileInfo *> *dataSource_ = [_MLBFileInfo contentsOfDirectoryAtURL:weakSelf.fileInfo.URL];
         if ([dataSource_ count] > 0) {
             weakSelf.dataSource = dataSource_;
+            weakSelf.dataSource_cache = dataSource_;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -411,6 +416,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }];
     
     [self.dataSource removeObjectsInArray:deletedFileInfos];
+    self.dataSource_cache = self.dataSource;
+    
     [self.tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
     [self endEditing];
@@ -427,6 +434,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }
     
     [self.dataSource removeObjectsInArray:deletedFileInfos];
+    self.dataSource_cache = self.dataSource;
+    
     [self.tableView deleteRowsAtIndexPaths:self.tableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
     
     [self endEditing];
@@ -438,6 +447,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         index = [self.dataSource indexOfObject:self.deletingFileInfo];
         
         [self.dataSource removeObject:self.deletingFileInfo];
+        self.dataSource_cache = self.dataSource;
+        
         if (index >= 0) {
             [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         }
@@ -621,6 +632,30 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if ([searchText isEqualToString:@""]) {
+        self.dataSource = self.dataSource_cache;
+        [self.tableView reloadData];
+        return;
+    }
+    
+    if (!self.dataSource_search) {
+        self.dataSource_search = [NSMutableArray array];
+    } else {
+        [self.dataSource_search removeAllObjects];
+    }
+    
+    for (_MLBFileInfo *obj in self.dataSource_cache) {
+        if ([[obj.displayName lowercaseString] containsString:[searchText lowercaseString]]) {
+            [self.dataSource_search addObject:obj];
+        }
+    }
+    
+    self.dataSource = self.dataSource_search;
+    [self.tableView reloadData];
 }
 
 @end

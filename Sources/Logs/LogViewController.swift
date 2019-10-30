@@ -285,9 +285,9 @@ class LogViewController: UIViewController {
         defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
         //抖动bug
-        defaultTableView.estimatedRowHeight = 0;
-        defaultTableView.estimatedSectionHeaderHeight = 0;
-        defaultTableView.estimatedSectionFooterHeight = 0;
+        defaultTableView.estimatedRowHeight = 0
+        defaultTableView.estimatedSectionHeaderHeight = 0
+        defaultTableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -299,9 +299,9 @@ class LogViewController: UIViewController {
         colorSearchBar.text = CocoaDebugSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
         //抖动bug
-        colorTableView.estimatedRowHeight = 0;
-        colorTableView.estimatedSectionHeaderHeight = 0;
-        colorTableView.estimatedSectionFooterHeight = 0;
+        colorTableView.estimatedRowHeight = 0
+        colorTableView.estimatedSectionHeaderHeight = 0
+        colorTableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -313,9 +313,9 @@ class LogViewController: UIViewController {
         h5SearchBar.text = CocoaDebugSettings.shared.logSearchWordH5
         h5SearchBar.isHidden = true
         //抖动bug
-        h5TableView.estimatedRowHeight = 0;
-        h5TableView.estimatedSectionHeaderHeight = 0;
-        h5TableView.estimatedSectionFooterHeight = 0;
+        h5TableView.estimatedRowHeight = 0
+        h5TableView.estimatedSectionHeaderHeight = 0
+        h5TableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -340,16 +340,19 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar.leftViewMode = .never
         textFieldInsideSearchBar.leftView = nil
         textFieldInsideSearchBar.backgroundColor = .white
-        
+        textFieldInsideSearchBar.returnKeyType = .default
+
         let textFieldInsideSearchBar2 = colorSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
         textFieldInsideSearchBar2.leftView = nil
         textFieldInsideSearchBar2.backgroundColor = .white
-        
+        textFieldInsideSearchBar2.returnKeyType = .default
+
         let textFieldInsideSearchBar3 = h5SearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar3.leftViewMode = .never
         textFieldInsideSearchBar3.leftView = nil
         textFieldInsideSearchBar3.backgroundColor = .white
+        textFieldInsideSearchBar3.returnKeyType = .default
     }
     
     override func viewWillDisappear(_ animated: Bool) {

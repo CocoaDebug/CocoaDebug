@@ -104,9 +104,9 @@ class NetworkViewController: UIViewController {
         tableView.delegate = self
         
         //抖动bug
-        tableView.estimatedRowHeight = 0;
-        tableView.estimatedSectionHeaderHeight = 0;
-        tableView.estimatedSectionFooterHeight = 0;
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
         
         searchBar.delegate = self
         searchBar.text = CocoaDebugSettings.shared.networkSearchWord
@@ -117,7 +117,7 @@ class NetworkViewController: UIViewController {
         textFieldInsideSearchBar.leftViewMode = .never
         textFieldInsideSearchBar.leftView = nil
         textFieldInsideSearchBar.backgroundColor = .white
-        
+        textFieldInsideSearchBar.returnKeyType = .default
         
         reloadHttp(needScrollToEnd: true)
         
