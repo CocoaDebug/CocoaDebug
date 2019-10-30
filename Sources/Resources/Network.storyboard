@@ -28,14 +28,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-UO-WV3">
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-UO-WV3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="g3o-UO-WV3" secondAttribute="trailing" id="KcB-J5-KOC"/>
+                                        <constraint firstItem="g3o-UO-WV3" firstAttribute="top" secondItem="H1I-hQ-x8v" secondAttribute="top" id="SHY-xT-giH"/>
+                                        <constraint firstAttribute="bottom" secondItem="g3o-UO-WV3" secondAttribute="bottom" id="eS3-Dx-CMy"/>
+                                        <constraint firstItem="g3o-UO-WV3" firstAttribute="leading" secondItem="H1I-hQ-x8v" secondAttribute="leading" id="wTd-Wx-RpH"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="CocoaDebug" customModuleProvider="target">

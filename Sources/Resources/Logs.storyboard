@@ -50,14 +50,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-CH-bNP">
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-CH-bNP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="aXE-CH-bNP" firstAttribute="top" secondItem="Vsw-UO-JjX" secondAttribute="top" id="OYb-Gi-uUx"/>
+                                        <constraint firstItem="aXE-CH-bNP" firstAttribute="leading" secondItem="Vsw-UO-JjX" secondAttribute="leading" id="RxT-Z0-g1z"/>
+                                        <constraint firstAttribute="bottom" secondItem="aXE-CH-bNP" secondAttribute="bottom" id="ToB-3A-Fdo"/>
+                                        <constraint firstAttribute="trailing" secondItem="aXE-CH-bNP" secondAttribute="trailing" id="bPp-0g-LTr"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="CMU-Yb-WmC" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
@@ -109,14 +114,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-cF-Ycv">
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-cF-Ycv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Be8-cF-Ycv" secondAttribute="bottom" id="2aH-2K-eNQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Be8-cF-Ycv" secondAttribute="trailing" id="Vkf-kj-Y97"/>
+                                        <constraint firstItem="Be8-cF-Ycv" firstAttribute="leading" secondItem="sz9-PV-VPi" secondAttribute="leading" id="v0c-f1-PsC"/>
+                                        <constraint firstItem="Be8-cF-Ycv" firstAttribute="top" secondItem="sz9-PV-VPi" secondAttribute="top" id="z28-9W-i8r"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="jvF-DW-uiK" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
@@ -168,14 +178,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0I-qu-Bgu">
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="y0I-qu-Bgu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="y0I-qu-Bgu" firstAttribute="top" secondItem="hbm-Ra-i1G" secondAttribute="top" id="BqA-hW-D2E"/>
+                                        <constraint firstAttribute="bottom" secondItem="y0I-qu-Bgu" secondAttribute="bottom" id="Qo5-Er-Dtf"/>
+                                        <constraint firstAttribute="trailing" secondItem="y0I-qu-Bgu" secondAttribute="trailing" id="iEm-mi-5tZ"/>
+                                        <constraint firstItem="y0I-qu-Bgu" firstAttribute="leading" secondItem="hbm-Ra-i1G" secondAttribute="leading" id="mgx-xj-I01"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="Mjr-Ie-lPw" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">

@@ -122,7 +122,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 56, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 56) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 44) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -131,7 +131,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.tableView.rowHeight = 60.0;
     [self.view addSubview:self.tableView];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 56)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
     self.searchBar.delegate = self;
     self.searchBar.barTintColor = [UIColor blackColor];
     [self.view addSubview:self.searchBar];
