@@ -92,13 +92,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     [self setupViews];
     [self registerForPreviewing];
-    
-    
-    //liman
-    self.view.backgroundColor = [UIColor blackColor];
-    self.tableView.backgroundColor = [UIColor blackColor];
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,17 +124,20 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }
     
     self.navigationItem.rightBarButtonItems = rightBarButtonItems;
+    self.view.backgroundColor = [UIColor blackColor];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
-    [self.tableView registerClass:[_MLBFileTableViewCell class] forCellReuseIdentifier:_MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
+    self.tableView.backgroundColor = [UIColor blackColor];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:[_MLBFileTableViewCell class] forCellReuseIdentifier:_MLBFileTableViewCellReuseIdentifier];
     [self.view addSubview:self.tableView];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     self.searchBar.delegate = self;
     self.searchBar.barTintColor = [UIColor blackColor];
     self.searchBar.enablesReturnKeyAutomatically = NO;
