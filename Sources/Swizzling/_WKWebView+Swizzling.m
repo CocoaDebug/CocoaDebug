@@ -56,9 +56,6 @@
     //WKWebView
     [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor unicodeToChinese:NO message:@"----------------------------------- init -----------------------------------"];
     
-    //
-    [configuration.userContentController removeAllUserScripts];
-    
     [self log:configuration];
     [self error:configuration];
     [self warn:configuration];
