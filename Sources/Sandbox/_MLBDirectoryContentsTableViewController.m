@@ -6,9 +6,6 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
 #import "_MLBDirectoryContentsTableViewController.h"
 #import "_MLBFilePreviewController.h"
 #import "_MLBFileTableViewCell.h"
@@ -669,6 +666,4 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 @end
-
-#pragma clang diagnostic pop
 

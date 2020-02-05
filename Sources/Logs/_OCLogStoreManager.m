@@ -46,7 +46,14 @@
                     [self.defaultLogArray removeObjectAtIndex:0];
                 }
             }
-            [self.defaultLogArray addObject:log];
+            
+            @try {
+                [self.defaultLogArray addObject:log];
+            } @catch (NSException *exception) {
+                
+            } @finally {
+                    
+            }
         }
         else
         {
@@ -56,7 +63,14 @@
                     [self.colorLogArray removeObjectAtIndex:0];
                 }
             }
-            [self.colorLogArray addObject:log];
+            
+            @try {
+                [self.colorLogArray addObject:log];
+            } @catch (NSException *exception) {
+                
+            } @finally {
+                    
+            }
         }
     }
     else
@@ -67,7 +81,14 @@
                 [self.h5LogArray removeObjectAtIndex:0];
             }
         }
-        [self.h5LogArray addObject:log];
+        
+        @try {
+            [self.h5LogArray addObject:log];
+        } @catch (NSException *exception) {
+            
+        } @finally {
+                
+        }
     }
 }
 

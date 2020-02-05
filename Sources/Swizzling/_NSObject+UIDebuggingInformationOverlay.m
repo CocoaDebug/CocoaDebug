@@ -8,10 +8,6 @@
 
 
 //***************** Private API *****************
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-
 #import "CocoaDebug.h"
 
 @import UIKit;
@@ -68,5 +64,4 @@
 }
 
 @end
-#pragma clang diagnostic pop
 //***************** Private API *****************

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppInfoViewController: UITableViewController {
+class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
@@ -52,10 +52,10 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        crashSwitch.isOn = CocoaDebugSettings.shared.disableCrashRecording
-        logSwitch.isOn = CocoaDebugSettings.shared.disableLogMonitoring
-        networkSwitch.isOn = CocoaDebugSettings.shared.disableNetworkMonitoring
-        htmlSwitch.isOn = CocoaDebugSettings.shared.disableHTMLConsoleMonitoring
+        crashSwitch.isOn = !CocoaDebugSettings.shared.disableCrashRecording
+        logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
+        networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
+        htmlSwitch.isOn = !CocoaDebugSettings.shared.disableHTMLConsoleMonitoring
 
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
@@ -71,20 +71,33 @@ class AppInfoViewController: UITableViewController {
     }
     
     //MARK: - target action
-    @objc func crashSwitchChanged(mySwitch: UISwitch) {
-        CocoaDebugSettings.shared.disableCrashRecording = mySwitch.isOn
+    @objc func crashSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableCrashRecording = !crashSwitch.isOn
+        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES").show()
     }
     
-    @objc func logSwitchChanged(mySwitch: UISwitch) {
-        CocoaDebugSettings.shared.disableLogMonitoring = mySwitch.isOn
+    @objc func logSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
+        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES").show()
     }
     
-    @objc func networkSwitchChanged(mySwitch: UISwitch) {
-        CocoaDebugSettings.shared.disableNetworkMonitoring = mySwitch.isOn
+    @objc func networkSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableNetworkMonitoring = !networkSwitch.isOn
+        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES").show()
     }
     
-    @objc func htmlSwitchChanged(mySwitch: UISwitch) {
-        CocoaDebugSettings.shared.disableHTMLConsoleMonitoring = mySwitch.isOn
+    @objc func htmlSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableHTMLConsoleMonitoring = !htmlSwitch.isOn
+        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES").show()
+    }
+}
+
+//MARK: - UIAlertViewDelegate
+extension AppInfoViewController {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        if buttonIndex == 1 {
+            exit(0)
+        }
     }
 }
 
