@@ -10,7 +10,7 @@
         <!--Network-->
         <scene sceneID="C6G-AD-xq1">
             <objects>
-                <viewController storyboardIdentifier="NetworkViewController" title="Network" id="C9A-fD-Ood" customClass="NetworkViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NetworkViewController" title="Network" id="C9A-fD-Ood" customClass="NetworkViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5LO-XP-TDA"/>
                         <viewControllerLayoutGuide type="bottom" id="AxS-rn-hDA"/>
@@ -43,7 +43,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="Example_Objc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="CocoaDebug" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caZ-x3-DZv" id="wOJ-KD-fAY">
@@ -194,13 +194,13 @@
         <!--Details-->
         <scene sceneID="KLL-VA-asP">
             <objects>
-                <tableViewController storyboardIdentifier="NetworkDetailViewController" title="Details" hidesBottomBarWhenPushed="YES" id="q3G-BB-F3V" customClass="NetworkDetailViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NetworkDetailViewController" title="Details" hidesBottomBarWhenPushed="YES" id="q3G-BB-F3V" customClass="NetworkDetailViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fPI-1I-xFz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkDetailCell" rowHeight="401" id="q3L-mI-Jwn" customClass="NetworkDetailCell" customModule="Example_Objc" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkDetailCell" rowHeight="401" id="q3L-mI-Jwn" customClass="NetworkDetailCell" customModule="CocoaDebug" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="401"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3L-mI-Jwn" id="JkA-KQ-aXq">
@@ -340,7 +340,7 @@
         <!--JSON-->
         <scene sceneID="Gfj-Hy-YwZ">
             <objects>
-                <viewController storyboardIdentifier="JsonViewController" title="JSON" id="aEg-CS-bcv" customClass="JsonViewController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JsonViewController" title="JSON" id="aEg-CS-bcv" customClass="JsonViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c6C-WV-dAx"/>
                         <viewControllerLayoutGuide type="bottom" id="5Sw-CP-jT1"/>
@@ -384,7 +384,7 @@
         <!--Network-->
         <scene sceneID="Z1b-qJ-9zV">
             <objects>
-                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="CocoaDebugNavigationController" customModule="Example_Objc" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Network" automaticallyAdjustsScrollViewInsets="NO" id="n2b-Ib-iXr" customClass="CocoaDebugNavigationController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Network" image="_icon_file_type_network" selectedImage="_icon_file_type_network" id="HZO-tF-0ia"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yog-aO-SHJ">
