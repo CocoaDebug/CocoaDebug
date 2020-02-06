@@ -54,6 +54,7 @@ extension CrashListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
             as! CrashCell
         cell.crash = models[indexPath.row]
+        cell.accessoryType = .none
         return cell
     }
 }
