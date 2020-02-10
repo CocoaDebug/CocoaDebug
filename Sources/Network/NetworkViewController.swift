@@ -97,7 +97,7 @@ class NetworkViewController: UIViewController {
         deleteItem.tintColor = Color.mainGreen
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification), name: NSNotification.Name(rawValue: "reloadHttp_SSPDebug"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
         
         tableView.tableFooterView = UIView()
         tableView.dataSource = self

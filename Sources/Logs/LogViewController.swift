@@ -274,7 +274,7 @@ class LogViewController: UIViewController {
         }
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_SSPDebug"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil)
 
         
         defaultTableView.tableFooterView = UIView()

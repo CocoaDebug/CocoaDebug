@@ -322,7 +322,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         super.viewWillAppear(animated)
         
         //notification
-//        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_SSPDebug"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_CocoaDebug"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

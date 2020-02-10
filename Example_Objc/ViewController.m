@@ -28,7 +28,6 @@
     NSLog(@"unicode转换为中文");
     
     
-    [self testHTTP];
     [self test_console_WKWebView];
     [self test_console_UIWebView];
     
@@ -42,6 +41,12 @@
     
     //save txt
     [self saveTXT:@"hahahahahahahaha"];
+    
+    for (int i = 0; i < 20; i ++) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i*2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self testHTTP];
+        });
+    }
 }
 
 - (void)saveImage:(UIImage *)image {
