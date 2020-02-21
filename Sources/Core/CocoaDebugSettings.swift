@@ -12,6 +12,9 @@ import Foundation
 
     @objc public static let shared = CocoaDebugSettings()
 
+    @objc public var isRunning: Bool = false
+
+        
     @objc public var responseShake: Bool = false {
         didSet {
             UserDefaults.standard.set(responseShake, forKey: "responseShake_CocoaDebug")
