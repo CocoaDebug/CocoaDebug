@@ -11,7 +11,7 @@
 
 @interface _Sandboxer ()
 
-@property (strong, nonatomic) UINavigationController *homeDirectoryNavigationController;
+@property (nonatomic, strong) UINavigationController *homeDirectoryNavigationController;
 
 @end
 

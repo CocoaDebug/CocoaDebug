@@ -19,4 +19,10 @@
 //Get File Size
 + (NSString *)sizeOfFile:(NSString *)filePath;
 
++ (instancetype)sharedInstance;
+
++ (NSString *)generateRandomId;
+
+@property (nonatomic, strong) NSMutableDictionary<NSString*, NSString*> *searchTextDictionary;
+
 @end

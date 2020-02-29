@@ -15,23 +15,26 @@
 #import "_Sandboxer-Header.h"
 #import "_NetworkHelper.h"
 #import "_MLBImageController.h"
+#import "_SandboxerHelper.h"
 
 @interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource;
-@property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource_cache;
-@property (strong, nonatomic) NSMutableArray<_MLBFileInfo *> *dataSource_search;
+@property (nonatomic, strong) NSMutableArray<_MLBFileInfo *> *dataSource;
+@property (nonatomic, strong) NSMutableArray<_MLBFileInfo *> *dataSource_cache;
+@property (nonatomic, strong) NSMutableArray<_MLBFileInfo *> *dataSource_search;
 
-@property (strong, nonatomic) _MLBFileInfo *previewingFileInfo;
-@property (strong, nonatomic) _MLBFileInfo *deletingFileInfo;
+@property (nonatomic, strong) _MLBFileInfo *previewingFileInfo;
+@property (nonatomic, strong) _MLBFileInfo *deletingFileInfo;
 
-@property (strong, nonatomic) UIBarButtonItem *refreshItem;
-@property (strong, nonatomic) UIBarButtonItem *editItem;
-@property (strong, nonatomic) UIBarButtonItem *deleteAllItem;
-@property (strong, nonatomic) UIBarButtonItem *deleteItem;
+@property (nonatomic, strong) UIBarButtonItem *refreshItem;
+@property (nonatomic, strong) UIBarButtonItem *editItem;
+@property (nonatomic, strong) UIBarButtonItem *deleteAllItem;
+@property (nonatomic, strong) UIBarButtonItem *deleteItem;
 
-@property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UISearchBar *searchBar;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchBar *searchBar;
+
+@property (nonatomic, copy) NSString *randomId;
 
 @end
 
@@ -63,14 +66,19 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 #pragma mark - View Lifecycle
+- (void)dealloc {
+    [[_SandboxerHelper sharedInstance].searchTextDictionary removeObjectForKey:self.randomId];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.randomId = [_SandboxerHelper generateRandomId];
+    
+    //
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
-    
     
     //liman
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
@@ -86,26 +94,25 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         }
     }
     
-    
+    //
     [self setupViews];
     [self registerForPreviewing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     //liman
     [self loadDirectoryContents];
     [self endEditing];
-    
-    self.searchBar.text = nil;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     if (self.tableView.isEditing) {
         [self.navigationController setToolbarHidden:YES animated:YES];
     }
-    
     [self.searchBar resignFirstResponder];
 }
 
@@ -165,6 +172,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     __weak _MLBDirectoryContentsTableViewController *weakSelf = self;
 
+    //子线程
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         NSMutableArray<_MLBFileInfo *> *dataSource_ = [_MLBFileInfo contentsOfDirectoryAtURL:weakSelf.fileInfo.URL];
@@ -173,13 +181,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             weakSelf.dataSource_cache = dataSource_;
         }
         
+        //主线程
         dispatch_async(dispatch_get_main_queue(), ^{
             
             weakSelf.refreshItem.enabled = YES;
             [weakSelf updateToolbarItems];
-            if ([dataSource_ count] > 0) {
-                [weakSelf.tableView reloadData];
-            }
+//            if ([dataSource_ count] > 0) {
+//                [weakSelf.tableView reloadData];
+//            }
+            [self searchBar:self.searchBar textDidChange:[[_SandboxerHelper sharedInstance].searchTextDictionary objectForKey:self.randomId]];
         });
     });
     
@@ -536,7 +546,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return self.searchBar;
@@ -643,8 +653,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    
-    if ([searchText isEqualToString:@""]) {
+    if (searchText) {
+        [[_SandboxerHelper sharedInstance].searchTextDictionary setObject:searchText forKey:self.randomId];
+    }
+
+    if (!searchText || [searchText isEqualToString:@""]) {
         self.dataSource = self.dataSource_cache;
         [self.tableView reloadData];
         return;

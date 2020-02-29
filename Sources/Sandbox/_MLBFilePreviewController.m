@@ -15,14 +15,14 @@
 
 @interface _MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
-@property (strong, nonatomic) UIWebView *webView;
-@property (strong, nonatomic) WKWebView *wkWebView;
+@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *wkWebView;
 
-@property (strong, nonatomic) UITextView *textView;
+@property (nonatomic, strong) UITextView *textView;
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
-@property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
+@property (nonatomic, strong) UIDocumentInteractionController *documentInteractionController;
 
 @end
 

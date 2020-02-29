@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) _MLBFileInfo *fileInfo;
-@property (strong, nonatomic) UIDocumentInteractionController *documentInteractionController;
+@property (nonatomic, strong) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic, assign) BOOL flag;
 
 @end

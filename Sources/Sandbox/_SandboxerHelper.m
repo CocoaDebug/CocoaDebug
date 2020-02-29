@@ -22,6 +22,15 @@
 
 #pragma mark - Public Methods
 
++ (instancetype)sharedInstance {
+    static id sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 + (NSString *)fileModificationDateTextWithDate:(NSDate *)date {
     if (!date) { return @""; }
     return [[_SandboxerHelper fileModificationDateFormatter] stringFromDate:date];
@@ -53,6 +62,28 @@
     NSInteger fileSize = [[fileAttributes objectForKey:NSFileSize] integerValue];
     NSString *fileSizeString = [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
     return fileSizeString;
+}
+
+#pragma mark - tool
++ (NSString *)generateRandomId {
+    UInt64 time = [[NSDate date] timeIntervalSince1970] * 1000;
+    return [NSString stringWithFormat:@"%llu_%@", time, [self generateRandomString]];
+}
+
++ (NSString *)generateRandomString {
+    char data[10];
+    for (int x = 0; x < 10; ++x) {
+        data[x] = (char)('A' + (arc4random_uniform(26)));
+    }
+    return [[NSString alloc] initWithBytes:data length:10 encoding:NSUTF8StringEncoding];
+}
+
+#pragma mark - setter / getter
+- (NSMutableDictionary<NSString*, NSString*> *)searchTextDictionary {
+    if (!_searchTextDictionary) {
+        _searchTextDictionary = [NSMutableDictionary dictionary];
+    }
+    return _searchTextDictionary;
 }
 
 @end
