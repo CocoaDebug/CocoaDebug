@@ -15,6 +15,7 @@ public class _WindowHelper: NSObject {
     var displayedList = false
     lazy var vc = CocoaDebugViewController()
 
+    
     private override init() {
         self.window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         // This is for making the window not to effect the StatusBarStyle
@@ -22,19 +23,8 @@ public class _WindowHelper: NSObject {
         super.init()
     }
 
+    
     public func enable() {
-        if #available(iOS 13.0, *) {
-            if self.window.windowScene?.activationState != .foregroundActive {
-                for scene in UIApplication.shared.connectedScenes {
-                    if scene.activationState == .foregroundActive,
-                        let windowScene = scene as? UIWindowScene {
-                        self.window.windowScene = windowScene
-                        break
-                    }
-                }
-            }
-        }
-
         if self.window.rootViewController != self.vc {
             self.window.rootViewController = self.vc
             self.window.delegate = self
@@ -43,7 +33,26 @@ public class _WindowHelper: NSObject {
             _WHDebugMemoryMonitor.sharedInstance()?.startMonitoring()
             _WHDebugCpuMonitor.sharedInstance()?.startMonitoring()
         }
+        
+        if #available(iOS 13.0, *) {
+            var success: Bool = false
+            
+            for i in 0...10 {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (0.1 * Double(i))) {[weak self] in
+                    if success == true {return}
+                    
+                    for scene in UIApplication.shared.connectedScenes {
+                        if let windowScene = scene as? UIWindowScene {
+                            print((0.1 * Double(i)))
+                            self?.window.windowScene = windowScene
+                            success = true
+                        }
+                    }
+                }
+            }
+        }
     }
+    
 
     public func disable() {
         if self.window.rootViewController != nil {

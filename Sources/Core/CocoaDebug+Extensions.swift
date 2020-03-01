@@ -306,9 +306,6 @@ extension CocoaDebug {
         }else{//not first launch
             CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
-        if CocoaDebugSettings.shared.showBubbleAndWindow == true {
-            _WindowHelper.shared.enable()
-        }
         
         CocoaDebugSettings.shared.visible = false
         CocoaDebugSettings.shared.logSearchWordDefault = nil
