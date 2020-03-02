@@ -25,7 +25,7 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     @IBOutlet weak var crashSwitch: UISwitch!
     @IBOutlet weak var logSwitch: UISwitch!
     @IBOutlet weak var networkSwitch: UISwitch!
-    @IBOutlet weak var htmlSwitch: UISwitch!
+    @IBOutlet weak var webViewSwitch: UISwitch!
     
     
     //MARK: - init
@@ -52,15 +52,15 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        crashSwitch.isOn = !CocoaDebugSettings.shared.disableCrashRecording
+        crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
-        htmlSwitch.isOn = !CocoaDebugSettings.shared.disableHTMLConsoleMonitoring
+        webViewSwitch.isOn = CocoaDebugSettings.shared.enableWebViewMonitoring
 
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
-        htmlSwitch.addTarget(self, action: #selector(htmlSwitchChanged), for: UIControl.Event.valueChanged)
+        webViewSwitch.addTarget(self, action: #selector(webViewSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +72,7 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     
     //MARK: - target action
     @objc func crashSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableCrashRecording = !crashSwitch.isOn
+        CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
         UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
     }
     
@@ -86,8 +86,8 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
         UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
     }
     
-    @objc func htmlSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableHTMLConsoleMonitoring = !htmlSwitch.isOn
+    @objc func webViewSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableWebViewMonitoring = webViewSwitch.isOn
         UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
     }
 }

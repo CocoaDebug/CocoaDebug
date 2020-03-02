@@ -20,7 +20,7 @@
 #pragma mark - life
 + (void)load {
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableHTMLConsoleMonitoring_CocoaDebug"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableWebViewMonitoring_CocoaDebug"]) {
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{

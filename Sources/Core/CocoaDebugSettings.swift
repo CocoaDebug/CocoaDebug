@@ -33,21 +33,22 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var disableCrashRecording: Bool = false {
+    @objc public var enableCrashRecording: Bool = false {
         didSet {
-            UserDefaults.standard.set(disableCrashRecording, forKey: "disableCrashRecording_CocoaDebug")
+            UserDefaults.standard.set(enableCrashRecording, forKey: "enableCrashRecording_CocoaDebug")
             UserDefaults.standard.synchronize()
             
-            if disableCrashRecording == false {
+            if enableCrashRecording == true {
                 CrashLogger.shared.enable = true
             }else{
+                CrashLogger.shared.enable = false
                 CrashStoreManager.shared.resetCrashs()
             }
         }
     }
-    @objc public var disableHTMLConsoleMonitoring: Bool = false {
+    @objc public var enableWebViewMonitoring: Bool = false {
         didSet {
-            UserDefaults.standard.set(disableHTMLConsoleMonitoring, forKey: "disableHTMLConsoleMonitoring_CocoaDebug")
+            UserDefaults.standard.set(enableWebViewMonitoring, forKey: "enableWebViewMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -195,8 +196,8 @@ import Foundation
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
-        disableCrashRecording = UserDefaults.standard.bool(forKey: "disableCrashRecording_CocoaDebug")
-        disableHTMLConsoleMonitoring = UserDefaults.standard.bool(forKey: "disableHTMLConsoleMonitoring_CocoaDebug")
+        enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
+        enableWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWebViewMonitoring_CocoaDebug")
         disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
