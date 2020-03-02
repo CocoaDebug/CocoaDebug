@@ -78,12 +78,4 @@
     return [[NSString alloc] initWithBytes:data length:10 encoding:NSUTF8StringEncoding];
 }
 
-#pragma mark - setter / getter
-- (NSMutableDictionary<NSString*, NSString*> *)searchTextDictionary {
-    if (!_searchTextDictionary) {
-        _searchTextDictionary = [NSMutableDictionary dictionary];
-    }
-    return _searchTextDictionary;
-}
-
 @end

@@ -70,6 +70,12 @@ github "CocoaDebug/CocoaDebug"
     #endif
 	
     #if DEBUG
+        //If Use Google's Protocol buffers
+        CocoaDebug.protobufTransferMap = [
+                                         "your_api_keywords_1": "your_protobuf_className_1",
+                                         "your_api_keywords_2": "your_protobuf_className_2",
+                                         "your_api_keywords_3": "your_protobuf_className_3"
+                                         ]
         CocoaDebug.enable()
     #endif
 
@@ -89,6 +95,12 @@ github "CocoaDebug/CocoaDebug"
     #endif
 	
     #ifdef DEBUG
+        //If Use Google's Protocol buffers
+        CocoaDebug.protobufTransferMap = @{
+                                         @"your_api_keywords_1": @"your_protobuf_className_1",
+                                         @"your_api_keywords_2": @"your_protobuf_className_2",
+                                         @"your_api_keywords_3": @"your_protobuf_className_3"
+                                         };
         [CocoaDebug enable];
     #endif
 
@@ -115,6 +127,8 @@ When you initialize CocoaDebug, you can customize the following parameter values
 - `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is **nil**.
 
 - `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
+
+- `protobufTransferMap` - protobuf url and response class transfer map. default value is **nil**.
 
 ## TODO
 

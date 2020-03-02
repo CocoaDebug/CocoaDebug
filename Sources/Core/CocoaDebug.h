@@ -40,5 +40,3 @@
 #import "_fishhook.h"
 #import <Protobuf/GPBMessage.h>
 #import "GPBMessage+_JSONSerialization.h"
-
-

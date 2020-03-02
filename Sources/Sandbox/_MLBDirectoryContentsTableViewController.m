@@ -35,6 +35,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 
 @property (nonatomic, copy) NSString *randomId;
+@property (nonatomic, copy) NSString *searchText;
 
 @end
 
@@ -74,6 +75,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [super viewDidLoad];
     
     self.randomId = [_SandboxerHelper generateRandomId];
+
+    if (![_SandboxerHelper sharedInstance].searchTextDictionary) {
+        [_SandboxerHelper sharedInstance].searchTextDictionary = [NSMutableDictionary dictionary];
+    }
     
     //
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView)];
@@ -102,7 +107,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    //liman
+    self.searchText = [[_SandboxerHelper sharedInstance].searchTextDictionary objectForKey:self.randomId];
+
     [self loadDirectoryContents];
     [self endEditing];
 }
@@ -186,10 +192,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             
             weakSelf.refreshItem.enabled = YES;
             [weakSelf updateToolbarItems];
-//            if ([dataSource_ count] > 0) {
-//                [weakSelf.tableView reloadData];
-//            }
-            [self searchBar:self.searchBar textDidChange:[[_SandboxerHelper sharedInstance].searchTextDictionary objectForKey:self.randomId]];
+            [weakSelf searchBar:weakSelf.searchBar textDidChange:weakSelf.searchText];
         });
     });
     
