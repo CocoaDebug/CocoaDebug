@@ -26,10 +26,12 @@ import Foundation
     @objc public static var emailCcRecipients: [String]? = nil
     ///set the main color with hexadecimal format. default value is `#42d459`.
     @objc public static var mainColor: String = "#42d459"
+    ///protobuf url and response class transfer map. default value is `nil`.
+    @objc public static var protobufTransferMap: [String: String]? = nil
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
     
     //MARK: - CocoaDebug disable

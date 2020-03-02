@@ -93,6 +93,12 @@ extension Dictionary {
 }
 
 extension String {
+    func jsonStringToPrettyJsonString() -> String? {
+        return self.stringToDictionary()?.dictionaryToString()
+    }
+}
+
+extension String {
     func isValidURL() -> Bool {
         if let url = URL(string: self) {
             return UIApplication.shared.canOpenURL(url)
@@ -149,8 +155,18 @@ extension Data {
         if let str = self.dataToDictionary()?.dictionaryToString() {
             return str
         } else {
-            //3.utf-8 string
-            return String(data: self, encoding: .utf8)
+            //2.protobuf
+            if let message = try? GPBMessage.parse(from: self) {
+                if message.serializedSize() > 0 {
+                    return message.description
+                } else {
+                    //3.utf-8 string
+                    return String(data: self, encoding: .utf8)
+                }
+            } else {
+                //3.utf-8 string
+                return String(data: self, encoding: .utf8)
+            }
         }
     }
 }
@@ -257,11 +273,9 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: String]? = nil)
     {
-        if CocoaDebugSettings.shared.isRunning == true {
-            return
-        }
+        if CocoaDebugSettings.shared.isRunning == true {return}
         
         CocoaDebugSettings.shared.isRunning = true
         
@@ -306,7 +320,8 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
         CocoaDebugSettings.shared.enableWebViewMonitoring = enableWebViewMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
-        
+        CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
+
         let _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
@@ -337,6 +352,8 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
+        CocoaDebugSettings.shared.isRunning = false
+
         _WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _LogHelper.shared.enable = false

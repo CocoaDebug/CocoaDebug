@@ -27,5 +27,6 @@ Pod::Spec.new do |s|
                           'Classes/WHDebugTool', 
                           'Classes/Window'
                           ]
-
+s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1'  }
+s.dependency "Protobuf"
 end

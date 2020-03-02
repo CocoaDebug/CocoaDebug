@@ -54,9 +54,15 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         if requestSerializer == RequestSerializer.form {
             if let data = httpModel?.requestData {
-                //2.Form
-                requestContent = data.dataToString()
-                
+                //1.protobuf
+                if let message = try? GPBMessage.parse(from: data) {
+                    if message.serializedSize() > 0 {
+                        requestContent = message.description
+                    } else {
+                        //2.Form
+                        requestContent = data.dataToString()
+                    }
+                }
                 if requestContent == nil || requestContent == "" || requestContent == "\u{8}\u{1e}" {
                     //3.utf-8 string
                     requestContent = String(data: data, encoding: .utf8)
@@ -70,34 +76,34 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
-            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
             if let responseData = httpModel?.responseData {
-                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, image: UIImage.init(data: responseData), httpModel: httpModel)
             }
             //2.次要
-            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
                     model_2.requestHeaderFields = requestHeaderFields
                     model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
-            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
                     model_4.responseHeaderFields = responseHeaderFields
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
-            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size, url: httpModel?.url.absoluteString, httpModel: httpModel)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
@@ -113,31 +119,31 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else{
             //非图片:
             //1.主要
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
-            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString(), url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
             //2.次要
-            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
                     model_2.requestHeaderFields = requestHeaderFields
                     model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
-            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
                     model_4.responseHeaderFields = responseHeaderFields
                     model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
                 }
             }
-            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size)
+            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size, url: httpModel?.url.absoluteString, httpModel: httpModel)
             //3.
             detailModels.append(model_1)
             detailModels.append(model_2)

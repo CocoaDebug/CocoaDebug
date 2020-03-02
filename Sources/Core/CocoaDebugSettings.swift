@@ -188,6 +188,12 @@ import Foundation
         }
     }
     
+    //protobuf
+    @objc public var protobufTransferMap: [String: String]? = nil {
+        didSet {
+            _NetworkHelper.shared().protobufTransferMap = protobufTransferMap
+        }
+    }
     
     private override init() {
         responseShake = UserDefaults.standard.bool(forKey: "responseShake_CocoaDebug")
@@ -215,5 +221,8 @@ import Foundation
         logMaxCount = _NetworkHelper.shared().logMaxCount
         onlyURLs = _NetworkHelper.shared().onlyURLs
         ignoredURLs = _NetworkHelper.shared().ignoredURLs
+        
+        //protobuf
+        protobufTransferMap = _NetworkHelper.shared().protobufTransferMap
     }
 }

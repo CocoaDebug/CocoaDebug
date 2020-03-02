@@ -27,6 +27,11 @@
  *  日志最大数量,默认`1000`
  */
 @property (nonatomic, assign) NSInteger logMaxCount;
+/**
+ *  protobuf
+ */
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> *protobufTransferMap;
+
 
 @property (nonatomic, assign) BOOL isEnable;
 

@@ -8,6 +8,7 @@
 
 #import "_TCPLogger.h"
 #import "_OCLogHelper.h"
+#import "GPBMessage.h"
 
 @implementation _TCPLogger
 
@@ -20,8 +21,22 @@
         return;
     }
     
-    //3.utf-8 string
-    [self logWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+    //2.protobuf
+    GPBMessage *message = [GPBMessage parseFromData:data error:nil];
+    if (message) {
+        if ([message serializedSize] > 0) {
+            [self logWithString:[message description]];
+            return;
+        } else {
+            //3.utf-8 string
+            [self logWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+            return;
+        }
+    } else {
+        //3.utf-8 string
+        [self logWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+        return;
+    }
 }
 
 

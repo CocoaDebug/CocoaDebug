@@ -38,6 +38,7 @@
 #import "_WHDebugMemoryMonitor.h"
 #import "_WHDebugMonitor.h"
 #import "_fishhook.h"
-
+#import <Protobuf/GPBMessage.h>
+#import "GPBMessage+_JSONSerialization.h"
 
 
