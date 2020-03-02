@@ -73,30 +73,32 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     //MARK: - target action
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
-        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
+        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
     }
     
     @objc func logSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
-        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
+        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
     }
     
     @objc func networkSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableNetworkMonitoring = !networkSwitch.isOn
-        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
+        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWebViewMonitoring = webViewSwitch.isOn
-        UIAlertView.init(title: "Restart APP now ?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Restart").show()
+        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
     }
 }
 
 //MARK: - UIAlertViewDelegate
 extension AppInfoViewController {
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        if buttonIndex == 1 {
-            exit(0)
+        if buttonIndex == 0 {
+            #if DEBUG
+                exit(0)
+            #endif
         }
     }
 }
