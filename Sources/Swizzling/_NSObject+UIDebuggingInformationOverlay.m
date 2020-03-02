@@ -35,16 +35,19 @@
 @implementation NSObject (_UIDebuggingInformationOverlay)
 
 + (void)load {
-    if (@available(iOS 11.0, *)) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
-            [_FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
-        });
-    } else {
-        // Fallback on earlier versions
-    }
+    #ifdef DEBUG
+        if (@available(iOS 11.0, *)) {
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                Class cls = NSClassFromString(@"UIDebuggingInformationOverlay");
+                [_FakeWindowClass swizzleOriginalSelector:@selector(init) withSizzledSelector:@selector(initSwizzled) forClass:cls isClassMethod:NO];
+            });
+        } else {
+            // Fallback on earlier versions
+        }
+    #endif
 }
+
 
 + (void)swizzleOriginalSelector:(SEL)originalSelector withSizzledSelector:(SEL)swizzledSelector forClass:(Class)class isClassMethod:(BOOL)isClassMethod {
     Method originalMethod;

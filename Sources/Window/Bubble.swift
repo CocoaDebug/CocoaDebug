@@ -251,31 +251,35 @@ class Bubble: UIView {
     //***************** Private API *****************
     @available(iOS 11.0, *)
     @objc func longPress(sender: UILongPressGestureRecognizer) {
-        if (sender.state == .began) {
-            guard let cls = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type else {return}
-            
-            if !self.hasPerformedSetup {
-                cls.perform(NSSelectorFromString("prepareDebuggingOverlay"))
-                self.hasPerformedSetup = true
+        #if DEBUG
+            if (sender.state == .began) {
+                guard let cls = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type else {return}
+                
+                if !self.hasPerformedSetup {
+                    cls.perform(NSSelectorFromString("prepareDebuggingOverlay"))
+                    self.hasPerformedSetup = true
+                }
+                
+                let tapGesture = UITapGestureRecognizer()
+                tapGesture.state = .ended
+                
+                let handlerCls = NSClassFromString("UIDebuggingInformationOverlayInvokeGestureHandler") as! NSObject.Type
+                let handler = handlerCls.perform(NSSelectorFromString("mainHandler")).takeUnretainedValue()
+                let _ = handler.perform(NSSelectorFromString("_handleActivationGesture:"), with: tapGesture)
             }
-            
-            let tapGesture = UITapGestureRecognizer()
-            tapGesture.state = .ended
-            
-            let handlerCls = NSClassFromString("UIDebuggingInformationOverlayInvokeGestureHandler") as! NSObject.Type
-            let handler = handlerCls.perform(NSSelectorFromString("mainHandler")).takeUnretainedValue()
-            let _ = handler.perform(NSSelectorFromString("_handleActivationGesture:"), with: tapGesture)
-        }
+        #endif
     }
     
     @available(iOS 10.0, *)
     @objc func longPress2(sender: UILongPressGestureRecognizer) {
-        if (sender.state == .began) {
-            let overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
-            _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
-            let overlay = overlayClass?.perform(NSSelectorFromString("overlay")).takeUnretainedValue() as? UIWindow
-            _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
-        }
+        #if DEBUG
+            if (sender.state == .began) {
+                let overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
+                _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
+                let overlay = overlayClass?.perform(NSSelectorFromString("overlay")).takeUnretainedValue() as? UIWindow
+                _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
+            }
+        #endif
     }
     //***************** Private API *****************
     
