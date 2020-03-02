@@ -128,7 +128,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
 
-- `protobufTransferMap` - protobuf url and response class transfer map. default value is **nil**.
+- `protobufTransferMap` - Protobuf url and response class transfer map. default value is **nil**.
 
 ## TODO
 
