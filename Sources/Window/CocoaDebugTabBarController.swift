@@ -59,12 +59,12 @@ class CocoaDebugTabBarController: UITabBarController {
         
         //3.
         guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
-            self.viewControllers = [logs, network, sandbox, app]
+            self.viewControllers = [network, logs, sandbox, app]
             return
         }
         
         //4.添加额外的控制器
-        var temp = [logs, network, sandbox, app]
+        var temp = [network, logs, sandbox, app]
         
         for vc in tabBarControllers {
             
