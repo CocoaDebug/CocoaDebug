@@ -13,8 +13,6 @@
 
 @interface WKWebView () <WKScriptMessageHandler>
 
-@property (nonatomic, assign) BOOL enableWebViewMonitoring;
-
 @end
 
 @implementation WKWebView (_Swizzling)
@@ -50,15 +48,11 @@
 
 #pragma mark - replaced method
 - (void)replaced_dealloc {
-    self.enableWebViewMonitoring = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableWebViewMonitoring_CocoaDebug"];
-    
     //WKWebView
     [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor redColor] unicodeToChinese:NO message:@"-------------------------------- dealloc --------------------------------"];
 }
 
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
-    self.enableWebViewMonitoring = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableWebViewMonitoring_CocoaDebug"];
-
     //WKWebView
     [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor unicodeToChinese:NO message:@"----------------------------------- init -----------------------------------"];
     
@@ -151,9 +145,7 @@
 
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    if (self.enableWebViewMonitoring) {
-        [_ObjcLog logWithFile:"[WKWebView]" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
-    }
+    [_ObjcLog logWithFile:"[WKWebView]" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
 }
 
 @end
