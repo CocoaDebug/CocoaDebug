@@ -252,7 +252,6 @@
 		387FDCD6240CF88F0019E6B3 /* GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCD2240CF88E0019E6B3 /* GPBMessage+_JSONSerialization.m */; };
 		387FDCD7240CF88F0019E6B3 /* NSObject+_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCD5240CF88E0019E6B3 /* NSObject+_Common.m */; };
 		38D6CE9C240D1DAF00F89968 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */; };
-		38D6CE9D240D1DAF00F89968 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38D6CE9B240D1DAE00F89968 /* Info.plist */; };
 		38D6CEA7240D1DD500F89968 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38D6CEA5240D1DD500F89968 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38D6CEAA240D1DD500F89968 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; };
 		38D6CEAB240D1DD500F89968 /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -587,7 +586,6 @@
 		387FDCD5240CF88E0019E6B3 /* NSObject+_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_Common.m"; sourceTree = "<group>"; };
 		38D6CE99240D1DAE00F89968 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
-		38D6CE9B240D1DAE00F89968 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D6CEA5240D1DD500F89968 /* CocoaDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		38D6CEA6240D1DD500F89968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1053,7 +1051,6 @@
 			children = (
 				38D6CE99240D1DAE00F89968 /* CocoaDebug.h */,
 				38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */,
-				38D6CE9B240D1DAE00F89968 /* Info.plist */,
 			);
 			path = CocoaDebug;
 			sourceTree = "<group>";
@@ -1411,7 +1408,6 @@
 				3879B194232108F500D36437 /* icon_file_type_ogg@2x.png in Resources */,
 				3879B17E232108F500D36437 /* icon_file_type_json@3x.png in Resources */,
 				3879B1B4232108F500D36437 /* icon_file_type_svg.png in Resources */,
-				38D6CE9D240D1DAF00F89968 /* Info.plist in Resources */,
 				3879B183232108F500D36437 /* icon_file_type_json@2x.png in Resources */,
 				3879B166232108F500D36437 /* _icon_file_type_bugs@2x.png in Resources */,
 				3879B1AF232108F500D36437 /* icon_file_type_mov@2x.png in Resources */,
