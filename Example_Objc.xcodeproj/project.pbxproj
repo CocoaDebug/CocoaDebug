@@ -578,7 +578,7 @@
 		8713C3D96D772A00108E036B /* Pods-Example_ObjcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_ObjcTests.release.xcconfig"; path = "Target Support Files/Pods-Example_ObjcTests/Pods-Example_ObjcTests.release.xcconfig"; sourceTree = "<group>"; };
 		88873B47838CF4A4759DEF50 /* libPods-Example_Objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example_Objc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE5E9C04383193B418A585D /* libPods-CocoaDebug.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocoaDebug.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA165EFC204D2539001472C1 /* CocoaDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA165EFC204D2539001472C1 /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA165EFF204D2539001472C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA165F00204D2539001472C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EA165F02204D2539001472C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 		EA165F0D204D2539001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165F0E204D2539001472C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA166108204D25BC001472C1 /* Example_Objc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Objc-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA6B27842059689C004D8E05 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example_ObjcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6B27862059689C004D8E05 /* Example_ObjcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_ObjcTests.swift; sourceTree = "<group>"; };
 		EA6B27882059689C004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF58049204E7434001CA56D /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
@@ -1058,8 +1058,8 @@
 		EA165EFD204D2539001472C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA165EFC204D2539001472C1 /* CocoaDebug.app */,
-				EA6B27842059689C004D8E05 /* CocoaDebugTests.xctest */,
+				EA165EFC204D2539001472C1 /* Example_Objc.app */,
+				EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1125,9 +1125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA165EFB204D2539001472C1 /* CocoaDebug */ = {
+		EA165EFB204D2539001472C1 /* Example_Objc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA165F12204D2539001472C1 /* Build configuration list for PBXNativeTarget "CocoaDebug" */;
+			buildConfigurationList = EA165F12204D2539001472C1 /* Build configuration list for PBXNativeTarget "Example_Objc" */;
 			buildPhases = (
 				CF8520FE66D8B2E247D823C8 /* [CP] Check Pods Manifest.lock */,
 				EA165EF8204D2539001472C1 /* Sources */,
@@ -1139,14 +1139,14 @@
 			);
 			dependencies = (
 			);
-			name = CocoaDebug;
+			name = Example_Objc;
 			productName = Example_Objc;
-			productReference = EA165EFC204D2539001472C1 /* CocoaDebug.app */;
+			productReference = EA165EFC204D2539001472C1 /* Example_Objc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA6B27832059689C004D8E05 /* CocoaDebugTests */ = {
+		EA6B27832059689C004D8E05 /* Example_ObjcTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */;
+			buildConfigurationList = EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "Example_ObjcTests" */;
 			buildPhases = (
 				92D30CE6BD877C2BABB9FEE1 /* [CP] Check Pods Manifest.lock */,
 				EA6B27802059689C004D8E05 /* Sources */,
@@ -1158,9 +1158,9 @@
 			dependencies = (
 				EA6B278A2059689C004D8E05 /* PBXTargetDependency */,
 			);
-			name = CocoaDebugTests;
+			name = Example_ObjcTests;
 			productName = Example_ObjcTests;
-			productReference = EA6B27842059689C004D8E05 /* CocoaDebugTests.xctest */;
+			productReference = EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1199,8 +1199,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA165EFB204D2539001472C1 /* CocoaDebug */,
-				EA6B27832059689C004D8E05 /* CocoaDebugTests */,
+				EA165EFB204D2539001472C1 /* Example_Objc */,
+				EA6B27832059689C004D8E05 /* Example_ObjcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1546,7 +1546,7 @@
 /* Begin PBXTargetDependency section */
 		EA6B278A2059689C004D8E05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA165EFB204D2539001472C1 /* CocoaDebug */;
+			target = EA165EFB204D2539001472C1 /* Example_Objc */;
 			targetProxy = EA6B27892059689C004D8E05 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1788,7 +1788,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA165F12204D2539001472C1 /* Build configuration list for PBXNativeTarget "CocoaDebug" */ = {
+		EA165F12204D2539001472C1 /* Build configuration list for PBXNativeTarget "Example_Objc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA165F13204D2539001472C1 /* Debug */,
@@ -1797,7 +1797,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */ = {
+		EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "Example_ObjcTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA6B278B2059689C004D8E05 /* Debug */,
