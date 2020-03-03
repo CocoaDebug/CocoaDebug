@@ -18,14 +18,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     #ifdef DEBUG
-//        CocoaDebug.serverURL = @"google.com"; //default value is `nil`
-//        CocoaDebug.ignoredURLs = @[@"aaa.com", @"bbb.com"]; //default value is `nil`
-//        CocoaDebug.onlyURLs = @[@"ccc.com", @"ddd.com"]; //default value is `nil`
-//        CocoaDebug.tabBarControllers = @[[UIViewController new], [UIViewController new]]; //default value is `nil`
-//        CocoaDebug.logMaxCount = 1000; //default value is `500`
-//        CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"]; //default value is `nil`
-//        CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"]; //default value is `nil`
-//        CocoaDebug.mainColor = @"#fd9727"; //default value is `#42d459`
+        /*
+        //If Use Google's Protocol buffers
+        CocoaDebug.protobufTransferMap = @{
+            @"your_api_keywords_1": @"your_protobuf_className_1",
+            @"your_api_keywords_2": @"your_protobuf_className_2",
+            @"your_api_keywords_3": @"your_protobuf_className_3"
+        };
+    
+        //Custom CocoaDebug Settings
+        CocoaDebug.serverURL = @"google.com";
+        CocoaDebug.ignoredURLs = @[@"aaa.com", @"bbb.com"];
+        CocoaDebug.onlyURLs = @[@"ccc.com", @"ddd.com"];
+        CocoaDebug.tabBarControllers = @[[UIViewController new], [UIViewController new]];
+        CocoaDebug.logMaxCount = 1000;
+        CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"];
+        CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"];
+        CocoaDebug.mainColor = @"#fd9727";
+         */
+    
         [CocoaDebug enable];
     #endif
     

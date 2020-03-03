@@ -16,14 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-//            CocoaDebug.serverURL = "google.com" //default value is `nil`
-//            CocoaDebug.ignoredURLs = ["aaa.com", "bbb.com"] //default value is `nil`
-//            CocoaDebug.onlyURLs = ["ccc.com", "ddd.com"] //default value is `nil`
-//            CocoaDebug.tabBarControllers = [UIViewController(), UIViewController()] //default value is `nil`
-//            CocoaDebug.logMaxCount = 1000 //default value is `500`
-//            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"] //default value is `nil`
-//            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"] //default value is `nil`
-//            CocoaDebug.mainColor = "#fd9727" //default value is `#42d459`
             CocoaDebug.enable()
         #endif
         
