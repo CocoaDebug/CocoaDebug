@@ -253,10 +253,8 @@
 		387FB67A230EA02000DB7985 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FB58A230EA02000DB7985 /* _NSObject+Categories.m */; };
 		387FDCD0240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCCE240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m */; };
 		387FDCD1240CF66B0019E6B3 /* NSObject+_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCCF240CF66B0019E6B3 /* NSObject+_Common.m */; };
-		38D6CEBA240D255F00F89968 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38D6CEB8240D255F00F89968 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38D6CEBD240D255F00F89968 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEB6240D255F00F89968 /* CocoaDebug.framework */; };
 		38D6CEBE240D255F00F89968 /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEB6240D255F00F89968 /* CocoaDebug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38D6CEC3240D257200F89968 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 38D6CEC2240D257200F89968 /* copy_and_codesign.sh */; };
 		7633EE05987FEFB88957108F /* Pods_Example_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506D66AD894FC6EC245D3A0C /* Pods_Example_SwiftTests.framework */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
@@ -643,8 +641,6 @@
 		387FDCCF240CF66B0019E6B3 /* NSObject+_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_Common.m"; sourceTree = "<group>"; };
 		38B5614D21CCC4CB00BB276A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		38D6CEB6240D255F00F89968 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38D6CEB8240D255F00F89968 /* CocoaDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
-		38D6CEC2240D257200F89968 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		40B2F0D32DB860EF145358AC /* Pods_Example_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		506D66AD894FC6EC245D3A0C /* Pods_Example_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		538DDF3506213B5E70B52980 /* Pods-Example_SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_SwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-Example_SwiftTests/Pods-Example_SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1191,15 +1187,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		38D6CEB7240D255F00F89968 /* CocoaDebug */ = {
-			isa = PBXGroup;
-			children = (
-				38D6CEB8240D255F00F89968 /* CocoaDebug.h */,
-				38D6CEC2240D257200F89968 /* copy_and_codesign.sh */,
-			);
-			path = CocoaDebug;
-			sourceTree = "<group>";
-		};
 		CB2CF06832282981AB7DE7AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1218,7 +1205,6 @@
 			children = (
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
 				EA6B277720596883004D8E05 /* Example_SwiftTests */,
-				38D6CEB7240D255F00F89968 /* CocoaDebug */,
 				EA1659D4204D1B14001472C1 /* Products */,
 				38B5614C21CCC4CB00BB276A /* Frameworks */,
 				CB2CF06832282981AB7DE7AE /* Pods */,
@@ -1442,7 +1428,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D6CEBA240D255F00F89968 /* CocoaDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1558,7 +1543,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D6CEC3240D257200F89968 /* copy_and_codesign.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

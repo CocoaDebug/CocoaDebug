@@ -656,7 +656,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchText) {
+    if (searchText && ![self.searchText isEqualToString:searchText]) {
         [[_SandboxerHelper sharedInstance].searchTextDictionary setObject:searchText forKey:self.randomId];
     }
 

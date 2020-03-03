@@ -251,8 +251,6 @@
 		3879B23E232108F500D36437 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B14E232108F500D36437 /* _NSObject+Categories.m */; };
 		387FDCD6240CF88F0019E6B3 /* GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCD2240CF88E0019E6B3 /* GPBMessage+_JSONSerialization.m */; };
 		387FDCD7240CF88F0019E6B3 /* NSObject+_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCD5240CF88E0019E6B3 /* NSObject+_Common.m */; };
-		38D6CE9C240D1DAF00F89968 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */; };
-		38D6CEA7240D1DD500F89968 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38D6CEA5240D1DD500F89968 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38D6CEAA240D1DD500F89968 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; };
 		38D6CEAB240D1DD500F89968 /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D855CDA491B7D4B36662597 /* libPods-Example_Objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88873B47838CF4A4759DEF50 /* libPods-Example_Objc.a */; };
@@ -584,11 +582,7 @@
 		387FDCD3240CF88E0019E6B3 /* GPBMessage+_JSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+_JSONSerialization.h"; sourceTree = "<group>"; };
 		387FDCD4240CF88E0019E6B3 /* NSObject+_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+_Common.h"; sourceTree = "<group>"; };
 		387FDCD5240CF88E0019E6B3 /* NSObject+_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_Common.m"; sourceTree = "<group>"; };
-		38D6CE99240D1DAE00F89968 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
-		38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38D6CEA5240D1DD500F89968 /* CocoaDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
-		38D6CEA6240D1DD500F89968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D6B15FC009167E0724181BC /* Pods-Example_ObjcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_ObjcTests.debug.xcconfig"; path = "Target Support Files/Pods-Example_ObjcTests/Pods-Example_ObjcTests.debug.xcconfig"; sourceTree = "<group>"; };
 		410623FF599C597EA536A87F /* Pods-CocoaDebug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaDebug.release.xcconfig"; path = "Target Support Files/Pods-CocoaDebug/Pods-CocoaDebug.release.xcconfig"; sourceTree = "<group>"; };
 		48ECBC304F9526E593DA7AF7 /* Pods-CocoaDebug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaDebug.debug.xcconfig"; path = "Target Support Files/Pods-CocoaDebug/Pods-CocoaDebug.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1046,24 +1040,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		38D6CE98240D1DAE00F89968 /* CocoaDebug */ = {
-			isa = PBXGroup;
-			children = (
-				38D6CE99240D1DAE00F89968 /* CocoaDebug.h */,
-				38D6CE9A240D1DAE00F89968 /* copy_and_codesign.sh */,
-			);
-			path = CocoaDebug;
-			sourceTree = "<group>";
-		};
-		38D6CEA4240D1DD500F89968 /* CocoaDebug */ = {
-			isa = PBXGroup;
-			children = (
-				38D6CEA5240D1DD500F89968 /* CocoaDebug.h */,
-				38D6CEA6240D1DD500F89968 /* Info.plist */,
-			);
-			path = CocoaDebug;
-			sourceTree = "<group>";
-		};
 		A8DAF0A16C95379C2984CAEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,11 +1068,9 @@
 			children = (
 				EA165EFE204D2539001472C1 /* Example_Objc */,
 				EA6B27852059689C004D8E05 /* Example_ObjcTests */,
-				38D6CEA4240D1DD500F89968 /* CocoaDebug */,
 				EA165EFD204D2539001472C1 /* Products */,
 				BC1039C7ADCFFA07EF57844B /* Pods */,
 				A8DAF0A16C95379C2984CAEF /* Frameworks */,
-				38D6CE98240D1DAE00F89968 /* CocoaDebug */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1175,7 +1149,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D6CEA7240D1DD500F89968 /* CocoaDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1395,7 +1368,6 @@
 				3879B1CC232108F500D36437 /* icon_file_type_pages.png in Resources */,
 				3820FFC021E635D9001CAB32 /* index.html in Resources */,
 				3879B1FC232108F500D36437 /* icon_file_type_swift.png in Resources */,
-				38D6CE9C240D1DAF00F89968 /* copy_and_codesign.sh in Resources */,
 				3879B18B232108F500D36437 /* icon_file_type_php@3x.png in Resources */,
 				EA165F09204D2539001472C1 /* Assets.xcassets in Resources */,
 				3879B1E5232108F500D36437 /* icon_file_type_default@2x.png in Resources */,
