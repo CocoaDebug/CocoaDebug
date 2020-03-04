@@ -7,10 +7,10 @@
 //
 
 #import "GPBMessage+_JSONSerialization.h"
-#import <GPBArray.h>
+#import "GPBArray.h"
+#import "NSObject+_Common.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import "NSObject+_Common.h"
 
 @implementation GPBMessage (_JSONSerialization)
 

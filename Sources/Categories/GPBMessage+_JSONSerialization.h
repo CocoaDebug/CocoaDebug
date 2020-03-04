@@ -6,7 +6,7 @@
 //  Copyright © 2019 Shopee. All rights reserved.
 //
 
-#import <GPBMessage.h>
+#import "GPBMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
