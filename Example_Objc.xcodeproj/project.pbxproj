@@ -251,8 +251,6 @@
 		3879B23E232108F500D36437 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B14E232108F500D36437 /* _NSObject+Categories.m */; };
 		38A84719240F5CB2009FDBA4 /* GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A84718240F5CB2009FDBA4 /* GPBMessage+_JSONSerialization.m */; };
 		38A8471C240F5D8B009FDBA4 /* NSObject+_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A8471A240F5D8B009FDBA4 /* NSObject+_Common.m */; };
-		38D6CEAA240D1DD500F89968 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; };
-		38D6CEAB240D1DD500F89968 /* CocoaDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3D855CDA491B7D4B36662597 /* libPods-Example_Objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88873B47838CF4A4759DEF50 /* libPods-Example_Objc.a */; };
 		9B7957DB64E8EDB7A37CB707 /* libPods-Example_ObjcTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 331576BF018A2F0042F63821 /* libPods-Example_ObjcTests.a */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
@@ -271,13 +269,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		38D6CEA8240D1DD500F89968 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA165EF4204D2539001472C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38D6CEA2240D1DD500F89968;
-			remoteInfo = CocoaDebug;
-		};
 		EA6B27892059689C004D8E05 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA165EF4204D2539001472C1 /* Project object */;
@@ -294,7 +285,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				38D6CEAB240D1DD500F89968 /* CocoaDebug.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +572,6 @@
 		38A84718240F5CB2009FDBA4 /* GPBMessage+_JSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPBMessage+_JSONSerialization.m"; sourceTree = "<group>"; };
 		38A8471A240F5D8B009FDBA4 /* NSObject+_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_Common.m"; sourceTree = "<group>"; };
 		38A8471B240F5D8B009FDBA4 /* NSObject+_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+_Common.h"; sourceTree = "<group>"; };
-		38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6B15FC009167E0724181BC /* Pods-Example_ObjcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_ObjcTests.debug.xcconfig"; path = "Target Support Files/Pods-Example_ObjcTests/Pods-Example_ObjcTests.debug.xcconfig"; sourceTree = "<group>"; };
 		410623FF599C597EA536A87F /* Pods-CocoaDebug.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaDebug.release.xcconfig"; path = "Target Support Files/Pods-CocoaDebug/Pods-CocoaDebug.release.xcconfig"; sourceTree = "<group>"; };
 		48ECBC304F9526E593DA7AF7 /* Pods-CocoaDebug.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaDebug.debug.xcconfig"; path = "Target Support Files/Pods-CocoaDebug/Pods-CocoaDebug.debug.xcconfig"; sourceTree = "<group>"; };
@@ -619,18 +608,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		38D6CEA0240D1DD500F89968 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EA165EF9204D2539001472C1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D6CEAA240D1DD500F89968 /* CocoaDebug.framework in Frameworks */,
 				3D855CDA491B7D4B36662597 /* libPods-Example_Objc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1079,7 +1060,6 @@
 			children = (
 				EA165EFC204D2539001472C1 /* Example_Objc.app */,
 				EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */,
-				38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1144,35 +1124,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		38D6CE9E240D1DD500F89968 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		38D6CEA2240D1DD500F89968 /* CocoaDebug */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 38D6CEAC240D1DD500F89968 /* Build configuration list for PBXNativeTarget "CocoaDebug" */;
-			buildPhases = (
-				38D6CE9E240D1DD500F89968 /* Headers */,
-				38D6CE9F240D1DD500F89968 /* Sources */,
-				38D6CEA0240D1DD500F89968 /* Frameworks */,
-				38D6CEA1240D1DD500F89968 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CocoaDebug;
-			productName = CocoaDebug;
-			productReference = 38D6CEA3240D1DD500F89968 /* CocoaDebug.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		EA165EFB204D2539001472C1 /* Example_Objc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA165F12204D2539001472C1 /* Build configuration list for PBXNativeTarget "Example_Objc" */;
@@ -1186,7 +1138,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				38D6CEA9240D1DD500F89968 /* PBXTargetDependency */,
 			);
 			name = Example_Objc;
 			productName = Example_Objc;
@@ -1222,10 +1173,6 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = liman;
 				TargetAttributes = {
-					38D6CEA2240D1DD500F89968 = {
-						CreatedOnToolsVersion = 11.3.1;
-						ProvisioningStyle = Automatic;
-					};
 					EA165EFB204D2539001472C1 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1020;
@@ -1254,19 +1201,11 @@
 			targets = (
 				EA165EFB204D2539001472C1 /* Example_Objc */,
 				EA6B27832059689C004D8E05 /* Example_ObjcTests */,
-				38D6CEA2240D1DD500F89968 /* CocoaDebug */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		38D6CEA1240D1DD500F89968 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EA165EFA204D2539001472C1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1512,13 +1451,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		38D6CE9F240D1DD500F89968 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EA165EF8204D2539001472C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1612,11 +1544,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		38D6CEA9240D1DD500F89968 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38D6CEA2240D1DD500F89968 /* CocoaDebug */;
-			targetProxy = 38D6CEA8240D1DD500F89968 /* PBXContainerItemProxy */;
-		};
 		EA6B278A2059689C004D8E05 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EA165EFB204D2539001472C1 /* Example_Objc */;
@@ -1644,59 +1571,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		38D6CEAD240D1DD500F89968 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CocoaDebug/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.man.demo.CocoaDebug;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		38D6CEAE240D1DD500F89968 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CocoaDebug/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.man.demo.CocoaDebug;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		EA165F10204D2539001472C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1905,15 +1779,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38D6CEAC240D1DD500F89968 /* Build configuration list for PBXNativeTarget "CocoaDebug" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				38D6CEAD240D1DD500F89968 /* Debug */,
-				38D6CEAE240D1DD500F89968 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EA165EF7204D2539001472C1 /* Build configuration list for PBXProject "Example_Objc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
