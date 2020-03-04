@@ -6,12 +6,12 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
-#import "_NSObject+_Categories.h"
+#import "_NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 
 /*************************************************/
 
-@implementation NSData (_Categories)
+@implementation NSData (CocoaDebug)
 
 + (NSData *)dataWithInputStream:(NSInputStream *)stream
 {
@@ -39,7 +39,7 @@
 
 /*************************************************/
 
-@implementation NSString (_Categories)
+@implementation NSString (CocoaDebug)
 
 - (CGFloat)heightWithFont:(UIFont *)font constraintToWidth:(CGFloat)width
 {
@@ -62,7 +62,7 @@
 
 /*************************************************/
 
-@implementation NSURLRequest (_Categories)
+@implementation NSURLRequest (CocoaDebug)
 
 - (NSString *)requestId {
     return objc_getAssociatedObject(self, @"requestId");
@@ -84,7 +84,7 @@
 
 /*************************************************/
 
-@implementation UIColor (_Categories)
+@implementation UIColor (CocoaDebug)
 
 + (UIColor *)colorFromHexString:(NSString *)hexString
 {
@@ -99,7 +99,7 @@
 
 /*************************************************/
 
-@implementation NSDictionary (_Categories)
+@implementation NSDictionary (CocoaDebug)
 
 - (NSString *)_stringForKey:(id<NSCopying>)key {
     id obj = [self objectForKey:key];

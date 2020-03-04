@@ -37,6 +37,6 @@
 #import "_WHDebugMemoryMonitor.h"
 #import "_WHDebugMonitor.h"
 #import "_fishhook.h"
-#import "_NSObject+_Categories.h"
-#import "_GPBMessage+_JSONSerialization.h"
+#import "_NSObject+CocoaDebug.h"
+#import "_GPBMessage+CocoaDebug.h"
 #import <Protobuf/GPBMessage.h>

@@ -11,7 +11,7 @@
 
 /*************************************************/
 
-@interface NSData (_Categories)
+@interface NSData (CocoaDebug)
 
 + (NSData *_Nullable)dataWithInputStream:(NSInputStream *_Nullable)stream;
 
@@ -19,7 +19,7 @@
 
 /*************************************************/
 
-@interface NSString (_Categories)
+@interface NSString (CocoaDebug)
 
 - (CGFloat)heightWithFont:(UIFont *_Nullable)font constraintToWidth:(CGFloat)width;
 
@@ -29,7 +29,7 @@
 
 /*************************************************/
 
-@interface NSURLRequest (_Categories)
+@interface NSURLRequest (CocoaDebug)
 
 - (NSString *_Nullable)requestId;
 - (void)setRequestId:(NSString *_Nullable)requestId;
@@ -41,7 +41,7 @@
 
 /*************************************************/
 
-@interface UIColor (_Categories)
+@interface UIColor (CocoaDebug)
 
 + (UIColor *_Nullable)colorFromHexString:(NSString *_Nullable)hexString;
 
@@ -49,7 +49,7 @@
 
 /*************************************************/
 
-@interface NSDictionary (_Categories)
+@interface NSDictionary (CocoaDebug)
 
 - (NSString *_Nullable)_stringForKey:(id<NSCopying>_Nullable)key;
 - (NSArray *_Nullable)_arrayForKey:(id<NSCopying>_Nullable)key;

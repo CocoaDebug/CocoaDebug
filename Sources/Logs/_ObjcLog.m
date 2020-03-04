@@ -8,7 +8,7 @@
 
 #import "_ObjcLog.h"
 #import "_OCLogHelper.h"
-#import "_NSObject+_Categories.h"
+#import "_NSObject+CocoaDebug.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @implementation _ObjcLog

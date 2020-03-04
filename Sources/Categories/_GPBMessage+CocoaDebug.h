@@ -1,14 +1,14 @@
 //
-//  GPBMessage+_JSONSerialization.h
+//  GPBMessage+CocoaDebug.h
 //  AirPayCounter
 //
 //  Created by HuiCao on 2019/7/9.
 //  Copyright © 2019 Shopee. All rights reserved.
 //
 
-#import "GPBMessage.h"
+#import <Protobuf/GPBMessage.h>
 
-@interface GPBMessage (_JSONSerialization)
+@interface GPBMessage (CocoaDebug)
 
 - (id _Nullable)initWithDictionary:(NSDictionary *_Nullable)dict;
 
