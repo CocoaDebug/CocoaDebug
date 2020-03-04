@@ -8,7 +8,6 @@
 //
 
 #import "CocoaDebug.h"
-#import "_NSObject+Categories.h"
 #import "_CacheStoragePolicy.h"
 #import "_CanonicalRequest.h"
 #import "_CustomHTTPProtocol.h"
@@ -38,6 +37,6 @@
 #import "_WHDebugMemoryMonitor.h"
 #import "_WHDebugMonitor.h"
 #import "_fishhook.h"
-#import "GPBMessage+_JSONSerialization.h"
-#import "NSObject+_Common.h"
+#import "_NSObject+_Categories.h"
+#import "_GPBMessage+_JSONSerialization.h"
 #import <Protobuf/GPBMessage.h>

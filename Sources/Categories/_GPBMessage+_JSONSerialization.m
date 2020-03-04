@@ -6,9 +6,9 @@
 //  Copyright © 2019 Shopee. All rights reserved.
 //
 
-#import "GPBMessage+_JSONSerialization.h"
+#import "_GPBMessage+_JSONSerialization.h"
+#import "_NSObject+_Categories.h"
 #import "GPBArray.h"
-#import "NSObject+_Common.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 

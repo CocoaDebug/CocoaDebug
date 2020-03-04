@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		383385D8240F976F0020B902 /* _NSObject+_Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 383385D4240F976F0020B902 /* _NSObject+_Categories.m */; };
+		383385D9240F976F0020B902 /* _GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 383385D7240F976F0020B902 /* _GPBMessage+_JSONSerialization.m */; };
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
 		3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */; };
@@ -250,9 +252,6 @@
 		387FB677230EA02000DB7985 /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FB584230EA02000DB7985 /* _WHDebugMemoryMonitor.m */; };
 		387FB678230EA02000DB7985 /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FB585230EA02000DB7985 /* _WHDebugCpuMonitor.m */; };
 		387FB679230EA02000DB7985 /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FB587230EA02000DB7985 /* _WHDebugFPSMonitor.m */; };
-		387FB67A230EA02000DB7985 /* _NSObject+Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FB58A230EA02000DB7985 /* _NSObject+Categories.m */; };
-		387FDCD0240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCCE240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m */; };
-		387FDCD1240CF66B0019E6B3 /* NSObject+_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 387FDCCF240CF66B0019E6B3 /* NSObject+_Common.m */; };
 		7633EE05987FEFB88957108F /* Pods_Example_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506D66AD894FC6EC245D3A0C /* Pods_Example_SwiftTests.framework */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
@@ -350,6 +349,10 @@
 
 /* Begin PBXFileReference section */
 		35BFFB6121345D54CC92B19E /* Pods-Example_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_Swift.release.xcconfig"; path = "Target Support Files/Pods-Example_Swift/Pods-Example_Swift.release.xcconfig"; sourceTree = "<group>"; };
+		383385D4240F976F0020B902 /* _NSObject+_Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+_Categories.m"; sourceTree = "<group>"; };
+		383385D5240F976F0020B902 /* _GPBMessage+_JSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_GPBMessage+_JSONSerialization.h"; sourceTree = "<group>"; };
+		383385D6240F976F0020B902 /* _NSObject+_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+_Categories.h"; sourceTree = "<group>"; };
+		383385D7240F976F0020B902 /* _GPBMessage+_JSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_GPBMessage+_JSONSerialization.m"; sourceTree = "<group>"; };
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewTestController.swift; sourceTree = "<group>"; };
@@ -623,12 +626,6 @@
 		387FB585230EA02000DB7985 /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
 		387FB586230EA02000DB7985 /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
 		387FB587230EA02000DB7985 /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
-		387FB589230EA02000DB7985 /* _NSObject+Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+Categories.h"; sourceTree = "<group>"; };
-		387FB58A230EA02000DB7985 /* _NSObject+Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+Categories.m"; sourceTree = "<group>"; };
-		387FDCCC240CF66A0019E6B3 /* GPBMessage+_JSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+_JSONSerialization.h"; sourceTree = "<group>"; };
-		387FDCCD240CF66B0019E6B3 /* NSObject+_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+_Common.h"; sourceTree = "<group>"; };
-		387FDCCE240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPBMessage+_JSONSerialization.m"; sourceTree = "<group>"; };
-		387FDCCF240CF66B0019E6B3 /* NSObject+_Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_Common.m"; sourceTree = "<group>"; };
 		38B5614D21CCC4CB00BB276A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		40B2F0D32DB860EF145358AC /* Pods_Example_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		506D66AD894FC6EC245D3A0C /* Pods_Example_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1147,12 +1144,10 @@
 		387FB588230EA02000DB7985 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				387FB589230EA02000DB7985 /* _NSObject+Categories.h */,
-				387FB58A230EA02000DB7985 /* _NSObject+Categories.m */,
-				387FDCCC240CF66A0019E6B3 /* GPBMessage+_JSONSerialization.h */,
-				387FDCCE240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m */,
-				387FDCCD240CF66B0019E6B3 /* NSObject+_Common.h */,
-				387FDCCF240CF66B0019E6B3 /* NSObject+_Common.m */,
+				383385D5240F976F0020B902 /* _GPBMessage+_JSONSerialization.h */,
+				383385D7240F976F0020B902 /* _GPBMessage+_JSONSerialization.m */,
+				383385D6240F976F0020B902 /* _NSObject+_Categories.h */,
+				383385D4240F976F0020B902 /* _NSObject+_Categories.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1738,7 +1733,6 @@
 				387FB664230EA02000DB7985 /* _MLBDirectoryContentsTableViewController.m in Sources */,
 				387FB652230EA02000DB7985 /* NetworkDetailModel.swift in Sources */,
 				387FB596230EA02000DB7985 /* CrashLogger.swift in Sources */,
-				387FDCD0240CF66B0019E6B3 /* GPBMessage+_JSONSerialization.m in Sources */,
 				387FB675230EA02000DB7985 /* _WHDebugMonitor.m in Sources */,
 				387FB676230EA02000DB7985 /* _WHDebugConsoleLabel.m in Sources */,
 				EAF5802F204E73C3001CA56D /* ASIHTTPRequestClient.m in Sources */,
@@ -1756,8 +1750,10 @@
 				3875C6FA228F1A4800F6B626 /* WKWebViewTestController.swift in Sources */,
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
+				383385D9240F976F0020B902 /* _GPBMessage+_JSONSerialization.m in Sources */,
 				387FB656230EA02000DB7985 /* _CacheStoragePolicy.m in Sources */,
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
+				383385D8240F976F0020B902 /* _NSObject+_Categories.m in Sources */,
 				387FB65D230EA02000DB7985 /* _TCPLogger.m in Sources */,
 				387FB65A230EA02000DB7985 /* _OCLogStoreManager.m in Sources */,
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
@@ -1794,7 +1790,6 @@
 				387FB657230EA02000DB7985 /* _CanonicalRequest.m in Sources */,
 				387FB599230EA02000DB7985 /* CrashCell.swift in Sources */,
 				387FB673230EA02000DB7985 /* CocoaDebugWindow.swift in Sources */,
-				387FDCD1240CF66B0019E6B3 /* NSObject+_Common.m in Sources */,
 				EAF58027204E73C3001CA56D /* Networking+Download.swift in Sources */,
 				EAF58044204E73C3001CA56D /* ASINetworkQueue.m in Sources */,
 				EAF58010204E73C3001CA56D /* AFError.swift in Sources */,
@@ -1853,7 +1848,6 @@
 				387FB58C230EA02000DB7985 /* CocoaDebugSettings.swift in Sources */,
 				387FB653230EA02000DB7985 /* _HttpDatasource.m in Sources */,
 				387FB665230EA02000DB7985 /* _MLBImageController.m in Sources */,
-				387FB67A230EA02000DB7985 /* _NSObject+Categories.m in Sources */,
 				387FB65E230EA02000DB7985 /* LogCell.swift in Sources */,
 				387FB659230EA02000DB7985 /* _OCLoggerFormat.m in Sources */,
 				387FB590230EA02000DB7985 /* CrashStoreManager.swift in Sources */,

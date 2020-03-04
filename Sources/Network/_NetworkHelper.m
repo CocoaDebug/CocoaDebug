@@ -8,7 +8,7 @@
 
 #import "_NetworkHelper.h"
 #import "_CustomHTTPProtocol.h"
-#import "_NSObject+Categories.h"
+#import "_NSObject+_Categories.h"
 
 @interface _NetworkHelper()
 

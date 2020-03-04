@@ -55,7 +55,7 @@
 #import "_Swizzling.h"
 #import "_NetworkHelper.h"
 #import "_HttpDatasource.h"
-#import "_NSObject+Categories.h"
+#import "_NSObject+_Categories.h"
 
 //liman
 typedef NSURLSessionConfiguration *(*SessionConfigConstructor)(id,SEL);
