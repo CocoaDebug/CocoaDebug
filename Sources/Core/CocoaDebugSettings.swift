@@ -189,7 +189,7 @@ import Foundation
     }
     
     //protobuf
-    @objc public var protobufTransferMap: [String: String]? = nil {
+    @objc public var protobufTransferMap: [String: [String]]? = nil {
         didSet {
             _NetworkHelper.shared().protobufTransferMap = protobufTransferMap
         }

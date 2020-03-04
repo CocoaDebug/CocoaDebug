@@ -27,7 +27,7 @@ import Foundation
     ///set the main color with hexadecimal format. default value is `#42d459`.
     @objc public static var mainColor: String = "#42d459"
     ///protobuf url and response class transfer map. default value is `nil`.
-    @objc public static var protobufTransferMap: [String: String]? = nil
+    @objc public static var protobufTransferMap: [String: [String]]? = nil
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {

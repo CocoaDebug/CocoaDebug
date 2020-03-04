@@ -38,25 +38,32 @@ struct NetworkDetailModel {
             
             guard let content = content, let url = url, let data = self.requestData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
             if !content.contains("GPBMessage") {return}
+            self.title = "REQUEST (Protobuf)"
+
             for key in keys {
                 if url.contains(key) {
-                    //
-                    guard let clsNameString = CocoaDebugSettings.shared.protobufTransferMap?[key] else {return}
-                    guard let cls : AnyObject.Type = NSClassFromString(clsNameString) else {return}
-                    //protobuf
-                    guard let obj = try? cls.parse(from: data) else {return}
-                    //HuiCao
-                    let jsonString = obj._JSONString(withIgnoreFields: nil)
-                    //pretty print
-                    if let prettyJsonString = jsonString.jsonStringToPrettyJsonString() {
-                        self.content = prettyJsonString
-                    } else {
-                        self.content = jsonString
+                    //1.
+                    guard let arr = CocoaDebugSettings.shared.protobufTransferMap?[key] else {return}
+                    if arr is Array<String> {
+                        if arr.count == 2 {
+                            //2.
+                            let clsNameString = arr[0]
+                            guard let cls : AnyObject.Type = NSClassFromString(clsNameString) else {return}
+                            //protobuf
+                            guard let obj = try? cls.parse(from: data) else {return}
+                            //HuiCao
+                            let jsonString = obj._JSONString(withIgnoreFields: nil)
+                            //pretty print
+                            if let prettyJsonString = jsonString.jsonStringToPrettyJsonString() {
+                                self.content = prettyJsonString
+                            } else {
+                                self.content = jsonString
+                            }
+                            
+                            self.content = self.content?.replacingOccurrences(of: "\\/", with: "/")
+                            return
+                        }
                     }
-                    
-                    self.title = "REQUEST (Protobuf)"
-                    self.content = self.content?.replacingOccurrences(of: "\\/", with: "/")
-                    return
                 }
             }
         }
@@ -68,25 +75,32 @@ struct NetworkDetailModel {
             
             guard let content = content, let url = url, let data = self.responseData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
             if !content.contains("GPBMessage") {return}
+            self.title = "RESPONSE (Protobuf)"
+
             for key in keys {
                 if url.contains(key) {
-                    //
-                    guard let clsNameString = CocoaDebugSettings.shared.protobufTransferMap?[key] else {return}
-                    guard let cls : AnyObject.Type = NSClassFromString(clsNameString) else {return}
-                    //protobuf
-                    guard let obj = try? cls.parse(from: data) else {return}
-                    //HuiCao
-                    let jsonString = obj._JSONString(withIgnoreFields: nil)
-                    //pretty print
-                    if let prettyJsonString = jsonString.jsonStringToPrettyJsonString() {
-                        self.content = prettyJsonString
-                    } else {
-                        self.content = jsonString
-                    }
+                    //1.
+                    guard let arr = CocoaDebugSettings.shared.protobufTransferMap?[key] else {return}
+                    if arr is Array<String> {
+                        if arr.count == 2 {
+                            //2.
+                            let clsNameString = arr[1]
+                            guard let cls : AnyObject.Type = NSClassFromString(clsNameString) else {return}
+                            //protobuf
+                            guard let obj = try? cls.parse(from: data) else {return}
+                            //HuiCao
+                            let jsonString = obj._JSONString(withIgnoreFields: nil)
+                            //pretty print
+                            if let prettyJsonString = jsonString.jsonStringToPrettyJsonString() {
+                                self.content = prettyJsonString
+                            } else {
+                                self.content = jsonString
+                            }
 
-                    self.title = "RESPONSE (Protobuf)"
-                    self.content = self.content?.replacingOccurrences(of: "\\/", with: "/")
-                    return
+                            self.content = self.content?.replacingOccurrences(of: "\\/", with: "/")
+                            return
+                        }
+                    }
                 }
             }
         }

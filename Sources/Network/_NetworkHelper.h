@@ -30,7 +30,7 @@
 /**
  *  protobuf
  */
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> *protobufTransferMap;
+@property (nonatomic, copy) NSDictionary<NSString *, NSArray<NSString*> *> *protobufTransferMap;
 
 
 @property (nonatomic, assign) BOOL isEnable;
