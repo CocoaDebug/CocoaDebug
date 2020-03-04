@@ -1,5 +1,5 @@
 //
-//  GPBMessage+JSONSerialization.m
+//  GPBMessage+_JSONSerialization.m
 //  AirPayCounter
 //
 //  Created by HuiCao on 2019/7/9.
@@ -7,14 +7,14 @@
 //
 
 #import "GPBMessage+_JSONSerialization.h"
-#import "NSObject+_Common.h"
+#import <GPBArray.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import "NSObject+_Common.h"
 
 @implementation GPBMessage (_JSONSerialization)
 
 #pragma mark - Public Methods
-/*
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [self init];
     if (dict && [dict isKindOfClass:[NSDictionary class]]) {
@@ -32,8 +32,8 @@
             }
         }
         for (NSString *keyName in dict) {
-            NSString *keyPath = [keyMap stringForKey:keyName default:keyName];
-            [self _setKeyPath:keyPath value:[dict objectForKey:keyName]];
+            NSString *keyPath = [keyMap _stringForKey:keyName default:keyName];
+            [self setKeyPath:keyPath value:[dict objectForKey:keyName]];
         }
     }
     return self;
@@ -46,24 +46,14 @@
 - (NSDictionary *)nameMap {
     return @{};
 }
- */
-
-
-- (NSDictionary *)_nameMap {
-    return @{};
-}
-
-- (NSDictionary *)_containerType {
-    return @{};
-}
 
 - (NSString *)_JSONStringWithIgnoreFields:(NSArray * _Nullable)ignoreFields {
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[self _dictionaryWithIgnoreFields:ignoreFields] options:kNilOptions error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[self dictionaryWithIgnoreFields:ignoreFields] options:kNilOptions error:nil];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark - Private Methods
-- (NSDictionary *)_dictionaryWithIgnoreFields:(NSArray *)ignoreFields {
+- (NSDictionary *)dictionaryWithIgnoreFields:(NSArray * _Nullable)ignoreFields {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
     unsigned int count;
@@ -72,8 +62,11 @@
         const char *propertyName = property_getName(properties[i]);
         NSString *keyPath = [NSString stringWithUTF8String:propertyName];
 
-        id serializeObject = [self _serializeValueForKey:keyPath];
-        id keyNameObject = [[self _nameMap] objectForKey:keyPath];
+        id serializeObject = [self serializeValueForKey:keyPath];
+        if (nil == serializeObject) {
+            continue;
+        }
+        id keyNameObject = [[self nameMap] objectForKey:keyPath];
 
         if (keyNameObject == nil && ![ignoreFields containsObject:keyPath]) {
             [dict setObject:serializeObject forKey:keyPath];
@@ -90,17 +83,81 @@
     return dict;
 }
 
-- (NSDictionary *)_dictionary {
-    return [self _dictionaryWithIgnoreFields:nil];
+- (NSDictionary *)dictionary {
+    return [self dictionaryWithIgnoreFields:nil];
 }
 
-- (id)_serializeValueForKey:(NSString *)keyPath {
+- (id)serializeValueForKey:(NSString *)keyPath {
     id item = [self valueForKey:keyPath];
     if ([item isKindOfClass:[NSNumber class]] || [item isKindOfClass:[NSString class]]) {
         return item;
     }
     if ([item isKindOfClass:[GPBMessage class]]) {
         return [item dictionary];
+    }
+    if ([item isKindOfClass:[GPBInt32Array class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBInt32Array *itemArray = (GPBInt32Array *)item;
+        [itemArray enumerateValuesWithBlock:^(int32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBUInt32Array class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBUInt32Array *itemArray = (GPBUInt32Array *)item;
+        [itemArray enumerateValuesWithBlock:^(uint32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBInt64Array class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBInt64Array *itemArray = (GPBInt64Array *)item;
+        [itemArray enumerateValuesWithBlock:^(int64_t value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBUInt64Array class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBUInt64Array *itemArray = (GPBUInt64Array *)item;
+        [itemArray enumerateValuesWithBlock:^(uint64_t value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBFloatArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBFloatArray *itemArray = (GPBFloatArray *)item;
+        [itemArray enumerateValuesWithBlock:^(float value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBDoubleArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBDoubleArray *itemArray = (GPBDoubleArray *)item;
+        [itemArray enumerateValuesWithBlock:^(double value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBBoolArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBBoolArray *itemArray = (GPBBoolArray *)item;
+        [itemArray enumerateValuesWithBlock:^(BOOL value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
+    }
+    if ([item isKindOfClass:[GPBEnumArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        GPBEnumArray *itemArray = (GPBEnumArray *)item;
+        [itemArray enumerateValuesWithBlock:^(int32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
+            [array addObject:@(value)];
+        }];
+        return array;
     }
     if ([item isKindOfClass:[NSArray class]]) {
         NSMutableArray *array = [NSMutableArray array];
@@ -118,7 +175,7 @@
     return nil;
 }
 
-- (void)_setKeyPath:(NSString *)keyPath value:(id)value {
+- (void)setKeyPath:(NSString *)keyPath value:(id)value {
     NSMutableArray *propertiesNameArray = [NSMutableArray<NSString *> array];
     NSMutableDictionary *propertiesTypeDic = [NSMutableDictionary<NSString *, NSString *> dictionary];
     unsigned int count;
@@ -249,25 +306,25 @@
                 continue;
             }
             if ([arrayValue isKindOfClass:[NSDictionary class]] == YES) {
-                NSString *arrayItemType = [[self _containerType] _stringForKey:keyPath default:nil];
+                NSString *arrayItemType = [[self containerType] _stringForKey:keyPath default:nil];
                 if (arrayItemType == nil) {
                     [array addObject:arrayValue];
                     break;
                 }
                 Class itemClass = NSClassFromString(arrayItemType);
                 if (!itemClass) {
-//                    SSPWarning(@"Can't find class of %@", arrayItemType);
+                    //SSPWarning(@"Can't find class of %@", arrayItemType);
                     return;
                 }
                 Class parentClass = class_getSuperclass(itemClass);
                 if ([parentClass isEqual:[GPBMessage class]] == NO) {
-//                    SSPWarning(@"%@ is not GPBMessage", arrayItemType);
+                    //SSPWarning(@"%@ is not GPBMessage", arrayItemType);
                     return;
                 }
                 [array addObject:[[itemClass alloc] initWithDictionary:arrayValue]];
             }
             if ([arrayValue isKindOfClass:[NSArray class]] == YES) {
-//                SSPError(@"Not support NSArray in NSArray");
+                //SSPError(@"Not support NSArray in NSArray");
                 return;
             }
         }
@@ -277,12 +334,12 @@
     if ([type hasPrefix:@"@\""] && [value isKindOfClass:[NSDictionary class]] == YES) {
         if ([type isEqualToString:@"@\"NSDictionary\""] || [type isEqualToString:@"@\"NSMutableDictionary\""]) {
             NSMutableDictionary *dictValue = [NSMutableDictionary dictionary];
-            NSArray *dictTypes = [[self _containerType] _arrayForKey:keyPath default:nil];
+            NSArray *dictTypes = [[self containerType] _arrayForKey:keyPath default:nil];
             if (dictTypes && [dictTypes count] == 2) {
                 for (id dictKey in value) {
                     Class itemClass = NSClassFromString(dictTypes[1]);
                     if (!itemClass) {
-//                        SSPWarning(@"Can't find class of %@", dictTypes[1]);
+                        //SSPWarning(@"Can't find class of %@", dictTypes[1]);
                         return;
                     }
                     if ([itemClass isEqual:[NSString class]]||[itemClass isEqual:[NSNumber class]]) {
@@ -291,7 +348,7 @@
                     }
                     Class parentClass = class_getSuperclass(itemClass);
                     if ([parentClass isEqual:[GPBMessage class]] == NO) {
-//                        SSPWarning(@"%@ is not GPBMessage", dictTypes[1]);
+                        //SSPWarning(@"%@ is not GPBMessage", dictTypes[1]);
                         return;
                     }
                     [dictValue setObject:[[itemClass alloc] initWithDictionary:value[dictKey]] forKey:dictKey];
@@ -300,7 +357,7 @@
                 for (id dictKey in value) {
                     Class itemClass = NSClassFromString(dictTypes[1]);
                     if (!itemClass || ![itemClass isEqual:[NSArray class]] || ![value[dictKey] isKindOfClass:[NSArray class]]) {
-//                        SSPWarning(@"Map<obj, Array> parse error!");
+                        //SSPWarning(@"Map<obj, Array> parse error!");
                         return;
                     }
                     NSMutableArray *array = [NSMutableArray array];
@@ -312,18 +369,18 @@
                         if ([arrayValue isKindOfClass:[NSDictionary class]] == YES) {
                             Class inItemClass = NSClassFromString(dictTypes[2]);
                             if (!inItemClass) {
-//                                SSPWarning(@"Can't find class of %@", dictTypes[2]);
+                                //SSPWarning(@"Can't find class of %@", dictTypes[2]);
                                 return;
                             }
                             Class parentClass = class_getSuperclass(inItemClass);
                             if ([parentClass isEqual:[GPBMessage class]] == NO) {
-//                                SSPWarning(@"%@ is not GPBMessage", dictTypes[2]);
+                                //SSPWarning(@"%@ is not GPBMessage", dictTypes[2]);
                                 return;
                             }
                             [array addObject:[[inItemClass alloc] initWithDictionary:arrayValue]];
                         }
                         if ([arrayValue isKindOfClass:[NSArray class]] == YES) {
-//                            SSPError(@"Not support NSArray in NSArray");
+                            //SSPError(@"Not support NSArray in NSArray");
                             return;
                         }
                     }
@@ -337,12 +394,12 @@
         NSString *itemType = [type substringWithRange:NSMakeRange(2, [type length]-3)];
         Class itemClass = NSClassFromString(itemType);
         if (!itemClass) {
-//            SSPWarning(@"Can't find class of %@", itemType);
+            //SSPWarning(@"Can't find class of %@", itemType);
             return;
         }
         Class parentClass = class_getSuperclass(itemClass);
         if ([parentClass isEqual:[GPBMessage class]] == NO) {
-//            SSPWarning(@"%@ is not GPBMessage", itemType);
+            //SSPWarning(@"%@ is not GPBMessage", itemType);
             return;
         }
         id item = [[itemClass alloc] initWithDictionary:value];
