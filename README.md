@@ -72,9 +72,9 @@ github "CocoaDebug/CocoaDebug"
     #if DEBUG
         //If Use Google's Protocol buffers
         CocoaDebug.protobufTransferMap = [
-                                         "your_api_keywords_1": "your_protobuf_className_1",
-                                         "your_api_keywords_2": "your_protobuf_className_2",
-                                         "your_api_keywords_3": "your_protobuf_className_3"
+                                         "your_api_keywords_1": ["your_request_protobuf_className_1", "your_response_protobuf_className_1"],
+                                         "your_api_keywords_2": ["your_request_protobuf_className_2", "your_response_protobuf_className_2"],
+                                         "your_api_keywords_3": ["your_request_protobuf_className_3", "your_response_protobuf_className_3"]
                                          ]
         CocoaDebug.enable()
     #endif
@@ -97,9 +97,9 @@ github "CocoaDebug/CocoaDebug"
     #ifdef DEBUG
         //If Use Google's Protocol buffers
         CocoaDebug.protobufTransferMap = @{
-                                         @"your_api_keywords_1": @"your_protobuf_className_1",
-                                         @"your_api_keywords_2": @"your_protobuf_className_2",
-                                         @"your_api_keywords_3": @"your_protobuf_className_3"
+                                          @"your_api_keywords_1": @[@"your_request_protobuf_className_1", @"your_response_protobuf_className_1"],
+                                          @"your_api_keywords_2": @[@"your_request_protobuf_className_2", @"your_response_protobuf_className_2"],
+                                          @"your_api_keywords_3": @[@"your_request_protobuf_className_3", @"your_response_protobuf_className_3"]
                                          };
         [CocoaDebug enable];
     #endif
@@ -128,7 +128,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
 
-- `protobufTransferMap` - Protobuf url and response class transfer map. default value is **nil**.
+- `protobufTransferMap` - Protobuf data transfer to JSON map. default value is **nil**.
 
 ## TODO
 
