@@ -17,22 +17,10 @@
     if (self = [super init]) {
         
         if ([fileInfo isEqualToString:@"XXX|XXX|1"]) {
-            switch (type) {
-                case CocoaDebugToolTypeNone:
-                    fileInfo = @"\n";
-                    break;
-                    
-                case CocoaDebugToolTypeJson:
-                    fileInfo = @"JSON\n";
-                    break;
-                    
-                case CocoaDebugToolTypeProtobuf:
-                    fileInfo = @"Protobuf\n";
-                    break;
-                    
-                default:
-                    fileInfo = @"\n";
-                    break;
+            if (type == CocoaDebugToolTypeProtobuf) {
+                fileInfo = @"Protobuf\n";
+            } else {
+                fileInfo = @"\n";
             }
         }
         

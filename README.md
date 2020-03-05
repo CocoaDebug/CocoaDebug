@@ -104,6 +104,17 @@ github "CocoaDebug/CocoaDebug"
         [CocoaDebug enable];
     #endif
 
+### More
+
+    //You can use anywhere
+    
+    [CocoaDebugTool logWithString:string];
+    
+    [CocoaDebugTool logWithJsonData:data];
+    
+    [CocoaDebugTool logWithProtobufData:data className:@"ClassName"];
+
+
 > Please check `Example_Objc.xcodeproj` for more advanced usage.
 
 > NOTE: Be careful with `Other Swift Flags` & `Preprocessor Macros` when using Swift & Objective-C in one project. You can refer to [here](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).  
