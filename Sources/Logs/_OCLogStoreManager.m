@@ -43,7 +43,13 @@
             //白色
             if ([self.defaultLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
                 if (self.defaultLogArray.count > 0) {
-                    [self.defaultLogArray removeObjectAtIndex:0];
+                    @try {
+                        [self.defaultLogArray removeObjectAtIndex:0];
+                    } @catch (NSException *exception) {
+                        
+                    } @finally {
+                            
+                    }
                 }
             }
             
@@ -60,7 +66,13 @@
             //彩色
             if ([self.colorLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
                 if (self.colorLogArray.count > 0) {
-                    [self.colorLogArray removeObjectAtIndex:0];
+                    @try {
+                        [self.colorLogArray removeObjectAtIndex:0];
+                    } @catch (NSException *exception) {
+                        
+                    } @finally {
+                            
+                    }
                 }
             }
             
@@ -78,7 +90,13 @@
         //H5
         if ([self.h5LogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
             if (self.h5LogArray.count > 0) {
-                [self.h5LogArray removeObjectAtIndex:0];
+                @try {
+                    [self.h5LogArray removeObjectAtIndex:0];
+                } @catch (NSException *exception) {
+                    
+                } @finally {
+                        
+                }
             }
         }
         
