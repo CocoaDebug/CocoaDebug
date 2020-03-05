@@ -33,7 +33,6 @@
 {
     self = [super init];
     if (self) {
-        //创建一个信号量为1的信号
         semaphore = dispatch_semaphore_create(1);
         
         self.defaultLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
