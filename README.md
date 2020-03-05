@@ -84,7 +84,6 @@ github "CocoaDebug/CocoaDebug"
             swiftLog(file, function, line, message, color, false)
         #endif
     }
-	
 
 ### Objective-C
 	
