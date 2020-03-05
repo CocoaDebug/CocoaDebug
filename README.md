@@ -112,7 +112,7 @@ github "CocoaDebug/CocoaDebug"
     
     [CocoaDebugTool logWithJsonData:data];
     
-    [CocoaDebugTool logWithProtobufData:data className:@"ClassName"];
+    [CocoaDebugTool logWithProtobufData:data className:@"protobuf_className"];
 
 
 > Please check `Example_Objc.xcodeproj` for more advanced usage.
