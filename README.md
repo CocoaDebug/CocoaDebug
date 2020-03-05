@@ -106,14 +106,13 @@ github "CocoaDebug/CocoaDebug"
 
 ### More
 
-    //You can use anywhere
+    #ifdef DEBUG
+        [CocoaDebugTool logWithString:string];
+        
+        NSString *prettyJSON = [CocoaDebugTool logWithJsonData:data];
     
-    [CocoaDebugTool logWithString:string];
-    
-    [CocoaDebugTool logWithJsonData:data];
-    
-    [CocoaDebugTool logWithProtobufData:data className:@"protobuf_className"];
-
+        NSString *prettyJSON = [CocoaDebugTool logWithProtobufData:data className:@"protobuf_className"];
+    #endif
 
 > Please check `Example_Objc.xcodeproj` for more advanced usage.
 
