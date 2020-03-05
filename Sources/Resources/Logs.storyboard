@@ -267,12 +267,12 @@
                             </barButtonItem>
                         </leftBarButtonItems>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RqA-gF-lv2">
-                            <rect key="frame" x="84" y="6" width="164" height="32"/>
+                            <rect key="frame" x="84" y="5.5" width="164" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Log"/>
                                 <segment title="Color"/>
-                                <segment title="H5"/>
+                                <segment title="Web"/>
                             </segments>
                             <connections>
                                 <action selector="segmentedControlAction:" destination="b1x-pw-stc" eventType="valueChanged" id="cv7-iN-ZnU"/>
