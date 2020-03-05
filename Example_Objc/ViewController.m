@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "AFURLSessionManager.h"
 #import <WebKit/WebKit.h>
-#import "_TCPLogger.h"
+#import "CocoaDebugTool.h"
 
 @interface ViewController ()
 
@@ -32,8 +32,9 @@
     [self test_console_UIWebView];
     
     
-    //TCP
-    [_TCPLogger logWithString:@"tcp messages...."];
+    //Custom Messages
+    [CocoaDebugTool logWithString:@"Custom Messages...."];
+    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
     
     
     //save image

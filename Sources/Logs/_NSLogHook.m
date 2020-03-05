@@ -37,7 +37,7 @@ void my_nslog(NSString *format, ...) {
 //    va_end(va);
 
 
-    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor]];
+    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
 
     va_end(vl);
 }

@@ -7,7 +7,6 @@
 //
 
 #import "_OCLogHelper.h"
-#import "_OCLogModel.h"
 #import "_OCLogStoreManager.h"
 
 @implementation _OCLogHelper
@@ -34,8 +33,8 @@
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
-    if ([file isEqualToString:@"TCP"] && [function isEqualToString:@"TCP"] && line == 1) {
-        return @"TCP|TCP|1";
+    if ([file isEqualToString:@"XXX"] && [function isEqualToString:@"XXX"] && line == 1) {
+        return @"XXX|XXX|1";
     }
     
     if (line == 0) {
@@ -52,7 +51,7 @@
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
 
-- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color
+- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
     if (!self.enable) {
         return;
@@ -62,8 +61,8 @@
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
-    _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO];
-    if (line == 0 && ![fileInfo isEqualToString:@"TCP|TCP|1"]) {
+    _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
+    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
         newLog.h5LogType = H5LogTypeNotNone;
     }
     [[_OCLogStoreManager shared] addLog:newLog];

@@ -8,6 +8,7 @@
 //
 
 #import "CocoaDebug.h"
+#import "CocoaDebugTool.h"
 #import "_CacheStoragePolicy.h"
 #import "_CanonicalRequest.h"
 #import "_CustomHTTPProtocol.h"
@@ -17,7 +18,6 @@
 #import "_OCLogHelper.h"
 #import "_OCLogModel.h"
 #import "_OCLogStoreManager.h"
-#import "_TCPLogger.h"
 #import "_HttpDatasource.h"
 #import "_HttpModel.h"
 #import "_NetworkHelper.h"

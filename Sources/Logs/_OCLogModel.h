@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, H5LogType)
-{
+typedef NS_ENUM(NSInteger, H5LogType) {
     H5LogTypeNone = 0,
     H5LogTypeNotNone
 };
 
+typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
+    CocoaDebugToolTypeNone,
+    CocoaDebugToolTypeJson,
+    CocoaDebugToolTypeProtobuf
+};
 
 @interface _OCLogModel : NSObject
 
@@ -30,6 +34,6 @@ typedef NS_ENUM(NSInteger, H5LogType)
 
 @property (nonatomic, assign) H5LogType h5LogType;
 
-- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag;
+- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag type:(CocoaDebugToolType)type;
 
 @end

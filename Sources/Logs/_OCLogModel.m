@@ -12,12 +12,28 @@
 
 @implementation _OCLogModel
 
-- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag
+- (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag type:(CocoaDebugToolType)type
 {
     if (self = [super init]) {
         
-        if ([fileInfo isEqualToString:@"TCP|TCP|1"]) {
-            fileInfo = @"TCP\n";
+        if ([fileInfo isEqualToString:@"XXX|XXX|1"]) {
+            switch (type) {
+                case CocoaDebugToolTypeNone:
+                    fileInfo = @"\n";
+                    break;
+                    
+                case CocoaDebugToolTypeJson:
+                    fileInfo = @"JSON\n";
+                    break;
+                    
+                case CocoaDebugToolTypeProtobuf:
+                    fileInfo = @"Protobuf\n";
+                    break;
+                    
+                default:
+                    fileInfo = @"\n";
+                    break;
+            }
         }
         
         self.Id = [[NSUUID UUID] UUIDString];

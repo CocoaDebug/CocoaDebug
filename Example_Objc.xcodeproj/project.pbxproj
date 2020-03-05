@@ -223,7 +223,7 @@
 		3879B21F232108F500D36437 /* _OCLogStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B118232108F500D36437 /* _OCLogStoreManager.m */; };
 		3879B220232108F500D36437 /* _OCLogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B119232108F500D36437 /* _OCLogHelper.m */; };
 		3879B221232108F500D36437 /* _OCLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B11A232108F500D36437 /* _OCLogModel.m */; };
-		3879B222232108F500D36437 /* _TCPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B11B232108F500D36437 /* _TCPLogger.m */; };
+		3879B222232108F500D36437 /* CocoaDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B11B232108F500D36437 /* CocoaDebugTool.m */; };
 		3879B223232108F500D36437 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879B11C232108F500D36437 /* LogCell.swift */; };
 		3879B224232108F500D36437 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879B11D232108F500D36437 /* LogViewController.swift */; };
 		3879B225232108F500D36437 /* _ObjcLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3879B120232108F500D36437 /* _ObjcLog.m */; };
@@ -515,7 +515,7 @@
 		3879B10E232108F500D36437 /* _CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CanonicalRequest.m; sourceTree = "<group>"; };
 		3879B10F232108F500D36437 /* _CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CustomHTTPProtocol.h; sourceTree = "<group>"; };
 		3879B111232108F500D36437 /* _LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LogHelper.swift; sourceTree = "<group>"; };
-		3879B112232108F500D36437 /* _TCPLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TCPLogger.h; sourceTree = "<group>"; };
+		3879B112232108F500D36437 /* CocoaDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugTool.h; sourceTree = "<group>"; };
 		3879B113232108F500D36437 /* _OCLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogModel.h; sourceTree = "<group>"; };
 		3879B114232108F500D36437 /* _NSLogHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NSLogHook.m; sourceTree = "<group>"; };
 		3879B115232108F500D36437 /* _OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogHelper.h; sourceTree = "<group>"; };
@@ -524,7 +524,7 @@
 		3879B118232108F500D36437 /* _OCLogStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OCLogStoreManager.m; sourceTree = "<group>"; };
 		3879B119232108F500D36437 /* _OCLogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OCLogHelper.m; sourceTree = "<group>"; };
 		3879B11A232108F500D36437 /* _OCLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OCLogModel.m; sourceTree = "<group>"; };
-		3879B11B232108F500D36437 /* _TCPLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TCPLogger.m; sourceTree = "<group>"; };
+		3879B11B232108F500D36437 /* CocoaDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTool.m; sourceTree = "<group>"; };
 		3879B11C232108F500D36437 /* LogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 		3879B11D232108F500D36437 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		3879B11E232108F500D36437 /* _OCLoggerFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLoggerFormat.h; sourceTree = "<group>"; };
@@ -918,21 +918,21 @@
 		3879B110232108F500D36437 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
-				3879B111232108F500D36437 /* _LogHelper.swift */,
-				3879B112232108F500D36437 /* _TCPLogger.h */,
-				3879B113232108F500D36437 /* _OCLogModel.h */,
-				3879B114232108F500D36437 /* _NSLogHook.m */,
+				3879B112232108F500D36437 /* CocoaDebugTool.h */,
+				3879B11B232108F500D36437 /* CocoaDebugTool.m */,
 				3879B115232108F500D36437 /* _OCLogHelper.h */,
+				3879B119232108F500D36437 /* _OCLogHelper.m */,
+				3879B113232108F500D36437 /* _OCLogModel.h */,
+				3879B11A232108F500D36437 /* _OCLogModel.m */,
 				3879B116232108F500D36437 /* _OCLoggerFormat.m */,
 				3879B117232108F500D36437 /* _ObjcLog.h */,
-				3879B118232108F500D36437 /* _OCLogStoreManager.m */,
-				3879B119232108F500D36437 /* _OCLogHelper.m */,
-				3879B11A232108F500D36437 /* _OCLogModel.m */,
-				3879B11B232108F500D36437 /* _TCPLogger.m */,
+				3879B111232108F500D36437 /* _LogHelper.swift */,
 				3879B11C232108F500D36437 /* LogCell.swift */,
 				3879B11D232108F500D36437 /* LogViewController.swift */,
+				3879B114232108F500D36437 /* _NSLogHook.m */,
 				3879B11E232108F500D36437 /* _OCLoggerFormat.h */,
 				3879B11F232108F500D36437 /* _OCLogStoreManager.h */,
+				3879B118232108F500D36437 /* _OCLogStoreManager.m */,
 				3879B120232108F500D36437 /* _ObjcLog.m */,
 			);
 			path = Logs;
@@ -1480,7 +1480,7 @@
 				3879B21B232108F500D36437 /* _CanonicalRequest.m in Sources */,
 				3879B223232108F500D36437 /* LogCell.swift in Sources */,
 				3879B234232108F500D36437 /* CocoaDebugNavigationController.swift in Sources */,
-				3879B222232108F500D36437 /* _TCPLogger.m in Sources */,
+				3879B222232108F500D36437 /* CocoaDebugTool.m in Sources */,
 				3879B238232108F500D36437 /* Color.swift in Sources */,
 				3879B152232108F500D36437 /* AppInfoViewController.swift in Sources */,
 				3879B227232108F500D36437 /* _MLBFileTableViewCell.m in Sources */,

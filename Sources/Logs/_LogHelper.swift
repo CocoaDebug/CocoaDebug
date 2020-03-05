@@ -39,7 +39,7 @@ public class _LogHelper: NSObject {
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         
         //2.
-        if let newLog = _OCLogModel.init(content: message, color: color, fileInfo: fileInfo, isTag: false) {
+        if let newLog = _OCLogModel.init(content: message, color: color, fileInfo: fileInfo, isTag: false, type: .none) {
             _OCLogStoreManager.shared().addLog(newLog)
         }
         
