@@ -8,42 +8,10 @@
 
 #import "CocoaDebugTool.h"
 #import "_OCLogHelper.h"
-#import "GPBMessage.h"
+#import "_GPBMessage+CocoaDebug.h"
+#import <Protobuf/GPBMessage.h>
 
 @implementation CocoaDebugTool
-
-#pragma mark - logWithData
-+ (NSString *)logWithData:(NSData *)data {
-    return [self logWithData:data color:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-}
-
-+ (NSString *)logWithData:(NSData *)data color:(UIColor *)color {
-    //1.pretty json
-    NSString *str = [self dataToPrettyJsonString:data];
-    if (str) {
-        NSString *result = [self logWithString:str type:CocoaDebugToolTypeJson color:color];
-        return result;
-    }
-    
-    //2.protobuf
-    GPBMessage *message = [GPBMessage parseFromData:data error:nil];
-    if (message) {
-        if ([message serializedSize] > 0) {
-            NSString *result = [self logWithString:[message description] type:CocoaDebugToolTypeProtobuf color:color];
-            return result;
-        } else {
-            //3.utf-8 string
-            NSString *result = [self logWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] type:CocoaDebugToolTypeNone color:color];
-            return result;
-        }
-    } else {
-        //3.utf-8 string
-        NSString *result = [self logWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] type:CocoaDebugToolTypeNone color:color];
-        return result;
-    }
-}
-
-
 
 #pragma mark - logWithString
 + (void)logWithString:(NSString *)string {
@@ -51,37 +19,85 @@
 }
 
 + (void)logWithString:(NSString *)string color:(UIColor *)color {
-    [CocoaDebugTool logWithString:string type:CocoaDebugToolTypeNone color:color];
+    [self finalLogWithString:string type:CocoaDebugToolTypeNone color:color];
+}
+
+
+#pragma mark - logWithJsonData
++ (NSString *)logWithJsonData:(NSData *)data {
+    return [self logWithJsonData:data color:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+}
+
++ (NSString *)logWithJsonData:(NSData *)data color:(UIColor *)color {
+    NSString *string = [self getPrettyJsonStringWithData:data] ? : @"NULL";
+    return [self finalLogWithString:string type:CocoaDebugToolTypeJson color:color];
+}
+
+
+#pragma mark - logWithProtobufData
++ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className {
+    return [self logWithProtobufData:data className:className color:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+}
+
++ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className color:(UIColor *)color {
+    NSString *string = [self parsingProtobufWithData:data className:className] ? : @"NULL";
+    return [self finalLogWithString:string type:CocoaDebugToolTypeProtobuf color:color];
 }
 
 
 
-#pragma mark - private methods
-+ (NSString *)dataToPrettyJsonString:(NSData *)data {
-    //1.
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:kNilOptions
-                                                           error:nil];
-    if (!dict) {
-        return nil;
-    }
-    
-    //2.
-    NSData *prettyData = [NSJSONSerialization dataWithJSONObject:dict
-                                                    options:NSJSONWritingPrettyPrinted
-                                                      error:nil];
-    if (!prettyData) {
-        return nil;
-    }
-    
-    //3.
-    NSString *str = [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding];
-    return str;
+
+#pragma mark - tool
+
++ (NSString *)getPrettyJsonStringWithJsonString:(NSString *)jsonString {
+    return [self getPrettyJsonStringWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
-+ (NSString *)logWithString:(NSString *)string type:(CocoaDebugToolType)type color:(UIColor *)color {
++ (NSString *)getPrettyJsonStringWithData:(NSData *)data {
+    if (!data) {return nil;}
+    
+    //1.pretty json
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    if (!dict) {return nil;}
+    
+    NSData *prettyData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+    if (!prettyData) {return nil;}
+    
+    NSString *prettyJsonString = [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding];
+    if (prettyJsonString) {
+        return prettyJsonString;
+    }
+    
+    //2.protobuf
+//    GPBMessage *message = [GPBMessage parseFromData:data error:nil];
+//    if ([message serializedSize] > 0) {
+//        return [message description];
+//    }
+    
+    //3.utf-8 string
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)finalLogWithString:(NSString *)string type:(CocoaDebugToolType)type color:(UIColor *)color {
     [[_OCLogHelper shared] handleLogWithFile:@"XXX" function:@"XXX" line:1 message:string color:color type:type];
     return string;
+}
+
+//解析Protobuf
++ (NSString *)parsingProtobufWithData:(NSData *)data className:(NSString *)className {
+    if (!data || !className) {return nil;}
+    
+    Class cls = NSClassFromString(className);
+    //protobuf
+    GPBMessage *obj = [cls parseFromData:data error:nil];
+    //HuiCao
+    NSString *jsonString = [obj _JSONStringWithIgnoreFields:nil];
+    if (!jsonString) {return nil;}
+    
+    NSString *prettyJsonString = [self getPrettyJsonStringWithJsonString:jsonString];
+    if (!prettyJsonString) {return nil;}
+    
+    return [prettyJsonString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
 }
 
 @end
