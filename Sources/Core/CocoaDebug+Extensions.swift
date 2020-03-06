@@ -253,12 +253,43 @@ extension UITableView {
 ///shake
 extension UIWindow {
     
+    private static var _myComputedProperty = [String:Bool]()
+    
+    var myComputedProperty:Bool {
+        get {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            return UIWindow._myComputedProperty[tmpAddress] ?? false
+        }
+        set(newValue) {
+            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
+            UIWindow._myComputedProperty[tmpAddress] = newValue
+        }
+    }
+    
+    
     open override var canBecomeFirstResponder: Bool {
         return true
     }
     
+    open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionBegan(motion, with: event)
+        
+        self.myComputedProperty = true
+
+        if CocoaDebugSettings.shared.responseShake == false {return}
+        if motion == .motionShake {
+            if CocoaDebugSettings.shared.visible == true { return }
+            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
+        }
+    }
+    
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
+        
+        if self.myComputedProperty == true {
+            self.myComputedProperty = false
+            return
+        }
         
         if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
