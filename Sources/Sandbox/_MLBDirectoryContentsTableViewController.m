@@ -28,6 +28,7 @@
 
 @property (nonatomic, strong) UIBarButtonItem *refreshItem;
 @property (nonatomic, strong) UIBarButtonItem *editItem;
+@property (nonatomic, strong) UIBarButtonItem *closeItem;
 @property (nonatomic, strong) UIBarButtonItem *deleteAllItem;
 @property (nonatomic, strong) UIBarButtonItem *deleteItem;
 
@@ -56,10 +57,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
                                                                     NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
                                                                     NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
                                                                     };
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"_icon_file_type_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
-    leftItem.tintColor = [_NetworkHelper shared].mainColor;
-    self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
 }
 
 - (void)exit {
@@ -123,19 +120,25 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 #pragma mark - Private Methods
-
 - (void)setupViews {
+    //暂时不用
+    self.editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
+    self.editItem.possibleTitles = [NSSet setWithObjects:@"Edit", @"Cancel", nil];
+    
+    //
     self.refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDirectoryContents)];
-    NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray arrayWithObject:self.refreshItem];
-    if ([_Sandboxer shared].isFileDeletable || [_Sandboxer shared].isDirectoryDeletable) {
-        self.editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
-        self.editItem.possibleTitles = [NSSet setWithObjects:@"Edit", @"Cancel", nil];
-        [rightBarButtonItems addObject:self.editItem];
+    self.closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"_icon_file_type_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    
+    if (self.homeDirectory) {
+        self.navigationItem.leftBarButtonItems = @[self.closeItem];
+        self.navigationItem.rightBarButtonItems = @[self.refreshItem];
+    } else {
+        self.navigationItem.rightBarButtonItems = @[self.closeItem, self.refreshItem];
     }
     
-    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
-    self.view.backgroundColor = [UIColor blackColor];
     
+    //
+    self.view.backgroundColor = [UIColor blackColor];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height) style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -328,6 +331,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)editAction {
+    if (![_Sandboxer shared].isFileDeletable && ![_Sandboxer shared].isDirectoryDeletable) {
+        [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
+    
     if (!self.tableView.isEditing) {
         [self beginEditing];
     } else {
