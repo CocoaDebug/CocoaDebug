@@ -3,7 +3,7 @@
 //  CocoaDebug
 //
 //  Created by man on 3/8/20.
-//  Copyright © 2020 liman. All rights reserved.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

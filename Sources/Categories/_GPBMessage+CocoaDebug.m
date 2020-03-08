@@ -1,5 +1,5 @@
 //
-//  GPBMessage+CocoaDebug.m
+//  _GPBMessage+CocoaDebug.m
 //  AirPayCounter
 //
 //  Created by HuiCao on 2019/7/9.
@@ -10,9 +10,9 @@
 #import "_NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import "GPBArray.h"
+#import "_GPBArray.h"
 
-@implementation GPBMessage (CocoaDebug)
+@implementation _GPBMessage (CocoaDebug)
 
 #pragma mark - Public Methods
 - (id)initWithDictionary:(NSDictionary *)dict {
@@ -92,68 +92,68 @@
     if ([item isKindOfClass:[NSNumber class]] || [item isKindOfClass:[NSString class]]) {
         return item;
     }
-    if ([item isKindOfClass:[GPBMessage class]]) {
+    if ([item isKindOfClass:[_GPBMessage class]]) {
         return [item dictionary];
     }
-    if ([item isKindOfClass:[GPBInt32Array class]]) {
+    if ([item isKindOfClass:[_GPBInt32Array class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBInt32Array *itemArray = (GPBInt32Array *)item;
+        _GPBInt32Array *itemArray = (_GPBInt32Array *)item;
         [itemArray enumerateValuesWithBlock:^(int32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBUInt32Array class]]) {
+    if ([item isKindOfClass:[_GPBUInt32Array class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBUInt32Array *itemArray = (GPBUInt32Array *)item;
+        _GPBUInt32Array *itemArray = (_GPBUInt32Array *)item;
         [itemArray enumerateValuesWithBlock:^(uint32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBInt64Array class]]) {
+    if ([item isKindOfClass:[_GPBInt64Array class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBInt64Array *itemArray = (GPBInt64Array *)item;
+        _GPBInt64Array *itemArray = (_GPBInt64Array *)item;
         [itemArray enumerateValuesWithBlock:^(int64_t value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBUInt64Array class]]) {
+    if ([item isKindOfClass:[_GPBUInt64Array class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBUInt64Array *itemArray = (GPBUInt64Array *)item;
+        _GPBUInt64Array *itemArray = (_GPBUInt64Array *)item;
         [itemArray enumerateValuesWithBlock:^(uint64_t value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBFloatArray class]]) {
+    if ([item isKindOfClass:[_GPBFloatArray class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBFloatArray *itemArray = (GPBFloatArray *)item;
+        _GPBFloatArray *itemArray = (_GPBFloatArray *)item;
         [itemArray enumerateValuesWithBlock:^(float value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBDoubleArray class]]) {
+    if ([item isKindOfClass:[_GPBDoubleArray class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBDoubleArray *itemArray = (GPBDoubleArray *)item;
+        _GPBDoubleArray *itemArray = (_GPBDoubleArray *)item;
         [itemArray enumerateValuesWithBlock:^(double value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBBoolArray class]]) {
+    if ([item isKindOfClass:[_GPBBoolArray class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBBoolArray *itemArray = (GPBBoolArray *)item;
+        _GPBBoolArray *itemArray = (_GPBBoolArray *)item;
         [itemArray enumerateValuesWithBlock:^(BOOL value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
         return array;
     }
-    if ([item isKindOfClass:[GPBEnumArray class]]) {
+    if ([item isKindOfClass:[_GPBEnumArray class]]) {
         NSMutableArray *array = [NSMutableArray array];
-        GPBEnumArray *itemArray = (GPBEnumArray *)item;
+        _GPBEnumArray *itemArray = (_GPBEnumArray *)item;
         [itemArray enumerateValuesWithBlock:^(int32_t value, NSUInteger idx, BOOL * _Nonnull stop) {
             [array addObject:@(value)];
         }];
@@ -166,7 +166,7 @@
                 [array addObject:arrayItem];
                 continue;
             }
-            if ([arrayItem isKindOfClass:[GPBMessage class]]) {
+            if ([arrayItem isKindOfClass:[_GPBMessage class]]) {
                 [array addObject:[arrayItem dictionary]];
             }
         }
@@ -317,8 +317,8 @@
                     return;
                 }
                 Class parentClass = class_getSuperclass(itemClass);
-                if ([parentClass isEqual:[GPBMessage class]] == NO) {
-                    //SSPWarning(@"%@ is not GPBMessage", arrayItemType);
+                if ([parentClass isEqual:[_GPBMessage class]] == NO) {
+                    //SSPWarning(@"%@ is not _GPBMessage", arrayItemType);
                     return;
                 }
                 [array addObject:[[itemClass alloc] initWithDictionary:arrayValue]];
@@ -347,8 +347,8 @@
                         continue;
                     }
                     Class parentClass = class_getSuperclass(itemClass);
-                    if ([parentClass isEqual:[GPBMessage class]] == NO) {
-                        //SSPWarning(@"%@ is not GPBMessage", dictTypes[1]);
+                    if ([parentClass isEqual:[_GPBMessage class]] == NO) {
+                        //SSPWarning(@"%@ is not _GPBMessage", dictTypes[1]);
                         return;
                     }
                     [dictValue setObject:[[itemClass alloc] initWithDictionary:value[dictKey]] forKey:dictKey];
@@ -373,8 +373,8 @@
                                 return;
                             }
                             Class parentClass = class_getSuperclass(inItemClass);
-                            if ([parentClass isEqual:[GPBMessage class]] == NO) {
-                                //SSPWarning(@"%@ is not GPBMessage", dictTypes[2]);
+                            if ([parentClass isEqual:[_GPBMessage class]] == NO) {
+                                //SSPWarning(@"%@ is not _GPBMessage", dictTypes[2]);
                                 return;
                             }
                             [array addObject:[[inItemClass alloc] initWithDictionary:arrayValue]];
@@ -398,8 +398,8 @@
             return;
         }
         Class parentClass = class_getSuperclass(itemClass);
-        if ([parentClass isEqual:[GPBMessage class]] == NO) {
-            //SSPWarning(@"%@ is not GPBMessage", itemType);
+        if ([parentClass isEqual:[_GPBMessage class]] == NO) {
+            //SSPWarning(@"%@ is not _GPBMessage", itemType);
             return;
         }
         id item = [[itemClass alloc] initWithDictionary:value];
