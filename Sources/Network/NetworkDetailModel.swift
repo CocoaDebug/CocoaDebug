@@ -37,7 +37,7 @@ struct NetworkDetailModel {
             self.requestData = httpModel?.requestData
             
             guard let content = content, let url = url, let data = self.requestData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
-            if !content.contains("GPBMessage") {return}
+            if !content.contains("_GPBMessage") {return}
             self.title = "REQUEST (Protobuf)"
 
             for key in keys {
@@ -72,7 +72,7 @@ struct NetworkDetailModel {
             self.responseData = httpModel?.responseData
             
             guard let content = content, let url = url, let data = self.responseData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
-            if !content.contains("GPBMessage") {return}
+            if !content.contains("_GPBMessage") {return}
             self.title = "RESPONSE (Protobuf)"
 
             for key in keys {
