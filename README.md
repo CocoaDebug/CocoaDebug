@@ -51,7 +51,7 @@ target 'YourTargetName' do
 end
 ```
 
-### Carthage (Deprecated)
+### Carthage
 
 ```ogdl
 github "CocoaDebug/CocoaDebug"
