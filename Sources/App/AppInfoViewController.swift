@@ -52,7 +52,7 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
+        crashSwitch.isOn = !CocoaDebugSettings.shared.disableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWebViewMonitoring
@@ -72,7 +72,7 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     
     //MARK: - target action
     @objc func crashSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
+        CocoaDebugSettings.shared.disableCrashRecording = !crashSwitch.isOn
         UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
     }
     
