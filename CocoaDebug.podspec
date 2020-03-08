@@ -13,6 +13,4 @@ Pod::Spec.new do |s|
   s.swift_version       = '5.0'
   s.version             = '1.1.6'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
-  s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1'  }
-  s.dependency "Protobuf"
 end

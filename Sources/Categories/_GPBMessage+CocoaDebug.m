@@ -10,7 +10,7 @@
 #import "_NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import <Protobuf/GPBArray.h>
+#import "GPBArray.h"
 
 @implementation GPBMessage (CocoaDebug)
 
