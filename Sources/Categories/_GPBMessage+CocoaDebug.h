@@ -6,7 +6,7 @@
 //  Copyright © 2019 Shopee. All rights reserved.
 //
 
-#import <Protobuf/GPBMessage.h>
+#import "GPBMessage.h"
 
 @interface GPBMessage (CocoaDebug)
 

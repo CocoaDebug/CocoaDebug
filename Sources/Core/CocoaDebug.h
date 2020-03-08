@@ -39,4 +39,4 @@
 #import "_fishhook.h"
 #import "_NSObject+CocoaDebug.h"
 #import "_GPBMessage+CocoaDebug.h"
-#import <Protobuf/GPBMessage.h>
+#import "GPBMessage.h"

@@ -9,7 +9,7 @@
 #import "CocoaDebugTool.h"
 #import "_OCLogHelper.h"
 #import "_GPBMessage+CocoaDebug.h"
-#import <Protobuf/GPBMessage.h>
+#import "GPBMessage.h"
 
 @implementation CocoaDebugTool
 
