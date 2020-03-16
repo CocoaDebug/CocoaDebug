@@ -26,7 +26,8 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     @IBOutlet weak var logSwitch: UISwitch!
     @IBOutlet weak var networkSwitch: UISwitch!
     @IBOutlet weak var webViewSwitch: UISwitch!
-    
+    @IBOutlet weak var slowAnimationsSwitch: UISwitch!
+
     
     //MARK: - init
     override func viewDidLoad() {
@@ -56,11 +57,13 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWebViewMonitoring
+        slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
 
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
         webViewSwitch.addTarget(self, action: #selector(webViewSwitchChanged), for: UIControl.Event.valueChanged)
+        slowAnimationsSwitch.addTarget(self, action: #selector(slowAnimationsSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +92,10 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWebViewMonitoring = webViewSwitch.isOn
         UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
+    }
+    
+    @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
     }
 }
 
@@ -126,7 +133,7 @@ extension AppInfoViewController {
                 return 0
             }
         }
-        if indexPath.section == 4 && indexPath.row == 0 {
+        if indexPath.section == 5 && indexPath.row == 0 {
             if labelignoredURLs.text == "0" {
                 if UIScreen.main.scale == 3 {
                     return 1.5//plus,iPhone X

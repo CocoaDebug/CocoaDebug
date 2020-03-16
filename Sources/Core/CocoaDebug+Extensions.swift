@@ -364,6 +364,9 @@ extension CocoaDebug {
         //color
         CocoaDebugSettings.shared.mainColor = mainColor ?? "#42d459"
         
+        //slow animations
+        CocoaDebugSettings.shared.slowAnimations = false
+        
         //log
         if disableLogMonitoring == true {
             _LogHelper.shared.enable = false
