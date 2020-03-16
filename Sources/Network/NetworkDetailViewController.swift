@@ -392,6 +392,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //MARK: - override
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(selectAll(_:)) {
+            UIAlertView.init(title: "", message: "", delegate: self, cancelButtonTitle: "Copy All", otherButtonTitles: "Cancel").show()
             return true
         }
         return super.canPerformAction(action, withSender: sender)
@@ -514,6 +515,16 @@ extension NetworkDetailViewController {
             }else{
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
+        }
+    }
+}
+
+
+//MARK: - UIAlertViewDelegate
+extension NetworkDetailViewController: UIAlertViewDelegate {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        if buttonIndex == 0 {
+            UIPasteboard.general.string = headerCell?.requestUrlTextView.text
         }
     }
 }

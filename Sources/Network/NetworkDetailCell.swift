@@ -85,12 +85,23 @@ class NetworkDetailCell: UITableViewCell {
     //MARK: - override
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(selectAll(_:)) {
+            UIAlertView.init(title: "", message: "", delegate: self, cancelButtonTitle: "Copy All", otherButtonTitles: "Cancel").show()
             return true
         }
         return super.canPerformAction(action, withSender: sender)
     }
-    
+
     override func selectAll(_ sender: Any?) {
         contentTextView.selectAll(sender)
+    }
+}
+
+
+//MARK: - UIAlertViewDelegate
+extension NetworkDetailCell: UIAlertViewDelegate {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        if buttonIndex == 0 {
+            UIPasteboard.general.string = contentTextView.text
+        }
     }
 }
