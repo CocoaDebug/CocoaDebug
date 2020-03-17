@@ -17,9 +17,9 @@ import Foundation
     @objc public var slowAnimations: Bool = false {
         didSet {            
             if slowAnimations == false {
-                UIApplication.shared.keyWindow?.layer.speed = 1;
+                UIApplication.shared.windows.first?.layer.speed = 1;
             }else{
-                UIApplication.shared.keyWindow?.layer.speed = 0.1;
+                UIApplication.shared.windows.first?.layer.speed = 0.1;
             }
         }
     }
