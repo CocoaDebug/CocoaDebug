@@ -440,7 +440,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }];
     
     [self.dataSource removeObjectsInArray:deletedFileInfos];
-    self.dataSource_cache = self.dataSource;
+    
+    //TODO... cache search
     
     [self.tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     
@@ -458,7 +459,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }
     
     [self.dataSource removeObjectsInArray:deletedFileInfos];
-    self.dataSource_cache = self.dataSource;
+    
+    //TODO... cache search
     
     [self.tableView deleteRowsAtIndexPaths:self.tableView.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
     
@@ -471,7 +473,13 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         index = [self.dataSource indexOfObject:self.deletingFileInfo];
         
         [self.dataSource removeObject:self.deletingFileInfo];
-        self.dataSource_cache = self.dataSource;
+        
+        if ([self.dataSource_cache count] > 0 && [self.dataSource_cache containsObject:self.deletingFileInfo]) {
+            [self.dataSource_cache removeObject:self.deletingFileInfo];
+        }
+        if ([self.dataSource_search count] > 0 && [self.dataSource_search containsObject:self.deletingFileInfo]) {
+            [self.dataSource_search removeObject:self.deletingFileInfo];
+        }
         
         if (index >= 0) {
             [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
