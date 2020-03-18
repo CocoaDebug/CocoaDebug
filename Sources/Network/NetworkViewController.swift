@@ -329,8 +329,14 @@ extension NetworkViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let models = self.models else {return}
-            _HttpDatasource.shared().remove(models[indexPath.row])
+            
+            let model: _HttpModel = models[indexPath.row]
+            _HttpDatasource.shared().remove(model)
+            
             self.models?.remove(at: indexPath.row)
+            _ = self.cacheModels?.firstIndex(of: model).map { self.cacheModels?.remove(at: $0) }
+            _ = self.searchModels?.firstIndex(of: model).map { self.searchModels?.remove(at: $0) }
+            
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
