@@ -734,8 +734,14 @@ extension LogViewController: UITableViewDelegate {
         if tableView == defaultTableView
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(defaultModels[indexPath.row])
+                
+                let model: _OCLogModel = defaultModels[indexPath.row]
+                _OCLogStoreManager.shared().removeLog(model)
+                
                 self.defaultModels.remove(at: indexPath.row)
+                _ = self.defaultCacheModels?.firstIndex(of: model).map { self.defaultCacheModels?.remove(at: $0) }
+                _ = self.defaultSearchModels?.firstIndex(of: model).map { self.defaultSearchModels?.remove(at: $0) }
+                
                 self.dispatch_main_async_safe { [weak self] in
                     self?.defaultTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
@@ -744,8 +750,14 @@ extension LogViewController: UITableViewDelegate {
         else if tableView == colorTableView
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(colorModels[indexPath.row])
+                
+                let model: _OCLogModel = colorModels[indexPath.row]
+                _OCLogStoreManager.shared().removeLog(model)
+                
                 self.colorModels.remove(at: indexPath.row)
+                _ = self.colorCacheModels?.firstIndex(of: model).map { self.colorCacheModels?.remove(at: $0) }
+                _ = self.colorSearchModels?.firstIndex(of: model).map { self.colorSearchModels?.remove(at: $0) }
+                
                 self.dispatch_main_async_safe { [weak self] in
                     self?.colorTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
@@ -754,8 +766,14 @@ extension LogViewController: UITableViewDelegate {
         else
         {
             if (editingStyle == .delete) {
-                _OCLogStoreManager.shared().removeLog(h5Models[indexPath.row])
+                
+                let model: _OCLogModel = h5Models[indexPath.row]
+                _OCLogStoreManager.shared().removeLog(model)
+                
                 self.h5Models.remove(at: indexPath.row)
+                _ = self.h5CacheModels?.firstIndex(of: model).map { self.h5CacheModels?.remove(at: $0) }
+                _ = self.h5SearchModels?.firstIndex(of: model).map { self.h5SearchModels?.remove(at: $0) }
+                
                 self.dispatch_main_async_safe { [weak self] in
                     self?.h5TableView.deleteRows(at: [indexPath], with: .automatic)
                 }
