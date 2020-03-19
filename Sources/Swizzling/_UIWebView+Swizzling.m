@@ -2,8 +2,8 @@
 //  UIWebView+Swizzling.m
 //  Example_Objc
 //
-//  Created by man on 2019/1/9.
-//  Copyright © 2019年 liman. All rights reserved.
+//  Created by man.li on 2019/1/9.
+//  Copyright © 2020 liman.li. All rights reserved.
 //
 
 #import <JavaScriptCore/JavaScriptCore.h>

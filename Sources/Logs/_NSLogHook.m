@@ -2,8 +2,8 @@
 //  _NSLogHook.m
 //  Example_Swift
 //
-//  Created by man on 7/26/19.
-//  Copyright © 2019 man. All rights reserved.
+//  Created by man.li on 7/26/19.
+//  Copyright © 2019 man.li. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

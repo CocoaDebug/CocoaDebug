@@ -2,8 +2,8 @@
 //  WKWebView+Swizzling.m
 //  1233213
 //
-//  Created by man on 2019/1/8.
-//  Copyright © 2019年 man. All rights reserved.
+//  Created by man.li on 2019/1/8.
+//  Copyright © 2020 man.li. All rights reserved.
 //
 
 #import <WebKit/WebKit.h>

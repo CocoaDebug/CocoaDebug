@@ -1,9 +1,9 @@
 //
 //  Example
-//  man
+//  man.li
 //
-//  Created by man on 11/11/2018.
-//  Copyright © 2018 man. All rights reserved.
+//  Created by man.li on 11/11/2018.
+//  Copyright © 2020 man.li. All rights reserved.
 //
 //
 
@@ -31,11 +31,6 @@
 #import "_Sandboxer.h"
 #import "_SandboxerHelper.h"
 #import "_Swizzling.h"
-#import "_WHDebugConsoleLabel.h"
-#import "_WHDebugCpuMonitor.h"
-#import "_WHDebugFPSMonitor.h"
-#import "_WHDebugMemoryMonitor.h"
-#import "_WHDebugMonitor.h"
 #import "_fishhook.h"
 #import "_NSObject+CocoaDebug.h"
 #import "_GPBMessage+CocoaDebug.h"

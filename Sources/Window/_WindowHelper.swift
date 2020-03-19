@@ -1,9 +1,9 @@
 //
 //  Example
-//  man
+//  man.li
 //
-//  Created by man on 11/11/2018.
-//  Copyright © 2018 man. All rights reserved.
+//  Created by man.li on 11/11/2018.
+//  Copyright © 2020 man.li. All rights reserved.
 //
 
 import UIKit
@@ -29,9 +29,6 @@ public class _WindowHelper: NSObject {
             self.window.rootViewController = self.vc
             self.window.delegate = self
             self.window.isHidden = false
-            _WHDebugFPSMonitor.sharedInstance()?.startMonitoring()
-            _WHDebugMemoryMonitor.sharedInstance()?.startMonitoring()
-            _WHDebugCpuMonitor.sharedInstance()?.startMonitoring()
         }
         
         if #available(iOS 13.0, *) {
@@ -59,9 +56,6 @@ public class _WindowHelper: NSObject {
             self.window.rootViewController = nil
             self.window.delegate = nil
             self.window.isHidden = true
-            _WHDebugFPSMonitor.sharedInstance()?.stopMonitoring()
-            _WHDebugMemoryMonitor.sharedInstance()?.stopMonitoring()
-            _WHDebugCpuMonitor.sharedInstance()?.stopMonitoring()
         }
     }
 }

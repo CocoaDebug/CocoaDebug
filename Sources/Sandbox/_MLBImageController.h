@@ -2,8 +2,8 @@
 //  _MLBImageController.h
 //  Example_Objc
 //
-//  Created by man on 7/25/19.
-//  Copyright © 2019 liman. All rights reserved.
+//  Created by man.li on 7/25/19.
+//  Copyright © 2020 liman.li. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
