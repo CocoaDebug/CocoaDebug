@@ -195,7 +195,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             
             weakSelf.refreshItem.enabled = YES;
             [weakSelf updateToolbarItems];
-            [weakSelf searchBar:weakSelf.searchBar textDidChange:weakSelf.searchText];
+            [weakSelf searchBar:weakSelf.searchBar textDidChange:weakSelf.searchBar.text];
         });
     });
     
