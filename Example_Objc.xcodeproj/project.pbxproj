@@ -241,11 +241,6 @@
 		38095EC92414C61900382668 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095D8D2414C61900382668 /* CocoaDebugTabBarController.swift */; };
 		38095ECA2414C61900382668 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095D8E2414C61900382668 /* CocoaDebugWindow.swift */; };
 		38095ECB2414C61900382668 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095D8F2414C61900382668 /* Color.swift */; };
-		38095ECC2414C61900382668 /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D912414C61900382668 /* _WHDebugMonitor.m */; };
-		38095ECD2414C61900382668 /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D942414C61900382668 /* _WHDebugConsoleLabel.m */; };
-		38095ECE2414C61900382668 /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D972414C61900382668 /* _WHDebugMemoryMonitor.m */; };
-		38095ECF2414C61900382668 /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D982414C61900382668 /* _WHDebugCpuMonitor.m */; };
-		38095ED02414C61900382668 /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D9A2414C61900382668 /* _WHDebugFPSMonitor.m */; };
 		38095ED12414C61900382668 /* _NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D9C2414C61900382668 /* _NSObject+CocoaDebug.m */; };
 		38095ED22414C61900382668 /* _GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D9D2414C61900382668 /* _GPBMessage+CocoaDebug.m */; };
 		380964F92414DF4E00382668 /* _GPBExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 380964BD2414DF4D00382668 /* _GPBExtensionRegistry.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -572,16 +567,6 @@
 		38095D8D2414C61900382668 /* CocoaDebugTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugTabBarController.swift; sourceTree = "<group>"; };
 		38095D8E2414C61900382668 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		38095D8F2414C61900382668 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		38095D912414C61900382668 /* _WHDebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMonitor.m; sourceTree = "<group>"; };
-		38095D922414C61900382668 /* _WHDebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugCpuMonitor.h; sourceTree = "<group>"; };
-		38095D932414C61900382668 /* _WHDebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMemoryMonitor.h; sourceTree = "<group>"; };
-		38095D942414C61900382668 /* _WHDebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugConsoleLabel.m; sourceTree = "<group>"; };
-		38095D952414C61900382668 /* _WHDebugFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugFPSMonitor.h; sourceTree = "<group>"; };
-		38095D962414C61900382668 /* _WHDebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMonitor.h; sourceTree = "<group>"; };
-		38095D972414C61900382668 /* _WHDebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMemoryMonitor.m; sourceTree = "<group>"; };
-		38095D982414C61900382668 /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
-		38095D992414C61900382668 /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
-		38095D9A2414C61900382668 /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
 		38095D9C2414C61900382668 /* _NSObject+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+CocoaDebug.m"; sourceTree = "<group>"; };
 		38095D9D2414C61900382668 /* _GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
 		38095D9E2414C61900382668 /* _NSObject+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+CocoaDebug.h"; sourceTree = "<group>"; };
@@ -711,7 +696,6 @@
 				38095D702414C61900382668 /* Sandbox */,
 				38095D822414C61900382668 /* Swizzling */,
 				38095D882414C61900382668 /* Window */,
-				38095D902414C61900382668 /* WHDebugTool */,
 				38095D9B2414C61900382668 /* Categories */,
 			);
 			path = Sources;
@@ -1060,23 +1044,6 @@
 				38095D8F2414C61900382668 /* Color.swift */,
 			);
 			path = Window;
-			sourceTree = "<group>";
-		};
-		38095D902414C61900382668 /* WHDebugTool */ = {
-			isa = PBXGroup;
-			children = (
-				38095D912414C61900382668 /* _WHDebugMonitor.m */,
-				38095D922414C61900382668 /* _WHDebugCpuMonitor.h */,
-				38095D932414C61900382668 /* _WHDebugMemoryMonitor.h */,
-				38095D942414C61900382668 /* _WHDebugConsoleLabel.m */,
-				38095D952414C61900382668 /* _WHDebugFPSMonitor.h */,
-				38095D962414C61900382668 /* _WHDebugMonitor.h */,
-				38095D972414C61900382668 /* _WHDebugMemoryMonitor.m */,
-				38095D982414C61900382668 /* _WHDebugCpuMonitor.m */,
-				38095D992414C61900382668 /* _WHDebugConsoleLabel.h */,
-				38095D9A2414C61900382668 /* _WHDebugFPSMonitor.m */,
-			);
-			path = WHDebugTool;
 			sourceTree = "<group>";
 		};
 		38095D9B2414C61900382668 /* Categories */ = {
@@ -1554,8 +1521,6 @@
 				38095ED22414C61900382668 /* _GPBMessage+CocoaDebug.m in Sources */,
 				38095DF02414C61900382668 /* CrashCell.swift in Sources */,
 				38095EC82414C61900382668 /* CocoaDebugViewController.swift in Sources */,
-				38095ED02414C61900382668 /* _WHDebugFPSMonitor.m in Sources */,
-				38095ECC2414C61900382668 /* _WHDebugMonitor.m in Sources */,
 				38095EAE2414C61900382668 /* _CanonicalRequest.m in Sources */,
 				38095DE52414C61900382668 /* AppInfoViewController.swift in Sources */,
 				38095EB62414C61900382668 /* LogCell.swift in Sources */,
@@ -1584,7 +1549,6 @@
 				380964FB2414DF4E00382668 /* _Any.pbobjc.m in Sources */,
 				380965092414DF4E00382668 /* _GPBDescriptor.m in Sources */,
 				EA165F0F204D2539001472C1 /* main.m in Sources */,
-				38095ECE2414C61900382668 /* _WHDebugMemoryMonitor.m in Sources */,
 				EAF58059204E7434001CA56D /* AFURLRequestSerialization.m in Sources */,
 				38095EC42414C61900382668 /* _WKWebView+Swizzling.m in Sources */,
 				38095EBB2414C61900382668 /* _MLBDirectoryContentsTableViewController.m in Sources */,
@@ -1628,7 +1592,6 @@
 				38095EAC2414C61900382668 /* _CustomHTTPProtocol.m in Sources */,
 				380965062414DF4E00382668 /* _GPBWireFormat.m in Sources */,
 				3809650A2414DF4E00382668 /* _GPBRootObject.m in Sources */,
-				38095ECD2414C61900382668 /* _WHDebugConsoleLabel.m in Sources */,
 				3809650B2414DF4E00382668 /* _GPBCodedInputStream.m in Sources */,
 				38095EC32414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				38095EA72414C61900382668 /* NetworkDetailCell.swift in Sources */,
@@ -1637,7 +1600,6 @@
 				38095EC62414C61900382668 /* _WindowHelper.swift in Sources */,
 				38095EB52414C61900382668 /* _OCLogModel.m in Sources */,
 				380965012414DF4E00382668 /* _GPBDictionary.m in Sources */,
-				38095ECF2414C61900382668 /* _WHDebugCpuMonitor.m in Sources */,
 				38095EBD2414C61900382668 /* _Sandboxer.m in Sources */,
 				380965072414DF4E00382668 /* _GPBArray.m in Sources */,
 				38095EBE2414C61900382668 /* _MLBFilePreviewController.m in Sources */,

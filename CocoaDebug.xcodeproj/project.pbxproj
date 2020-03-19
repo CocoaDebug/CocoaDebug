@@ -266,16 +266,6 @@
 		380967DE2414E0CD00382668 /* CocoaDebugTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3809668C2414E0CB00382668 /* CocoaDebugTabBarController.swift */; };
 		380967DF2414E0CD00382668 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3809668D2414E0CB00382668 /* CocoaDebugWindow.swift */; };
 		380967E02414E0CD00382668 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3809668E2414E0CB00382668 /* Color.swift */; };
-		380967E12414E0CD00382668 /* _WHDebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966902414E0CB00382668 /* _WHDebugMonitor.m */; };
-		380967E22414E0CD00382668 /* _WHDebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966912414E0CB00382668 /* _WHDebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		380967E32414E0CD00382668 /* _WHDebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966922414E0CB00382668 /* _WHDebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		380967E42414E0CD00382668 /* _WHDebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966932414E0CB00382668 /* _WHDebugConsoleLabel.m */; };
-		380967E52414E0CD00382668 /* _WHDebugFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966942414E0CB00382668 /* _WHDebugFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		380967E62414E0CD00382668 /* _WHDebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966952414E0CB00382668 /* _WHDebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		380967E72414E0CD00382668 /* _WHDebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966962414E0CB00382668 /* _WHDebugMemoryMonitor.m */; };
-		380967E82414E0CD00382668 /* _WHDebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966972414E0CB00382668 /* _WHDebugCpuMonitor.m */; };
-		380967E92414E0CD00382668 /* _WHDebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966982414E0CB00382668 /* _WHDebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		380967EA2414E0CD00382668 /* _WHDebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966992414E0CB00382668 /* _WHDebugFPSMonitor.m */; };
 		380967EB2414E0CD00382668 /* _NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809669B2414E0CB00382668 /* _NSObject+CocoaDebug.m */; };
 		380967EC2414E0CD00382668 /* _GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809669C2414E0CB00382668 /* _GPBMessage+CocoaDebug.m */; };
 		380967ED2414E0CD00382668 /* _NSObject+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3809669D2414E0CB00382668 /* _NSObject+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -609,16 +599,6 @@
 		3809668C2414E0CB00382668 /* CocoaDebugTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugTabBarController.swift; sourceTree = "<group>"; };
 		3809668D2414E0CB00382668 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		3809668E2414E0CB00382668 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		380966902414E0CB00382668 /* _WHDebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMonitor.m; sourceTree = "<group>"; };
-		380966912414E0CB00382668 /* _WHDebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugCpuMonitor.h; sourceTree = "<group>"; };
-		380966922414E0CB00382668 /* _WHDebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMemoryMonitor.h; sourceTree = "<group>"; };
-		380966932414E0CB00382668 /* _WHDebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugConsoleLabel.m; sourceTree = "<group>"; };
-		380966942414E0CB00382668 /* _WHDebugFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugFPSMonitor.h; sourceTree = "<group>"; };
-		380966952414E0CB00382668 /* _WHDebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugMonitor.h; sourceTree = "<group>"; };
-		380966962414E0CB00382668 /* _WHDebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugMemoryMonitor.m; sourceTree = "<group>"; };
-		380966972414E0CB00382668 /* _WHDebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugCpuMonitor.m; sourceTree = "<group>"; };
-		380966982414E0CB00382668 /* _WHDebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WHDebugConsoleLabel.h; sourceTree = "<group>"; };
-		380966992414E0CB00382668 /* _WHDebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WHDebugFPSMonitor.m; sourceTree = "<group>"; };
 		3809669B2414E0CB00382668 /* _NSObject+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+CocoaDebug.m"; sourceTree = "<group>"; };
 		3809669C2414E0CB00382668 /* _GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
 		3809669D2414E0CB00382668 /* _NSObject+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_NSObject+CocoaDebug.h"; sourceTree = "<group>"; };
@@ -738,7 +718,6 @@
 				3809666F2414E0CB00382668 /* Sandbox */,
 				380966812414E0CB00382668 /* Swizzling */,
 				380966872414E0CB00382668 /* Window */,
-				3809668F2414E0CB00382668 /* WHDebugTool */,
 				3809669A2414E0CB00382668 /* Categories */,
 				3809669F2414E0CB00382668 /* Protobuf */,
 			);
@@ -1090,23 +1069,6 @@
 			path = Window;
 			sourceTree = "<group>";
 		};
-		3809668F2414E0CB00382668 /* WHDebugTool */ = {
-			isa = PBXGroup;
-			children = (
-				380966902414E0CB00382668 /* _WHDebugMonitor.m */,
-				380966912414E0CB00382668 /* _WHDebugCpuMonitor.h */,
-				380966922414E0CB00382668 /* _WHDebugMemoryMonitor.h */,
-				380966932414E0CB00382668 /* _WHDebugConsoleLabel.m */,
-				380966942414E0CB00382668 /* _WHDebugFPSMonitor.h */,
-				380966952414E0CB00382668 /* _WHDebugMonitor.h */,
-				380966962414E0CB00382668 /* _WHDebugMemoryMonitor.m */,
-				380966972414E0CB00382668 /* _WHDebugCpuMonitor.m */,
-				380966982414E0CB00382668 /* _WHDebugConsoleLabel.h */,
-				380966992414E0CB00382668 /* _WHDebugFPSMonitor.m */,
-			);
-			path = WHDebugTool;
-			sourceTree = "<group>";
-		};
 		3809669A2414E0CB00382668 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,7 +1175,6 @@
 				380968042414E0CD00382668 /* _Empty.pbobjc.h in Headers */,
 				380967C92414E0CC00382668 /* _MLBFilePreviewController.h in Headers */,
 				380967AC2414E0CC00382668 /* _CacheStoragePolicy.h in Headers */,
-				380967E22414E0CD00382668 /* _WHDebugCpuMonitor.h in Headers */,
 				380968132414E0CD00382668 /* _GPBRuntimeTypes.h in Headers */,
 				380967FF2414E0CD00382668 /* _GPBDescriptor.h in Headers */,
 				380967FD2414E0CD00382668 /* _GPBMessage_PackagePrivate.h in Headers */,
@@ -1225,7 +1186,6 @@
 				3809680E2414E0CD00382668 /* _GPBBootstrap.h in Headers */,
 				380967A72414E0CC00382668 /* _HttpModel.h in Headers */,
 				380967EF2414E0CD00382668 /* _GPBProtocolBuffers.h in Headers */,
-				380967E62414E0CD00382668 /* _WHDebugMonitor.h in Headers */,
 				380967A42414E0CC00382668 /* _HttpDatasource.h in Headers */,
 				380968262414E0CD00382668 /* _GPBMessage.h in Headers */,
 				380967ED2414E0CD00382668 /* _NSObject+CocoaDebug.h in Headers */,
@@ -1235,7 +1195,6 @@
 				380968062414E0CD00382668 /* _Wrappers.pbobjc.h in Headers */,
 				380967D32414E0CC00382668 /* _MLBDirectoryContentsTableViewController.h in Headers */,
 				380967B32414E0CC00382668 /* _CustomHTTPProtocol.h in Headers */,
-				380967E32414E0CD00382668 /* _WHDebugMemoryMonitor.h in Headers */,
 				380967CE2414E0CC00382668 /* _MLBFileTableViewCell.h in Headers */,
 				380967C82414E0CC00382668 /* _Sandboxer-Header.h in Headers */,
 				380968142414E0CD00382668 /* _Timestamp.pbobjc.h in Headers */,
@@ -1248,7 +1207,6 @@
 				380968072414E0CD00382668 /* _FieldMask.pbobjc.h in Headers */,
 				380968112414E0CD00382668 /* _GPBArray_PackagePrivate.h in Headers */,
 				380967C62414E0CC00382668 /* _MLBImageController.h in Headers */,
-				380967E52414E0CD00382668 /* _WHDebugFPSMonitor.h in Headers */,
 				380968122414E0CD00382668 /* _Any.pbobjc.h in Headers */,
 				3809681E2414E0CD00382668 /* _GPBWellKnownTypes.h in Headers */,
 				380968232414E0CD00382668 /* _GPBCodedInputStream_PackagePrivate.h in Headers */,
@@ -1262,7 +1220,6 @@
 				380967F52414E0CD00382668 /* _GPBArray.h in Headers */,
 				380966EF2414E0CB00382668 /* _fishhook.h in Headers */,
 				380968202414E0CD00382668 /* _GPBDictionary_PackagePrivate.h in Headers */,
-				380967E92414E0CD00382668 /* _WHDebugConsoleLabel.h in Headers */,
 				380967BA2414E0CC00382668 /* _ObjcLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1533,17 +1490,13 @@
 				380967C42414E0CC00382668 /* _SandboxerHelper.m in Sources */,
 				380967A52414E0CC00382668 /* NetworkViewController.swift in Sources */,
 				380968082414E0CD00382668 /* _GPBUnknownFieldSet.m in Sources */,
-				380967EA2414E0CD00382668 /* _WHDebugFPSMonitor.m in Sources */,
 				3809680A2414E0CD00382668 /* _GPBMessage.m in Sources */,
 				380967FB2414E0CD00382668 /* _GPBUtilities.m in Sources */,
 				380967D42414E0CC00382668 /* _MLBFileInfo.m in Sources */,
 				380967B22414E0CC00382668 /* _CanonicalRequest.m in Sources */,
-				380967E12414E0CD00382668 /* _WHDebugMonitor.m in Sources */,
 				380967F12414E0CD00382668 /* _GPBExtensionRegistry.m in Sources */,
 				380967D82414E0CC00382668 /* _WKWebView+Swizzling.m in Sources */,
 				380967E02414E0CD00382668 /* Color.swift in Sources */,
-				380967E72414E0CD00382668 /* _WHDebugMemoryMonitor.m in Sources */,
-				380967E82414E0CD00382668 /* _WHDebugCpuMonitor.m in Sources */,
 				380967CB2414E0CC00382668 /* _MLBDirectoryContentsTableViewController.m in Sources */,
 				380967AE2414E0CC00382668 /* _QNSURLSessionDemux.m in Sources */,
 				380967F82414E0CD00382668 /* _GPBWellKnownTypes.m in Sources */,
@@ -1589,7 +1542,6 @@
 				380966E92414E0CB00382668 /* _CrashModel.swift in Sources */,
 				380968172414E0CD00382668 /* _GPBDescriptor.m in Sources */,
 				380966E52414E0CB00382668 /* AppInfo.swift in Sources */,
-				380967E42414E0CD00382668 /* _WHDebugConsoleLabel.m in Sources */,
 				380967DB2414E0CC00382668 /* _WindowHelper.swift in Sources */,
 				380967D02414E0CC00382668 /* _Sandboxer.m in Sources */,
 				380968002414E0CD00382668 /* _GPBUnknownField.m in Sources */,

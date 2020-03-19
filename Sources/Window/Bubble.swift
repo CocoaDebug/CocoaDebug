@@ -1,9 +1,9 @@
 //
 //  Example
-//  man
+//  man.li
 //
-//  Created by man on 11/11/2018.
-//  Copyright © 2018 man. All rights reserved.
+//  Created by man.li on 11/11/2018.
+//  Copyright © 2020 man.li. All rights reserved.
 //
 
 import UIKit
@@ -30,17 +30,11 @@ class Bubble: UIView {
     public let width: CGFloat = _width
     public let height: CGFloat = _height
     
-    private lazy var memoryLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
+    private lazy var numberLabel: UILabel? = {
+        return UILabel(frame: CGRect(x:0, y:0, width:_width, height:_height))
     }()
     
-    private lazy var fpsLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
-    }()
-    
-    private lazy var cpuLabel: _WHDebugConsoleLabel? = {
-        return _WHDebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
-    }()
+    private var networkNumber: Int = 0
     
     
     static var originalPosition: CGPoint {
@@ -143,10 +137,18 @@ class Bubble: UIView {
         self.layer.addSublayer(gradientLayer)
         
         
-        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
-            self.addSubview(memoryLabel)
-            self.addSubview(fpsLabel)
-            self.addSubview(cpuLabel)
+        if let numberLabel = numberLabel {
+            numberLabel.text = String(networkNumber)
+            numberLabel.textColor = .white
+            numberLabel.textAlignment = .center
+            numberLabel.adjustsFontSizeToFitWidth = true
+            if #available(iOS 8.2, *) {
+                numberLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            } else {
+                // Fallback on earlier versions
+                numberLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            }
+            self.addSubview(numberLabel)
         }
         
         
@@ -197,17 +199,7 @@ class Bubble: UIView {
         
         //notification
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
-        
-        //
-        _WHDebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.fpsLabel?.update(with: .FPS, value: value)
-        }
-        _WHDebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.memoryLabel?.update(with: .memory, value: value)
-        }
-        _WHDebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.cpuLabel?.update(with: .CPU, value: value)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -240,8 +232,23 @@ class Bubble: UIView {
                 self?.initLabelEvent(statusCode, true)
                 self?.initLabelEvent(statusCode, false)
             }
+            
+            self?.networkNumber = (self?.networkNumber ?? 0) + 1
+            if let networkNumber = self?.networkNumber {
+                self?.numberLabel?.text = String(networkNumber)
+            }
         }
     }
+    
+    @objc func deleteAllLogs_notification() {
+        dispatch_main_async_safe { [weak self] in
+            self?.networkNumber = 0
+            if let networkNumber = self?.networkNumber {
+                self?.numberLabel?.text = String(networkNumber)
+            }
+        }
+    }
+    
     
     //MARK: - target action
     @objc func tap() {
