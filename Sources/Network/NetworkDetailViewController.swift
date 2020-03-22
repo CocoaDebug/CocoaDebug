@@ -253,7 +253,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if copy == false {
                 //share via email
                 let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
-                let action = UIAlertAction.init(title: "OK", style: .cancel) { (_) in
+                let action = UIAlertAction.init(title: "OK", style: .cancel) { _ in
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
@@ -389,10 +389,38 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 //    }
     
     
+    //MARK: - alert
+    func showAlert() {
+        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy All", style: .default) { [weak self] _ in
+            UIPasteboard.general.string = self?.headerCell?.requestUrlTextView.text
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showCellAlert(contentTextView: UITextView) {
+        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy All", style: .default) { _ in
+            UIPasteboard.general.string = contentTextView.text
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
     //MARK: - override
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(selectAll(_:)) {
-            UIAlertView.init(title: "", message: "", delegate: self, cancelButtonTitle: "Copy All", otherButtonTitles: "Cancel").show()
+            self.showAlert()
             return true
         }
         return super.canPerformAction(action, withSender: sender)
@@ -420,6 +448,10 @@ extension NetworkDetailViewController {
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
             self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        cell.showCellAlert = { [weak self] in
+            self?.showCellAlert(contentTextView: cell.contentTextView)
         }
         
         return cell
@@ -506,7 +538,7 @@ extension NetworkDetailViewController {
         controller.dismiss(animated: true) {
             if error != nil {
                 let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
-                let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { (_) in
+                let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { _ in
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
@@ -515,16 +547,6 @@ extension NetworkDetailViewController {
             }else{
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
-        }
-    }
-}
-
-
-//MARK: - UIAlertViewDelegate
-extension NetworkDetailViewController: UIAlertViewDelegate {
-    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        if buttonIndex == 0 {
-            UIPasteboard.general.string = headerCell?.requestUrlTextView.text
         }
     }
 }

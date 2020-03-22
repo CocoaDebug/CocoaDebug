@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
+class AppInfoViewController: UITableViewController {
     
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
@@ -73,25 +73,41 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
         labelCrashCount.textColor = count > 0 ? .red : .white
     }
     
+    //MARK: - alert
+    func showAlert() {
+        let alert = UIAlertController.init(title: nil, message: "You must restart APP to ensure the changes take effect", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Restart later", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "Restart now", style: .destructive) { _ in
+            #if DEBUG
+                exit(0)
+            #endif
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     //MARK: - target action
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableCrashRecording = !crashSwitch.isOn
-        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
+        self.showAlert()
     }
     
     @objc func logSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
-        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
+        self.showAlert()
     }
     
     @objc func networkSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableNetworkMonitoring = !networkSwitch.isOn
-        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
+        self.showAlert()
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWebViewMonitoring = webViewSwitch.isOn
-        UIAlertView.init(title: "", message: "You must restart APP to ensure the changes take effect", delegate: self, cancelButtonTitle: "Restart now", otherButtonTitles: "Restart later").show()
+        self.showAlert()
     }
     
     @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
@@ -99,16 +115,6 @@ class AppInfoViewController: UITableViewController, UIAlertViewDelegate {
     }
 }
 
-//MARK: - UIAlertViewDelegate
-extension AppInfoViewController {
-    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        if buttonIndex == 0 {
-            #if DEBUG
-                exit(0)
-            #endif
-        }
-    }
-}
 
 //MARK: - UITableViewDelegate
 extension AppInfoViewController {
