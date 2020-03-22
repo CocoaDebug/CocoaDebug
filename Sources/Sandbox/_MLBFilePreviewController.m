@@ -142,18 +142,27 @@
                     }else{
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self.activityIndicatorView stopAnimating];
-                            [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                            [self showAlert];
                         });
                     }
                 });
                 break;
             }
             default: {
-                [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [self showAlert];
             }
                 break;
         }
     }
+}
+
+#pragma mark - alert
+- (void)showAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not supported" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancelAction];
+    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Action

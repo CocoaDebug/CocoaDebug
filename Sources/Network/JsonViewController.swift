@@ -115,11 +115,27 @@ class JsonViewController: UIViewController {
         }
     }
     
+    //MARK: - alert
+    func showAlert() {
+        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy All", style: .default) { [weak self] _ in
+            UIPasteboard.general.string = self?.textView.text
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     
     //MARK: - override
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(selectAll(_:)) {
-            UIAlertView.init(title: "", message: "", delegate: self, cancelButtonTitle: "Copy All", otherButtonTitles: "Cancel").show()
+            self.showAlert()
             return true
         }
         return super.canPerformAction(action, withSender: sender)
@@ -127,15 +143,5 @@ class JsonViewController: UIViewController {
     
     override func selectAll(_ sender: Any?) {
         textView.selectAll(sender)
-    }
-}
-
-
-//MARK: - UIAlertViewDelegate
-extension JsonViewController: UIAlertViewDelegate {
-    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
-        if buttonIndex == 0 {
-            UIPasteboard.general.string = textView.text
-        }
     }
 }

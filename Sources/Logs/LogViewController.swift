@@ -532,6 +532,8 @@ extension LogViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath) as! LogCell
+        
         if tableView == defaultTableView
         {
             //否则偶尔crash
@@ -539,10 +541,7 @@ extension LogViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
             cell.model = defaultModels[indexPath.row]
-            return cell
         }
         else if tableView == colorTableView
         {
@@ -551,10 +550,7 @@ extension LogViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
             cell.model = colorModels[indexPath.row]
-            return cell
         }
         else
         {
@@ -563,12 +559,29 @@ extension LogViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath)
-                as! LogCell
             cell.model = h5Models[indexPath.row]
-            return cell
         }
+        
+        cell.showCellAlert = { [weak self] in
+            self?.showCellAlert(labelContent: cell.labelContent)
+        }
+        return cell
     }
+    
+    //MARK: - alert
+    func showCellAlert(labelContent: UITextView) {
+        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy All", style: .default) { _ in
+            UIPasteboard.general.string = labelContent.text
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 //MARK: - UITableViewDelegate
