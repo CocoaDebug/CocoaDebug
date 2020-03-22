@@ -11,10 +11,15 @@ import UIKit
 
 class AboutViewController: UITableViewController {
     
+    @IBOutlet weak var versionLabel: UILabel!
     
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let version = "1.2.3"
+        
+        self.versionLabel.text = "CocoaDebug Version ".appending(version)
         
         tableView.tableFooterView = UIView()
     }
