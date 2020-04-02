@@ -25,7 +25,7 @@ class IgnoredURLsViewController: UITableViewController {
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
         naviItemTitleLabel?.font = .boldSystemFont(ofSize: 20)
-        naviItemTitleLabel?.text = "???"
+        naviItemTitleLabel?.text = "Ignored URLs"
         naviItem.titleView = naviItemTitleLabel
         
         tableView.tableFooterView = UIView()
