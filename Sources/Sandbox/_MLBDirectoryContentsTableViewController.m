@@ -210,7 +210,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (fileInfo.isDirectory) {
         _MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[_MLBDirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.fileInfo = fileInfo;
-        directoryContentsTableViewController.hidesBottomBarWhenPushed = YES;//liman
+//        directoryContentsTableViewController.hidesBottomBarWhenPushed = YES;//liman
         return directoryContentsTableViewController;
     } else {
         if ([_Sandboxer shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
