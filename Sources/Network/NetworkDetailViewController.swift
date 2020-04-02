@@ -13,7 +13,10 @@ import MessageUI
 class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var closeItem: UIBarButtonItem!
+    @IBOutlet weak var naviItem: UINavigationItem!
     
+    var naviItemTitleLabel: UILabel?
+
     var httpModel: _HttpModel?
     
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
@@ -299,6 +302,13 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        naviItemTitleLabel?.textAlignment = .center
+        naviItemTitleLabel?.textColor = Color.mainGreen
+        naviItemTitleLabel?.font = .boldSystemFont(ofSize: 20)
+        naviItemTitleLabel?.text = "Details"
+        naviItem.titleView = naviItemTitleLabel
         
         closeItem.tintColor = Color.mainGreen
         
