@@ -18,6 +18,7 @@ class NetworkViewController: UIViewController {
     var cacheModels: Array<_HttpModel>?
     var searchModels: Array<_HttpModel>?
     
+    var naviItemTitleLabel: UILabel?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -92,8 +93,13 @@ class NetworkViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         
+        naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        naviItemTitleLabel?.textAlignment = .center
+        naviItemTitleLabel?.textColor = Color.mainGreen
+        naviItemTitleLabel?.font = .boldSystemFont(ofSize: 20)
+        naviItem.titleView = naviItemTitleLabel
         
-        naviItem.title = "[0]"
+        naviItemTitleLabel?.text = "[0]"
         deleteItem.tintColor = Color.mainGreen
         
         //notification
@@ -167,7 +173,7 @@ class NetworkViewController: UIViewController {
 
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
-            self?.naviItem.title = "[0]"
+            self?.naviItemTitleLabel?.text = "[0]"
         }
         
         NotificationCenter.default.post(name: NSNotification.Name("deleteAllLogs_CocoaDebug"), object: nil, userInfo: nil)
@@ -191,7 +197,7 @@ extension NetworkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = models?.count {
-            naviItem.title = "[" + String(count) + "]"
+            naviItemTitleLabel?.text = "[" + String(count) + "]"
             return count
         }
         return 0

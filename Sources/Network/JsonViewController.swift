@@ -19,7 +19,10 @@ class JsonViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var naviItem: UINavigationItem!
     
+    var naviItemTitleLabel: UILabel?
+
     var editType: EditType  = .unknown
     var httpModel: _HttpModel?
     var detailModel: NetworkDetailModel?
@@ -73,10 +76,15 @@ class JsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        naviItemTitleLabel?.textAlignment = .center
+        naviItemTitleLabel?.textColor = Color.mainGreen
+        naviItemTitleLabel?.font = .boldSystemFont(ofSize: 20)
+        naviItemTitleLabel?.text = detailModel?.title
+        naviItem.titleView = naviItemTitleLabel
+        
         textView.textContainer.lineFragmentPadding = 15
 //        textView.textContainerInset = .zero
-        
-        self.title = detailModel?.title
         
         //判断类型 (默认类型URL)
         if detailModel?.title == "REQUEST HEADER" {
