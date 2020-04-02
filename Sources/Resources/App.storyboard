@@ -111,6 +111,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="mEF-aY-qWg"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="naviItem" destination="uCh-Lu-9de" id="bP2-9u-ub4"/>
                         <outlet property="textviewName" destination="VfO-ya-iWG" id="gry-vq-ffv"/>
                         <outlet property="textviewReason" destination="kbB-7c-HgE" id="MUi-k9-l8S"/>
                         <outlet property="textviewStackTraces" destination="hdj-6x-4YO" id="nSP-vx-AZH"/>
@@ -173,6 +174,12 @@
                             <outlet property="delegate" destination="wXt-DM-5Pz" id="8jk-jD-Puv"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="aWa-i7-7vr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="2W9-oW-Eqa"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="naviItem" destination="aWa-i7-7vr" id="5Na-dp-CF2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHE-gZ-5lN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,6 +211,9 @@
                     <navigationItem key="navigationItem" title="Ignored URLs" id="isR-TM-jaf">
                         <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="naviItem" destination="isR-TM-jaf" id="abw-ur-v0C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPT-gm-xVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -939,6 +949,7 @@ Author:
                         <barButtonItem key="backBarButtonItem" title=" " id="Qcc-2f-UGU"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="naviItem" destination="miW-ow-i75" id="Ohg-gp-LEr"/>
                         <outlet property="versionLabel" destination="lng-CP-TTU" id="MPO-vR-80e"/>
                     </connections>
                 </tableViewController>

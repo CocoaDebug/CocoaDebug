@@ -37,7 +37,6 @@
         CocoaDebug.mainColor = @"#fd9727";
          */
     
-    CocoaDebug.ignoredURLs = @[@"aaa.com", @"bbb.com"];
         [CocoaDebug enable];
     #endif
     
