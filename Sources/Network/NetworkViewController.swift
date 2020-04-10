@@ -166,9 +166,9 @@ class NetworkViewController: UIViewController {
         _HttpDatasource.shared().reset()
         models = []
         cacheModels = []
-        searchBar.text = nil
+//        searchBar.text = nil
         searchBar.resignFirstResponder()
-        CocoaDebugSettings.shared.networkSearchWord = nil
+//        CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.networkLastIndex = 0
 
         dispatch_main_async_safe { [weak self] in

@@ -417,9 +417,9 @@ class LogViewController: UIViewController {
         {
             defaultModels = []
             defaultCacheModels = []
-            defaultSearchBar.text = nil
+//            defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-            CocoaDebugSettings.shared.logSearchWordDefault = nil
+//            CocoaDebugSettings.shared.logSearchWordDefault = nil
             
             _OCLogStoreManager.shared().resetDefaultLogs()
             
@@ -431,9 +431,9 @@ class LogViewController: UIViewController {
         {
             colorModels = []
             colorCacheModels = []
-            colorSearchBar.text = nil
+//            colorSearchBar.text = nil
             colorSearchBar.resignFirstResponder()
-            CocoaDebugSettings.shared.logSearchWordColor = nil
+//            CocoaDebugSettings.shared.logSearchWordColor = nil
             
             _OCLogStoreManager.shared().resetColorLogs()
             
@@ -445,9 +445,9 @@ class LogViewController: UIViewController {
         {
             h5Models = []
             h5CacheModels = []
-            h5SearchBar.text = nil
+//            h5SearchBar.text = nil
             h5SearchBar.resignFirstResponder()
-            CocoaDebugSettings.shared.logSearchWordH5 = nil
+//            CocoaDebugSettings.shared.logSearchWordH5 = nil
             
             _OCLogStoreManager.shared().resetH5Logs()
             
