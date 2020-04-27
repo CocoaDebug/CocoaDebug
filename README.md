@@ -12,7 +12,11 @@
 
 ## Introduction
 
-![example](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/example.gif)
+![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png)
+![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/7.png)
+![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/8.png)
+![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/9.png)
+![](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/10.png)
 
 - [x] Shake to hide or show the black bubble. (support both device and simulator)
 
