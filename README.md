@@ -12,11 +12,11 @@
 
 ## Introduction
 
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png" width="100">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/7.png" width="150">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/7.png" width="200">
 <img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/8.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/9.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/10.png" width="300">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/9.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/10.png" width="200">
 
 
 - [x] Shake to hide or show the black bubble. (support both device and simulator)
