@@ -10,14 +10,18 @@
 
 <span style="float:none" />
 
+## Screenshot
+
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/01.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/02.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/03.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/04.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/05.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/06.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/07.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/08.png" width="200">
+
 ## Introduction
-
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/6.png" width="180">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/7.png" width="180">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/8.png" width="180">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/9.png" width="180">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/10.png" width="180">
-
 
 - [x] Shake to hide or show the black bubble. (support both device and simulator)
 
