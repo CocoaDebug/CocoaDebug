@@ -254,9 +254,7 @@
 		380967D22414E0CC00382668 /* _MLBImageResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809667E2414E0CB00382668 /* _MLBImageResources.m */; };
 		380967D32414E0CC00382668 /* _MLBDirectoryContentsTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3809667F2414E0CB00382668 /* _MLBDirectoryContentsTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		380967D42414E0CC00382668 /* _MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966802414E0CB00382668 /* _MLBFileInfo.m */; };
-		380967D52414E0CC00382668 /* _UIWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966822414E0CB00382668 /* _UIWebView+Swizzling.m */; };
 		380967D62414E0CC00382668 /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966832414E0CB00382668 /* _Swizzling.m */; };
-		380967D72414E0CC00382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966842414E0CB00382668 /* _NSObject+UIDebuggingInformationOverlay.m */; };
 		380967D82414E0CC00382668 /* _WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966852414E0CB00382668 /* _WKWebView+Swizzling.m */; };
 		380967D92414E0CC00382668 /* _Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966862414E0CB00382668 /* _Swizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		380967DA2414E0CC00382668 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380966882414E0CB00382668 /* Bubble.swift */; };
@@ -587,9 +585,7 @@
 		3809667E2414E0CB00382668 /* _MLBImageResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBImageResources.m; sourceTree = "<group>"; };
 		3809667F2414E0CB00382668 /* _MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
 		380966802414E0CB00382668 /* _MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBFileInfo.m; sourceTree = "<group>"; };
-		380966822414E0CB00382668 /* _UIWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_UIWebView+Swizzling.m"; sourceTree = "<group>"; };
 		380966832414E0CB00382668 /* _Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Swizzling.m; sourceTree = "<group>"; };
-		380966842414E0CB00382668 /* _NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
 		380966852414E0CB00382668 /* _WKWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_WKWebView+Swizzling.m"; sourceTree = "<group>"; };
 		380966862414E0CB00382668 /* _Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Swizzling.h; sourceTree = "<group>"; };
 		380966882414E0CB00382668 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -1046,9 +1042,7 @@
 		380966812414E0CB00382668 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
-				380966822414E0CB00382668 /* _UIWebView+Swizzling.m */,
 				380966832414E0CB00382668 /* _Swizzling.m */,
-				380966842414E0CB00382668 /* _NSObject+UIDebuggingInformationOverlay.m */,
 				380966852414E0CB00382668 /* _WKWebView+Swizzling.m */,
 				380966862414E0CB00382668 /* _Swizzling.h */,
 			);
@@ -1251,7 +1245,7 @@
 		380965692414E04F00382668 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = man;
 				TargetAttributes = {
 					380965712414E04F00382668 = {
@@ -1528,13 +1522,11 @@
 				380968242414E0CD00382668 /* _Api.pbobjc.m in Sources */,
 				3809680F2414E0CD00382668 /* _GPBWireFormat.m in Sources */,
 				380966E62414E0CB00382668 /* CrashDetailViewController.swift in Sources */,
-				380967D52414E0CC00382668 /* _UIWebView+Swizzling.m in Sources */,
 				380967C32414E0CC00382668 /* _ObjcLog.m in Sources */,
 				380967D12414E0CC00382668 /* _MLBFilePreviewController.m in Sources */,
 				380967EC2414E0CD00382668 /* _GPBMessage+CocoaDebug.m in Sources */,
 				3809681F2414E0CD00382668 /* _Empty.pbobjc.m in Sources */,
 				380966EC2414E0CB00382668 /* AboutViewController.swift in Sources */,
-				380967D72414E0CC00382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				380967A62414E0CC00382668 /* NetworkDetailViewController.swift in Sources */,
 				3809681C2414E0CD00382668 /* _GPBRootObject.m in Sources */,
 				380967B92414E0CC00382668 /* CocoaDebugTool.m in Sources */,
@@ -1669,6 +1661,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

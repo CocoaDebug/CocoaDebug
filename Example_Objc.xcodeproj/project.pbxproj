@@ -230,9 +230,7 @@
 		38095EBE2414C61900382668 /* _MLBFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D7E2414C61900382668 /* _MLBFilePreviewController.m */; };
 		38095EBF2414C61900382668 /* _MLBImageResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D7F2414C61900382668 /* _MLBImageResources.m */; };
 		38095EC02414C61900382668 /* _MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D812414C61900382668 /* _MLBFileInfo.m */; };
-		38095EC12414C61900382668 /* _UIWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D832414C61900382668 /* _UIWebView+Swizzling.m */; };
 		38095EC22414C61900382668 /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D842414C61900382668 /* _Swizzling.m */; };
-		38095EC32414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D852414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m */; };
 		38095EC42414C61900382668 /* _WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095D862414C61900382668 /* _WKWebView+Swizzling.m */; };
 		38095EC52414C61900382668 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095D892414C61900382668 /* Bubble.swift */; };
 		38095EC62414C61900382668 /* _WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095D8A2414C61900382668 /* _WindowHelper.swift */; };
@@ -558,9 +556,7 @@
 		38095D7F2414C61900382668 /* _MLBImageResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBImageResources.m; sourceTree = "<group>"; };
 		38095D802414C61900382668 /* _MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
 		38095D812414C61900382668 /* _MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBFileInfo.m; sourceTree = "<group>"; };
-		38095D832414C61900382668 /* _UIWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_UIWebView+Swizzling.m"; sourceTree = "<group>"; };
 		38095D842414C61900382668 /* _Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Swizzling.m; sourceTree = "<group>"; };
-		38095D852414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
 		38095D862414C61900382668 /* _WKWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_WKWebView+Swizzling.m"; sourceTree = "<group>"; };
 		38095D872414C61900382668 /* _Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Swizzling.h; sourceTree = "<group>"; };
 		38095D892414C61900382668 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -1042,9 +1038,7 @@
 		38095D822414C61900382668 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
-				38095D832414C61900382668 /* _UIWebView+Swizzling.m */,
 				38095D842414C61900382668 /* _Swizzling.m */,
-				38095D852414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m */,
 				38095D862414C61900382668 /* _WKWebView+Swizzling.m */,
 				38095D872414C61900382668 /* _Swizzling.h */,
 			);
@@ -1153,7 +1147,6 @@
 				C31F52D1F9481B16F04DA5B9 /* Pods-Example_ObjcTests.debug.xcconfig */,
 				72E88BCC9E1515242D629AFF /* Pods-Example_ObjcTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1631,7 +1624,6 @@
 				EAF58059204E7434001CA56D /* AFURLRequestSerialization.m in Sources */,
 				38095EC42414C61900382668 /* _WKWebView+Swizzling.m in Sources */,
 				38095EBB2414C61900382668 /* _MLBDirectoryContentsTableViewController.m in Sources */,
-				38095EC12414C61900382668 /* _UIWebView+Swizzling.m in Sources */,
 				380964FC2414DF4E00382668 /* _GPBWellKnownTypes.m in Sources */,
 				38095EC92414C61900382668 /* CocoaDebugTabBarController.swift in Sources */,
 				38095DEE2414C61900382668 /* Device.swift in Sources */,
@@ -1672,7 +1664,6 @@
 				380965062414DF4E00382668 /* _GPBWireFormat.m in Sources */,
 				3809650A2414DF4E00382668 /* _GPBRootObject.m in Sources */,
 				3809650B2414DF4E00382668 /* _GPBCodedInputStream.m in Sources */,
-				38095EC32414C61900382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				38095EA72414C61900382668 /* NetworkDetailCell.swift in Sources */,
 				38095DE22414C61900382668 /* CocoaDebug.swift in Sources */,
 				38095DEF2414C61900382668 /* AboutViewController.swift in Sources */,

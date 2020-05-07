@@ -230,9 +230,7 @@
 		38095C532414C5F400382668 /* _MLBFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B132414C5F300382668 /* _MLBFilePreviewController.m */; };
 		38095C542414C5F400382668 /* _MLBImageResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B142414C5F300382668 /* _MLBImageResources.m */; };
 		38095C552414C5F400382668 /* _MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B162414C5F300382668 /* _MLBFileInfo.m */; };
-		38095C562414C5F400382668 /* _UIWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B182414C5F300382668 /* _UIWebView+Swizzling.m */; };
 		38095C572414C5F400382668 /* _Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B192414C5F300382668 /* _Swizzling.m */; };
-		38095C582414C5F400382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B1A2414C5F300382668 /* _NSObject+UIDebuggingInformationOverlay.m */; };
 		38095C592414C5F400382668 /* _WKWebView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 38095B1B2414C5F300382668 /* _WKWebView+Swizzling.m */; };
 		38095C5A2414C5F400382668 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095B1E2414C5F300382668 /* Bubble.swift */; };
 		38095C5B2414C5F400382668 /* _WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38095B1F2414C5F300382668 /* _WindowHelper.swift */; };
@@ -269,7 +267,6 @@
 		380965672414DF9100382668 /* _Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809654E2414DF9000382668 /* _Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
-		3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */; };
 		3875C6FA228F1A4800F6B626 /* WKWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
@@ -612,9 +609,7 @@
 		38095B142414C5F300382668 /* _MLBImageResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBImageResources.m; sourceTree = "<group>"; };
 		38095B152414C5F300382668 /* _MLBDirectoryContentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MLBDirectoryContentsTableViewController.h; sourceTree = "<group>"; };
 		38095B162414C5F300382668 /* _MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MLBFileInfo.m; sourceTree = "<group>"; };
-		38095B182414C5F300382668 /* _UIWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_UIWebView+Swizzling.m"; sourceTree = "<group>"; };
 		38095B192414C5F300382668 /* _Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Swizzling.m; sourceTree = "<group>"; };
-		38095B1A2414C5F300382668 /* _NSObject+UIDebuggingInformationOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_NSObject+UIDebuggingInformationOverlay.m"; sourceTree = "<group>"; };
 		38095B1B2414C5F300382668 /* _WKWebView+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_WKWebView+Swizzling.m"; sourceTree = "<group>"; };
 		38095B1C2414C5F300382668 /* _Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Swizzling.h; sourceTree = "<group>"; };
 		38095B1E2414C5F300382668 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -695,7 +690,6 @@
 		3809654F2414DF9000382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
 		383CB06121E5F58500398720 /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewTestController.swift; sourceTree = "<group>"; };
 		3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewTestController.swift; sourceTree = "<group>"; };
 		38B5614D21CCC4CB00BB276A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		40B2F0D32DB860EF145358AC /* Pods_Example_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1165,9 +1159,7 @@
 		38095B172414C5F300382668 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
-				38095B182414C5F300382668 /* _UIWebView+Swizzling.m */,
 				38095B192414C5F300382668 /* _Swizzling.m */,
-				38095B1A2414C5F300382668 /* _NSObject+UIDebuggingInformationOverlay.m */,
 				38095B1B2414C5F300382668 /* _WKWebView+Swizzling.m */,
 				38095B1C2414C5F300382668 /* _Swizzling.h */,
 			);
@@ -1316,7 +1308,6 @@
 				EAF57FA3204E73C2001CA56D /* Vendor */,
 				EA1659D6204D1B14001472C1 /* AppDelegate.swift */,
 				EA1659D8204D1B14001472C1 /* ViewController.swift */,
-				3875C6F7228F1A3A00F6B626 /* UIWebViewTestController.swift */,
 				3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */,
 				EA1659DA204D1B14001472C1 /* Main.storyboard */,
 				EA1659DD204D1B14001472C1 /* Assets.xcassets */,
@@ -1824,7 +1815,6 @@
 				3809655F2414DF9000382668 /* _Duration.pbobjc.m in Sources */,
 				38095C422414C5F400382668 /* _CacheStoragePolicy.m in Sources */,
 				EAF5801A204E73C3001CA56D /* NetworkActivityIndicator.swift in Sources */,
-				38095C562414C5F400382668 /* _UIWebView+Swizzling.m in Sources */,
 				EAF58018204E73C3001CA56D /* ServerTrustPolicy.swift in Sources */,
 				EAF58041204E73C3001CA56D /* ASIDataDecompressor.m in Sources */,
 				EAF58043204E73C3001CA56D /* ASIInputStream.m in Sources */,
@@ -1917,11 +1907,9 @@
 				EAF58038204E73C3001CA56D /* ASICloudFilesRequest.m in Sources */,
 				38095C3D2414C5F400382668 /* _NetworkHelper.m in Sources */,
 				38095B7A2414C5F300382668 /* AppInfoViewController.swift in Sources */,
-				38095C582414C5F400382668 /* _NSObject+UIDebuggingInformationOverlay.m in Sources */,
 				EAF58042204E73C3001CA56D /* ASIAuthenticationDialog.m in Sources */,
 				38095C4D2414C5F400382668 /* _ObjcLog.m in Sources */,
 				38095C552414C5F400382668 /* _MLBFileInfo.m in Sources */,
-				3875C6F8228F1A3A00F6B626 /* UIWebViewTestController.swift in Sources */,
 				380965612414DF9000382668 /* _GPBRootObject.m in Sources */,
 				38095C5C2414C5F400382668 /* CocoaDebugNavigationController.swift in Sources */,
 				38095C4E2414C5F400382668 /* _SandboxerHelper.m in Sources */,

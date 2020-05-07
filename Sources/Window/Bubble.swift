@@ -154,23 +154,6 @@ class Bubble: UIView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
-        
-        // ***************** Private API *****************
-        if #available(iOS 11.0, *) {
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress(sender:)))
-            self.addGestureRecognizer(longPress)
-            tapGesture.require(toFail: longPress)
-        } else {
-            // Fallback on earlier versions
-            if #available(iOS 10.0, *) {
-                let longPress = UILongPressGestureRecognizer(target: self, action: #selector(Bubble.longPress2(sender:)))
-                self.addGestureRecognizer(longPress)
-                tapGesture.require(toFail: longPress)
-            } else {
-                // Fallback on earlier versions
-            }
-        }
-        // ***************** Private API *****************
     }
     
     func changeSideDisplay() {
@@ -254,41 +237,6 @@ class Bubble: UIView {
     @objc func tap() {
         delegate?.didTapBubble()
     }
-
-    //***************** Private API *****************
-    @available(iOS 11.0, *)
-    @objc func longPress(sender: UILongPressGestureRecognizer) {
-        #if DEBUG
-            if (sender.state == .began) {
-                guard let cls = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type else {return}
-                
-                if !self.hasPerformedSetup {
-                    cls.perform(NSSelectorFromString("prepareDebuggingOverlay"))
-                    self.hasPerformedSetup = true
-                }
-                
-                let tapGesture = UITapGestureRecognizer()
-                tapGesture.state = .ended
-                
-                let handlerCls = NSClassFromString("UIDebuggingInformationOverlayInvokeGestureHandler") as! NSObject.Type
-                let handler = handlerCls.perform(NSSelectorFromString("mainHandler")).takeUnretainedValue()
-                let _ = handler.perform(NSSelectorFromString("_handleActivationGesture:"), with: tapGesture)
-            }
-        #endif
-    }
-    
-    @available(iOS 10.0, *)
-    @objc func longPress2(sender: UILongPressGestureRecognizer) {
-        #if DEBUG
-            if (sender.state == .began) {
-                let overlayClass = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type
-                _ = overlayClass?.perform(NSSelectorFromString("prepareDebuggingOverlay"))
-                let overlay = overlayClass?.perform(NSSelectorFromString("overlay")).takeUnretainedValue() as? UIWindow
-                _ = overlay?.perform(NSSelectorFromString("toggleVisibility"))
-            }
-        #endif
-    }
-    //***************** Private API *****************
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {
         if panner.state == .began {
