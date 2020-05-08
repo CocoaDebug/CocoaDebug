@@ -25,8 +25,6 @@
 
 - [x] Shake to hide or show the black bubble. (support both device and simulator)
 
-- [x] Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)
-
 - [x] Application memory usage and *FPS*.
 
 - [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
@@ -48,6 +46,8 @@
 - [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support both `WKWebView` and `UIWebView`).
 
 - [x] Support `JSON` and Google's `Protocol buffers`
+
+- [x] ~~Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)~~
 
 ## Installation
 
