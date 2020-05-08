@@ -23,19 +23,17 @@
 
 ## Introduction
 
-- [x] Shake to hide or show the black bubble. (support both device and simulator)
-
-- [x] Application memory usage and *FPS*.
+- [x] Shake to hide or show the black bubble. (Support iPhone device and simulator)
 
 - [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
 
-- [x] List of all the network requests sent by the application.
+- [x] List of all the network requests sent by the application. (Support `JSON` and Google's `Protocol buffers`)
 
 - [x] List crash errors.
 
 - [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
 
-- [x] Copy logs. (long press the text, then select all or select copy)
+- [x] Copy logs. (Long press the text, then select all or select copy)
 
 - [x] Search logs by keyword.
 
@@ -45,7 +43,7 @@
 
 - [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support `WKWebView` ~~and `UIWebView`~~).
 
-- [x] Support `JSON` and Google's `Protocol buffers`
+- [x] ~~Application memory usage and *FPS*.~~
 
 - [x] ~~Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)~~
 
