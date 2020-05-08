@@ -41,11 +41,11 @@
 
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
-- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support `WKWebView` ~~and `UIWebView`~~).
+- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support `WKWebView` ~~and `UIWebView`~~). ***UIWebView Deprecated***
 
-- [x] ~~Application memory usage and *FPS*.~~
+- [x] ~~Application memory usage and *FPS*.~~ ***Deprecated***
 
-- [x] ~~Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)~~
+- [x] ~~Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)~~ ***Private API Deprecated***
 
 ## Installation
 
