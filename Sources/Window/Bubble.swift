@@ -154,6 +154,9 @@ class Bubble: UIView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
+        
+        let longTap = UILongPressGestureRecognizer.init(target: self, action: #selector(Bubble.longTap))
+        self.addGestureRecognizer(longTap)
     }
     
     func changeSideDisplay() {
@@ -236,6 +239,12 @@ class Bubble: UIView {
     //MARK: - target action
     @objc func tap() {
         delegate?.didTapBubble()
+    }
+    
+    @objc func longTap() {
+        _HttpDatasource.shared().reset()
+        CocoaDebugSettings.shared.networkLastIndex = 0
+        NotificationCenter.default.post(name: NSNotification.Name("deleteAllLogs_CocoaDebug"), object: nil, userInfo: nil)
     }
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {
