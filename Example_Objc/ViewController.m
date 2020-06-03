@@ -38,7 +38,9 @@
     
     
     //save image
-    [self saveImage:[UIImage imageNamed:@"111.png"]];
+    for (int i = 0; i < 20; i ++) {
+        [self saveImage:[UIImage imageNamed:@"111.png"] name:[NSString stringWithFormat:@"Documents/%d", i]];
+    }
     
     //save txt
     [self saveTXT:@"hahahahahahahaha"];
@@ -50,8 +52,8 @@
     }
 }
 
-- (void)saveImage:(UIImage *)image {
-    NSString *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/111"];
+- (void)saveImage:(UIImage *)image name:(NSString *)name {
+    NSString *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:name];
     [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
 }
 
