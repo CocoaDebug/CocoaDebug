@@ -139,7 +139,21 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     //
     self.view.backgroundColor = [UIColor blackColor];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 44) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 50) style:UITableViewStylePlain];
+    
+    BOOL iPhoneX = NO;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.top > 24.0) {
+            iPhoneX = YES;
+        }
+    }
+    
+    if (iPhoneX) {
+        self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 50 - 34);
+    }
+    
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
