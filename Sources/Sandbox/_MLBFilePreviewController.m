@@ -35,6 +35,7 @@
     self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self init_documentInteractionController];
     [self initDatas];
     [self setupViews];
     [self loadFile];
@@ -58,19 +59,15 @@
     self.activityIndicatorView.center = self.view.center;
 }
 
-#pragma mark - Getters
-
-- (UIDocumentInteractionController *)documentInteractionController {
-    if (!_documentInteractionController) {
-        _documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:self.fileInfo.URL];
-        _documentInteractionController.delegate = self;
-        _documentInteractionController.name = self.fileInfo.displayName;
-    }
-    
-    return _documentInteractionController;
-}
-
 #pragma mark - Private Methods
+
+- (void)init_documentInteractionController {
+    if (!self.documentInteractionController) {
+        self.documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:self.fileInfo.URL];
+        self.documentInteractionController.delegate = self;
+        self.documentInteractionController.name = self.fileInfo.displayName;
+    }
+}
 
 - (void)initDatas {
     
@@ -161,6 +158,9 @@
 
 - (void)sharingAction {
     if (![_Sandboxer shared].isShareable) { return; }
+    
+    [self init_documentInteractionController];
+
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
     } else {
