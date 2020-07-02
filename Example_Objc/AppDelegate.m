@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Example_Objc-Swift.h"
 
 @interface AppDelegate ()
 
