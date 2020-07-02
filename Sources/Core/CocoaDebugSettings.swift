@@ -12,7 +12,12 @@ import Foundation
 
     @objc public static let shared = CocoaDebugSettings()
 
-    @objc public var isRunning: Bool = false
+    @objc public var isRunning: Bool = false {
+        didSet {
+            UserDefaults.standard.set(isRunning, forKey: "isRunning_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
 
     @objc public var slowAnimations: Bool = false {
         didSet {            
@@ -225,7 +230,8 @@ import Foundation
         logSearchWordH5 = UserDefaults.standard.string(forKey: "logSearchWordH5_CocoaDebug")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
         mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"
-
+        isRunning = UserDefaults.standard.bool(forKey: "isRunning_CocoaDebug")
+        
         //objc
         logMaxCount = _NetworkHelper.shared().logMaxCount
         onlyURLs = _NetworkHelper.shared().onlyURLs

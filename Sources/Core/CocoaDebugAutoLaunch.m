@@ -22,25 +22,65 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
+static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key";
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
+
+@interface NSObject (CocoaDebugAutoLaunch)
+
+@property (nonatomic, assign) BOOL applicationDidFinishLaunching;
+
+@end
 
 @implementation NSObject (CocoaDebugAutoLaunch)
 
+#pragma mark - load
 + (void)load {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunchingNotification:) name:UIApplicationDidFinishLaunchingNotification object:nil];
 }
 
-- (void)applicationDidFinishLaunching {
+#pragma mark - notification
+- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
+    //
+    if (self.applicationDidFinishLaunching) {return;}
+    self.applicationDidFinishLaunching = YES;
+    
+    //
     Class CocoaDebug = [NSObject swiftClassFromString:(@"CocoaDebug")];
-    [[CocoaDebug class] performSelector:@selector(enable)];
+    
+    if (CocoaDebug) {
+        [[CocoaDebug class] performSelector:@selector(enable)];
+    } else {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isRunning_CocoaDebug"]) {
+            [[[UIAlertView alloc] initWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+    }
+    
+    //
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRunning_CocoaDebug"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+#pragma mark - private
 - (Class)swiftClassFromString:(NSString *)className {
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
     NSString *classStringName = [NSString stringWithFormat:@"_TtC%lu%@%lu%@", (unsigned long)appName.length, appName, (unsigned long)className.length, className];
     return NSClassFromString(classStringName);
+}
+
+#pragma mark - getter setter
+- (BOOL)applicationDidFinishLaunching {
+    NSNumber *number = objc_getAssociatedObject(self, kPropertyKey);
+    return [number boolValue];
+}
+
+- (void)setApplicationDidFinishLaunching:(BOOL)applicationDidFinishLaunching {
+    NSNumber *number = [NSNumber numberWithBool:applicationDidFinishLaunching];
+    objc_setAssociatedObject(self, kPropertyKey, number, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end
