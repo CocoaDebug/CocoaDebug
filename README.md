@@ -25,17 +25,17 @@
 
 - [x] Shake to hide or show the black bubble. (Support iPhone device and simulator)
 
-- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
-
-- [x] List of all the network requests sent by the application. (Support `JSON` and Google's `Protocol buffers`)
-
-- [x] List crash errors.
-
 - [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
 
 - [x] Copy logs. (Long press the text, then select all or select copy)
 
 - [x] Search logs by keyword.
+
+- [x] List crash errors.
+
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
+
+- [x] List of all the network requests sent by the application. (Support `JSON` and Google's `Protocol buffers`)
 
 - [x] List application and device informations, including: *version*, *build*, *bundle name*, *bundle id*, *screen resolution*, *device*, *iOS version*
 
@@ -68,49 +68,11 @@ github "CocoaDebug/CocoaDebug"
 
 ## Usage
 
-### Swift
-	
-	//AppDelegate.swift
-	 
-    #if DEBUG
-        import CocoaDebug
-    #endif
-	
-    #if DEBUG
-        //If Use Google's Protocol buffers
-        CocoaDebug.protobufTransferMap = [
-                                         "your_api_keywords_1": ["your_request_protobuf_className_1", "your_response_protobuf_className_1"],
-                                         "your_api_keywords_2": ["your_request_protobuf_className_2", "your_response_protobuf_className_2"],
-                                         "your_api_keywords_3": ["your_request_protobuf_className_3", "your_response_protobuf_className_3"]
-                                         ]
-        CocoaDebug.enable()
-    #endif
+  Launch application and debug with `CocoaDebug `.
+  
+  Have Fun! 😀😀😀
 
-    public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-        #if DEBUG
-            swiftLog(file, function, line, message, color, false)
-        #endif
-    }
-
-### Objective-C
-	
-	//AppDelegate.m
-	 
-    #ifdef DEBUG
-        @import CocoaDebug;
-    #endif
-	
-    #ifdef DEBUG
-        //If Use Google's Protocol buffers
-        CocoaDebug.protobufTransferMap = @{
-                                          @"your_api_keywords_1": @[@"your_request_protobuf_className_1", @"your_response_protobuf_className_1"],
-                                          @"your_api_keywords_2": @[@"your_request_protobuf_className_2", @"your_response_protobuf_className_2"],
-                                          @"your_api_keywords_3": @[@"your_request_protobuf_className_3", @"your_response_protobuf_className_3"]
-                                         };
-        [CocoaDebug enable];
-    #endif
-
-### More
+### More Advanced Usage
 
     #ifdef DEBUG
         [CocoaDebugTool logWithString:string];

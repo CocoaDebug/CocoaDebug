@@ -16,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         #if DEBUG
-            CocoaDebug.enable()
+        /*
+             //--- If Use Google's Protocol buffers ---
+             CocoaDebug.protobufTransferMap = [
+                 "your_api_keywords_1": ["your_protobuf_className_1"],
+                 "your_api_keywords_2": ["your_protobuf_className_2"],
+                 "your_api_keywords_3": ["your_protobuf_className_3"]
+             ]
+
+             //--- If Want to Custom CocoaDebug Settings ---
+             CocoaDebug.serverURL = "google.com"
+             CocoaDebug.ignoredURLs = ["aaa.com", "bbb.com"]
+             CocoaDebug.onlyURLs = ["ccc.com", "ddd.com"]
+             CocoaDebug.tabBarControllers = [UIViewController.init(), UIViewController.init()]
+             CocoaDebug.logMaxCount = 1000
+             CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"]
+             CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"]
+             CocoaDebug.mainColor = "#fd9727"
+         */
         #endif
         
         return true

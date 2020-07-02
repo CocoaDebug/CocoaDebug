@@ -268,6 +268,7 @@
 		383CB06221E5F58500398720 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 383CB06121E5F58500398720 /* index2.html */; };
 		3849FEA521E5E1DD00662E95 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3849FEA421E5E1DD00662E95 /* index.html */; };
 		3875C6FA228F1A4800F6B626 /* WKWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */; };
+		38C806A124ADCF350074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A024ADCF350074D3D6 /* CocoaDebugAutoLaunch.m */; };
 		EA1659D7204D1B14001472C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D6204D1B14001472C1 /* AppDelegate.swift */; };
 		EA1659D9204D1B14001472C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1659D8204D1B14001472C1 /* ViewController.swift */; };
 		EA1659DC204D1B14001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1659DA204D1B14001472C1 /* Main.storyboard */; };
@@ -692,6 +693,7 @@
 		3849FEA421E5E1DD00662E95 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		3875C6F9228F1A4800F6B626 /* WKWebViewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewTestController.swift; sourceTree = "<group>"; };
 		38B5614D21CCC4CB00BB276A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		38C806A024ADCF350074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		40B2F0D32DB860EF145358AC /* Pods_Example_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		506D66AD894FC6EC245D3A0C /* Pods_Example_SwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_SwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66DEBA7E7D77775A307F16EE /* Pods_CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -842,8 +844,9 @@
 			children = (
 				38095A172414C5F300382668 /* CocoaDebug.swift */,
 				38095A182414C5F300382668 /* CocoaDebugSettings.swift */,
-				38095A192414C5F300382668 /* CocoaDebug.h */,
 				38095A1A2414C5F300382668 /* CocoaDebug+Extensions.swift */,
+				38095A192414C5F300382668 /* CocoaDebug.h */,
+				38C806A024ADCF350074D3D6 /* CocoaDebugAutoLaunch.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1913,6 +1916,7 @@
 				380965612414DF9000382668 /* _GPBRootObject.m in Sources */,
 				38095C5C2414C5F400382668 /* CocoaDebugNavigationController.swift in Sources */,
 				38095C4E2414C5F400382668 /* _SandboxerHelper.m in Sources */,
+				38C806A124ADCF350074D3D6 /* CocoaDebugAutoLaunch.m in Sources */,
 				EAF58013204E73C3001CA56D /* Response.swift in Sources */,
 				EAF5800A204E73C3001CA56D /* MultipartFormData.swift in Sources */,
 				38095C382414C5F400382668 /* _HttpModel.m in Sources */,

@@ -331,6 +331,7 @@
 		3809682B2414E0CD00382668 /* _Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3809682C2414E0CD00382668 /* _GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966DD2414E0CB00382668 /* _GPBDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 380965832414E0CB00382668 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -661,6 +662,7 @@
 		380966DB2414E0CB00382668 /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
 		380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		380966DD2414E0CB00382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
+		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,8 +727,9 @@
 			children = (
 				380965812414E0CB00382668 /* CocoaDebug.swift */,
 				380965822414E0CB00382668 /* CocoaDebugSettings.swift */,
-				380965832414E0CB00382668 /* CocoaDebug.h */,
 				380965842414E0CB00382668 /* CocoaDebug+Extensions.swift */,
+				380965832414E0CB00382668 /* CocoaDebug.h */,
+				38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1500,6 +1503,7 @@
 				380966E82414E0CB00382668 /* CrashListViewController.swift in Sources */,
 				380967B42414E0CC00382668 /* _LogHelper.swift in Sources */,
 				380967BD2414E0CC00382668 /* _OCLogModel.m in Sources */,
+				38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */,
 				380967A82414E0CC00382668 /* NetworkDetailCell.swift in Sources */,
 				380967A32414E0CC00382668 /* NetworkCell.swift in Sources */,
 				380967D62414E0CC00382668 /* _Swizzling.m in Sources */,
