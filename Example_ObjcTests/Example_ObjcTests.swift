@@ -32,4 +32,27 @@ class Example_ObjcTests: XCTestCase {
         }
     }
     
+    var callbackFlag = false
+    func testChallenge() {
+        let expectation = self.expectation(description: "Test after 5 seconds")
+        
+        let url = URL(string: "https://foo.com/")!
+        let request = URLRequest(url: url)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+
+        let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
+            expectation.fulfill()
+        });
+        task.resume()
+        
+        waitForExpectations(timeout: 7, handler: nil)
+        XCTAssertTrue(callbackFlag)
+    }
+}
+
+extension Example_ObjcTests: URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        callbackFlag = true
+        completionHandler(.performDefaultHandling, nil)
+    }
 }

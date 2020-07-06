@@ -57,6 +57,57 @@
 #import "_HttpDatasource.h"
 #import "_NSObject+CocoaDebug.h"
 
+// https://stackoverflow.com/questions/27604052/nsurlsessiontask-authentication-challenge-completionhandler-and-nsurlauthenticat
+@interface CPURLSessionChallengeSender : NSObject <NSURLAuthenticationChallengeSender>
+
+- (instancetype)initWithSessionCompletionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler;
+
+@end
+
+@implementation CPURLSessionChallengeSender
+{
+    void (^_sessionCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential);
+}
+
+- (instancetype)initWithSessionCompletionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    self = [super init];
+
+    if(self)
+    {
+        _sessionCompletionHandler = [completionHandler copy];
+    }
+
+    return self;
+}
+
+- (void)useCredential:(NSURLCredential *)credential forAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    _sessionCompletionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+}
+
+- (void)continueWithoutCredentialForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    _sessionCompletionHandler(NSURLSessionAuthChallengeUseCredential, nil);
+}
+
+- (void)cancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+{
+    _sessionCompletionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+}
+
+- (void)performDefaultHandlingForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    _sessionCompletionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+}
+
+- (void)rejectProtectionSpaceAndContinueWithChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    _sessionCompletionHandler(NSURLSessionAuthChallengeRejectProtectionSpace, nil);
+}
+
+@end
+
 //liman
 typedef NSURLSessionConfiguration *(*SessionConfigConstructor)(id,SEL);
 
@@ -778,7 +829,10 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         [self didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
     } else {
 
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+//        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+        // Callback the original method
+        NSURLAuthenticationChallenge* challengeWrapper = [[NSURLAuthenticationChallenge alloc] initWithAuthenticationChallenge:challenge sender:[[CPURLSessionChallengeSender alloc] initWithSessionCompletionHandler:completionHandler]];
+        [self.client URLProtocol:self didReceiveAuthenticationChallenge:challengeWrapper];
     }
 }
 
