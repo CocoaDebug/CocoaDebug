@@ -70,7 +70,7 @@ github "CocoaDebug/CocoaDebug"
 
   Launch application and debug with `CocoaDebug `.
   
-  ***NOTE: If `CocoaDebug` auto launch failed, Please enable `CocoaDebug` manually by `CocoaDebug.enable()` or `[CocoaDebug enable]`.***
+  ***NOTE: If auto launch failed, Please enable manually by `CocoaDebug.enable()` or `[CocoaDebug enable]`.***
 
 ### *Swift (Enable CocoaDebug manually)*
 	
