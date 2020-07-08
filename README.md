@@ -49,7 +49,7 @@
 
 ## Installation
 
-### CocoaPods
+### *CocoaPods*
 
 ```ruby
 target 'YourTargetName' do
@@ -58,7 +58,7 @@ target 'YourTargetName' do
 end
 ```
 
-### Carthage
+### *Carthage*
 
 ```ogdl
 github "CocoaDebug/CocoaDebug"
@@ -72,7 +72,7 @@ github "CocoaDebug/CocoaDebug"
   
   **NOTE: If `CocoaDebug` auto launch failed, Please enable `CocoaDebug` manually by `CocoaDebug.enable()` or `[CocoaDebug enable]`.**
 
-### Swift *(Enable CocoaDebug manually)*
+### *Swift (Enable CocoaDebug manually)*
 	
     #if DEBUG
         import CocoaDebug
@@ -82,7 +82,7 @@ github "CocoaDebug/CocoaDebug"
         CocoaDebug.enable()
     #endif
 
-### Objective-C *(Enable CocoaDebug manually)*
+### *Objective-C (Enable CocoaDebug manually)*
 	
     #ifdef DEBUG
         @import CocoaDebug;
@@ -92,7 +92,7 @@ github "CocoaDebug/CocoaDebug"
         [CocoaDebug enable];
     #endif
 
-### More Advanced Usage
+### *More Advanced Usage*
 
     #ifdef DEBUG
         [CocoaDebugTool logWithString:string];
