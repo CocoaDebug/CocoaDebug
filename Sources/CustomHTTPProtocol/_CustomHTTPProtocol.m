@@ -452,7 +452,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     
     //liman
-    if (![_NetworkHelper shared].isEnable) {
+    if (![_NetworkHelper shared].isNetworkEnable) {
         return;
     }
     

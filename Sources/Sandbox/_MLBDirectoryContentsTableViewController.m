@@ -296,8 +296,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (void)updateToolbarDeleteAllItem {
     if (self.deleteAllItem) {
-        BOOL isEnable = [self isCanDeleteAll];
-        self.deleteAllItem.enabled = isEnable;
+        self.deleteAllItem.enabled = [self isCanDeleteAll];
     }
 }
 

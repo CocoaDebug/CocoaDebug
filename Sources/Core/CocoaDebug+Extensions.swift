@@ -309,7 +309,8 @@ extension CocoaDebug {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
         CocoaDebugSettings.shared.isRunning = true
-        
+        _NetworkHelper.shared()?.isRunningAutoLaunch = true
+
         
         let disableCrashRecording = UserDefaults.standard.bool(forKey: "disableCrashRecording_CocoaDebug")
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
@@ -387,7 +388,6 @@ extension CocoaDebug {
     ///deinit
     static func deinitializationMethod() {
         CocoaDebugSettings.shared.isRunning = false
-
         _WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _LogHelper.shared.enable = false

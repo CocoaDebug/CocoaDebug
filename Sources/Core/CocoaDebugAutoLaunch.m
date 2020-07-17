@@ -26,9 +26,12 @@
 
 static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key";
 
+#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import "_NetworkHelper.h"
 
 @interface NSObject (CocoaDebugAutoLaunch)
 
@@ -55,14 +58,17 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
     if (CocoaDebug) {
         [[CocoaDebug class] performSelector:@selector(enable)];
     } else {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isRunning_CocoaDebug"]) {
-            [[[UIAlertView alloc] initWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        }
+        GCD_DELAY_AFTER(1, ^{
+            if (![_NetworkHelper shared].isRunningAutoLaunch) {
+                [[[UIAlertView alloc] initWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
+        });
     }
     
     //
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isRunning_CocoaDebug"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    GCD_DELAY_AFTER(2, ^{
+        [_NetworkHelper shared].isRunningAutoLaunch = NO;
+    });
 }
 
 #pragma mark - private

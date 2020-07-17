@@ -28,7 +28,7 @@ class AboutViewController: UITableViewController {
         naviItem.titleView = naviItemTitleLabel
         
         
-        let version = "1.3.1"
+        let version = "1.3.2"
         
         self.versionLabel.text = "CocoaDebug Version ".appending(version)
         

@@ -33,20 +33,20 @@
     if (self = [super init])  {
         self.mainColor = [UIColor colorFromHexString:@"#42d459"];
         self.logMaxCount = 1000;
-        self.isEnable = YES;
+        self.isNetworkEnable = YES;
     }
     return self;
 }
 
 - (void)enable
 {
-    self.isEnable = YES;
+    self.isNetworkEnable = YES;
     [NSURLProtocol registerClass:[_CustomHTTPProtocol class]];
 }
 
 - (void)disable
 {
-    self.isEnable = NO;
+    self.isNetworkEnable = NO;
     [NSURLProtocol unregisterClass:[_CustomHTTPProtocol class]];
 }
 

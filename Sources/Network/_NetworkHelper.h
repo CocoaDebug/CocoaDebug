@@ -33,7 +33,9 @@
 @property (nonatomic, copy) NSDictionary<NSString *, NSArray<NSString*> *> *protobufTransferMap;
 
 
-@property (nonatomic, assign) BOOL isEnable;
+@property (nonatomic, assign) BOOL isNetworkEnable;
+@property (nonatomic, assign) BOOL isRunningAutoLaunch;
+
 
 /**
  *  启用
