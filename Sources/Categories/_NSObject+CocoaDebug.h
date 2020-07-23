@@ -70,3 +70,17 @@
 
 @end
 
+/*************************************************/
+
+@interface UIImage (CocoaDebug)
+
+/** 根据一个GIF图片的data数据 获得GIF image对象 */
++ (UIImage *_Nullable)imageWithGIFData:(NSData *_Nullable)data;
+
+/** 根据本地GIF图片名 获得GIF image对象 */
++ (UIImage *_Nullable)imageWithGIFNamed:(NSString *_Nullable)name;
+
+/** 根据一个GIF图片的URL 获得GIF image对象 */
++ (void)imageWithGIFUrl:(NSString *_Nullable)url gifImageBlock:(void(^_Nullable)(UIImage *_Nullable gifImage))gifImageBlock;
+
+@end

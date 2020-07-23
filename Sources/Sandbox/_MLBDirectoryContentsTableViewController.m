@@ -16,6 +16,7 @@
 #import "_NetworkHelper.h"
 #import "_MLBImageController.h"
 #import "_SandboxerHelper.h"
+#import "_NSObject+CocoaDebug.h"
 
 @interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -239,7 +240,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             if (fileInfo.URL) {
                 NSData *data = [NSData dataWithContentsOfURL:fileInfo.URL];
                 if (data) {
-                    UIImage *image = [UIImage imageWithData:data];
+                    UIImage *image = [UIImage imageWithGIFData:data];
                     if (image) {
                         _MLBImageController *vc = [[_MLBImageController alloc] initWithImage:image fileInfo:fileInfo];
                         vc.hidesBottomBarWhenPushed = YES;//liman

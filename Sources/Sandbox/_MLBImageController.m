@@ -54,6 +54,7 @@
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
     self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height - [[UIApplication sharedApplication] statusBarFrame].size.height);
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
 }
