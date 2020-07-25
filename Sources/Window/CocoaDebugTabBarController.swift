@@ -100,11 +100,11 @@ class CocoaDebugTabBarController: UITabBarController {
     }
     
     //MARK: - show more than 5 tabs by CocoaDebug
-    override var traitCollection: UITraitCollection {
-        let realTraits = super.traitCollection
-        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
-        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
-    }
+//    override var traitCollection: UITraitCollection {
+//        let realTraits = super.traitCollection
+//        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+//        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
+//    }
 }
 
 //MARK: - UITabBarDelegate
