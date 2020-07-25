@@ -38,10 +38,12 @@ class CrashStoreManager {
     }
     
     func resetCrashs() {
-        self.crashArray.removeAll()
-        UserDefaults.standard.removeObject(forKey: "crashArchive_CocoaDebug")
-        UserDefaults.standard.removeObject(forKey: "crashCount_CocoaDebug")
-        UserDefaults.standard.synchronize()
+        if self.crashArray.count > 0 {
+            self.crashArray.removeAll()
+            UserDefaults.standard.removeObject(forKey: "crashArchive_CocoaDebug")
+            UserDefaults.standard.removeObject(forKey: "crashCount_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     //MARK: - private
