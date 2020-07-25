@@ -20,10 +20,6 @@
  Delay the creation of the view, such as put it in the applicationDidFinishLaunching callback.
  */
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wundeclared-selector"
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
 static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key";
 
 #define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
@@ -60,7 +56,7 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
     } else {
         GCD_DELAY_AFTER(1, ^{
             if (![_NetworkHelper shared].isRunningAutoLaunch) {
-                [[[UIAlertView alloc] initWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                [self showAlert];
             }
         });
     }
@@ -78,6 +74,16 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
     return NSClassFromString(classStringName);
 }
 
+- (void)showAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancelAction];
+    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
+    
+    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+    [mainWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark - getter setter
 - (BOOL)applicationDidFinishLaunching {
     NSNumber *number = objc_getAssociatedObject(self, kPropertyKey);
@@ -90,5 +96,3 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
 }
 
 @end
-
-#pragma GCC diagnostic pop

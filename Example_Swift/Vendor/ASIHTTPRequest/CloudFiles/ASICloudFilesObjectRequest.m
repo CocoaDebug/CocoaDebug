@@ -4,6 +4,10 @@
 //  Created by Michael Mayo on 1/6/10.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ASICloudFilesObjectRequest.h"
 #import "ASICloudFilesObject.h"
 
@@ -259,3 +263,5 @@
 }
 
 @end
+
+#pragma GCC diagnostic pop

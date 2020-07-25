@@ -6,6 +6,10 @@
 //  Copyright 2009 All-Seeing Interactive. All rights reserved.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ASIAuthenticationDialog.h"
 #import "ASIHTTPRequest.h"
 #import <QuartzCore/QuartzCore.h>
@@ -518,3 +522,5 @@ static const NSUInteger kDomainSection = 1;
 @synthesize didEnableRotationNotifications;
 @synthesize presentingController;
 @end
+
+#pragma GCC diagnostic pop

@@ -6,6 +6,10 @@
 //  Copyright (c) 2014年 Jakey. All rights reserved.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ASIHTTPRequestClient.h"
 
 static dispatch_once_t onceToken;
@@ -347,3 +351,5 @@ static ASIHTTPRequestClient *_sharedClient = nil;
     return request;
 }
 @end
+
+#pragma GCC diagnostic pop

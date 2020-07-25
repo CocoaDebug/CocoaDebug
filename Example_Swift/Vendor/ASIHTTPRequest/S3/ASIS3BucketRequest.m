@@ -6,6 +6,10 @@
 //  Copyright 2010 All-Seeing Interactive. All rights reserved.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ASIS3BucketRequest.h"
 #import "ASIS3BucketObject.h"
 
@@ -179,3 +183,5 @@
 @synthesize isTruncated;
 
 @end
+
+#pragma GCC diagnostic pop

@@ -10,6 +10,10 @@
 //  Portions are based on the ImageClient example from Apple:
 //  See: http://developer.apple.com/samplecode/ImageClient/listing37.html
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ASIHTTPRequest.h"
 
 #if TARGET_OS_IPHONE
@@ -5141,3 +5145,5 @@ static NSOperationQueue *sharedQueue = nil;
 
 @synthesize isSynchronous;
 @end
+
+#pragma GCC diagnostic pop

@@ -46,10 +46,18 @@ class CrashStoreManager {
     
     //MARK: - private
     private func archiveCrashs(_ crashs: [_CrashModel]) {
-        let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_CocoaDebug")
-        UserDefaults.standard.set(crashs.count, forKey: "crashCount_CocoaDebug")
-        UserDefaults.standard.synchronize()
+        do {
+            let dataArchive: Data
+            if #available(iOS 11.0, *) {
+                dataArchive = try NSKeyedArchiver.archivedData(withRootObject: crashs, requiringSecureCoding: false)
+            } else {
+                // Fallback on earlier versions
+                dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
+            }
+            UserDefaults.standard.set(dataArchive, forKey: "crashArchive_CocoaDebug")
+            UserDefaults.standard.set(crashs.count, forKey: "crashCount_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        } catch {}
     }
     
     private func getCrashs() -> [_CrashModel] {

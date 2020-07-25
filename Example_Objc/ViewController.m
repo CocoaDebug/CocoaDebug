@@ -6,6 +6,10 @@
 //  Copyright © 2018 man. All rights reserved.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #import "ViewController.h"
 #import "AFURLSessionManager.h"
 #import <WebKit/WebKit.h>
@@ -128,3 +132,4 @@
 
 @end
 
+#pragma GCC diagnostic pop
