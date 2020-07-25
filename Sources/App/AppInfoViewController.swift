@@ -62,7 +62,7 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        crashSwitch.isOn = !CocoaDebugSettings.shared.disableCrashRecording
+        crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWebViewMonitoring
@@ -100,7 +100,7 @@ class AppInfoViewController: UITableViewController {
     
     //MARK: - target action
     @objc func crashSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableCrashRecording = !crashSwitch.isOn
+        CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
         self.showAlert()
     }
     

@@ -312,7 +312,7 @@ extension CocoaDebug {
         _NetworkHelper.shared()?.isRunningAutoLaunch = true
 
         
-        let disableCrashRecording = UserDefaults.standard.bool(forKey: "disableCrashRecording_CocoaDebug")
+        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         let enableWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWebViewMonitoring_CocoaDebug")
@@ -349,7 +349,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logSearchWordDefault = nil
         CocoaDebugSettings.shared.logSearchWordColor = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
-        CocoaDebugSettings.shared.disableCrashRecording = disableCrashRecording
+        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
         CocoaDebugSettings.shared.enableWebViewMonitoring = enableWebViewMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
