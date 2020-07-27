@@ -36,10 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"]
              CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"]
              CocoaDebug.mainColor = "#fd9727"
-         
+         */
              //--- If Need enable CocoaDebug manually ---
              CocoaDebug.enable()
-         */
         #endif
         
         return true
