@@ -662,6 +662,8 @@
 		380966DB2414E0CB00382668 /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
 		380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		380966DD2414E0CB00382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
+		3846EE3224CEAF8C004CFC91 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
+		3846EE3424CEAF8C004CFC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -681,6 +683,7 @@
 			children = (
 				3809657F2414E0CB00382668 /* Sources */,
 				380965742414E04F00382668 /* CocoaDebug */,
+				3846EE3124CEAF8C004CFC91 /* CocoaDebugTests */,
 				380965732414E04F00382668 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1144,6 +1147,15 @@
 				380966DD2414E0CB00382668 /* _GPBDictionary.h */,
 			);
 			path = Protobuf;
+			sourceTree = "<group>";
+		};
+		3846EE3124CEAF8C004CFC91 /* CocoaDebugTests */ = {
+			isa = PBXGroup;
+			children = (
+				3846EE3224CEAF8C004CFC91 /* CocoaDebugTests.m */,
+				3846EE3424CEAF8C004CFC91 /* Info.plist */,
+			);
+			path = CocoaDebugTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

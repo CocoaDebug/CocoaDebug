@@ -10,14 +10,12 @@
 		3820FFBF21E635D9001CAB32 /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBD21E635D9001CAB32 /* index2.html */; };
 		3820FFC021E635D9001CAB32 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3820FFBE21E635D9001CAB32 /* index.html */; };
 		5BDD0AE9C06A65284B5026E8 /* Pods_Example_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85B59B981887B01B909F66C /* Pods_Example_Objc.framework */; };
-		7A2737D31A971E9C238BEC79 /* Pods_Example_ObjcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B384C55C2BBC4F20D5023A8 /* Pods_Example_ObjcTests.framework */; };
 		EA165F01204D2539001472C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F00204D2539001472C1 /* AppDelegate.m */; };
 		EA165F04204D2539001472C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F03204D2539001472C1 /* ViewController.m */; };
 		EA165F07204D2539001472C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F05204D2539001472C1 /* Main.storyboard */; };
 		EA165F09204D2539001472C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA165F08204D2539001472C1 /* Assets.xcassets */; };
 		EA165F0C204D2539001472C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA165F0A204D2539001472C1 /* LaunchScreen.storyboard */; };
 		EA165F0F204D2539001472C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA165F0E204D2539001472C1 /* main.m */; };
-		EA6B27872059689C004D8E05 /* Example_ObjcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6B27862059689C004D8E05 /* Example_ObjcTests.swift */; };
 		EAF58056204E7434001CA56D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF5804D204E7434001CA56D /* AFURLResponseSerialization.m */; };
 		EAF58057204E7434001CA56D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF5804E204E7434001CA56D /* AFHTTPSessionManager.m */; };
 		EAF58058204E7434001CA56D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58050204E7434001CA56D /* AFURLSessionManager.m */; };
@@ -25,16 +23,6 @@
 		EAF5805A204E7434001CA56D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58053204E7434001CA56D /* AFNetworkReachabilityManager.m */; };
 		EAF5805B204E7434001CA56D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF58054204E7434001CA56D /* AFSecurityPolicy.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EA6B27892059689C004D8E05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA165EF4204D2539001472C1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA165EFB204D2539001472C1;
-			remoteInfo = Example_Objc;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		EAC2925621451301006F07BD /* Embed Frameworks */ = {
@@ -68,7 +56,6 @@
 		EA165F0D204D2539001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165F0E204D2539001472C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA166108204D25BC001472C1 /* Example_Objc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Objc-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example_ObjcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6B27862059689C004D8E05 /* Example_ObjcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_ObjcTests.swift; sourceTree = "<group>"; };
 		EA6B27882059689C004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF58049204E7434001CA56D /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
@@ -93,14 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BDD0AE9C06A65284B5026E8 /* Pods_Example_Objc.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA6B27812059689C004D8E05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7A2737D31A971E9C238BEC79 /* Pods_Example_ObjcTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				EA165EFC204D2539001472C1 /* Example_Objc.app */,
-				EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,25 +205,6 @@
 			productReference = EA165EFC204D2539001472C1 /* Example_Objc.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA6B27832059689C004D8E05 /* Example_ObjcTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "Example_ObjcTests" */;
-			buildPhases = (
-				A0B1311D455212F4847BF485 /* [CP] Check Pods Manifest.lock */,
-				EA6B27802059689C004D8E05 /* Sources */,
-				EA6B27812059689C004D8E05 /* Frameworks */,
-				EA6B27822059689C004D8E05 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EA6B278A2059689C004D8E05 /* PBXTargetDependency */,
-			);
-			name = Example_ObjcTests;
-			productName = Example_ObjcTests;
-			productReference = EA6B27842059689C004D8E05 /* Example_ObjcTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -260,12 +219,6 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
-					};
-					EA6B27832059689C004D8E05 = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-						TestTargetID = EA165EFB204D2539001472C1;
 					};
 				};
 			};
@@ -283,7 +236,6 @@
 			projectRoot = "";
 			targets = (
 				EA165EFB204D2539001472C1 /* Example_Objc */,
-				EA6B27832059689C004D8E05 /* Example_ObjcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -298,13 +250,6 @@
 				3820FFC021E635D9001CAB32 /* index.html in Resources */,
 				EA165F09204D2539001472C1 /* Assets.xcassets in Resources */,
 				EA165F07204D2539001472C1 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EA6B27822059689C004D8E05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,28 +300,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A0B1311D455212F4847BF485 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example_ObjcTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -396,23 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA6B27802059689C004D8E05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA6B27872059689C004D8E05 /* Example_ObjcTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EA6B278A2059689C004D8E05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA165EFB204D2539001472C1 /* Example_Objc */;
-			targetProxy = EA6B27892059689C004D8E05 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EA165F05204D2539001472C1 /* Main.storyboard */ = {
@@ -600,43 +507,6 @@
 			};
 			name = Release;
 		};
-		EA6B278B2059689C004D8E05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38CB475DA5072E19C61C64D5 /* Pods-Example_ObjcTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XA8SWALX42;
-				INFOPLIST_FILE = Example_ObjcTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Example.ObjcTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Objc.app/Example_Objc";
-			};
-			name = Debug;
-		};
-		EA6B278C2059689C004D8E05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D944CF87457DDCEF80A964E /* Pods-Example_ObjcTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XA8SWALX42;
-				INFOPLIST_FILE = Example_ObjcTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Example.ObjcTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example_Objc.app/Example_Objc";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -654,15 +524,6 @@
 			buildConfigurations = (
 				EA165F13204D2539001472C1 /* Debug */,
 				EA165F14204D2539001472C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EA6B278D2059689C004D8E05 /* Build configuration list for PBXNativeTarget "Example_ObjcTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA6B278B2059689C004D8E05 /* Debug */,
-				EA6B278C2059689C004D8E05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
