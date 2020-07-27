@@ -113,8 +113,6 @@
 		EA1659E0204D1B14001472C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA1659E2204D1B14001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA6B277820596883004D8E05 /* Example_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_SwiftTests.swift; sourceTree = "<group>"; };
-		EA6B277A20596883004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF57FA5204E73C2001CA56D /* TaskDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDelegate.swift; sourceTree = "<group>"; };
 		EAF57FA6204E73C2001CA56D /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
 		EAF57FA7204E73C2001CA56D /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				EA1659D5204D1B14001472C1 /* Example_Swift */,
-				EA6B277720596883004D8E05 /* Example_SwiftTests */,
 				EA1659D4204D1B14001472C1 /* Products */,
 				38B5614C21CCC4CB00BB276A /* Frameworks */,
 				74D4D49E5C70994995C8DD54 /* Pods */,
@@ -278,15 +275,6 @@
 				EA165C6D204D1C13001472C1 /* Example_Swift-Bridging-Header.h */,
 			);
 			path = Example_Swift;
-			sourceTree = "<group>";
-		};
-		EA6B277720596883004D8E05 /* Example_SwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				EA6B277820596883004D8E05 /* Example_SwiftTests.swift */,
-				EA6B277A20596883004D8E05 /* Info.plist */,
-			);
-			path = Example_SwiftTests;
 			sourceTree = "<group>";
 		};
 		EAF57FA3204E73C2001CA56D /* Vendor */ = {

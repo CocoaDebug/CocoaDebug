@@ -56,8 +56,6 @@
 		EA165F0D204D2539001472C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA165F0E204D2539001472C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA166108204D25BC001472C1 /* Example_Objc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example_Objc-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA6B27862059689C004D8E05 /* Example_ObjcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_ObjcTests.swift; sourceTree = "<group>"; };
-		EA6B27882059689C004D8E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF58049204E7434001CA56D /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
 		EAF5804A204E7434001CA56D /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		EAF5804B204E7434001CA56D /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				EA165EFE204D2539001472C1 /* Example_Objc */,
-				EA6B27852059689C004D8E05 /* Example_ObjcTests */,
 				EA165EFD204D2539001472C1 /* Products */,
 				1CBEC87248A6B59A4DBD5CD7 /* Frameworks */,
 				B179D507AEFDDD9099ADD02A /* Pods */,
@@ -143,15 +140,6 @@
 				EA166108204D25BC001472C1 /* Example_Objc-Bridging-Header.h */,
 			);
 			path = Example_Objc;
-			sourceTree = "<group>";
-		};
-		EA6B27852059689C004D8E05 /* Example_ObjcTests */ = {
-			isa = PBXGroup;
-			children = (
-				EA6B27862059689C004D8E05 /* Example_ObjcTests.swift */,
-				EA6B27882059689C004D8E05 /* Info.plist */,
-			);
-			path = Example_ObjcTests;
 			sourceTree = "<group>";
 		};
 		EAF58047204E7434001CA56D /* Vendor */ = {
