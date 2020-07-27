@@ -72,11 +72,7 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 ## Usage
 
-  Launch application and debug with `CocoaDebug `.
-  
-  ***NOTE: If auto launch failed, Please enable manually by `CocoaDebug.enable()` or `[CocoaDebug enable]`.***
-
-### *Swift (Enable CocoaDebug manually)*
+### *Swift*
 	
     #if DEBUG
         import CocoaDebug
@@ -86,7 +82,7 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
         CocoaDebug.enable()
     #endif
 
-### *Objective-C (Enable CocoaDebug manually)*
+### *Objective-C*
 	
     #ifdef DEBUG
         @import CocoaDebug;
