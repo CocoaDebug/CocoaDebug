@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "Example_Objc-Swift.h"
+#ifdef DEBUG
+    @import CocoaDebug;
+#endif
 
 @interface AppDelegate ()
 

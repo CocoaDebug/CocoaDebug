@@ -3,9 +3,12 @@ before_install:
   - brew install gcc || brew link --overwrite gcc
   - brew upgrade
   - brew outdated xctool || brew upgrade xctool
+  - gem install cocoapods
+  - pod setup
+  - pod install
 osx_image: xcode11.3
 language: objective-c
-xcode_project: Example_Swift.xcodeproj
+xcode_project: Example_Swift/Example_Swift.xcworkspace
 xcode_scheme: Example_Swift
 xcode_sdk: iphonesimulator
 script:

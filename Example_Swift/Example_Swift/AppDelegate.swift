@@ -7,6 +7,9 @@
 //
 
 import UIKit
+#if DEBUG
+    import CocoaDebug
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
