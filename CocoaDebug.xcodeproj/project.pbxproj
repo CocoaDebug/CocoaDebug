@@ -216,7 +216,7 @@
 		380967AC2414E0CC00382668 /* _CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966562414E0CB00382668 /* _CacheStoragePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		380967AD2414E0CC00382668 /* _CanonicalRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966572414E0CB00382668 /* _CanonicalRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		380967AE2414E0CC00382668 /* _QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966582414E0CB00382668 /* _QNSURLSessionDemux.m */; };
-		380967AF2414E0CC00382668 /* _CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966592414E0CB00382668 /* _CustomHTTPProtocol.m */; };
+		380967AF2414E0CC00382668 /* _CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966592414E0CB00382668 /* _CustomHTTPProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		380967B02414E0CC00382668 /* _CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809665A2414E0CB00382668 /* _CacheStoragePolicy.m */; };
 		380967B12414E0CC00382668 /* _QNSURLSessionDemux.h in Headers */ = {isa = PBXBuildFile; fileRef = 3809665B2414E0CB00382668 /* _QNSURLSessionDemux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		380967B22414E0CC00382668 /* _CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3809665C2414E0CB00382668 /* _CanonicalRequest.m */; };
