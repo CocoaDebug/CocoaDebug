@@ -31,6 +31,8 @@
 
 - [x] Search logs by keyword.
 
+- [x] Long press the black bubble to clean all network logs.
+
 - [x] List crash errors.
 
 - [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
@@ -42,10 +44,6 @@
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
 - [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support `WKWebView` ~~and `UIWebView`~~). ***UIWebView Deprecated***
-
-- [x] ~~Application memory usage and *FPS*.~~ ***Deprecated***
-
-- [x] ~~Long press the black bubble to show `UIDebuggingInformationOverlay`. (Apple's Private API, support iOS 10/11/12)~~ ***Private API Deprecated***
 
 ## Installation
 
