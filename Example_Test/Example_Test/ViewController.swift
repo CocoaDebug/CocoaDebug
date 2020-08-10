@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    @IBAction func click(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         
+        UIView.animate(withDuration: 0.3) {
+            if sender.isSelected == true {
+                sender.center = CGPoint(x: 200, y: 400)
+            } else {
+                sender.center = CGPoint(x: 100, y: 100)
+            }
+        }
     }
 }
 
