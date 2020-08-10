@@ -4,7 +4,7 @@ before_install:
   - brew upgrade
   - brew outdated xctool || brew upgrade xctool
 osx_image: xcode11.3
-language: swift
+language: objective-c
 xcode_project: Example_Test.xcodeproj
 xcode_scheme: Example_Test
 xcode_sdk: iphonesimulator
