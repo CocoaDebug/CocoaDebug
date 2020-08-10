@@ -80,7 +80,7 @@
 //    [alert addAction:cancelAction];
 //    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
 //
-//    UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+//    UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
 //    [mainWindow.rootViewController presentViewController:alert animated:YES completion:nil];
 //}
 //

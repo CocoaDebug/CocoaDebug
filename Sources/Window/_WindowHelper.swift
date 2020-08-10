@@ -40,7 +40,6 @@ public class _WindowHelper: NSObject {
                     
                     for scene in UIApplication.shared.connectedScenes {
                         if let windowScene = scene as? UIWindowScene {
-                            print((0.1 * Double(i)))
                             self?.window.windowScene = windowScene
                             success = true
                         }

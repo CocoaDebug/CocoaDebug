@@ -142,9 +142,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.view.backgroundColor = [UIColor blackColor];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 50) style:UITableViewStylePlain];
     
+    
     BOOL iPhoneX = NO;
     if (@available(iOS 11.0, *)) {
-        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
         if (mainWindow.safeAreaInsets.top > 24.0) {
             iPhoneX = YES;
         }

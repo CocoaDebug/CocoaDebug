@@ -14,9 +14,7 @@ class CocoaDebugTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let window = UIApplication.shared.delegate?.window {
-            window?.endEditing(true)
-        }
+        UIApplication.shared.keyWindow?.endEditing(true)
         
         setChildControllers()
         
