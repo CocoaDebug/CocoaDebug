@@ -9,5 +9,5 @@ before_install:
 script:
 - set -o pipefail && xcodebuild -workspace Example_Objc/Example_Objc.xcworkspace -scheme Example_Objc -destination platform\=iOS\ Simulator,OS\=10.3.1,name\=iPhone\ 7 build test | xcpretty
 - pod lib lint --verbose
-after_success:
-- bash <(curl -s https://codecov.io/bash) -J 'Example_Objc' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
+#after_success:
+#- bash <(curl -s https://codecov.io/bash) -J 'Example_Objc' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
