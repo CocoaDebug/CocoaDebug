@@ -15,14 +15,14 @@ Pod::Spec.new do |s|
   s.requires_arc        = false
   s.requires_arc        = 
                           [
-                          'Classes/App', 
-                          'Classes/Categories', 
-                          'Classes/Core', 
-                          'Classes/CustomHTTPProtocol', 
-                          'Classes/Logs',
-                          'Classes/Network',
-                          'Classes/Sandbox',
-                          'Classes/Swizzling',
-                          'Classes/Window'
+                          'Sources/App/**/*.m', 
+                          'Sources/Categories/**/*.m', 
+                          'Sources/Core/**/*.m', 
+                          'Sources/CustomHTTPProtocol/**/*.m', 
+                          'Sources/Logs/**/*.m',
+                          'Sources/Network/**/*.m',
+                          'Sources/Sandbox/**/*.m',
+                          'Sources/Swizzling/**/*.m',
+                          'Sources/Window/**/*.m'
                           ]
 end

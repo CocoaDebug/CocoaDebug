@@ -1,14 +1,15 @@
 //
-//  Example_ObjcTests.swift
-//  Example_ObjcTests
+//  Example_SwiftTests.swift
+//  Example_SwiftTests
 //
-//  Created by man on 8/10/20.
-//  Copyright © 2020 liman. All rights reserved.
+//  Created by man on 8/11/20.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import XCTest
+@testable import Example_Swift
 
-class Example_ObjcTests: XCTestCase {
+class Example_SwiftTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,7 +26,7 @@ class Example_ObjcTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        measure {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

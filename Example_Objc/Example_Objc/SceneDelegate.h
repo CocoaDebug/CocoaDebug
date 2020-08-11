@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SceneDelegate.h
 //  Example_Objc
 //
 //  Created by man on 8/11/20.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
 
+@property (strong, nonatomic) UIWindow * window;
 
 @end
 
