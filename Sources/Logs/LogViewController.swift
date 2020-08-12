@@ -572,7 +572,7 @@ extension LogViewController: UITableViewDataSource {
     func showCellAlert(labelContent: UITextView) {
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy All", style: .default) { _ in
+        let okAction = UIAlertAction.init(title: "Copy", style: .default) { _ in
             UIPasteboard.general.string = labelContent.text
         }
         
