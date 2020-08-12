@@ -402,8 +402,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //MARK: - alert
     func showAlert() {
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy", style: .default) { [weak self] _ in
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .destructive, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy", style: .cancel) { [weak self] _ in
             UIPasteboard.general.string = self?.headerCell?.requestUrlTextView.text
         }
         
@@ -415,8 +415,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     func showCellAlert(contentTextView: UITextView) {
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy", style: .default) { _ in
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .destructive, handler: nil)
+        let okAction = UIAlertAction.init(title: "Copy", style: .cancel) { _ in
             UIPasteboard.general.string = contentTextView.text
         }
         
