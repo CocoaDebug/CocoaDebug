@@ -14,8 +14,8 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!
     @IBOutlet weak var methodLabel: UILabel!
-    @IBOutlet weak var requestTimeTextView: UITextView!
-    @IBOutlet weak var requestUrlTextView: UITextView!
+    @IBOutlet weak var requestTimeTextView: CustomTextView!
+    @IBOutlet weak var requestUrlTextView: CustomTextView!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
 

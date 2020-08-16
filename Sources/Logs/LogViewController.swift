@@ -562,26 +562,8 @@ extension LogViewController: UITableViewDataSource {
             cell.model = h5Models[indexPath.row]
         }
         
-        cell.showCellAlert = { [weak self] in
-            self?.showCellAlert(labelContent: cell.labelContent)
-        }
         return cell
     }
-    
-    //MARK: - alert
-    func showCellAlert(labelContent: UITextView) {
-        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .destructive, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy", style: .cancel) { _ in
-            UIPasteboard.general.string = labelContent.text
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }
 
 //MARK: - UITableViewDelegate

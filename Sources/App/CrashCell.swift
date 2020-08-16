@@ -10,7 +10,7 @@ import UIKit
 
 class CrashCell: UITableViewCell {
 
-    @IBOutlet weak var textview: UITextView!
+    @IBOutlet weak var textview: CustomTextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -10,9 +10,9 @@ import UIKit
 
 class CrashDetailViewController: UITableViewController {
     
-    @IBOutlet weak var textviewName: UITextView!
-    @IBOutlet weak var textviewReason: UITextView!
-    @IBOutlet weak var textviewStackTraces: UITextView!
+    @IBOutlet weak var textviewName: CustomTextView!
+    @IBOutlet weak var textviewReason: CustomTextView!
+    @IBOutlet weak var textviewStackTraces: CustomTextView!
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?

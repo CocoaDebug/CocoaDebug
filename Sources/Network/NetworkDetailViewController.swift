@@ -397,48 +397,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 //
 //        }
 //    }
-    
-    
-    //MARK: - alert
-    func showAlert() {
-        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .destructive, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy", style: .cancel) { [weak self] _ in
-            UIPasteboard.general.string = self?.headerCell?.requestUrlTextView.text
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showCellAlert(contentTextView: UITextView) {
-        let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction.init(title: "Cancel", style: .destructive, handler: nil)
-        let okAction = UIAlertAction.init(title: "Copy", style: .cancel) { _ in
-            UIPasteboard.general.string = contentTextView.text
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        if #available(iOS 13, *) {alert.modalPresentationStyle = .fullScreen}
-        self.present(alert, animated: true, completion: nil)
-    }
-
-    
-    //MARK: - override
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(selectAll(_:)) {
-            self.showAlert()
-            return true
-        }
-        return super.canPerformAction(action, withSender: sender)
-    }
-    
-    override func selectAll(_ sender: Any?) {
-        headerCell?.requestUrlTextView.selectAll(sender)
-    }
 }
 
 //MARK: - UITableViewDataSource
@@ -458,10 +416,6 @@ extension NetworkDetailViewController {
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
             self?.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        cell.showCellAlert = { [weak self] in
-            self?.showCellAlert(contentTextView: cell.contentTextView)
         }
         
         return cell

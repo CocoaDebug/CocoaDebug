@@ -12,7 +12,7 @@ import UIKit
 class NetworkDetailCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var contentTextView: CustomTextView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var topLine: UIView!
@@ -25,8 +25,7 @@ class NetworkDetailCell: UITableViewCell {
     
     
     var tapEditViewCallback:((NetworkDetailModel?) -> Void)?
-    var showCellAlert:(() -> Void)?
-
+    
     var detailModel: NetworkDetailModel? {
         didSet {
             
@@ -80,21 +79,5 @@ class NetworkDetailCell: UITableViewCell {
         if let tapEditViewCallback = tapEditViewCallback {
             tapEditViewCallback(detailModel)
         }
-    }
-    
-    
-    //MARK: - override
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(selectAll(_:)) {
-            if let showCellAlert = showCellAlert {
-                showCellAlert()
-            }
-            return true
-        }
-        return super.canPerformAction(action, withSender: sender)
-    }
-
-    override func selectAll(_ sender: Any?) {
-        contentTextView.selectAll(sender)
     }
 }
