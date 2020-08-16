@@ -366,7 +366,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         // create an action
         let firstAction: UIAlertAction = UIAlertAction(title: "share via email", style: .default) { [weak self] action -> Void in
             if let mailComposeViewController = self?.configureMailComposer() {
-                if #available(iOS 13, *) {mailComposeViewController.modalPresentationStyle = .fullScreen}
+//                if #available(iOS 13, *) {mailComposeViewController.modalPresentationStyle = .fullScreen}
                 self?.present(mailComposeViewController, animated: true, completion: nil)
             }
         }
@@ -381,8 +381,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         // add actions
-        actionSheetController.addAction(firstAction)
         actionSheetController.addAction(secondAction)
+        actionSheetController.addAction(firstAction)
         actionSheetController.addAction(cancelAction)
         
         // present an actionSheet...
