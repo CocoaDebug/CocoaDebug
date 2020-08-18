@@ -31,7 +31,11 @@ class Bubble: UIView {
     public let height: CGFloat = _height
     
     private lazy var numberLabel: UILabel? = {
-        return UILabel(frame: CGRect(x:0, y:0, width:_width, height:_height))
+        return UILabel(frame: CGRect(x:0, y:2, width:_width, height:40))
+    }()
+    
+    private lazy var memoryLabel: _DebugConsoleLabel? = {
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:36, width:_width, height:20))
     }()
     
     private var networkNumber: Int = 0
@@ -151,6 +155,10 @@ class Bubble: UIView {
             self.addSubview(numberLabel)
         }
         
+        if let memoryLabel = memoryLabel {
+            self.addSubview(memoryLabel)
+        }
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
@@ -186,6 +194,11 @@ class Bubble: UIView {
         //notification
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
+        
+        //Memory
+        _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+            self?.memoryLabel?.update(withValue: value)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -71,3 +71,6 @@
 #import "_Timestamp.pbobjc.h"
 #import "_Type.pbobjc.h"
 #import "_Wrappers.pbobjc.h"
+#import "_DebugConsoleLabel.h"
+#import "_DebugMemoryMonitor.h"
+#import "_DebugMonitor.h"

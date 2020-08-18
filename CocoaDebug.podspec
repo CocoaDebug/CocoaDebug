@@ -23,6 +23,8 @@ Pod::Spec.new do |s|
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',
-                          'Sources/Window/**/*.m'
+                          'Sources/Window/**/*.m',
+                          'Sources/Memory/_DebugConsoleLabel.m',
+                          'Sources/Memory/_DebugMemoryMonitor.m'
                           ]
 end

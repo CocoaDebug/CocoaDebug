@@ -332,6 +332,12 @@
 		3809682C2414E0CD00382668 /* _GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966DD2414E0CB00382668 /* _GPBDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 380965832414E0CB00382668 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */; };
+		38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38E1730024EBA8FC00B6F936 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172FA24EBA8FC00B6F936 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38E1730124EBA8FC00B6F936 /* _DebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172FB24EBA8FC00B6F936 /* _DebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38E1730224EBA8FC00B6F936 /* _DebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172FC24EBA8FC00B6F936 /* _DebugMemoryMonitor.m */; };
+		38E1730324EBA8FC00B6F936 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172FD24EBA8FC00B6F936 /* _DebugConsoleLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -663,6 +669,12 @@
 		380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		380966DD2414E0CB00382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
 		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
+		38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMonitor.m; sourceTree = "<group>"; };
+		38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMemoryMonitor.h; sourceTree = "<group>"; };
+		38E172FA24EBA8FC00B6F936 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
+		38E172FB24EBA8FC00B6F936 /* _DebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMonitor.h; sourceTree = "<group>"; };
+		38E172FC24EBA8FC00B6F936 /* _DebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMemoryMonitor.m; sourceTree = "<group>"; };
+		38E172FD24EBA8FC00B6F936 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -706,6 +718,7 @@
 		3809657F2414E0CB00382668 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38E172F724EBA8FC00B6F936 /* Memory */,
 				380965802414E0CB00382668 /* Core */,
 				380965852414E0CB00382668 /* App */,
 				380965922414E0CB00382668 /* fishhook */,
@@ -1146,6 +1159,19 @@
 			path = Protobuf;
 			sourceTree = "<group>";
 		};
+		38E172F724EBA8FC00B6F936 /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				38E172FB24EBA8FC00B6F936 /* _DebugMonitor.h */,
+				38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */,
+				38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */,
+				38E172FC24EBA8FC00B6F936 /* _DebugMemoryMonitor.m */,
+				38E172FA24EBA8FC00B6F936 /* _DebugConsoleLabel.h */,
+				38E172FD24EBA8FC00B6F936 /* _DebugConsoleLabel.m */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1216,6 +1242,9 @@
 				380967C02414E0CC00382668 /* _OCLoggerFormat.h in Headers */,
 				380967F52414E0CD00382668 /* _GPBArray.h in Headers */,
 				380966EF2414E0CB00382668 /* _fishhook.h in Headers */,
+				38E1730124EBA8FC00B6F936 /* _DebugMonitor.h in Headers */,
+				38E1730024EBA8FC00B6F936 /* _DebugConsoleLabel.h in Headers */,
+				38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */,
 				380968202414E0CD00382668 /* _GPBDictionary_PackagePrivate.h in Headers */,
 				380967BA2414E0CC00382668 /* _ObjcLog.h in Headers */,
 			);
@@ -1482,10 +1511,12 @@
 				380967DC2414E0CC00382668 /* CocoaDebugNavigationController.swift in Sources */,
 				380968092414E0CD00382668 /* _Type.pbobjc.m in Sources */,
 				380966EA2414E0CB00382668 /* CrashLogger.swift in Sources */,
+				38E1730224EBA8FC00B6F936 /* _DebugMemoryMonitor.m in Sources */,
 				380967B82414E0CC00382668 /* _OCLoggerFormat.m in Sources */,
 				380967B62414E0CC00382668 /* _NSLogHook.m in Sources */,
 				380967C42414E0CC00382668 /* _SandboxerHelper.m in Sources */,
 				380967A52414E0CC00382668 /* NetworkViewController.swift in Sources */,
+				38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */,
 				380968082414E0CD00382668 /* _GPBUnknownFieldSet.m in Sources */,
 				3809680A2414E0CD00382668 /* _GPBMessage.m in Sources */,
 				380967FB2414E0CD00382668 /* _GPBUtilities.m in Sources */,
@@ -1532,6 +1563,7 @@
 				3809681F2414E0CD00382668 /* _Empty.pbobjc.m in Sources */,
 				380966EC2414E0CB00382668 /* AboutViewController.swift in Sources */,
 				380967A62414E0CC00382668 /* NetworkDetailViewController.swift in Sources */,
+				38E1730324EBA8FC00B6F936 /* _DebugConsoleLabel.m in Sources */,
 				3809681C2414E0CD00382668 /* _GPBRootObject.m in Sources */,
 				380967B92414E0CC00382668 /* CocoaDebugTool.m in Sources */,
 				380966DE2414E0CB00382668 /* CocoaDebug.swift in Sources */,
