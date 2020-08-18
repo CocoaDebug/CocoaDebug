@@ -33,6 +33,8 @@
 
 - [x] Long press the black bubble to clean all network logs.
 
+- [x] Detect memory leaks.
+
 - [x] List crash errors.
 
 - [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
@@ -55,20 +57,6 @@ target 'YourTargetName' do
     pod 'CocoaDebug', :configurations => ['Debug']
 end
 ```
-
-### *Carthage*
-
-```ogdl
-github "CocoaDebug/CocoaDebug"
-```
-
-### *Framework*
-
-Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/CocoaDebug.framework.zip) into project and set `Embed` in Xcode.
-
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/002.png" width="600">
-
-> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `CocoaDebug.framework`. This [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
 
 ## Usage
 

@@ -16,7 +16,7 @@
 #import "_Swizzling.h"
 #import "_NetworkHelper.h"
 #import "_HttpDatasource.h"
-#import "_NSObject+CocoaDebug.h"
+#import "NSObject+CocoaDebug.h"
 
 // https://stackoverflow.com/questions/27604052/nsurlsessiontask-authentication-challenge-completionhandler-and-nsurlauthenticat
 @interface CPURLSessionChallengeSender : NSObject <NSURLAuthenticationChallengeSender>

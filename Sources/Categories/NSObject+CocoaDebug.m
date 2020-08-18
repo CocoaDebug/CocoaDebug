@@ -6,7 +6,7 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import "_NSObject+CocoaDebug.h"
+#import "NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 #import <ImageIO/ImageIO.h>
 

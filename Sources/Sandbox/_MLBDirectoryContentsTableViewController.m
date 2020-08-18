@@ -16,7 +16,7 @@
 #import "_NetworkHelper.h"
 #import "_MLBImageController.h"
 #import "_SandboxerHelper.h"
-#import "_NSObject+CocoaDebug.h"
+#import "NSObject+CocoaDebug.h"
 
 @interface _MLBDirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
