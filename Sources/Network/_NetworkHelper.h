@@ -33,7 +33,7 @@
 
 
 @property (nonatomic, assign) BOOL isNetworkEnable;
-@property (nonatomic, assign) BOOL isRunningAutoLaunch;
+//@property (nonatomic, assign) BOOL isRunningAutoLaunch;
 
 
 /**

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		389E6CEC24E2465A003CB9BE /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 389E6CE524E2465A003CB9BE /* AFSecurityPolicy.m */; };
 		389E6CEF24E24681003CB9BE /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 389E6CED24E24681003CB9BE /* index2.html */; };
 		389E6CF024E24681003CB9BE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 389E6CEE24E24681003CB9BE /* index.html */; };
+		38AB3DE224EC1DF40020C0F5 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DE024EC1DF40020C0F5 /* ViewController2.m */; };
 		3DF12DA1189C611E3F0D935A /* Pods_Example_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92F44291ABF5C97FC3ADCF9 /* Pods_Example_Objc.framework */; };
 		D18355845D931D7C26B8C201 /* Pods_Example_ObjcTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBC467968ABE54771D746A6 /* Pods_Example_ObjcTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,8 @@
 		389E6CE624E2465A003CB9BE /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		389E6CED24E24681003CB9BE /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		389E6CEE24E24681003CB9BE /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		38AB3DE024EC1DF40020C0F5 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		38AB3DE124EC1DF40020C0F5 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		3A12DEFAAAC205045EFF563F /* Pods-Example_Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_Objc.debug.xcconfig"; path = "Target Support Files/Pods-Example_Objc/Pods-Example_Objc.debug.xcconfig"; sourceTree = "<group>"; };
 		4DFC757E079617F0CADAC230 /* Pods-Example_ObjcTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_ObjcTests.debug.xcconfig"; path = "Target Support Files/Pods-Example_ObjcTests/Pods-Example_ObjcTests.debug.xcconfig"; sourceTree = "<group>"; };
 		788D46A0FE8454409DD14CCD /* Pods-Example_ObjcTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example_ObjcTests.release.xcconfig"; path = "Target Support Files/Pods-Example_ObjcTests/Pods-Example_ObjcTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				3813B04D24E23EB2009626CC /* SceneDelegate.m */,
 				3813B04F24E23EB2009626CC /* ViewController.h */,
 				3813B05024E23EB2009626CC /* ViewController.m */,
+				38AB3DE124EC1DF40020C0F5 /* ViewController2.h */,
+				38AB3DE024EC1DF40020C0F5 /* ViewController2.m */,
 				3813B05224E23EB2009626CC /* Main.storyboard */,
 				3813B05524E23EB3009626CC /* Assets.xcassets */,
 				3813B05724E23EB3009626CC /* LaunchScreen.storyboard */,
@@ -432,6 +437,7 @@
 				3813B05124E23EB2009626CC /* ViewController.m in Sources */,
 				389E6CEB24E2465A003CB9BE /* AFNetworkReachabilityManager.m in Sources */,
 				3813B04B24E23EB2009626CC /* AppDelegate.m in Sources */,
+				38AB3DE224EC1DF40020C0F5 /* ViewController2.m in Sources */,
 				3813B05C24E23EB3009626CC /* main.m in Sources */,
 				389E6CE924E2465A003CB9BE /* AFURLSessionManager.m in Sources */,
 				389E6CE824E2465A003CB9BE /* AFHTTPSessionManager.m in Sources */,

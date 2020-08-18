@@ -54,7 +54,7 @@
 ```ruby
 target 'YourTargetName' do
     use_frameworks!
-    pod 'CocoaDebug', '1.3.6', :configurations => ['Debug']
+    pod 'CocoaDebug', '1.3.7', :configurations => ['Debug']
 end
 ```
 

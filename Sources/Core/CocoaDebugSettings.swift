@@ -55,9 +55,9 @@ import Foundation
             }
         }
     }
-    @objc public var enableWebViewMonitoring: Bool = false {
+    @objc public var enableWKWebViewMonitoring: Bool = false {
         didSet {
-            UserDefaults.standard.set(enableWebViewMonitoring, forKey: "enableWebViewMonitoring_CocoaDebug")
+            UserDefaults.standard.set(enableWKWebViewMonitoring, forKey: "enableWKWebViewMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -70,6 +70,12 @@ import Foundation
     @objc public var disableNetworkMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(disableNetworkMonitoring, forKey: "disableNetworkMonitoring_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    @objc public var disableMemoryLeaksMonitoring: Bool = false {
+        didSet {
+            UserDefaults.standard.set(disableMemoryLeaksMonitoring, forKey: "disableMemoryLeaksMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -212,9 +218,10 @@ import Foundation
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        enableWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWebViewMonitoring_CocoaDebug")
+        enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
+        disableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
         networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")

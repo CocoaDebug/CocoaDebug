@@ -44,6 +44,7 @@ void my_nslog(NSString *format, ...) {
 
 
 + (void)load {
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{

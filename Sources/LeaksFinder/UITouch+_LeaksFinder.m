@@ -16,10 +16,13 @@ extern const void *const kLatestSenderKey;
 @implementation UITouch (_LeaksFinder)
 
 + (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self swizzleSEL:@selector(setView:) withSEL:@selector(swizzled_setView:)];
-    });
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_CocoaDebug"]) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self swizzleSEL:@selector(setView:) withSEL:@selector(swizzled_setView:)];
+        });
+    }
 }
 
 - (void)swizzled_setView:(UIView *)view {

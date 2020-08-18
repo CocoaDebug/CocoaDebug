@@ -15,10 +15,13 @@
 @implementation UIViewController (_LeaksFinder)
 
 + (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self swizzleSEL:@selector(dismissViewControllerAnimated:completion:) withSEL:@selector(swizzled_dismissViewControllerAnimated:completion:)];
-    });
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_CocoaDebug"]) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self swizzleSEL:@selector(dismissViewControllerAnimated:completion:) withSEL:@selector(swizzled_dismissViewControllerAnimated:completion:)];
+        });
+    }
 }
 
 - (void)swizzled_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {

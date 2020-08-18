@@ -28,7 +28,8 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var webViewSwitch: UISwitch!
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
-    
+    @IBOutlet weak var memorySwitch: UISwitch!
+
     var naviItemTitleLabel: UILabel?
 
     //MARK: - init
@@ -62,12 +63,14 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
+        memorySwitch.isOn = !CocoaDebugSettings.shared.disableMemoryLeaksMonitoring
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
-        webViewSwitch.isOn = CocoaDebugSettings.shared.enableWebViewMonitoring
+        webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
 
+        memorySwitch.addTarget(self, action: #selector(memorySwitchChanged), for: UIControl.Event.valueChanged)
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
@@ -98,6 +101,11 @@ class AppInfoViewController: UITableViewController {
     }
     
     //MARK: - target action
+    @objc func memorySwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableMemoryLeaksMonitoring = !memorySwitch.isOn
+        self.showAlert()
+   }
+    
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
         self.showAlert()
@@ -114,7 +122,7 @@ class AppInfoViewController: UITableViewController {
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.enableWebViewMonitoring = webViewSwitch.isOn
+        CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
         self.showAlert()
     }
     
