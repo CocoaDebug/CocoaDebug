@@ -356,6 +356,49 @@
 		38AB3C7C24EBD4050020C0F5 /* _LeakedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6524EBD4050020C0F5 /* _LeakedObjectProxy.m */; };
 		38AB3C7D24EBD4050020C0F5 /* UIView+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C6624EBD4050020C0F5 /* UIView+_LeaksFinder.h */; };
 		38AB3C7E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m */; };
+		38AB3DA924EBEE9F0020C0F5 /* _FBAssociationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D7324EBEE9F0020C0F5 /* _FBAssociationManager.h */; };
+		38AB3DAA24EBEE9F0020C0F5 /* _FBAssociationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D7524EBEE9F0020C0F5 /* _FBAssociationManager+Internal.h */; };
+		38AB3DAB24EBEE9F0020C0F5 /* _FBAssociationManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D7624EBEE9F0020C0F5 /* _FBAssociationManager.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DAC24EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D7824EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.mm */; };
+		38AB3DAD24EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D7924EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.h */; };
+		38AB3DAE24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D7C24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DAF24EBEE9F0020C0F5 /* _FBBlockStrongLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D7D24EBEE9F0020C0F5 /* _FBBlockStrongLayout.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DB024EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D7E24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.h */; };
+		38AB3DB124EBEE9F0020C0F5 /* _FBBlockInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D7F24EBEE9F0020C0F5 /* _FBBlockInterface.h */; };
+		38AB3DB224EBEE9F0020C0F5 /* _FBBlockStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8024EBEE9F0020C0F5 /* _FBBlockStrongLayout.h */; };
+		38AB3DB324EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8224EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.h */; };
+		38AB3DB424EBEE9F0020C0F5 /* _FBClassStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8324EBEE9F0020C0F5 /* _FBClassStrongLayout.h */; };
+		38AB3DB524EBEE9F0020C0F5 /* _Struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8524EBEE9F0020C0F5 /* _Struct.h */; };
+		38AB3DB624EBEE9F0020C0F5 /* _FBStructEncodingParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D8624EBEE9F0020C0F5 /* _FBStructEncodingParser.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DB724EBEE9F0020C0F5 /* _Struct.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D8724EBEE9F0020C0F5 /* _Struct.mm */; };
+		38AB3DB824EBEE9F0020C0F5 /* _FBStructEncodingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8824EBEE9F0020C0F5 /* _FBStructEncodingParser.h */; };
+		38AB3DB924EBEE9F0020C0F5 /* _Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8924EBEE9F0020C0F5 /* _Type.h */; };
+		38AB3DBA24EBEE9F0020C0F5 /* _BaseType.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8A24EBEE9F0020C0F5 /* _BaseType.h */; };
+		38AB3DBB24EBEE9F0020C0F5 /* _FBClassStrongLayout.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D8B24EBEE9F0020C0F5 /* _FBClassStrongLayout.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DBC24EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D8C24EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DBD24EBEE9F0020C0F5 /* _FBObjectInStructReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8E24EBEE9F0020C0F5 /* _FBObjectInStructReference.h */; };
+		38AB3DBE24EBEE9F0020C0F5 /* _FBIvarReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D8F24EBEE9F0020C0F5 /* _FBIvarReference.h */; };
+		38AB3DBF24EBEE9F0020C0F5 /* _FBObjectInStructReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D9024EBEE9F0020C0F5 /* _FBObjectInStructReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DC024EBEE9F0020C0F5 /* _FBIvarReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D9124EBEE9F0020C0F5 /* _FBIvarReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DC124EBEE9F0020C0F5 /* _FBObjectReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9224EBEE9F0020C0F5 /* _FBObjectReference.h */; };
+		38AB3DC224EBEE9F0020C0F5 /* _FBRetainCycleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9324EBEE9F0020C0F5 /* _FBRetainCycleUtils.h */; };
+		38AB3DC324EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D9624EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DC424EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9724EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.h */; };
+		38AB3DC524EBEE9F0020C0F5 /* _FBObjectiveCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9824EBEE9F0020C0F5 /* _FBObjectiveCObject.h */; };
+		38AB3DC624EBEE9F0020C0F5 /* _FBObjectiveCBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9924EBEE9F0020C0F5 /* _FBObjectiveCBlock.h */; };
+		38AB3DC724EBEE9F0020C0F5 /* _FBObjectiveCGraphElement+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9B24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement+Internal.h */; };
+		38AB3DC824EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9C24EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.h */; };
+		38AB3DC924EBEE9F0020C0F5 /* _FBObjectiveCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D9D24EBEE9F0020C0F5 /* _FBObjectiveCObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DCA24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3D9E24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.h */; };
+		38AB3DCB24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3D9F24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DCC24EBEE9F0020C0F5 /* _FBObjectiveCBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DA024EBEE9F0020C0F5 /* _FBObjectiveCBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DCD24EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DA124EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DCE24EBEE9F0020C0F5 /* _FBNodeEnumerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DA324EBEE9F0020C0F5 /* _FBNodeEnumerator.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DCF24EBEE9F0020C0F5 /* _FBNodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3DA424EBEE9F0020C0F5 /* _FBNodeEnumerator.h */; };
+		38AB3DD024EBEE9F0020C0F5 /* _FBRetainCycleDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3DA524EBEE9F0020C0F5 /* _FBRetainCycleDetector.h */; };
+		38AB3DD124EBEE9F0020C0F5 /* _FBRetainCycleDetector+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3DA624EBEE9F0020C0F5 /* _FBRetainCycleDetector+Internal.h */; };
+		38AB3DD224EBEE9F0020C0F5 /* _FBRetainCycleDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DA724EBEE9F0020C0F5 /* _FBRetainCycleDetector.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38AB3DD324EBEE9F0020C0F5 /* _FBRetainCycleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DA824EBEE9F0020C0F5 /* _FBRetainCycleUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */; };
 		38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */; };
 		38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -718,6 +761,49 @@
 		38AB3C6524EBD4050020C0F5 /* _LeakedObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LeakedObjectProxy.m; sourceTree = "<group>"; };
 		38AB3C6624EBD4050020C0F5 /* UIView+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+_LeaksFinder.h"; sourceTree = "<group>"; };
 		38AB3C6724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISplitViewController+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3D7324EBEE9F0020C0F5 /* _FBAssociationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBAssociationManager.h; sourceTree = "<group>"; };
+		38AB3D7524EBEE9F0020C0F5 /* _FBAssociationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_FBAssociationManager+Internal.h"; sourceTree = "<group>"; };
+		38AB3D7624EBEE9F0020C0F5 /* _FBAssociationManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBAssociationManager.mm; sourceTree = "<group>"; };
+		38AB3D7824EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBStandardGraphEdgeFilters.mm; sourceTree = "<group>"; };
+		38AB3D7924EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBStandardGraphEdgeFilters.h; sourceTree = "<group>"; };
+		38AB3D7C24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBBlockStrongRelationDetector.m; sourceTree = "<group>"; };
+		38AB3D7D24EBEE9F0020C0F5 /* _FBBlockStrongLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBBlockStrongLayout.m; sourceTree = "<group>"; };
+		38AB3D7E24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBBlockStrongRelationDetector.h; sourceTree = "<group>"; };
+		38AB3D7F24EBEE9F0020C0F5 /* _FBBlockInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBBlockInterface.h; sourceTree = "<group>"; };
+		38AB3D8024EBEE9F0020C0F5 /* _FBBlockStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBBlockStrongLayout.h; sourceTree = "<group>"; };
+		38AB3D8224EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBClassStrongLayoutHelpers.h; sourceTree = "<group>"; };
+		38AB3D8324EBEE9F0020C0F5 /* _FBClassStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBClassStrongLayout.h; sourceTree = "<group>"; };
+		38AB3D8524EBEE9F0020C0F5 /* _Struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Struct.h; sourceTree = "<group>"; };
+		38AB3D8624EBEE9F0020C0F5 /* _FBStructEncodingParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBStructEncodingParser.mm; sourceTree = "<group>"; };
+		38AB3D8724EBEE9F0020C0F5 /* _Struct.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _Struct.mm; sourceTree = "<group>"; };
+		38AB3D8824EBEE9F0020C0F5 /* _FBStructEncodingParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBStructEncodingParser.h; sourceTree = "<group>"; };
+		38AB3D8924EBEE9F0020C0F5 /* _Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Type.h; sourceTree = "<group>"; };
+		38AB3D8A24EBEE9F0020C0F5 /* _BaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BaseType.h; sourceTree = "<group>"; };
+		38AB3D8B24EBEE9F0020C0F5 /* _FBClassStrongLayout.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBClassStrongLayout.mm; sourceTree = "<group>"; };
+		38AB3D8C24EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBClassStrongLayoutHelpers.m; sourceTree = "<group>"; };
+		38AB3D8E24EBEE9F0020C0F5 /* _FBObjectInStructReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectInStructReference.h; sourceTree = "<group>"; };
+		38AB3D8F24EBEE9F0020C0F5 /* _FBIvarReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBIvarReference.h; sourceTree = "<group>"; };
+		38AB3D9024EBEE9F0020C0F5 /* _FBObjectInStructReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBObjectInStructReference.m; sourceTree = "<group>"; };
+		38AB3D9124EBEE9F0020C0F5 /* _FBIvarReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBIvarReference.m; sourceTree = "<group>"; };
+		38AB3D9224EBEE9F0020C0F5 /* _FBObjectReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectReference.h; sourceTree = "<group>"; };
+		38AB3D9324EBEE9F0020C0F5 /* _FBRetainCycleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBRetainCycleUtils.h; sourceTree = "<group>"; };
+		38AB3D9624EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBObjectiveCNSCFTimer.mm; sourceTree = "<group>"; };
+		38AB3D9724EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectiveCNSCFTimer.h; sourceTree = "<group>"; };
+		38AB3D9824EBEE9F0020C0F5 /* _FBObjectiveCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectiveCObject.h; sourceTree = "<group>"; };
+		38AB3D9924EBEE9F0020C0F5 /* _FBObjectiveCBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectiveCBlock.h; sourceTree = "<group>"; };
+		38AB3D9B24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_FBObjectiveCGraphElement+Internal.h"; sourceTree = "<group>"; };
+		38AB3D9C24EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectGraphConfiguration.h; sourceTree = "<group>"; };
+		38AB3D9D24EBEE9F0020C0F5 /* _FBObjectiveCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBObjectiveCObject.m; sourceTree = "<group>"; };
+		38AB3D9E24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBObjectiveCGraphElement.h; sourceTree = "<group>"; };
+		38AB3D9F24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBObjectiveCGraphElement.mm; sourceTree = "<group>"; };
+		38AB3DA024EBEE9F0020C0F5 /* _FBObjectiveCBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBObjectiveCBlock.m; sourceTree = "<group>"; };
+		38AB3DA124EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBObjectGraphConfiguration.m; sourceTree = "<group>"; };
+		38AB3DA324EBEE9F0020C0F5 /* _FBNodeEnumerator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBNodeEnumerator.mm; sourceTree = "<group>"; };
+		38AB3DA424EBEE9F0020C0F5 /* _FBNodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBNodeEnumerator.h; sourceTree = "<group>"; };
+		38AB3DA524EBEE9F0020C0F5 /* _FBRetainCycleDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBRetainCycleDetector.h; sourceTree = "<group>"; };
+		38AB3DA624EBEE9F0020C0F5 /* _FBRetainCycleDetector+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_FBRetainCycleDetector+Internal.h"; sourceTree = "<group>"; };
+		38AB3DA724EBEE9F0020C0F5 /* _FBRetainCycleDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = _FBRetainCycleDetector.mm; sourceTree = "<group>"; };
+		38AB3DA824EBEE9F0020C0F5 /* _FBRetainCycleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBRetainCycleUtils.m; sourceTree = "<group>"; };
 		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMonitor.m; sourceTree = "<group>"; };
 		38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMemoryMonitor.h; sourceTree = "<group>"; };
@@ -768,6 +854,7 @@
 		3809657F2414E0CB00382668 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38AB3D7124EBEE9F0020C0F5 /* FBRetainCycleDetector */,
 				38AB3C5024EBD4050020C0F5 /* LeaksFinder */,
 				38964EED24EBCDE300F67916 /* WeakTimer */,
 				38E172F724EBA8FC00B6F936 /* Memory */,
@@ -1250,6 +1337,152 @@
 			path = LeaksFinder;
 			sourceTree = "<group>";
 		};
+		38AB3D7124EBEE9F0020C0F5 /* FBRetainCycleDetector */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D9324EBEE9F0020C0F5 /* _FBRetainCycleUtils.h */,
+				38AB3DA824EBEE9F0020C0F5 /* _FBRetainCycleUtils.m */,
+				38AB3D7A24EBEE9F0020C0F5 /* Layout */,
+				38AB3D7724EBEE9F0020C0F5 /* Filtering */,
+				38AB3D7224EBEE9F0020C0F5 /* Associations */,
+				38AB3D9424EBEE9F0020C0F5 /* Graph */,
+				38AB3DA224EBEE9F0020C0F5 /* Detector */,
+			);
+			path = FBRetainCycleDetector;
+			sourceTree = "<group>";
+		};
+		38AB3D7224EBEE9F0020C0F5 /* Associations */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D7324EBEE9F0020C0F5 /* _FBAssociationManager.h */,
+				38AB3D7424EBEE9F0020C0F5 /* Internal */,
+				38AB3D7624EBEE9F0020C0F5 /* _FBAssociationManager.mm */,
+			);
+			path = Associations;
+			sourceTree = "<group>";
+		};
+		38AB3D7424EBEE9F0020C0F5 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D7524EBEE9F0020C0F5 /* _FBAssociationManager+Internal.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		38AB3D7724EBEE9F0020C0F5 /* Filtering */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D7824EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.mm */,
+				38AB3D7924EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.h */,
+			);
+			path = Filtering;
+			sourceTree = "<group>";
+		};
+		38AB3D7A24EBEE9F0020C0F5 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D8124EBEE9F0020C0F5 /* Classes */,
+				38AB3D7B24EBEE9F0020C0F5 /* Blocks */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		38AB3D7B24EBEE9F0020C0F5 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D7C24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.m */,
+				38AB3D7D24EBEE9F0020C0F5 /* _FBBlockStrongLayout.m */,
+				38AB3D7E24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.h */,
+				38AB3D7F24EBEE9F0020C0F5 /* _FBBlockInterface.h */,
+				38AB3D8024EBEE9F0020C0F5 /* _FBBlockStrongLayout.h */,
+			);
+			path = Blocks;
+			sourceTree = "<group>";
+		};
+		38AB3D8124EBEE9F0020C0F5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D8224EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.h */,
+				38AB3D8324EBEE9F0020C0F5 /* _FBClassStrongLayout.h */,
+				38AB3D8424EBEE9F0020C0F5 /* Parser */,
+				38AB3D8B24EBEE9F0020C0F5 /* _FBClassStrongLayout.mm */,
+				38AB3D8C24EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.m */,
+				38AB3D8D24EBEE9F0020C0F5 /* Reference */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		38AB3D8424EBEE9F0020C0F5 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D8524EBEE9F0020C0F5 /* _Struct.h */,
+				38AB3D8624EBEE9F0020C0F5 /* _FBStructEncodingParser.mm */,
+				38AB3D8724EBEE9F0020C0F5 /* _Struct.mm */,
+				38AB3D8824EBEE9F0020C0F5 /* _FBStructEncodingParser.h */,
+				38AB3D8924EBEE9F0020C0F5 /* _Type.h */,
+				38AB3D8A24EBEE9F0020C0F5 /* _BaseType.h */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		38AB3D8D24EBEE9F0020C0F5 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D8E24EBEE9F0020C0F5 /* _FBObjectInStructReference.h */,
+				38AB3D8F24EBEE9F0020C0F5 /* _FBIvarReference.h */,
+				38AB3D9024EBEE9F0020C0F5 /* _FBObjectInStructReference.m */,
+				38AB3D9124EBEE9F0020C0F5 /* _FBIvarReference.m */,
+				38AB3D9224EBEE9F0020C0F5 /* _FBObjectReference.h */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
+		38AB3D9424EBEE9F0020C0F5 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D9524EBEE9F0020C0F5 /* Specialization */,
+				38AB3D9824EBEE9F0020C0F5 /* _FBObjectiveCObject.h */,
+				38AB3D9924EBEE9F0020C0F5 /* _FBObjectiveCBlock.h */,
+				38AB3D9A24EBEE9F0020C0F5 /* Internal */,
+				38AB3D9C24EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.h */,
+				38AB3D9D24EBEE9F0020C0F5 /* _FBObjectiveCObject.m */,
+				38AB3D9E24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.h */,
+				38AB3D9F24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.mm */,
+				38AB3DA024EBEE9F0020C0F5 /* _FBObjectiveCBlock.m */,
+				38AB3DA124EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.m */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		38AB3D9524EBEE9F0020C0F5 /* Specialization */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D9624EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.mm */,
+				38AB3D9724EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.h */,
+			);
+			path = Specialization;
+			sourceTree = "<group>";
+		};
+		38AB3D9A24EBEE9F0020C0F5 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3D9B24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement+Internal.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		38AB3DA224EBEE9F0020C0F5 /* Detector */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3DA324EBEE9F0020C0F5 /* _FBNodeEnumerator.mm */,
+				38AB3DA424EBEE9F0020C0F5 /* _FBNodeEnumerator.h */,
+				38AB3DA524EBEE9F0020C0F5 /* _FBRetainCycleDetector.h */,
+				38AB3DA624EBEE9F0020C0F5 /* _FBRetainCycleDetector+Internal.h */,
+				38AB3DA724EBEE9F0020C0F5 /* _FBRetainCycleDetector.mm */,
+			);
+			path = Detector;
+			sourceTree = "<group>";
+		};
 		38E172F724EBA8FC00B6F936 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1274,11 +1507,13 @@
 				38AB3C6D24EBD4050020C0F5 /* _LeaksFinder.h in Headers */,
 				380967AD2414E0CC00382668 /* _CanonicalRequest.h in Headers */,
 				3809681B2414E0CD00382668 /* _GPBUtilities.h in Headers */,
+				38AB3DB124EBEE9F0020C0F5 /* _FBBlockInterface.h in Headers */,
 				380967FA2414E0CD00382668 /* _GPBRootObject.h in Headers */,
 				380967A22414E0CC00382668 /* _NetworkHelper.h in Headers */,
 				38AB3C6924EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h in Headers */,
 				380968152414E0CD00382668 /* _GPBExtensionRegistry.h in Headers */,
 				380967EE2414E0CD00382668 /* _GPBMessage+CocoaDebug.h in Headers */,
+				38AB3DC624EBEE9F0020C0F5 /* _FBObjectiveCBlock.h in Headers */,
 				380967C12414E0CC00382668 /* CocoaDebugTool.h in Headers */,
 				380967D92414E0CC00382668 /* _Swizzling.h in Headers */,
 				3809682A2414E0CD00382668 /* _GPBDescriptor_PackagePrivate.h in Headers */,
@@ -1288,12 +1523,16 @@
 				380967B72414E0CC00382668 /* _OCLogHelper.h in Headers */,
 				380967C72414E0CC00382668 /* _Sandboxer.h in Headers */,
 				380968012414E0CD00382668 /* _Api.pbobjc.h in Headers */,
+				38AB3DB024EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.h in Headers */,
 				380968042414E0CD00382668 /* _Empty.pbobjc.h in Headers */,
 				380967C92414E0CC00382668 /* _MLBFilePreviewController.h in Headers */,
+				38AB3DC424EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.h in Headers */,
 				380967AC2414E0CC00382668 /* _CacheStoragePolicy.h in Headers */,
+				38AB3DBD24EBEE9F0020C0F5 /* _FBObjectInStructReference.h in Headers */,
 				380968132414E0CD00382668 /* _GPBRuntimeTypes.h in Headers */,
 				380967FF2414E0CD00382668 /* _GPBDescriptor.h in Headers */,
 				380967FD2414E0CD00382668 /* _GPBMessage_PackagePrivate.h in Headers */,
+				38AB3DBA24EBEE9F0020C0F5 /* _BaseType.h in Headers */,
 				380968222414E0CD00382668 /* _Struct.pbobjc.h in Headers */,
 				380967B52414E0CC00382668 /* _OCLogModel.h in Headers */,
 				3809680C2414E0CD00382668 /* _GPBCodedOutputStream_PackagePrivate.h in Headers */,
@@ -1303,31 +1542,47 @@
 				380967A72414E0CC00382668 /* _HttpModel.h in Headers */,
 				38AB3C7624EBD4050020C0F5 /* NSObject+_LeaksFinder.h in Headers */,
 				380967EF2414E0CD00382668 /* _GPBProtocolBuffers.h in Headers */,
+				38AB3DB424EBEE9F0020C0F5 /* _FBClassStrongLayout.h in Headers */,
 				38AB3C6C24EBD4050020C0F5 /* _LeaksMessenger.h in Headers */,
 				380967A42414E0CC00382668 /* _HttpDatasource.h in Headers */,
 				380968262414E0CD00382668 /* _GPBMessage.h in Headers */,
+				38AB3DA924EBEE9F0020C0F5 /* _FBAssociationManager.h in Headers */,
+				38AB3DB224EBEE9F0020C0F5 /* _FBBlockStrongLayout.h in Headers */,
+				38AB3DD024EBEE9F0020C0F5 /* _FBRetainCycleDetector.h in Headers */,
 				38AB3C7B24EBD4050020C0F5 /* UIViewController+_LeaksFinder.h in Headers */,
 				380967ED2414E0CD00382668 /* _NSObject+CocoaDebug.h in Headers */,
 				380967F42414E0CD00382668 /* _GPBWireFormat.h in Headers */,
+				38AB3DCF24EBEE9F0020C0F5 /* _FBNodeEnumerator.h in Headers */,
 				38AB3C6A24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h in Headers */,
+				38AB3DD124EBEE9F0020C0F5 /* _FBRetainCycleDetector+Internal.h in Headers */,
 				38AB3C7D24EBD4050020C0F5 /* UIView+_LeaksFinder.h in Headers */,
+				38AB3DB924EBEE9F0020C0F5 /* _Type.h in Headers */,
 				380967CF2414E0CC00382668 /* _SandboxerHelper.h in Headers */,
 				380968282414E0CD00382668 /* _GPBUnknownFieldSet.h in Headers */,
+				38AB3DC524EBEE9F0020C0F5 /* _FBObjectiveCObject.h in Headers */,
 				380968062414E0CD00382668 /* _Wrappers.pbobjc.h in Headers */,
+				38AB3DB524EBEE9F0020C0F5 /* _Struct.h in Headers */,
 				380967D32414E0CC00382668 /* _MLBDirectoryContentsTableViewController.h in Headers */,
 				380967B32414E0CC00382668 /* _CustomHTTPProtocol.h in Headers */,
+				38AB3DC724EBEE9F0020C0F5 /* _FBObjectiveCGraphElement+Internal.h in Headers */,
+				38AB3DCA24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.h in Headers */,
+				38AB3DC124EBEE9F0020C0F5 /* _FBObjectReference.h in Headers */,
 				38AB3C7024EBD4050020C0F5 /* _LeakedObjectProxy.h in Headers */,
 				380967CE2414E0CC00382668 /* _MLBFileTableViewCell.h in Headers */,
 				380967C82414E0CC00382668 /* _Sandboxer-Header.h in Headers */,
 				380968142414E0CD00382668 /* _Timestamp.pbobjc.h in Headers */,
+				38AB3DB824EBEE9F0020C0F5 /* _FBStructEncodingParser.h in Headers */,
+				38AB3DAD24EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.h in Headers */,
 				380967FE2414E0CD00382668 /* _GPBUnknownFieldSet_PackagePrivate.h in Headers */,
 				3809681A2414E0CD00382668 /* _GPBExtensionInternals.h in Headers */,
+				38AB3DBE24EBEE9F0020C0F5 /* _FBIvarReference.h in Headers */,
 				380967C22414E0CC00382668 /* _OCLogStoreManager.h in Headers */,
 				380968022414E0CD00382668 /* _GPBCodedOutputStream.h in Headers */,
 				38AB3C7A24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h in Headers */,
 				38AB3C7824EBD4050020C0F5 /* UIApplication+_LeaksFinder.h in Headers */,
 				380967CA2414E0CC00382668 /* _MLBFileInfo.h in Headers */,
 				380967B12414E0CC00382668 /* _QNSURLSessionDemux.h in Headers */,
+				38AB3DC224EBEE9F0020C0F5 /* _FBRetainCycleUtils.h in Headers */,
 				380968072414E0CD00382668 /* _FieldMask.pbobjc.h in Headers */,
 				380968112414E0CD00382668 /* _GPBArray_PackagePrivate.h in Headers */,
 				380967C62414E0CC00382668 /* _MLBImageController.h in Headers */,
@@ -1339,9 +1594,11 @@
 				380967F02414E0CD00382668 /* _Duration.pbobjc.h in Headers */,
 				380968192414E0CD00382668 /* _GPBUnknownField_PackagePrivate.h in Headers */,
 				380967F72414E0CD00382668 /* _SourceContext.pbobjc.h in Headers */,
+				38AB3DAA24EBEE9F0020C0F5 /* _FBAssociationManager+Internal.h in Headers */,
 				3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */,
 				380968182414E0CD00382668 /* _GPBUtilities_PackagePrivate.h in Headers */,
 				3809680B2414E0CD00382668 /* _GPBRootObject_PackagePrivate.h in Headers */,
+				38AB3DB324EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.h in Headers */,
 				38AB3C6E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h in Headers */,
 				380967C02414E0CC00382668 /* _OCLoggerFormat.h in Headers */,
 				380967F52414E0CD00382668 /* _GPBArray.h in Headers */,
@@ -1349,6 +1606,7 @@
 				38E1730124EBA8FC00B6F936 /* _DebugMonitor.h in Headers */,
 				38E1730024EBA8FC00B6F936 /* _DebugConsoleLabel.h in Headers */,
 				38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */,
+				38AB3DC824EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.h in Headers */,
 				380968202414E0CD00382668 /* _GPBDictionary_PackagePrivate.h in Headers */,
 				380967BA2414E0CC00382668 /* _ObjcLog.h in Headers */,
 			);
@@ -1599,8 +1857,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38AB3DAB24EBEE9F0020C0F5 /* _FBAssociationManager.mm in Sources */,
+				38AB3DD224EBEE9F0020C0F5 /* _FBRetainCycleDetector.mm in Sources */,
 				380967A92414E0CC00382668 /* _NetworkHelper.m in Sources */,
 				380968052414E0CD00382668 /* _GPBDictionary.m in Sources */,
+				38AB3DCB24EBEE9F0020C0F5 /* _FBObjectiveCGraphElement.mm in Sources */,
 				380967FC2414E0CD00382668 /* _GPBExtensionInternals.m in Sources */,
 				3809682B2414E0CD00382668 /* _Wrappers.pbobjc.m in Sources */,
 				380967AA2414E0CC00382668 /* NetworkDetailModel.swift in Sources */,
@@ -1623,22 +1884,28 @@
 				380967C42414E0CC00382668 /* _SandboxerHelper.m in Sources */,
 				380967A52414E0CC00382668 /* NetworkViewController.swift in Sources */,
 				38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */,
+				38AB3DCE24EBEE9F0020C0F5 /* _FBNodeEnumerator.mm in Sources */,
 				380968082414E0CD00382668 /* _GPBUnknownFieldSet.m in Sources */,
 				3809680A2414E0CD00382668 /* _GPBMessage.m in Sources */,
 				380967FB2414E0CD00382668 /* _GPBUtilities.m in Sources */,
 				38AB3C7124EBD4050020C0F5 /* UIViewController+_LeaksFinder.m in Sources */,
+				38AB3DD324EBEE9F0020C0F5 /* _FBRetainCycleUtils.m in Sources */,
 				380967D42414E0CC00382668 /* _MLBFileInfo.m in Sources */,
 				380967B22414E0CC00382668 /* _CanonicalRequest.m in Sources */,
+				38AB3DAC24EBEE9F0020C0F5 /* _FBStandardGraphEdgeFilters.mm in Sources */,
 				380967F12414E0CD00382668 /* _GPBExtensionRegistry.m in Sources */,
 				380967D82414E0CC00382668 /* _WKWebView+Swizzling.m in Sources */,
 				380967E02414E0CD00382668 /* Color.swift in Sources */,
+				38AB3DC924EBEE9F0020C0F5 /* _FBObjectiveCObject.m in Sources */,
 				380967CB2414E0CC00382668 /* _MLBDirectoryContentsTableViewController.m in Sources */,
 				380967AE2414E0CC00382668 /* _QNSURLSessionDemux.m in Sources */,
 				380967F82414E0CD00382668 /* _GPBWellKnownTypes.m in Sources */,
 				38AB3C7E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m in Sources */,
+				38AB3DCD24EBEE9F0020C0F5 /* _FBObjectGraphConfiguration.m in Sources */,
 				380966ED2414E0CB00382668 /* CrashCell.swift in Sources */,
 				38AB3C7924EBD4050020C0F5 /* UITouch+_LeaksFinder.m in Sources */,
 				380968292414E0CD00382668 /* _FieldMask.pbobjc.m in Sources */,
+				38AB3DC024EBEE9F0020C0F5 /* _FBIvarReference.m in Sources */,
 				38AB3C7724EBD4050020C0F5 /* _LeaksMessenger.m in Sources */,
 				380966E42414E0CB00382668 /* CrashStoreManager.swift in Sources */,
 				380966E82414E0CB00382668 /* CrashListViewController.swift in Sources */,
@@ -1648,16 +1915,20 @@
 				38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */,
 				38AB3C7224EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m in Sources */,
 				380967A82414E0CC00382668 /* NetworkDetailCell.swift in Sources */,
+				38AB3DBF24EBEE9F0020C0F5 /* _FBObjectInStructReference.m in Sources */,
 				380967A32414E0CC00382668 /* NetworkCell.swift in Sources */,
 				380967D62414E0CC00382668 /* _Swizzling.m in Sources */,
+				38AB3DAF24EBEE9F0020C0F5 /* _FBBlockStrongLayout.m in Sources */,
 				38964EF024EBCDE300F67916 /* _WeakTimer.m in Sources */,
 				380966EE2414E0CB00382668 /* _fishhook.c in Sources */,
 				380967D22414E0CC00382668 /* _MLBImageResources.m in Sources */,
 				380967DA2414E0CC00382668 /* Bubble.swift in Sources */,
+				38AB3DB624EBEE9F0020C0F5 /* _FBStructEncodingParser.mm in Sources */,
 				380967AF2414E0CC00382668 /* _CustomHTTPProtocol.m in Sources */,
 				380968102414E0CD00382668 /* _GPBArray.m in Sources */,
 				380966E72414E0CB00382668 /* IgnoredURLsViewController.swift in Sources */,
 				380968212414E0CD00382668 /* _GPBCodedOutputStream.m in Sources */,
+				38AB3DBC24EBEE9F0020C0F5 /* _FBClassStrongLayoutHelpers.m in Sources */,
 				380968162414E0CD00382668 /* _Duration.pbobjc.m in Sources */,
 				380967CD2414E0CC00382668 /* _MLBImageController.m in Sources */,
 				380967B02414E0CC00382668 /* _CacheStoragePolicy.m in Sources */,
@@ -1687,6 +1958,9 @@
 				38AB3C6824EBD4050020C0F5 /* NSObject+_LeaksFinder.m in Sources */,
 				380967DB2414E0CC00382668 /* _WindowHelper.swift in Sources */,
 				380967D02414E0CC00382668 /* _Sandboxer.m in Sources */,
+				38AB3DBB24EBEE9F0020C0F5 /* _FBClassStrongLayout.mm in Sources */,
+				38AB3DC324EBEE9F0020C0F5 /* _FBObjectiveCNSCFTimer.mm in Sources */,
+				38AB3DAE24EBEE9F0020C0F5 /* _FBBlockStrongRelationDetector.m in Sources */,
 				380968002414E0CD00382668 /* _GPBUnknownField.m in Sources */,
 				380967A02414E0CC00382668 /* JsonViewController.swift in Sources */,
 				380968032414E0CD00382668 /* _Struct.pbobjc.m in Sources */,
@@ -1696,7 +1970,9 @@
 				380967BE2414E0CC00382668 /* LogCell.swift in Sources */,
 				380967DD2414E0CD00382668 /* CocoaDebugViewController.swift in Sources */,
 				380967EB2414E0CD00382668 /* _NSObject+CocoaDebug.m in Sources */,
+				38AB3DB724EBEE9F0020C0F5 /* _Struct.mm in Sources */,
 				3809680D2414E0CD00382668 /* _SourceContext.pbobjc.m in Sources */,
+				38AB3DCC24EBEE9F0020C0F5 /* _FBObjectiveCBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
