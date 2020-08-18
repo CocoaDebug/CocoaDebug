@@ -7,26 +7,35 @@
 //
 
 #import "_DebugMonitor.h"
+#import "_WeakTimer.h"
 
-@implementation _DebugMonitor {
-    NSThread *_thread;
-    NSTimer *_timer;
-}
+static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
+
+@interface _DebugMonitor ()
+
+@property (nonatomic, strong) _WeakTimer *backgroundTimer;
+@property (nonatomic, strong) dispatch_queue_t privateQueue;
+
+@end
+
+@implementation _DebugMonitor
 
 #pragma mark - public
 - (void)startMonitoring {
-    _thread = [[NSThread alloc] initWithTarget:self selector:@selector(threadMain) object:nil];
-    [_thread setName:@"MemoryMonitor_CocoaDebug"];
-    _timer = [[NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateMemory) userInfo:nil repeats:YES] retain];
-    [_thread start];
+    self.privateQueue = dispatch_queue_create("com.cocoadebug.private_queue", DISPATCH_QUEUE_CONCURRENT);
+    
+    self.backgroundTimer = [_WeakTimer scheduledTimerWithTimeInterval:0.5
+                                                                target:self
+                                                              selector:@selector(updateMemory)
+                                                              userInfo:nil
+                                                               repeats:YES
+                                                         dispatchQueue:self.privateQueue];
+    
+    dispatch_queue_set_specific(self.privateQueue, (__bridge const void *)(self), (void *)CocoaDebugTimerQueueContext, NULL);
 }
 
 - (void)stopMonitoring {
-    [_timer invalidate];
-    [_timer release];
-    if (_thread) {
-        [_thread release];
-    }
+    [_backgroundTimer invalidate];
 }
 
 #pragma mark - private
@@ -35,16 +44,15 @@
 }
 
 #pragma mark - target action
-- (void)threadMain {
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop currentRunLoop] run];
-    [_timer fire];
-}
-
 - (void)updateMemory {
     if (self.valueBlock) {
         self.valueBlock([self getValue]);
     }
+}
+
+#pragma mark - dealloc
+- (void)dealloc {
+    [_backgroundTimer invalidate];
 }
 
 @end

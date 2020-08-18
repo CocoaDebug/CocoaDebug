@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',
                           'Sources/Window/**/*.m',
-                          'Sources/Memory/_DebugConsoleLabel.m',
-                          'Sources/Memory/_DebugMemoryMonitor.m'
+                          'Sources/Memory/**/*.m',
+                          'Sources/WeakTimer/**/*.m',
                           ]
 end

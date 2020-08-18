@@ -331,8 +331,10 @@
 		3809682B2414E0CD00382668 /* _Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3809682C2414E0CD00382668 /* _GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 380966DD2414E0CB00382668 /* _GPBDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 380965832414E0CB00382668 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38964EF024EBCDE300F67916 /* _WeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38964EEE24EBCDE300F67916 /* _WeakTimer.m */; };
+		38964EF124EBCDE300F67916 /* _WeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 38964EEF24EBCDE300F67916 /* _WeakTimer.h */; };
 		38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */; };
-		38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */; };
 		38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38E1730024EBA8FC00B6F936 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172FA24EBA8FC00B6F936 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38E1730124EBA8FC00B6F936 /* _DebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172FB24EBA8FC00B6F936 /* _DebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -668,6 +670,8 @@
 		380966DB2414E0CB00382668 /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
 		380966DC2414E0CB00382668 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		380966DD2414E0CB00382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
+		38964EEE24EBCDE300F67916 /* _WeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WeakTimer.m; sourceTree = "<group>"; };
+		38964EEF24EBCDE300F67916 /* _WeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WeakTimer.h; sourceTree = "<group>"; };
 		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMonitor.m; sourceTree = "<group>"; };
 		38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMemoryMonitor.h; sourceTree = "<group>"; };
@@ -718,6 +722,7 @@
 		3809657F2414E0CB00382668 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38964EED24EBCDE300F67916 /* WeakTimer */,
 				38E172F724EBA8FC00B6F936 /* Memory */,
 				380965802414E0CB00382668 /* Core */,
 				380965852414E0CB00382668 /* App */,
@@ -1159,6 +1164,15 @@
 			path = Protobuf;
 			sourceTree = "<group>";
 		};
+		38964EED24EBCDE300F67916 /* WeakTimer */ = {
+			isa = PBXGroup;
+			children = (
+				38964EEF24EBCDE300F67916 /* _WeakTimer.h */,
+				38964EEE24EBCDE300F67916 /* _WeakTimer.m */,
+			);
+			path = WeakTimer;
+			sourceTree = "<group>";
+		};
 		38E172F724EBA8FC00B6F936 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,6 +1247,7 @@
 				380968122414E0CD00382668 /* _Any.pbobjc.h in Headers */,
 				3809681E2414E0CD00382668 /* _GPBWellKnownTypes.h in Headers */,
 				380968232414E0CD00382668 /* _GPBCodedInputStream_PackagePrivate.h in Headers */,
+				38964EF124EBCDE300F67916 /* _WeakTimer.h in Headers */,
 				380967F02414E0CD00382668 /* _Duration.pbobjc.h in Headers */,
 				380968192414E0CD00382668 /* _GPBUnknownField_PackagePrivate.h in Headers */,
 				380967F72414E0CD00382668 /* _SourceContext.pbobjc.h in Headers */,
@@ -1538,6 +1553,7 @@
 				380967A82414E0CC00382668 /* NetworkDetailCell.swift in Sources */,
 				380967A32414E0CC00382668 /* NetworkCell.swift in Sources */,
 				380967D62414E0CC00382668 /* _Swizzling.m in Sources */,
+				38964EF024EBCDE300F67916 /* _WeakTimer.m in Sources */,
 				380966EE2414E0CB00382668 /* _fishhook.c in Sources */,
 				380967D22414E0CC00382668 /* _MLBImageResources.m in Sources */,
 				380967DA2414E0CC00382668 /* Bubble.swift in Sources */,
