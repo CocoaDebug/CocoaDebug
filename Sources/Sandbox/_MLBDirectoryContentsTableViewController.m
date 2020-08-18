@@ -339,7 +339,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not supported" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancelAction];
-    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -412,7 +411,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
         [self deleteAllFiles];
     }];
-    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -435,7 +433,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
         [self deleteSelectedFiles];
     }];
-    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -568,7 +565,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [self deleteSelectedFile];
         }]];
-        if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
         [self presentViewController:alert animated:YES completion:nil];
     }
 }

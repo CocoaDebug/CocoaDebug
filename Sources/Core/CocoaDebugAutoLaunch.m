@@ -78,7 +78,6 @@
 //    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"WARNING" message:@"CocoaDebug auto launch failed,\nPlease enable CocoaDebug manually." preferredStyle:UIAlertControllerStyleAlert];
 //    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
 //    [alert addAction:cancelAction];
-//    if (@available(iOS 13, *)) {alert.modalPresentationStyle = UIModalPresentationFullScreen;}
 //
 //    UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
 //    [mainWindow.rootViewController presentViewController:alert animated:YES completion:nil];
