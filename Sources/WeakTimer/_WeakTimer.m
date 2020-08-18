@@ -6,6 +6,9 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #import "_WeakTimer.h"
 
 #import <libkern/OSAtomic.h>
@@ -194,3 +197,5 @@
 }
 
 @end
+
+#pragma GCC diagnostic pop
