@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <dlfcn.h>
-#import "_fishhook.h"
 #import "_OCLogHelper.h"
+#import "fishhook.h"
 
 @interface _NSLogHook : NSObject
 
@@ -47,8 +47,8 @@ void my_nslog(NSString *format, ...) {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rebinding nslog_rebinding = {"NSLog",my_nslog,(void*)&orig_nslog};
-            rebind_symbols((struct rebinding[1]){nslog_rebinding}, 1);
+            struct rcd_rebinding nslog_rebinding = {"NSLog",my_nslog,(void*)&orig_nslog};
+            rcd_rebind_symbols((struct rcd_rebinding[1]){nslog_rebinding}, 1);
         });
     }
 }

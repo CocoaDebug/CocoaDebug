@@ -30,7 +30,6 @@
 #import "_Sandboxer.h"
 #import "_SandboxerHelper.h"
 #import "_Swizzling.h"
-#import "_fishhook.h"
 #import "_NSObject+CocoaDebug.h"
 #import "_GPBMessage+CocoaDebug.h"
 #import "_GPBMessage.h"
