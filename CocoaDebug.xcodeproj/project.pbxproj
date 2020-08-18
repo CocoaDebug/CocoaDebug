@@ -333,6 +333,29 @@
 		3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 380965832414E0CB00382668 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38964EF024EBCDE300F67916 /* _WeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38964EEE24EBCDE300F67916 /* _WeakTimer.m */; };
 		38964EF124EBCDE300F67916 /* _WeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 38964EEF24EBCDE300F67916 /* _WeakTimer.h */; };
+		38AB3C6824EBD4050020C0F5 /* NSObject+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5124EBD4050020C0F5 /* NSObject+_LeaksFinder.m */; };
+		38AB3C6924EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5224EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h */; };
+		38AB3C6A24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5324EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h */; };
+		38AB3C6B24EBD4050020C0F5 /* UIApplication+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5424EBD4050020C0F5 /* UIApplication+_LeaksFinder.m */; };
+		38AB3C6C24EBD4050020C0F5 /* _LeaksMessenger.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5524EBD4050020C0F5 /* _LeaksMessenger.h */; };
+		38AB3C6D24EBD4050020C0F5 /* _LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5624EBD4050020C0F5 /* _LeaksFinder.h */; };
+		38AB3C6E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h */; };
+		38AB3C6F24EBD4050020C0F5 /* UIView+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5824EBD4050020C0F5 /* UIView+_LeaksFinder.m */; };
+		38AB3C7024EBD4050020C0F5 /* _LeakedObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5924EBD4050020C0F5 /* _LeakedObjectProxy.h */; };
+		38AB3C7124EBD4050020C0F5 /* UIViewController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5A24EBD4050020C0F5 /* UIViewController+_LeaksFinder.m */; };
+		38AB3C7224EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5B24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m */; };
+		38AB3C7324EBD4050020C0F5 /* UITouch+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5C24EBD4050020C0F5 /* UITouch+_LeaksFinder.h */; };
+		38AB3C7424EBD4050020C0F5 /* UITabBarController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5D24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.m */; };
+		38AB3C7524EBD4050020C0F5 /* UINavigationController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C5E24EBD4050020C0F5 /* UINavigationController+_LeaksFinder.m */; };
+		38AB3C7624EBD4050020C0F5 /* NSObject+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C5F24EBD4050020C0F5 /* NSObject+_LeaksFinder.h */; };
+		38AB3C7724EBD4050020C0F5 /* _LeaksMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6024EBD4050020C0F5 /* _LeaksMessenger.m */; };
+		38AB3C7824EBD4050020C0F5 /* UIApplication+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C6124EBD4050020C0F5 /* UIApplication+_LeaksFinder.h */; };
+		38AB3C7924EBD4050020C0F5 /* UITouch+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6224EBD4050020C0F5 /* UITouch+_LeaksFinder.m */; };
+		38AB3C7A24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C6324EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h */; };
+		38AB3C7B24EBD4050020C0F5 /* UIViewController+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C6424EBD4050020C0F5 /* UIViewController+_LeaksFinder.h */; };
+		38AB3C7C24EBD4050020C0F5 /* _LeakedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6524EBD4050020C0F5 /* _LeakedObjectProxy.m */; };
+		38AB3C7D24EBD4050020C0F5 /* UIView+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 38AB3C6624EBD4050020C0F5 /* UIView+_LeaksFinder.h */; };
+		38AB3C7E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3C6724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m */; };
 		38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */; };
 		38E172FE24EBA8FC00B6F936 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */; };
 		38E172FF24EBA8FC00B6F936 /* _DebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -672,6 +695,29 @@
 		380966DD2414E0CB00382668 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
 		38964EEE24EBCDE300F67916 /* _WeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WeakTimer.m; sourceTree = "<group>"; };
 		38964EEF24EBCDE300F67916 /* _WeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WeakTimer.h; sourceTree = "<group>"; };
+		38AB3C5124EBD4050020C0F5 /* NSObject+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5224EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C5324EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C5424EBD4050020C0F5 /* UIApplication+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5524EBD4050020C0F5 /* _LeaksMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LeaksMessenger.h; sourceTree = "<group>"; };
+		38AB3C5624EBD4050020C0F5 /* _LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LeaksFinder.h; sourceTree = "<group>"; };
+		38AB3C5724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISplitViewController+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C5824EBD4050020C0F5 /* UIView+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5924EBD4050020C0F5 /* _LeakedObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _LeakedObjectProxy.h; sourceTree = "<group>"; };
+		38AB3C5A24EBD4050020C0F5 /* UIViewController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5B24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageViewController+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5C24EBD4050020C0F5 /* UITouch+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITouch+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C5D24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5E24EBD4050020C0F5 /* UINavigationController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C5F24EBD4050020C0F5 /* NSObject+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C6024EBD4050020C0F5 /* _LeaksMessenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LeaksMessenger.m; sourceTree = "<group>"; };
+		38AB3C6124EBD4050020C0F5 /* UIApplication+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C6224EBD4050020C0F5 /* UITouch+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITouch+_LeaksFinder.m"; sourceTree = "<group>"; };
+		38AB3C6324EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C6424EBD4050020C0F5 /* UIViewController+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C6524EBD4050020C0F5 /* _LeakedObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _LeakedObjectProxy.m; sourceTree = "<group>"; };
+		38AB3C6624EBD4050020C0F5 /* UIView+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+_LeaksFinder.h"; sourceTree = "<group>"; };
+		38AB3C6724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISplitViewController+_LeaksFinder.m"; sourceTree = "<group>"; };
 		38C806A224ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		38E172F824EBA8FC00B6F936 /* _DebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMonitor.m; sourceTree = "<group>"; };
 		38E172F924EBA8FC00B6F936 /* _DebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMemoryMonitor.h; sourceTree = "<group>"; };
@@ -722,6 +768,7 @@
 		3809657F2414E0CB00382668 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38AB3C5024EBD4050020C0F5 /* LeaksFinder */,
 				38964EED24EBCDE300F67916 /* WeakTimer */,
 				38E172F724EBA8FC00B6F936 /* Memory */,
 				380965802414E0CB00382668 /* Core */,
@@ -1173,6 +1220,36 @@
 			path = WeakTimer;
 			sourceTree = "<group>";
 		};
+		38AB3C5024EBD4050020C0F5 /* LeaksFinder */ = {
+			isa = PBXGroup;
+			children = (
+				38AB3C5124EBD4050020C0F5 /* NSObject+_LeaksFinder.m */,
+				38AB3C5224EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h */,
+				38AB3C5324EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h */,
+				38AB3C5424EBD4050020C0F5 /* UIApplication+_LeaksFinder.m */,
+				38AB3C5524EBD4050020C0F5 /* _LeaksMessenger.h */,
+				38AB3C5624EBD4050020C0F5 /* _LeaksFinder.h */,
+				38AB3C5724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h */,
+				38AB3C5824EBD4050020C0F5 /* UIView+_LeaksFinder.m */,
+				38AB3C5924EBD4050020C0F5 /* _LeakedObjectProxy.h */,
+				38AB3C5A24EBD4050020C0F5 /* UIViewController+_LeaksFinder.m */,
+				38AB3C5B24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m */,
+				38AB3C5C24EBD4050020C0F5 /* UITouch+_LeaksFinder.h */,
+				38AB3C5D24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.m */,
+				38AB3C5E24EBD4050020C0F5 /* UINavigationController+_LeaksFinder.m */,
+				38AB3C5F24EBD4050020C0F5 /* NSObject+_LeaksFinder.h */,
+				38AB3C6024EBD4050020C0F5 /* _LeaksMessenger.m */,
+				38AB3C6124EBD4050020C0F5 /* UIApplication+_LeaksFinder.h */,
+				38AB3C6224EBD4050020C0F5 /* UITouch+_LeaksFinder.m */,
+				38AB3C6324EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h */,
+				38AB3C6424EBD4050020C0F5 /* UIViewController+_LeaksFinder.h */,
+				38AB3C6524EBD4050020C0F5 /* _LeakedObjectProxy.m */,
+				38AB3C6624EBD4050020C0F5 /* UIView+_LeaksFinder.h */,
+				38AB3C6724EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m */,
+			);
+			path = LeaksFinder;
+			sourceTree = "<group>";
+		};
 		38E172F724EBA8FC00B6F936 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,10 +1271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3809682C2414E0CD00382668 /* _GPBDictionary.h in Headers */,
+				38AB3C6D24EBD4050020C0F5 /* _LeaksFinder.h in Headers */,
 				380967AD2414E0CC00382668 /* _CanonicalRequest.h in Headers */,
 				3809681B2414E0CD00382668 /* _GPBUtilities.h in Headers */,
 				380967FA2414E0CD00382668 /* _GPBRootObject.h in Headers */,
 				380967A22414E0CC00382668 /* _NetworkHelper.h in Headers */,
+				38AB3C6924EBD4050020C0F5 /* UINavigationController+_LeaksFinder.h in Headers */,
 				380968152414E0CD00382668 /* _GPBExtensionRegistry.h in Headers */,
 				380967EE2414E0CD00382668 /* _GPBMessage+CocoaDebug.h in Headers */,
 				380967C12414E0CC00382668 /* CocoaDebugTool.h in Headers */,
@@ -1222,16 +1301,22 @@
 				380968252414E0CD00382668 /* _GPBUnknownField.h in Headers */,
 				3809680E2414E0CD00382668 /* _GPBBootstrap.h in Headers */,
 				380967A72414E0CC00382668 /* _HttpModel.h in Headers */,
+				38AB3C7624EBD4050020C0F5 /* NSObject+_LeaksFinder.h in Headers */,
 				380967EF2414E0CD00382668 /* _GPBProtocolBuffers.h in Headers */,
+				38AB3C6C24EBD4050020C0F5 /* _LeaksMessenger.h in Headers */,
 				380967A42414E0CC00382668 /* _HttpDatasource.h in Headers */,
 				380968262414E0CD00382668 /* _GPBMessage.h in Headers */,
+				38AB3C7B24EBD4050020C0F5 /* UIViewController+_LeaksFinder.h in Headers */,
 				380967ED2414E0CD00382668 /* _NSObject+CocoaDebug.h in Headers */,
 				380967F42414E0CD00382668 /* _GPBWireFormat.h in Headers */,
+				38AB3C6A24EBD4050020C0F5 /* UITabBarController+_LeaksFinder.h in Headers */,
+				38AB3C7D24EBD4050020C0F5 /* UIView+_LeaksFinder.h in Headers */,
 				380967CF2414E0CC00382668 /* _SandboxerHelper.h in Headers */,
 				380968282414E0CD00382668 /* _GPBUnknownFieldSet.h in Headers */,
 				380968062414E0CD00382668 /* _Wrappers.pbobjc.h in Headers */,
 				380967D32414E0CC00382668 /* _MLBDirectoryContentsTableViewController.h in Headers */,
 				380967B32414E0CC00382668 /* _CustomHTTPProtocol.h in Headers */,
+				38AB3C7024EBD4050020C0F5 /* _LeakedObjectProxy.h in Headers */,
 				380967CE2414E0CC00382668 /* _MLBFileTableViewCell.h in Headers */,
 				380967C82414E0CC00382668 /* _Sandboxer-Header.h in Headers */,
 				380968142414E0CD00382668 /* _Timestamp.pbobjc.h in Headers */,
@@ -1239,6 +1324,8 @@
 				3809681A2414E0CD00382668 /* _GPBExtensionInternals.h in Headers */,
 				380967C22414E0CC00382668 /* _OCLogStoreManager.h in Headers */,
 				380968022414E0CD00382668 /* _GPBCodedOutputStream.h in Headers */,
+				38AB3C7A24EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.h in Headers */,
+				38AB3C7824EBD4050020C0F5 /* UIApplication+_LeaksFinder.h in Headers */,
 				380967CA2414E0CC00382668 /* _MLBFileInfo.h in Headers */,
 				380967B12414E0CC00382668 /* _QNSURLSessionDemux.h in Headers */,
 				380968072414E0CD00382668 /* _FieldMask.pbobjc.h in Headers */,
@@ -1247,6 +1334,7 @@
 				380968122414E0CD00382668 /* _Any.pbobjc.h in Headers */,
 				3809681E2414E0CD00382668 /* _GPBWellKnownTypes.h in Headers */,
 				380968232414E0CD00382668 /* _GPBCodedInputStream_PackagePrivate.h in Headers */,
+				38AB3C7324EBD4050020C0F5 /* UITouch+_LeaksFinder.h in Headers */,
 				38964EF124EBCDE300F67916 /* _WeakTimer.h in Headers */,
 				380967F02414E0CD00382668 /* _Duration.pbobjc.h in Headers */,
 				380968192414E0CD00382668 /* _GPBUnknownField_PackagePrivate.h in Headers */,
@@ -1254,6 +1342,7 @@
 				3809682E2414E1DB00382668 /* CocoaDebug.h in Headers */,
 				380968182414E0CD00382668 /* _GPBUtilities_PackagePrivate.h in Headers */,
 				3809680B2414E0CD00382668 /* _GPBRootObject_PackagePrivate.h in Headers */,
+				38AB3C6E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.h in Headers */,
 				380967C02414E0CC00382668 /* _OCLoggerFormat.h in Headers */,
 				380967F52414E0CD00382668 /* _GPBArray.h in Headers */,
 				380966EF2414E0CB00382668 /* _fishhook.h in Headers */,
@@ -1516,7 +1605,9 @@
 				3809682B2414E0CD00382668 /* _Wrappers.pbobjc.m in Sources */,
 				380967AA2414E0CC00382668 /* NetworkDetailModel.swift in Sources */,
 				380967AB2414E0CC00382668 /* _HttpDatasource.m in Sources */,
+				38AB3C6B24EBD4050020C0F5 /* UIApplication+_LeaksFinder.m in Sources */,
 				380966EB2414E0CB00382668 /* Device.swift in Sources */,
+				38AB3C7C24EBD4050020C0F5 /* _LeakedObjectProxy.m in Sources */,
 				380967BC2414E0CC00382668 /* _OCLogHelper.m in Sources */,
 				380967F32414E0CD00382668 /* _Any.pbobjc.m in Sources */,
 				3809681D2414E0CD00382668 /* _GPBCodedInputStream.m in Sources */,
@@ -1535,6 +1626,7 @@
 				380968082414E0CD00382668 /* _GPBUnknownFieldSet.m in Sources */,
 				3809680A2414E0CD00382668 /* _GPBMessage.m in Sources */,
 				380967FB2414E0CD00382668 /* _GPBUtilities.m in Sources */,
+				38AB3C7124EBD4050020C0F5 /* UIViewController+_LeaksFinder.m in Sources */,
 				380967D42414E0CC00382668 /* _MLBFileInfo.m in Sources */,
 				380967B22414E0CC00382668 /* _CanonicalRequest.m in Sources */,
 				380967F12414E0CD00382668 /* _GPBExtensionRegistry.m in Sources */,
@@ -1543,13 +1635,18 @@
 				380967CB2414E0CC00382668 /* _MLBDirectoryContentsTableViewController.m in Sources */,
 				380967AE2414E0CC00382668 /* _QNSURLSessionDemux.m in Sources */,
 				380967F82414E0CD00382668 /* _GPBWellKnownTypes.m in Sources */,
+				38AB3C7E24EBD4050020C0F5 /* UISplitViewController+_LeaksFinder.m in Sources */,
 				380966ED2414E0CB00382668 /* CrashCell.swift in Sources */,
+				38AB3C7924EBD4050020C0F5 /* UITouch+_LeaksFinder.m in Sources */,
 				380968292414E0CD00382668 /* _FieldMask.pbobjc.m in Sources */,
+				38AB3C7724EBD4050020C0F5 /* _LeaksMessenger.m in Sources */,
 				380966E42414E0CB00382668 /* CrashStoreManager.swift in Sources */,
 				380966E82414E0CB00382668 /* CrashListViewController.swift in Sources */,
 				380967B42414E0CC00382668 /* _LogHelper.swift in Sources */,
+				38AB3C7524EBD4050020C0F5 /* UINavigationController+_LeaksFinder.m in Sources */,
 				380967BD2414E0CC00382668 /* _OCLogModel.m in Sources */,
 				38C806A324ADD11D0074D3D6 /* CocoaDebugAutoLaunch.m in Sources */,
+				38AB3C7224EBD4050020C0F5 /* UIPageViewController+_LeaksFinder.m in Sources */,
 				380967A82414E0CC00382668 /* NetworkDetailCell.swift in Sources */,
 				380967A32414E0CC00382668 /* NetworkCell.swift in Sources */,
 				380967D62414E0CC00382668 /* _Swizzling.m in Sources */,
@@ -1573,6 +1670,7 @@
 				380968242414E0CD00382668 /* _Api.pbobjc.m in Sources */,
 				3809680F2414E0CD00382668 /* _GPBWireFormat.m in Sources */,
 				380966E62414E0CB00382668 /* CrashDetailViewController.swift in Sources */,
+				38AB3C7424EBD4050020C0F5 /* UITabBarController+_LeaksFinder.m in Sources */,
 				380967C32414E0CC00382668 /* _ObjcLog.m in Sources */,
 				380967D12414E0CC00382668 /* _MLBFilePreviewController.m in Sources */,
 				380967EC2414E0CD00382668 /* _GPBMessage+CocoaDebug.m in Sources */,
@@ -1586,6 +1684,7 @@
 				380966E92414E0CB00382668 /* _CrashModel.swift in Sources */,
 				380968172414E0CD00382668 /* _GPBDescriptor.m in Sources */,
 				380966E52414E0CB00382668 /* AppInfo.swift in Sources */,
+				38AB3C6824EBD4050020C0F5 /* NSObject+_LeaksFinder.m in Sources */,
 				380967DB2414E0CC00382668 /* _WindowHelper.swift in Sources */,
 				380967D02414E0CC00382668 /* _Sandboxer.m in Sources */,
 				380968002414E0CD00382668 /* _GPBUnknownField.m in Sources */,
@@ -1593,6 +1692,7 @@
 				380968032414E0CD00382668 /* _Struct.pbobjc.m in Sources */,
 				380967C52414E0CC00382668 /* _MLBFileTableViewCell.m in Sources */,
 				380967F22414E0CD00382668 /* _Timestamp.pbobjc.m in Sources */,
+				38AB3C6F24EBD4050020C0F5 /* UIView+_LeaksFinder.m in Sources */,
 				380967BE2414E0CC00382668 /* LogCell.swift in Sources */,
 				380967DD2414E0CD00382668 /* CocoaDebugViewController.swift in Sources */,
 				380967EB2414E0CD00382668 /* _NSObject+CocoaDebug.m in Sources */,

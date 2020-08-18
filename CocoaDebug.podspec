@@ -26,5 +26,6 @@ Pod::Spec.new do |s|
                           'Sources/Window/**/*.m',
                           'Sources/Memory/**/*.m',
                           'Sources/WeakTimer/**/*.m',
+                          'Sources/LeaksFinder/**/*.m',
                           ]
 end
