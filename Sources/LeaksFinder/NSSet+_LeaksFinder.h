@@ -10,7 +10,8 @@
 
 @interface NSSet(_LeaksFinder)
 
-- (BOOL)continueCheckObjecClass:(Class)objectClass;
+//是否开启所有属性的检查
+//- (BOOL)continueCheckObjecClass:(Class)objectClass;
 
 @end
 

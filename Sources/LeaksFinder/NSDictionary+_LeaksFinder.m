@@ -10,19 +10,20 @@
 
 @implementation NSDictionary(_LeaksFinder)
 
-- (void)willReleaseIvarList {
-    if (!self.count) {
-        return;
-    }
-
-    for(id ob in self.allValues) {
-        [ob willReleaseIvarList];
-    }
-}
-
-- (BOOL)continueCheckObjecClass:(Class)objectClass {
-    return YES;
-}
+//是否开启所有属性的检查
+//- (void)willReleaseIvarList {
+//    if (!self.count) {
+//        return;
+//    }
+//
+//    for(id ob in self.allValues) {
+//        [ob willReleaseIvarList];
+//    }
+//}
+//
+//- (BOOL)continueCheckObjecClass:(Class)objectClass {
+//    return YES;
+//}
 
 @end
 

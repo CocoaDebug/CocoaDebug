@@ -52,7 +52,8 @@
         [self willReleaseChild:self.view];
     }
     
-    [self willReleaseIvarList];
+    //是否开启所有属性的检查
+//    [self willReleaseIvarList];
     
     return YES;
 }
