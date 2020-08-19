@@ -7,6 +7,7 @@ before_install:
 - gem install cocoapods
 - pod install --project-directory=Example_Objc
 script:
+- CI=false npm run build
 - xcodebuild -workspace Example_Objc/Example_Objc.xcworkspace -scheme Example_Objc -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' build test
 - pod lib lint --verbose
 after_success:
