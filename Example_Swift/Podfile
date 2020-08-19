@@ -5,8 +5,11 @@ target 'Example_Swift' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
+
   # Pods for Example_Swift
-  pod 'CocoaDebug', :path=> '../../CocoaDebug', :configurations => ['Debug']
+  pod 'CocoaDebug', :path=> '../../CocoaDebug', :configurations => ['Debug'], :inhibit_warnings => true
   
   target 'Example_SwiftTests' do
     inherit! :search_paths
