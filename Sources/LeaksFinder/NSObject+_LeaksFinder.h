@@ -22,4 +22,7 @@
 
 + (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL;
 
+- (void)willReleaseIvarList;
+- (BOOL)continueCheckObjecClass:(Class)objectClass;
+
 @end

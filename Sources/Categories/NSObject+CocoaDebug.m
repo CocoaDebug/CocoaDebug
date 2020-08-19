@@ -22,7 +22,7 @@
     uint8_t buffer[1024]; // BUFFER_LEN can be any positive integer
     
     while((result = [stream read:buffer maxLength:1024]) != 0) {
-        if(result > 0) {
+        if (result > 0) {
             // buffer contains result bytes of data to be handled
             [data appendBytes:buffer length:result];
         } else {

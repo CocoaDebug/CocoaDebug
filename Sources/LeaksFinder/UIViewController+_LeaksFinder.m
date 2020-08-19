@@ -52,6 +52,8 @@
         [self willReleaseChild:self.view];
     }
     
+    [self willReleaseIvarList];
+    
     return YES;
 }
 

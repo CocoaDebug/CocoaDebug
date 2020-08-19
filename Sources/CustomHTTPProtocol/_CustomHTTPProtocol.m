@@ -34,7 +34,7 @@
 {
     self = [super init];
 
-    if(self)
+    if (self)
     {
         _sessionCompletionHandler = [completionHandler copy];
     }

@@ -2391,7 +2391,7 @@ static void MergeRepeatedNotPackedFieldFromCodedInputStream(
           return;
         }
       }
-    }  // if(!merged)
+    }  // if (!merged)
 
   }  // while(YES)
 }
@@ -2702,7 +2702,7 @@ static void MergeRepeatedNotPackedFieldFromCodedInputStream(
           break;
         }
       } // switch()
-    }   // if(mapOrArray)...else
+    }   // if (mapOrArray)...else
   }  // for(fields)
 
   // nil and empty are equal
