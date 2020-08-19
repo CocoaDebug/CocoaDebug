@@ -9,8 +9,6 @@
 #import "UIPageViewController+_LeaksFinder.h"
 #import "NSObject+_LeaksFinder.h"
 
-#if _INTERNAL_MLF_ENABLED
-
 @implementation UIPageViewController (_LeaksFinder)
 
 - (BOOL)willDealloc {
@@ -24,5 +22,3 @@
 }
 
 @end
-
-#endif

@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define MLCheck(TARGET) [self willReleaseObject:(TARGET) relationship:@#TARGET];
-
 @interface NSObject (_LeaksFinder)
 
 - (BOOL)willDealloc;

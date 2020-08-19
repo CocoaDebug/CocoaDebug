@@ -12,7 +12,9 @@
 
 @interface _LeaksMessenger : NSObject
 
-+ (void)alertWithTitle:(NSString *)title message:(NSString *)message;
++ (void)alertWithTitle:(NSString *)title
+               message:(NSString *)message;
+
 + (void)alertWithTitle:(NSString *)title
                message:(NSString *)message
               delegate:(id<_LeakedObjectProxyDelegate>)delegate

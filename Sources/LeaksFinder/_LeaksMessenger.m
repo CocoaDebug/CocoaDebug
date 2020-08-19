@@ -10,12 +10,19 @@
 
 @implementation _LeaksMessenger
 
-+ (void)alertWithTitle:(NSString *)title message:(NSString *)message {
-    [self alertWithTitle:title message:message delegate:nil additionalButtonTitle:nil];
++ (void)alertWithTitle:(NSString *)title
+               message:(NSString *)message {
+    [self alertWithTitle:title
+                 message:message
+                delegate:nil
+   additionalButtonTitle:nil];
 }
 
 + (void)alertWithTitle:(NSString *)title
-               message:(NSString *)message delegate:(id<_LeakedObjectProxyDelegate>)delegate additionalButtonTitle:(NSString *)additionalButtonTitle {
+               message:(NSString *)message
+              delegate:(id<_LeakedObjectProxyDelegate>)delegate
+ additionalButtonTitle:(NSString *)additionalButtonTitle {
+
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     if (additionalButtonTitle.length) {

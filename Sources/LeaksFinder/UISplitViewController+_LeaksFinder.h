@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "_LeaksFinder.h"
-
-#if _INTERNAL_MLF_ENABLED
 
 @interface UISplitViewController (_LeaksFinder)
 
 @end
-
-#endif

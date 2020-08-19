@@ -10,8 +10,6 @@
 #import "NSObject+_LeaksFinder.h"
 #import <objc/runtime.h>
 
-#if _INTERNAL_MLF_ENABLED
-
 @implementation UIViewController (_LeaksFinder)
 
 + (void)load {
@@ -58,5 +56,3 @@
 }
 
 @end
-
-#endif

@@ -7,9 +7,8 @@
 //
 
 #import "UITouch+_LeaksFinder.h"
+#import "NSObject+_LeaksFinder.h"
 #import <objc/runtime.h>
-
-#if _INTERNAL_MLF_ENABLED
 
 extern const void *const kLatestSenderKey;
 
@@ -37,5 +36,3 @@ extern const void *const kLatestSenderKey;
 }
 
 @end
-
-#endif
