@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3809657E2414E0A000382668 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3809657D2414E0A000382668 /* copy_and_codesign.sh */; };
 		3826DB4424EE5BF5003DE040 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9CF24EE5BF4003DE040 /* CocoaDebugAutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
 		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
@@ -349,51 +348,6 @@
 		3826DCA724EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB4124EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB4224EE5BF5003DE040 /* _Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3826DCA924EE5BF5003DE040 /* _GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB4324EE5BF5003DE040 /* _GPBDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCE624EE5D13003DE040 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCAC24EE5D13003DE040 /* fishhook.c */; };
-		3826DCE724EE5D13003DE040 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCAD24EE5D13003DE040 /* fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCE824EE5D13003DE040 /* FBAssociationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCB024EE5D13003DE040 /* FBAssociationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCE924EE5D13003DE040 /* FBAssociationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCB224EE5D13003DE040 /* FBAssociationManager+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCEA24EE5D13003DE040 /* FBAssociationManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCB324EE5D13003DE040 /* FBAssociationManager.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCEB24EE5D13003DE040 /* FBStandardGraphEdgeFilters.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCB524EE5D13003DE040 /* FBStandardGraphEdgeFilters.mm */; };
-		3826DCEC24EE5D13003DE040 /* FBStandardGraphEdgeFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCB624EE5D13003DE040 /* FBStandardGraphEdgeFilters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCED24EE5D13003DE040 /* FBBlockStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCB924EE5D13003DE040 /* FBBlockStrongLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCEE24EE5D13003DE040 /* FBBlockStrongRelationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCBA24EE5D13003DE040 /* FBBlockStrongRelationDetector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCEF24EE5D13003DE040 /* FBBlockStrongRelationDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCBB24EE5D13003DE040 /* FBBlockStrongRelationDetector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF024EE5D13003DE040 /* FBBlockStrongLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCBC24EE5D13003DE040 /* FBBlockStrongLayout.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCF124EE5D13003DE040 /* FBBlockInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCBD24EE5D13003DE040 /* FBBlockInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF224EE5D13003DE040 /* FBClassStrongLayoutHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCBF24EE5D13003DE040 /* FBClassStrongLayoutHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF324EE5D13003DE040 /* Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCC124EE5D13003DE040 /* Type.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF424EE5D13003DE040 /* Struct.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCC224EE5D13003DE040 /* Struct.mm */; };
-		3826DCF524EE5D13003DE040 /* FBStructEncodingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCC324EE5D13003DE040 /* FBStructEncodingParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF624EE5D13003DE040 /* Struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCC424EE5D13003DE040 /* Struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF724EE5D13003DE040 /* FBStructEncodingParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCC524EE5D13003DE040 /* FBStructEncodingParser.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCF824EE5D13003DE040 /* BaseType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCC624EE5D13003DE040 /* BaseType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCF924EE5D13003DE040 /* FBClassStrongLayout.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCC724EE5D13003DE040 /* FBClassStrongLayout.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCFA24EE5D13003DE040 /* FBClassStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCC824EE5D13003DE040 /* FBClassStrongLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCFB24EE5D13003DE040 /* FBClassStrongLayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCC924EE5D13003DE040 /* FBClassStrongLayoutHelpers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCFC24EE5D13003DE040 /* FBObjectInStructReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCCB24EE5D13003DE040 /* FBObjectInStructReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCFD24EE5D13003DE040 /* FBIvarReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCCC24EE5D13003DE040 /* FBIvarReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCFE24EE5D13003DE040 /* FBObjectInStructReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCCD24EE5D13003DE040 /* FBObjectInStructReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCFF24EE5D13003DE040 /* FBObjectReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCCE24EE5D13003DE040 /* FBObjectReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0024EE5D13003DE040 /* FBIvarReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCCF24EE5D13003DE040 /* FBIvarReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0124EE5D13003DE040 /* FBObjectiveCBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCD124EE5D13003DE040 /* FBObjectiveCBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0224EE5D13003DE040 /* FBObjectiveCNSCFTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCD324EE5D13003DE040 /* FBObjectiveCNSCFTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0324EE5D13003DE040 /* FBObjectiveCNSCFTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCD424EE5D13003DE040 /* FBObjectiveCNSCFTimer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0424EE5D13003DE040 /* FBObjectGraphConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCD524EE5D13003DE040 /* FBObjectGraphConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0524EE5D13003DE040 /* FBObjectiveCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCD624EE5D13003DE040 /* FBObjectiveCObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0624EE5D13003DE040 /* FBObjectiveCGraphElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCD724EE5D13003DE040 /* FBObjectiveCGraphElement.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0724EE5D13003DE040 /* FBObjectiveCGraphElement+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCD924EE5D13003DE040 /* FBObjectiveCGraphElement+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0824EE5D13003DE040 /* FBObjectGraphConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCDA24EE5D13003DE040 /* FBObjectGraphConfiguration.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0924EE5D13003DE040 /* FBObjectiveCBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCDB24EE5D13003DE040 /* FBObjectiveCBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0A24EE5D13003DE040 /* FBObjectiveCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCDC24EE5D13003DE040 /* FBObjectiveCObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0B24EE5D13003DE040 /* FBObjectiveCGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCDD24EE5D13003DE040 /* FBObjectiveCGraphElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0C24EE5D13003DE040 /* FBRetainCycleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCDE24EE5D13003DE040 /* FBRetainCycleUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0D24EE5D13003DE040 /* FBRetainCycleDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCE024EE5D13003DE040 /* FBRetainCycleDetector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD0E24EE5D13003DE040 /* FBNodeEnumerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCE124EE5D13003DE040 /* FBNodeEnumerator.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD0F24EE5D13003DE040 /* FBNodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCE224EE5D13003DE040 /* FBNodeEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD1024EE5D13003DE040 /* FBRetainCycleDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCE324EE5D13003DE040 /* FBRetainCycleDetector.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DD1124EE5D13003DE040 /* FBRetainCycleDetector+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DCE424EE5D13003DE040 /* FBRetainCycleDetector+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD1224EE5D13003DE040 /* FBRetainCycleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DCE524EE5D13003DE040 /* FBRetainCycleUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1324EE5FD4003DE040 /* _SandboxerHelper.m */; };
 		3826DD2524EE5FD5003DE040 /* _ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1424EE5FD4003DE040 /* _ImageController.m */; };
 		3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1524EE5FD4003DE040 /* _FileInfo.m */; };
@@ -411,12 +365,57 @@
 		3826DD3224EE5FD5003DE040 /* _Sandboxer-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DD2124EE5FD5003DE040 /* _Sandboxer-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD2224EE5FD5003DE040 /* _DirectoryContentsTableViewController.m */; };
 		3826DD3424EE5FD5003DE040 /* _ImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DD2324EE5FD5003DE040 /* _ImageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DD8F24EE6D63003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */; platformFilter = ios; };
-		3826DD9124EE6D63003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
+		3826DE4524EE7B45003DE040 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE0B24EE7B45003DE040 /* fishhook.c */; };
+		3826DE4624EE7B45003DE040 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE0C24EE7B45003DE040 /* fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4724EE7B45003DE040 /* FBAssociationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE0F24EE7B45003DE040 /* FBAssociationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4824EE7B45003DE040 /* FBAssociationManager+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1124EE7B45003DE040 /* FBAssociationManager+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4924EE7B45003DE040 /* FBAssociationManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE1224EE7B45003DE040 /* FBAssociationManager.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE4A24EE7B45003DE040 /* FBStandardGraphEdgeFilters.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE1424EE7B45003DE040 /* FBStandardGraphEdgeFilters.mm */; };
+		3826DE4B24EE7B45003DE040 /* FBStandardGraphEdgeFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1524EE7B45003DE040 /* FBStandardGraphEdgeFilters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4C24EE7B45003DE040 /* FBBlockStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1824EE7B45003DE040 /* FBBlockStrongLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4D24EE7B45003DE040 /* FBBlockStrongRelationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE1924EE7B45003DE040 /* FBBlockStrongRelationDetector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE4E24EE7B45003DE040 /* FBBlockStrongRelationDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1A24EE7B45003DE040 /* FBBlockStrongRelationDetector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE4F24EE7B45003DE040 /* FBBlockStrongLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE1B24EE7B45003DE040 /* FBBlockStrongLayout.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE5024EE7B45003DE040 /* FBBlockInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1C24EE7B45003DE040 /* FBBlockInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5124EE7B45003DE040 /* FBClassStrongLayoutHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE1E24EE7B45003DE040 /* FBClassStrongLayoutHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5224EE7B45003DE040 /* Type.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2024EE7B45003DE040 /* Type.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5324EE7B45003DE040 /* Struct.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2124EE7B45003DE040 /* Struct.mm */; };
+		3826DE5424EE7B45003DE040 /* FBStructEncodingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2224EE7B45003DE040 /* FBStructEncodingParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5524EE7B45003DE040 /* Struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2324EE7B45003DE040 /* Struct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5624EE7B45003DE040 /* FBStructEncodingParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2424EE7B45003DE040 /* FBStructEncodingParser.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE5724EE7B45003DE040 /* BaseType.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2524EE7B45003DE040 /* BaseType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5824EE7B45003DE040 /* FBClassStrongLayout.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2624EE7B45003DE040 /* FBClassStrongLayout.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE5924EE7B45003DE040 /* FBClassStrongLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2724EE7B45003DE040 /* FBClassStrongLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5A24EE7B45003DE040 /* FBClassStrongLayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2824EE7B45003DE040 /* FBClassStrongLayoutHelpers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE5B24EE7B45003DE040 /* FBObjectInStructReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2A24EE7B45003DE040 /* FBObjectInStructReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE5C24EE7B45003DE040 /* FBIvarReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2B24EE7B45003DE040 /* FBIvarReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5D24EE7B45003DE040 /* FBObjectInStructReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2C24EE7B45003DE040 /* FBObjectInStructReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5E24EE7B45003DE040 /* FBObjectReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE2D24EE7B45003DE040 /* FBObjectReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE5F24EE7B45003DE040 /* FBIvarReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE2E24EE7B45003DE040 /* FBIvarReference.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6024EE7B45003DE040 /* FBObjectiveCBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3024EE7B45003DE040 /* FBObjectiveCBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6124EE7B45003DE040 /* FBObjectiveCNSCFTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3224EE7B45003DE040 /* FBObjectiveCNSCFTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6224EE7B45003DE040 /* FBObjectiveCNSCFTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE3324EE7B45003DE040 /* FBObjectiveCNSCFTimer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6324EE7B45003DE040 /* FBObjectGraphConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3424EE7B45003DE040 /* FBObjectGraphConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6424EE7B45003DE040 /* FBObjectiveCObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3524EE7B45003DE040 /* FBObjectiveCObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6524EE7B45003DE040 /* FBObjectiveCGraphElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE3624EE7B45003DE040 /* FBObjectiveCGraphElement.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6624EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3824EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6724EE7B45003DE040 /* FBObjectGraphConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE3924EE7B45003DE040 /* FBObjectGraphConfiguration.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6824EE7B45003DE040 /* FBObjectiveCBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE3A24EE7B45003DE040 /* FBObjectiveCBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6924EE7B45003DE040 /* FBObjectiveCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE3B24EE7B45003DE040 /* FBObjectiveCObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6A24EE7B45003DE040 /* FBObjectiveCGraphElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3C24EE7B45003DE040 /* FBObjectiveCGraphElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6B24EE7B45003DE040 /* FBRetainCycleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3D24EE7B45003DE040 /* FBRetainCycleUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6C24EE7B45003DE040 /* FBRetainCycleDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE3F24EE7B45003DE040 /* FBRetainCycleDetector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6D24EE7B45003DE040 /* FBNodeEnumerator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE4024EE7B45003DE040 /* FBNodeEnumerator.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE6E24EE7B45003DE040 /* FBNodeEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE4124EE7B45003DE040 /* FBNodeEnumerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE6F24EE7B45003DE040 /* FBRetainCycleDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE4224EE7B45003DE040 /* FBRetainCycleDetector.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE7024EE7B45003DE040 /* FBRetainCycleDetector+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DE4324EE7B45003DE040 /* FBRetainCycleDetector+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DE7124EE7B45003DE040 /* FBRetainCycleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE4424EE7B45003DE040 /* FBRetainCycleUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
+		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3826DD9224EE6D63003DE040 /* PBXContainerItemProxy */ = {
+		3826DE7C24EE7CDE003DE040 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 380965692414E04F00382668 /* Project object */;
 			proxyType = 1;
@@ -427,9 +426,6 @@
 
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		380965752414E04F00382668 /* CocoaDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
-		380965762414E04F00382668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3809657D2414E0A000382668 /* copy_and_codesign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		3826D9CF24EE5BF4003DE040 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
@@ -771,51 +767,6 @@
 		3826DB4124EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
 		3826DB4224EE5BF5003DE040 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		3826DB4324EE5BF5003DE040 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
-		3826DCAC24EE5D13003DE040 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
-		3826DCAD24EE5D13003DE040 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
-		3826DCB024EE5D13003DE040 /* FBAssociationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBAssociationManager.h; sourceTree = "<group>"; };
-		3826DCB224EE5D13003DE040 /* FBAssociationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBAssociationManager+Internal.h"; sourceTree = "<group>"; };
-		3826DCB324EE5D13003DE040 /* FBAssociationManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBAssociationManager.mm; sourceTree = "<group>"; };
-		3826DCB524EE5D13003DE040 /* FBStandardGraphEdgeFilters.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBStandardGraphEdgeFilters.mm; sourceTree = "<group>"; };
-		3826DCB624EE5D13003DE040 /* FBStandardGraphEdgeFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBStandardGraphEdgeFilters.h; sourceTree = "<group>"; };
-		3826DCB924EE5D13003DE040 /* FBBlockStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockStrongLayout.h; sourceTree = "<group>"; };
-		3826DCBA24EE5D13003DE040 /* FBBlockStrongRelationDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBlockStrongRelationDetector.m; sourceTree = "<group>"; };
-		3826DCBB24EE5D13003DE040 /* FBBlockStrongRelationDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockStrongRelationDetector.h; sourceTree = "<group>"; };
-		3826DCBC24EE5D13003DE040 /* FBBlockStrongLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBlockStrongLayout.m; sourceTree = "<group>"; };
-		3826DCBD24EE5D13003DE040 /* FBBlockInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockInterface.h; sourceTree = "<group>"; };
-		3826DCBF24EE5D13003DE040 /* FBClassStrongLayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBClassStrongLayoutHelpers.h; sourceTree = "<group>"; };
-		3826DCC124EE5D13003DE040 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		3826DCC224EE5D13003DE040 /* Struct.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Struct.mm; sourceTree = "<group>"; };
-		3826DCC324EE5D13003DE040 /* FBStructEncodingParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBStructEncodingParser.h; sourceTree = "<group>"; };
-		3826DCC424EE5D13003DE040 /* Struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Struct.h; sourceTree = "<group>"; };
-		3826DCC524EE5D13003DE040 /* FBStructEncodingParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBStructEncodingParser.mm; sourceTree = "<group>"; };
-		3826DCC624EE5D13003DE040 /* BaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseType.h; sourceTree = "<group>"; };
-		3826DCC724EE5D13003DE040 /* FBClassStrongLayout.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBClassStrongLayout.mm; sourceTree = "<group>"; };
-		3826DCC824EE5D13003DE040 /* FBClassStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBClassStrongLayout.h; sourceTree = "<group>"; };
-		3826DCC924EE5D13003DE040 /* FBClassStrongLayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBClassStrongLayoutHelpers.m; sourceTree = "<group>"; };
-		3826DCCB24EE5D13003DE040 /* FBObjectInStructReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectInStructReference.m; sourceTree = "<group>"; };
-		3826DCCC24EE5D13003DE040 /* FBIvarReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBIvarReference.h; sourceTree = "<group>"; };
-		3826DCCD24EE5D13003DE040 /* FBObjectInStructReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectInStructReference.h; sourceTree = "<group>"; };
-		3826DCCE24EE5D13003DE040 /* FBObjectReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectReference.h; sourceTree = "<group>"; };
-		3826DCCF24EE5D13003DE040 /* FBIvarReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBIvarReference.m; sourceTree = "<group>"; };
-		3826DCD124EE5D13003DE040 /* FBObjectiveCBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCBlock.h; sourceTree = "<group>"; };
-		3826DCD324EE5D13003DE040 /* FBObjectiveCNSCFTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCNSCFTimer.h; sourceTree = "<group>"; };
-		3826DCD424EE5D13003DE040 /* FBObjectiveCNSCFTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBObjectiveCNSCFTimer.mm; sourceTree = "<group>"; };
-		3826DCD524EE5D13003DE040 /* FBObjectGraphConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectGraphConfiguration.h; sourceTree = "<group>"; };
-		3826DCD624EE5D13003DE040 /* FBObjectiveCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCObject.h; sourceTree = "<group>"; };
-		3826DCD724EE5D13003DE040 /* FBObjectiveCGraphElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBObjectiveCGraphElement.mm; sourceTree = "<group>"; };
-		3826DCD924EE5D13003DE040 /* FBObjectiveCGraphElement+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBObjectiveCGraphElement+Internal.h"; sourceTree = "<group>"; };
-		3826DCDA24EE5D13003DE040 /* FBObjectGraphConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectGraphConfiguration.m; sourceTree = "<group>"; };
-		3826DCDB24EE5D13003DE040 /* FBObjectiveCBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectiveCBlock.m; sourceTree = "<group>"; };
-		3826DCDC24EE5D13003DE040 /* FBObjectiveCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectiveCObject.m; sourceTree = "<group>"; };
-		3826DCDD24EE5D13003DE040 /* FBObjectiveCGraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCGraphElement.h; sourceTree = "<group>"; };
-		3826DCDE24EE5D13003DE040 /* FBRetainCycleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRetainCycleUtils.h; sourceTree = "<group>"; };
-		3826DCE024EE5D13003DE040 /* FBRetainCycleDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRetainCycleDetector.h; sourceTree = "<group>"; };
-		3826DCE124EE5D13003DE040 /* FBNodeEnumerator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBNodeEnumerator.mm; sourceTree = "<group>"; };
-		3826DCE224EE5D13003DE040 /* FBNodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNodeEnumerator.h; sourceTree = "<group>"; };
-		3826DCE324EE5D13003DE040 /* FBRetainCycleDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBRetainCycleDetector.mm; sourceTree = "<group>"; };
-		3826DCE424EE5D13003DE040 /* FBRetainCycleDetector+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBRetainCycleDetector+Internal.h"; sourceTree = "<group>"; };
-		3826DCE524EE5D13003DE040 /* FBRetainCycleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRetainCycleUtils.m; sourceTree = "<group>"; };
 		3826DD1324EE5FD4003DE040 /* _SandboxerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SandboxerHelper.m; sourceTree = "<group>"; };
 		3826DD1424EE5FD4003DE040 /* _ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ImageController.m; sourceTree = "<group>"; };
 		3826DD1524EE5FD4003DE040 /* _FileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FileInfo.m; sourceTree = "<group>"; };
@@ -833,9 +784,54 @@
 		3826DD2124EE5FD5003DE040 /* _Sandboxer-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_Sandboxer-Header.h"; sourceTree = "<group>"; };
 		3826DD2224EE5FD5003DE040 /* _DirectoryContentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DirectoryContentsTableViewController.m; sourceTree = "<group>"; };
 		3826DD2324EE5FD5003DE040 /* _ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ImageController.h; sourceTree = "<group>"; };
-		3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
-		3826DD9024EE6D63003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3826DE0B24EE7B45003DE040 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		3826DE0C24EE7B45003DE040 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		3826DE0F24EE7B45003DE040 /* FBAssociationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBAssociationManager.h; sourceTree = "<group>"; };
+		3826DE1124EE7B45003DE040 /* FBAssociationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBAssociationManager+Internal.h"; sourceTree = "<group>"; };
+		3826DE1224EE7B45003DE040 /* FBAssociationManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBAssociationManager.mm; sourceTree = "<group>"; };
+		3826DE1424EE7B45003DE040 /* FBStandardGraphEdgeFilters.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBStandardGraphEdgeFilters.mm; sourceTree = "<group>"; };
+		3826DE1524EE7B45003DE040 /* FBStandardGraphEdgeFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBStandardGraphEdgeFilters.h; sourceTree = "<group>"; };
+		3826DE1824EE7B45003DE040 /* FBBlockStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockStrongLayout.h; sourceTree = "<group>"; };
+		3826DE1924EE7B45003DE040 /* FBBlockStrongRelationDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBlockStrongRelationDetector.m; sourceTree = "<group>"; };
+		3826DE1A24EE7B45003DE040 /* FBBlockStrongRelationDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockStrongRelationDetector.h; sourceTree = "<group>"; };
+		3826DE1B24EE7B45003DE040 /* FBBlockStrongLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBlockStrongLayout.m; sourceTree = "<group>"; };
+		3826DE1C24EE7B45003DE040 /* FBBlockInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBlockInterface.h; sourceTree = "<group>"; };
+		3826DE1E24EE7B45003DE040 /* FBClassStrongLayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBClassStrongLayoutHelpers.h; sourceTree = "<group>"; };
+		3826DE2024EE7B45003DE040 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		3826DE2124EE7B45003DE040 /* Struct.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Struct.mm; sourceTree = "<group>"; };
+		3826DE2224EE7B45003DE040 /* FBStructEncodingParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBStructEncodingParser.h; sourceTree = "<group>"; };
+		3826DE2324EE7B45003DE040 /* Struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Struct.h; sourceTree = "<group>"; };
+		3826DE2424EE7B45003DE040 /* FBStructEncodingParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBStructEncodingParser.mm; sourceTree = "<group>"; };
+		3826DE2524EE7B45003DE040 /* BaseType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseType.h; sourceTree = "<group>"; };
+		3826DE2624EE7B45003DE040 /* FBClassStrongLayout.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBClassStrongLayout.mm; sourceTree = "<group>"; };
+		3826DE2724EE7B45003DE040 /* FBClassStrongLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBClassStrongLayout.h; sourceTree = "<group>"; };
+		3826DE2824EE7B45003DE040 /* FBClassStrongLayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBClassStrongLayoutHelpers.m; sourceTree = "<group>"; };
+		3826DE2A24EE7B45003DE040 /* FBObjectInStructReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectInStructReference.m; sourceTree = "<group>"; };
+		3826DE2B24EE7B45003DE040 /* FBIvarReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBIvarReference.h; sourceTree = "<group>"; };
+		3826DE2C24EE7B45003DE040 /* FBObjectInStructReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectInStructReference.h; sourceTree = "<group>"; };
+		3826DE2D24EE7B45003DE040 /* FBObjectReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectReference.h; sourceTree = "<group>"; };
+		3826DE2E24EE7B45003DE040 /* FBIvarReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBIvarReference.m; sourceTree = "<group>"; };
+		3826DE3024EE7B45003DE040 /* FBObjectiveCBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCBlock.h; sourceTree = "<group>"; };
+		3826DE3224EE7B45003DE040 /* FBObjectiveCNSCFTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCNSCFTimer.h; sourceTree = "<group>"; };
+		3826DE3324EE7B45003DE040 /* FBObjectiveCNSCFTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBObjectiveCNSCFTimer.mm; sourceTree = "<group>"; };
+		3826DE3424EE7B45003DE040 /* FBObjectGraphConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectGraphConfiguration.h; sourceTree = "<group>"; };
+		3826DE3524EE7B45003DE040 /* FBObjectiveCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCObject.h; sourceTree = "<group>"; };
+		3826DE3624EE7B45003DE040 /* FBObjectiveCGraphElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBObjectiveCGraphElement.mm; sourceTree = "<group>"; };
+		3826DE3824EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBObjectiveCGraphElement+Internal.h"; sourceTree = "<group>"; };
+		3826DE3924EE7B45003DE040 /* FBObjectGraphConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectGraphConfiguration.m; sourceTree = "<group>"; };
+		3826DE3A24EE7B45003DE040 /* FBObjectiveCBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectiveCBlock.m; sourceTree = "<group>"; };
+		3826DE3B24EE7B45003DE040 /* FBObjectiveCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObjectiveCObject.m; sourceTree = "<group>"; };
+		3826DE3C24EE7B45003DE040 /* FBObjectiveCGraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObjectiveCGraphElement.h; sourceTree = "<group>"; };
+		3826DE3D24EE7B45003DE040 /* FBRetainCycleUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRetainCycleUtils.h; sourceTree = "<group>"; };
+		3826DE3F24EE7B45003DE040 /* FBRetainCycleDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRetainCycleDetector.h; sourceTree = "<group>"; };
+		3826DE4024EE7B45003DE040 /* FBNodeEnumerator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBNodeEnumerator.mm; sourceTree = "<group>"; };
+		3826DE4124EE7B45003DE040 /* FBNodeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBNodeEnumerator.h; sourceTree = "<group>"; };
+		3826DE4224EE7B45003DE040 /* FBRetainCycleDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FBRetainCycleDetector.mm; sourceTree = "<group>"; };
+		3826DE4324EE7B45003DE040 /* FBRetainCycleDetector+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBRetainCycleDetector+Internal.h"; sourceTree = "<group>"; };
+		3826DE4424EE7B45003DE040 /* FBRetainCycleUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRetainCycleUtils.m; sourceTree = "<group>"; };
+		3826DE7624EE7CDE003DE040 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
+		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -846,11 +842,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3826DD8924EE6D63003DE040 /* Frameworks */ = {
+		3826DE7324EE7CDE003DE040 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3826DD9124EE6D63003DE040 /* CocoaDebug.framework in Frameworks */,
+				3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,9 +856,8 @@
 		380965682414E04F00382668 = {
 			isa = PBXGroup;
 			children = (
-				3826DCAA24EE5D13003DE040 /* Carthage */,
 				380965742414E04F00382668 /* CocoaDebug */,
-				3826DD8D24EE6D63003DE040 /* CocoaDebugTests */,
+				3826DE7724EE7CDE003DE040 /* CocoaDebugTests */,
 				380965732414E04F00382668 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -871,7 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				380965722414E04F00382668 /* CocoaDebug.framework */,
-				3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */,
+				3826DE7624EE7CDE003DE040 /* CocoaDebugTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -879,10 +874,9 @@
 		380965742414E04F00382668 /* CocoaDebug */ = {
 			isa = PBXGroup;
 			children = (
+				3826DE0D24EE7B45003DE040 /* FBRetainCycleDetector */,
+				3826DE0A24EE7B45003DE040 /* fishhook */,
 				3826D9CD24EE5BF4003DE040 /* Sources */,
-				3809657D2414E0A000382668 /* copy_and_codesign.sh */,
-				380965752414E04F00382668 /* CocoaDebug.h */,
-				380965762414E04F00382668 /* Info.plist */,
 			);
 			path = CocoaDebug;
 			sourceTree = "<group>";
@@ -1380,175 +1374,166 @@
 			path = Protobuf;
 			sourceTree = "<group>";
 		};
-		3826DCAA24EE5D13003DE040 /* Carthage */ = {
+		3826DE0A24EE7B45003DE040 /* fishhook */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCAB24EE5D13003DE040 /* fishhook */,
-				3826DCAE24EE5D13003DE040 /* FBRetainCycleDetector */,
-			);
-			path = Carthage;
-			sourceTree = "<group>";
-		};
-		3826DCAB24EE5D13003DE040 /* fishhook */ = {
-			isa = PBXGroup;
-			children = (
-				3826DCAC24EE5D13003DE040 /* fishhook.c */,
-				3826DCAD24EE5D13003DE040 /* fishhook.h */,
+				3826DE0B24EE7B45003DE040 /* fishhook.c */,
+				3826DE0C24EE7B45003DE040 /* fishhook.h */,
 			);
 			path = fishhook;
 			sourceTree = "<group>";
 		};
-		3826DCAE24EE5D13003DE040 /* FBRetainCycleDetector */ = {
+		3826DE0D24EE7B45003DE040 /* FBRetainCycleDetector */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCAF24EE5D13003DE040 /* Associations */,
-				3826DCB424EE5D13003DE040 /* Filtering */,
-				3826DCB724EE5D13003DE040 /* Layout */,
-				3826DCD024EE5D13003DE040 /* Graph */,
-				3826DCDE24EE5D13003DE040 /* FBRetainCycleUtils.h */,
-				3826DCDF24EE5D13003DE040 /* Detector */,
-				3826DCE524EE5D13003DE040 /* FBRetainCycleUtils.m */,
+				3826DE0E24EE7B45003DE040 /* Associations */,
+				3826DE1324EE7B45003DE040 /* Filtering */,
+				3826DE1624EE7B45003DE040 /* Layout */,
+				3826DE2F24EE7B45003DE040 /* Graph */,
+				3826DE3D24EE7B45003DE040 /* FBRetainCycleUtils.h */,
+				3826DE3E24EE7B45003DE040 /* Detector */,
+				3826DE4424EE7B45003DE040 /* FBRetainCycleUtils.m */,
 			);
 			path = FBRetainCycleDetector;
 			sourceTree = "<group>";
 		};
-		3826DCAF24EE5D13003DE040 /* Associations */ = {
+		3826DE0E24EE7B45003DE040 /* Associations */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCB024EE5D13003DE040 /* FBAssociationManager.h */,
-				3826DCB124EE5D13003DE040 /* Internal */,
-				3826DCB324EE5D13003DE040 /* FBAssociationManager.mm */,
+				3826DE0F24EE7B45003DE040 /* FBAssociationManager.h */,
+				3826DE1024EE7B45003DE040 /* Internal */,
+				3826DE1224EE7B45003DE040 /* FBAssociationManager.mm */,
 			);
 			path = Associations;
 			sourceTree = "<group>";
 		};
-		3826DCB124EE5D13003DE040 /* Internal */ = {
+		3826DE1024EE7B45003DE040 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCB224EE5D13003DE040 /* FBAssociationManager+Internal.h */,
+				3826DE1124EE7B45003DE040 /* FBAssociationManager+Internal.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
 		};
-		3826DCB424EE5D13003DE040 /* Filtering */ = {
+		3826DE1324EE7B45003DE040 /* Filtering */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCB524EE5D13003DE040 /* FBStandardGraphEdgeFilters.mm */,
-				3826DCB624EE5D13003DE040 /* FBStandardGraphEdgeFilters.h */,
+				3826DE1424EE7B45003DE040 /* FBStandardGraphEdgeFilters.mm */,
+				3826DE1524EE7B45003DE040 /* FBStandardGraphEdgeFilters.h */,
 			);
 			path = Filtering;
 			sourceTree = "<group>";
 		};
-		3826DCB724EE5D13003DE040 /* Layout */ = {
+		3826DE1624EE7B45003DE040 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCB824EE5D13003DE040 /* Blocks */,
-				3826DCBE24EE5D13003DE040 /* Classes */,
+				3826DE1724EE7B45003DE040 /* Blocks */,
+				3826DE1D24EE7B45003DE040 /* Classes */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
 		};
-		3826DCB824EE5D13003DE040 /* Blocks */ = {
+		3826DE1724EE7B45003DE040 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCB924EE5D13003DE040 /* FBBlockStrongLayout.h */,
-				3826DCBA24EE5D13003DE040 /* FBBlockStrongRelationDetector.m */,
-				3826DCBB24EE5D13003DE040 /* FBBlockStrongRelationDetector.h */,
-				3826DCBC24EE5D13003DE040 /* FBBlockStrongLayout.m */,
-				3826DCBD24EE5D13003DE040 /* FBBlockInterface.h */,
+				3826DE1824EE7B45003DE040 /* FBBlockStrongLayout.h */,
+				3826DE1924EE7B45003DE040 /* FBBlockStrongRelationDetector.m */,
+				3826DE1A24EE7B45003DE040 /* FBBlockStrongRelationDetector.h */,
+				3826DE1B24EE7B45003DE040 /* FBBlockStrongLayout.m */,
+				3826DE1C24EE7B45003DE040 /* FBBlockInterface.h */,
 			);
 			path = Blocks;
 			sourceTree = "<group>";
 		};
-		3826DCBE24EE5D13003DE040 /* Classes */ = {
+		3826DE1D24EE7B45003DE040 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCBF24EE5D13003DE040 /* FBClassStrongLayoutHelpers.h */,
-				3826DCC024EE5D13003DE040 /* Parser */,
-				3826DCC724EE5D13003DE040 /* FBClassStrongLayout.mm */,
-				3826DCC824EE5D13003DE040 /* FBClassStrongLayout.h */,
-				3826DCC924EE5D13003DE040 /* FBClassStrongLayoutHelpers.m */,
-				3826DCCA24EE5D13003DE040 /* Reference */,
+				3826DE1E24EE7B45003DE040 /* FBClassStrongLayoutHelpers.h */,
+				3826DE1F24EE7B45003DE040 /* Parser */,
+				3826DE2624EE7B45003DE040 /* FBClassStrongLayout.mm */,
+				3826DE2724EE7B45003DE040 /* FBClassStrongLayout.h */,
+				3826DE2824EE7B45003DE040 /* FBClassStrongLayoutHelpers.m */,
+				3826DE2924EE7B45003DE040 /* Reference */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		3826DCC024EE5D13003DE040 /* Parser */ = {
+		3826DE1F24EE7B45003DE040 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCC124EE5D13003DE040 /* Type.h */,
-				3826DCC224EE5D13003DE040 /* Struct.mm */,
-				3826DCC324EE5D13003DE040 /* FBStructEncodingParser.h */,
-				3826DCC424EE5D13003DE040 /* Struct.h */,
-				3826DCC524EE5D13003DE040 /* FBStructEncodingParser.mm */,
-				3826DCC624EE5D13003DE040 /* BaseType.h */,
+				3826DE2024EE7B45003DE040 /* Type.h */,
+				3826DE2124EE7B45003DE040 /* Struct.mm */,
+				3826DE2224EE7B45003DE040 /* FBStructEncodingParser.h */,
+				3826DE2324EE7B45003DE040 /* Struct.h */,
+				3826DE2424EE7B45003DE040 /* FBStructEncodingParser.mm */,
+				3826DE2524EE7B45003DE040 /* BaseType.h */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		3826DCCA24EE5D13003DE040 /* Reference */ = {
+		3826DE2924EE7B45003DE040 /* Reference */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCCB24EE5D13003DE040 /* FBObjectInStructReference.m */,
-				3826DCCC24EE5D13003DE040 /* FBIvarReference.h */,
-				3826DCCD24EE5D13003DE040 /* FBObjectInStructReference.h */,
-				3826DCCE24EE5D13003DE040 /* FBObjectReference.h */,
-				3826DCCF24EE5D13003DE040 /* FBIvarReference.m */,
+				3826DE2A24EE7B45003DE040 /* FBObjectInStructReference.m */,
+				3826DE2B24EE7B45003DE040 /* FBIvarReference.h */,
+				3826DE2C24EE7B45003DE040 /* FBObjectInStructReference.h */,
+				3826DE2D24EE7B45003DE040 /* FBObjectReference.h */,
+				3826DE2E24EE7B45003DE040 /* FBIvarReference.m */,
 			);
 			path = Reference;
 			sourceTree = "<group>";
 		};
-		3826DCD024EE5D13003DE040 /* Graph */ = {
+		3826DE2F24EE7B45003DE040 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCD124EE5D13003DE040 /* FBObjectiveCBlock.h */,
-				3826DCD224EE5D13003DE040 /* Specialization */,
-				3826DCD524EE5D13003DE040 /* FBObjectGraphConfiguration.h */,
-				3826DCD624EE5D13003DE040 /* FBObjectiveCObject.h */,
-				3826DCD724EE5D13003DE040 /* FBObjectiveCGraphElement.mm */,
-				3826DCD824EE5D13003DE040 /* Internal */,
-				3826DCDA24EE5D13003DE040 /* FBObjectGraphConfiguration.m */,
-				3826DCDB24EE5D13003DE040 /* FBObjectiveCBlock.m */,
-				3826DCDC24EE5D13003DE040 /* FBObjectiveCObject.m */,
-				3826DCDD24EE5D13003DE040 /* FBObjectiveCGraphElement.h */,
+				3826DE3024EE7B45003DE040 /* FBObjectiveCBlock.h */,
+				3826DE3124EE7B45003DE040 /* Specialization */,
+				3826DE3424EE7B45003DE040 /* FBObjectGraphConfiguration.h */,
+				3826DE3524EE7B45003DE040 /* FBObjectiveCObject.h */,
+				3826DE3624EE7B45003DE040 /* FBObjectiveCGraphElement.mm */,
+				3826DE3724EE7B45003DE040 /* Internal */,
+				3826DE3924EE7B45003DE040 /* FBObjectGraphConfiguration.m */,
+				3826DE3A24EE7B45003DE040 /* FBObjectiveCBlock.m */,
+				3826DE3B24EE7B45003DE040 /* FBObjectiveCObject.m */,
+				3826DE3C24EE7B45003DE040 /* FBObjectiveCGraphElement.h */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
 		};
-		3826DCD224EE5D13003DE040 /* Specialization */ = {
+		3826DE3124EE7B45003DE040 /* Specialization */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCD324EE5D13003DE040 /* FBObjectiveCNSCFTimer.h */,
-				3826DCD424EE5D13003DE040 /* FBObjectiveCNSCFTimer.mm */,
+				3826DE3224EE7B45003DE040 /* FBObjectiveCNSCFTimer.h */,
+				3826DE3324EE7B45003DE040 /* FBObjectiveCNSCFTimer.mm */,
 			);
 			path = Specialization;
 			sourceTree = "<group>";
 		};
-		3826DCD824EE5D13003DE040 /* Internal */ = {
+		3826DE3724EE7B45003DE040 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCD924EE5D13003DE040 /* FBObjectiveCGraphElement+Internal.h */,
+				3826DE3824EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
 		};
-		3826DCDF24EE5D13003DE040 /* Detector */ = {
+		3826DE3E24EE7B45003DE040 /* Detector */ = {
 			isa = PBXGroup;
 			children = (
-				3826DCE024EE5D13003DE040 /* FBRetainCycleDetector.h */,
-				3826DCE124EE5D13003DE040 /* FBNodeEnumerator.mm */,
-				3826DCE224EE5D13003DE040 /* FBNodeEnumerator.h */,
-				3826DCE324EE5D13003DE040 /* FBRetainCycleDetector.mm */,
-				3826DCE424EE5D13003DE040 /* FBRetainCycleDetector+Internal.h */,
+				3826DE3F24EE7B45003DE040 /* FBRetainCycleDetector.h */,
+				3826DE4024EE7B45003DE040 /* FBNodeEnumerator.mm */,
+				3826DE4124EE7B45003DE040 /* FBNodeEnumerator.h */,
+				3826DE4224EE7B45003DE040 /* FBRetainCycleDetector.mm */,
+				3826DE4324EE7B45003DE040 /* FBRetainCycleDetector+Internal.h */,
 			);
 			path = Detector;
 			sourceTree = "<group>";
 		};
-		3826DD8D24EE6D63003DE040 /* CocoaDebugTests */ = {
+		3826DE7724EE7CDE003DE040 /* CocoaDebugTests */ = {
 			isa = PBXGroup;
 			children = (
-				3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */,
-				3826DD9024EE6D63003DE040 /* Info.plist */,
+				3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */,
+				3826DE7A24EE7CDE003DE040 /* Info.plist */,
 			);
 			path = CocoaDebugTests;
 			sourceTree = "<group>";
@@ -1560,18 +1545,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3826DD0724EE5D13003DE040 /* FBObjectiveCGraphElement+Internal.h in Headers */,
 				3826DB7024EE5BF5003DE040 /* NSObject+_LeaksFinder.h in Headers */,
-				3826DD0B24EE5D13003DE040 /* FBObjectiveCGraphElement.h in Headers */,
-				3826DCF124EE5D13003DE040 /* FBBlockInterface.h in Headers */,
 				3826DC3624EE5BF5003DE040 /* _CanonicalRequest.h in Headers */,
 				3826DB5D24EE5BF5003DE040 /* NSArray+_LeaksFinder.h in Headers */,
-				3826DCE724EE5D13003DE040 /* fishhook.h in Headers */,
-				3826DCEF24EE5D13003DE040 /* FBBlockStrongRelationDetector.h in Headers */,
 				3826DCA924EE5BF5003DE040 /* _GPBDictionary.h in Headers */,
 				3826DC7B24EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h in Headers */,
 				3826DB6024EE5BF5003DE040 /* NSDictionary+_LeaksFinder.h in Headers */,
-				3826DD0C24EE5D13003DE040 /* FBRetainCycleUtils.h in Headers */,
 				3826DC3A24EE5BF5003DE040 /* _QNSURLSessionDemux.h in Headers */,
 				3826DC8B24EE5BF5003DE040 /* _GPBBootstrap.h in Headers */,
 				3826DC7324EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h in Headers */,
@@ -1586,14 +1565,11 @@
 				3826DC4024EE5BF5003DE040 /* _OCLogHelper.h in Headers */,
 				3826DC4324EE5BF5003DE040 /* _ObjcLog.h in Headers */,
 				3826DC6D24EE5BF5003DE040 /* _Duration.pbobjc.h in Headers */,
-				3826DCFA24EE5D13003DE040 /* FBClassStrongLayout.h in Headers */,
 				3826DC4924EE5BF5003DE040 /* _OCLoggerFormat.h in Headers */,
 				3826DC8324EE5BF5003DE040 /* _Wrappers.pbobjc.h in Headers */,
 				3826DCA724EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h in Headers */,
 				3826DB7724EE5BF5003DE040 /* UIView+_LeaksFinder.h in Headers */,
-				3826DCEC24EE5D13003DE040 /* FBStandardGraphEdgeFilters.h in Headers */,
 				3826DC9824EE5BF5003DE040 /* _GPBUtilities.h in Headers */,
-				3826DCFE24EE5D13003DE040 /* FBObjectInStructReference.h in Headers */,
 				3826DC8124EE5BF5003DE040 /* _Empty.pbobjc.h in Headers */,
 				3826DC8824EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h in Headers */,
 				3826DC9624EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h in Headers */,
@@ -1601,48 +1577,61 @@
 				3826DCA324EE5BF5003DE040 /* _GPBMessage.h in Headers */,
 				3826DB7424EE5BF5003DE040 /* UIPageViewController+_LeaksFinder.h in Headers */,
 				3826DC3E24EE5BF5003DE040 /* _OCLogModel.h in Headers */,
-				3826DD0524EE5D13003DE040 /* FBObjectiveCObject.h in Headers */,
 				3826DC7C24EE5BF5003DE040 /* _GPBDescriptor.h in Headers */,
-				3826DCF624EE5D13003DE040 /* Struct.h in Headers */,
 				3826DC7E24EE5BF5003DE040 /* _Api.pbobjc.h in Headers */,
 				3826DC9B24EE5BF5003DE040 /* _GPBWellKnownTypes.h in Headers */,
 				3826DC9024EE5BF5003DE040 /* _GPBRuntimeTypes.h in Headers */,
 				3826DC6024EE5BF5003DE040 /* _Swizzling.h in Headers */,
-				3826DCFD24EE5D13003DE040 /* FBIvarReference.h in Headers */,
 				3826DC7424EE5BF5003DE040 /* _SourceContext.pbobjc.h in Headers */,
 				3826DB7524EE5BF5003DE040 /* UIViewController+_LeaksFinder.h in Headers */,
 				3826DB6724EE5BF5003DE040 /* _LeakedObjectProxy.h in Headers */,
-				3826DD0124EE5D13003DE040 /* FBObjectiveCBlock.h in Headers */,
 				3826DB7224EE5BF5003DE040 /* UIApplication+_LeaksFinder.h in Headers */,
 				3826DB6524EE5BF5003DE040 /* UISplitViewController+_LeaksFinder.h in Headers */,
 				3826DCA224EE5BF5003DE040 /* _GPBUnknownField.h in Headers */,
 				3826DC4A24EE5BF5003DE040 /* CocoaDebugTool.h in Headers */,
 				3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */,
-				3826DCF824EE5D13003DE040 /* BaseType.h in Headers */,
 				3826DC7724EE5BF5003DE040 /* _GPBRootObject.h in Headers */,
 				3826DC9524EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h in Headers */,
 				3826DCA024EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h in Headers */,
-				3826DCFF24EE5D13003DE040 /* FBObjectReference.h in Headers */,
 				3826DC7A24EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h in Headers */,
-				3826DCF524EE5D13003DE040 /* FBStructEncodingParser.h in Headers */,
 				3826DB6B24EE5BF5003DE040 /* NSSet+_LeaksFinder.h in Headers */,
 				3826DC8F24EE5BF5003DE040 /* _Any.pbobjc.h in Headers */,
 				3826DC6B24EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h in Headers */,
 				3826DC7F24EE5BF5003DE040 /* _GPBCodedOutputStream.h in Headers */,
 				3826DC9224EE5BF5003DE040 /* _GPBExtensionRegistry.h in Headers */,
-				3826DCF324EE5D13003DE040 /* Type.h in Headers */,
-				3826DD1124EE5D13003DE040 /* FBRetainCycleDetector+Internal.h in Headers */,
-				3826DD0224EE5D13003DE040 /* FBObjectiveCNSCFTimer.h in Headers */,
 				3826DB6A24EE5BF5003DE040 /* UITouch+_LeaksFinder.h in Headers */,
 				3826DC6824EE5BF5003DE040 /* NSObject+CocoaDebug.h in Headers */,
-				3826DD0F24EE5D13003DE040 /* FBNodeEnumerator.h in Headers */,
 				3826DB5C24EE5BF5003DE040 /* _WeakTimer.h in Headers */,
 				3826DC8424EE5BF5003DE040 /* _FieldMask.pbobjc.h in Headers */,
 				3826DC2B24EE5BF5003DE040 /* _NetworkHelper.h in Headers */,
+				3826DE6624EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h in Headers */,
+				3826DE6A24EE7B45003DE040 /* FBObjectiveCGraphElement.h in Headers */,
+				3826DE5024EE7B45003DE040 /* FBBlockInterface.h in Headers */,
+				3826DE4624EE7B45003DE040 /* fishhook.h in Headers */,
+				3826DE4E24EE7B45003DE040 /* FBBlockStrongRelationDetector.h in Headers */,
+				3826DE6B24EE7B45003DE040 /* FBRetainCycleUtils.h in Headers */,
+				3826DE5924EE7B45003DE040 /* FBClassStrongLayout.h in Headers */,
+				3826DE4B24EE7B45003DE040 /* FBStandardGraphEdgeFilters.h in Headers */,
+				3826DE5D24EE7B45003DE040 /* FBObjectInStructReference.h in Headers */,
+				3826DE6424EE7B45003DE040 /* FBObjectiveCObject.h in Headers */,
+				3826DE5524EE7B45003DE040 /* Struct.h in Headers */,
+				3826DE5C24EE7B45003DE040 /* FBIvarReference.h in Headers */,
+				3826DE6024EE7B45003DE040 /* FBObjectiveCBlock.h in Headers */,
+				3826DE5724EE7B45003DE040 /* BaseType.h in Headers */,
+				3826DE5E24EE7B45003DE040 /* FBObjectReference.h in Headers */,
+				3826DE5424EE7B45003DE040 /* FBStructEncodingParser.h in Headers */,
+				3826DE5224EE7B45003DE040 /* Type.h in Headers */,
+				3826DE7024EE7B45003DE040 /* FBRetainCycleDetector+Internal.h in Headers */,
+				3826DE6124EE7B45003DE040 /* FBObjectiveCNSCFTimer.h in Headers */,
+				3826DE6E24EE7B45003DE040 /* FBNodeEnumerator.h in Headers */,
+				3826DE4824EE7B45003DE040 /* FBAssociationManager+Internal.h in Headers */,
+				3826DE6324EE7B45003DE040 /* FBObjectGraphConfiguration.h in Headers */,
+				3826DE4724EE7B45003DE040 /* FBAssociationManager.h in Headers */,
+				3826DE5124EE7B45003DE040 /* FBClassStrongLayoutHelpers.h in Headers */,
+				3826DE6C24EE7B45003DE040 /* FBRetainCycleDetector.h in Headers */,
+				3826DE4C24EE7B45003DE040 /* FBBlockStrongLayout.h in Headers */,
 				3826DC9724EE5BF5003DE040 /* _GPBExtensionInternals.h in Headers */,
-				3826DCE924EE5D13003DE040 /* FBAssociationManager+Internal.h in Headers */,
 				3826DCA524EE5BF5003DE040 /* _GPBUnknownFieldSet.h in Headers */,
-				3826DD0424EE5D13003DE040 /* FBObjectGraphConfiguration.h in Headers */,
 				3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */,
 				3826DC3024EE5BF5003DE040 /* _HttpModel.h in Headers */,
 				3826DC9124EE5BF5003DE040 /* _Timestamp.pbobjc.h in Headers */,
@@ -1657,13 +1646,9 @@
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
-				3826DCE824EE5D13003DE040 /* FBAssociationManager.h in Headers */,
 				3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */,
-				3826DCF224EE5D13003DE040 /* FBClassStrongLayoutHelpers.h in Headers */,
-				3826DD0D24EE5D13003DE040 /* FBRetainCycleDetector.h in Headers */,
 				3826DB5724EE5BF5003DE040 /* _DebugConsoleLabel.h in Headers */,
 				3826DB6424EE5BF5003DE040 /* _LeaksMessenger.h in Headers */,
-				3826DCED24EE5D13003DE040 /* FBBlockStrongLayout.h in Headers */,
 				3826DB5824EE5BF5003DE040 /* _DebugMonitor.h in Headers */,
 				3826DB6124EE5BF5003DE040 /* UINavigationController+_LeaksFinder.h in Headers */,
 				3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */,
@@ -1692,22 +1677,22 @@
 			productReference = 380965722414E04F00382668 /* CocoaDebug.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3826DD8B24EE6D63003DE040 /* CocoaDebugTests */ = {
+		3826DE7524EE7CDE003DE040 /* CocoaDebugTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3826DD9424EE6D63003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */;
+			buildConfigurationList = 3826DE8024EE7CDE003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */;
 			buildPhases = (
-				3826DD8824EE6D63003DE040 /* Sources */,
-				3826DD8924EE6D63003DE040 /* Frameworks */,
-				3826DD8A24EE6D63003DE040 /* Resources */,
+				3826DE7224EE7CDE003DE040 /* Sources */,
+				3826DE7324EE7CDE003DE040 /* Frameworks */,
+				3826DE7424EE7CDE003DE040 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3826DD9324EE6D63003DE040 /* PBXTargetDependency */,
+				3826DE7D24EE7CDE003DE040 /* PBXTargetDependency */,
 			);
 			name = CocoaDebugTests;
 			productName = CocoaDebugTests;
-			productReference = 3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */;
+			productReference = 3826DE7624EE7CDE003DE040 /* CocoaDebugTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1722,7 +1707,7 @@
 					380965712414E04F00382668 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
-					3826DD8B24EE6D63003DE040 = {
+					3826DE7524EE7CDE003DE040 = {
 						CreatedOnToolsVersion = 11.6;
 					};
 				};
@@ -1741,7 +1726,7 @@
 			projectRoot = "";
 			targets = (
 				380965712414E04F00382668 /* CocoaDebug */,
-				3826DD8B24EE6D63003DE040 /* CocoaDebugTests */,
+				3826DE7524EE7CDE003DE040 /* CocoaDebugTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1848,7 +1833,6 @@
 				3826DBD324EE5BF5003DE040 /* icon_file_type_doc@2x.png in Resources */,
 				3826DC2824EE5BF5003DE040 /* App.storyboard in Resources */,
 				3826DBC124EE5BF5003DE040 /* icon_file_type_ipa@3x.png in Resources */,
-				3809657E2414E0A000382668 /* copy_and_codesign.sh in Resources */,
 				3826DBE824EE5BF5003DE040 /* icon_file_type_dll@2x.png in Resources */,
 				3826DB8724EE5BF5003DE040 /* icon_file_type_folder_not_empty@3x.png in Resources */,
 				3826DB9624EE5BF5003DE040 /* icon_file_type_sql@3x.png in Resources */,
@@ -1931,7 +1915,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3826DD8A24EE6D63003DE040 /* Resources */ = {
+		3826DE7424EE7CDE003DE040 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1946,11 +1930,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3826DC3924EE5BF5003DE040 /* _CacheStoragePolicy.m in Sources */,
-				3826DCEA24EE5D13003DE040 /* FBAssociationManager.mm in Sources */,
+				3826DE4924EE7B45003DE040 /* FBAssociationManager.mm in Sources */,
 				3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */,
 				3826DC7024EE5BF5003DE040 /* _Any.pbobjc.m in Sources */,
+				3826DE5624EE7B45003DE040 /* FBStructEncodingParser.mm in Sources */,
 				3826DCA624EE5BF5003DE040 /* _FieldMask.pbobjc.m in Sources */,
-				3826DCF724EE5D13003DE040 /* FBStructEncodingParser.mm in Sources */,
 				3826DC8D24EE5BF5003DE040 /* _GPBArray.m in Sources */,
 				3826DB6F24EE5BF5003DE040 /* UINavigationController+_LeaksFinder.m in Sources */,
 				3826DC3324EE5BF5003DE040 /* NetworkDetailModel.swift in Sources */,
@@ -1963,9 +1947,9 @@
 				3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */,
 				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
 				3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */,
-				3826DD0A24EE5D13003DE040 /* FBObjectiveCObject.m in Sources */,
 				3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */,
 				3826DB5924EE5BF5003DE040 /* _DebugMemoryMonitor.m in Sources */,
+				3826DE6924EE7B45003DE040 /* FBObjectiveCObject.m in Sources */,
 				3826DC5F24EE5BF5003DE040 /* _WKWebView+Swizzling.m in Sources */,
 				3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */,
 				3826DB7824EE5BF5003DE040 /* UISplitViewController+_LeaksFinder.m in Sources */,
@@ -1975,20 +1959,20 @@
 				3826DB7324EE5BF5003DE040 /* UITouch+_LeaksFinder.m in Sources */,
 				3826DC3124EE5BF5003DE040 /* NetworkDetailCell.swift in Sources */,
 				3826DC8024EE5BF5003DE040 /* _Struct.pbobjc.m in Sources */,
-				3826DD0E24EE5D13003DE040 /* FBNodeEnumerator.mm in Sources */,
 				3826DB7624EE5BF5003DE040 /* _LeakedObjectProxy.m in Sources */,
+				3826DE6D24EE7B45003DE040 /* FBNodeEnumerator.mm in Sources */,
 				3826DC3D24EE5BF5003DE040 /* _LogHelper.swift in Sources */,
 				3826DC4624EE5BF5003DE040 /* _OCLogModel.m in Sources */,
 				3826DD3124EE5FD5003DE040 /* _FileTableViewCell.m in Sources */,
-				3826DD0024EE5D13003DE040 /* FBIvarReference.m in Sources */,
+				3826DE5F24EE7B45003DE040 /* FBIvarReference.m in Sources */,
 				3826DB7124EE5BF5003DE040 /* _LeaksMessenger.m in Sources */,
 				3826DC9E24EE5BF5003DE040 /* _GPBCodedOutputStream.m in Sources */,
 				3826DC8C24EE5BF5003DE040 /* _GPBWireFormat.m in Sources */,
-				3826DCE624EE5D13003DE040 /* fishhook.c in Sources */,
+				3826DE4524EE7B45003DE040 /* fishhook.c in Sources */,
 				3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */,
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
 				3826DB6E24EE5BF5003DE040 /* NSDictionary+_LeaksFinder.m in Sources */,
-				3826DD1024EE5D13003DE040 /* FBRetainCycleDetector.mm in Sources */,
+				3826DE6F24EE7B45003DE040 /* FBRetainCycleDetector.mm in Sources */,
 				3826DC8524EE5BF5003DE040 /* _GPBUnknownFieldSet.m in Sources */,
 				3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */,
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
@@ -2002,36 +1986,36 @@
 				3826DC7824EE5BF5003DE040 /* _GPBUtilities.m in Sources */,
 				3826DB5B24EE5BF5003DE040 /* _WeakTimer.m in Sources */,
 				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
+				3826DE6724EE7B45003DE040 /* FBObjectGraphConfiguration.m in Sources */,
 				3826DB4424EE5BF5003DE040 /* CocoaDebugAutoLaunch.m in Sources */,
-				3826DD0824EE5D13003DE040 /* FBObjectGraphConfiguration.m in Sources */,
 				3826DB5524EE5BF5003DE040 /* _DebugMonitor.m in Sources */,
 				3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */,
 				3826DB6824EE5BF5003DE040 /* UIViewController+_LeaksFinder.m in Sources */,
 				3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */,
 				3826DC6624EE5BF5003DE040 /* CocoaDebugWindow.swift in Sources */,
-				3826DD0624EE5D13003DE040 /* FBObjectiveCGraphElement.mm in Sources */,
-				3826DD1224EE5D13003DE040 /* FBRetainCycleUtils.m in Sources */,
-				3826DCF024EE5D13003DE040 /* FBBlockStrongLayout.m in Sources */,
+				3826DE6524EE7B45003DE040 /* FBObjectiveCGraphElement.mm in Sources */,
+				3826DE7124EE7B45003DE040 /* FBRetainCycleUtils.m in Sources */,
+				3826DE4F24EE7B45003DE040 /* FBBlockStrongLayout.m in Sources */,
 				3826DC4224EE5BF5003DE040 /* CocoaDebugTool.m in Sources */,
 				3826DCA124EE5BF5003DE040 /* _Api.pbobjc.m in Sources */,
 				3826DC6424EE5BF5003DE040 /* CocoaDebugViewController.swift in Sources */,
 				3826DB5F24EE5BF5003DE040 /* NSObject+_LeaksFinder.m in Sources */,
-				3826DD0324EE5D13003DE040 /* FBObjectiveCNSCFTimer.mm in Sources */,
+				3826DE6224EE7B45003DE040 /* FBObjectiveCNSCFTimer.mm in Sources */,
 				3826DC4424EE5BF5003DE040 /* _OCLogStoreManager.m in Sources */,
-				3826DCFC24EE5D13003DE040 /* FBObjectInStructReference.m in Sources */,
 				3826DC5E24EE5BF5003DE040 /* _Swizzling.m in Sources */,
+				3826DE5B24EE7B45003DE040 /* FBObjectInStructReference.m in Sources */,
 				3826DC8724EE5BF5003DE040 /* _GPBMessage.m in Sources */,
 				3826DB5224EE5BF5003DE040 /* Device.swift in Sources */,
 				3826DC2F24EE5BF5003DE040 /* NetworkDetailViewController.swift in Sources */,
 				3826DB5E24EE5BF5003DE040 /* NSSet+_LeaksFinder.m in Sources */,
 				3826DC9324EE5BF5003DE040 /* _Duration.pbobjc.m in Sources */,
 				3826DB4F24EE5BF5003DE040 /* CrashListViewController.swift in Sources */,
-				3826DD0924EE5D13003DE040 /* FBObjectiveCBlock.m in Sources */,
 				3826DC6724EE5BF5003DE040 /* Color.swift in Sources */,
+				3826DE6824EE7B45003DE040 /* FBObjectiveCBlock.m in Sources */,
 				3826DB4824EE5BF5003DE040 /* CocoaDebug+Extensions.swift in Sources */,
 				3826DB4D24EE5BF5003DE040 /* CrashDetailViewController.swift in Sources */,
-				3826DCEB24EE5D13003DE040 /* FBStandardGraphEdgeFilters.mm in Sources */,
 				3826DC9424EE5BF5003DE040 /* _GPBDescriptor.m in Sources */,
+				3826DE4A24EE7B45003DE040 /* FBStandardGraphEdgeFilters.mm in Sources */,
 				3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */,
 				3826DC3424EE5BF5003DE040 /* _HttpDatasource.m in Sources */,
 				3826DC3724EE5BF5003DE040 /* _QNSURLSessionDemux.m in Sources */,
@@ -2044,12 +2028,12 @@
 				3826DC6224EE5BF5003DE040 /* _WindowHelper.swift in Sources */,
 				3826DC6924EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m in Sources */,
 				3826DB6624EE5BF5003DE040 /* UIView+_LeaksFinder.m in Sources */,
-				3826DCFB24EE5D13003DE040 /* FBClassStrongLayoutHelpers.m in Sources */,
+				3826DE5A24EE7B45003DE040 /* FBClassStrongLayoutHelpers.m in Sources */,
 				3826DD3024EE5FD5003DE040 /* _ImageResources.m in Sources */,
 				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
 				3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */,
+				3826DE4D24EE7B45003DE040 /* FBBlockStrongRelationDetector.m in Sources */,
 				3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */,
-				3826DCEE24EE5D13003DE040 /* FBBlockStrongRelationDetector.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
 				3826DC6124EE5BF5003DE040 /* Bubble.swift in Sources */,
@@ -2061,28 +2045,28 @@
 				3826DB4A24EE5BF5003DE040 /* DeviceModel.swift in Sources */,
 				3826DC2E24EE5BF5003DE040 /* NetworkViewController.swift in Sources */,
 				3826DC6524EE5BF5003DE040 /* CocoaDebugTabBarController.swift in Sources */,
+				3826DE5324EE7B45003DE040 /* Struct.mm in Sources */,
 				3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */,
-				3826DCF424EE5D13003DE040 /* Struct.mm in Sources */,
-				3826DCF924EE5D13003DE040 /* FBClassStrongLayout.mm in Sources */,
+				3826DE5824EE7B45003DE040 /* FBClassStrongLayout.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3826DD8824EE6D63003DE040 /* Sources */ = {
+		3826DE7224EE7CDE003DE040 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3826DD8F24EE6D63003DE040 /* CocoaDebugTests.m in Sources */,
+				3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3826DD9324EE6D63003DE040 /* PBXTargetDependency */ = {
+		3826DE7D24EE7CDE003DE040 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
 			target = 380965712414E04F00382668 /* CocoaDebug */;
-			targetProxy = 3826DD9224EE6D63003DE040 /* PBXContainerItemProxy */;
+			targetProxy = 3826DE7C24EE7CDE003DE040 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2260,7 +2244,7 @@
 			};
 			name = Release;
 		};
-		3826DD9524EE6D63003DE040 /* Debug */ = {
+		3826DE7E24EE7CDE003DE040 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -2279,7 +2263,7 @@
 			};
 			name = Debug;
 		};
-		3826DD9624EE6D63003DE040 /* Release */ = {
+		3826DE7F24EE7CDE003DE040 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -2319,11 +2303,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3826DD9424EE6D63003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */ = {
+		3826DE8024EE7CDE003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3826DD9524EE6D63003DE040 /* Debug */,
-				3826DD9624EE6D63003DE040 /* Release */,
+				3826DE7E24EE7CDE003DE040 /* Debug */,
+				3826DE7F24EE7CDE003DE040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
