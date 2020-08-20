@@ -26,7 +26,7 @@ static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
     
     self.backgroundTimer = [_WeakTimer scheduledTimerWithTimeInterval:0.5
                                                                 target:self
-                                                              selector:@selector(updateMemory)
+                                                              selector:@selector(updateValue)
                                                               userInfo:nil
                                                                repeats:YES
                                                          dispatchQueue:self.privateQueue];
@@ -44,7 +44,7 @@ static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
 }
 
 #pragma mark - target action
-- (void)updateMemory {
+- (void)updateValue {
     if (self.valueBlock) {
         self.valueBlock([self getValue]);
     }

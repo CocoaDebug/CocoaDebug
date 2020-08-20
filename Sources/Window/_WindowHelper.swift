@@ -30,6 +30,8 @@ public class _WindowHelper: NSObject {
             self.window.delegate = self
             self.window.isHidden = false
             _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
+            _DebugFPSMonitor.sharedInstance()?.startMonitoring()
+            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
         }
         
         if #available(iOS 13.0, *) {
@@ -57,6 +59,8 @@ public class _WindowHelper: NSObject {
             self.window.delegate = nil
             self.window.isHidden = true
             _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
+            _DebugFPSMonitor.sharedInstance()?.stopMonitoring()
+            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
         }
     }
 }

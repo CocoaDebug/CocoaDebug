@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, _DebugToolLabelType) {
+    _DebugToolLabelTypeFPS,
+    _DebugToolLabelTypeMemory,
+    _DebugToolLabelTypeCPU
+};
+
 @interface _DebugConsoleLabel : UILabel
 
-- (void)updateLabelWithValue:(float)value;
+- (void)updateLabelWith:(_DebugToolLabelType)labelType value:(float)value;
 
 @end

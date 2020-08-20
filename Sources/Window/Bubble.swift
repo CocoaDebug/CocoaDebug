@@ -35,7 +35,15 @@ class Bubble: UIView {
     }()
     
     private lazy var memoryLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:36, width:_width, height:20))
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
+    }()
+    
+    private lazy var fpsLabel: _DebugConsoleLabel? = {
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
+    }()
+    
+    private lazy var cpuLabel: _DebugConsoleLabel? = {
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
     }()
     
     private var networkNumber: Int = 0
@@ -152,13 +160,14 @@ class Bubble: UIView {
                 // Fallback on earlier versions
                 numberLabel.font = UIFont.boldSystemFont(ofSize: 20)
             }
-            self.addSubview(numberLabel)
+//            self.addSubview(numberLabel)
         }
         
-        if let memoryLabel = memoryLabel {
+        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
             self.addSubview(memoryLabel)
+            self.addSubview(fpsLabel)
+            self.addSubview(cpuLabel)
         }
-        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
@@ -197,7 +206,15 @@ class Bubble: UIView {
         
         //Memory
         _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.memoryLabel?.update(withValue: value)
+            self?.memoryLabel?.update(with: .memory, value: value)
+        }
+        //FPS
+        _DebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+            self?.fpsLabel?.update(with: .FPS, value: value)
+        }
+        //CPU
+        _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+            self?.cpuLabel?.update(with: .CPU, value: value)
         }
     }
     

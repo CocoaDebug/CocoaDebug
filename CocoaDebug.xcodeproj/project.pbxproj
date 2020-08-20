@@ -413,6 +413,10 @@
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
+		3826E16E24EEA00C003DE040 /* _DebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826E16F24EEA00C003DE040 /* _DebugFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826E16B24EEA00C003DE040 /* _DebugFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826E17024EEA00C003DE040 /* _DebugFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826E16C24EEA00C003DE040 /* _DebugFPSMonitor.m */; };
+		3826E17124EEA00C003DE040 /* _DebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -834,6 +838,10 @@
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
+		3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugCpuMonitor.h; sourceTree = "<group>"; };
+		3826E16B24EEA00C003DE040 /* _DebugFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugFPSMonitor.h; sourceTree = "<group>"; };
+		3826E16C24EEA00C003DE040 /* _DebugFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugFPSMonitor.m; sourceTree = "<group>"; };
+		3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugCpuMonitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -939,12 +947,16 @@
 		3826D9E124EE5BF4003DE040 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
-				3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */,
 				3826D9E324EE5BF4003DE040 /* _DebugMemoryMonitor.h */,
-				3826D9E424EE5BF4003DE040 /* _DebugConsoleLabel.h */,
-				3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */,
 				3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */,
+				3826E16B24EEA00C003DE040 /* _DebugFPSMonitor.h */,
+				3826E16C24EEA00C003DE040 /* _DebugFPSMonitor.m */,
+				3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */,
+				3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */,
+				3826D9E424EE5BF4003DE040 /* _DebugConsoleLabel.h */,
 				3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */,
+				3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */,
+				3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */,
 			);
 			path = Memory;
 			sourceTree = "<group>";
@@ -1645,6 +1657,8 @@
 				3826DD2F24EE5FD5003DE040 /* _ImageResources.h in Headers */,
 				3826DD2724EE5FD5003DE040 /* _FileTableViewCell.h in Headers */,
 				3826DD2824EE5FD5003DE040 /* _FileInfo.h in Headers */,
+				3826E16F24EEA00C003DE040 /* _DebugFPSMonitor.h in Headers */,
+				3826E16E24EEA00C003DE040 /* _DebugCpuMonitor.h in Headers */,
 				3826DD2A24EE5FD5003DE040 /* _DirectoryContentsTableViewController.h in Headers */,
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */,
@@ -1945,6 +1959,7 @@
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,
 				3826DB6D24EE5BF5003DE040 /* UITabBarController+_LeaksFinder.m in Sources */,
+				3826E17024EEA00C003DE040 /* _DebugFPSMonitor.m in Sources */,
 				3826DC6E24EE5BF5003DE040 /* _GPBExtensionRegistry.m in Sources */,
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
@@ -2046,6 +2061,7 @@
 				3826DC6324EE5BF5003DE040 /* CocoaDebugNavigationController.swift in Sources */,
 				3826DB6C24EE5BF5003DE040 /* NSArray+_LeaksFinder.m in Sources */,
 				3826DC4C24EE5BF5003DE040 /* _ObjcLog.m in Sources */,
+				3826E17124EEA00C003DE040 /* _DebugCpuMonitor.m in Sources */,
 				3826DB4A24EE5BF5003DE040 /* DeviceModel.swift in Sources */,
 				3826DC2E24EE5BF5003DE040 /* NetworkViewController.swift in Sources */,
 				3826DC6524EE5BF5003DE040 /* CocoaDebugTabBarController.swift in Sources */,
