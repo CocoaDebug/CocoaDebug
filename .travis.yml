@@ -1,13 +1,14 @@
+before_install:
+    - brew update
+    - brew install gcc || brew link --overwrite gcc
+    - brew upgrade
+    - brew outdated xctool || brew upgrade xctool
 osx_image: xcode11.3
 language: objective-c
-xcode_workspace: Example_Objc.xcworkspace
-xcode_scheme: Example_Objc
-podfile: Example_Objc/Podfile
-before_install:
-- gem install cocoapods
-- pod install --project-directory=Example_Objc
+xcode_project: CocoaDebug.xcodeproj
+xcode_scheme: CocoaDebug
+xcode_sdk: iphonesimulator
 script:
-- xcodebuild -workspace Example_Objc/Example_Objc.xcworkspace -scheme Example_Objc -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' build test
-- pod lib lint --verbose
+    - xcodebuild -project CocoaDebug.xcodeproj -scheme CocoaDebug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' build test
 after_success:
-- bash <(curl -s https://codecov.io/bash) -J 'Example_Objc' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
+    - bash <(curl -s https://codecov.io/bash) -J 'CocoaDebug' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
