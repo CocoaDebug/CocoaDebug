@@ -10,7 +10,7 @@
 #import "_LeakedObjectProxy.h"
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
-#import <FBRetainCycleDetector/FBRetainCycleDetector.h>
+#import "FBRetainCycleDetector.h"
 
 static const void *const kViewStackKey = &kViewStackKey;
 static const void *const kParentPtrsKey = &kParentPtrsKey;

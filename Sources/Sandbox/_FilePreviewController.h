@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class _MLBFileInfo;
+@class _FileInfo;
 
-@interface _MLBFilePreviewController : UIViewController
+@interface _FilePreviewController : UIViewController
 
-@property (nonatomic, strong) _MLBFileInfo *fileInfo;
+@property (nonatomic, strong) _FileInfo *fileInfo;
 
 @end

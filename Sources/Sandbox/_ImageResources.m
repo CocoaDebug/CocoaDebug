@@ -6,9 +6,9 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import "_MLBImageResources.h"
+#import "_ImageResources.h"
 
-@implementation _MLBImageResources
+@implementation _ImageResources
 
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName {
     return [self imageNamed:imageName fileType:@"png" inDirectory:nil];

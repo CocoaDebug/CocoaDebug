@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-UIKIT_EXTERN NSString *const _MLBFileTableViewCellReuseIdentifier;
+UIKIT_EXTERN NSString *const _FileTableViewCellReuseIdentifier;
 
-@interface _MLBFileTableViewCell : UITableViewCell
+@interface _FileTableViewCell : UITableViewCell
 
 @end

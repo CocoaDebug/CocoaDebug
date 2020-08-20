@@ -11,7 +11,7 @@
 #import "NSObject+_LeaksFinder.h"
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
-#import <FBRetainCycleDetector/FBRetainCycleDetector.h>
+#import "FBRetainCycleDetector.h"
 
 static NSMutableSet *leakedObjectPtrs;
 

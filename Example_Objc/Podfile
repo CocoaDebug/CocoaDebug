@@ -1,19 +1,11 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '8.0'
 
 target 'Example_Objc' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+
   use_frameworks!
 
-  # ignore all warnings from all pods
   inhibit_all_warnings!
 
-  # Pods for Example_Objc
   pod 'CocoaDebug', :path=> '../../CocoaDebug', :configurations => ['Debug'], :inhibit_warnings => true
-  
-  target 'Example_ObjcTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end

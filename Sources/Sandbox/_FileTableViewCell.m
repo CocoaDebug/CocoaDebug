@@ -6,11 +6,11 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import "_MLBFileTableViewCell.h"
+#import "_FileTableViewCell.h"
 
-NSString *const _MLBFileTableViewCellReuseIdentifier = @"_MLBFileCell";
+NSString *const _FileTableViewCellReuseIdentifier = @"_FileCell";
 
-@implementation _MLBFileTableViewCell
+@implementation _FileTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];

@@ -6,14 +6,14 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import "_MLBFilePreviewController.h"
-#import "_MLBFileInfo.h"
+#import "_FilePreviewController.h"
+#import "_FileInfo.h"
 #import <QuickLook/QuickLook.h>
 #import <WebKit/WebKit.h>
 #import "_Sandboxer-Header.h"
 #import "_Sandboxer.h"
 
-@interface _MLBFilePreviewController () <QLPreviewControllerDataSource, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface _FilePreviewController () <QLPreviewControllerDataSource, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) WKWebView *wkWebView;
 
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation _MLBFilePreviewController
+@implementation _FilePreviewController
 
 #pragma mark - View Lifecycle
 
@@ -87,7 +87,7 @@
         [self.view addSubview:self.wkWebView];
     } else {
         switch (self.fileInfo.type) {
-            case _MLBFileTypePList: {
+            case _FileTypePList: {
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;
@@ -114,7 +114,7 @@
         }
     } else {
         switch (self.fileInfo.type) {
-            case _MLBFileTypePList: {
+            case _FileTypePList: {
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];

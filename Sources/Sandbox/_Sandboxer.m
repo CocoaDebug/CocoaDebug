@@ -7,7 +7,7 @@
 //
 
 #import "_Sandboxer.h"
-#import "_MLBDirectoryContentsTableViewController.h"
+#import "_DirectoryContentsTableViewController.h"
 
 @interface _Sandboxer ()
 
@@ -67,9 +67,9 @@
 
 - (UINavigationController *)homeDirectoryNavigationController {
     if (!_homeDirectoryNavigationController) {
-        _MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[_MLBDirectoryContentsTableViewController alloc] init];
+        _DirectoryContentsTableViewController *directoryContentsTableViewController = [[_DirectoryContentsTableViewController alloc] init];
         directoryContentsTableViewController.homeDirectory = YES;
-        directoryContentsTableViewController.fileInfo = [[_MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
+        directoryContentsTableViewController.fileInfo = [[_FileInfo alloc] initWithFileURL:self.homeFileURL];
         directoryContentsTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         _homeDirectoryNavigationController = [[UINavigationController alloc] initWithRootViewController:directoryContentsTableViewController];
     }

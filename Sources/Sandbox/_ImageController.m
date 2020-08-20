@@ -1,25 +1,25 @@
 //
-//  _MLBImageController.m
+//  _ImageController.m
 //  Example_Objc
 //
 //  Created by man.li on 7/25/19.
 //  Copyright © 2020 liman.li. All rights reserved.
 //
 
-#import "_MLBImageController.h"
+#import "_ImageController.h"
 #import "_Sandboxer.h"
 
-@interface _MLBImageController () <UIDocumentInteractionControllerDelegate>
+@interface _ImageController () <UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, strong) _MLBFileInfo *fileInfo;
+@property (nonatomic, strong) _FileInfo *fileInfo;
 @property (nonatomic, strong) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic, assign) BOOL flag;
 
 @end
 
-@implementation _MLBImageController
+@implementation _ImageController
 
 #pragma mark - Getters
 - (UIDocumentInteractionController *)documentInteractionController {
@@ -33,7 +33,7 @@
 }
 
 #pragma mark - init
-- (instancetype)initWithImage:(UIImage *)image fileInfo:(_MLBFileInfo *)fileInfo {
+- (instancetype)initWithImage:(UIImage *)image fileInfo:(_FileInfo *)fileInfo {
     if (self = [super init]) {
         self.image = image;
         self.fileInfo = fileInfo;

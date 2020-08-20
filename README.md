@@ -54,9 +54,23 @@
 ```ruby
 target 'YourTargetName' do
     use_frameworks!
-    pod 'CocoaDebug', '1.3.7', :configurations => ['Debug']
+    pod 'CocoaDebug', :configurations => ['Debug']
 end
 ```
+
+### *Carthage*
+
+```ogdl
+github "CocoaDebug/CocoaDebug"
+```
+
+### *Framework*
+
+Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/CocoaDebug.framework.zip) into project and set `Embed` in Xcode.
+
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/002.png" width="600">
+
+> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `CocoaDebug.framework`. This [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
 
 ## Usage
 
