@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -411,7 +411,19 @@
 		3826DD3224EE5FD5003DE040 /* _Sandboxer-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DD2124EE5FD5003DE040 /* _Sandboxer-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD2224EE5FD5003DE040 /* _DirectoryContentsTableViewController.m */; };
 		3826DD3424EE5FD5003DE040 /* _ImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DD2324EE5FD5003DE040 /* _ImageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3826DD8F24EE6D63003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */; platformFilter = ios; };
+		3826DD9124EE6D63003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3826DD9224EE6D63003DE040 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 380965692414E04F00382668 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 380965712414E04F00382668;
+			remoteInfo = CocoaDebug;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -821,6 +833,9 @@
 		3826DD2124EE5FD5003DE040 /* _Sandboxer-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_Sandboxer-Header.h"; sourceTree = "<group>"; };
 		3826DD2224EE5FD5003DE040 /* _DirectoryContentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DirectoryContentsTableViewController.m; sourceTree = "<group>"; };
 		3826DD2324EE5FD5003DE040 /* _ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ImageController.h; sourceTree = "<group>"; };
+		3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
+		3826DD9024EE6D63003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -828,6 +843,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3826DD8924EE6D63003DE040 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3826DD9124EE6D63003DE040 /* CocoaDebug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +862,7 @@
 			children = (
 				3826DCAA24EE5D13003DE040 /* Carthage */,
 				380965742414E04F00382668 /* CocoaDebug */,
+				3826DD8D24EE6D63003DE040 /* CocoaDebugTests */,
 				380965732414E04F00382668 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -847,6 +871,7 @@
 			isa = PBXGroup;
 			children = (
 				380965722414E04F00382668 /* CocoaDebug.framework */,
+				3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1519,6 +1544,15 @@
 			path = Detector;
 			sourceTree = "<group>";
 		};
+		3826DD8D24EE6D63003DE040 /* CocoaDebugTests */ = {
+			isa = PBXGroup;
+			children = (
+				3826DD8E24EE6D63003DE040 /* CocoaDebugTests.m */,
+				3826DD9024EE6D63003DE040 /* Info.plist */,
+			);
+			path = CocoaDebugTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1658,6 +1692,24 @@
 			productReference = 380965722414E04F00382668 /* CocoaDebug.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3826DD8B24EE6D63003DE040 /* CocoaDebugTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3826DD9424EE6D63003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */;
+			buildPhases = (
+				3826DD8824EE6D63003DE040 /* Sources */,
+				3826DD8924EE6D63003DE040 /* Frameworks */,
+				3826DD8A24EE6D63003DE040 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3826DD9324EE6D63003DE040 /* PBXTargetDependency */,
+			);
+			name = CocoaDebugTests;
+			productName = CocoaDebugTests;
+			productReference = 3826DD8C24EE6D63003DE040 /* CocoaDebugTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1669,6 +1721,9 @@
 				TargetAttributes = {
 					380965712414E04F00382668 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					3826DD8B24EE6D63003DE040 = {
+						CreatedOnToolsVersion = 11.6;
 					};
 				};
 			};
@@ -1686,6 +1741,7 @@
 			projectRoot = "";
 			targets = (
 				380965712414E04F00382668 /* CocoaDebug */,
+				3826DD8B24EE6D63003DE040 /* CocoaDebugTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1875,6 +1931,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3826DD8A24EE6D63003DE040 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2004,7 +2067,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3826DD8824EE6D63003DE040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3826DD8F24EE6D63003DE040 /* CocoaDebugTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3826DD9324EE6D63003DE040 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 380965712414E04F00382668 /* CocoaDebug */;
+			targetProxy = 3826DD9224EE6D63003DE040 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		380965782414E04F00382668 /* Debug */ = {
@@ -2180,6 +2260,44 @@
 			};
 			name = Release;
 		};
+		3826DD9524EE6D63003DE040 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XA8SWALX42;
+				INFOPLIST_FILE = CocoaDebugTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.man.CocoaDebugTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3826DD9624EE6D63003DE040 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XA8SWALX42;
+				INFOPLIST_FILE = CocoaDebugTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.man.CocoaDebugTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2197,6 +2315,15 @@
 			buildConfigurations = (
 				3809657B2414E04F00382668 /* Debug */,
 				3809657C2414E04F00382668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3826DD9424EE6D63003DE040 /* Build configuration list for PBXNativeTarget "CocoaDebugTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3826DD9524EE6D63003DE040 /* Debug */,
+				3826DD9624EE6D63003DE040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
