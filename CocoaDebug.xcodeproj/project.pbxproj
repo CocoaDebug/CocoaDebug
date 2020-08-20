@@ -412,6 +412,7 @@
 		3826DE7124EE7B45003DE040 /* FBRetainCycleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE4424EE7B45003DE040 /* FBRetainCycleUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
+		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -832,6 +833,7 @@
 		3826DE7624EE7CDE003DE040 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +879,7 @@
 				3826DE0D24EE7B45003DE040 /* FBRetainCycleDetector */,
 				3826DE0A24EE7B45003DE040 /* fishhook */,
 				3826D9CD24EE5BF4003DE040 /* Sources */,
+				3826DEA724EE854E003DE040 /* copy_and_codesign.sh */,
 			);
 			path = CocoaDebug;
 			sourceTree = "<group>";
@@ -1804,6 +1807,7 @@
 				3826DB7924EE5BF5003DE040 /* NetworkCell.xib in Resources */,
 				3826DBAB24EE5BF5003DE040 /* icon_file_type_folder_not_empty.png in Resources */,
 				3826DC2624EE5BF5003DE040 /* icon_file_type_js@3x.png in Resources */,
+				3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */,
 				3826DBA724EE5BF5003DE040 /* icon_file_type_midi@3x.png in Resources */,
 				3826DBA124EE5BF5003DE040 /* icon_file_type_java@2x.png in Resources */,
 				3826DB9B24EE5BF5003DE040 /* icon_file_type_plist.png in Resources */,
