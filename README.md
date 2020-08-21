@@ -78,39 +78,12 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 ## Usage
 
-### *Swift*
-	
-    #if DEBUG
-        import CocoaDebug
-    #endif
-	
-    #if DEBUG
-        CocoaDebug.enable()
-    #endif
+Don't need to do anything. `CocoaDebug` will start automatically.
 
-### *Objective-C*
-	
-    #ifdef DEBUG
-        @import CocoaDebug;
-    #endif
-	
-    #ifdef DEBUG
-        [CocoaDebug enable];
-    #endif
-
-### *More Advanced Usage*
-
-    #ifdef DEBUG
-        [CocoaDebugTool logWithString:string];
-        
-        NSString *prettyJSON = [CocoaDebugTool logWithJsonData:data];
-    
-        NSString *prettyJSON = [CocoaDebugTool logWithProtobufData:data className:@"protobuf_className"];
-    #endif
 
 > Please check **Example_Objc** or **Example_Swift** for more advanced usage.
 
-> NOTE: Be careful with `Other Swift Flags` & `Preprocessor Macros` when using Swift & Objective-C in one project. You can refer to [here](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).  
+> NOTE: Be careful with `Other Swift Flags` & `Preprocessor Macros` when using Swift & Objective-C in one project. You can refer to [stackoverflow](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).  
 
 ## Parameters
 
@@ -122,7 +95,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `onlyURLs` - Set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
 
-- `tabBarControllers` - Set controllers to be added as child controllers of UITabBarController. default value is **nil**.
+- `additionalController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. default value is **nil**.
 
 - `logMaxCount` - The maximum count of logs which CocoaDebug display. default value is **1000**.
 

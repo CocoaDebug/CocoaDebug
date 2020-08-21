@@ -304,7 +304,7 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, tabBarControllers: [UIViewController]? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
@@ -321,11 +321,6 @@ extension CocoaDebug {
             CocoaDebugSettings.shared.serverURL = ""
         }else{
             CocoaDebugSettings.shared.serverURL = serverURL
-        }
-        if tabBarControllers == nil {
-            CocoaDebugSettings.shared.tabBarControllers = []
-        }else{
-            CocoaDebugSettings.shared.tabBarControllers = tabBarControllers
         }
         if onlyURLs == nil {
             CocoaDebugSettings.shared.onlyURLs = []
@@ -352,7 +347,8 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
-
+        CocoaDebugSettings.shared.additionalController = additionalController
+        
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true

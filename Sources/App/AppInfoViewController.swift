@@ -90,9 +90,7 @@ class AppInfoViewController: UITableViewController {
         let alert = UIAlertController.init(title: nil, message: "You must restart APP to ensure the changes take effect", preferredStyle: .alert)
         let cancelAction = UIAlertAction.init(title: "Restart later", style: .cancel, handler: nil)
         let okAction = UIAlertAction.init(title: "Restart now", style: .destructive) { _ in
-            #if DEBUG
-                exit(0)
-            #endif
+            exit(0)
         }
         
         alert.addAction(cancelAction)

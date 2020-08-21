@@ -17,7 +17,7 @@ import Foundation
     ///set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
     ///set controllers to be added as child controllers of UITabBarController. default value is `nil`.
-    @objc public static var tabBarControllers: [UIViewController]? = nil
+    @objc public static var additionalController: UIViewController? = nil
     ///the maximum count of logs which CocoaDebug display. default value is `1000`.
     @objc public static var logMaxCount: Int = 1000
     ///set the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
@@ -31,7 +31,7 @@ import Foundation
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, tabBarControllers: tabBarControllers, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, additionalController: additionalController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
     
     //MARK: - CocoaDebug disable
@@ -50,6 +50,7 @@ import Foundation
     }
 }
 
+
 //MARK: - swiftLog() usage only for Swift
 public func swiftLog<T>(_ file: String = #file,
                         _ function: String = #function,
@@ -67,10 +68,6 @@ public func swiftLog<T>(_ file: String = #file,
         }
     }
     
-    
-    
     Swift.print(message)
     _LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
-
-

@@ -180,7 +180,7 @@ import Foundation
             _NetworkHelper.shared().mainColor = mainColor.hexColor
         }
     }
-    @objc public var tabBarControllers: [UIViewController]? = nil
+    @objc public var additionalController: UIViewController? = nil
     
     //share via email
     @objc public var emailToRecipients: [String]? = nil

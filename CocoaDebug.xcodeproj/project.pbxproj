@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38164F7224EF813C00C54BCC /* FPSCounter.swift */; };
+		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
 		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
 		3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9D224EE5BF4003DE040 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -430,6 +431,7 @@
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38164F7224EF813C00C54BCC /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
+		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
 		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		3826D9D224EE5BF4003DE040 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */,
 				3826D9D224EE5BF4003DE040 /* CocoaDebug.h */,
 				3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */,
+				38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1948,6 +1951,7 @@
 				3826DCA624EE5BF5003DE040 /* _FieldMask.pbobjc.m in Sources */,
 				3826DC8D24EE5BF5003DE040 /* _GPBArray.m in Sources */,
 				3826DB6F24EE5BF5003DE040 /* UINavigationController+_LeaksFinder.m in Sources */,
+				38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */,
 				3826DC3324EE5BF5003DE040 /* NetworkDetailModel.swift in Sources */,
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,

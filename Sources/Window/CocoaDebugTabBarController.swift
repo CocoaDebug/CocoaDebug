@@ -56,7 +56,7 @@ class CocoaDebugTabBarController: UITabBarController {
         sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         
         //3.
-        guard let tabBarControllers = CocoaDebugSettings.shared.tabBarControllers else {
+        guard let additionalController = CocoaDebugSettings.shared.additionalController else {
             self.viewControllers = [network, logs, sandbox, app]
             return
         }
@@ -64,30 +64,27 @@ class CocoaDebugTabBarController: UITabBarController {
         //4.添加额外的控制器
         var temp = [network, logs, sandbox, app]
         
-        for vc in tabBarControllers {
-            
-            let nav = UINavigationController.init(rootViewController: vc)
-            nav.navigationBar.barTintColor = "#1f2124".hexColor
-            
-            //****** 以下代码从NavigationController.swift复制 ******
-            nav.navigationBar.isTranslucent = false
-            
-            nav.navigationBar.tintColor = Color.mainGreen
-            nav.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
-                                                     .foregroundColor: Color.mainGreen]
-            
-            let selector = #selector(CocoaDebugNavigationController.exit)
-            
-            
-            let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
-            let leftItem = UIBarButtonItem(image: image,
-                                             style: .done, target: self, action: selector)
-            leftItem.tintColor = Color.mainGreen
-            nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
-            //****** 以上代码从NavigationController.swift复制 ******
-            
-            temp.append(nav)
-        }
+        let nav = UINavigationController.init(rootViewController: additionalController)
+        nav.navigationBar.barTintColor = "#1f2124".hexColor
+        
+        //****** 以下代码从NavigationController.swift复制 ******
+        nav.navigationBar.isTranslucent = false
+        
+        nav.navigationBar.tintColor = Color.mainGreen
+        nav.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
+                                                 .foregroundColor: Color.mainGreen]
+        
+        let selector = #selector(CocoaDebugNavigationController.exit)
+        
+        
+        let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
+        let leftItem = UIBarButtonItem(image: image,
+                                         style: .done, target: self, action: selector)
+        leftItem.tintColor = Color.mainGreen
+        nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
+        //****** 以上代码从NavigationController.swift复制 ******
+        
+        temp.append(nav)
         
         self.viewControllers = temp
     }

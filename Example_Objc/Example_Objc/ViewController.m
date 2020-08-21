@@ -29,11 +29,10 @@
     NSLog(@"hello world red");
     NSLog(@"hello world yellow");
     NSLog(@"%d", 6666666);
-    NSLog(@"unicode转换为中文");
     
     
+    //test WKWebView
     [self test_console_WKWebView];
-    
     
     
     //Custom Messages
