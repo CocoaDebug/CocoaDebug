@@ -309,7 +309,6 @@ extension CocoaDebug {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
         CocoaDebugSettings.shared.isRunning = true
-//        _NetworkHelper.shared()?.isRunningAutoLaunch = true
 
         
         let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
