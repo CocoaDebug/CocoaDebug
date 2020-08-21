@@ -6,7 +6,7 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import <CocoaDebug/CocoaDebug.h>
+#import "CocoaDebug.h"
 
 @interface _DebugCpuMonitor : _DebugMonitor
 

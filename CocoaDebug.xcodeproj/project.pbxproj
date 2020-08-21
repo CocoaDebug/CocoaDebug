@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38164F7224EF813C00C54BCC /* FPSCounter.swift */; };
-		3826DB4424EE5BF5003DE040 /* CocoaDebugAutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9CF24EE5BF4003DE040 /* CocoaDebugAutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
 		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
 		3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9D224EE5BF4003DE040 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -431,7 +430,6 @@
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38164F7224EF813C00C54BCC /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
-		3826D9CF24EE5BF4003DE040 /* CocoaDebugAutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugAutoLaunch.m; sourceTree = "<group>"; };
 		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		3826D9D224EE5BF4003DE040 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
@@ -914,7 +912,6 @@
 		3826D9CE24EE5BF4003DE040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3826D9CF24EE5BF4003DE040 /* CocoaDebugAutoLaunch.m */,
 				3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */,
 				3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */,
 				3826D9D224EE5BF4003DE040 /* CocoaDebug.h */,
@@ -2001,7 +1998,6 @@
 				3826DB5B24EE5BF5003DE040 /* _WeakTimer.m in Sources */,
 				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
 				3826DE6724EE7B45003DE040 /* FBObjectGraphConfiguration.m in Sources */,
-				3826DB4424EE5BF5003DE040 /* CocoaDebugAutoLaunch.m in Sources */,
 				3826DB5524EE5BF5003DE040 /* _DebugMonitor.m in Sources */,
 				3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */,
 				3826DB6824EE5BF5003DE040 /* UIViewController+_LeaksFinder.m in Sources */,
