@@ -18,4 +18,8 @@ typedef NS_ENUM(NSUInteger, _DebugToolLabelType) {
 
 - (void)updateLabelWith:(_DebugToolLabelType)labelType value:(float)value;
 
+- (NSAttributedString *)fpsAttributedStringWith:(float)fps;
+- (NSAttributedString *)memoryAttributedStringWith:(float)memory;
+- (NSAttributedString *)cpuAttributedStringWith:(float)cpu;
+
 @end

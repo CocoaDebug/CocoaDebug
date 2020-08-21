@@ -38,13 +38,14 @@ class Bubble: UIView {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
     }()
     
-    private var cpuLabel: _DebugConsoleLabel? = {
+    private var fpsLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
     }()
     
-    private var fpsLabel: _DebugConsoleLabel? = {
+    private var cpuLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
     }()
+    
     
     private var networkNumber: Int = 0
     
@@ -149,19 +150,19 @@ class Bubble: UIView {
         self.layer.addSublayer(gradientLayer)
         
         
-        if let numberLabel = numberLabel {
-            numberLabel.text = String(networkNumber)
-            numberLabel.textColor = .white
-            numberLabel.textAlignment = .center
-            numberLabel.adjustsFontSizeToFitWidth = true
-            if #available(iOS 8.2, *) {
-                numberLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-            } else {
-                // Fallback on earlier versions
-                numberLabel.font = UIFont.boldSystemFont(ofSize: 20)
-            }
+//        if let numberLabel = numberLabel {
+//            numberLabel.text = String(networkNumber)
+//            numberLabel.textColor = .white
+//            numberLabel.textAlignment = .center
+//            numberLabel.adjustsFontSizeToFitWidth = true
+//            if #available(iOS 8.2, *) {
+//                numberLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+//            } else {
+//                // Fallback on earlier versions
+//                numberLabel.font = UIFont.boldSystemFont(ofSize: 20)
+//            }
 //            self.addSubview(numberLabel)
-        }
+//        }
         
         if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
             self.addSubview(memoryLabel)
@@ -204,6 +205,11 @@ class Bubble: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
         
+        //Defaults
+        memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
+        cpuLabel?.attributedText = cpuLabel?.cpuAttributedString(with: 0)
+        fpsLabel?.attributedText = fpsLabel?.fpsAttributedString(with: 60)
+
         //Memory
         _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.memoryLabel?.update(with: .memory, value: value)

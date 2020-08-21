@@ -51,15 +51,14 @@ import Foundation
 }
 
 
-//MARK: - swiftLog() usage only for Swift
-public func swiftLog<T>(_ file: String = #file,
-                        _ function: String = #function,
-                        _ line: Int = #line,
-                        _ message: T,
-                        _ color: UIColor,
-                        _ unicodeToChinese: Bool = false) {
-    
-    //unicode转换为中文
+//MARK: - override Swift `print` method
+public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
+    swiftLog(file, function, line, message, color, false)
+}
+
+
+public func swiftLog<T>(_ file: String = #file, _ function: String = #function, _ line: Int = #line, _ message: T, _ color: UIColor, _ unicodeToChinese: Bool = false) {
+    //unicode convert to Chinese/Japanese/Korean...
     if message is NSString && unicodeToChinese == true {
         if let _message = NSString.unicode(toChinese: message as? String) {
             Swift.print(_message)

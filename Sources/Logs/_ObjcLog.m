@@ -21,7 +21,7 @@
             message:(id)format, ...
 {
     
-    //unicode转换为中文
+    //unicode convert to Chinese/Japanese/Korean...
     if (format && [format isKindOfClass:[NSString class]] && unicodeToChinese) {
         format = [NSString unicodeToChinese:format];
     }

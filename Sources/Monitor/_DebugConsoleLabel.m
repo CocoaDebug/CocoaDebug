@@ -19,7 +19,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) { [self setDefault]; }
+    if (self) {
+        [self setDefault];
+    }
     return self;
 }
 

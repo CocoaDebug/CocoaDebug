@@ -8,9 +8,9 @@
 
 import UIKit
 
-#if DEBUG
-    import CocoaDebug
-#endif
+//#if DEBUG
+//    import CocoaDebug
+//#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,13 +53,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         
     }
-}
-
-
-
-//MARK: - override system `print` method
-public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
-    #if DEBUG
-        swiftLog(file, function, line, message, color, false)
-    #endif
 }
