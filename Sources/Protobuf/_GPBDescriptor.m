@@ -688,7 +688,7 @@ uint32_t _GPBFieldAlternateTag(_GPBFieldDescriptor *self) {
 
   // Groups vs. other fields.
   if (description_->dataType == _GPBDataTypeGroup) {
-    // Just capitalize the first letter.
+    // Just capitalize the first varter.
     unichar firstChar = [name characterAtIndex:0];
     if (firstChar >= 'a' && firstChar <= 'z') {
       NSString *firstCharString =

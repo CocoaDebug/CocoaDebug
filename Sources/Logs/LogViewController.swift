@@ -33,19 +33,19 @@ class LogViewController: UIViewController {
     
     @IBOutlet weak var defaultTableView: UITableView!
     @IBOutlet weak var defaultSearchBar: UISearchBar!
-    lazy var defaultModels: [_OCLogModel] = [_OCLogModel]()
+    var defaultModels: [_OCLogModel] = [_OCLogModel]()
     var defaultCacheModels: Array<_OCLogModel>?
     var defaultSearchModels: Array<_OCLogModel>?
     
     @IBOutlet weak var colorTableView: UITableView!
     @IBOutlet weak var colorSearchBar: UISearchBar!
-    lazy var colorModels: [_OCLogModel] = [_OCLogModel]()
+    var colorModels: [_OCLogModel] = [_OCLogModel]()
     var colorCacheModels: Array<_OCLogModel>?
     var colorSearchModels: Array<_OCLogModel>?
     
     @IBOutlet weak var h5TableView: UITableView!
     @IBOutlet weak var h5SearchBar: UISearchBar!
-    lazy var h5Models: [_OCLogModel] = [_OCLogModel]()
+    var h5Models: [_OCLogModel] = [_OCLogModel]()
     var h5CacheModels: Array<_OCLogModel>?
     var h5SearchModels: Array<_OCLogModel>?
     

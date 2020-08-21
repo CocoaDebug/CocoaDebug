@@ -10,7 +10,7 @@ import Foundation
 
 class CrashStoreManager {
     
-    lazy var crashArray: [_CrashModel] = [_CrashModel]()
+    var crashArray: [_CrashModel] = [_CrashModel]()
     
     static let shared = CrashStoreManager()
     private init() {
@@ -49,7 +49,7 @@ class CrashStoreManager {
     //MARK: - private
     private func archiveCrashs(_ crashs: [_CrashModel]) {
         do {
-            let dataArchive: Data
+            var dataArchive: Data
             if #available(iOS 11.0, *) {
                 dataArchive = try NSKeyedArchiver.archivedData(withRootObject: crashs, requiringSecureCoding: false)
             } else {

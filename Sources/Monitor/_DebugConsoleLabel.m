@@ -38,21 +38,19 @@
 }
 
 - (void)updateLabelWith:(_DebugToolLabelType)labelType value:(float)value {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        switch (labelType) {
-            case _DebugToolLabelTypeFPS:
-                self.attributedText = [self fpsAttributedStringWith:value];
-                break;
-            case _DebugToolLabelTypeMemory:
-                self.attributedText = [self memoryAttributedStringWith:value];
-                break;
-            case _DebugToolLabelTypeCPU:
-                self.attributedText = [self cpuAttributedStringWith:value];
-                break;
-            default:
-                break;
-        }
-    });
+    if (labelType == _DebugToolLabelTypeMemory) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.attributedText = [self memoryAttributedStringWith:value];
+        });
+        
+    } else if (labelType == _DebugToolLabelTypeCPU) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.attributedText = [self cpuAttributedStringWith:value];
+        });
+        
+    } else if (labelType == _DebugToolLabelTypeFPS) {
+        self.attributedText = [self fpsAttributedStringWith:value];
+    }
 }
 
 #pragma mark - NSAttributedString

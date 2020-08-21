@@ -14,12 +14,12 @@ protocol BubbleDelegate: class {
 }
 
 //https://httpcodes.co/status/
-private let _successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
-private let _informationalStatusCodes = ["100","101","102","103","122"]
-private let _redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
+private var _successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+private var _informationalStatusCodes = ["100","101","102","103","122"]
+private var _redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
 
-private let _width: CGFloat = 60
-private let _height: CGFloat = 60
+private var _width: CGFloat = 60
+private var _height: CGFloat = 60
 
 class Bubble: UIView {
     
@@ -27,22 +27,22 @@ class Bubble: UIView {
     
     weak var delegate: BubbleDelegate?
     
-    public let width: CGFloat = _width
-    public let height: CGFloat = _height
+    public var width: CGFloat = _width
+    public var height: CGFloat = _height
     
-    private lazy var numberLabel: UILabel? = {
+    private var numberLabel: UILabel? = {
         return UILabel(frame: CGRect(x:0, y:2, width:_width, height:40))
     }()
     
-    private lazy var memoryLabel: _DebugConsoleLabel? = {
+    private var memoryLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
     }()
     
-    private lazy var fpsLabel: _DebugConsoleLabel? = {
+    private var cpuLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
     }()
     
-    private lazy var cpuLabel: _DebugConsoleLabel? = {
+    private var fpsLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
     }()
     
@@ -208,13 +208,13 @@ class Bubble: UIView {
         _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.memoryLabel?.update(with: .memory, value: value)
         }
-        //FPS
-        _DebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.fpsLabel?.update(with: .FPS, value: value)
-        }
         //CPU
         _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
             self?.cpuLabel?.update(with: .CPU, value: value)
+        }
+        //FPS
+        WindowHelper.shared.fpsCallback = { [weak self] value in
+            self?.fpsLabel?.update(with: .FPS, value: Float(value))
         }
     }
     

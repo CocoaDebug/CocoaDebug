@@ -180,7 +180,7 @@ extension String {
         let hex = trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: hex).scanHexInt32(&int)
-        let a, r, g, b: UInt32
+        var a, r, g, b: UInt32
         switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
@@ -316,7 +316,7 @@ extension CocoaDebug {
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-//        let disableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_CocoaDebug")
+//        var disableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_CocoaDebug")
         
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
@@ -354,7 +354,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
 
-        let _ = _OCLogStoreManager.shared()
+        var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
@@ -388,7 +388,7 @@ extension CocoaDebug {
     ///deinit
     static func deinitializationMethod() {
         CocoaDebugSettings.shared.isRunning = false
-        _WindowHelper.shared.disable()
+        WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _LogHelper.shared.enable = false
         _OCLogHelper.shared()?.enable = false

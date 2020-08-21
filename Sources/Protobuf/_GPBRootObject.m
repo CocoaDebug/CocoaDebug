@@ -172,7 +172,7 @@ static id ExtensionForName(id self, SEL _cmd) {
   id extension = (id)CFDictionaryGetValue(gExtensionSingletonDictionary, key);
   // We can't remove the key from the dictionary here (as an optimization),
   // two threads could have gone into +resolveClassMethod: for the same method,
-  // and ended up here; there's no way to ensure both return YES without letting
+  // and ended up here; there's no way to ensure both return YES without varting
   // both try to wire in the method.
   dispatch_semaphore_signal(gExtensionSingletonDictionarySemaphore);
   return extension;

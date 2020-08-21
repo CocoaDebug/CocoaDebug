@@ -8,30 +8,36 @@
 
 import UIKit
 
-public class _WindowHelper: NSObject {
-    public static let shared = _WindowHelper()
+public class WindowHelper: NSObject {
+    public static let shared = WindowHelper()
 
-    let window: CocoaDebugWindow
+    var window: CocoaDebugWindow
     var displayedList = false
-    lazy var vc = CocoaDebugViewController()
+    lazy var vc = CocoaDebugViewController() //必须使用lazy, 否则崩溃
+    
+    //FPS
+    fileprivate var fpsCounter = FPSCounter()
+    var fpsCallback:((Int) -> Void)?
 
     
     private override init() {
-        self.window = CocoaDebugWindow(frame: UIScreen.main.bounds)
+        window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         // This is for making the window not to effect the StatusBarStyle
-        self.window.bounds.size.height = UIScreen.main.bounds.height.nextDown
+        window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
+        
+        fpsCounter.delegate = self
     }
 
     
     public func enable() {
-        if self.window.rootViewController != self.vc {
-            self.window.rootViewController = self.vc
-            self.window.delegate = self
-            self.window.isHidden = false
+        if window.rootViewController != vc {
+            window.rootViewController = vc
+            window.delegate = self
+            window.isHidden = false
             _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
-            _DebugFPSMonitor.sharedInstance()?.startMonitoring()
             _DebugCpuMonitor.sharedInstance()?.startMonitoring()
+            fpsCounter.startMonitoring()
         }
         
         if #available(iOS 13.0, *) {
@@ -54,13 +60,24 @@ public class _WindowHelper: NSObject {
     
 
     public func disable() {
-        if self.window.rootViewController != nil {
-            self.window.rootViewController = nil
-            self.window.delegate = nil
-            self.window.isHidden = true
+        if window.rootViewController != nil {
+            window.rootViewController = nil
+            window.delegate = nil
+            window.isHidden = true
             _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
-            _DebugFPSMonitor.sharedInstance()?.stopMonitoring()
             _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
+            fpsCounter.stopMonitoring()
         }
     }
 }
+
+
+// MARK: - FPSCounterDelegate
+extension WindowHelper: FPSCounterDelegate {
+    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+        if let fpsCallback = fpsCallback {
+            fpsCallback(fps)
+        }
+    }
+}
+

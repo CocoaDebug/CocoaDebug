@@ -7,6 +7,9 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+#pragma GCC diagnostic push
+#pragma clang diagnostic ignored "-Wdefaulted-function-deleted"
+
 #import <Foundation/Foundation.h>
 
 #import "Type.h"
@@ -39,3 +42,5 @@ namespace FB { namespace RetainCycleDetector { namespace Parser {
     std::vector<std::shared_ptr<Type>> typesContainedInStruct;
   };
 } } }
+
+#pragma GCC diagnostic pop

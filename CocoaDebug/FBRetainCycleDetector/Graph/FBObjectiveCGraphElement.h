@@ -22,7 +22,6 @@
  Designated initializer.
  @param object Object this Graph Element will represent.
  @param configuration Provides detector's configuration that contains filters and options
- @param filterProvider Filter Provider that Graph Element will use to determine which references need to be dropped
  @param namePath Description of how the object was retrieved from it's parent. Check namePath property.
  */
 - (nonnull instancetype)initWithObject:(nullable id)object

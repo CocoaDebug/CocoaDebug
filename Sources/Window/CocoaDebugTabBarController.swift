@@ -34,7 +34,7 @@ class CocoaDebugTabBarController: UITabBarController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        _WindowHelper.shared.displayedList = false
+        WindowHelper.shared.displayedList = false
     }
     
     //MARK: - private
@@ -99,8 +99,8 @@ class CocoaDebugTabBarController: UITabBarController {
     
     //MARK: - show more than 5 tabs by CocoaDebug
 //    override var traitCollection: UITraitCollection {
-//        let realTraits = super.traitCollection
-//        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+//        var realTraits = super.traitCollection
+//        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
 //        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
 //    }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class CrashListViewController: UITableViewController {
 
-    lazy var models: [_CrashModel] = [_CrashModel]()
+    var models: [_CrashModel] = [_CrashModel]()
     
     @IBOutlet weak var naviItem: UINavigationItem!
     

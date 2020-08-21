@@ -10,7 +10,7 @@ import UIKit
 
 class _CrashModel: NSObject, NSCoding {
     
-    let id: String
+    var id: String
     var date: Date
     var reason: String?
     var name: String?

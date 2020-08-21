@@ -27,7 +27,7 @@
             [data appendBytes:buffer length:result];
         } else {
             // The stream had an error. You can get an NSError object using [iStream streamError]
-            if (result<0) {
+            if (result < 0) {
 //                [NSException raise:@"STREAM_ERROR" format:@"%@", [stream streamError]];
                 return nil;//liman
             }

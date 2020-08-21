@@ -1546,7 +1546,7 @@ static void AppendBufferAsString(NSData *buffer, NSMutableString *destStr) {
         if (isprint(*src)) {
           [destStr appendFormat:@"%c", *src];
         } else {
-          // NOTE: doing hex means you have to worry about the letter after
+          // NOTE: doing hex means you have to worry about the varter after
           // the hex being another hex char and forcing that to be escaped, so
           // use octal to keep it simple.
           [destStr appendFormat:@"\\%03o", (uint8_t)(*src)];

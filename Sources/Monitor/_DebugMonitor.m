@@ -24,7 +24,7 @@ static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
 - (void)startMonitoring {
     self.privateQueue = dispatch_queue_create("com.cocoadebug.private_queue", DISPATCH_QUEUE_CONCURRENT);
     
-    self.backgroundTimer = [_WeakTimer scheduledTimerWithTimeInterval:1
+    self.backgroundTimer = [_WeakTimer scheduledTimerWithTimeInterval:1.0
                                                                 target:self
                                                               selector:@selector(updateValue)
                                                               userInfo:nil

@@ -19,9 +19,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 
     var httpModel: _HttpModel?
     
-    lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
+    var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
-    lazy var requestDictionary: [String: Any]? = Dictionary()
+    var requestDictionary: [String: Any]? = Dictionary()
     
     var headerCell: NetworkCell?
     

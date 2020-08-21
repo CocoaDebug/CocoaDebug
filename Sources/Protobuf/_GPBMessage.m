@@ -748,7 +748,7 @@ void _GPBPrepareReadOnlySemaphore(_GPBMessage *self) {
 #if defined(__clang_analyzer__)
     // The Xcode 9.2 (and 9.3 beta) static analyzer thinks worker is leaked
     // (doesn't seem to know about atomic_compare_exchange_strong); so just
-    // for the analyzer, let it think worker is also released in this case.
+    // for the analyzer, var it think worker is also released in this case.
     else { dispatch_release(worker); }
 #endif
   }

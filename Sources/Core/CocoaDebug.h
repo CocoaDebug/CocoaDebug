@@ -15,7 +15,6 @@
 #import "_CustomHTTPProtocol.h"
 #import "_DebugConsoleLabel.h"
 #import "_DebugMemoryMonitor.h"
-#import "_DebugFPSMonitor.h"
 #import "_DebugCpuMonitor.h"
 #import "_DebugMonitor.h"
 #import "_DirectoryContentsTableViewController.h"

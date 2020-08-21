@@ -7,8 +7,10 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-#import "FBObjectiveCObject.h"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
+#import "FBObjectiveCObject.h"
 #import <objc/runtime.h>
 
 #import "FBClassStrongLayout.h"
@@ -145,3 +147,5 @@
 }
 
 @end
+
+#pragma GCC diagnostic pop
