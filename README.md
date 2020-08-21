@@ -78,9 +78,9 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 ## Usage
 
-Don't need to do anything. `CocoaDebug` will start automatically.
+- Don't need to do anything. `CocoaDebug` will start automatically.
 
-> Check **Example_Objc** or **Example_Swift** for more advanced usage.
+- Check [Example_Objc](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Objc) and [Example_Swift](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Swift) for more advanced usage.
 
 ## Parameters
 
