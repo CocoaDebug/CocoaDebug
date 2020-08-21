@@ -80,10 +80,7 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 Don't need to do anything. `CocoaDebug` will start automatically.
 
-
-> Please check **Example_Objc** or **Example_Swift** for more advanced usage.
-
-> NOTE: Be careful with `Other Swift Flags` & `Preprocessor Macros` when using Swift & Objective-C in one project. You can refer to [stackoverflow](https://stackoverflow.com/questions/24111854/in-absence-of-preprocessor-macros-is-there-a-way-to-define-practical-scheme-spe).  
+> Check **Example_Objc** or **Example_Swift** for more advanced usage.
 
 ## Parameters
 
