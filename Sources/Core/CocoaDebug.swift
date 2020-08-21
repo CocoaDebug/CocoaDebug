@@ -16,7 +16,7 @@ import Foundation
     @objc public static var ignoredURLs: [String]? = nil
     ///set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
-    ///set controllers to be added as child controllers of UITabBarController. default value is `nil`.
+    ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. default value is `nil`.
     @objc public static var additionalController: UIViewController? = nil
     ///the maximum count of logs which CocoaDebug display. default value is `1000`.
     @objc public static var logMaxCount: Int = 1000
