@@ -206,15 +206,21 @@ class Bubble: UIView {
         
         //Memory
         _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.memoryLabel?.update(with: .memory, value: value)
+            DispatchQueue.main.async {
+                self?.memoryLabel?.update(with: .memory, value: value)
+            }
         }
         //FPS
         _DebugFPSMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.fpsLabel?.update(with: .FPS, value: value)
+            DispatchQueue.main.async {
+                self?.fpsLabel?.update(with: .FPS, value: value)
+            }
         }
         //CPU
         _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.cpuLabel?.update(with: .CPU, value: value)
+            DispatchQueue.main.async {
+                self?.cpuLabel?.update(with: .CPU, value: value)
+            }
         }
     }
     
