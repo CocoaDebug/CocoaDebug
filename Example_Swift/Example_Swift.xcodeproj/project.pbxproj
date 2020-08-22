@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		3813B09224E23F0A009626CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3813B09024E23F0A009626CC /* Main.storyboard */; };
 		3813B09424E23F0B009626CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3813B09324E23F0B009626CC /* Assets.xcassets */; };
 		3813B09724E23F0B009626CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3813B09524E23F0B009626CC /* LaunchScreen.storyboard */; };
+		382A92F124F0D6CD002361D5 /* AdditionalTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382A92F024F0D6CD002361D5 /* AdditionalTestController.swift */; };
 		389E6D9724E246E8003CB9BE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 389E6D9524E246E8003CB9BE /* index.html */; };
 		389E6D9824E246E8003CB9BE /* index2.html in Resources */ = {isa = PBXBuildFile; fileRef = 389E6D9624E246E8003CB9BE /* index2.html */; };
 		389E6D9A24E24700003CB9BE /* WKWebViewTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E6D9924E24700003CB9BE /* WKWebViewTestController.swift */; };
@@ -91,6 +92,7 @@
 		3813B09324E23F0B009626CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3813B09624E23F0B009626CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3813B09824E23F0B009626CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		382A92F024F0D6CD002361D5 /* AdditionalTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalTestController.swift; sourceTree = "<group>"; };
 		389E6D9524E246E8003CB9BE /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		389E6D9624E246E8003CB9BE /* index2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index2.html; sourceTree = "<group>"; };
 		389E6D9924E24700003CB9BE /* WKWebViewTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewTestController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				3813B08A24E23F0A009626CC /* AppDelegate.swift */,
 				3813B08C24E23F0A009626CC /* SceneDelegate.swift */,
 				3813B08E24E23F0A009626CC /* ViewController.swift */,
+				382A92F024F0D6CD002361D5 /* AdditionalTestController.swift */,
 				389E6D9924E24700003CB9BE /* WKWebViewTestController.swift */,
 				3813B09024E23F0A009626CC /* Main.storyboard */,
 				3813B09324E23F0B009626CC /* Assets.xcassets */,
@@ -581,6 +584,7 @@
 				389E6E2624E2492B003CB9BE /* Networking+Download.swift in Sources */,
 				389E6E0F24E2492B003CB9BE /* AFError.swift in Sources */,
 				389E6E0E24E2492B003CB9BE /* ParameterEncoding.swift in Sources */,
+				382A92F124F0D6CD002361D5 /* AdditionalTestController.swift in Sources */,
 				389E6E2C24E2492B003CB9BE /* HTTPSecurity.swift in Sources */,
 				389E6E2024E2492B003CB9BE /* String+UTF8.swift in Sources */,
 				389E6E4524E2492B003CB9BE /* ASIWebPageRequest.m in Sources */,

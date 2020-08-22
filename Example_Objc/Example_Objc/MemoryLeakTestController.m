@@ -6,15 +6,15 @@
 //  Copyright © 2020 man. All rights reserved.
 //
 
-#import "ViewController2.h"
+#import "MemoryLeakTestController.h"
 
-@interface ViewController2 () {
+@interface MemoryLeakTestController () {
     NSTimer *_timer;
 }
 
 @end
 
-@implementation ViewController2
+@implementation MemoryLeakTestController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

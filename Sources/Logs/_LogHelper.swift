@@ -12,7 +12,7 @@ public class _LogHelper: NSObject {
     
     var enable: Bool = true
     
-    @objc static let shared = _LogHelper()
+    @objc public static let shared = _LogHelper()
     private override init() {}
     
     
@@ -22,7 +22,7 @@ public class _LogHelper: NSObject {
     }
 
     
-    func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
+    public func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"
         }

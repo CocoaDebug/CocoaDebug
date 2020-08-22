@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+//#import "AdditionalTestController.h"
 
 //#ifdef DEBUG
 //    @import CocoaDebug;
@@ -29,7 +30,7 @@
 //        CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"];
 //        CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"];
 //        CocoaDebug.mainColor = @"#fd9727";
-//        CocoaDebug.additionalController = [UIViewController new];
+//        CocoaDebug.additionalController = [AdditionalTestController new];
 //
 //        //--- If Use Google's Protocol buffers ---
 //        CocoaDebug.protobufTransferMap = @{
@@ -43,14 +44,11 @@
 }
 
 
-#pragma mark - UISceneSession lifecycle
-
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options  API_AVAILABLE(ios(13.0)){
     return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
 }
 
 - (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions  API_AVAILABLE(ios(13.0)){
-    
 }
 
 @end

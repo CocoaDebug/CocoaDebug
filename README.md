@@ -86,23 +86,23 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`.
 
-- `serverURL` - If the captured URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is **nil**.
+- `serverURL` - If the captured URLs contain server URL, CocoaDebug set server URL bold font to be marked. Not mark when this value is nil. Default value is **nil**.
 
-- `ignoredURLs` - Set the URLs which should not been captured, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
+- `ignoredURLs` - Set the URLs which should not been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
 
-- `onlyURLs` - Set the URLs which are only been captured, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
+- `onlyURLs` - Set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
 
-- `additionalController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. default value is **nil**.
+- `additionalController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
 
-- `logMaxCount` - The maximum count of logs which CocoaDebug display. default value is **1000**.
+- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **1000**.
 
-- `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. default value is **nil**.
+- `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. Default value is **nil**.
 
-- `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is **nil**.
+- `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. Default value is **nil**.
 
-- `mainColor` - Set CocoaDebug's main color with hexadecimal format. default value is **#42d459**.
+- `mainColor` - Set CocoaDebug's main color with hexadecimal format. Default value is **#42d459**.
 
-- `protobufTransferMap` - Protobuf data transfer to JSON map. default value is **nil**.
+- `protobufTransferMap` - Protobuf data transfer to JSON map. Default value is **nil**.
 
 ## TODO
 

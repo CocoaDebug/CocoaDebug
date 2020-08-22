@@ -8,14 +8,11 @@
 
 import UIKit
 
-#if DEBUG
-    import CocoaDebug
-#endif
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Example"
 
         print("hello world")

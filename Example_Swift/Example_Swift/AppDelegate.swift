@@ -8,9 +8,9 @@
 
 import UIKit
 
-//#if DEBUG
-//    import CocoaDebug
-//#endif
+#if DEBUG
+    import CocoaDebug
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"]
 //            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"]
 //            CocoaDebug.mainColor = "#fd9727"
-//            CocoaDebug.additionalController = UIViewController.init()
+//            CocoaDebug.additionalController = AdditionalTestController.init()
 //
 //            //--- If Use Google's Protocol buffers ---
 //            CocoaDebug.protobufTransferMap = [
@@ -42,8 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    //MARK: - UISceneSession lifecycle
-    
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
@@ -51,6 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        
     }
+}
+
+
+
+//MARK: - override Swift `print` method
+public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
+    #if DEBUG
+        Swift.print(message)
+        _LogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    #endif
 }

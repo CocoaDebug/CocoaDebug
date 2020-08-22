@@ -11,23 +11,23 @@ import UIKit
 
 @objc public class CocoaDebug : NSObject {
     
-    ///if the captured URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is `nil`.
+    ///if the captured URLs contain server URL, CocoaDebug set server URL bold font to be marked. Not mark when this value is nil. Default value is `nil`.
     @objc public static var serverURL: String? = nil
-    ///set the URLs which should not been captured, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
+    ///set the URLs which should not been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
     @objc public static var ignoredURLs: [String]? = nil
-    ///set the URLs which are only been captured, ignoring case, crawl all URLs when the value is nil. default value is `nil`.
+    ///set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
-    ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. default value is `nil`.
+    ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
     @objc public static var additionalController: UIViewController? = nil
-    ///the maximum count of logs which CocoaDebug display. default value is `1000`.
+    ///the maximum count of logs which CocoaDebug display. Default value is `1000`.
     @objc public static var logMaxCount: Int = 1000
-    ///set the initial recipients to include in the email’s “To” field when share via email. default value is `nil`.
+    ///set the initial recipients to include in the email’s “To” field when share via email. Default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
-    ///set the initial recipients to include in the email’s “Cc” field when share via email. default value is `nil`.
+    ///set the initial recipients to include in the email’s “Cc” field when share via email. Default value is `nil`.
     @objc public static var emailCcRecipients: [String]? = nil
-    ///set CocoaDebug's main color with hexadecimal format. default value is `#42d459`.
+    ///set CocoaDebug's main color with hexadecimal format. Default value is `#42d459`.
     @objc public static var mainColor: String = "#42d459"
-    ///protobuf url and response class transfer map. default value is `nil`.
+    ///protobuf url and response class transfer map. Default value is `nil`.
     @objc public static var protobufTransferMap: [String: [String]]? = nil
     
     //MARK: - CocoaDebug enable
@@ -50,6 +50,7 @@ import UIKit
         CocoaDebugSettings.shared.showBubbleAndWindow = true
     }
 }
+
 
 
 //MARK: - override Swift `print` method
