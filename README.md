@@ -86,11 +86,11 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 
 When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`.
 
-- `serverURL` - If the crawled URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is **nil**.
+- `serverURL` - If the captured URLs contain server URL ,set these URLs bold font to be marked. not mark when this value is nil. default value is **nil**.
 
-- `ignoredURLs` - Set the URLs which should not crawled, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
+- `ignoredURLs` - Set the URLs which should not been captured, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
 
-- `onlyURLs` - Set the URLs which are only crawled, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
+- `onlyURLs` - Set the URLs which are only been captured, ignoring case, crawl all URLs when the value is nil. default value is **nil**.
 
 - `additionalController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. default value is **nil**.
 
@@ -100,7 +100,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. default value is **nil**.
 
-- `mainColor` - Set the main color with hexadecimal format. default value is **#42d459**.
+- `mainColor` - Set CocoaDebug's main color with hexadecimal format. default value is **#42d459**.
 
 - `protobufTransferMap` - Protobuf data transfer to JSON map. default value is **nil**.
 

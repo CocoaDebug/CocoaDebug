@@ -49,12 +49,12 @@
 #pragma mark - replaced method
 - (void)replaced_dealloc {
     //WKWebView
-    [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor redColor] unicodeToChinese:NO message:@"-------------------------------- dealloc --------------------------------"];
+    [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor redColor] message:@"-------------------------------- dealloc --------------------------------"];
 }
 
 - (instancetype)replaced_initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration {
     //WKWebView
-    [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor unicodeToChinese:NO message:@"----------------------------------- init -----------------------------------"];
+    [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[_NetworkHelper shared].mainColor message:@"----------------------------------- init -----------------------------------"];
     
     [self log:configuration];
     [self error:configuration];
@@ -147,7 +147,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    [_ObjcLog logWithFile:"[WKWebView]" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] unicodeToChinese:NO message:message.body];
+    [_ObjcLog logWithFile:"[WKWebView]" function:[message.name UTF8String] line:0 color:[UIColor whiteColor] message:message.body];
 }
 #pragma clang diagnostic pop
 

@@ -34,7 +34,7 @@ class NetworkCell: UITableViewCell {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
                 }
-            }else{
+            } else {
                 if #available(iOS 8.2, *) {
                     requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
                 } else {
@@ -52,7 +52,7 @@ class NetworkCell: UITableViewCell {
             if let startTime = httpModel?.startTime {
                 if (startTime as NSString).doubleValue == 0 {
                     requestTimeTextView.text = _OCLoggerFormat.formatDate(Date())
-                }else{
+                } else {
                     requestTimeTextView.text = _OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
@@ -74,7 +74,7 @@ class NetworkCell: UITableViewCell {
             else if redirectionStatusCodes.contains(statusCodeLabel.text ?? "") {
                 statusCodeLabel.textColor = "#ff9800".hexColor
             }
-            else{
+            else {
                 statusCodeLabel.textColor = "#ff0000".hexColor
             }
             
@@ -95,13 +95,13 @@ class NetworkCell: UITableViewCell {
                     if urlString.suffix(3) == ".js" {
                         imageLabel.isHidden = false
                         imageLabel.text = "JavaScript"
-                    }else if urlString.suffix(4) == ".css" {
+                    } else if urlString.suffix(4) == ".css" {
                         imageLabel.isHidden = false
                         imageLabel.text = "CSS"
-                    }else{
+                    } else {
                         imageLabel.isHidden = true
                     }
-                }else{
+                } else {
                     imageLabel.isHidden = true
                 }
             }
@@ -109,14 +109,14 @@ class NetworkCell: UITableViewCell {
             //tag
             if httpModel?.isTag == true {
                 self.contentView.backgroundColor = "#007aff".hexColor
-            }else{
+            } else {
                 self.contentView.backgroundColor = .black
             }
             
             //isSelected
             if httpModel?.isSelected == true {
                 statusCodeView.backgroundColor = "#222222".hexColor
-            }else{
+            } else {
                 statusCodeView.backgroundColor = "#333333".hexColor
             }
         }

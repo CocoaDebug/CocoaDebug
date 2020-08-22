@@ -18,7 +18,7 @@ import Foundation
         didSet {            
             if slowAnimations == false {
                 UIApplication.shared.windows.first?.layer.speed = 1;
-            }else{
+            } else {
                 UIApplication.shared.windows.first?.layer.speed = 0.1;
             }
         }
@@ -49,7 +49,7 @@ import Foundation
             
             if enableCrashRecording == true {
                 CrashLogger.shared.enable = true
-            }else{
+            } else {
                 CrashLogger.shared.enable = false
                 CrashStoreManager.shared.resetCrashs()
             }
@@ -97,7 +97,7 @@ import Foundation
             {
                 if x > UIScreen.main.bounds.size.width/2 {
                     WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
-                }else{
+                } else {
                     WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
                 }
                 WindowHelper.shared.enable()
@@ -106,7 +106,7 @@ import Foundation
             {
                 if x > UIScreen.main.bounds.size.width/2 {
                     WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
-                }else{
+                } else {
                     WindowHelper.shared.vc.bubble.frame.origin.x = -width
                 }
                 WindowHelper.shared.disable()

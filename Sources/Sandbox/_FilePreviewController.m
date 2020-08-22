@@ -124,7 +124,7 @@
                             [self.activityIndicatorView stopAnimating];
                             self.textView.text = content;
                         });
-                    }else{
+                    } else {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [self.activityIndicatorView stopAnimating];
                             [self showAlert];

@@ -17,17 +17,8 @@
            function:(const char *)function
                line:(NSUInteger)line
               color:(UIColor *)color
-   unicodeToChinese:(BOOL)unicodeToChinese
             message:(id)format, ...
 {
-    
-    //unicode convert to Chinese/Japanese/Korean...
-    if (format && [format isKindOfClass:[NSString class]] && unicodeToChinese) {
-        format = [NSString unicodeToChinese:format];
-    }
-    
-    
-    
     if (format)
     {
         va_list args;

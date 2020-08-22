@@ -35,7 +35,7 @@ class NetworkDetailCell: UITableViewCell {
             //图片
             if detailModel?.image == nil {
                 imgView.isHidden = true
-            }else{
+            } else {
                 imgView.isHidden = false
                 imgView.image = detailModel?.image
             }
@@ -45,7 +45,7 @@ class NetworkDetailCell: UITableViewCell {
                 middleLine.isHidden = true
                 imgView.isHidden = true
                 titleViewBottomSpaceToMiddleLine.constant = -12.5 + 2
-            }else{
+            } else {
                 middleLine.isHidden = false
                 if detailModel?.image != nil {
                     imgView.isHidden = false
@@ -56,7 +56,7 @@ class NetworkDetailCell: UITableViewCell {
             //底部分割线
             if detailModel?.isLast == true {
                 bottomLine.isHidden = false
-            }else{
+            } else {
                 bottomLine.isHidden = true
             }
         }

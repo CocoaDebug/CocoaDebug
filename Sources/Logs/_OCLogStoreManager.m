@@ -95,7 +95,7 @@
         if (log.color == [UIColor whiteColor] || log.color == nil) {
             //白色
             [self.defaultLogArray removeObject:log];
-        }else{
+        } else {
             //彩色
             [self.colorLogArray removeObject:log];
         }

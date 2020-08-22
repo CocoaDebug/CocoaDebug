@@ -62,7 +62,7 @@ class LogViewController: UIViewController {
             
             if searchText == "" {
                 defaultModels = defaultCacheModels
-            }else{
+            } else {
                 guard let defaultSearchModels = defaultSearchModels else {return}
                 
                 for _ in defaultSearchModels {
@@ -82,7 +82,7 @@ class LogViewController: UIViewController {
             
             if searchText == "" {
                 colorModels = colorCacheModels
-            }else{
+            } else {
                 guard let colorSearchModels = colorSearchModels else {return}
                 
                 for _ in colorSearchModels {
@@ -102,7 +102,7 @@ class LogViewController: UIViewController {
             
             if searchText == "" {
                 h5Models = h5CacheModels
-            }else{
+            } else {
                 guard let h5SearchModels = h5SearchModels else {return}
                 
                 for _ in h5SearchModels {
@@ -269,7 +269,7 @@ class LogViewController: UIViewController {
         
         if UIScreen.main.bounds.size.width == 320 {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
-        }else{
+        } else {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
         }
         
@@ -325,9 +325,9 @@ class LogViewController: UIViewController {
         
         if selectedSegmentIndex == 0 {
             selectedSegment_0 = true
-        }else if selectedSegmentIndex == 1 {
+        } else if selectedSegmentIndex == 1 {
             selectedSegment_1 = true
-        }else{
+        } else {
             selectedSegment_2 = true
         }
         
@@ -464,10 +464,10 @@ class LogViewController: UIViewController {
         if selectedSegmentIndex == 0 {
             colorSearchBar.resignFirstResponder()
             h5SearchBar.resignFirstResponder()
-        }else if selectedSegmentIndex == 1 {
+        } else if selectedSegmentIndex == 1 {
             defaultSearchBar.resignFirstResponder()
             h5SearchBar.resignFirstResponder()
-        }else{
+        } else {
             defaultSearchBar.resignFirstResponder()
             colorSearchBar.resignFirstResponder()
         }
@@ -496,9 +496,9 @@ class LogViewController: UIViewController {
     @objc func didTapView() {
         if selectedSegmentIndex == 0 {
             defaultSearchBar.resignFirstResponder()
-        }else if selectedSegmentIndex == 1 {
+        } else if selectedSegmentIndex == 1 {
             colorSearchBar.resignFirstResponder()
-        }else{
+        } else {
             h5SearchBar.resignFirstResponder()
         }
     }
@@ -509,9 +509,9 @@ class LogViewController: UIViewController {
         dispatch_main_async_safe { [weak self] in
             if self?.selectedSegmentIndex == 0 {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
-            }else if self?.selectedSegmentIndex == 1 {
+            } else if self?.selectedSegmentIndex == 1 {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndColor ?? true, needReloadData: true)
-            }else{
+            } else {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndH5 ?? true, needReloadData: true)
             }
         }
@@ -524,9 +524,9 @@ extension LogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
             return defaultModels.count
-        }else if tableView == colorTableView {
+        } else if tableView == colorTableView {
             return colorModels.count
-        }else{
+        } else {
             return h5Models.count
         }
     }
@@ -575,9 +575,9 @@ extension LogViewController: UITableViewDelegate {
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
-        }else if tableView == colorTableView {
+        } else if tableView == colorTableView {
             model = colorModels[indexPath.row]
-        }else{
+        } else {
             model = h5Models[indexPath.row]
         }
         
@@ -783,9 +783,9 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             defaultSearchBar.resignFirstResponder()
-        }else if scrollView == colorTableView {
+        } else if scrollView == colorTableView {
             colorSearchBar.resignFirstResponder()
-        }else{
+        } else {
             h5SearchBar.resignFirstResponder()
         }
     }
@@ -793,9 +793,9 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             reachEndDefault = false
-        }else if scrollView == colorTableView {
+        } else if scrollView == colorTableView {
             reachEndColor = false
-        }else{
+        } else {
             reachEndH5 = false
         }
     }

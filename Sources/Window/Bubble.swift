@@ -30,9 +30,12 @@ class Bubble: UIView {
     public var width: CGFloat = _width
     public var height: CGFloat = _height
     
-    private var numberLabel: UILabel? = {
-        return UILabel(frame: CGRect(x:0, y:2, width:_width, height:40))
-    }()
+//    private var numberLabel: UILabel? = {
+//        return UILabel(frame: CGRect(x:0, y:2, width:_width, height:40))
+//    }()
+    
+//    private var networkNumber: Int = 0
+
     
     private var memoryLabel: _DebugConsoleLabel? = {
         return _DebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
@@ -47,11 +50,7 @@ class Bubble: UIView {
     }()
     
     
-    private var networkNumber: Int = 0
-    
-    
     static var originalPosition: CGPoint {
-        
         if CocoaDebugSettings.shared.bubbleFrameX != 0 && CocoaDebugSettings.shared.bubbleFrameY != 0 {
             return CGPoint(x: CGFloat(CocoaDebugSettings.shared.bubbleFrameX), y: CGFloat(CocoaDebugSettings.shared.bubbleFrameY))
         }
@@ -63,7 +62,6 @@ class Bubble: UIView {
     
     //MARK: - tool
     fileprivate func initLabelEvent(_ content: String, _ foo: Bool) {
-        
         if content == "🚀" || content == "❌"
         {
             //step 0
@@ -75,7 +73,7 @@ class Bubble: UIView {
             if foo == true {
                 label.frame = CGRect(x: self.frame.size.width/2 - WH/2, y: self.frame.size.height/2 - WH/2, width: WH, height: WH)
                 self.addSubview(label)
-            }else{
+            } else {
                 label.frame = CGRect(x: self.center.x - WH/2, y: self.center.y - WH/2, width: WH, height: WH)
                 self.superview?.addSubview(label)
             }
@@ -118,7 +116,7 @@ class Bubble: UIView {
             if foo == true {
                 label.frame = CGRect(x: self.frame.size.width/2 - WH/2, y: self.frame.size.height/2 - WH/2, width: WH, height: WH)
                 self.addSubview(label)
-            }else{
+            } else {
                 label.frame = CGRect(x: self.center.x - WH/2, y: self.center.y - WH/2, width: WH, height: WH)
                 self.superview?.addSubview(label)
             }
@@ -203,7 +201,7 @@ class Bubble: UIView {
         
         //notification
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
         
         //Defaults
         memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
@@ -249,27 +247,27 @@ class Bubble: UIView {
                 self?.initLabelEvent("❌", true)
                 self?.initLabelEvent("❌", false)
             }
-            else{
+            else {
                 guard let statusCode = statusCode else {return}
                 self?.initLabelEvent(statusCode, true)
                 self?.initLabelEvent(statusCode, false)
             }
             
-            self?.networkNumber = (self?.networkNumber ?? 0) + 1
-            if let networkNumber = self?.networkNumber {
-                self?.numberLabel?.text = String(networkNumber)
-            }
+//            self?.networkNumber = (self?.networkNumber ?? 0) + 1
+//            if let networkNumber = self?.networkNumber {
+//                self?.numberLabel?.text = String(networkNumber)
+//            }
         }
     }
     
-    @objc func deleteAllLogs_notification() {
-        dispatch_main_async_safe { [weak self] in
-            self?.networkNumber = 0
-            if let networkNumber = self?.networkNumber {
-                self?.numberLabel?.text = String(networkNumber)
-            }
-        }
-    }
+//    @objc func deleteAllLogs_notification() {
+//        dispatch_main_async_safe { [weak self] in
+//            self?.networkNumber = 0
+//            if let networkNumber = self?.networkNumber {
+//                self?.numberLabel?.text = String(networkNumber)
+//            }
+//        }
+//    }
     
     
     //MARK: - target action

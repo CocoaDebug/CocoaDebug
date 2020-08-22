@@ -27,7 +27,8 @@
     
     NSLog(@"hello world");
     NSLog(@"%d", 6666666);
-    
+    NSLog(@"억 암 온 양 哈哈哈 とうかいとうさん");
+
     
     //test WKWebView
     [self test_console_WKWebView];

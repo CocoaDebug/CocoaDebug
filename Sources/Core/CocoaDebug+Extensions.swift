@@ -33,7 +33,7 @@ extension String {
             let arr = str.components(separatedBy: "=")
             if arr.count == 2 {
                 dictionary.updateValue(arr[1], forKey: arr[0])
-            }else{
+            } else {
                 return nil
             }
         }
@@ -211,7 +211,7 @@ extension NSObject {
     func dispatch_main_async_safe(callback: @escaping ()->Void ) {
         if Thread.isMainThread {
             callback()
-        }else{
+        } else {
             DispatchQueue.main.async( execute: {
                 callback()
             })
@@ -319,23 +319,23 @@ extension CocoaDebug {
         
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
-        }else{
+        } else {
             CocoaDebugSettings.shared.serverURL = serverURL
         }
         if onlyURLs == nil {
             CocoaDebugSettings.shared.onlyURLs = []
-        }else{
+        } else {
             CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
         if ignoredURLs == nil {
             CocoaDebugSettings.shared.ignoredURLs = []
-        }else{
+        } else {
             CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
-        }else{//not first launch
+        } else {//not first launch
             CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
         
@@ -367,7 +367,7 @@ extension CocoaDebug {
         if disableLogMonitoring == true {
             _LogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
-        }else{
+        } else {
             _LogHelper.shared.enable = true
             _OCLogHelper.shared()?.enable = true
         }
@@ -375,7 +375,7 @@ extension CocoaDebug {
         //network
         if disableNetworkMonitoring == true {
             _NetworkHelper.shared().disable()
-        }else{
+        } else {
             _NetworkHelper.shared().enable()
         }
     }

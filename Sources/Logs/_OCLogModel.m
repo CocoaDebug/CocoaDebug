@@ -43,7 +43,7 @@
         
         if (self.fileInfo) {
             stringContent = [stringContent stringByAppendingFormat:@"%@%@", self.fileInfo, self.content];
-        }else{
+        } else {
             stringContent = [stringContent stringByAppendingFormat:@"%@", self.content];
         }
     

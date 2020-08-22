@@ -62,7 +62,7 @@
     }];
     if (!isExist) {//如果不存在就添加进去
         [self.httpModels addObject:model];
-    }else{
+    } else {
         return NO;
     }
     

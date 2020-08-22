@@ -118,7 +118,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_8)
             detailModels.append(model_9)
         }
-        else{
+        else {
             //非图片:
             //1.主要
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -170,7 +170,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if let _ = requestData.dataToDictionary() {
             //JSON格式
             httpModel?.requestSerializer = RequestSerializer.JSON
-        }else{
+        } else {
             //Form格式
             httpModel?.requestSerializer = RequestSerializer.form
         }
@@ -226,7 +226,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if let startTime = httpModel.startTime {
                 if (startTime as NSString).doubleValue == 0 {
                     time = _OCLoggerFormat.formatDate(Date())
-                }else{
+                } else {
                     time = _OCLoggerFormat.formatDate(NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
                 }
             }
@@ -261,7 +261,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 }
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
-            }else{
+            } else {
                 //copy to clipboard
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
@@ -474,7 +474,7 @@ extension NetworkDetailViewController {
                         // Fallback on earlier versions
                         height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
-                }else{
+                } else {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
@@ -504,7 +504,7 @@ extension NetworkDetailViewController {
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
-            }else{
+            } else {
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
         }

@@ -33,7 +33,7 @@ class NetworkViewController: UIViewController {
         
         if searchText == "" {
             models = cacheModels
-        }else{
+        } else {
             guard let searchModels = searchModels else {return}
             
             for _ in searchModels {
@@ -232,7 +232,7 @@ extension NetworkViewController: UITableViewDelegate {
                         // Fallback on earlier versions
                         height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
-                }else{
+                } else {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))

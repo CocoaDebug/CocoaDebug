@@ -15,7 +15,6 @@
            function:(const char *)function
                line:(NSUInteger)line
               color:(UIColor *)color
-   unicodeToChinese:(BOOL)unicodeToChinese
             message:(id)format, ...;
 
 @end

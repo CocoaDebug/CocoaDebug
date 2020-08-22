@@ -49,7 +49,7 @@ class JsonViewController: UIViewController {
         if let _ = content.stringToDictionary() {
             //JSON格式
             detailModel?.requestSerializer = RequestSerializer.JSON
-        }else{
+        } else {
             //Form格式
             detailModel?.requestSerializer = RequestSerializer.form
             

@@ -23,8 +23,6 @@
 
 - (CGFloat)heightWithFont:(UIFont *_Nullable)font constraintToWidth:(CGFloat)width;
 
-+ (NSString *_Nullable)unicodeToChinese:(NSString *_Nullable)unicodeStr;
-
 @end
 
 /*************************************************/
