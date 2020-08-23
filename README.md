@@ -70,7 +70,7 @@ github "CocoaDebug/CocoaDebug"
 
 ### *Framework*
 
-Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/CocoaDebug.framework.zip) into project and set `Embed` in Xcode.
+Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/CocoaDebug.framework.zip) into project and set `Embed Without Signing` or `Embed & Sign` in Xcode.
 
 <img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/002.png" width="600">
 
