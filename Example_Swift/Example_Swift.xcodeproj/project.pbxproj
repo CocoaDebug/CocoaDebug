@@ -448,7 +448,7 @@
 				3813B08324E23F0A009626CC /* Sources */,
 				3813B08424E23F0A009626CC /* Frameworks */,
 				3813B08524E23F0A009626CC /* Resources */,
-				8949DEC6570939A060483408 /* [CP] Embed Pods Frameworks */,
+				A5B14025A56489288205FE62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,17 +509,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8949DEC6570939A060483408 /* [CP] Embed Pods Frameworks */ = {
+		A5B14025A56489288205FE62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example_Swift/Pods-Example_Swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Example_Swift/Pods-Example_Swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaDebug/CocoaDebug.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example_Swift/Pods-Example_Swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaDebug.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
