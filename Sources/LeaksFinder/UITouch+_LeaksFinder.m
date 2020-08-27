@@ -16,7 +16,7 @@ extern const void *const kLatestSenderKey;
 
 + (void)load {
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_CocoaDebug"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [self swizzleSEL:@selector(setView:) withSEL:@selector(swizzled_setView:)];

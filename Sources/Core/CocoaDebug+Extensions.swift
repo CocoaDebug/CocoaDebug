@@ -315,7 +315,7 @@ extension CocoaDebug {
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-//        var disableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_CocoaDebug")
+//        var enableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_CocoaDebug")
         
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""

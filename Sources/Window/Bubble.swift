@@ -174,10 +174,14 @@ class Bubble: UIView {
         }
         
         
-        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
-            self.addSubview(memoryLabel)
+//        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
+//            self.addSubview(memoryLabel)
+//            self.addSubview(fpsLabel)
+//            self.addSubview(cpuLabel)
+//        }
+        
+        if let fpsLabel = fpsLabel {
             self.addSubview(fpsLabel)
-            self.addSubview(cpuLabel)
         }
         
         

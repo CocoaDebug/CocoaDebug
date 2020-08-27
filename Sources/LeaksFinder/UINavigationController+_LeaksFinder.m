@@ -16,7 +16,7 @@ static const void *const kPoppedDetailVCKey = &kPoppedDetailVCKey;
 
 + (void)load {
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_CocoaDebug"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [self swizzleSEL:@selector(pushViewController:animated:) withSEL:@selector(swizzled_pushViewController:animated:)];

@@ -63,7 +63,7 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        memorySwitch.isOn = !CocoaDebugSettings.shared.disableMemoryLeaksMonitoring
+        memorySwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
@@ -100,7 +100,7 @@ class AppInfoViewController: UITableViewController {
     
     //MARK: - target action
     @objc func memorySwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableMemoryLeaksMonitoring = !memorySwitch.isOn
+        CocoaDebugSettings.shared.enableMemoryLeaksMonitoring = memorySwitch.isOn
         self.showAlert()
    }
     
