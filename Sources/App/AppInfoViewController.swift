@@ -28,8 +28,11 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var webViewSwitch: UISwitch!
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
-    @IBOutlet weak var memorySwitch: UISwitch!
 
+    @IBOutlet weak var controllerMemoryLeaksSwitch: UISwitch!
+    @IBOutlet weak var viewMemoryLeaksSwitch: UISwitch!
+    @IBOutlet weak var memberVariablesMemoryLeaksSwitch: UISwitch!
+    
     var naviItemTitleLabel: UILabel?
 
     //MARK: - init
@@ -63,19 +66,23 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        memorySwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
+        controllerMemoryLeaksSwitch.isOn = !CocoaDebugSettings.shared.disableMemoryLeaksMonitoring_ViewController
+        viewMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View
+        memberVariablesMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables
 
-        memorySwitch.addTarget(self, action: #selector(memorySwitchChanged), for: UIControl.Event.valueChanged)
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
         webViewSwitch.addTarget(self, action: #selector(webViewSwitchChanged), for: UIControl.Event.valueChanged)
         slowAnimationsSwitch.addTarget(self, action: #selector(slowAnimationsSwitchChanged), for: UIControl.Event.valueChanged)
+        controllerMemoryLeaksSwitch.addTarget(self, action: #selector(controllerMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
+        viewMemoryLeaksSwitch.addTarget(self, action: #selector(viewMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
+        memberVariablesMemoryLeaksSwitch.addTarget(self, action: #selector(memberVariablesMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,10 +106,20 @@ class AppInfoViewController: UITableViewController {
     }
     
     //MARK: - target action
-    @objc func memorySwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.enableMemoryLeaksMonitoring = memorySwitch.isOn
+    @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableMemoryLeaksMonitoring_ViewController = !controllerMemoryLeaksSwitch.isOn
         self.showAlert()
-   }
+    }
+    
+    @objc func viewMemoryLeaksSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View = viewMemoryLeaksSwitch.isOn
+        self.showAlert()
+    }
+    
+    @objc func memberVariablesMemoryLeaksSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables = memberVariablesMemoryLeaksSwitch.isOn
+        self.showAlert()
+    }
     
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn

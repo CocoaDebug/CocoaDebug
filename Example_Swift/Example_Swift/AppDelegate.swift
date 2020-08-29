@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            CocoaDebug.emailToRecipients = ["aaa@gmail.com", "bbb@gmail.com"]
 //            CocoaDebug.emailCcRecipients = ["ccc@gmail.com", "ddd@gmail.com"]
 //            CocoaDebug.mainColor = "#fd9727"
-//            CocoaDebug.additionalController = AdditionalTestController.init()
+//            CocoaDebug.additionalViewController = AdditionalTestController.init()
 //
 //            //--- If Use Google's Protocol buffers ---
 //            CocoaDebug.protobufTransferMap = [

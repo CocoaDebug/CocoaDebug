@@ -31,16 +31,16 @@ class Bubble: UIView {
     public var height: CGFloat = _height
     
     private var memoryLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:2, width:_width, height:16))
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:10, width:_width, height:16))
     }()
     
     private var fpsLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:34, width:_width, height:16))
     }()
     
-    private var cpuLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
-    }()
+//    private var cpuLabel: _DebugConsoleLabel? = {
+//        return _DebugConsoleLabel(frame: CGRect(x:0, y:42, width:_width, height:16))
+//    }()
     
     
     private var numberLabel: UILabel? = {
@@ -174,16 +174,11 @@ class Bubble: UIView {
         }
         
         
-//        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
-//            self.addSubview(memoryLabel)
-//            self.addSubview(fpsLabel)
-//            self.addSubview(cpuLabel)
-//        }
-        
-        if let fpsLabel = fpsLabel {
+        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel/*, let cpuLabel = cpuLabel*/ {
+            self.addSubview(memoryLabel)
             self.addSubview(fpsLabel)
+//            self.addSubview(cpuLabel)
         }
-        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
@@ -222,7 +217,7 @@ class Bubble: UIView {
         
         //Defaults
         memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
-        cpuLabel?.attributedText = cpuLabel?.cpuAttributedString(with: 0)
+//        cpuLabel?.attributedText = cpuLabel?.cpuAttributedString(with: 0)
         fpsLabel?.attributedText = fpsLabel?.fpsAttributedString(with: 60)
 
         //Memory
@@ -230,9 +225,9 @@ class Bubble: UIView {
             self?.memoryLabel?.update(with: .memory, value: value)
         }
         //CPU
-        _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.cpuLabel?.update(with: .CPU, value: value)
-        }
+//        _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+//            self?.cpuLabel?.update(with: .CPU, value: value)
+//        }
         //FPS
         WindowHelper.shared.fpsCallback = { [weak self] value in
             self?.fpsLabel?.update(with: .FPS, value: Float(value))

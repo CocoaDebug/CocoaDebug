@@ -15,17 +15,14 @@ static const void *const kPoppedDetailVCKey = &kPoppedDetailVCKey;
 @implementation UINavigationController (_LeaksFinder)
 
 + (void)load {
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_CocoaDebug"]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [self swizzleSEL:@selector(pushViewController:animated:) withSEL:@selector(swizzled_pushViewController:animated:)];
-            [self swizzleSEL:@selector(popViewControllerAnimated:) withSEL:@selector(swizzled_popViewControllerAnimated:)];
-            [self swizzleSEL:@selector(popToViewController:animated:) withSEL:@selector(swizzled_popToViewController:animated:)];
-            [self swizzleSEL:@selector(popToRootViewControllerAnimated:) withSEL:@selector(swizzled_popToRootViewControllerAnimated:)];
-            [self swizzleSEL:@selector(setViewControllers:animated:) withSEL:@selector(swizzled_setViewControllers:animated:)];
-        });
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleSEL:@selector(pushViewController:animated:) withSEL:@selector(swizzled_pushViewController:animated:)];
+        [self swizzleSEL:@selector(popViewControllerAnimated:) withSEL:@selector(swizzled_popViewControllerAnimated:)];
+        [self swizzleSEL:@selector(popToViewController:animated:) withSEL:@selector(swizzled_popToViewController:animated:)];
+        [self swizzleSEL:@selector(popToRootViewControllerAnimated:) withSEL:@selector(swizzled_popToRootViewControllerAnimated:)];
+        [self swizzleSEL:@selector(setViewControllers:animated:) withSEL:@selector(swizzled_setViewControllers:animated:)];
+    });
 }
 
 - (void)swizzled_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

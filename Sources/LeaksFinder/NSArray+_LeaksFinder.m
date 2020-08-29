@@ -11,18 +11,18 @@
 @implementation NSArray(_LeaksFinder)
 
 //是否开启所有属性的检查
-//- (void)willReleaseIvarList {
-//    if (!self.count) {
-//        return;
-//    }
-//
-//    for(id ob in self) {
-//        [ob willReleaseIvarList];
-//    }
-//}
-//
-//- (BOOL)continueCheckObjecClass:(Class)objectClass {
-//    return YES;
-//}
+- (void)willReleaseIvarList {
+    if (!self.count) {
+        return;
+    }
+
+    for(id ob in self) {
+        [ob willReleaseIvarList];
+    }
+}
+
+- (BOOL)continueCheckObjecClass:(Class)objectClass {
+    return YES;
+}
 
 @end

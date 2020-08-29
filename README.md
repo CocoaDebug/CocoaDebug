@@ -92,7 +92,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `onlyURLs` - Set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
 
-- `additionalController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
+- `additionalViewController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
 
 - `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **1000**.
 

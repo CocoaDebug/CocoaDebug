@@ -15,7 +15,9 @@
 static const void *const kViewStackKey = &kViewStackKey;
 static const void *const kParentPtrsKey = &kParentPtrsKey;
 const void *const kLatestSenderKey = &kLatestSenderKey;
-//static const void *const kCheckKey = &kCheckKey;
+
+//是否开启所有属性的检查
+static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 
 @implementation NSObject (_LeaksFinder)
 
@@ -48,6 +50,16 @@ const void *const kLatestSenderKey = &kLatestSenderKey;
 }
 
 - (void)willReleaseObject:(id)object relationship:(NSString *)relationship {
+    if ([self isKindOfClass:[UIView class]]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
+            return;
+        }
+    } else {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
+            return;
+        }
+    }
+    
     if ([relationship hasPrefix:@"self"]) {
         relationship = [relationship stringByReplacingCharactersInRange:NSMakeRange(0, 4) withString:@""];
     }
@@ -60,6 +72,16 @@ const void *const kLatestSenderKey = &kLatestSenderKey;
 }
 
 - (void)willReleaseChild:(id)child {
+    if ([self isKindOfClass:[UIView class]]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
+            return;
+        }
+    } else {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
+            return;
+        }
+    }
+    
     if (!child) {
         return;
     }
@@ -68,6 +90,16 @@ const void *const kLatestSenderKey = &kLatestSenderKey;
 }
 
 - (void)willReleaseChildren:(NSArray *)children {
+    if ([self isKindOfClass:[UIView class]]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
+            return;
+        }
+    } else {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
+            return;
+        }
+    }
+    
     NSArray *viewStack = [self viewStack];
     NSSet *parentPtrs = [self parentPtrs];
     for (id child in children) {
@@ -165,88 +197,94 @@ const void *const kLatestSenderKey = &kLatestSenderKey;
     }
 }
 
-//是否开启所有属性的检查
-//- (BOOL)leakChecked {
-//    NSNumber *leak = objc_getAssociatedObject(self, kCheckKey);
-//    return [leak boolValue];
-//}
-//
-//- (void)setLeakChecked:(BOOL)leakChecked {
-//    objc_setAssociatedObject(self, kCheckKey, @(leakChecked),OBJC_ASSOCIATION_RETAIN);
-//}
-//
-//- (BOOL)continueCheckObjecClass:(Class)objectClass {
-//    if (!objectClass) {
-//        return NO;
-//    }
-//
-//    NSBundle *bundle = [NSBundle bundleForClass:objectClass];
-//    if (bundle != [NSBundle mainBundle]) {
-//        return NO;
-//    }
-//
-//    return YES;
-//
-//}
-//
-//- (void)willReleaseIvarLisWithTargetObjectClass:(id)targetObjectClass {
-//    if (!targetObjectClass) {
-//        return;
-//    }
-//    NSArray *viewStack = [self viewStack];
-//    NSSet *parentPtrs = [self parentPtrs];
-//
-//    unsigned int outCount = 0;
-//    Ivar * ivars = class_copyIvarList(targetObjectClass, &outCount);
-//    NSString *stringType = nil;
-//
-//    for (unsigned int i = 0; i < outCount; i ++) {
-//        Ivar ivar = ivars[i];
-//        const char * name = ivar_getName(ivar);
-//        const char * type = ivar_getTypeEncoding(ivar);
-//        stringType = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
-//        //非NSObject类型不用继续遍历
-//        if ((!name) || ![stringType hasPrefix:@"@"] || [stringType isEqualToString:@"@"]) {
-//            continue;
-//        }
-//
-//        id value = nil;
-//
-//        @try {
-//            value =  [self valueForKey:[NSString stringWithUTF8String:name]];
-//        } @catch (NSException *exception) {
-//            NSLog(@"class %@ valueForKey:%s throw NSException,",NSStringFromClass([targetObjectClass class]),name);
-//        }
-//
-//        if (![value continueCheckObjecClass:[value class]]) {
-//            continue;
-//        }
-//
-//        NSString *className = NSStringFromClass([value class]);
-//        [value setViewStack:[viewStack arrayByAddingObject:className]];
-//        [value setParentPtrs:[parentPtrs setByAddingObject:@((uintptr_t)value)]];
-//        [value willDealloc];
-//        [value willReleaseIvarList];
-//
-//    }
-//    free(ivars);
-//}
-//
-//- (void)willReleaseIvarList {
-//    if ([self leakChecked]) {
-//        return;
-//    }
-//    [self setLeakChecked:YES];
-//
-//    if (![self continueCheckObjecClass:[self class]]) {
-//        return;
-//    }
-//    [self willReleaseIvarLisWithTargetObjectClass:[self class]];
-//
-//    if (![self continueCheckObjecClass:[self superclass]]) {
-//        return;
-//    }
-//    [self willReleaseIvarLisWithTargetObjectClass:[self superclass]];
-//}
+
+#pragma mark - 是否开启所有属性的检查
+- (BOOL)leakChecked {
+    NSNumber *leak = objc_getAssociatedObject(self, kLeakCheckedKey);
+    return [leak boolValue];
+}
+
+- (void)setLeakChecked:(BOOL)leakChecked {
+    objc_setAssociatedObject(self, kLeakCheckedKey, @(leakChecked),OBJC_ASSOCIATION_RETAIN);
+}
+
+- (BOOL)continueCheckObjecClass:(Class)objectClass {
+    if (!objectClass) {
+        return NO;
+    }
+
+    NSBundle *bundle = [NSBundle bundleForClass:objectClass];
+    if (bundle != [NSBundle mainBundle]) {
+        return NO;
+    }
+
+    return YES;
+
+}
+
+- (void)willReleaseIvarLisWithTargetObjectClass:(id)targetObjectClass {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug"]) {
+        return;
+    }
+    
+    if (!targetObjectClass) {
+        return;
+    }
+    NSArray *viewStack = [self viewStack];
+    NSSet *parentPtrs = [self parentPtrs];
+
+    unsigned int outCount = 0;
+    Ivar * ivars = class_copyIvarList(targetObjectClass, &outCount);
+    NSString *stringType = nil;
+
+    for (unsigned int i = 0; i < outCount; i ++) {
+        Ivar ivar = ivars[i];
+        const char * name = ivar_getName(ivar);
+        const char * type = ivar_getTypeEncoding(ivar);
+        stringType = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
+        //非NSObject类型不用继续遍历
+        if ((!name) || ![stringType hasPrefix:@"@"] || [stringType isEqualToString:@"@"]) {
+            continue;
+        }
+
+        id value = nil;
+
+        @try {
+            value =  [self valueForKey:[NSString stringWithUTF8String:name]];
+        } @catch (NSException *exception) {
+            NSLog(@"class %@ valueForKey:%s throw NSException,",NSStringFromClass([targetObjectClass class]),name);
+        }
+
+        if (![value continueCheckObjecClass:[value class]]) {
+            continue;
+        }
+
+        NSString *className = NSStringFromClass([value class]);
+        [value setViewStack:[viewStack arrayByAddingObject:className]];
+        [value setParentPtrs:[parentPtrs setByAddingObject:@((uintptr_t)value)]];
+        [value willDealloc];
+        [value willReleaseIvarList];
+
+    }
+    free(ivars);
+}
+
+- (void)willReleaseIvarList {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug"]) {
+        return;
+    }
+    
+    [self setLeakChecked:YES];
+
+    if (![self continueCheckObjecClass:[self class]]) {
+        return;
+    }
+    [self willReleaseIvarLisWithTargetObjectClass:[self class]];
+
+    if (![self continueCheckObjecClass:[self superclass]]) {
+        return;
+    }
+    [self willReleaseIvarLisWithTargetObjectClass:[self superclass]];
+}
 
 @end

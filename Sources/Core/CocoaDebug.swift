@@ -18,7 +18,7 @@ import UIKit
     ///set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
     ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
-    @objc public static var additionalController: UIViewController? = nil
+    @objc public static var additionalViewController: UIViewController? = nil
     ///the maximum count of logs which CocoaDebug display. Default value is `1000`.
     @objc public static var logMaxCount: Int = 1000
     ///set the initial recipients to include in the email’s “To” field when share via email. Default value is `nil`.
@@ -32,7 +32,7 @@ import UIKit
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, additionalController: additionalController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
     
     //MARK: - CocoaDebug disable

@@ -23,7 +23,7 @@
 + (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL;
 
 //是否开启所有属性的检查
-//- (void)willReleaseIvarList;
-//- (BOOL)continueCheckObjecClass:(Class)objectClass;
+- (void)willReleaseIvarList;
+- (BOOL)continueCheckObjecClass:(Class)objectClass;
 
 @end

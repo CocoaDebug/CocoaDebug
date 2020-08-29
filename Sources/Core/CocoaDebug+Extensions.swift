@@ -304,7 +304,7 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
@@ -315,8 +315,7 @@ extension CocoaDebug {
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-//        var enableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_CocoaDebug")
-        
+
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
@@ -347,7 +346,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
-        CocoaDebugSettings.shared.additionalController = additionalController
+        CocoaDebugSettings.shared.additionalViewController = additionalViewController
         
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true

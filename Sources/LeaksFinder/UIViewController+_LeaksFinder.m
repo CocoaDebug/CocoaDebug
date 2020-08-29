@@ -13,13 +13,10 @@
 @implementation UIViewController (_LeaksFinder)
 
 + (void)load {
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_CocoaDebug"]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [self swizzleSEL:@selector(dismissViewControllerAnimated:completion:) withSEL:@selector(swizzled_dismissViewControllerAnimated:completion:)];
-        });
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleSEL:@selector(dismissViewControllerAnimated:completion:) withSEL:@selector(swizzled_dismissViewControllerAnimated:completion:)];
+    });
 }
 
 - (void)swizzled_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
@@ -53,7 +50,7 @@
     }
     
     //是否开启所有属性的检查
-//    [self willReleaseIvarList];
+    [self willReleaseIvarList];
     
     return YES;
 }

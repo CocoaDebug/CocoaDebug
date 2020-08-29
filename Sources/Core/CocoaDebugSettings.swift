@@ -73,9 +73,21 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var enableMemoryLeaksMonitoring: Bool = false {
+    @objc public var disableMemoryLeaksMonitoring_ViewController: Bool = false {
         didSet {
-            UserDefaults.standard.set(enableMemoryLeaksMonitoring, forKey: "enableMemoryLeaksMonitoring_CocoaDebug")
+            UserDefaults.standard.set(disableMemoryLeaksMonitoring_ViewController, forKey: "disableMemoryLeaksMonitoring_ViewController_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    @objc public var enableMemoryLeaksMonitoring_View: Bool = false {
+        didSet {
+            UserDefaults.standard.set(enableMemoryLeaksMonitoring_View, forKey: "enableMemoryLeaksMonitoring_View_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    @objc public var enableMemoryLeaksMonitoring_MemberVariables: Bool = false {
+        didSet {
+            UserDefaults.standard.set(enableMemoryLeaksMonitoring_MemberVariables, forKey: "enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -180,7 +192,7 @@ import Foundation
             _NetworkHelper.shared().mainColor = mainColor.hexColor
         }
     }
-    @objc public var additionalController: UIViewController? = nil
+    @objc public var additionalViewController: UIViewController? = nil
     
     //share via email
     @objc public var emailToRecipients: [String]? = nil
@@ -221,7 +233,6 @@ import Foundation
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-        enableMemoryLeaksMonitoring = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
         networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")
@@ -240,5 +251,10 @@ import Foundation
         
         //protobuf
         protobufTransferMap = _NetworkHelper.shared().protobufTransferMap
+        
+        //Memory
+        disableMemoryLeaksMonitoring_ViewController = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_ViewController_CocoaDebug")
+        enableMemoryLeaksMonitoring_View = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_View_CocoaDebug")
+        enableMemoryLeaksMonitoring_MemberVariables = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug")
     }
 }

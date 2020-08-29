@@ -15,13 +15,10 @@ extern const void *const kLatestSenderKey;
 @implementation UIApplication (_LeaksFinder)
 
 + (void)load {
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_CocoaDebug"]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [self swizzleSEL:@selector(sendAction:to:from:forEvent:) withSEL:@selector(swizzled_sendAction:to:from:forEvent:)];
-        });
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleSEL:@selector(sendAction:to:from:forEvent:) withSEL:@selector(swizzled_sendAction:to:from:forEvent:)];
+    });
 }
 
 - (BOOL)swizzled_sendAction:(SEL)action to:(id)target from:(id)sender forEvent:(UIEvent *)event {

@@ -56,7 +56,7 @@ class CocoaDebugTabBarController: UITabBarController {
         sandbox.tabBarItem.image = UIImage.init(named: "_icon_file_type_sandbox", in: Bundle.init(for: CocoaDebug.self), compatibleWith: nil)
         
         //3.
-        guard let additionalController = CocoaDebugSettings.shared.additionalController else {
+        guard let additionalViewController = CocoaDebugSettings.shared.additionalViewController else {
             self.viewControllers = [network, logs, sandbox, app]
             return
         }
@@ -64,7 +64,7 @@ class CocoaDebugTabBarController: UITabBarController {
         //4.添加额外的控制器
         var temp = [network, logs, sandbox, app]
         
-        let nav = UINavigationController.init(rootViewController: additionalController)
+        let nav = UINavigationController.init(rootViewController: additionalViewController)
         nav.navigationBar.barTintColor = "#1f2124".hexColor
         
         //****** 以下代码从NavigationController.swift复制 ******
