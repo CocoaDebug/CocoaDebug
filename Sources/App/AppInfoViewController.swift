@@ -108,17 +108,17 @@ class AppInfoViewController: UITableViewController {
     //MARK: - target action
     @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableMemoryLeaksMonitoring_ViewController = !controllerMemoryLeaksSwitch.isOn
-        self.showAlert()
+//        self.showAlert()
     }
     
     @objc func viewMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View = viewMemoryLeaksSwitch.isOn
-        self.showAlert()
+//        self.showAlert()
     }
     
     @objc func memberVariablesMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables = memberVariablesMemoryLeaksSwitch.isOn
-        self.showAlert()
+//        self.showAlert()
     }
     
     @objc func crashSwitchChanged(sender: UISwitch) {

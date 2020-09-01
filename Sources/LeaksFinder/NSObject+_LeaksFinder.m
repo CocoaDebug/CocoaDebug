@@ -22,13 +22,25 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 @implementation NSObject (_LeaksFinder)
 
 - (BOOL)willDealloc {
+    if ([self isKindOfClass:[UIView class]]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_UIView_CocoaDebug"]) {
+            return NO; //UIView
+        }
+    } else {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_UIViewController_CocoaDebug"]) {
+            return NO; //UIViewController
+        }
+    }
+    
     NSString *className = NSStringFromClass([self class]);
-    if ([[NSObject classNamesWhitelist] containsObject:className])
+    if ([[NSObject classNamesWhitelist] containsObject:className]) {
         return NO;
+    }
     
     NSNumber *senderPtr = objc_getAssociatedObject([UIApplication sharedApplication], kLatestSenderKey);
-    if ([senderPtr isEqualToNumber:@((uintptr_t)self)])
+    if ([senderPtr isEqualToNumber:@((uintptr_t)self)]) {
         return NO;
+    }
     
     __weak id weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -50,16 +62,6 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (void)willReleaseObject:(id)object relationship:(NSString *)relationship {
-    if ([self isKindOfClass:[UIView class]]) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
-            return;
-        }
-    } else {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
-            return;
-        }
-    }
-    
     if ([relationship hasPrefix:@"self"]) {
         relationship = [relationship stringByReplacingCharactersInRange:NSMakeRange(0, 4) withString:@""];
     }
@@ -72,16 +74,6 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (void)willReleaseChild:(id)child {
-    if ([self isKindOfClass:[UIView class]]) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
-            return;
-        }
-    } else {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
-            return;
-        }
-    }
-    
     if (!child) {
         return;
     }
@@ -90,16 +82,6 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (void)willReleaseChildren:(NSArray *)children {
-    if ([self isKindOfClass:[UIView class]]) {
-        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_View_CocoaDebug"]) {
-            return;
-        }
-    } else {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_ViewController_CocoaDebug"]) {
-            return;
-        }
-    }
-    
     NSArray *viewStack = [self viewStack];
     NSSet *parentPtrs = [self parentPtrs];
     for (id child in children) {
@@ -162,9 +144,9 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
     return whitelist;
 }
 
-+ (void)addClassNamesToWhitelist:(NSArray *)classNames {
-    [[self classNamesWhitelist] addObjectsFromArray:classNames];
-}
+//+ (void)addClassNamesToWhitelist:(NSArray *)classNames {
+//    [[self classNamesWhitelist] addObjectsFromArray:classNames];
+//}
 
 + (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL {
 
@@ -224,7 +206,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 
 - (void)willReleaseIvarLisWithTargetObjectClass:(id)targetObjectClass {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug"]) {
-        return;
+        return; //Member Variables
     }
     
     if (!targetObjectClass) {
@@ -271,7 +253,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 
 - (void)willReleaseIvarList {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug"]) {
-        return;
+        return; //Member Variables
     }
     
     [self setLeakChecked:YES];
