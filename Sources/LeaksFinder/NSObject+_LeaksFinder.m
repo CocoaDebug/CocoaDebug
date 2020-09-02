@@ -27,7 +27,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
             return NO; //UIView
         }
     } else {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableMemoryLeaksMonitoring_UIViewController_CocoaDebug"]) {
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"enableMemoryLeaksMonitoring_UIViewController_CocoaDebug"]) {
             return NO; //UIViewController
         }
     }

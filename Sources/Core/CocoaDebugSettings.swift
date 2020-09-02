@@ -73,9 +73,9 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var disableMemoryLeaksMonitoring_ViewController: Bool = false {
+    @objc public var enableMemoryLeaksMonitoring_ViewController: Bool = false {
         didSet {
-            UserDefaults.standard.set(disableMemoryLeaksMonitoring_ViewController, forKey: "disableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
+            UserDefaults.standard.set(enableMemoryLeaksMonitoring_ViewController, forKey: "enableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -253,7 +253,7 @@ import Foundation
         protobufTransferMap = _NetworkHelper.shared().protobufTransferMap
         
         //Memory
-        disableMemoryLeaksMonitoring_ViewController = UserDefaults.standard.bool(forKey: "disableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
+        enableMemoryLeaksMonitoring_ViewController = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
         enableMemoryLeaksMonitoring_View = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_UIView_CocoaDebug")
         enableMemoryLeaksMonitoring_MemberVariables = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug")
     }

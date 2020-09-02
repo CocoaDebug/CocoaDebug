@@ -71,7 +71,7 @@ class AppInfoViewController: UITableViewController {
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
-        controllerMemoryLeaksSwitch.isOn = !CocoaDebugSettings.shared.disableMemoryLeaksMonitoring_ViewController
+        controllerMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController
         viewMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View
         memberVariablesMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables
 
@@ -107,7 +107,7 @@ class AppInfoViewController: UITableViewController {
     
     //MARK: - target action
     @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableMemoryLeaksMonitoring_ViewController = !controllerMemoryLeaksSwitch.isOn
+        CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController = controllerMemoryLeaksSwitch.isOn
 //        self.showAlert()
     }
     
