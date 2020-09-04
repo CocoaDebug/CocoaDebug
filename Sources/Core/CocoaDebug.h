@@ -12,7 +12,6 @@
 #import "_CanonicalRequest.h"
 #import "CocoaDebug.h"
 #import "CocoaDebugTool.h"
-#import "_CustomHTTPProtocol.h"
 #import "_DebugConsoleLabel.h"
 #import "_DebugMemoryMonitor.h"
 #import "_DebugCpuMonitor.h"
