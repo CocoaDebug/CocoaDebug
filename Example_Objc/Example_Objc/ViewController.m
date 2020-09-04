@@ -92,6 +92,7 @@
     [dataTask resume];
     
     //2.NSURLConnection
+    // Do not support NSURLConnection
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
         NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
@@ -121,6 +122,10 @@
         }
     }];
     [dataTask_ resume];
+    
+    // test completeHandler is nil crash
+    NSURLSessionDataTask *dataTask_1 = [session dataTaskWithRequest:urlRequest completionHandler:nil];
+    [dataTask_1 resume];
 }
 
 - (void)test_console_WKWebView {

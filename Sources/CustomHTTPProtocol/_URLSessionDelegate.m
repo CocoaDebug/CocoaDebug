@@ -182,7 +182,9 @@ NSURLSessionWebSocketDelegate>
         __weak __typeof(__self)__weakSekf = __self;
         DataTaskCompletionHander proxyCompletionHandler =  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
             [self recordURLSession:__weakSekf task:returnTask receiveData:data didCompleteWithError:error];
-            completionHandler(data, response, error);
+            if (completionHandler) {// fix crash
+                completionHandler(data, response, error);
+            }
         };
         returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
         return returnTask;
@@ -197,7 +199,9 @@ NSURLSessionWebSocketDelegate>
         __weak __typeof(__self)__weakSekf = __self;
         DataTaskCompletionHander proxyCompletionHandler =  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
             [self recordURLSession:__weakSekf task:returnTask receiveData:data didCompleteWithError:error];
-            completionHandler(data, response, error);
+            if (completionHandler) {// fix crash
+                completionHandler(data, response, error);
+            }
         };
         returnTask = originalMethod(__self, sel, unuse1, unuse2, proxyCompletionHandler);
         return returnTask;
@@ -212,7 +216,9 @@ NSURLSessionWebSocketDelegate>
         __weak __typeof(__self)__weakSekf = __self;
         DownloadTaskCompletionHander proxyCompletionHandler =  ^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error){
             [self recordURLSession:__weakSekf task:returnTask receiveData:[NSData data] didCompleteWithError:error];
-            completionHandler(location, response, error);
+            if (completionHandler) {// fix crash
+                completionHandler(location, response, error);
+            }
         };
         returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
         return returnTask;
@@ -246,16 +252,23 @@ NSURLSessionWebSocketDelegate>
         return;
     }
     
+    NSURLRequest *currentRequest = task.currentRequest;
+    NSURLResponse *response = task.response;
+    if (!currentRequest.URL) {
+        // fix crash
+        // _HttpModel url cannot be nil
+        return;
+    }
+
     _HttpModel* model = [[_HttpModel alloc] init];
-    model.url = task.currentRequest.URL;
-    model.method = task.currentRequest.HTTPMethod;
-    model.mineType = task.response.MIMEType;
+    model.url = currentRequest.URL;
+    model.method = currentRequest.HTTPMethod;
+    model.mineType = response.MIMEType;
     if (task.currentRequest.HTTPBody) {
         model.requestData = task.currentRequest.HTTPBody;
     }
     if (task.currentRequest.HTTPBodyStream) {//liman
-        NSData* data = [NSData dataWithInputStream:task.currentRequest.HTTPBodyStream];
-        model.requestData = data;
+        model.requestData = [NSData dataWithInputStream:task.currentRequest.HTTPBodyStream];
     }
     
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)task.response;
