@@ -7,8 +7,8 @@
 //
 
 #import "_NetworkHelper.h"
+#import "_CustomHTTPProtocol.h"
 #import "NSObject+CocoaDebug.h"
-#import "_URLSessionDelegate.h"
 
 @interface _NetworkHelper()
 
@@ -38,12 +38,16 @@
     return self;
 }
 
-- (void)enable {
+- (void)enable
+{
     self.isNetworkEnable = YES;
+    [NSURLProtocol registerClass:[_CustomHTTPProtocol class]];
 }
 
-- (void)disable {
+- (void)disable
+{
     self.isNetworkEnable = NO;
+    [NSURLProtocol unregisterClass:[_CustomHTTPProtocol class]];
 }
 
 @end
