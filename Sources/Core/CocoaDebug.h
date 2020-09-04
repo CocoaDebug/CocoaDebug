@@ -87,5 +87,5 @@
 #import "UITouch+_LeaksFinder.h"
 #import "UIView+_LeaksFinder.h"
 #import "UIViewController+_LeaksFinder.h"
-#import "_WeakTimer.h"
+#import "_GCDTimerManager.h"
 #import "_Wrappers.pbobjc.h"

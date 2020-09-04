@@ -31,8 +31,6 @@
 		3826DB5824EE5BF5003DE040 /* _DebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB5924EE5BF5003DE040 /* _DebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */; };
 		3826DB5A24EE5BF5003DE040 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */; };
-		3826DB5B24EE5BF5003DE040 /* _WeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E924EE5BF4003DE040 /* _WeakTimer.m */; };
-		3826DB5C24EE5BF5003DE040 /* _WeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9EA24EE5BF4003DE040 /* _WeakTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB5D24EE5BF5003DE040 /* NSArray+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB5E24EE5BF5003DE040 /* NSSet+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9ED24EE5BF4003DE040 /* NSSet+_LeaksFinder.m */; };
 		3826DB5F24EE5BF5003DE040 /* NSObject+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9EE24EE5BF4003DE040 /* NSObject+_LeaksFinder.m */; };
@@ -416,6 +414,8 @@
 		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
 		3826E16E24EEA00C003DE040 /* _DebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826E17124EEA00C003DE040 /* _DebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */; };
+		3827360D250211740066DB00 /* _GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827360B250211740066DB00 /* _GCDTimerManager.m */; };
+		3827360E250211740066DB00 /* _GCDTimerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3827360C250211740066DB00 /* _GCDTimerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,8 +454,6 @@
 		3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMonitor.h; sourceTree = "<group>"; };
 		3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMemoryMonitor.m; sourceTree = "<group>"; };
 		3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
-		3826D9E924EE5BF4003DE040 /* _WeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _WeakTimer.m; sourceTree = "<group>"; };
-		3826D9EA24EE5BF4003DE040 /* _WeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _WeakTimer.h; sourceTree = "<group>"; };
 		3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+_LeaksFinder.h"; sourceTree = "<group>"; };
 		3826D9ED24EE5BF4003DE040 /* NSSet+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+_LeaksFinder.m"; sourceTree = "<group>"; };
 		3826D9EE24EE5BF4003DE040 /* NSObject+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_LeaksFinder.m"; sourceTree = "<group>"; };
@@ -840,6 +838,8 @@
 		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugCpuMonitor.h; sourceTree = "<group>"; };
 		3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugCpuMonitor.m; sourceTree = "<group>"; };
+		3827360B250211740066DB00 /* _GCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GCDTimerManager.m; sourceTree = "<group>"; };
+		3827360C250211740066DB00 /* _GCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GCDTimerManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -893,10 +893,10 @@
 		3826D9CD24EE5BF4003DE040 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3827360A250211740066DB00 /* GCDTimer */,
 				3826D9CE24EE5BF4003DE040 /* Core */,
 				3826D9D424EE5BF4003DE040 /* App */,
 				3826D9E124EE5BF4003DE040 /* Monitor */,
-				3826D9E824EE5BF4003DE040 /* WeakTimer */,
 				3826D9EB24EE5BF4003DE040 /* LeaksFinder */,
 				3826DA0824EE5BF4003DE040 /* Resources */,
 				3826DABB24EE5BF5003DE040 /* Network */,
@@ -956,15 +956,6 @@
 				3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */,
 			);
 			path = Monitor;
-			sourceTree = "<group>";
-		};
-		3826D9E824EE5BF4003DE040 /* WeakTimer */ = {
-			isa = PBXGroup;
-			children = (
-				3826D9E924EE5BF4003DE040 /* _WeakTimer.m */,
-				3826D9EA24EE5BF4003DE040 /* _WeakTimer.h */,
-			);
-			path = WeakTimer;
 			sourceTree = "<group>";
 		};
 		3826D9EB24EE5BF4003DE040 /* LeaksFinder */ = {
@@ -1550,6 +1541,15 @@
 			path = CocoaDebugTests;
 			sourceTree = "<group>";
 		};
+		3827360A250211740066DB00 /* GCDTimer */ = {
+			isa = PBXGroup;
+			children = (
+				3827360C250211740066DB00 /* _GCDTimerManager.h */,
+				3827360B250211740066DB00 /* _GCDTimerManager.m */,
+			);
+			path = GCDTimer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1613,7 +1613,6 @@
 				3826DC9224EE5BF5003DE040 /* _GPBExtensionRegistry.h in Headers */,
 				3826DB6A24EE5BF5003DE040 /* UITouch+_LeaksFinder.h in Headers */,
 				3826DC6824EE5BF5003DE040 /* NSObject+CocoaDebug.h in Headers */,
-				3826DB5C24EE5BF5003DE040 /* _WeakTimer.h in Headers */,
 				3826DC8424EE5BF5003DE040 /* _FieldMask.pbobjc.h in Headers */,
 				3826DC2B24EE5BF5003DE040 /* _NetworkHelper.h in Headers */,
 				3826DE6624EE7B45003DE040 /* FBObjectiveCGraphElement+Internal.h in Headers */,
@@ -1664,6 +1663,7 @@
 				3826DB6424EE5BF5003DE040 /* _LeaksMessenger.h in Headers */,
 				3826DB5824EE5BF5003DE040 /* _DebugMonitor.h in Headers */,
 				3826DB6124EE5BF5003DE040 /* UINavigationController+_LeaksFinder.h in Headers */,
+				3827360E250211740066DB00 /* _GCDTimerManager.h in Headers */,
 				3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */,
 				3826DC9F24EE5BF5003DE040 /* _Struct.pbobjc.h in Headers */,
 			);
@@ -1999,7 +1999,6 @@
 				3826DC8A24EE5BF5003DE040 /* _SourceContext.pbobjc.m in Sources */,
 				3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */,
 				3826DC7824EE5BF5003DE040 /* _GPBUtilities.m in Sources */,
-				3826DB5B24EE5BF5003DE040 /* _WeakTimer.m in Sources */,
 				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
 				3826DE6724EE7B45003DE040 /* FBObjectGraphConfiguration.m in Sources */,
 				3826DB5524EE5BF5003DE040 /* _DebugMonitor.m in Sources */,
@@ -2064,6 +2063,7 @@
 				3826DE5324EE7B45003DE040 /* Struct.mm in Sources */,
 				3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */,
 				3826DE5824EE7B45003DE040 /* FBClassStrongLayout.mm in Sources */,
+				3827360D250211740066DB00 /* _GCDTimerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,35 +7,23 @@
 //
 
 #import "_DebugMonitor.h"
-#import "_WeakTimer.h"
+#import "_GCDTimerManager.h"
 
-static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
-
-@interface _DebugMonitor ()
-
-@property (nonatomic, strong) _WeakTimer *backgroundTimer;
-@property (nonatomic, strong) dispatch_queue_t privateQueue;
-
-@end
+static NSString * const timerName = @"CocoaDebug_GCDTimerManager";
 
 @implementation _DebugMonitor
 
 #pragma mark - public
 - (void)startMonitoring {
-    self.privateQueue = dispatch_queue_create("com.cocoadebug.private_queue", DISPATCH_QUEUE_CONCURRENT);
-
-    self.backgroundTimer = [_WeakTimer scheduledTimerWithTimeInterval:1.0
-                                                                target:self
-                                                              selector:@selector(updateValue)
-                                                              userInfo:nil
-                                                               repeats:YES
-                                                         dispatchQueue:self.privateQueue];
-
-    dispatch_queue_set_specific(self.privateQueue, (__bridge const void *)(self), (void *)CocoaDebugTimerQueueContext, NULL);
+    [[_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:timerName timeInterval:1.0 queue:nil repeats:YES fireInstantly:YES action:^{
+        if (self.valueBlock) {
+            self.valueBlock([self getValue]);
+        }
+    }];
 }
 
 - (void)stopMonitoring {
-    [_backgroundTimer invalidate];
+    [[_GCDTimerManager sharedInstance] cancelTimerWithName:timerName];
 }
 
 #pragma mark - private
@@ -43,16 +31,9 @@ static const char *CocoaDebugTimerQueueContext = "CocoaDebugTimerQueueContext";
     return 0.0;
 }
 
-#pragma mark - target action
-- (void)updateValue {
-    if (self.valueBlock) {
-        self.valueBlock([self getValue]);
-    }
-}
-
 #pragma mark - dealloc
 - (void)dealloc {
-    [_backgroundTimer invalidate];
+    [[_GCDTimerManager sharedInstance] cancelTimerWithName:timerName];
 }
 
 @end

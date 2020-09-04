@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',
-                          'Sources/WeakTimer/**/*.m',
+                          'Sources/GCDTimer/**/*.m',
                           'Sources/Window/**/*.m',
                           ]
   s.dependency "FBRetainCycleDetector"
