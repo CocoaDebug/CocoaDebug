@@ -12,11 +12,16 @@
 #import "NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 
-typedef NSURLSession *(SessionConstructor)(id, SEL, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
-typedef NSURLSession *(^SessionConstructorBlock)(id, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
-
 typedef void (^DataTaskCompletionHander)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error);
 typedef void (^DownloadTaskCompletionHander)(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error);
+
+
+typedef NSURLSession *(SessionConstructor)(id, SEL, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
+typedef NSURLSession *(^SessionConstructorBlock)(id, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
+typedef id (DataTaskConstructor)(id, SEL, id, DataTaskCompletionHander);
+typedef id (UploadTaskConstructor)(id, SEL, id, id, DataTaskCompletionHander);
+typedef id (DownloadTaskConstructor)(id, SEL, id, DownloadTaskCompletionHander);
+
 
 static void *kTaskStartDateKey;
 
@@ -120,17 +125,23 @@ NSURLSessionWebSocketDelegate>
     }
 }
 
-
-/// Record start date
+/// Copy from AFNetWoring
 + (void)swizzleResumeMethodForClass:(Class)theClass {
-    SEL sel = @selector(resume);
-    __block void (*originalResume)(id, SEL);
-    void(^replaceResume)(id) = ^(id __self) {
-        originalResume(__self, sel);
-        objc_setAssociatedObject(__self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    };
-    originalResume = replaceMethod(sel, imp_implementationWithBlock(replaceResume), theClass, false);
+    Method afResumeMethod = class_getInstanceMethod(self, @selector(af_resume));
+    if (class_addMethod(theClass, @selector(af_resume),  method_getImplementation(afResumeMethod),  method_getTypeEncoding(afResumeMethod))) {
+        Method originalMethod = class_getInstanceMethod(theClass, @selector(resume));
+        Method swizzledMethod = class_getInstanceMethod(theClass, @selector(af_resume));
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
+
+/// Copy from AFNetWoring
+/// Record start date
+- (void)af_resume {
+    [self af_resume];
+    objc_setAssociatedObject(self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 /// Delegate Proxy
 + (void)swizzleSessionConstructor {
@@ -143,7 +154,7 @@ NSURLSessionWebSocketDelegate>
         _URLSessionDelegate *privateDelegate = [[_URLSessionDelegate alloc] initWithOriginalDelegate:delegate];
         return originalSessionConstructor(__self, sel, configuration, privateDelegate, queue);
     };
-    originalSessionConstructor = replaceMethod(sel, imp_implementationWithBlock(replacedSessionConstructor), [NSURLSession class], YES);
+    originalSessionConstructor = (SessionConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedSessionConstructor), [NSURLSession class], YES);
 }
 
 /*
@@ -165,7 +176,7 @@ NSURLSessionWebSocketDelegate>
 }
 
 + (void)swizzleDataTaskWithSel:(SEL)sel {
-    __block id (*originalMethod)(id, SEL, id, DataTaskCompletionHander);
+    __block DataTaskConstructor *originalMethod;
     id (^replacedMethod)(id, id, DataTaskCompletionHander) = ^(id __self, id unuse, DataTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
         __weak __typeof(__self)__weakSekf = __self;
@@ -176,11 +187,11 @@ NSURLSessionWebSocketDelegate>
         returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
         return returnTask;
     };
-    originalMethod = replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
+    originalMethod = (DataTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
 }
 
 + (void)swizzleUploadTaskWithSel:(SEL)sel {
-    __block id (*originalMethod)(id, SEL, id, id, DataTaskCompletionHander);
+    __block UploadTaskConstructor *originalMethod;
     id (^replacedMethod)(id, id, id, DataTaskCompletionHander) = ^(id __self, id unuse1, id unuse2, DataTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
         __weak __typeof(__self)__weakSekf = __self;
@@ -191,11 +202,11 @@ NSURLSessionWebSocketDelegate>
         returnTask = originalMethod(__self, sel, unuse1, unuse2, proxyCompletionHandler);
         return returnTask;
     };
-    originalMethod = replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
+    originalMethod = (UploadTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
 }
 
 + (void)swizzleDownloadTaskWithSel:(SEL)sel {
-    __block id (*originalMethod)(id, SEL, id, DownloadTaskCompletionHander);
+    __block DownloadTaskConstructor * originalMethod;
     id (^replacedMethod)(id, id, DownloadTaskCompletionHander) = ^(id __self, id unuse, DownloadTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
         __weak __typeof(__self)__weakSekf = __self;
@@ -206,7 +217,7 @@ NSURLSessionWebSocketDelegate>
         returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
         return returnTask;
     };
-    originalMethod = replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
+    originalMethod = (DownloadTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
 }
 
 #pragma mark - NSURLSessionDelegate
@@ -222,6 +233,12 @@ NSURLSessionWebSocketDelegate>
         [(id<NSURLSessionTaskDelegate>)_originalDelegate URLSession:session task:task didCompleteWithError:error];
     }
     [self.class recordURLSession:session task:task receiveData:self.data didCompleteWithError:error];
+}
+
+- (void)URLSession:(nonnull NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(nonnull NSURL *)location {
+    if (_originalDelegate && [_originalDelegate conformsToProtocol:@protocol(NSURLSessionDownloadDelegate)] &&[_originalDelegate respondsToSelector:@selector(URLSession:downloadTask:didFinishDownloadingToURL:)]) {
+        [(id<NSURLSessionDownloadDelegate>)_originalDelegate URLSession:session downloadTask:downloadTask didFinishDownloadingToURL:location];
+    }
 }
 
 + (void)recordURLSession:(NSURLSession *)session task:(NSURLSessionTask *)task receiveData:(NSData *)receiveData didCompleteWithError:(nullable NSError *)error {
