@@ -1,42 +1,58 @@
 //
-//  _URLSessionDelegate.m
+//  _HTTPDelegateProxy.m
 //  CocoaDebug
 //
 //  Created by zhaoguoqing on 2020/9/2.
 //
 
-#import "_URLSessionDelegate.h"
+#import "_HTTPDelegateProxy.h"
 #import "_Swizzling.h"
 #import "_NetworkHelper.h"
 #import "_HttpDatasource.h"
 #import "NSObject+CocoaDebug.h"
 #import <objc/runtime.h>
 
+
+static void *kTaskStartDateKey;
 typedef void (^DataTaskCompletionHander)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error);
 typedef void (^DownloadTaskCompletionHander)(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error);
-
-
-typedef NSURLSession *(SessionConstructor)(id, SEL, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
-typedef NSURLSession *(^SessionConstructorBlock)(id, NSURLSessionConfiguration *, id<NSURLSessionDelegate>, NSOperationQueue *);
+typedef NSURLSession *(SessionConstructor)(id, SEL, NSURLSessionConfiguration *, id, NSOperationQueue *);
+typedef NSURLSession *(^SessionConstructorBlock)(id, NSURLSessionConfiguration *, id, NSOperationQueue *);
 typedef id (DataTaskConstructor)(id, SEL, id, DataTaskCompletionHander);
 typedef id (UploadTaskConstructor)(id, SEL, id, id, DataTaskCompletionHander);
 typedef id (DownloadTaskConstructor)(id, SEL, id, DownloadTaskCompletionHander);
 
+typedef NSURLConnection *(URLConnectionConstructor)(id, SEL, NSURLRequest *, id);
+typedef NSURLConnection *(^URLConnectionConstructorBlock)(id, NSURLRequest *, id);
+typedef NSURLConnection *(URLConnectionConstructor2)(id, SEL, NSURLRequest *, id, BOOL);
+typedef NSURLConnection *(^URLConnectionConstructorBlock2)(id, NSURLRequest *, id, BOOL);
 
-static void *kTaskStartDateKey;
+typedef NSData *(URLConnectionSyncConstructor)(id, SEL, NSURLRequest *, NSURLResponse **, NSError **);
+typedef NSData *(^URLConnectionSyncConstructorBlock)(id, NSURLRequest *, NSURLResponse **, NSError **);
+typedef void (^URLConnectionAsyncConstructorCompletionBlock)(NSURLResponse *, NSData *, NSError *);
+typedef void (URLConnectionAsyncConstructor)(id, SEL, NSURLRequest *, NSOperationQueue *, URLConnectionAsyncConstructorCompletionBlock);
+typedef void (^URLConnectionAsyncConstructorBlock)(id, NSURLRequest *, NSOperationQueue *, URLConnectionAsyncConstructorCompletionBlock);
+typedef void(URLConnectionStart)(id, SEL);
 
-@interface _URLSessionDelegate ()
+
+
+@interface _HTTPDelegateProxy ()
+@property(nonatomic, weak) id originalDelegate;
+@property(nonatomic, strong) NSMutableData *data;
+
+- (instancetype)initWithOriginalDelegate: (id)originalDelegate;
+
++ (void)recordHTTPRequest:(NSURLRequest *)request response: (NSURLResponse *)response receiveData:(NSData *)receiveData startDate:(NSDate *)startDate error:(NSError *)error;
++ (_HttpModel *)handleError:(NSError *)error model:(_HttpModel *)model;
+@end
+
+@interface _URLSessionDelegateProxy ()
 <NSURLSessionDelegate,
 NSURLSessionTaskDelegate,
 NSURLSessionDataDelegate,
 NSURLSessionStreamDelegate,
 NSURLSessionDownloadDelegate,
 NSURLSessionWebSocketDelegate>
-@property(nonatomic, weak) id<NSURLSessionDelegate> originalDelegate;
-@property(nonatomic, strong) NSMutableData *data;
-
-- (instancetype)initWithOriginalDelegate: (id<NSURLSessionDelegate>)originalDelegate;
-
 
 + (void)prepareSwizzleResumeMethod;
 + (void)swizzleResumeMethodForClass:(Class)theClass;
@@ -45,16 +61,19 @@ NSURLSessionWebSocketDelegate>
 + (void)swizzleDataTaskWithSel:(SEL)sel;
 @end
 
-@implementation _URLSessionDelegate
+@interface _URLConnectionDelegateProxy ()
+<NSURLConnectionDelegate,
+NSURLConnectionDataDelegate,
+NSURLConnectionDownloadDelegate>
+@property(nonnull, strong) NSURLResponse *response;
 
-- (instancetype)initWithOriginalDelegate: (id<NSURLSessionDelegate>)originalDelegate {
-    self = [super init];
-    if (self) {
-        _data = [NSMutableData data];
-        _originalDelegate = originalDelegate;
-    }
-    return self;
-}
++ (void)swizzleStart;
++ (void)swizzleURLConnectionConstructor;
+@end
+
+
+
+@implementation _URLSessionDelegateProxy
 
 + (void)load {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableNetworkMonitoring_CocoaDebug"]) {
@@ -147,11 +166,11 @@ NSURLSessionWebSocketDelegate>
 + (void)swizzleSessionConstructor {
     SEL sel = @selector(sessionWithConfiguration:delegate:delegateQueue:);
     __block SessionConstructor *originalSessionConstructor;
-    SessionConstructorBlock replacedSessionConstructor = ^(id __self, NSURLSessionConfiguration *configuration, id<NSURLSessionDelegate> delegate, NSOperationQueue *queue) {
+    SessionConstructorBlock replacedSessionConstructor = ^(id __self, NSURLSessionConfiguration *configuration, id delegate, NSOperationQueue *queue) {
         if (![_NetworkHelper shared].isNetworkEnable) {
             return originalSessionConstructor(__self, sel, configuration, delegate, queue);
         }
-        _URLSessionDelegate *privateDelegate = [[_URLSessionDelegate alloc] initWithOriginalDelegate:delegate];
+        id privateDelegate = [[self alloc] initWithOriginalDelegate:delegate];
         return originalSessionConstructor(__self, sel, configuration, privateDelegate, queue);
     };
     originalSessionConstructor = (SessionConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedSessionConstructor), [NSURLSession class], YES);
@@ -179,9 +198,9 @@ NSURLSessionWebSocketDelegate>
     __block DataTaskConstructor *originalMethod;
     id (^replacedMethod)(id, id, DataTaskCompletionHander) = ^(id __self, id unuse, DataTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
-        __weak __typeof(__self)__weakSekf = __self;
         DataTaskCompletionHander proxyCompletionHandler =  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
-            [self recordURLSession:__weakSekf task:returnTask receiveData:data didCompleteWithError:error];
+            NSDate *startDate = objc_getAssociatedObject(returnTask, &kTaskStartDateKey);
+            [self recordHTTPRequest:returnTask.currentRequest response:returnTask.response receiveData:data startDate:startDate error:error];
             if (completionHandler) {// fix crash
                 completionHandler(data, response, error);
             }
@@ -196,9 +215,9 @@ NSURLSessionWebSocketDelegate>
     __block UploadTaskConstructor *originalMethod;
     id (^replacedMethod)(id, id, id, DataTaskCompletionHander) = ^(id __self, id unuse1, id unuse2, DataTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
-        __weak __typeof(__self)__weakSekf = __self;
         DataTaskCompletionHander proxyCompletionHandler =  ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
-            [self recordURLSession:__weakSekf task:returnTask receiveData:data didCompleteWithError:error];
+            NSDate *startDate = objc_getAssociatedObject(returnTask, &kTaskStartDateKey);
+            [self recordHTTPRequest:returnTask.currentRequest response:returnTask.response receiveData:data startDate:startDate error:error];
             if (completionHandler) {// fix crash
                 completionHandler(data, response, error);
             }
@@ -213,9 +232,9 @@ NSURLSessionWebSocketDelegate>
     __block DownloadTaskConstructor * originalMethod;
     id (^replacedMethod)(id, id, DownloadTaskCompletionHander) = ^(id __self, id unuse, DownloadTaskCompletionHander completionHandler) {
         __block NSURLSessionTask *returnTask;
-        __weak __typeof(__self)__weakSekf = __self;
         DownloadTaskCompletionHander proxyCompletionHandler =  ^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error){
-            [self recordURLSession:__weakSekf task:returnTask receiveData:[NSData data] didCompleteWithError:error];
+            NSDate *startDate = objc_getAssociatedObject(returnTask, &kTaskStartDateKey);
+            [self recordHTTPRequest:returnTask.currentRequest response:returnTask.response receiveData:[NSData data] startDate:startDate error:error];
             if (completionHandler) {// fix crash
                 completionHandler(location, response, error);
             }
@@ -228,57 +247,222 @@ NSURLSessionWebSocketDelegate>
 
 #pragma mark - NSURLSessionDelegate
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    if (_originalDelegate && [_originalDelegate conformsToProtocol:@protocol(NSURLSessionDataDelegate)] &&[_originalDelegate respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
-        [(id<NSURLSessionDataDelegate>)_originalDelegate URLSession: session dataTask: dataTask didReceiveData: data];
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLSessionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
+        [(id<NSURLSessionDataDelegate>)self.originalDelegate URLSession: session dataTask: dataTask didReceiveData: data];
     }
-    [_data appendData:data];
+    [self.data appendData:data];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
-    if (_originalDelegate && [_originalDelegate conformsToProtocol:@protocol(NSURLSessionTaskDelegate)] &&[_originalDelegate respondsToSelector:@selector(URLSession:task:didCompleteWithError:)]) {
-        [(id<NSURLSessionTaskDelegate>)_originalDelegate URLSession:session task:task didCompleteWithError:error];
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLSessionTaskDelegate)] &&[self.originalDelegate respondsToSelector:@selector(URLSession:task:didCompleteWithError:)]) {
+        [(id<NSURLSessionTaskDelegate>)self.originalDelegate URLSession:session task:task didCompleteWithError:error];
     }
-    [self.class recordURLSession:session task:task receiveData:self.data didCompleteWithError:error];
+    NSDate *startDate = objc_getAssociatedObject(task, &kTaskStartDateKey);
+    [self.class recordHTTPRequest:task.currentRequest response:task.response receiveData:self.data startDate:startDate error:error];
 }
 
 - (void)URLSession:(nonnull NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(nonnull NSURL *)location {
-    if (_originalDelegate && [_originalDelegate conformsToProtocol:@protocol(NSURLSessionDownloadDelegate)] &&[_originalDelegate respondsToSelector:@selector(URLSession:downloadTask:didFinishDownloadingToURL:)]) {
-        [(id<NSURLSessionDownloadDelegate>)_originalDelegate URLSession:session downloadTask:downloadTask didFinishDownloadingToURL:location];
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLSessionDownloadDelegate)] &&[self.originalDelegate respondsToSelector:@selector(URLSession:downloadTask:didFinishDownloadingToURL:)]) {
+        [(id<NSURLSessionDownloadDelegate>)self.originalDelegate URLSession:session downloadTask:downloadTask didFinishDownloadingToURL:location];
     }
 }
 
-+ (void)recordURLSession:(NSURLSession *)session task:(NSURLSessionTask *)task receiveData:(NSData *)receiveData didCompleteWithError:(nullable NSError *)error {
+@end
+
+
+@implementation _URLConnectionDelegateProxy
+
++ (void)load {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableNetworkMonitoring_CocoaDebug"]) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [self swizzleStart];
+            // 两个初始化方法都要替换, 相互没有调用
+            [self swizzleURLConnectionConstructor];
+            [self swizzleURLConnectionConstructor2];
+            // 这两个两个构造器不会调用delegate
+            [self swizzleURLConnectionSyncConstructor];
+            [self swizzleURLConnectionAsyncConstructor];
+        });
+    }
+}
+
++ (void)swizzleStart {
+    SEL sel = @selector(start);
+    __block URLConnectionStart *originalURLConnectionStart;
+    void (^replacedURLConnectionStart)(id) = ^(id __self) {
+        originalURLConnectionStart(__self, sel);
+        objc_setAssociatedObject(__self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    };
+    originalURLConnectionStart = (URLConnectionStart *)replaceMethod(sel, imp_implementationWithBlock(replacedURLConnectionStart), [NSURLConnection class], NO);
+}
+
++ (void)swizzleURLConnectionConstructor {
+    SEL sel = @selector(initWithRequest:delegate:);
+    __block URLConnectionConstructor *originalURLConnectionConstructor;
+    URLConnectionConstructorBlock replacedURLConnectionConstructor = ^(id __self, NSURLRequest *request, id delegate) {
+        if (![_NetworkHelper shared].isNetworkEnable) {
+            return originalURLConnectionConstructor(__self, sel, request, delegate);
+        }
+        if ([delegate isKindOfClass:self]) {
+            return originalURLConnectionConstructor(__self, sel, request, delegate);
+        }
+        id privateDelegate = [[self alloc] initWithOriginalDelegate:delegate];
+        return originalURLConnectionConstructor(__self, sel, request, privateDelegate);
+    };
+    originalURLConnectionConstructor = (URLConnectionConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedURLConnectionConstructor), [NSURLConnection class], NO);
+}
+
++ (void)swizzleURLConnectionConstructor2 {
+    SEL sel = @selector(initWithRequest:delegate:startImmediately:);
+    __block URLConnectionConstructor2 *originalURLConnectionConstructor;
+    URLConnectionConstructorBlock2 replacedURLConnectionConstructor = ^(id __self, NSURLRequest *request, id delegate, BOOL s) {
+        if (![_NetworkHelper shared].isNetworkEnable) {
+            return originalURLConnectionConstructor(__self, sel, request, delegate, s);
+        }
+        if ([delegate isKindOfClass:self]) {
+            return originalURLConnectionConstructor(__self, sel, request, delegate, s);
+        }
+        if (s) {
+            objc_setAssociatedObject(__self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+        id privateDelegate = [[self alloc] initWithOriginalDelegate:delegate];
+        return originalURLConnectionConstructor(__self, sel, request, privateDelegate, s);
+    };
+    originalURLConnectionConstructor = (URLConnectionConstructor2 *)replaceMethod(sel, imp_implementationWithBlock(replacedURLConnectionConstructor), [NSURLConnection class], NO);
+}
+
++ (void)swizzleURLConnectionSyncConstructor {
+    SEL sel = @selector(sendSynchronousRequest:returningResponse:error:);
+    __block URLConnectionSyncConstructor *originalURLConnectionSyncConstructor;
+    URLConnectionSyncConstructorBlock replacedURLConnectionSyncConstructor = ^(id __self, NSURLRequest *request, NSURLResponse **response, NSError **error) {
+        if (![_NetworkHelper shared].isNetworkEnable) {
+            return originalURLConnectionSyncConstructor(__self, sel, request, response, error);
+        }
+        NSDate *startDate = [NSDate date];
+        NSData *originalReturnValue = originalURLConnectionSyncConstructor(__self, sel, request, response, error);
+        [self recordHTTPRequest:request response:*response receiveData:originalReturnValue startDate:startDate error:*error];
+        return originalReturnValue;
+    };
+    originalURLConnectionSyncConstructor = (URLConnectionSyncConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedURLConnectionSyncConstructor), [NSURLConnection class], YES);
+}
+
++ (void)swizzleURLConnectionAsyncConstructor {
+    SEL sel = @selector(sendAsynchronousRequest:queue:completionHandler:);
+    __block URLConnectionAsyncConstructor *originalURLConnectionAsyncConstructor;
+    URLConnectionAsyncConstructorBlock replacedURLConnectionSyncConstructor = ^(id __self, NSURLRequest *request, NSOperationQueue *queue, URLConnectionAsyncConstructorCompletionBlock block) {
+        if (![_NetworkHelper shared].isNetworkEnable) {
+            originalURLConnectionAsyncConstructor(__self, sel, request, queue, block);
+            return;
+        }
+        __block NSDate *startDate = [NSDate date];
+        URLConnectionAsyncConstructorCompletionBlock proxyBlock = ^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (block) block(response, data, error);
+            [self recordHTTPRequest:request response:response receiveData:data startDate:startDate error:error];
+        };
+        originalURLConnectionAsyncConstructor(__self, sel, request, queue, proxyBlock);
+    };
+    originalURLConnectionAsyncConstructor = (URLConnectionAsyncConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedURLConnectionSyncConstructor), [NSURLConnection class], YES);
+}
+
+
+#pragma mark - NSURLConnectionDelegate
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connection:didFailWithError:)]) {
+        [(id<NSURLConnectionDelegate>)self.originalDelegate connection:connection didFailWithError:error];
+    }
+    NSDate *startDate = objc_getAssociatedObject(self, &kTaskStartDateKey);
+    [self.class recordHTTPRequest:connection.currentRequest response:nil receiveData:self.data startDate:startDate error:error];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connection:didReceiveResponse:)]) {
+        [(id<NSURLConnectionDataDelegate>)self.originalDelegate connection:connection didReceiveResponse:response];
+    }
+    self.response = response;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connection:didReceiveData:)]) {
+        [(id<NSURLConnectionDataDelegate>)self.originalDelegate connection:connection didReceiveData:data];
+    }
+    [self.data appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connectionDidFinishLoading:)]) {
+        [(id<NSURLConnectionDataDelegate>)self.originalDelegate connectionDidFinishLoading:connection];
+    }
+    NSDate *startDate = objc_getAssociatedObject(connection, &kTaskStartDateKey);
+    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.data startDate:startDate error:nil];
+}
+
+- (void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *) destinationURL {
+    if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDownloadDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connectionDidFinishDownloading:destinationURL:)]) {
+        [(id<NSURLConnectionDownloadDelegate>)self.originalDelegate connectionDidFinishDownloading:connection destinationURL:destinationURL];
+    }
+    if (self.data.length == 0) {
+        [self.data appendData:[NSData dataWithContentsOfURL:destinationURL]];
+    }
+    NSDate *startDate = objc_getAssociatedObject(connection, &kTaskStartDateKey);
+    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.data startDate:startDate error:nil];
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if (sel_isEqual(aSelector, @selector(connectionDidFinishDownloading:destinationURL:))) {
+        return [self.originalDelegate respondsToSelector:aSelector];
+    } else {
+        if ([super respondsToSelector:aSelector]) {
+            return true;
+        } else {
+            return [self.originalDelegate respondsToSelector:aSelector];
+        }
+    }
+}
+
+@end
+
+
+@implementation _HTTPDelegateProxy
+
+- (instancetype)initWithOriginalDelegate: (id)originalDelegate {
+    self = [super init];
+    if (self) {
+        _data = [NSMutableData data];
+        _originalDelegate = originalDelegate;
+    }
+    return self;
+}
+
++ (void)recordHTTPRequest:(NSURLRequest *)request response: (NSURLResponse *)response receiveData:(NSData *)receiveData startDate:(NSDate *)startDate error:(NSError *)error {
     if (![_NetworkHelper shared].isNetworkEnable) {
         return;
     }
-    
-    NSURLRequest *currentRequest = task.currentRequest;
-    NSURLResponse *response = task.response;
-    if (!currentRequest.URL) {
+    if (!request.URL) {
         // fix crash
         // _HttpModel url cannot be nil
         return;
     }
-
+    
     _HttpModel* model = [[_HttpModel alloc] init];
-    model.url = currentRequest.URL;
-    model.method = currentRequest.HTTPMethod;
+    model.url = request.URL;
+    model.method = request.HTTPMethod;
     model.mineType = response.MIMEType;
-    if (task.currentRequest.HTTPBody) {
-        model.requestData = task.currentRequest.HTTPBody;
+    if (request.HTTPBody) {
+        model.requestData = request.HTTPBody;
     }
-    if (task.currentRequest.HTTPBodyStream) {//liman
-        model.requestData = [NSData dataWithInputStream:task.currentRequest.HTTPBodyStream];
+    if (request.HTTPBodyStream) {//liman
+        model.requestData = [NSData dataWithInputStream:request.HTTPBodyStream];
     }
     
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)task.response;
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
     model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
     model.responseData = receiveData;
     model.size = [[NSByteCountFormatter new] stringFromByteCount:receiveData.length];
     model.isImage = [httpResponse.MIMEType rangeOfString:@"image"].location != NSNotFound;
     
     //时间
-    NSDate *startDate = objc_getAssociatedObject(task, &kTaskStartDateKey);
     NSTimeInterval startTimeDouble = startDate.timeIntervalSince1970;
     NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
@@ -289,13 +473,13 @@ NSURLSessionWebSocketDelegate>
     
     model.errorDescription = error.description;
     model.errorLocalizedDescription = error.localizedDescription;
-    model.requestHeaderFields = task.currentRequest.allHTTPHeaderFields;
+    model.requestHeaderFields = request.allHTTPHeaderFields;
     
-    if ([task.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        model.responseHeaderFields = ((NSHTTPURLResponse *)task.response).allHeaderFields;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        model.responseHeaderFields = ((NSHTTPURLResponse *)response).allHeaderFields;
     }
     
-    if (task.response.MIMEType == nil) {
+    if (response.MIMEType == nil) {
         model.isImage = NO;
     }
     
@@ -587,16 +771,17 @@ NSURLSessionWebSocketDelegate>
     if ([super respondsToSelector:aSelector]) {
         return true;
     } else {
-        return [_originalDelegate respondsToSelector:aSelector];
+        return [self.originalDelegate respondsToSelector:aSelector];
     }
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     id target = [super forwardingTargetForSelector:aSelector];
     if (!target) {
-        target = _originalDelegate;
+        target = self.originalDelegate;
     }
     return target;
 }
+
 
 @end

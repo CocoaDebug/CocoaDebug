@@ -8,7 +8,7 @@
 
 #import "_NetworkHelper.h"
 #import "NSObject+CocoaDebug.h"
-#import "_URLSessionDelegate.h"
+#import "_HTTPDelegateProxy.h"
 
 @interface _NetworkHelper()
 

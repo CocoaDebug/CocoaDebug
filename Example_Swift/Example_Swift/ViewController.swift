@@ -120,37 +120,37 @@ class ViewController: UIViewController {
 
         //4.ASIHTTPRequest
         // URLProtocol connot support CFNetwork
-        ASIHTTPRequestClient.shared().getJSON("https://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
-            print(JSON)
-        }) { (request, error) in
-            print(error?.localizedDescription)
-        }
-        ASIHTTPRequestClient.shared().postJSON("https://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
-            print(JSON)
-        }) { (request, error) in
-            print(error?.localizedDescription)
-        }
-        ASIHTTPRequestClient.shared().postForm("https://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
-            print(JSON)
-        }) { (request, error) in
-            print(error?.localizedDescription)
-        }
-        ASIHTTPRequestClient.shared()?.uploadData("https://httpbin.org/post", fileData: formData, forKey: "formData", params: nil, progress: { (value) in
-            print("ASIHTTPRequestClient upload progress: \(value)" )
-        }, successBlock: { (request, resposne) in
-            print("ASIHTTPRequestClient upload completed")
-        }, failedBlock: { (request, error) in
-            print(error?.localizedDescription)
-        })
-        ASIHTTPRequestClient.shared()?.downloadFile("https://httpbin.org/bytes/\(1024*1024)",
-                                                    writeTo: NSHomeDirectory() + "/Documents/",
-                                                    fileName: "ASIHTTPRequestClientDownloadTest.data", progress: { (value) in
-                                                        print("ASIHTTPRequestClient download progress: \(value)" )
-                                                    }, successBlock: { (response) in
-                                                        print("Networking download completed, location: \(response ?? "")")
-                                                    }, failedBlock: { (error) in
-                                                        print(error?.localizedDescription)
-                                                    })
+//        ASIHTTPRequestClient.shared().getJSON("https://httpbin.org/get", params: nil, successBlock: { (request, JSON) in
+//            print(JSON)
+//        }) { (request, error) in
+//            print(error?.localizedDescription)
+//        }
+//        ASIHTTPRequestClient.shared().postJSON("https://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+//            print(JSON)
+//        }) { (request, error) in
+//            print(error?.localizedDescription)
+//        }
+//        ASIHTTPRequestClient.shared().postForm("https://httpbin.org/post", params: ["data": "ASIHTTPRequest"], successBlock: { (request, JSON) in
+//            print(JSON)
+//        }) { (request, error) in
+//            print(error?.localizedDescription)
+//        }
+//        ASIHTTPRequestClient.shared()?.uploadData("https://httpbin.org/post", fileData: formData, forKey: "formData", params: nil, progress: { (value) in
+//            print("ASIHTTPRequestClient upload progress: \(value)" )
+//        }, successBlock: { (request, resposne) in
+//            print("ASIHTTPRequestClient upload completed")
+//        }, failedBlock: { (request, error) in
+//            print(error?.localizedDescription)
+//        })
+//        ASIHTTPRequestClient.shared()?.downloadFile("https://httpbin.org/bytes/\(1024*1024)",
+//                                                    writeTo: NSHomeDirectory() + "/Documents/",
+//                                                    fileName: "ASIHTTPRequestClientDownloadTest.data", progress: { (value) in
+//                                                        print("ASIHTTPRequestClient download progress: \(value)" )
+//                                                    }, successBlock: { (response) in
+//                                                        print("Networking download completed, location: \(response ?? "")")
+//                                                    }, failedBlock: { (error) in
+//                                                        print(error?.localizedDescription)
+//                                                    })
 
         //5.large response data
         HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
 
 
     func testRedirect() {
-        RedirectRequester.getRedirectInfo(with: "https://apple.com") { result, response in
+        RedirectRequester.getRedirectInfo(with: "http://apple.com") { result, response in
             print("Redirect \(result): \(response)")
         }
     }

@@ -92,23 +92,42 @@
     [dataTask resume];
     
     //2.NSURLConnection
-    // Do not support NSURLConnection
+    NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
+    NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+    NSURLConnection *connection0 = [[NSURLConnection alloc] initWithRequest:dataRqst delegate:self startImmediately:true];
+
+    NSURLConnection *connection1 = [[NSURLConnection alloc] initWithRequest:dataRqst delegate:self startImmediately:false];
+    [connection1 start];
+
+    NSURLConnection *connection2 = [[NSURLConnection alloc] initWithRequest:dataRqst delegate:self];
+    [connection2 start];
+
+    NSURLConnection *connection3 = [NSURLConnection connectionWithRequest:dataRqst delegate:self];
+    [connection3 start];
+
+    [NSURLConnection sendAsynchronousRequest:dataRqst queue:NSOperationQueue.mainQueue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"request4 %@", error.localizedDescription);
+        }else{
+            NSString *responseString = [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
+            NSLog(@"request4 %@", responseString);
+        }
+    }];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
-        NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
         NSHTTPURLResponse *response =[[NSHTTPURLResponse alloc] init];
         NSError *error = nil;
         NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:&response error:&error];
-        NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
         if (error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(@"request5 %@", error.localizedDescription);
         }else{
-            NSLog(@"%@", responseString);
+            NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
+            NSLog(@"request5 %@", responseString);
         }
     });
     
     //3.NSURLSession
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://httpbin.org/get"]];
+    NSURL *url = [NSURL URLWithString:@"https://httpbin.org/get"];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     [urlRequest setHTTPMethod:@"GET"];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask_ = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -122,6 +141,26 @@
         }
     }];
     [dataTask_ resume];
+
+    [[session dataTaskWithURL:url] resume];
+
+    [[session dataTaskWithRequest:urlRequest] resume];
+
+    [[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode == 200) {
+            NSError *parseError = nil;
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"%@",responseDictionary);
+        }else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }] resume];
+    
+    NSURL *uploadUrl = [NSURL URLWithString:@"https://httpbin.org/post"];
+    NSMutableURLRequest *uploadRequest = [[NSMutableURLRequest alloc] initWithURL:uploadUrl];
+    [[session uploadTaskWithRequest:uploadRequest fromData:[@"test" dataUsingEncoding:NSUTF8StringEncoding]] resume];
+    
     
     // test completeHandler is nil crash
     NSURLSessionDataTask *dataTask_1 = [session dataTaskWithRequest:urlRequest completionHandler:nil];

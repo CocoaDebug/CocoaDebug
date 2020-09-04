@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0464F4392501EC72008D5609 /* _URLSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464F4372501EC72008D5609 /* _URLSessionDelegate.m */; };
-		0464F43A2501EC72008D5609 /* _URLSessionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0464F4382501EC72008D5609 /* _URLSessionDelegate.h */; };
+		04042E5B25023D610004EB2D /* _HTTPDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */; };
+		04042E5C25023D610004EB2D /* _HTTPDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */; };
 		38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38164F7224EF813C00C54BCC /* FPSCounter.swift */; };
 		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
@@ -429,8 +429,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0464F4372501EC72008D5609 /* _URLSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _URLSessionDelegate.m; sourceTree = "<group>"; };
-		0464F4382501EC72008D5609 /* _URLSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _URLSessionDelegate.h; sourceTree = "<group>"; };
+		04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HTTPDelegateProxy.h; sourceTree = "<group>"; };
+		04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HTTPDelegateProxy.m; sourceTree = "<group>"; };
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38164F7224EF813C00C54BCC /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
 		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
@@ -1214,8 +1214,8 @@
 		3826DAC824EE5BF5003DE040 /* CustomHTTPProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				0464F4382501EC72008D5609 /* _URLSessionDelegate.h */,
-				0464F4372501EC72008D5609 /* _URLSessionDelegate.m */,
+				04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */,
+				04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */,
 				3826DAC924EE5BF5003DE040 /* _CacheStoragePolicy.h */,
 				3826DACA24EE5BF5003DE040 /* _CanonicalRequest.h */,
 				3826DACB24EE5BF5003DE040 /* _QNSURLSessionDemux.m */,
@@ -1597,7 +1597,6 @@
 				3826DC7424EE5BF5003DE040 /* _SourceContext.pbobjc.h in Headers */,
 				3826DB7524EE5BF5003DE040 /* UIViewController+_LeaksFinder.h in Headers */,
 				3826DB6724EE5BF5003DE040 /* _LeakedObjectProxy.h in Headers */,
-				0464F43A2501EC72008D5609 /* _URLSessionDelegate.h in Headers */,
 				3826DB7224EE5BF5003DE040 /* UIApplication+_LeaksFinder.h in Headers */,
 				3826DB6524EE5BF5003DE040 /* UISplitViewController+_LeaksFinder.h in Headers */,
 				3826DCA224EE5BF5003DE040 /* _GPBUnknownField.h in Headers */,
@@ -1642,6 +1641,7 @@
 				3826DE5124EE7B45003DE040 /* FBClassStrongLayoutHelpers.h in Headers */,
 				3826DE6C24EE7B45003DE040 /* FBRetainCycleDetector.h in Headers */,
 				3826DE4C24EE7B45003DE040 /* FBBlockStrongLayout.h in Headers */,
+				04042E5B25023D610004EB2D /* _HTTPDelegateProxy.h in Headers */,
 				3826DC9724EE5BF5003DE040 /* _GPBExtensionInternals.h in Headers */,
 				3826DCA524EE5BF5003DE040 /* _GPBUnknownFieldSet.h in Headers */,
 				3826DC3024EE5BF5003DE040 /* _HttpModel.h in Headers */,
@@ -1946,7 +1946,6 @@
 				3826DC3924EE5BF5003DE040 /* _CacheStoragePolicy.m in Sources */,
 				3826DE4924EE7B45003DE040 /* FBAssociationManager.mm in Sources */,
 				3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */,
-				0464F4392501EC72008D5609 /* _URLSessionDelegate.m in Sources */,
 				3826DC7024EE5BF5003DE040 /* _Any.pbobjc.m in Sources */,
 				3826DE5624EE7B45003DE040 /* FBStructEncodingParser.mm in Sources */,
 				3826DCA624EE5BF5003DE040 /* _FieldMask.pbobjc.m in Sources */,
@@ -2047,6 +2046,7 @@
 				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
 				3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */,
 				3826DE4D24EE7B45003DE040 /* FBBlockStrongRelationDetector.m in Sources */,
+				04042E5C25023D610004EB2D /* _HTTPDelegateProxy.m in Sources */,
 				3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
