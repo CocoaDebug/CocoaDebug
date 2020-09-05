@@ -35,10 +35,12 @@ typedef void (^URLConnectionAsyncConstructorBlock)(id, NSURLRequest *, NSOperati
 typedef void(URLConnectionStart)(id, SEL);
 
 
+@interface NSURLSessionTask (CacheData)
+@property(nonatomic, strong) NSMutableData *cachedata;
+@end
 
 @interface _HTTPDelegateProxy ()
 @property(nonatomic, weak) id originalDelegate;
-@property(nonatomic, strong) NSMutableData *data;
 
 - (instancetype)initWithOriginalDelegate: (id)originalDelegate;
 
@@ -65,12 +67,12 @@ NSURLSessionWebSocketDelegate>
 <NSURLConnectionDelegate,
 NSURLConnectionDataDelegate,
 NSURLConnectionDownloadDelegate>
+@property(nonatomic, strong) NSMutableData *cachedata;
 @property(nonnull, strong) NSURLResponse *response;
 
 + (void)swizzleStart;
 + (void)swizzleURLConnectionConstructor;
 @end
-
 
 
 @implementation _URLSessionDelegateProxy
@@ -234,6 +236,10 @@ NSURLConnectionDownloadDelegate>
         __block NSURLSessionTask *returnTask;
         DownloadTaskCompletionHander proxyCompletionHandler =  ^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error){
             NSDate *startDate = objc_getAssociatedObject(returnTask, &kTaskStartDateKey);
+            NSMutableData *receiveData = [NSMutableData data];
+            if (location) {
+                [receiveData appendData:[NSData dataWithContentsOfURL:location]];
+            }
             [self recordHTTPRequest:returnTask.currentRequest response:returnTask.response receiveData:[NSData data] startDate:startDate error:error];
             if (completionHandler) {// fix crash
                 completionHandler(location, response, error);
@@ -250,7 +256,7 @@ NSURLConnectionDownloadDelegate>
     if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLSessionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(URLSession:dataTask:didReceiveData:)]) {
         [(id<NSURLSessionDataDelegate>)self.originalDelegate URLSession: session dataTask: dataTask didReceiveData: data];
     }
-    [self.data appendData:data];
+    [dataTask.cachedata appendData:data];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
@@ -258,19 +264,30 @@ NSURLConnectionDownloadDelegate>
         [(id<NSURLSessionTaskDelegate>)self.originalDelegate URLSession:session task:task didCompleteWithError:error];
     }
     NSDate *startDate = objc_getAssociatedObject(task, &kTaskStartDateKey);
-    [self.class recordHTTPRequest:task.currentRequest response:task.response receiveData:self.data startDate:startDate error:error];
+    [self.class recordHTTPRequest:task.currentRequest response:task.response receiveData:task.cachedata startDate:startDate error:error];
 }
 
+// implement this can clear warning
 - (void)URLSession:(nonnull NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(nonnull NSURL *)location {
     if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLSessionDownloadDelegate)] &&[self.originalDelegate respondsToSelector:@selector(URLSession:downloadTask:didFinishDownloadingToURL:)]) {
         [(id<NSURLSessionDownloadDelegate>)self.originalDelegate URLSession:session downloadTask:downloadTask didFinishDownloadingToURL:location];
+    }
+    if (location != nil && downloadTask.cachedata.length == 0) {
+        [downloadTask.cachedata appendData:[NSData dataWithContentsOfURL:location]];
     }
 }
 
 @end
 
-
 @implementation _URLConnectionDelegateProxy
+
+- (instancetype)initWithOriginalDelegate:(id)originalDelegate {
+    self = [super initWithOriginalDelegate:originalDelegate];
+    if (self) {
+        _cachedata = [NSMutableData data];
+    }
+    return self;
+}
 
 + (void)load {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableNetworkMonitoring_CocoaDebug"]) {
@@ -373,7 +390,7 @@ NSURLConnectionDownloadDelegate>
         [(id<NSURLConnectionDelegate>)self.originalDelegate connection:connection didFailWithError:error];
     }
     NSDate *startDate = objc_getAssociatedObject(self, &kTaskStartDateKey);
-    [self.class recordHTTPRequest:connection.currentRequest response:nil receiveData:self.data startDate:startDate error:error];
+    [self.class recordHTTPRequest:connection.currentRequest response:nil receiveData:self.cachedata startDate:startDate error:error];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -387,7 +404,7 @@ NSURLConnectionDownloadDelegate>
     if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDataDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connection:didReceiveData:)]) {
         [(id<NSURLConnectionDataDelegate>)self.originalDelegate connection:connection didReceiveData:data];
     }
-    [self.data appendData:data];
+    [self.cachedata appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -395,18 +412,18 @@ NSURLConnectionDownloadDelegate>
         [(id<NSURLConnectionDataDelegate>)self.originalDelegate connectionDidFinishLoading:connection];
     }
     NSDate *startDate = objc_getAssociatedObject(connection, &kTaskStartDateKey);
-    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.data startDate:startDate error:nil];
+    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.cachedata startDate:startDate error:nil];
 }
 
 - (void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *) destinationURL {
     if (self.originalDelegate && [self.originalDelegate conformsToProtocol:@protocol(NSURLConnectionDownloadDelegate)] &&[self.originalDelegate respondsToSelector:@selector(connectionDidFinishDownloading:destinationURL:)]) {
         [(id<NSURLConnectionDownloadDelegate>)self.originalDelegate connectionDidFinishDownloading:connection destinationURL:destinationURL];
     }
-    if (self.data.length == 0) {
-        [self.data appendData:[NSData dataWithContentsOfURL:destinationURL]];
-    }
     NSDate *startDate = objc_getAssociatedObject(connection, &kTaskStartDateKey);
-    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.data startDate:startDate error:nil];
+    if (destinationURL != nil && self.cachedata.length == 0) {
+        [self.cachedata appendData:[NSData dataWithContentsOfURL:destinationURL]];
+    }
+    [self.class recordHTTPRequest:connection.currentRequest response:self.response receiveData:self.cachedata startDate:startDate error:nil];
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
@@ -427,9 +444,8 @@ NSURLConnectionDownloadDelegate>
 @implementation _HTTPDelegateProxy
 
 - (instancetype)initWithOriginalDelegate: (id)originalDelegate {
-    self = [super init];
+    self = [self init];
     if (self) {
-        _data = [NSMutableData data];
         _originalDelegate = originalDelegate;
     }
     return self;
@@ -781,6 +797,24 @@ NSURLConnectionDownloadDelegate>
         target = self.originalDelegate;
     }
     return target;
+}
+
+
+@end
+
+@implementation NSURLSessionTask (CacheData)
+static void *kSessionTaskCacheDataKey;
+- (void)setCachedata:(NSMutableData *)cachedata {
+    objc_setAssociatedObject(self, &kSessionTaskCacheDataKey, cachedata, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableData *)cachedata {
+    NSMutableData *data = objc_getAssociatedObject(self, &kSessionTaskCacheDataKey);
+    if (!data) {
+        data = [NSMutableData data];
+        objc_setAssociatedObject(self, &kSessionTaskCacheDataKey, data, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return data;
 }
 
 
