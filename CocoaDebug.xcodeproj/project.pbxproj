@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04042E5B25023D610004EB2D /* _HTTPDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */; };
-		04042E5C25023D610004EB2D /* _HTTPDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */; };
 		38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38164F7224EF813C00C54BCC /* FPSCounter.swift */; };
 		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
@@ -252,9 +250,11 @@
 		3826DC3524EE5BF5003DE040 /* _CacheStoragePolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAC924EE5BF5003DE040 /* _CacheStoragePolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3624EE5BF5003DE040 /* _CanonicalRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DACA24EE5BF5003DE040 /* _CanonicalRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3724EE5BF5003DE040 /* _QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DACB24EE5BF5003DE040 /* _QNSURLSessionDemux.m */; };
+		3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DACC24EE5BF5003DE040 /* _CustomHTTPProtocol.m */; };
 		3826DC3924EE5BF5003DE040 /* _CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DACD24EE5BF5003DE040 /* _CacheStoragePolicy.m */; };
 		3826DC3A24EE5BF5003DE040 /* _QNSURLSessionDemux.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DACE24EE5BF5003DE040 /* _QNSURLSessionDemux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DACF24EE5BF5003DE040 /* _CanonicalRequest.m */; };
+		3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAD024EE5BF5003DE040 /* _CustomHTTPProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3D24EE5BF5003DE040 /* _LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAD224EE5BF5003DE040 /* _LogHelper.swift */; };
 		3826DC3E24EE5BF5003DE040 /* _OCLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAD324EE5BF5003DE040 /* _OCLogModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAD424EE5BF5003DE040 /* _NSLogHook.m */; };
@@ -429,8 +429,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _HTTPDelegateProxy.h; sourceTree = "<group>"; };
-		04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _HTTPDelegateProxy.m; sourceTree = "<group>"; };
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38164F7224EF813C00C54BCC /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
 		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
@@ -675,9 +673,11 @@
 		3826DAC924EE5BF5003DE040 /* _CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CacheStoragePolicy.h; sourceTree = "<group>"; };
 		3826DACA24EE5BF5003DE040 /* _CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CanonicalRequest.h; sourceTree = "<group>"; };
 		3826DACB24EE5BF5003DE040 /* _QNSURLSessionDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _QNSURLSessionDemux.m; sourceTree = "<group>"; };
+		3826DACC24EE5BF5003DE040 /* _CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CustomHTTPProtocol.m; sourceTree = "<group>"; };
 		3826DACD24EE5BF5003DE040 /* _CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CacheStoragePolicy.m; sourceTree = "<group>"; };
 		3826DACE24EE5BF5003DE040 /* _QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _QNSURLSessionDemux.h; sourceTree = "<group>"; };
 		3826DACF24EE5BF5003DE040 /* _CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CanonicalRequest.m; sourceTree = "<group>"; };
+		3826DAD024EE5BF5003DE040 /* _CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CustomHTTPProtocol.h; sourceTree = "<group>"; };
 		3826DAD224EE5BF5003DE040 /* _LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LogHelper.swift; sourceTree = "<group>"; };
 		3826DAD324EE5BF5003DE040 /* _OCLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogModel.h; sourceTree = "<group>"; };
 		3826DAD424EE5BF5003DE040 /* _NSLogHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NSLogHook.m; sourceTree = "<group>"; };
@@ -1214,14 +1214,14 @@
 		3826DAC824EE5BF5003DE040 /* CustomHTTPProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				04042E5925023D610004EB2D /* _HTTPDelegateProxy.h */,
-				04042E5A25023D610004EB2D /* _HTTPDelegateProxy.m */,
 				3826DAC924EE5BF5003DE040 /* _CacheStoragePolicy.h */,
 				3826DACA24EE5BF5003DE040 /* _CanonicalRequest.h */,
 				3826DACB24EE5BF5003DE040 /* _QNSURLSessionDemux.m */,
+				3826DACC24EE5BF5003DE040 /* _CustomHTTPProtocol.m */,
 				3826DACD24EE5BF5003DE040 /* _CacheStoragePolicy.m */,
 				3826DACE24EE5BF5003DE040 /* _QNSURLSessionDemux.h */,
 				3826DACF24EE5BF5003DE040 /* _CanonicalRequest.m */,
+				3826DAD024EE5BF5003DE040 /* _CustomHTTPProtocol.h */,
 			);
 			path = CustomHTTPProtocol;
 			sourceTree = "<group>";
@@ -1641,9 +1641,9 @@
 				3826DE5124EE7B45003DE040 /* FBClassStrongLayoutHelpers.h in Headers */,
 				3826DE6C24EE7B45003DE040 /* FBRetainCycleDetector.h in Headers */,
 				3826DE4C24EE7B45003DE040 /* FBBlockStrongLayout.h in Headers */,
-				04042E5B25023D610004EB2D /* _HTTPDelegateProxy.h in Headers */,
 				3826DC9724EE5BF5003DE040 /* _GPBExtensionInternals.h in Headers */,
 				3826DCA524EE5BF5003DE040 /* _GPBUnknownFieldSet.h in Headers */,
+				3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */,
 				3826DC3024EE5BF5003DE040 /* _HttpModel.h in Headers */,
 				3826DC9124EE5BF5003DE040 /* _Timestamp.pbobjc.h in Headers */,
 				3826DD3224EE5FD5003DE040 /* _Sandboxer-Header.h in Headers */,
@@ -1960,6 +1960,7 @@
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
 				3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */,
+				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
 				3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */,
 				3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */,
 				3826DB5924EE5BF5003DE040 /* _DebugMemoryMonitor.m in Sources */,
@@ -2046,7 +2047,6 @@
 				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
 				3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */,
 				3826DE4D24EE7B45003DE040 /* FBBlockStrongRelationDetector.m in Sources */,
-				04042E5C25023D610004EB2D /* _HTTPDelegateProxy.m in Sources */,
 				3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
