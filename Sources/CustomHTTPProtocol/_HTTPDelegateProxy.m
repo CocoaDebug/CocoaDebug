@@ -127,7 +127,7 @@ NSURLConnectionDownloadDelegate>
 #pragma GCC diagnostic ignored "-Wnonnull"
         NSURLSessionDataTask *localDataTask = [session dataTaskWithURL:nil];
 #pragma clang diagnostic pop
-        IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([self class], @selector(af_resume)));
+        IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([self class], @selector(cocoaDebug_resume)));
         Class currentClass = [localDataTask class];
         
         while (class_getInstanceMethod(currentClass, @selector(resume))) {
@@ -148,18 +148,18 @@ NSURLConnectionDownloadDelegate>
 
 /// Copy from AFNetWoring
 + (void)swizzleResumeMethodForClass:(Class)theClass {
-    Method afResumeMethod = class_getInstanceMethod(self, @selector(af_resume));
-    if (class_addMethod(theClass, @selector(af_resume),  method_getImplementation(afResumeMethod),  method_getTypeEncoding(afResumeMethod))) {
+    Method afResumeMethod = class_getInstanceMethod(self, @selector(cocoaDebug_resume));
+    if (class_addMethod(theClass, @selector(cocoaDebug_resume),  method_getImplementation(afResumeMethod),  method_getTypeEncoding(afResumeMethod))) {
         Method originalMethod = class_getInstanceMethod(theClass, @selector(resume));
-        Method swizzledMethod = class_getInstanceMethod(theClass, @selector(af_resume));
+        Method swizzledMethod = class_getInstanceMethod(theClass, @selector(cocoaDebug_resume));
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 
 /// Copy from AFNetWoring
 /// Record start date
-- (void)af_resume {
-    [self af_resume];
+- (void)cocoaDebug_resume {
+    [self cocoaDebug_resume];
     objc_setAssociatedObject(self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
