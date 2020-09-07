@@ -127,40 +127,26 @@ NSURLConnectionDownloadDelegate>
 #pragma GCC diagnostic ignored "-Wnonnull"
         NSURLSessionDataTask *localDataTask = [session dataTaskWithURL:nil];
 #pragma clang diagnostic pop
-        IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([self class], @selector(cocoaDebug_resume)));
         Class currentClass = [localDataTask class];
-        
         while (class_getInstanceMethod(currentClass, @selector(resume))) {
-            Class superClass = [currentClass superclass];
-            IMP classResumeIMP = method_getImplementation(class_getInstanceMethod(currentClass, @selector(resume)));
-            IMP superclassResumeIMP = method_getImplementation(class_getInstanceMethod(superClass, @selector(resume)));
-            if (classResumeIMP != superclassResumeIMP &&
-                originalAFResumeIMP != classResumeIMP) {
-                [self swizzleResumeMethodForClass:currentClass];
-            }
+            /// Fix conflict with AF
+            [self swizzleResumeMethodForClass:currentClass];
             currentClass = [currentClass superclass];
         }
-        
         [localDataTask cancel];
         [session finishTasksAndInvalidate];
     }
 }
 
-/// Copy from AFNetWoring
+/// Fix conflict with AF
 + (void)swizzleResumeMethodForClass:(Class)theClass {
-    Method afResumeMethod = class_getInstanceMethod(self, @selector(cocoaDebug_resume));
-    if (class_addMethod(theClass, @selector(cocoaDebug_resume),  method_getImplementation(afResumeMethod),  method_getTypeEncoding(afResumeMethod))) {
-        Method originalMethod = class_getInstanceMethod(theClass, @selector(resume));
-        Method swizzledMethod = class_getInstanceMethod(theClass, @selector(cocoaDebug_resume));
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
-}
-
-/// Copy from AFNetWoring
-/// Record start date
-- (void)cocoaDebug_resume {
-    [self cocoaDebug_resume];
-    objc_setAssociatedObject(self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    SEL sel = @selector(resume);
+    __block void(* originalResume)(id, SEL);
+    void (^replacedResume)(id) = ^(id __self) {
+        originalResume(__self, sel);
+        objc_setAssociatedObject(__self, &kTaskStartDateKey, [NSDate date], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    };
+    originalResume = (void(*)(id, SEL))replaceMethod(sel, imp_implementationWithBlock(replacedResume), theClass, NO);
 }
 
 
