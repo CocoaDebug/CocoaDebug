@@ -193,7 +193,16 @@ NSURLConnectionDownloadDelegate>
                 completionHandler(data, response, error);
             }
         };
-        returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+        if (@available(iOS 13.0, *)) {
+            returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+        } else {
+            if (completionHandler == nil) {
+                /// When lower than iOS13, the delegate method will be executed when completionHandler is nil
+                returnTask = originalMethod(__self, sel, unuse, completionHandler);
+            } else {
+                returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+            }
+        }
         return returnTask;
     };
     originalMethod = (DataTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
@@ -210,7 +219,16 @@ NSURLConnectionDownloadDelegate>
                 completionHandler(data, response, error);
             }
         };
-        returnTask = originalMethod(__self, sel, unuse1, unuse2, proxyCompletionHandler);
+        if (@available(iOS 13.0, *)) {
+            returnTask = originalMethod(__self, sel, unuse1, unuse2, proxyCompletionHandler);
+        } else {
+            if (completionHandler == nil) {
+                /// When lower than iOS13, the delegate method will be executed when completionHandler is nil
+                returnTask = originalMethod(__self, sel, unuse1, unuse2, completionHandler);
+            } else {
+                returnTask = originalMethod(__self, sel, unuse1, unuse2, proxyCompletionHandler);
+            }
+        }
         return returnTask;
     };
     originalMethod = (UploadTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
@@ -231,7 +249,16 @@ NSURLConnectionDownloadDelegate>
                 completionHandler(location, response, error);
             }
         };
-        returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+        if (@available(iOS 13.0, *)) {
+            returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+        } else {
+            if (completionHandler == nil) {
+                /// When lower than iOS13, the delegate method will be executed when completionHandler is nil
+                returnTask = originalMethod(__self, sel, unuse, completionHandler);
+            } else {
+                returnTask = originalMethod(__self, sel, unuse, proxyCompletionHandler);
+            }
+        }
         return returnTask;
     };
     originalMethod = (DownloadTaskConstructor *)replaceMethod(sel, imp_implementationWithBlock(replacedMethod), [NSURLSession class], NO);
