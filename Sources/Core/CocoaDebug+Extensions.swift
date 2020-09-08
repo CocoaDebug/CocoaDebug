@@ -312,7 +312,7 @@ extension CocoaDebug {
 
         
         let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
+        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
 
@@ -363,7 +363,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.slowAnimations = false
         
         //log
-        if disableLogMonitoring == true {
+        if enableLogMonitoring == false {
             _LogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
         } else {
