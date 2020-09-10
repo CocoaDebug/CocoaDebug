@@ -30,12 +30,12 @@ class Bubble: UIView {
     public var width: CGFloat = _width
     public var height: CGFloat = _height
     
-    private var memoryLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:10, width:_width, height:16))
-    }()
+//    private var memoryLabel: _DebugConsoleLabel? = {
+//        return _DebugConsoleLabel(frame: CGRect(x:0, y:10, width:_width, height:16))
+//    }()
     
     private var fpsLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:34, width:_width, height:16))
+        return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16)) //34
     }()
     
 //    private var cpuLabel: _DebugConsoleLabel? = {
@@ -174,10 +174,14 @@ class Bubble: UIView {
         }
         
         
-        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel/*, let cpuLabel = cpuLabel*/ {
-            self.addSubview(memoryLabel)
-            self.addSubview(fpsLabel)
+//        if let memoryLabel = memoryLabel, let fpsLabel = fpsLabel, let cpuLabel = cpuLabel {
+//            self.addSubview(memoryLabel)
+//            self.addSubview(fpsLabel)
 //            self.addSubview(cpuLabel)
+//        }
+        
+        if let fpsLabel = fpsLabel {
+            self.addSubview(fpsLabel)
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
@@ -216,14 +220,14 @@ class Bubble: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
         
         //Defaults
-        memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
+//        memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
 //        cpuLabel?.attributedText = cpuLabel?.cpuAttributedString(with: 0)
         fpsLabel?.attributedText = fpsLabel?.fpsAttributedString(with: 60)
 
         //Memory
-        _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
-            self?.memoryLabel?.update(with: .memory, value: value)
-        }
+//        _DebugMemoryMonitor.sharedInstance()?.valueBlock = { [weak self] value in
+//            self?.memoryLabel?.update(with: .memory, value: value)
+//        }
         //CPU
 //        _DebugCpuMonitor.sharedInstance()?.valueBlock = { [weak self] value in
 //            self?.cpuLabel?.update(with: .CPU, value: value)

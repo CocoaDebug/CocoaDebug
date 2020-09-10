@@ -1,15 +1,15 @@
+////
+////  Example
+////  man.li
+////
+////  Created by man.li on 11/11/2018.
+////  Copyright © 2020 man.li. All rights reserved.
+////
 //
-//  Example
-//  man.li
+//#import "_DebugMonitor.h"
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//@interface _DebugMemoryMonitor : _DebugMonitor
 //
-
-#import "_DebugMonitor.h"
-
-@interface _DebugMemoryMonitor : _DebugMonitor
-
-+ (instancetype)sharedInstance;
-
-@end
+//+ (instancetype)sharedInstance;
+//
+//@end

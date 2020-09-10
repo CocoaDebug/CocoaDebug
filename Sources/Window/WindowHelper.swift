@@ -35,7 +35,7 @@ public class WindowHelper: NSObject {
             window.rootViewController = vc
             window.delegate = self
             window.isHidden = false
-            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
+//            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
 //            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
             fpsCounter.startMonitoring()
         }
@@ -64,7 +64,7 @@ public class WindowHelper: NSObject {
             window.rootViewController = nil
             window.delegate = nil
             window.isHidden = true
-            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
+//            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
 //            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
             fpsCounter.stopMonitoring()
         }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,19 @@
 		38AB3DE224EC1DF40020C0F5 /* MemoryLeakTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AB3DE024EC1DF40020C0F5 /* MemoryLeakTestController.m */; };
 		3DF12DA1189C611E3F0D935A /* Pods_Example_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92F44291ABF5C97FC3ADCF9 /* Pods_Example_Objc.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3829E03D2509FA29006AD0AB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3813B04624E23EB2009626CC /* Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +195,7 @@
 				3813B04324E23EB2009626CC /* Frameworks */,
 				3813B04424E23EB2009626CC /* Resources */,
 				36EA534C374589723FA41430 /* [CP] Embed Pods Frameworks */,
+				3829E03D2509FA29006AD0AB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -444,11 +458,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A12DEFAAAC205045EFF563F /* Pods-Example_Objc.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA8SWALX42;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Example_Objc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,11 +482,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C7873AAB199DC0BEB55C6564 /* Pods-Example_Objc.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA8SWALX42;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Example_Objc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
