@@ -125,6 +125,17 @@
         }
     });
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // test response is nil or error is nil
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:dataRqst returningResponse:nil error:nil];
+        if (responseData) {
+            NSString *responseString = [[NSString alloc] initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
+            NSLog(@"request6 %@", responseString);
+        } else{
+            NSLog(@"request6 received error");
+        }
+    });
+    
     //3.NSURLSession
     NSURL *url = [NSURL URLWithString:@"https://httpbin.org/get"];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:url];
