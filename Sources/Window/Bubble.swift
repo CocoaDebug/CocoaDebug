@@ -158,13 +158,6 @@ class Bubble: UIView {
             numberLabel.adjustsFontSizeToFitWidth = true
             numberLabel.isHidden = true
             self.addSubview(numberLabel)
-
-            if #available(iOS 8.2, *) {
-                numberLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-            } else {
-                // Fallback on earlier versions
-                numberLabel.font = UIFont.boldSystemFont(ofSize: 11)
-            }
             
             if CocoaDebugSettings.shared.bubbleFrameX > Float(UIScreen.main.bounds.size.width / 2) {
                 numberLabel.frame = CGRect(x:-10, y:-10, width:20, height:20)
@@ -279,6 +272,20 @@ class Bubble: UIView {
                 self?.numberLabel?.isHidden = true
             } else {
                 self?.numberLabel?.isHidden = false
+            }
+            
+            if let networkNumber = self?.networkNumber {
+                if networkNumber >= 0 && networkNumber < 10 {
+                    self?.numberLabel?.font = UIFont.systemFont(ofSize: 11)
+                } else if networkNumber >= 10 && networkNumber < 100 {
+                    self?.numberLabel?.font = UIFont.systemFont(ofSize: 11)
+                } else if networkNumber >= 100 && networkNumber < 1000 {
+                    self?.numberLabel?.font = UIFont.systemFont(ofSize: 9)
+                } else if networkNumber >= 1000 && networkNumber < 10000 {
+                    self?.numberLabel?.font = UIFont.systemFont(ofSize: 7.5)
+                } else {
+                    self?.numberLabel?.font = UIFont.systemFont(ofSize: 7)
+                }
             }
         }
     }
