@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.frameworks          = 'UIKit', 'Foundation'
   s.platform            = :ios, "8.0"
   s.swift_version       = '5.0'
-  s.version             = '1.5.0'
+  s.version             = '1.5.1'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
   s.requires_arc        = false
   s.requires_arc        = 
@@ -21,11 +21,9 @@ Pod::Spec.new do |s|
                           'Sources/CustomHTTPProtocol/**/*.m',
                           'Sources/LeaksFinder/**/*.m',
                           'Sources/Logs/**/*.m',
-                          'Sources/Monitor/**/*.m',
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',
-                          'Sources/GCDTimer/**/*.m',
                           'Sources/Window/**/*.m',
                           ]
   s.dependency "FBRetainCycleDetector"
