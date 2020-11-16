@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38164F7224EF813C00C54BCC /* FPSCounter.swift */; };
 		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
 		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
@@ -25,12 +24,6 @@
 		3826DB5224EE5BF5003DE040 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DE24EE5BF4003DE040 /* Device.swift */; };
 		3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DF24EE5BF4003DE040 /* AboutViewController.swift */; };
 		3826DB5424EE5BF5003DE040 /* CrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E024EE5BF4003DE040 /* CrashCell.swift */; };
-		3826DB5524EE5BF5003DE040 /* _DebugMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */; };
-		3826DB5624EE5BF5003DE040 /* _DebugMemoryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9E324EE5BF4003DE040 /* _DebugMemoryMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DB5724EE5BF5003DE040 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9E424EE5BF4003DE040 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DB5824EE5BF5003DE040 /* _DebugMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DB5924EE5BF5003DE040 /* _DebugMemoryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */; };
-		3826DB5A24EE5BF5003DE040 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */; };
 		3826DB5D24EE5BF5003DE040 /* NSArray+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB5E24EE5BF5003DE040 /* NSSet+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9ED24EE5BF4003DE040 /* NSSet+_LeaksFinder.m */; };
 		3826DB5F24EE5BF5003DE040 /* NSObject+_LeaksFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9EE24EE5BF4003DE040 /* NSObject+_LeaksFinder.m */; };
@@ -412,10 +405,6 @@
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
-		3826E16E24EEA00C003DE040 /* _DebugCpuMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826E17124EEA00C003DE040 /* _DebugCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */; };
-		3827360D250211740066DB00 /* _GCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3827360B250211740066DB00 /* _GCDTimerManager.m */; };
-		3827360E250211740066DB00 /* _GCDTimerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3827360C250211740066DB00 /* _GCDTimerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -430,7 +419,6 @@
 
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38164F7224EF813C00C54BCC /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
 		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
 		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
@@ -448,12 +436,6 @@
 		3826D9DE24EE5BF4003DE040 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		3826D9DF24EE5BF4003DE040 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3826D9E024EE5BF4003DE040 /* CrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashCell.swift; sourceTree = "<group>"; };
-		3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMonitor.m; sourceTree = "<group>"; };
-		3826D9E324EE5BF4003DE040 /* _DebugMemoryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMemoryMonitor.h; sourceTree = "<group>"; };
-		3826D9E424EE5BF4003DE040 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
-		3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugMonitor.h; sourceTree = "<group>"; };
-		3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugMemoryMonitor.m; sourceTree = "<group>"; };
-		3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
 		3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+_LeaksFinder.h"; sourceTree = "<group>"; };
 		3826D9ED24EE5BF4003DE040 /* NSSet+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+_LeaksFinder.m"; sourceTree = "<group>"; };
 		3826D9EE24EE5BF4003DE040 /* NSObject+_LeaksFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+_LeaksFinder.m"; sourceTree = "<group>"; };
@@ -836,10 +818,6 @@
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
-		3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugCpuMonitor.h; sourceTree = "<group>"; };
-		3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugCpuMonitor.m; sourceTree = "<group>"; };
-		3827360B250211740066DB00 /* _GCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GCDTimerManager.m; sourceTree = "<group>"; };
-		3827360C250211740066DB00 /* _GCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GCDTimerManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -893,10 +871,8 @@
 		3826D9CD24EE5BF4003DE040 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3827360A250211740066DB00 /* GCDTimer */,
 				3826D9CE24EE5BF4003DE040 /* Core */,
 				3826D9D424EE5BF4003DE040 /* App */,
-				3826D9E124EE5BF4003DE040 /* Monitor */,
 				3826D9EB24EE5BF4003DE040 /* LeaksFinder */,
 				3826DA0824EE5BF4003DE040 /* Resources */,
 				3826DABB24EE5BF5003DE040 /* Network */,
@@ -940,22 +916,6 @@
 				3826D9E024EE5BF4003DE040 /* CrashCell.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		3826D9E124EE5BF4003DE040 /* Monitor */ = {
-			isa = PBXGroup;
-			children = (
-				38164F7224EF813C00C54BCC /* FPSCounter.swift */,
-				3826D9E324EE5BF4003DE040 /* _DebugMemoryMonitor.h */,
-				3826D9E624EE5BF4003DE040 /* _DebugMemoryMonitor.m */,
-				3826E16A24EEA00C003DE040 /* _DebugCpuMonitor.h */,
-				3826E16D24EEA00C003DE040 /* _DebugCpuMonitor.m */,
-				3826D9E424EE5BF4003DE040 /* _DebugConsoleLabel.h */,
-				3826D9E724EE5BF4003DE040 /* _DebugConsoleLabel.m */,
-				3826D9E524EE5BF4003DE040 /* _DebugMonitor.h */,
-				3826D9E224EE5BF4003DE040 /* _DebugMonitor.m */,
-			);
-			path = Monitor;
 			sourceTree = "<group>";
 		};
 		3826D9EB24EE5BF4003DE040 /* LeaksFinder */ = {
@@ -1541,15 +1501,6 @@
 			path = CocoaDebugTests;
 			sourceTree = "<group>";
 		};
-		3827360A250211740066DB00 /* GCDTimer */ = {
-			isa = PBXGroup;
-			children = (
-				3827360C250211740066DB00 /* _GCDTimerManager.h */,
-				3827360B250211740066DB00 /* _GCDTimerManager.m */,
-			);
-			path = GCDTimer;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1568,7 +1519,6 @@
 				3826DC7324EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h in Headers */,
 				3826DC4B24EE5BF5003DE040 /* _OCLogStoreManager.h in Headers */,
 				3826DC7224EE5BF5003DE040 /* _GPBArray.h in Headers */,
-				3826DB5624EE5BF5003DE040 /* _DebugMemoryMonitor.h in Headers */,
 				3826DC8E24EE5BF5003DE040 /* _GPBArray_PackagePrivate.h in Headers */,
 				3826DC8924EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h in Headers */,
 				3826DC7124EE5BF5003DE040 /* _GPBWireFormat.h in Headers */,
@@ -1653,17 +1603,13 @@
 				3826DD2F24EE5FD5003DE040 /* _ImageResources.h in Headers */,
 				3826DD2724EE5FD5003DE040 /* _FileTableViewCell.h in Headers */,
 				3826DD2824EE5FD5003DE040 /* _FileInfo.h in Headers */,
-				3826E16E24EEA00C003DE040 /* _DebugCpuMonitor.h in Headers */,
 				3826DD2A24EE5FD5003DE040 /* _DirectoryContentsTableViewController.h in Headers */,
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
 				3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */,
-				3826DB5724EE5BF5003DE040 /* _DebugConsoleLabel.h in Headers */,
 				3826DB6424EE5BF5003DE040 /* _LeaksMessenger.h in Headers */,
-				3826DB5824EE5BF5003DE040 /* _DebugMonitor.h in Headers */,
 				3826DB6124EE5BF5003DE040 /* UINavigationController+_LeaksFinder.h in Headers */,
-				3827360E250211740066DB00 /* _GCDTimerManager.h in Headers */,
 				3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */,
 				3826DC9F24EE5BF5003DE040 /* _Struct.pbobjc.h in Headers */,
 			);
@@ -1963,7 +1909,6 @@
 				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
 				3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */,
 				3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */,
-				3826DB5924EE5BF5003DE040 /* _DebugMemoryMonitor.m in Sources */,
 				3826DE6924EE7B45003DE040 /* FBObjectiveCObject.m in Sources */,
 				3826DC5F24EE5BF5003DE040 /* _WKWebView+Swizzling.m in Sources */,
 				3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */,
@@ -1994,14 +1939,12 @@
 				3826DC7524EE5BF5003DE040 /* _GPBWellKnownTypes.m in Sources */,
 				3826DB6324EE5BF5003DE040 /* UIApplication+_LeaksFinder.m in Sources */,
 				3826DC7D24EE5BF5003DE040 /* _GPBUnknownField.m in Sources */,
-				3826DB5A24EE5BF5003DE040 /* _DebugConsoleLabel.m in Sources */,
 				3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */,
 				3826DC8A24EE5BF5003DE040 /* _SourceContext.pbobjc.m in Sources */,
 				3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */,
 				3826DC7824EE5BF5003DE040 /* _GPBUtilities.m in Sources */,
 				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
 				3826DE6724EE7B45003DE040 /* FBObjectGraphConfiguration.m in Sources */,
-				3826DB5524EE5BF5003DE040 /* _DebugMonitor.m in Sources */,
 				3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */,
 				3826DB6824EE5BF5003DE040 /* UIViewController+_LeaksFinder.m in Sources */,
 				3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */,
@@ -2042,7 +1985,6 @@
 				3826DC6924EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m in Sources */,
 				3826DB6624EE5BF5003DE040 /* UIView+_LeaksFinder.m in Sources */,
 				3826DE5A24EE7B45003DE040 /* FBClassStrongLayoutHelpers.m in Sources */,
-				38164F7324EF813C00C54BCC /* FPSCounter.swift in Sources */,
 				3826DD3024EE5FD5003DE040 /* _ImageResources.m in Sources */,
 				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
 				3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */,
@@ -2056,14 +1998,12 @@
 				3826DC6324EE5BF5003DE040 /* CocoaDebugNavigationController.swift in Sources */,
 				3826DB6C24EE5BF5003DE040 /* NSArray+_LeaksFinder.m in Sources */,
 				3826DC4C24EE5BF5003DE040 /* _ObjcLog.m in Sources */,
-				3826E17124EEA00C003DE040 /* _DebugCpuMonitor.m in Sources */,
 				3826DB4A24EE5BF5003DE040 /* DeviceModel.swift in Sources */,
 				3826DC2E24EE5BF5003DE040 /* NetworkViewController.swift in Sources */,
 				3826DC6524EE5BF5003DE040 /* CocoaDebugTabBarController.swift in Sources */,
 				3826DE5324EE7B45003DE040 /* Struct.mm in Sources */,
 				3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */,
 				3826DE5824EE7B45003DE040 /* FBClassStrongLayout.mm in Sources */,
-				3827360D250211740066DB00 /* _GCDTimerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
