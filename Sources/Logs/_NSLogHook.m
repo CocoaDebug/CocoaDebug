@@ -51,7 +51,7 @@ void cocoadebug_nslog(NSString *_Nullable format, ...) {
 
 + (void)load {
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&orig_nslog};

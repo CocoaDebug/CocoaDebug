@@ -67,7 +67,7 @@ class AppInfoViewController: UITableViewController {
         }
         
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
-        logSwitch.isOn = CocoaDebugSettings.shared.enableLogMonitoring
+        logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
@@ -127,7 +127,7 @@ class AppInfoViewController: UITableViewController {
     }
     
     @objc func logSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.enableLogMonitoring = logSwitch.isOn
+        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
         self.showAlert()
     }
     
