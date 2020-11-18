@@ -17,21 +17,26 @@
 
 @implementation _NSLogHook
 
-static void (*orig_nslog)(NSString *format, ...);
+static void (*orig_nslog)(NSString *_Nullable format, ...);
 
 
-void my_nslog(NSString *format, ...) {
+void cocoadebug_nslog(NSString *_Nullable format, ...) {
     
-    /* method 1 */
+    //avoid crash
+    if (!format) {
+        return;
+    }
+    
+    
+    /* method - 1 */
     va_list vl;
     va_start(vl, format);
-    if (!format) {format = @"";}
     NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
 //    va_end(vl);
     orig_nslog(str);
     
     
-    /* method 2 */
+    /* method - 2 */
 //    va_list va;
 //    va_start(va, format);
 //    NSLogv(format, va);
@@ -49,7 +54,7 @@ void my_nslog(NSString *format, ...) {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rcd_rebinding nslog_rebinding = {"NSLog",my_nslog,(void*)&orig_nslog};
+            struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&orig_nslog};
             rcd_rebind_symbols((struct rcd_rebinding[1]){nslog_rebinding}, 1);
         });
     }
