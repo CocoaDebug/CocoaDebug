@@ -10,7 +10,7 @@
 #import "NSObject+_LeaksFinder.h"
 #import <objc/runtime.h>
 
-extern const void *const kLatestSenderKey;
+extern const void *const kLatestSenderKey_;
 
 @implementation UITouch (_LeaksFinder)
 
@@ -26,7 +26,7 @@ extern const void *const kLatestSenderKey;
     
     if (view) {
         objc_setAssociatedObject([UIApplication sharedApplication],
-                                 kLatestSenderKey,
+                                 kLatestSenderKey_,
                                  @((uintptr_t)view),
                                  OBJC_ASSOCIATION_RETAIN);
     }

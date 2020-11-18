@@ -12,12 +12,12 @@
 #import <UIKit/UIKit.h>
 #import "FBRetainCycleDetector.h"
 
-static const void *const kViewStackKey = &kViewStackKey;
-static const void *const kParentPtrsKey = &kParentPtrsKey;
-const void *const kLatestSenderKey = &kLatestSenderKey;
+static const void *const kViewStackKey_ = &kViewStackKey_;
+static const void *const kParentPtrsKey_ = &kParentPtrsKey_;
+const void *const kLatestSenderKey_ = &kLatestSenderKey_;
 
 //是否开启所有属性的检查
-static const void *const kLeakCheckedKey = &kLeakCheckedKey;
+static const void *const kLeakCheckedKey_ = &kLeakCheckedKey_;
 
 @implementation NSObject (_LeaksFinder)
 
@@ -37,7 +37,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
         return NO;
     }
     
-    NSNumber *senderPtr = objc_getAssociatedObject([UIApplication sharedApplication], kLatestSenderKey);
+    NSNumber *senderPtr = objc_getAssociatedObject([UIApplication sharedApplication], kLatestSenderKey_);
     if ([senderPtr isEqualToNumber:@((uintptr_t)self)]) {
         return NO;
     }
@@ -93,7 +93,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (NSArray *)viewStack {
-    NSArray *viewStack = objc_getAssociatedObject(self, kViewStackKey);
+    NSArray *viewStack = objc_getAssociatedObject(self, kViewStackKey_);
     if (viewStack) {
         return viewStack;
     }
@@ -103,11 +103,11 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (void)setViewStack:(NSArray *)viewStack {
-    objc_setAssociatedObject(self, kViewStackKey, viewStack, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, kViewStackKey_, viewStack, OBJC_ASSOCIATION_RETAIN);
 }
 
 - (NSSet *)parentPtrs {
-    NSSet *parentPtrs = objc_getAssociatedObject(self, kParentPtrsKey);
+    NSSet *parentPtrs = objc_getAssociatedObject(self, kParentPtrsKey_);
     if (!parentPtrs) {
         parentPtrs = [[NSSet alloc] initWithObjects:@((uintptr_t)self), nil];
     }
@@ -115,7 +115,7 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 }
 
 - (void)setParentPtrs:(NSSet *)parentPtrs {
-    objc_setAssociatedObject(self, kParentPtrsKey, parentPtrs, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, kParentPtrsKey_, parentPtrs, OBJC_ASSOCIATION_RETAIN);
 }
 
 + (NSMutableSet *)classNamesWhitelist {
@@ -182,12 +182,12 @@ static const void *const kLeakCheckedKey = &kLeakCheckedKey;
 
 #pragma mark - 是否开启所有属性的检查
 - (BOOL)leakChecked {
-    NSNumber *leak = objc_getAssociatedObject(self, kLeakCheckedKey);
+    NSNumber *leak = objc_getAssociatedObject(self, kLeakCheckedKey_);
     return [leak boolValue];
 }
 
 - (void)setLeakChecked:(BOOL)leakChecked {
-    objc_setAssociatedObject(self, kLeakCheckedKey, @(leakChecked),OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, kLeakCheckedKey_, @(leakChecked),OBJC_ASSOCIATION_RETAIN);
 }
 
 - (BOOL)continueCheckObjecClass:(Class)objectClass {
