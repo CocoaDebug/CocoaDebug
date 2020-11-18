@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, H5LogType) {
-    H5LogTypeNone = 0,
-    H5LogTypeNotNone
+typedef NS_ENUM(NSInteger, WebLogType) {
+    WebLogTypeNone = 0,
+    WebLogTypeNotNone
 };
 
 typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
@@ -32,7 +32,7 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 @property (nonatomic, copy) NSString *str;
 @property (nonatomic, copy) NSAttributedString *attr;
 
-@property (nonatomic, assign) H5LogType h5LogType;
+@property (nonatomic, assign) WebLogType webLogType;
 
 - (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag type:(CocoaDebugToolType)type;
 

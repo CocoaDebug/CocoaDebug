@@ -12,11 +12,11 @@ class LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
     var reachEndColor: Bool = true
-    var reachEndH5: Bool = true
+    var reachEndWeb: Bool = true
     
     var firstInDefault: Bool = true
     var firstInColor: Bool = true
-    var firstInH5: Bool = true
+    var firstInWeb: Bool = true
     
     var selectedSegmentIndex: Int = 0
     var selectedSegment_0: Bool = false
@@ -25,7 +25,7 @@ class LogViewController: UIViewController {
     
     var defaultReloadDataFinish: Bool = true
     var colorReloadDataFinish: Bool = true
-    var h5ReloadDataFinish: Bool = true
+    var webReloadDataFinish: Bool = true
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -43,11 +43,11 @@ class LogViewController: UIViewController {
     var colorCacheModels: Array<_OCLogModel>?
     var colorSearchModels: Array<_OCLogModel>?
     
-    @IBOutlet weak var h5TableView: UITableView!
-    @IBOutlet weak var h5SearchBar: UISearchBar!
-    var h5Models: [_OCLogModel] = [_OCLogModel]()
-    var h5CacheModels: Array<_OCLogModel>?
-    var h5SearchModels: Array<_OCLogModel>?
+    @IBOutlet weak var webTableView: UITableView!
+    @IBOutlet weak var webSearchBar: UISearchBar!
+    var webModels: [_OCLogModel] = [_OCLogModel]()
+    var webCacheModels: Array<_OCLogModel>?
+    var webSearchModels: Array<_OCLogModel>?
     
     
     
@@ -97,22 +97,22 @@ class LogViewController: UIViewController {
         }
         else
         {
-            guard let h5CacheModels = h5CacheModels else {return}
-            h5SearchModels = h5CacheModels
+            guard let webCacheModels = webCacheModels else {return}
+            webSearchModels = webCacheModels
             
             if searchText == "" {
-                h5Models = h5CacheModels
+                webModels = webCacheModels
             } else {
-                guard let h5SearchModels = h5SearchModels else {return}
+                guard let webSearchModels = webSearchModels else {return}
                 
-                for _ in h5SearchModels {
-                    if let index = self.h5SearchModels?.firstIndex(where: { (model) -> Bool in
+                for _ in webSearchModels {
+                    if let index = self.webSearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
-                        self.h5SearchModels?.remove(at: index)
+                        self.webSearchModels?.remove(at: index)
                     }
                 }
-                h5Models = self.h5SearchModels ?? []
+                webModels = self.webSearchModels ?? []
             }
         }
     }
@@ -135,7 +135,7 @@ class LogViewController: UIViewController {
             
             defaultTableView.isHidden = false
             colorTableView.isHidden = true
-            h5TableView.isHidden = true
+            webTableView.isHidden = true
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
@@ -179,7 +179,7 @@ class LogViewController: UIViewController {
             
             defaultTableView.isHidden = true
             colorTableView.isHidden = false
-            h5TableView.isHidden = true
+            webTableView.isHidden = true
             
             if needReloadData == false && colorModels.count > 0 {return}
             
@@ -210,45 +210,45 @@ class LogViewController: UIViewController {
         }
         else
         {
-            if h5ReloadDataFinish == false {
+            if webReloadDataFinish == false {
                 return
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.h5SearchBar.isHidden == true {
-                    self?.h5SearchBar.isHidden = false
+                if self?.webSearchBar.isHidden == true {
+                    self?.webSearchBar.isHidden = false
                 }
             }
             
             
             defaultTableView.isHidden = true
             colorTableView.isHidden = true
-            h5TableView.isHidden = false
+            webTableView.isHidden = false
             
-            if needReloadData == false && h5Models.count > 0 {return}
+            if needReloadData == false && webModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().h5LogArray {
-                h5Models = arr as! [_OCLogModel]
+            if let arr = _OCLogStoreManager.shared().webLogArray {
+                webModels = arr as! [_OCLogModel]
             }
             
-            self.h5CacheModels = self.h5Models
+            self.webCacheModels = self.webModels
             
-            self.searchLogic(CocoaDebugSettings.shared.logSearchWordH5 ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordWeb ?? "")
             
             dispatch_main_async_safe { [weak self] in
-                self?.h5ReloadDataFinish = false
-                self?.h5TableView.reloadData {
-                    self?.h5ReloadDataFinish = true
+                self?.webReloadDataFinish = false
+                self?.webTableView.reloadData {
+                    self?.webReloadDataFinish = true
                 }
                 
                 if needScrollToEnd == false {return}
                 
                 //table下滑到底部
-                guard let count = self?.h5Models.count else {return}
+                guard let count = self?.webModels.count else {return}
                 if count > 0 {
-                    guard let firstInH5 = self?.firstInH5 else {return}
-                    self?.h5TableView.tableViewScrollToBottom(animated: !firstInH5)
-                    self?.firstInH5 = false
+                    guard let firstInWeb = self?.firstInWeb else {return}
+                    self?.webTableView.tableViewScrollToBottom(animated: !firstInWeb)
+                    self?.firstInWeb = false
                 }
             }
         }
@@ -305,17 +305,17 @@ class LogViewController: UIViewController {
         
         
         
-        h5TableView.tableFooterView = UIView()
-        h5TableView.delegate = self
-        h5TableView.dataSource = self
-//        h5TableView.rowHeight = UITableViewAutomaticDimension
-        h5SearchBar.delegate = self
-        h5SearchBar.text = CocoaDebugSettings.shared.logSearchWordH5
-        h5SearchBar.isHidden = true
+        webTableView.tableFooterView = UIView()
+        webTableView.delegate = self
+        webTableView.dataSource = self
+//        webTableView.rowHeight = UITableViewAutomaticDimension
+        webSearchBar.delegate = self
+        webSearchBar.text = CocoaDebugSettings.shared.logSearchWordWeb
+        webSearchBar.isHidden = true
         //抖动bug
-        h5TableView.estimatedRowHeight = 0
-        h5TableView.estimatedSectionHeaderHeight = 0
-        h5TableView.estimatedSectionFooterHeight = 0
+        webTableView.estimatedRowHeight = 0
+        webTableView.estimatedSectionHeaderHeight = 0
+        webTableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -348,7 +348,7 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar2.backgroundColor = .white
         textFieldInsideSearchBar2.returnKeyType = .default
 
-        let textFieldInsideSearchBar3 = h5SearchBar.value(forKey: "searchField") as! UITextField
+        let textFieldInsideSearchBar3 = webSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar3.leftViewMode = .never
         textFieldInsideSearchBar3.leftView = nil
         textFieldInsideSearchBar3.backgroundColor = .white
@@ -359,7 +359,7 @@ class LogViewController: UIViewController {
         super.viewWillDisappear(animated)
         defaultSearchBar.resignFirstResponder()
         colorSearchBar.resignFirstResponder()
-        h5SearchBar.resignFirstResponder()
+        webSearchBar.resignFirstResponder()
     }
     
     deinit {
@@ -384,9 +384,9 @@ class LogViewController: UIViewController {
         }
         else
         {
-            h5TableView.tableViewScrollToBottom(animated: true)
-            h5SearchBar.resignFirstResponder()
-            reachEndH5 = true
+            webTableView.tableViewScrollToBottom(animated: true)
+            webSearchBar.resignFirstResponder()
+            reachEndWeb = true
         }
     }
     
@@ -405,9 +405,9 @@ class LogViewController: UIViewController {
         }
         else
         {
-            h5TableView.tableViewScrollToHeader(animated: true)
-            h5SearchBar.resignFirstResponder()
-            reachEndH5 = false
+            webTableView.tableViewScrollToHeader(animated: true)
+            webSearchBar.resignFirstResponder()
+            reachEndWeb = false
         }
     }
     
@@ -443,16 +443,16 @@ class LogViewController: UIViewController {
         }
         else
         {
-            h5Models = []
-            h5CacheModels = []
-//            h5SearchBar.text = nil
-            h5SearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordH5 = nil
+            webModels = []
+            webCacheModels = []
+//            webSearchBar.text = nil
+            webSearchBar.resignFirstResponder()
+//            CocoaDebugSettings.shared.logSearchWordWeb = nil
             
-            _OCLogStoreManager.shared().resetH5Logs()
+            _OCLogStoreManager.shared().resetWebLogs()
             
             dispatch_main_async_safe { [weak self] in
-                self?.h5TableView.reloadData()
+                self?.webTableView.reloadData()
             }
         }
     }
@@ -463,10 +463,10 @@ class LogViewController: UIViewController {
         
         if selectedSegmentIndex == 0 {
             colorSearchBar.resignFirstResponder()
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
         } else if selectedSegmentIndex == 1 {
             defaultSearchBar.resignFirstResponder()
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
         } else {
             defaultSearchBar.resignFirstResponder()
             colorSearchBar.resignFirstResponder()
@@ -499,7 +499,7 @@ class LogViewController: UIViewController {
         } else if selectedSegmentIndex == 1 {
             colorSearchBar.resignFirstResponder()
         } else {
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
         }
     }
     
@@ -512,7 +512,7 @@ class LogViewController: UIViewController {
             } else if self?.selectedSegmentIndex == 1 {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndColor ?? true, needReloadData: true)
             } else {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndH5 ?? true, needReloadData: true)
+                self?.reloadLogs(needScrollToEnd: self?.reachEndWeb ?? true, needReloadData: true)
             }
         }
     }
@@ -527,7 +527,7 @@ extension LogViewController: UITableViewDataSource {
         } else if tableView == colorTableView {
             return colorModels.count
         } else {
-            return h5Models.count
+            return webModels.count
         }
     }
     
@@ -555,11 +555,11 @@ extension LogViewController: UITableViewDataSource {
         else
         {
             //否则偶尔crash
-            if indexPath.row >= h5Models.count {
+            if indexPath.row >= webModels.count {
                 return UITableViewCell()
             }
             
-            cell.model = h5Models[indexPath.row]
+            cell.model = webModels[indexPath.row]
         }
         
         return cell
@@ -580,18 +580,21 @@ extension LogViewController: UITableViewDelegate {
             defaultSearchBar.resignFirstResponder()
             logTitleString = "Log"
             model = defaultModels[indexPath.row]
+            reachEndDefault = false
         }
         else if tableView == colorTableView
         {
             colorSearchBar.resignFirstResponder()
             logTitleString = "Color"
             model = colorModels[indexPath.row]
+            reachEndColor = false
         }
         else
         {
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
             logTitleString = "Web"
-            model = h5Models[indexPath.row]
+            model = webModels[indexPath.row]
+            reachEndWeb = false
         }
         
 
@@ -611,7 +614,7 @@ extension LogViewController: UITableViewDelegate {
         } else if tableView == colorTableView {
             model = colorModels[indexPath.row]
         } else {
-            model = h5Models[indexPath.row]
+            model = webModels[indexPath.row]
         }
         
         
@@ -663,19 +666,19 @@ extension LogViewController: UITableViewDelegate {
         }
         else
         {
-            let model = h5Models[indexPath.row]
+            let model = webModels[indexPath.row]
             var title = "Tag"
             if model.isTag == true {title = "UnTag"}
             
             let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
                 model.isTag = !model.isTag
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.h5TableView.reloadData()
+                    self?.webTableView.reloadData()
                 }
                 completionHandler(true)
             }
             
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
             left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
@@ -728,22 +731,22 @@ extension LogViewController: UITableViewDelegate {
         else
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.h5Models else {return}
+                guard let models = self?.webModels else {return}
                 
                 let model: _OCLogModel = models[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self?.h5Models.remove(at: indexPath.row)
-                _ = self?.h5CacheModels?.firstIndex(of: model).map { self?.h5CacheModels?.remove(at: $0) }
-                _ = self?.h5SearchModels?.firstIndex(of: model).map { self?.h5SearchModels?.remove(at: $0) }
+                self?.webModels.remove(at: indexPath.row)
+                _ = self?.webCacheModels?.firstIndex(of: model).map { self?.webCacheModels?.remove(at: $0) }
+                _ = self?.webSearchModels?.firstIndex(of: model).map { self?.webSearchModels?.remove(at: $0) }
                 
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.h5TableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.webTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
                 completionHandler(true)
             }
             
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
             return UISwipeActionsConfiguration(actions: [delete])
         }
     }
@@ -795,15 +798,15 @@ extension LogViewController: UITableViewDelegate {
         {
             if (editingStyle == .delete) {
                 
-                let model: _OCLogModel = h5Models[indexPath.row]
+                let model: _OCLogModel = webModels[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self.h5Models.remove(at: indexPath.row)
-                _ = self.h5CacheModels?.firstIndex(of: model).map { self.h5CacheModels?.remove(at: $0) }
-                _ = self.h5SearchModels?.firstIndex(of: model).map { self.h5SearchModels?.remove(at: $0) }
+                self.webModels.remove(at: indexPath.row)
+                _ = self.webCacheModels?.firstIndex(of: model).map { self.webCacheModels?.remove(at: $0) }
+                _ = self.webSearchModels?.firstIndex(of: model).map { self.webSearchModels?.remove(at: $0) }
                 
                 self.dispatch_main_async_safe { [weak self] in
-                    self?.h5TableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.webTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
             }
         }
@@ -819,7 +822,7 @@ extension LogViewController: UIScrollViewDelegate {
         } else if scrollView == colorTableView {
             colorSearchBar.resignFirstResponder()
         } else {
-            h5SearchBar.resignFirstResponder()
+            webSearchBar.resignFirstResponder()
         }
     }
     
@@ -829,7 +832,7 @@ extension LogViewController: UIScrollViewDelegate {
         } else if scrollView == colorTableView {
             reachEndColor = false
         } else {
-            reachEndH5 = false
+            reachEndWeb = false
         }
     }
 }
@@ -864,11 +867,11 @@ extension LogViewController: UISearchBarDelegate {
         }
         else
         {
-            CocoaDebugSettings.shared.logSearchWordH5 = searchText
+            CocoaDebugSettings.shared.logSearchWordWeb = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
-                self?.h5TableView.reloadData()
+                self?.webTableView.reloadData()
             }
         }
     }

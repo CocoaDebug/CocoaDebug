@@ -61,7 +61,7 @@
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
     if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-        newLog.h5LogType = H5LogTypeNotNone;
+        newLog.webLogType = WebLogTypeNotNone;
     }
     [[_OCLogStoreManager shared] addLog:newLog];
     

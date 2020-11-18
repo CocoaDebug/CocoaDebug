@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray<_OCLogModel *> *defaultLogArray;
 @property (nonatomic, strong) NSMutableArray<_OCLogModel *> *colorLogArray;
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *h5LogArray;
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *webLogArray;
 
 + (instancetype)shared;
 
@@ -22,7 +22,7 @@
 
 - (void)resetDefaultLogs;
 - (void)resetColorLogs;
-- (void)resetH5Logs;
+- (void)resetWebLogs;
 
 @end
 

@@ -37,7 +37,7 @@
         
         self.defaultLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
         self.colorLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
-        self.h5LogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
     }
     return self;
 }
@@ -46,7 +46,7 @@
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
-    if (log.h5LogType == H5LogTypeNone)
+    if (log.webLogType == WebLogTypeNone)
     {
         if (log.color == [UIColor whiteColor] || log.color == nil)
         {
@@ -73,14 +73,14 @@
     }
     else
     {
-        //H5
-        if ([self.h5LogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
-            if (self.h5LogArray.count > 0) {
-                [self.h5LogArray removeObjectAtIndex:0];
+        //web
+        if ([self.webLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+            if (self.webLogArray.count > 0) {
+                [self.webLogArray removeObjectAtIndex:0];
             }
         }
         
-        [self.h5LogArray addObject:log];
+        [self.webLogArray addObject:log];
     }
     
     dispatch_semaphore_signal(semaphore);
@@ -90,7 +90,7 @@
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
-    if (log.h5LogType == H5LogTypeNone)
+    if (log.webLogType == WebLogTypeNone)
     {
         if (log.color == [UIColor whiteColor] || log.color == nil) {
             //白色
@@ -102,8 +102,8 @@
     }
     else
     {
-        //H5
-        [self.h5LogArray removeObject:log];
+        //web
+        [self.webLogArray removeObject:log];
     }
     
     dispatch_semaphore_signal(semaphore);
@@ -123,10 +123,10 @@
     dispatch_semaphore_signal(semaphore);
 }
 
-- (void)resetH5Logs
+- (void)resetWebLogs
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    [self.h5LogArray removeAllObjects];
+    [self.webLogArray removeAllObjects];
     dispatch_semaphore_signal(semaphore);
 }
 
