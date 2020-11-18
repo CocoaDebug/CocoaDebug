@@ -102,6 +102,11 @@ class AppInfoViewController: UITableViewController {
         
         alert.addAction(cancelAction)
         alert.addAction(okAction)
+        
+        alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -191,6 +196,11 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -200,6 +210,11 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied bundle id to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -213,6 +228,11 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied server to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
     }

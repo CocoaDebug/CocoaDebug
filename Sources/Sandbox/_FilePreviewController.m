@@ -146,6 +146,11 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not supported" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancelAction];
+    
+    alert.popoverPresentationController.permittedArrowDirections = 0;
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 

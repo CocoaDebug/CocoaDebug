@@ -332,6 +332,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:handler]];
+    
+    alert.popoverPresentationController.permittedArrowDirections = 0;
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+    
     return alert;
 }
 
@@ -339,6 +344,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not supported" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancelAction];
+    
+    alert.popoverPresentationController.permittedArrowDirections = 0;
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -411,6 +421,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
         [self deleteAllFiles];
     }];
+    
+    alert.popoverPresentationController.permittedArrowDirections = 0;
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -433,6 +448,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     UIAlertController *alert = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
         [self deleteSelectedFiles];
     }];
+    
+    alert.popoverPresentationController.permittedArrowDirections = 0;
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -565,6 +585,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [self deleteSelectedFile];
         }]];
+        
+        alert.popoverPresentationController.permittedArrowDirections = 0;
+        alert.popoverPresentationController.sourceView = self.view;
+        alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 0, 0);
+        
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
