@@ -22,15 +22,16 @@ static void (*orig_nslog)(NSString *format, ...);
 
 void my_nslog(NSString *format, ...) {
     
-    /* 方法1 */
+    /* method 1 */
     va_list vl;
     va_start(vl, format);
+    if (!format) {format = @"";}
     NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
 //    va_end(vl);
     orig_nslog(str);
     
     
-    /* 方法2 */
+    /* method 2 */
 //    va_list va;
 //    va_start(va, format);
 //    NSLogv(format, va);
