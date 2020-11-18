@@ -30,7 +30,12 @@ class LogCell: UITableViewCell {
             if model.isTag == true {
                 self.contentView.backgroundColor = "#007aff".hexColor
             } else {
-                self.contentView.backgroundColor = .black
+                //isSelected
+                if model.isSelected == true {
+                    self.contentView.backgroundColor = "#222222".hexColor
+                } else {
+                    self.contentView.backgroundColor = .black
+                }
             }
         }
     }

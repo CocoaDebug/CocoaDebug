@@ -581,6 +581,12 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Log"
             model = defaultModels[indexPath.row]
             reachEndDefault = false
+            
+            if let index = defaultModels.firstIndex(where: { (model_) -> Bool in
+                return model_.isSelected == true
+            }) {
+                defaultModels[index].isSelected = false
+            }
         }
         else if tableView == colorTableView
         {
@@ -588,6 +594,12 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Color"
             model = colorModels[indexPath.row]
             reachEndColor = false
+            
+            if let index = colorModels.firstIndex(where: { (model_) -> Bool in
+                return model_.isSelected == true
+            }) {
+                colorModels[index].isSelected = false
+            }
         }
         else
         {
@@ -595,14 +607,25 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Web"
             model = webModels[indexPath.row]
             reachEndWeb = false
+            
+            if let index = webModels.firstIndex(where: { (model_) -> Bool in
+                return model_.isSelected == true
+            }) {
+                webModels[index].isSelected = false
+            }
         }
         
+        model.isSelected = true
 
         let vc = JsonViewController.instanceFromStoryBoard()
         vc.editType = .log
         vc.logTitleString = logTitleString
         vc.logModel = model
         navigationController?.pushViewController(vc, animated: true)
+        
+        vc.justCancelCallback = {
+            tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

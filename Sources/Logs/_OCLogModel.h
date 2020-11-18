@@ -29,6 +29,7 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 @property (nonatomic, strong) UIColor *color;
 
 @property (nonatomic, assign) BOOL isTag;
+@property (nonatomic, assign) BOOL isSelected;
 @property (nonatomic, copy) NSString *str;
 @property (nonatomic, copy) NSAttributedString *attr;
 

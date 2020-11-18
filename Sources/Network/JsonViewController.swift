@@ -36,6 +36,7 @@ class JsonViewController: UIViewController {
     //log
     var logTitleString: String?
     var logModel: _OCLogModel?
+    var justCancelCallback:(() -> Void)?
 
     static func instanceFromStoryBoard() -> JsonViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
@@ -76,6 +77,10 @@ class JsonViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        navigationController?.hidesBarsOnSwipe = false
+        
+        if let justCancelCallback = justCancelCallback {
+            justCancelCallback()
+        }
     }
     
     override func viewDidLoad() {
