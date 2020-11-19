@@ -1,13 +1,4 @@
-platform :ios, '8.0'
-
-install! 'cocoapods', :deterministic_uuids => false, :warn_for_multiple_pod_sources => false, :warn_for_unused_master_specs_repo => false
-
-use_frameworks!
-
-inhibit_all_warnings!
-
 target 'Example_Objc' do
-  
-  pod 'CocoaDebug', :path=> '../../CocoaDebug', :configurations => ['Debug'], :inhibit_warnings => true
-
+    use_frameworks!
+    pod 'CocoaDebug', :configurations => ['Debug']
 end
