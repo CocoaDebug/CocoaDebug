@@ -573,54 +573,39 @@ extension LogViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         var logTitleString = ""
-        var model: _OCLogModel
+        var models_: [_OCLogModel]?
 
         if tableView == defaultTableView
         {
             defaultSearchBar.resignFirstResponder()
-            logTitleString = "Log"
-            model = defaultModels[indexPath.row]
             reachEndDefault = false
-            
-            if let index = defaultModels.firstIndex(where: { (model_) -> Bool in
-                return model_.isSelected == true
-            }) {
-                defaultModels[index].isSelected = false
-            }
+            logTitleString = "Log"
+            models_ = defaultModels
         }
         else if tableView == colorTableView
         {
             colorSearchBar.resignFirstResponder()
-            logTitleString = "Color"
-            model = colorModels[indexPath.row]
             reachEndColor = false
-            
-            if let index = colorModels.firstIndex(where: { (model_) -> Bool in
-                return model_.isSelected == true
-            }) {
-                colorModels[index].isSelected = false
-            }
+            logTitleString = "Color"
+            models_ = colorModels
         }
         else
         {
             webSearchBar.resignFirstResponder()
-            logTitleString = "Web"
-            model = webModels[indexPath.row]
             reachEndWeb = false
-            
-            if let index = webModels.firstIndex(where: { (model_) -> Bool in
-                return model_.isSelected == true
-            }) {
-                webModels[index].isSelected = false
-            }
+            logTitleString = "Web"
+            models_ = webModels
         }
-        
-        model.isSelected = true
+
+        //
+        guard let models = models_ else {return}
 
         let vc = JsonViewController.instanceFromStoryBoard()
         vc.editType = .log
         vc.logTitleString = logTitleString
-        vc.logModel = model
+        vc.logModels = models
+        vc.logModel = models[indexPath.row]
+        
         navigationController?.pushViewController(vc, animated: true)
         
         vc.justCancelCallback = {

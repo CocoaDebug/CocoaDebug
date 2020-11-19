@@ -18,6 +18,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     var naviItemTitleLabel: UILabel?
 
     var httpModel: _HttpModel?
+    var httpModels: [_HttpModel]?
     
     var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
@@ -350,6 +351,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         //notification
 //        NotificationCenter.default.removeObserver(self)
 
+        if let index = httpModels?.firstIndex(where: { (model) -> Bool in
+            return model.isSelected == true
+        }) {
+            httpModels?[index].isSelected = false
+        }
+        
+        httpModel?.isSelected = true
+        
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }

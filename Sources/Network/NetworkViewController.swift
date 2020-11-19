@@ -257,17 +257,9 @@ extension NetworkViewController: UITableViewDelegate {
         
         guard let models = models else {return}
         
-        if let index = models.firstIndex(where: { (model_) -> Bool in
-            return model_.isSelected == true
-        }) {
-            models[index].isSelected = false
-        }
-        
-        let model = models[indexPath.row]
-        model.isSelected = true
-        
         let vc: NetworkDetailViewController = NetworkDetailViewController.instanceFromStoryBoard()
-        vc.httpModel = model
+        vc.httpModels = models
+        vc.httpModel = models[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
         
         vc.justCancelCallback = { [weak self] in

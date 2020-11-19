@@ -35,6 +35,7 @@ class JsonViewController: UIViewController {
     
     //log
     var logTitleString: String?
+    var logModels: [_OCLogModel]?
     var logModel: _OCLogModel?
     var justCancelCallback:(() -> Void)?
 
@@ -78,6 +79,14 @@ class JsonViewController: UIViewController {
         super.viewWillDisappear(animated)
 //        navigationController?.hidesBarsOnSwipe = false
         
+        if let index = logModels?.firstIndex(where: { (model) -> Bool in
+            return model.isSelected == true
+        }) {
+            logModels?[index].isSelected = false
+        }
+        
+        logModel?.isSelected = true
+
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
