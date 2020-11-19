@@ -84,3 +84,4 @@
 #import "UIView+_LeaksFinder.h"
 #import "UIViewController+_LeaksFinder.h"
 #import "_Wrappers.pbobjc.h"
+#import "CocoaDebugDeviceInfo.h"

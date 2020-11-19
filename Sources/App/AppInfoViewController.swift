@@ -14,7 +14,6 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var labelBuildNumber: UILabel!
     @IBOutlet weak var labelBundleName: UILabel!
     @IBOutlet weak var labelScreenResolution: UILabel!
-    @IBOutlet weak var labelScreenSize: UILabel!
     @IBOutlet weak var labelDeviceModel: UILabel!
     @IBOutlet weak var labelCrashCount: UILabel!
     @IBOutlet weak var labelBundleID: UILabel!
@@ -47,16 +46,15 @@ class AppInfoViewController: UITableViewController {
         naviItem.titleView = naviItemTitleLabel
         
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
-
-        labelVersionNumber.text = AppInfo.versionNumber
-        labelBuildNumber.text = AppInfo.buildNumber
-        labelBundleName.text = AppInfo.bundleName
-
-        labelScreenResolution.text = Device.screenResolution
-        labelScreenSize.text = "\(Device.screenSize)"
-        labelDeviceModel.text = "\(Device.deviceModel)"
         
-        labelBundleID.text = Bundle.main.bundleIdentifier
+        labelVersionNumber.text = CocoaDebugDeviceInfo.sharedInstance().appVersion
+        labelBuildNumber.text = CocoaDebugDeviceInfo.sharedInstance().appBuiltVersion
+        labelBundleName.text = CocoaDebugDeviceInfo.sharedInstance().appBundleName
+
+        labelScreenResolution.text = "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.width))" + "*" + "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.height))"
+        labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
+        
+        labelBundleID.text = CocoaDebugDeviceInfo.sharedInstance().appBundleID
         labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
         labelserverURL.text = CocoaDebugSettings.shared.serverURL
@@ -170,11 +168,6 @@ extension AppInfoViewController {
                 return 0
             }
         }
-        if indexPath.section == 2 && indexPath.row == 1 {
-            if labelScreenSize.text == "0.0" {
-                return 0
-            }
-        }
         if indexPath.section == 5 && indexPath.row == 0 {
             if labelignoredURLs.text == "0" {
                 if UIScreen.main.scale == 3 {
@@ -191,7 +184,7 @@ extension AppInfoViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 2 {
-            UIPasteboard.general.string = AppInfo.bundleName
+            UIPasteboard.general.string = CocoaDebugDeviceInfo.sharedInstance().appBundleName
             
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
@@ -205,7 +198,7 @@ extension AppInfoViewController {
         }
         
         if indexPath.section == 1 && indexPath.row == 3 {
-            UIPasteboard.general.string = Bundle.main.bundleIdentifier
+            UIPasteboard.general.string = CocoaDebugDeviceInfo.sharedInstance().appBundleID
             
             let alert = UIAlertController.init(title: "copied bundle id to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)

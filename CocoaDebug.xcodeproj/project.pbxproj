@@ -8,20 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
+		3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */; };
+		3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
 		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
 		3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9D224EE5BF4003DE040 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DB4824EE5BF5003DE040 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */; };
 		3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D524EE5BF4003DE040 /* AppInfoViewController.swift */; };
-		3826DB4A24EE5BF5003DE040 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D624EE5BF4003DE040 /* DeviceModel.swift */; };
 		3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D724EE5BF4003DE040 /* CrashStoreManager.swift */; };
-		3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D824EE5BF4003DE040 /* AppInfo.swift */; };
 		3826DB4D24EE5BF5003DE040 /* CrashDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D924EE5BF4003DE040 /* CrashDetailViewController.swift */; };
 		3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DA24EE5BF4003DE040 /* IgnoredURLsViewController.swift */; };
 		3826DB4F24EE5BF5003DE040 /* CrashListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DB24EE5BF4003DE040 /* CrashListViewController.swift */; };
 		3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DC24EE5BF4003DE040 /* _CrashModel.swift */; };
 		3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DD24EE5BF4003DE040 /* CrashLogger.swift */; };
-		3826DB5224EE5BF5003DE040 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DE24EE5BF4003DE040 /* Device.swift */; };
 		3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9DF24EE5BF4003DE040 /* AboutViewController.swift */; };
 		3826DB5424EE5BF5003DE040 /* CrashCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9E024EE5BF4003DE040 /* CrashCell.swift */; };
 		3826DB5D24EE5BF5003DE040 /* NSArray+_LeaksFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -420,20 +419,19 @@
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
+		3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugDeviceInfo.m; sourceTree = "<group>"; };
+		3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugDeviceInfo.h; sourceTree = "<group>"; };
 		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
 		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
 		3826D9D224EE5BF4003DE040 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
 		3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CocoaDebug+Extensions.swift"; sourceTree = "<group>"; };
 		3826D9D524EE5BF4003DE040 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
-		3826D9D624EE5BF4003DE040 /* DeviceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		3826D9D724EE5BF4003DE040 /* CrashStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashStoreManager.swift; sourceTree = "<group>"; };
-		3826D9D824EE5BF4003DE040 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		3826D9D924EE5BF4003DE040 /* CrashDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashDetailViewController.swift; sourceTree = "<group>"; };
 		3826D9DA24EE5BF4003DE040 /* IgnoredURLsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoredURLsViewController.swift; sourceTree = "<group>"; };
 		3826D9DB24EE5BF4003DE040 /* CrashListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashListViewController.swift; sourceTree = "<group>"; };
 		3826D9DC24EE5BF4003DE040 /* _CrashModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _CrashModel.swift; sourceTree = "<group>"; };
 		3826D9DD24EE5BF4003DE040 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
-		3826D9DE24EE5BF4003DE040 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		3826D9DF24EE5BF4003DE040 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3826D9E024EE5BF4003DE040 /* CrashCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashCell.swift; sourceTree = "<group>"; };
 		3826D9EC24EE5BF4003DE040 /* NSArray+_LeaksFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+_LeaksFinder.h"; sourceTree = "<group>"; };
@@ -890,6 +888,8 @@
 		3826D9CE24EE5BF4003DE040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */,
+				3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */,
 				3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */,
 				3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */,
 				3826D9D224EE5BF4003DE040 /* CocoaDebug.h */,
@@ -903,15 +903,12 @@
 			isa = PBXGroup;
 			children = (
 				3826D9D524EE5BF4003DE040 /* AppInfoViewController.swift */,
-				3826D9D624EE5BF4003DE040 /* DeviceModel.swift */,
 				3826D9D724EE5BF4003DE040 /* CrashStoreManager.swift */,
-				3826D9D824EE5BF4003DE040 /* AppInfo.swift */,
 				3826D9D924EE5BF4003DE040 /* CrashDetailViewController.swift */,
 				3826D9DA24EE5BF4003DE040 /* IgnoredURLsViewController.swift */,
 				3826D9DB24EE5BF4003DE040 /* CrashListViewController.swift */,
 				3826D9DC24EE5BF4003DE040 /* _CrashModel.swift */,
 				3826D9DD24EE5BF4003DE040 /* CrashLogger.swift */,
-				3826D9DE24EE5BF4003DE040 /* Device.swift */,
 				3826D9DF24EE5BF4003DE040 /* AboutViewController.swift */,
 				3826D9E024EE5BF4003DE040 /* CrashCell.swift */,
 			);
@@ -1605,6 +1602,7 @@
 				3826DD2824EE5FD5003DE040 /* _FileInfo.h in Headers */,
 				3826DD2A24EE5FD5003DE040 /* _DirectoryContentsTableViewController.h in Headers */,
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
+				3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */,
 				3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
 				3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */,
@@ -1905,6 +1903,7 @@
 				3826DC6E24EE5BF5003DE040 /* _GPBExtensionRegistry.m in Sources */,
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
+				3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */,
 				3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */,
 				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
 				3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */,
@@ -1961,7 +1960,6 @@
 				3826DC5E24EE5BF5003DE040 /* _Swizzling.m in Sources */,
 				3826DE5B24EE7B45003DE040 /* FBObjectInStructReference.m in Sources */,
 				3826DC8724EE5BF5003DE040 /* _GPBMessage.m in Sources */,
-				3826DB5224EE5BF5003DE040 /* Device.swift in Sources */,
 				3826DC2F24EE5BF5003DE040 /* NetworkDetailViewController.swift in Sources */,
 				3826DB5E24EE5BF5003DE040 /* NSSet+_LeaksFinder.m in Sources */,
 				3826DC9324EE5BF5003DE040 /* _Duration.pbobjc.m in Sources */,
@@ -1987,7 +1985,6 @@
 				3826DE5A24EE7B45003DE040 /* FBClassStrongLayoutHelpers.m in Sources */,
 				3826DD3024EE5FD5003DE040 /* _ImageResources.m in Sources */,
 				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
-				3826DB4C24EE5BF5003DE040 /* AppInfo.swift in Sources */,
 				3826DE4D24EE7B45003DE040 /* FBBlockStrongRelationDetector.m in Sources */,
 				3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
@@ -1998,7 +1995,6 @@
 				3826DC6324EE5BF5003DE040 /* CocoaDebugNavigationController.swift in Sources */,
 				3826DB6C24EE5BF5003DE040 /* NSArray+_LeaksFinder.m in Sources */,
 				3826DC4C24EE5BF5003DE040 /* _ObjcLog.m in Sources */,
-				3826DB4A24EE5BF5003DE040 /* DeviceModel.swift in Sources */,
 				3826DC2E24EE5BF5003DE040 /* NetworkViewController.swift in Sources */,
 				3826DC6524EE5BF5003DE040 /* CocoaDebugTabBarController.swift in Sources */,
 				3826DE5324EE7B45003DE040 /* Struct.mm in Sources */,
