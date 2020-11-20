@@ -16,7 +16,7 @@
 
 @implementation _NSLogHook
 
-static void (*orig_nslog)(NSString * format, ...);
+static void (*_original_nslog)(NSString * format, ...);
 
 
 void cocoadebug_nslog(NSString * format, ...) {
@@ -30,7 +30,7 @@ void cocoadebug_nslog(NSString * format, ...) {
     NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
     
     //
-    orig_nslog(str);
+    _original_nslog(str);
     
     //
     [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
@@ -44,7 +44,7 @@ void cocoadebug_nslog(NSString * format, ...) {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&orig_nslog};
+            struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&_original_nslog};
             rcd_rebind_symbols((struct rcd_rebinding[1]){nslog_rebinding}, 1);
         });
     }

@@ -161,15 +161,15 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var logSearchWordDefault: String? = nil {
+    @objc public var logSearchWordNormal: String? = nil {
         didSet {
-            UserDefaults.standard.set(logSearchWordDefault, forKey: "logSearchWordDefault_CocoaDebug")
+            UserDefaults.standard.set(logSearchWordNormal, forKey: "logSearchWordNormal_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var logSearchWordColor: String? = nil {
+    @objc public var logSearchWordPrintf: String? = nil {
         didSet {
-            UserDefaults.standard.set(logSearchWordColor, forKey: "logSearchWordColor_CocoaDebug")
+            UserDefaults.standard.set(logSearchWordPrintf, forKey: "logSearchWordPrintf_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -238,8 +238,8 @@ import Foundation
         networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")
         bubbleFrameX = UserDefaults.standard.float(forKey: "bubbleFrameX_CocoaDebug")
         bubbleFrameY = UserDefaults.standard.float(forKey: "bubbleFrameY_CocoaDebug")
-        logSearchWordDefault = UserDefaults.standard.string(forKey: "logSearchWordDefault_CocoaDebug")
-        logSearchWordColor = UserDefaults.standard.string(forKey: "logSearchWordColor_CocoaDebug")
+        logSearchWordNormal = UserDefaults.standard.string(forKey: "logSearchWordNormal_CocoaDebug")
+        logSearchWordPrintf = UserDefaults.standard.string(forKey: "logSearchWordPrintf_CocoaDebug")
         logSearchWordWeb = UserDefaults.standard.string(forKey: "logSearchWordWeb_CocoaDebug")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
         mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"

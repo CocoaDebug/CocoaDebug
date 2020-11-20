@@ -11,11 +11,11 @@ import UIKit
 class LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
-    var reachEndColor: Bool = true
+    var reachEndPrintf: Bool = true
     var reachEndWeb: Bool = true
     
     var firstInDefault: Bool = true
-    var firstInColor: Bool = true
+    var firstInPrintf: Bool = true
     var firstInWeb: Bool = true
     
     var selectedSegmentIndex: Int = 0
@@ -24,7 +24,7 @@ class LogViewController: UIViewController {
     var selectedSegment_2: Bool = false
     
     var defaultReloadDataFinish: Bool = true
-    var colorReloadDataFinish: Bool = true
+    var printfReloadDataFinish: Bool = true
     var webReloadDataFinish: Bool = true
     
     
@@ -37,11 +37,11 @@ class LogViewController: UIViewController {
     var defaultCacheModels: Array<_OCLogModel>?
     var defaultSearchModels: Array<_OCLogModel>?
     
-    @IBOutlet weak var colorTableView: UITableView!
-    @IBOutlet weak var colorSearchBar: UISearchBar!
-    var colorModels: [_OCLogModel] = [_OCLogModel]()
-    var colorCacheModels: Array<_OCLogModel>?
-    var colorSearchModels: Array<_OCLogModel>?
+    @IBOutlet weak var printfTableView: UITableView!
+    @IBOutlet weak var printfSearchBar: UISearchBar!
+    var printfModels: [_OCLogModel] = [_OCLogModel]()
+    var printfCacheModels: Array<_OCLogModel>?
+    var printfSearchModels: Array<_OCLogModel>?
     
     @IBOutlet weak var webTableView: UITableView!
     @IBOutlet weak var webSearchBar: UISearchBar!
@@ -77,22 +77,22 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            guard let colorCacheModels = colorCacheModels else {return}
-            colorSearchModels = colorCacheModels
+            guard let printfCacheModels = printfCacheModels else {return}
+            printfSearchModels = printfCacheModels
             
             if searchText == "" {
-                colorModels = colorCacheModels
+                printfModels = printfCacheModels
             } else {
-                guard let colorSearchModels = colorSearchModels else {return}
+                guard let printfSearchModels = printfSearchModels else {return}
                 
-                for _ in colorSearchModels {
-                    if let index = self.colorSearchModels?.firstIndex(where: { (model) -> Bool in
+                for _ in printfSearchModels {
+                    if let index = self.printfSearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
-                        self.colorSearchModels?.remove(at: index)
+                        self.printfSearchModels?.remove(at: index)
                     }
                 }
-                colorModels = self.colorSearchModels ?? []
+                printfModels = self.printfSearchModels ?? []
             }
         }
         else
@@ -134,18 +134,18 @@ class LogViewController: UIViewController {
             
             
             defaultTableView.isHidden = false
-            colorTableView.isHidden = true
+            printfTableView.isHidden = true
             webTableView.isHidden = true
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().defaultLogArray {
+            if let arr = _OCLogStoreManager.shared()?.normalLogArray {
                 defaultModels = arr as! [_OCLogModel]
             }
             
             self.defaultCacheModels = self.defaultModels
             
-            self.searchLogic(CocoaDebugSettings.shared.logSearchWordDefault ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordNormal ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultReloadDataFinish = false
@@ -166,45 +166,45 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            if colorReloadDataFinish == false {
+            if printfReloadDataFinish == false {
                 return
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.colorSearchBar.isHidden == true {
-                    self?.colorSearchBar.isHidden = false
+                if self?.printfSearchBar.isHidden == true {
+                    self?.printfSearchBar.isHidden = false
                 }
             }
             
             
             defaultTableView.isHidden = true
-            colorTableView.isHidden = false
+            printfTableView.isHidden = false
             webTableView.isHidden = true
             
-            if needReloadData == false && colorModels.count > 0 {return}
+            if needReloadData == false && printfModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared().colorLogArray {
-                colorModels = arr as! [_OCLogModel]
+            if let arr = _OCLogStoreManager.shared()?.printfLogArray {
+                printfModels = arr as! [_OCLogModel]
             }
             
-            self.colorCacheModels = self.colorModels
+            self.printfCacheModels = self.printfModels
             
-            self.searchLogic(CocoaDebugSettings.shared.logSearchWordColor ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordPrintf ?? "")
             
             dispatch_main_async_safe { [weak self] in
-                self?.colorReloadDataFinish = false
-                self?.colorTableView.reloadData {
-                    self?.colorReloadDataFinish = true
+                self?.printfReloadDataFinish = false
+                self?.printfTableView.reloadData {
+                    self?.printfReloadDataFinish = true
                 }
                 
                 if needScrollToEnd == false {return}
                 
                 //table下滑到底部
-                guard let count = self?.colorModels.count else {return}
+                guard let count = self?.printfModels.count else {return}
                 if count > 0 {
-                    guard let firstInColor = self?.firstInColor else {return}
-                    self?.colorTableView.tableViewScrollToBottom(animated: !firstInColor)
-                    self?.firstInColor = false
+                    guard let firstInPrintf = self?.firstInPrintf else {return}
+                    self?.printfTableView.tableViewScrollToBottom(animated: !firstInPrintf)
+                    self?.firstInPrintf = false
                 }
             }
         }
@@ -222,7 +222,7 @@ class LogViewController: UIViewController {
             
             
             defaultTableView.isHidden = true
-            colorTableView.isHidden = true
+            printfTableView.isHidden = true
             webTableView.isHidden = false
             
             if needReloadData == false && webModels.count > 0 {return}
@@ -282,7 +282,7 @@ class LogViewController: UIViewController {
         defaultTableView.dataSource = self
 //        defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
-        defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordDefault
+        defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordNormal
         defaultSearchBar.isHidden = true
         //抖动bug
         defaultTableView.estimatedRowHeight = 0
@@ -291,17 +291,17 @@ class LogViewController: UIViewController {
         
         
         
-        colorTableView.tableFooterView = UIView()
-        colorTableView.delegate = self
-        colorTableView.dataSource = self
-//        colorTableView.rowHeight = UITableViewAutomaticDimension
-        colorSearchBar.delegate = self
-        colorSearchBar.text = CocoaDebugSettings.shared.logSearchWordColor
-        colorSearchBar.isHidden = true
+        printfTableView.tableFooterView = UIView()
+        printfTableView.delegate = self
+        printfTableView.dataSource = self
+//        printfTableView.rowHeight = UITableViewAutomaticDimension
+        printfSearchBar.delegate = self
+        printfSearchBar.text = CocoaDebugSettings.shared.logSearchWordPrintf
+        printfSearchBar.isHidden = true
         //抖动bug
-        colorTableView.estimatedRowHeight = 0
-        colorTableView.estimatedSectionHeaderHeight = 0
-        colorTableView.estimatedSectionFooterHeight = 0
+        printfTableView.estimatedRowHeight = 0
+        printfTableView.estimatedSectionHeaderHeight = 0
+        printfTableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -342,7 +342,7 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar.backgroundColor = .white
         textFieldInsideSearchBar.returnKeyType = .default
 
-        let textFieldInsideSearchBar2 = colorSearchBar.value(forKey: "searchField") as! UITextField
+        let textFieldInsideSearchBar2 = printfSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
         textFieldInsideSearchBar2.leftView = nil
         textFieldInsideSearchBar2.backgroundColor = .white
@@ -358,7 +358,7 @@ class LogViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         defaultSearchBar.resignFirstResponder()
-        colorSearchBar.resignFirstResponder()
+        printfSearchBar.resignFirstResponder()
         webSearchBar.resignFirstResponder()
     }
     
@@ -378,9 +378,9 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            colorTableView.tableViewScrollToBottom(animated: true)
-            colorSearchBar.resignFirstResponder()
-            reachEndColor = true
+            printfTableView.tableViewScrollToBottom(animated: true)
+            printfSearchBar.resignFirstResponder()
+            reachEndPrintf = true
         }
         else
         {
@@ -399,9 +399,9 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            colorTableView.tableViewScrollToHeader(animated: true)
-            colorSearchBar.resignFirstResponder()
-            reachEndColor = false
+            printfTableView.tableViewScrollToHeader(animated: true)
+            printfSearchBar.resignFirstResponder()
+            reachEndPrintf = false
         }
         else
         {
@@ -419,9 +419,9 @@ class LogViewController: UIViewController {
             defaultCacheModels = []
 //            defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordDefault = nil
+//            CocoaDebugSettings.shared.logSearchWordNormal = nil
             
-            _OCLogStoreManager.shared().resetDefaultLogs()
+            _OCLogStoreManager.shared()?.resetNormalLogs()
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
@@ -429,16 +429,16 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            colorModels = []
-            colorCacheModels = []
-//            colorSearchBar.text = nil
-            colorSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordColor = nil
+            printfModels = []
+            printfCacheModels = []
+//            printfSearchBar.text = nil
+            printfSearchBar.resignFirstResponder()
+//            CocoaDebugSettings.shared.logSearchWordPrintf = nil
             
-            _OCLogStoreManager.shared().resetColorLogs()
+            _OCLogStoreManager.shared()?.resetPrintfLogs()
             
             dispatch_main_async_safe { [weak self] in
-                self?.colorTableView.reloadData()
+                self?.printfTableView.reloadData()
             }
         }
         else
@@ -462,14 +462,14 @@ class LogViewController: UIViewController {
         CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
-            colorSearchBar.resignFirstResponder()
+            printfSearchBar.resignFirstResponder()
             webSearchBar.resignFirstResponder()
         } else if selectedSegmentIndex == 1 {
             defaultSearchBar.resignFirstResponder()
             webSearchBar.resignFirstResponder()
         } else {
             defaultSearchBar.resignFirstResponder()
-            colorSearchBar.resignFirstResponder()
+            printfSearchBar.resignFirstResponder()
         }
         
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
@@ -497,7 +497,7 @@ class LogViewController: UIViewController {
         if selectedSegmentIndex == 0 {
             defaultSearchBar.resignFirstResponder()
         } else if selectedSegmentIndex == 1 {
-            colorSearchBar.resignFirstResponder()
+            printfSearchBar.resignFirstResponder()
         } else {
             webSearchBar.resignFirstResponder()
         }
@@ -510,7 +510,7 @@ class LogViewController: UIViewController {
             if self?.selectedSegmentIndex == 0 {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
             } else if self?.selectedSegmentIndex == 1 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndColor ?? true, needReloadData: true)
+                self?.reloadLogs(needScrollToEnd: self?.reachEndPrintf ?? true, needReloadData: true)
             } else {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndWeb ?? true, needReloadData: true)
             }
@@ -524,8 +524,8 @@ extension LogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
             return defaultModels.count
-        } else if tableView == colorTableView {
-            return colorModels.count
+        } else if tableView == printfTableView {
+            return printfModels.count
         } else {
             return webModels.count
         }
@@ -543,14 +543,14 @@ extension LogViewController: UITableViewDataSource {
             
             cell.model = defaultModels[indexPath.row]
         }
-        else if tableView == colorTableView
+        else if tableView == printfTableView
         {
             //否则偶尔crash
-            if indexPath.row >= colorModels.count {
+            if indexPath.row >= printfModels.count {
                 return UITableViewCell()
             }
             
-            cell.model = colorModels[indexPath.row]
+            cell.model = printfModels[indexPath.row]
         }
         else
         {
@@ -582,12 +582,12 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Log"
             models_ = defaultModels
         }
-        else if tableView == colorTableView
+        else if tableView == printfTableView
         {
-            colorSearchBar.resignFirstResponder()
-            reachEndColor = false
-            logTitleString = "Color"
-            models_ = colorModels
+            printfSearchBar.resignFirstResponder()
+            reachEndPrintf = false
+            logTitleString = "Printf"
+            models_ = printfModels
         }
         else
         {
@@ -619,8 +619,8 @@ extension LogViewController: UITableViewDelegate {
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
-        } else if tableView == colorTableView {
-            model = colorModels[indexPath.row]
+        } else if tableView == printfTableView {
+            model = printfModels[indexPath.row]
         } else {
             model = webModels[indexPath.row]
         }
@@ -654,21 +654,21 @@ extension LogViewController: UITableViewDelegate {
             left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
-        else if tableView == colorTableView
+        else if tableView == printfTableView
         {
-            let model = colorModels[indexPath.row]
+            let model = printfModels[indexPath.row]
             var title = "Tag"
             if model.isTag == true {title = "UnTag"}
             
             let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
                 model.isTag = !model.isTag
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.colorTableView.reloadData()
+                    self?.printfTableView.reloadData()
                 }
                 completionHandler(true)
             }
             
-            colorSearchBar.resignFirstResponder()
+            printfSearchBar.resignFirstResponder()
             left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
@@ -715,25 +715,25 @@ extension LogViewController: UITableViewDelegate {
             defaultSearchBar.resignFirstResponder()
             return UISwipeActionsConfiguration(actions: [delete])
         }
-        else if tableView == colorTableView
+        else if tableView == printfTableView
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.colorModels else {return}
+                guard let models = self?.printfModels else {return}
                 
                 let model: _OCLogModel = models[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self?.colorModels.remove(at: indexPath.row)
-                _ = self?.colorCacheModels?.firstIndex(of: model).map { self?.colorCacheModels?.remove(at: $0) }
-                _ = self?.colorSearchModels?.firstIndex(of: model).map { self?.colorSearchModels?.remove(at: $0) }
+                self?.printfModels.remove(at: indexPath.row)
+                _ = self?.printfCacheModels?.firstIndex(of: model).map { self?.printfCacheModels?.remove(at: $0) }
+                _ = self?.printfSearchModels?.firstIndex(of: model).map { self?.printfSearchModels?.remove(at: $0) }
                 
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.colorTableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.printfTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
                 completionHandler(true)
             }
             
-            colorSearchBar.resignFirstResponder()
+            printfSearchBar.resignFirstResponder()
             return UISwipeActionsConfiguration(actions: [delete])
         }
         else
@@ -786,19 +786,19 @@ extension LogViewController: UITableViewDelegate {
                 }
             }
         }
-        else if tableView == colorTableView
+        else if tableView == printfTableView
         {
             if (editingStyle == .delete) {
                 
-                let model: _OCLogModel = colorModels[indexPath.row]
+                let model: _OCLogModel = printfModels[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self.colorModels.remove(at: indexPath.row)
-                _ = self.colorCacheModels?.firstIndex(of: model).map { self.colorCacheModels?.remove(at: $0) }
-                _ = self.colorSearchModels?.firstIndex(of: model).map { self.colorSearchModels?.remove(at: $0) }
+                self.printfModels.remove(at: indexPath.row)
+                _ = self.printfCacheModels?.firstIndex(of: model).map { self.printfCacheModels?.remove(at: $0) }
+                _ = self.printfSearchModels?.firstIndex(of: model).map { self.printfSearchModels?.remove(at: $0) }
                 
                 self.dispatch_main_async_safe { [weak self] in
-                    self?.colorTableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.printfTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
             }
         }
@@ -827,8 +827,8 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             defaultSearchBar.resignFirstResponder()
-        } else if scrollView == colorTableView {
-            colorSearchBar.resignFirstResponder()
+        } else if scrollView == printfTableView {
+            printfSearchBar.resignFirstResponder()
         } else {
             webSearchBar.resignFirstResponder()
         }
@@ -837,8 +837,8 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             reachEndDefault = false
-        } else if scrollView == colorTableView {
-            reachEndColor = false
+        } else if scrollView == printfTableView {
+            reachEndPrintf = false
         } else {
             reachEndWeb = false
         }
@@ -857,20 +857,20 @@ extension LogViewController: UISearchBarDelegate {
     {
         if searchBar == defaultSearchBar
         {
-            CocoaDebugSettings.shared.logSearchWordDefault = searchText
+            CocoaDebugSettings.shared.logSearchWordNormal = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
             }
         }
-        else if searchBar == colorSearchBar
+        else if searchBar == printfSearchBar
         {
-            CocoaDebugSettings.shared.logSearchWordColor = searchText
+            CocoaDebugSettings.shared.logSearchWordPrintf = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
-                self?.colorTableView.reloadData()
+                self?.printfTableView.reloadData()
             }
         }
         else

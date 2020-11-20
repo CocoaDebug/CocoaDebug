@@ -339,8 +339,9 @@ extension CocoaDebug {
         }
         
         CocoaDebugSettings.shared.visible = false
-        CocoaDebugSettings.shared.logSearchWordDefault = nil
-        CocoaDebugSettings.shared.logSearchWordColor = nil
+        CocoaDebugSettings.shared.logSearchWordNormal = nil
+        CocoaDebugSettings.shared.logSearchWordPrintf = nil
+        CocoaDebugSettings.shared.logSearchWordWeb = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring

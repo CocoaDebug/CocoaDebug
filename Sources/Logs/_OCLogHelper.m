@@ -42,7 +42,7 @@
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    if (line == 999999999) {
+    if (line == 999999999 || line == 666666666) {
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
@@ -61,9 +61,19 @@
     
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
-    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-        newLog.webLogType = WebLogTypeNotNone;
+    
+//    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
+//        newLog.logType = CocoaDebugLogType
+//    }
+    
+    if (type == CocoaDebugToolTypePrintf) {
+        newLog.logType = CocoaDebugLogTypePrintf;
     }
+    
+    if ([file isEqualToString:@"[WKWebView]"]) {
+        newLog.logType = CocoaDebugLogTypeWeb;
+    }
+    
     [[_OCLogStoreManager shared] addLog:newLog];
     
     //3.

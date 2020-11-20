@@ -11,8 +11,8 @@
 
 @interface _OCLogStoreManager : NSObject
 
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *defaultLogArray;
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *colorLogArray;
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *normalLogArray;
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *printfLogArray;
 @property (nonatomic, strong) NSMutableArray<_OCLogModel *> *webLogArray;
 
 + (instancetype)shared;
@@ -20,8 +20,8 @@
 - (void)addLog:(_OCLogModel *)log;
 - (void)removeLog:(_OCLogModel *)log;
 
-- (void)resetDefaultLogs;
-- (void)resetColorLogs;
+- (void)resetNormalLogs;
+- (void)resetPrintfLogs;
 - (void)resetWebLogs;
 
 @end

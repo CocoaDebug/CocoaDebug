@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, WebLogType) {
-    WebLogTypeNone = 0,
-    WebLogTypeNotNone
+typedef NS_ENUM(NSInteger, CocoaDebugLogType) {
+    CocoaDebugLogTypeNormal = 0,
+    CocoaDebugLogTypePrintf,
+    CocoaDebugLogTypeWeb
 };
 
 typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
     CocoaDebugToolTypeNone,
+    CocoaDebugToolTypePrintf,
     CocoaDebugToolTypeJson,
     CocoaDebugToolTypeProtobuf
 };
@@ -33,7 +35,7 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 @property (nonatomic, copy) NSString *str;
 @property (nonatomic, copy) NSAttributedString *attr;
 
-@property (nonatomic, assign) WebLogType webLogType;
+@property (nonatomic, assign) CocoaDebugLogType logType;
 
 - (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag type:(CocoaDebugToolType)type;
 

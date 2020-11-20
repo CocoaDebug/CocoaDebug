@@ -16,22 +16,22 @@
 
 @implementation _PrintfHook
 
-static void (*original_printf)(const char *, ...);
+static void (*_original_printf)(const char *, ...);
 
 
-void god_printf(const char *format, ...) {
+void cocoadebug_printf(const char *format, ...) {
     
     //avoid crash
     if (!format) {return;}
     
     //
-    original_printf(format);
+    _original_printf(format);
 
     //
     NSString *str = [NSString stringWithUTF8String:format];
     
     //
-    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
+    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:666666666 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypePrintf];
 }
 
 
@@ -40,7 +40,7 @@ void god_printf(const char *format, ...) {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rcd_rebinding printf_rebinding = { "printf", god_printf, (void *)&original_printf };
+            struct rcd_rebinding printf_rebinding = { "printf", cocoadebug_printf, (void *)&_original_printf };
             rcd_rebind_symbols((struct rcd_rebinding[1]){printf_rebinding}, 1);
         });
     }

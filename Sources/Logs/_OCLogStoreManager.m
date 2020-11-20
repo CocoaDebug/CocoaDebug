@@ -35,8 +35,8 @@
     if (self) {
         semaphore = dispatch_semaphore_create(1);
         
-        self.defaultLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
-        self.colorLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.normalLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.printfLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
         self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
     }
     return self;
@@ -46,30 +46,27 @@
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
-    if (log.webLogType == WebLogTypeNone)
+    if (log.logType == CocoaDebugLogTypeNormal)
     {
-        if (log.color == [UIColor whiteColor] || log.color == nil)
-        {
-            //白色
-            if ([self.defaultLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
-                if (self.defaultLogArray.count > 0) {
-                    [self.defaultLogArray removeObjectAtIndex:0];
-                }
+        //normal
+        if ([self.normalLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+            if (self.normalLogArray.count > 0) {
+                [self.normalLogArray removeObjectAtIndex:0];
             }
-            
-            [self.defaultLogArray addObject:log];
         }
-        else
-        {
-            //彩色
-            if ([self.colorLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
-                if (self.colorLogArray.count > 0) {
-                    [self.colorLogArray removeObjectAtIndex:0];
-                }
+        
+        [self.normalLogArray addObject:log];
+    }
+    else if (log.logType == CocoaDebugLogTypePrintf)
+    {
+        //printf
+        if ([self.printfLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+            if (self.printfLogArray.count > 0) {
+                [self.printfLogArray removeObjectAtIndex:0];
             }
-            
-            [self.colorLogArray addObject:log];
         }
+        
+        [self.printfLogArray addObject:log];
     }
     else
     {
@@ -90,15 +87,15 @@
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 
-    if (log.webLogType == WebLogTypeNone)
+    if (log.logType == CocoaDebugLogTypeNormal)
     {
-        if (log.color == [UIColor whiteColor] || log.color == nil) {
-            //白色
-            [self.defaultLogArray removeObject:log];
-        } else {
-            //彩色
-            [self.colorLogArray removeObject:log];
-        }
+        //normal
+        [self.normalLogArray removeObject:log];
+    }
+    else if (log.logType == CocoaDebugLogTypeNormal)
+    {
+        //printf
+        [self.printfLogArray removeObject:log];
     }
     else
     {
@@ -109,17 +106,17 @@
     dispatch_semaphore_signal(semaphore);
 }
 
-- (void)resetDefaultLogs
+- (void)resetNormalLogs
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    [self.defaultLogArray removeAllObjects];
+    [self.normalLogArray removeAllObjects];
     dispatch_semaphore_signal(semaphore);
 }
 
-- (void)resetColorLogs
+- (void)resetPrintfLogs
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    [self.colorLogArray removeAllObjects];
+    [self.printfLogArray removeAllObjects];
     dispatch_semaphore_signal(semaphore);
 }
 
