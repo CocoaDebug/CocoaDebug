@@ -54,7 +54,8 @@
 - (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
     if (!self.enable) {return;}
-    
+    if (!file || !function || !message || !color) {return;}
+
     //1.
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     

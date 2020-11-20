@@ -1,5 +1,5 @@
 //
-//  _NSLogHook.m
+//  _PrintfHook.m
 //  Example_Swift
 //
 //  Created by man.li on 7/26/19.
@@ -10,32 +10,28 @@
 #import "_OCLogHelper.h"
 #import "_fishhook.h"
 
-@interface _NSLogHook : NSObject
+@interface _PrintfHook : NSObject
 
 @end
 
-@implementation _NSLogHook
+@implementation _PrintfHook
 
-static void (*orig_nslog)(NSString * format, ...);
+static void (*original_printf)(const char *, ...);
 
 
-void cocoadebug_nslog(NSString * format, ...) {
+void god_printf(const char *format, ...) {
     
     //avoid crash
     if (!format) {return;}
     
     //
-    va_list vl;
-    va_start(vl, format);
-    NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
-    
+    original_printf(format);
+
     //
-    orig_nslog(str);
+    NSString *str = [NSString stringWithUTF8String:format];
     
     //
     [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
-
-    va_end(vl);
 }
 
 
@@ -44,8 +40,8 @@ void cocoadebug_nslog(NSString * format, ...) {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&orig_nslog};
-            rcd_rebind_symbols((struct rcd_rebinding[1]){nslog_rebinding}, 1);
+            struct rcd_rebinding printf_rebinding = { "printf", god_printf, (void *)&original_printf };
+            rcd_rebind_symbols((struct rcd_rebinding[1]){printf_rebinding}, 1);
         });
     }
 }
