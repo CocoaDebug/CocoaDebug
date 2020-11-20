@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <dlfcn.h>
 #import "_OCLogHelper.h"
-#import "fishhook.h"
+#import "_fishhook.h"
 
 @interface _NSLogHook : NSObject
 

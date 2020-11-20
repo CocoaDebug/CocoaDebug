@@ -10,7 +10,7 @@
 #import "_LeakedObjectProxy.h"
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
-#import "FBRetainCycleDetector.h"
+//#import "FBRetainCycleDetector.h"
 
 static const void *const kViewStackKey_ = &kViewStackKey_;
 static const void *const kParentPtrsKey_ = &kParentPtrsKey_;
@@ -151,12 +151,12 @@ static const void *const kLeakCheckedKey_ = &kLeakCheckedKey_;
 + (void)swizzleSEL:(SEL)originalSEL withSEL:(SEL)swizzledSEL {
 
     // Just find a place to set up FBRetainCycleDetector.
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FBAssociationManager hook];
-        });
-    });
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [FBAssociationManager hook];
+//        });
+//    });
     
     Class class = [self class];
     

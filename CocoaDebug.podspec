@@ -25,7 +25,8 @@ Pod::Spec.new do |s|
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',
                           'Sources/Window/**/*.m',
+                          'Sources/fishhook/**/*.c',
                           ]
-  s.dependency "FBRetainCycleDetector"
+  #s.dependency "FBRetainCycleDetector"
 
 end

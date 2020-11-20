@@ -11,7 +11,7 @@
 #import "NSObject+_LeaksFinder.h"
 #import <objc/runtime.h>
 #import <UIKit/UIKit.h>
-#import "FBRetainCycleDetector.h"
+//#import "FBRetainCycleDetector.h"
 
 static NSMutableSet *leakedObjectPtrs;
 
@@ -77,39 +77,39 @@ static NSMutableSet *leakedObjectPtrs;
         return;
     }
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        FBRetainCycleDetector *detector = [FBRetainCycleDetector new];
-        [detector addCandidate:self.object];
-        NSSet *retainCycles = [detector findRetainCyclesWithMaxCycleLength:20];
-        
-        BOOL hasFound = NO;
-        for (NSArray *retainCycle in retainCycles) {
-            NSInteger index = 0;
-            for (FBObjectiveCGraphElement *element in retainCycle) {
-                if (element.object == object) {
-                    NSArray *shiftedRetainCycle = [self shiftArray:retainCycle toIndex:index];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [_LeaksMessenger alertWithTitle:@"Retain Cycle"
-                                                message:[NSString stringWithFormat:@"%@", shiftedRetainCycle]];
-                    });
-                    hasFound = YES;
-                    break;
-                }
-                
-                ++index;
-            }
-            if (hasFound) {
-                break;
-            }
-        }
-        if (!hasFound) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_LeaksMessenger alertWithTitle:@"Retain Cycle"
-                                        message:@"Fail to find a retain cycle"];
-            });
-        }
-    });
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        FBRetainCycleDetector *detector = [FBRetainCycleDetector new];
+//        [detector addCandidate:self.object];
+//        NSSet *retainCycles = [detector findRetainCyclesWithMaxCycleLength:20];
+//        
+//        BOOL hasFound = NO;
+//        for (NSArray *retainCycle in retainCycles) {
+//            NSInteger index = 0;
+//            for (FBObjectiveCGraphElement *element in retainCycle) {
+//                if (element.object == object) {
+//                    NSArray *shiftedRetainCycle = [self shiftArray:retainCycle toIndex:index];
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        [_LeaksMessenger alertWithTitle:@"Retain Cycle"
+//                                                message:[NSString stringWithFormat:@"%@", shiftedRetainCycle]];
+//                    });
+//                    hasFound = YES;
+//                    break;
+//                }
+//                
+//                ++index;
+//            }
+//            if (hasFound) {
+//                break;
+//            }
+//        }
+//        if (!hasFound) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [_LeaksMessenger alertWithTitle:@"Retain Cycle"
+//                                        message:@"Fail to find a retain cycle"];
+//            });
+//        }
+//    });
 }
 
 - (NSArray *)shiftArray:(NSArray *)array toIndex:(NSInteger)index {
