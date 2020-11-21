@@ -35,7 +35,7 @@ class Bubble: UIView {
 //    }()
     
 //    private var fpsLabel: _DebugConsoleLabel? = {
-//        return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16)) //34
+//        return _DebugConsoleLabel(frame: CGRect(x:0, y:22, width:_width, height:16))
 //    }()
     
 //    private var cpuLabel: _DebugConsoleLabel? = {
