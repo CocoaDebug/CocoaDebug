@@ -16,10 +16,10 @@
 
 @implementation _NSLogHook
 
-static void (*_original_nslog)(NSString * format, ...);
+static void (*_original_nslog)(NSString *format, ...);
 
 
-void cocoadebug_nslog(NSString * format, ...) {
+void cocoadebug_nslog(NSString *format, ...) {
     
     //avoid crash
     if (!format) {return;}
