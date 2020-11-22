@@ -36,7 +36,7 @@
         semaphore = dispatch_semaphore_create(1);
         
         self.normalLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
-        self.printfLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.rnLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
         self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
     }
     return self;
@@ -57,16 +57,16 @@
         
         [self.normalLogArray addObject:log];
     }
-    else if (log.logType == CocoaDebugLogTypePrintf)
+    else if (log.logType == CocoaDebugLogTypeRN)
     {
-        //printf
-        if ([self.printfLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
-            if (self.printfLogArray.count > 0) {
-                [self.printfLogArray removeObjectAtIndex:0];
+        //rn
+        if ([self.rnLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+            if (self.rnLogArray.count > 0) {
+                [self.rnLogArray removeObjectAtIndex:0];
             }
         }
         
-        [self.printfLogArray addObject:log];
+        [self.rnLogArray addObject:log];
     }
     else
     {
@@ -94,8 +94,8 @@
     }
     else if (log.logType == CocoaDebugLogTypeNormal)
     {
-        //printf
-        [self.printfLogArray removeObject:log];
+        //rn
+        [self.rnLogArray removeObject:log];
     }
     else
     {
@@ -113,10 +113,10 @@
     dispatch_semaphore_signal(semaphore);
 }
 
-- (void)resetPrintfLogs
+- (void)resetRNLogs
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    [self.printfLogArray removeAllObjects];
+    [self.rnLogArray removeAllObjects];
     dispatch_semaphore_signal(semaphore);
 }
 

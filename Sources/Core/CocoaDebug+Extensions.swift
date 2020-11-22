@@ -253,16 +253,16 @@ extension UITableView {
 ///shake
 extension UIWindow {
     
-    private static var _myComputedProperty = [String:Bool]()
+    private static var _cocoadebugShakeProperty = [String:Bool]()
     
-    var myComputedProperty:Bool {
+    var cocoadebugShakeProperty:Bool {
         get {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            return UIWindow._myComputedProperty[tmpAddress] ?? false
+            return UIWindow._cocoadebugShakeProperty[tmpAddress] ?? false
         }
         set(newValue) {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            UIWindow._myComputedProperty[tmpAddress] = newValue
+            UIWindow._cocoadebugShakeProperty[tmpAddress] = newValue
         }
     }
     
@@ -274,7 +274,7 @@ extension UIWindow {
     open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionBegan(motion, with: event)
         
-        self.myComputedProperty = true
+        self.cocoadebugShakeProperty = true
 
         if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
@@ -286,8 +286,8 @@ extension UIWindow {
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
         
-        if self.myComputedProperty == true {
-            self.myComputedProperty = false
+        if self.cocoadebugShakeProperty == true {
+            self.cocoadebugShakeProperty = false
             return
         }
         
@@ -340,7 +340,7 @@ extension CocoaDebug {
         
         CocoaDebugSettings.shared.visible = false
         CocoaDebugSettings.shared.logSearchWordNormal = nil
-        CocoaDebugSettings.shared.logSearchWordPrintf = nil
+        CocoaDebugSettings.shared.logSearchWordRN = nil
         CocoaDebugSettings.shared.logSearchWordWeb = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording

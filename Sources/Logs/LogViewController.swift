@@ -11,11 +11,11 @@ import UIKit
 class LogViewController: UIViewController {
     
     var reachEndDefault: Bool = true
-    var reachEndPrintf: Bool = true
+    var reachEndRN: Bool = true
     var reachEndWeb: Bool = true
     
     var firstInDefault: Bool = true
-    var firstInPrintf: Bool = true
+    var firstInRN: Bool = true
     var firstInWeb: Bool = true
     
     var selectedSegmentIndex: Int = 0
@@ -24,7 +24,7 @@ class LogViewController: UIViewController {
     var selectedSegment_2: Bool = false
     
     var defaultReloadDataFinish: Bool = true
-    var printfReloadDataFinish: Bool = true
+    var rnReloadDataFinish: Bool = true
     var webReloadDataFinish: Bool = true
     
     
@@ -37,11 +37,11 @@ class LogViewController: UIViewController {
     var defaultCacheModels: Array<_OCLogModel>?
     var defaultSearchModels: Array<_OCLogModel>?
     
-    @IBOutlet weak var printfTableView: UITableView!
-    @IBOutlet weak var printfSearchBar: UISearchBar!
-    var printfModels: [_OCLogModel] = [_OCLogModel]()
-    var printfCacheModels: Array<_OCLogModel>?
-    var printfSearchModels: Array<_OCLogModel>?
+    @IBOutlet weak var rnTableView: UITableView!
+    @IBOutlet weak var rnSearchBar: UISearchBar!
+    var rnModels: [_OCLogModel] = [_OCLogModel]()
+    var rnCacheModels: Array<_OCLogModel>?
+    var rnSearchModels: Array<_OCLogModel>?
     
     @IBOutlet weak var webTableView: UITableView!
     @IBOutlet weak var webSearchBar: UISearchBar!
@@ -77,22 +77,22 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            guard let printfCacheModels = printfCacheModels else {return}
-            printfSearchModels = printfCacheModels
+            guard let rnCacheModels = rnCacheModels else {return}
+            rnSearchModels = rnCacheModels
             
             if searchText == "" {
-                printfModels = printfCacheModels
+                rnModels = rnCacheModels
             } else {
-                guard let printfSearchModels = printfSearchModels else {return}
+                guard let rnSearchModels = rnSearchModels else {return}
                 
-                for _ in printfSearchModels {
-                    if let index = self.printfSearchModels?.firstIndex(where: { (model) -> Bool in
+                for _ in rnSearchModels {
+                    if let index = self.rnSearchModels?.firstIndex(where: { (model) -> Bool in
                         return !model.content.lowercased().contains(searchText.lowercased())//忽略大小写
                     }) {
-                        self.printfSearchModels?.remove(at: index)
+                        self.rnSearchModels?.remove(at: index)
                     }
                 }
-                printfModels = self.printfSearchModels ?? []
+                rnModels = self.rnSearchModels ?? []
             }
         }
         else
@@ -134,7 +134,7 @@ class LogViewController: UIViewController {
             
             
             defaultTableView.isHidden = false
-            printfTableView.isHidden = true
+            rnTableView.isHidden = true
             webTableView.isHidden = true
             
             if needReloadData == false && defaultModels.count > 0 {return}
@@ -166,45 +166,45 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            if printfReloadDataFinish == false {
+            if rnReloadDataFinish == false {
                 return
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.printfSearchBar.isHidden == true {
-                    self?.printfSearchBar.isHidden = false
+                if self?.rnSearchBar.isHidden == true {
+                    self?.rnSearchBar.isHidden = false
                 }
             }
             
             
             defaultTableView.isHidden = true
-            printfTableView.isHidden = false
+            rnTableView.isHidden = false
             webTableView.isHidden = true
             
-            if needReloadData == false && printfModels.count > 0 {return}
+            if needReloadData == false && rnModels.count > 0 {return}
             
-            if let arr = _OCLogStoreManager.shared()?.printfLogArray {
-                printfModels = arr as! [_OCLogModel]
+            if let arr = _OCLogStoreManager.shared()?.rnLogArray {
+                rnModels = arr as! [_OCLogModel]
             }
             
-            self.printfCacheModels = self.printfModels
+            self.rnCacheModels = self.rnModels
             
-            self.searchLogic(CocoaDebugSettings.shared.logSearchWordPrintf ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordRN ?? "")
             
             dispatch_main_async_safe { [weak self] in
-                self?.printfReloadDataFinish = false
-                self?.printfTableView.reloadData {
-                    self?.printfReloadDataFinish = true
+                self?.rnReloadDataFinish = false
+                self?.rnTableView.reloadData {
+                    self?.rnReloadDataFinish = true
                 }
                 
                 if needScrollToEnd == false {return}
                 
                 //table下滑到底部
-                guard let count = self?.printfModels.count else {return}
+                guard let count = self?.rnModels.count else {return}
                 if count > 0 {
-                    guard let firstInPrintf = self?.firstInPrintf else {return}
-                    self?.printfTableView.tableViewScrollToBottom(animated: !firstInPrintf)
-                    self?.firstInPrintf = false
+                    guard let firstInRN = self?.firstInRN else {return}
+                    self?.rnTableView.tableViewScrollToBottom(animated: !firstInRN)
+                    self?.firstInRN = false
                 }
             }
         }
@@ -222,7 +222,7 @@ class LogViewController: UIViewController {
             
             
             defaultTableView.isHidden = true
-            printfTableView.isHidden = true
+            rnTableView.isHidden = true
             webTableView.isHidden = false
             
             if needReloadData == false && webModels.count > 0 {return}
@@ -291,17 +291,17 @@ class LogViewController: UIViewController {
         
         
         
-        printfTableView.tableFooterView = UIView()
-        printfTableView.delegate = self
-        printfTableView.dataSource = self
-//        printfTableView.rowHeight = UITableViewAutomaticDimension
-        printfSearchBar.delegate = self
-        printfSearchBar.text = CocoaDebugSettings.shared.logSearchWordPrintf
-        printfSearchBar.isHidden = true
+        rnTableView.tableFooterView = UIView()
+        rnTableView.delegate = self
+        rnTableView.dataSource = self
+//        rnTableView.rowHeight = UITableViewAutomaticDimension
+        rnSearchBar.delegate = self
+        rnSearchBar.text = CocoaDebugSettings.shared.logSearchWordRN
+        rnSearchBar.isHidden = true
         //抖动bug
-        printfTableView.estimatedRowHeight = 0
-        printfTableView.estimatedSectionHeaderHeight = 0
-        printfTableView.estimatedSectionFooterHeight = 0
+        rnTableView.estimatedRowHeight = 0
+        rnTableView.estimatedSectionHeaderHeight = 0
+        rnTableView.estimatedSectionFooterHeight = 0
         
         
         
@@ -342,7 +342,7 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar.backgroundColor = .white
         textFieldInsideSearchBar.returnKeyType = .default
 
-        let textFieldInsideSearchBar2 = printfSearchBar.value(forKey: "searchField") as! UITextField
+        let textFieldInsideSearchBar2 = rnSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
         textFieldInsideSearchBar2.leftView = nil
         textFieldInsideSearchBar2.backgroundColor = .white
@@ -358,7 +358,7 @@ class LogViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         defaultSearchBar.resignFirstResponder()
-        printfSearchBar.resignFirstResponder()
+        rnSearchBar.resignFirstResponder()
         webSearchBar.resignFirstResponder()
     }
     
@@ -378,9 +378,9 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            printfTableView.tableViewScrollToBottom(animated: true)
-            printfSearchBar.resignFirstResponder()
-            reachEndPrintf = true
+            rnTableView.tableViewScrollToBottom(animated: true)
+            rnSearchBar.resignFirstResponder()
+            reachEndRN = true
         }
         else
         {
@@ -399,9 +399,9 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            printfTableView.tableViewScrollToHeader(animated: true)
-            printfSearchBar.resignFirstResponder()
-            reachEndPrintf = false
+            rnTableView.tableViewScrollToHeader(animated: true)
+            rnSearchBar.resignFirstResponder()
+            reachEndRN = false
         }
         else
         {
@@ -429,16 +429,16 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            printfModels = []
-            printfCacheModels = []
-//            printfSearchBar.text = nil
-            printfSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordPrintf = nil
+            rnModels = []
+            rnCacheModels = []
+//            rnSearchBar.text = nil
+            rnSearchBar.resignFirstResponder()
+//            CocoaDebugSettings.shared.logSearchWordRN = nil
             
-            _OCLogStoreManager.shared()?.resetPrintfLogs()
+            _OCLogStoreManager.shared()?.resetRNLogs()
             
             dispatch_main_async_safe { [weak self] in
-                self?.printfTableView.reloadData()
+                self?.rnTableView.reloadData()
             }
         }
         else
@@ -462,14 +462,14 @@ class LogViewController: UIViewController {
         CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
-            printfSearchBar.resignFirstResponder()
+            rnSearchBar.resignFirstResponder()
             webSearchBar.resignFirstResponder()
         } else if selectedSegmentIndex == 1 {
             defaultSearchBar.resignFirstResponder()
             webSearchBar.resignFirstResponder()
         } else {
             defaultSearchBar.resignFirstResponder()
-            printfSearchBar.resignFirstResponder()
+            rnSearchBar.resignFirstResponder()
         }
         
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
@@ -497,7 +497,7 @@ class LogViewController: UIViewController {
         if selectedSegmentIndex == 0 {
             defaultSearchBar.resignFirstResponder()
         } else if selectedSegmentIndex == 1 {
-            printfSearchBar.resignFirstResponder()
+            rnSearchBar.resignFirstResponder()
         } else {
             webSearchBar.resignFirstResponder()
         }
@@ -510,7 +510,7 @@ class LogViewController: UIViewController {
             if self?.selectedSegmentIndex == 0 {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
             } else if self?.selectedSegmentIndex == 1 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndPrintf ?? true, needReloadData: true)
+                self?.reloadLogs(needScrollToEnd: self?.reachEndRN ?? true, needReloadData: true)
             } else {
                 self?.reloadLogs(needScrollToEnd: self?.reachEndWeb ?? true, needReloadData: true)
             }
@@ -524,8 +524,8 @@ extension LogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == defaultTableView {
             return defaultModels.count
-        } else if tableView == printfTableView {
-            return printfModels.count
+        } else if tableView == rnTableView {
+            return rnModels.count
         } else {
             return webModels.count
         }
@@ -543,14 +543,14 @@ extension LogViewController: UITableViewDataSource {
             
             cell.model = defaultModels[indexPath.row]
         }
-        else if tableView == printfTableView
+        else if tableView == rnTableView
         {
             //否则偶尔crash
-            if indexPath.row >= printfModels.count {
+            if indexPath.row >= rnModels.count {
                 return UITableViewCell()
             }
             
-            cell.model = printfModels[indexPath.row]
+            cell.model = rnModels[indexPath.row]
         }
         else
         {
@@ -582,12 +582,12 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Log"
             models_ = defaultModels
         }
-        else if tableView == printfTableView
+        else if tableView == rnTableView
         {
-            printfSearchBar.resignFirstResponder()
-            reachEndPrintf = false
-            logTitleString = "Printf"
-            models_ = printfModels
+            rnSearchBar.resignFirstResponder()
+            reachEndRN = false
+            logTitleString = "RN"
+            models_ = rnModels
         }
         else
         {
@@ -619,8 +619,8 @@ extension LogViewController: UITableViewDelegate {
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
-        } else if tableView == printfTableView {
-            model = printfModels[indexPath.row]
+        } else if tableView == rnTableView {
+            model = rnModels[indexPath.row]
         } else {
             model = webModels[indexPath.row]
         }
@@ -654,21 +654,21 @@ extension LogViewController: UITableViewDelegate {
             left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
-        else if tableView == printfTableView
+        else if tableView == rnTableView
         {
-            let model = printfModels[indexPath.row]
+            let model = rnModels[indexPath.row]
             var title = "Tag"
             if model.isTag == true {title = "UnTag"}
             
             let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
                 model.isTag = !model.isTag
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.printfTableView.reloadData()
+                    self?.rnTableView.reloadData()
                 }
                 completionHandler(true)
             }
             
-            printfSearchBar.resignFirstResponder()
+            rnSearchBar.resignFirstResponder()
             left.backgroundColor = "#007aff".hexColor
             return UISwipeActionsConfiguration(actions: [left])
         }
@@ -715,25 +715,25 @@ extension LogViewController: UITableViewDelegate {
             defaultSearchBar.resignFirstResponder()
             return UISwipeActionsConfiguration(actions: [delete])
         }
-        else if tableView == printfTableView
+        else if tableView == rnTableView
         {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.printfModels else {return}
+                guard let models = self?.rnModels else {return}
                 
                 let model: _OCLogModel = models[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self?.printfModels.remove(at: indexPath.row)
-                _ = self?.printfCacheModels?.firstIndex(of: model).map { self?.printfCacheModels?.remove(at: $0) }
-                _ = self?.printfSearchModels?.firstIndex(of: model).map { self?.printfSearchModels?.remove(at: $0) }
+                self?.rnModels.remove(at: indexPath.row)
+                _ = self?.rnCacheModels?.firstIndex(of: model).map { self?.rnCacheModels?.remove(at: $0) }
+                _ = self?.rnSearchModels?.firstIndex(of: model).map { self?.rnSearchModels?.remove(at: $0) }
                 
                 self?.dispatch_main_async_safe { [weak self] in
-                    self?.printfTableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.rnTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
                 completionHandler(true)
             }
             
-            printfSearchBar.resignFirstResponder()
+            rnSearchBar.resignFirstResponder()
             return UISwipeActionsConfiguration(actions: [delete])
         }
         else
@@ -786,19 +786,19 @@ extension LogViewController: UITableViewDelegate {
                 }
             }
         }
-        else if tableView == printfTableView
+        else if tableView == rnTableView
         {
             if (editingStyle == .delete) {
                 
-                let model: _OCLogModel = printfModels[indexPath.row]
+                let model: _OCLogModel = rnModels[indexPath.row]
                 _OCLogStoreManager.shared().removeLog(model)
                 
-                self.printfModels.remove(at: indexPath.row)
-                _ = self.printfCacheModels?.firstIndex(of: model).map { self.printfCacheModels?.remove(at: $0) }
-                _ = self.printfSearchModels?.firstIndex(of: model).map { self.printfSearchModels?.remove(at: $0) }
+                self.rnModels.remove(at: indexPath.row)
+                _ = self.rnCacheModels?.firstIndex(of: model).map { self.rnCacheModels?.remove(at: $0) }
+                _ = self.rnSearchModels?.firstIndex(of: model).map { self.rnSearchModels?.remove(at: $0) }
                 
                 self.dispatch_main_async_safe { [weak self] in
-                    self?.printfTableView.deleteRows(at: [indexPath], with: .automatic)
+                    self?.rnTableView.deleteRows(at: [indexPath], with: .automatic)
                 }
             }
         }
@@ -827,8 +827,8 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             defaultSearchBar.resignFirstResponder()
-        } else if scrollView == printfTableView {
-            printfSearchBar.resignFirstResponder()
+        } else if scrollView == rnTableView {
+            rnSearchBar.resignFirstResponder()
         } else {
             webSearchBar.resignFirstResponder()
         }
@@ -837,8 +837,8 @@ extension LogViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             reachEndDefault = false
-        } else if scrollView == printfTableView {
-            reachEndPrintf = false
+        } else if scrollView == rnTableView {
+            reachEndRN = false
         } else {
             reachEndWeb = false
         }
@@ -864,13 +864,13 @@ extension LogViewController: UISearchBarDelegate {
                 self?.defaultTableView.reloadData()
             }
         }
-        else if searchBar == printfSearchBar
+        else if searchBar == rnSearchBar
         {
-            CocoaDebugSettings.shared.logSearchWordPrintf = searchText
+            CocoaDebugSettings.shared.logSearchWordRN = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
-                self?.printfTableView.reloadData()
+                self?.rnTableView.reloadData()
             }
         }
         else

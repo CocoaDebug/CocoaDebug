@@ -11,13 +11,13 @@
 
 typedef NS_ENUM(NSInteger, CocoaDebugLogType) {
     CocoaDebugLogTypeNormal = 0,
-    CocoaDebugLogTypePrintf,
+    CocoaDebugLogTypeRN,
     CocoaDebugLogTypeWeb
 };
 
 typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
     CocoaDebugToolTypeNone,
-    CocoaDebugToolTypePrintf,
+    CocoaDebugToolTypeRN,
     CocoaDebugToolTypeJson,
     CocoaDebugToolTypeProtobuf
 };
