@@ -24,14 +24,16 @@
             }
         }
         
-        if (type == CocoaDebugToolTypeNone && [fileInfo isEqualToString:@" \n"]) {
-            //nslog
-            fileInfo = @"NSLog\n";
-        } else if (type == CocoaDebugToolTypeNone && [fileInfo isEqualToString:@"\n"]) {
-            //custom
-            fileInfo = @"NSLog(Custom)\n";
+        //
+        if (type == CocoaDebugToolTypeNone) {
+            if ([fileInfo isEqualToString:@" \n"]) {//nslog
+                fileInfo = @"NSLog\n";
+            } else if ([fileInfo isEqualToString:@"\n"]) {//color
+                fileInfo = @"Color\n";
+            }
         }
         
+        //
         self.Id = [[NSUUID UUID] UUIDString];
         self.fileInfo = fileInfo;
         self.date = [NSDate date];
