@@ -46,9 +46,13 @@
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    if (line == 999999999 || line == 666666666) { //nslog or RN
+    if (line == 999999999) { //nslog
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
+    }
+    
+    if (line == -1) { //RN
+        return file;
     }
     
     NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";

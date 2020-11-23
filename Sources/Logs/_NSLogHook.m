@@ -88,15 +88,24 @@ void cocoadebug_nslog(NSString *format, ...) {
                     }
                     
                     //2.
+                    NSString *fileStr = [[(fileName ?: @"") componentsSeparatedByString:@"/"] lastObject] ?: @"";
+                    if ([lineNumber isKindOfClass:[NSNumber class]]) {
+                        fileStr = [NSString stringWithFormat:@"%@[%ld]", fileStr, (long)[lineNumber integerValue]];
+                    }
+                    
+                    //3.
+                    fileStr = [NSString stringWithFormat:@"%@%@\n", fileStr, levelStr];
+
+                    //4.
                     if (source == RCTLogSourceJavaScript)
                     {
                         //`RCTLogSourceJavaScript`
-                        [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@%@", (fileName ?: @""), levelStr] function:@"" line:[lineNumber integerValue] message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
+                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
                     }
                     else
                     {
-                        //`RCTLogSourceNative` or unknow, use `NSLog`
-                        [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@%@", (fileName ?: @""), levelStr] function:@"" line:[lineNumber integerValue] message:message color:[UIColor systemRedColor] type:CocoaDebugToolTypeNone];
+                        //`RCTLogSourceNative` or unknow
+                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor systemRedColor] type:CocoaDebugToolTypeRN];
                     }
                 }
             });
