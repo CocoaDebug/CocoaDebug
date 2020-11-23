@@ -236,7 +236,7 @@
 }
 
 - (NSString *)appBundleName {
-    NSString *bundleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:kCFBundleNameKey];
+    NSString *bundleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey];
     return bundleName;
 }
 

@@ -73,6 +73,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    @objc public var disableRNMonitoring: Bool = false {
+        didSet {
+            UserDefaults.standard.set(disableRNMonitoring, forKey: "disableRNMonitoring_CocoaDebug")
+            UserDefaults.standard.synchronize()
+        }
+    }
     @objc public var enableMemoryLeaksMonitoring_ViewController: Bool = false {
         didSet {
             UserDefaults.standard.set(enableMemoryLeaksMonitoring_ViewController, forKey: "enableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
@@ -233,6 +239,7 @@ import Foundation
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
+        disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
         networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")
@@ -244,6 +251,7 @@ import Foundation
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
         mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"
 
+        
         //objc
         logMaxCount = _NetworkHelper.shared().logMaxCount
         onlyURLs = _NetworkHelper.shared().onlyURLs

@@ -37,12 +37,12 @@
         return @"XXX|XXX|1";
     }
     
-    if (line == 0) {
+    if (line == 0) { //web
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    if (line == 999999999) {
+    if (line == 999999999) { //nslog
         NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
@@ -63,7 +63,7 @@
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
     
 //    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-//        newLog.logType = CocoaDebugLogType
+//        newLog.logType = CocoaDebugLogType...
 //    }
     
     if (type == CocoaDebugToolTypeRN) {

@@ -25,14 +25,6 @@
     [super viewDidLoad];
     
     self.title = @"Example";
-    
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-    printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 
     NSLog(@"hello world");
     NSLog(@"%d", 6666666);

@@ -58,7 +58,7 @@ extension CrashListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //否则偶尔crash
+        //Otherwise occasionally crash
         if indexPath.row >= models.count {
             return UITableViewCell()
         }

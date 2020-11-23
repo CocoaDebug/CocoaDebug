@@ -536,7 +536,7 @@ extension LogViewController: UITableViewDataSource {
         
         if tableView == defaultTableView
         {
-            //否则偶尔crash
+            //Otherwise occasionally crash
             if indexPath.row >= defaultModels.count {
                 return UITableViewCell()
             }
@@ -545,7 +545,7 @@ extension LogViewController: UITableViewDataSource {
         }
         else if tableView == rnTableView
         {
-            //否则偶尔crash
+            //Otherwise occasionally crash
             if indexPath.row >= rnModels.count {
                 return UITableViewCell()
             }
@@ -554,7 +554,7 @@ extension LogViewController: UITableViewDataSource {
         }
         else
         {
-            //否则偶尔crash
+            //Otherwise occasionally crash
             if indexPath.row >= webModels.count {
                 return UITableViewCell()
             }

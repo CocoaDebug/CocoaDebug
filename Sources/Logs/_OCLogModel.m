@@ -24,6 +24,14 @@
             }
         }
         
+        if (type == CocoaDebugToolTypeNone && [fileInfo isEqualToString:@" \n"]) {
+            //nslog
+            fileInfo = @"NSLog\n";
+        } else if (type == CocoaDebugToolTypeNone && [fileInfo isEqualToString:@"\n"]) {
+            //custom
+            fileInfo = @"NSLog(Custom)\n";
+        }
+        
         self.Id = [[NSUUID UUID] UUIDString];
         self.fileInfo = fileInfo;
         self.date = [NSDate date];

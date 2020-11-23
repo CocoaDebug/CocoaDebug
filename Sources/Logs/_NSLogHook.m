@@ -22,7 +22,9 @@ static void (*_original_nslog)(NSString *format, ...);
 void cocoadebug_nslog(NSString *format, ...) {
     
     //avoid crash
-    if (!format) {return;}
+    if (![format isKindOfClass:[NSString class]]) {
+        return;
+    }
     
     //
     va_list vl;
