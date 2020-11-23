@@ -12,14 +12,12 @@
 
 ## Screenshot
 
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/01.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/02.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/03.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/04.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/05.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/06.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/07.png" width="200">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/08.png" width="200">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a1.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a2.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a3.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a4.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a5.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a6.png" width="250">
 
 ## Introduction
 
