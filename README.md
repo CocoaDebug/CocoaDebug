@@ -35,21 +35,19 @@
 
 - [x] Detect memory leaks.
 
-- [x] Real-time display of memory usage.
-
-- [x] Real-time display of CPU and FPS.
-
 - [x] List crash errors.
-
-- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
-
-- [x] List of all the network requests sent by the application. (Support `JSON` and Google's `Protocol buffers`)
 
 - [x] List application and device informations, including: *version*, *build*, *bundle name*, *bundle id*, *screen resolution*, *device*, *iOS version*
 
+- [x] List all network requests sent by the application. (Support `JSON` and Google's `Protocol buffers`)
+
 - [x] List all sandbox folders and files, supporting to preview and edit.
 
-- [x] List HTML logs, including `console.log()`,`console.debug()`,`console.warn()`,`console.error()`,`console. info()`. (support `WKWebView` ~~and `UIWebView`~~). ***UIWebView Deprecated***
+- [x] List all `WKWebView` consoles.
+
+- [x] List all `React Native` JavaScript consoles and Native logs.
+
+- [x] List all `print()` and `NSLog()` messages which have been written by developer in Xcode.
 
 ## Installation
 
