@@ -27,7 +27,7 @@
         if ([format isKindOfClass:[NSString class]])
         {
 //            NSLogv(format, args);
-            [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[[NSString alloc] initWithFormat:format arguments:args] infoRN:nil color:color type:CocoaDebugToolTypeNone];
+            [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color type:CocoaDebugToolTypeNone];
         }
         else if ([format isKindOfClass:[JSValue class]])
         {
@@ -36,18 +36,18 @@
             {
                 format_ = [format toDictionary];
 //                NSLogv([NSString stringWithFormat:@"%@",format_], args);
-                [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format_] infoRN:nil color:color type:CocoaDebugToolTypeNone];
+                [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format_] color:color type:CocoaDebugToolTypeNone];
             }
             else
             {
 //                NSLogv([NSString stringWithFormat:@"%@",format], args);
-                [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] infoRN:nil color:color type:CocoaDebugToolTypeNone];
+                [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color type:CocoaDebugToolTypeNone];
             }
         }
         else
         {
 //            NSLogv([NSString stringWithFormat:@"%@",format], args);
-            [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] infoRN:nil color:color type:CocoaDebugToolTypeNone];
+            [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color type:CocoaDebugToolTypeNone];
         }
         
         va_end(args);

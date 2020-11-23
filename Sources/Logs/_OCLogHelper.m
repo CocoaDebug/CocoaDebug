@@ -55,7 +55,7 @@
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
 
-- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message infoRN:(NSString *)infoRN color:(UIColor *)color type:(CocoaDebugToolType)type
+- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
     if (!self.enable) {return;}
     if (!file || !function || !message || !color) {return;}

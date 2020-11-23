@@ -79,7 +79,7 @@
 }
 
 + (NSString *)finalLogWithString:(NSString *)string type:(CocoaDebugToolType)type color:(UIColor *)color {
-    [[_OCLogHelper shared] handleLogWithFile:@"XXX" function:@"XXX" line:1 message:string infoRN:nil color:color type:type];
+    [[_OCLogHelper shared] handleLogWithFile:@"XXX" function:@"XXX" line:1 message:string color:color type:type];
     return string;
 }
 

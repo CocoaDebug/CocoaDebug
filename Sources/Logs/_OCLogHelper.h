@@ -16,6 +16,6 @@
 
 + (instancetype)shared;
 
-- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message infoRN:(NSString *)infoRN color:(UIColor *)color type:(CocoaDebugToolType)type;
+- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type;
 
 @end

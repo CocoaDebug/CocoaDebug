@@ -37,7 +37,7 @@ void cocoadebug_nslog(NSString *format, ...) {
     _original_nslog(str);
     
     //
-    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str infoRN:nil color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
+    [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
 
     va_end(vl);
 }
@@ -69,19 +69,19 @@ void cocoadebug_nslog(NSString *format, ...) {
                     NSString *levelStr = @"";
                     switch (level) {
                         case RCTLogLevelTrace:
-                            levelStr = @"Trace";
+                            levelStr = @"[Trace]";
                             break;
                          case RCTLogLevelInfo:
-                            levelStr = @"Info";
+                            levelStr = @"[Info]";
                             break;
                         case RCTLogLevelWarning:
-                            levelStr = @"Warning";
+                            levelStr = @"[Warning]";
                             break;
                         case RCTLogLevelError:
-                            levelStr = @"Error";
+                            levelStr = @"[Error]";
                             break;
                         case RCTLogLevelFatal:
-                            levelStr = @"Fatal";
+                            levelStr = @"[Fatal]";
                             break;
                         default:
                             break;
@@ -91,12 +91,12 @@ void cocoadebug_nslog(NSString *format, ...) {
                     if (source == RCTLogSourceJavaScript)
                     {
                         //`RCTLogSourceJavaScript`
-                        [_OCLogHelper.shared handleLogWithFile:(fileName ?: @"") function:@"" line:[lineNumber integerValue] message:message infoRN:nil color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
+                        [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@%@", (fileName ?: @""), levelStr] function:@"" line:[lineNumber integerValue] message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
                     }
                     else
                     {
                         //`RCTLogSourceNative` or unknow, use `NSLog`
-                        [_OCLogHelper.shared handleLogWithFile:(fileName ?: @"") function:@"" line:[lineNumber integerValue] message:message infoRN:nil color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
+                        [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@%@", (fileName ?: @""), levelStr] function:@"" line:[lineNumber integerValue] message:message color:[UIColor systemRedColor] type:CocoaDebugToolTypeNone];
                     }
                 }
             });
