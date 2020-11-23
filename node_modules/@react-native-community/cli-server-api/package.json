@@ -1,0 +1,31 @@
+{
+  "name": "@react-native-community/cli-server-api",
+  "version": "4.13.1",
+  "license": "MIT",
+  "main": "build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@react-native-community/cli-debugger-ui": "^4.13.1",
+    "@react-native-community/cli-tools": "^4.13.0",
+    "compression": "^1.7.1",
+    "connect": "^3.6.5",
+    "errorhandler": "^1.5.0",
+    "nocache": "^2.1.0",
+    "pretty-format": "^25.1.0",
+    "serve-static": "^1.13.1",
+    "ws": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/connect": "^3.4.33",
+    "@types/errorhandler": "^0.0.32",
+    "@types/ws": "^6.0.3"
+  },
+  "files": [
+    "build",
+    "!*.map"
+  ],
+  "gitHead": "30ef010898ffb98ac906ea78aed25ad9bffbbde7"
+}

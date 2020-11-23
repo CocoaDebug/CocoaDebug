@@ -1,0 +1,53 @@
+{
+  "name": "eslint-plugin-react-native",
+  "version": "3.8.1",
+  "author": "Tom Hastjarjanto <tom@intellicode.nl>",
+  "description": "React Native specific linting rules for ESLint",
+  "main": "index.js",
+  "scripts": {
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint ./lib && eslint ./tests",
+    "test": "npm run lint && npm run unit-test",
+    "unit-test": "nyc --silent --reporter=text mocha tests/**/*.js"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intellicode/eslint-plugin-react-native"
+  },
+  "homepage": "https://github.com/intellicode/eslint-plugin-react-native",
+  "bugs": "https://github.com/intellicode/eslint-plugin-react-native/issues",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-eslint": "^10.0.3",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "typescript": "^3.6.4"
+  },
+  "peerDependencies": {
+    "eslint": "^3.17.0 || ^4 || ^5 || ^6"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "react",
+    "react-native",
+    "react native"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "eslint-plugin-react-native-globals": "^0.1.1"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@react-native-community/cli-hermes",
+  "version": "4.13.0",
+  "license": "MIT",
+  "main": "build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "types": "build/index.d.ts",
+  "dependencies": {
+    "@react-native-community/cli-platform-android": "^4.13.0",
+    "@react-native-community/cli-tools": "^4.13.0",
+    "chalk": "^3.0.0",
+    "hermes-profile-transformer": "^0.0.6",
+    "ip": "^1.1.5"
+  },
+  "files": [
+    "build",
+    "!*.d.ts",
+    "!*.map"
+  ],
+  "devDependencies": {
+    "@react-native-community/cli-types": "^4.10.1",
+    "@types/ip": "^1.1.0"
+  }
+}

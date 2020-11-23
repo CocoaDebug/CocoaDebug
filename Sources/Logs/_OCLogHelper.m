@@ -33,25 +33,29 @@
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
+    if (![file isKindOfClass:[NSString class]] || ![function isKindOfClass:[NSString class]]) {
+        return @"\n";
+    }
+    
     if ([file isEqualToString:@"XXX"] && [function isEqualToString:@"XXX"] && line == 1) {
         return @"XXX|XXX|1";
     }
     
     if (line == 0) { //web
-        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    if (line == 999999999) { //nslog
-        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+    if (line == 999999999 || line == 666666666) { //nslog or RN
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+    NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
 
-- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
+- (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message infoRN:(NSString *)infoRN color:(UIColor *)color type:(CocoaDebugToolType)type
 {
     if (!self.enable) {return;}
     if (!file || !function || !message || !color) {return;}

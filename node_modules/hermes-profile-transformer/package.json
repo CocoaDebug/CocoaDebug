@@ -1,0 +1,59 @@
+{
+  "version": "0.0.6",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "hermes-profile-transformer",
+  "author": {
+    "name": "Saphal Patro",
+    "email": "saphal1998@gmail.com",
+    "url": "http://github.com/saphal1998"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MLH-Fellowship/hermes-profile-transformer"
+  },
+  "module": "dist/hermes-tracing-profile-transformer.esm.js",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "source-map": "^0.7.3"
+  },
+  "keywords": [
+    "profiling",
+    "hermes",
+    "transformation",
+    "transformers",
+    "dev-tools"
+  ]
+}

@@ -260,18 +260,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example_Objc/Pods-Example_Objc-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CocoaDebug/CocoaDebug.framework",
-				"${BUILT_PRODUCTS_DIR}/React/React.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example_Objc/Pods-Example_Objc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaDebug.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example_Objc/Pods-Example_Objc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -467,7 +460,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Example_Objc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,7 +484,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Example_Objc/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

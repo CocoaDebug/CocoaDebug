@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.public_header_files = "Sources/**/*.h"
   s.resources           = "Sources/**/*.{png,xib,storyboard}"
   s.frameworks          = 'UIKit', 'Foundation'
-  s.platform            = :ios, "8.0"
+  s.platform            = :ios, "10.0"
   s.swift_version       = '5.0'
   s.version             = '1.5.5'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
@@ -27,7 +27,5 @@ Pod::Spec.new do |s|
                           'Sources/Window/**/*.m',
                           'Sources/fishhook/**/*.c',
                           ]
-  # s.dependency "FBRetainCycleDetector"
-  # s.dependency 'React-Core'
-  s.dependency 'React/Core'
+  s.dependency 'React'
 end
