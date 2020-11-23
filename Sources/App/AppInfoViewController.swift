@@ -112,6 +112,11 @@ class AppInfoViewController: UITableViewController {
     }
     
     //MARK: - target action
+    @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
+//        self.showAlert()
+    }
+    
     @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController = controllerMemoryLeaksSwitch.isOn
 //        self.showAlert()
@@ -132,29 +137,38 @@ class AppInfoViewController: UITableViewController {
         self.showAlert()
     }
     
-    @objc func logSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
-        self.showAlert()
-    }
-    
     @objc func networkSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableNetworkMonitoring = !networkSwitch.isOn
         self.showAlert()
     }
     
+    @objc func logSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
+        if CocoaDebugSettings.shared.disableLogMonitoring == true {
+            CocoaDebugSettings.shared.disableRNMonitoring = true
+            rnSwitch.setOn(false, animated: true)
+            CocoaDebugSettings.shared.enableWKWebViewMonitoring = false
+            webViewSwitch.setOn(false, animated: true)
+        }
+        self.showAlert()
+    }
+    
     @objc func rnSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableRNMonitoring = !rnSwitch.isOn
-//        self.showAlert()
+        if CocoaDebugSettings.shared.disableRNMonitoring == false {
+            CocoaDebugSettings.shared.disableLogMonitoring = false
+            logSwitch.setOn(true, animated: true)
+        }
+        self.showAlert()
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
+        if CocoaDebugSettings.shared.enableWKWebViewMonitoring == true {
+            CocoaDebugSettings.shared.disableLogMonitoring = false
+            logSwitch.setOn(true, animated: true)
+        }
         self.showAlert()
-    }
-    
-    @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
-//        self.showAlert()
     }
 }
 
