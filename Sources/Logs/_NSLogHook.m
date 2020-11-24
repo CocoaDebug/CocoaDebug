@@ -10,6 +10,7 @@
 #import "_OCLogHelper.h"
 #import "_fishhook.h"
 //#import "RCTLog.h"
+//#import <React/RCTLog.h>
 
 @interface _NSLogHook : NSObject
 
