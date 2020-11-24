@@ -1,6 +1,10 @@
+require "json"
+package = JSON.parse(File.read('package.json'))
+
 Pod::Spec.new do |s|
-  s.name                = "CocoaDebug"
-  s.summary             = "iOS Debugging Tool"
+  s.name                = package['name']
+  s.version             = package['version']
+  s.summary             = package['description']
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
   s.author              = {"CocoaDebug" => "man.li@shopee.com"}
   s.license             = "MIT"
@@ -10,7 +14,6 @@ Pod::Spec.new do |s|
   s.frameworks          = 'UIKit', 'Foundation'
   s.platform            = :ios, "10.0"
   s.swift_version       = '5.0'
-  s.version             = '1.5.6'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
   s.requires_arc        = false
   s.requires_arc        = 
