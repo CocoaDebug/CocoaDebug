@@ -3,8 +3,6 @@ before_install:
     - brew install gcc || brew link --overwrite gcc
     - brew upgrade
     - brew outdated xctool || brew upgrade xctool
-    - brew install yarn
-    - yarn add react-native
 osx_image: xcode11.3
 language: objective-c
 xcode_project: CocoaDebug.xcodeproj

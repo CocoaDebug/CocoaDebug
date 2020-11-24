@@ -1,10 +1,7 @@
-require "json"
-package = JSON.parse(File.read('package.json'))
-
 Pod::Spec.new do |s|
-  s.name                = package['name']
-  s.version             = package['version']
-  s.summary             = package['description']
+  s.name                = "CocoaDebug"
+  s.version             = "1.5.6"
+  s.summary             = "iOS Debug Tool"
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
   s.author              = {"CocoaDebug" => "man.li@shopee.com"}
   s.license             = "MIT"
