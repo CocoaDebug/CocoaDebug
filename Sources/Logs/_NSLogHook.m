@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "_OCLogHelper.h"
 #import "_fishhook.h"
-#import "RCTLog.h"
+//#import "RCTLog.h"
 
 @interface _NSLogHook : NSObject
 
@@ -58,59 +58,59 @@ void cocoadebug_nslog(NSString *format, ...) {
     
     
     //RN
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableRNMonitoring_CocoaDebug"]) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-            RCTSetLogFunction(^(RCTLogLevel level, RCTLogSource source, NSString *fileName, NSNumber *lineNumber, NSString *message) {
-                if ([message isKindOfClass:[NSString class]]) {
-
-                    //1.
-                    NSString *levelStr = @"";
-                    switch (level) {
-                        case RCTLogLevelTrace:
-                            levelStr = @"[Trace]";
-                            break;
-                         case RCTLogLevelInfo:
-                            levelStr = @"[Info]";
-                            break;
-                        case RCTLogLevelWarning:
-                            levelStr = @"[Warning]";
-                            break;
-                        case RCTLogLevelError:
-                            levelStr = @"[Error]";
-                            break;
-                        case RCTLogLevelFatal:
-                            levelStr = @"[Fatal]";
-                            break;
-                        default:
-                            break;
-                    }
-
-                    //2.
-                    NSString *fileStr = [[(fileName ?: @"") componentsSeparatedByString:@"/"] lastObject] ?: @"";
-                    if ([lineNumber isKindOfClass:[NSNumber class]]) {
-                        fileStr = [NSString stringWithFormat:@"%@[%ld]", fileStr, (long)[lineNumber integerValue]];
-                    }
-
-                    //3.
-                    fileStr = [NSString stringWithFormat:@"%@%@\n", fileStr, levelStr];
-
-                    //4.
-                    if (source == RCTLogSourceJavaScript)
-                    {
-                        //`RCTLogSourceJavaScript`
-                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
-                    }
-                    else
-                    {
-                        //`RCTLogSourceNative` or unknow
-                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor colorWithRed:210/255.0 green:143/255.0 blue:90/255.0 alpha:1] type:CocoaDebugToolTypeRN];
-                    }
-                }
-            });
-        });
-    }
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableRNMonitoring_CocoaDebug"]) {
+//        static dispatch_once_t onceToken;
+//        dispatch_once(&onceToken, ^{
+//
+//            RCTSetLogFunction(^(RCTLogLevel level, RCTLogSource source, NSString *fileName, NSNumber *lineNumber, NSString *message) {
+//                if ([message isKindOfClass:[NSString class]]) {
+//
+//                    //1.
+//                    NSString *levelStr = @"";
+//                    switch (level) {
+//                        case RCTLogLevelTrace:
+//                            levelStr = @"[Trace]";
+//                            break;
+//                         case RCTLogLevelInfo:
+//                            levelStr = @"[Info]";
+//                            break;
+//                        case RCTLogLevelWarning:
+//                            levelStr = @"[Warning]";
+//                            break;
+//                        case RCTLogLevelError:
+//                            levelStr = @"[Error]";
+//                            break;
+//                        case RCTLogLevelFatal:
+//                            levelStr = @"[Fatal]";
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//
+//                    //2.
+//                    NSString *fileStr = [[(fileName ?: @"") componentsSeparatedByString:@"/"] lastObject] ?: @"";
+//                    if ([lineNumber isKindOfClass:[NSNumber class]]) {
+//                        fileStr = [NSString stringWithFormat:@"%@[%ld]", fileStr, (long)[lineNumber integerValue]];
+//                    }
+//
+//                    //3.
+//                    fileStr = [NSString stringWithFormat:@"%@%@\n", fileStr, levelStr];
+//
+//                    //4.
+//                    if (source == RCTLogSourceJavaScript)
+//                    {
+//                        //`RCTLogSourceJavaScript`
+//                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
+//                    }
+//                    else
+//                    {
+//                        //`RCTLogSourceNative` or unknow
+//                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor colorWithRed:210/255.0 green:143/255.0 blue:90/255.0 alpha:1] type:CocoaDebugToolTypeRN];
+//                    }
+//                }
+//            });
+//        });
+//    }
 }
 
 @end

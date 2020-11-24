@@ -247,7 +247,6 @@
 		3826DC3A24EE5BF5003DE040 /* _QNSURLSessionDemux.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DACE24EE5BF5003DE040 /* _QNSURLSessionDemux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DACF24EE5BF5003DE040 /* _CanonicalRequest.m */; };
 		3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAD024EE5BF5003DE040 /* _CustomHTTPProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC3D24EE5BF5003DE040 /* _LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAD224EE5BF5003DE040 /* _LogHelper.swift */; };
 		3826DC3E24EE5BF5003DE040 /* _OCLogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAD324EE5BF5003DE040 /* _OCLogModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAD424EE5BF5003DE040 /* _NSLogHook.m */; };
 		3826DC4024EE5BF5003DE040 /* _OCLogHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DAD524EE5BF5003DE040 /* _OCLogHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -359,6 +358,7 @@
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
+		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -615,7 +615,6 @@
 		3826DACE24EE5BF5003DE040 /* _QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _QNSURLSessionDemux.h; sourceTree = "<group>"; };
 		3826DACF24EE5BF5003DE040 /* _CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CanonicalRequest.m; sourceTree = "<group>"; };
 		3826DAD024EE5BF5003DE040 /* _CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CustomHTTPProtocol.h; sourceTree = "<group>"; };
-		3826DAD224EE5BF5003DE040 /* _LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LogHelper.swift; sourceTree = "<group>"; };
 		3826DAD324EE5BF5003DE040 /* _OCLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogModel.h; sourceTree = "<group>"; };
 		3826DAD424EE5BF5003DE040 /* _NSLogHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NSLogHook.m; sourceTree = "<group>"; };
 		3826DAD524EE5BF5003DE040 /* _OCLogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OCLogHelper.h; sourceTree = "<group>"; };
@@ -728,6 +727,7 @@
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
+		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
 		3882D68025676EA200379E0C /* _fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _fishhook.c; sourceTree = "<group>"; };
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1099,7 +1099,7 @@
 		3826DAD124EE5BF5003DE040 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
-				3826DAD224EE5BF5003DE040 /* _LogHelper.swift */,
+				385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */,
 				3826DAD324EE5BF5003DE040 /* _OCLogModel.h */,
 				3826DAD424EE5BF5003DE040 /* _NSLogHook.m */,
 				3826DAD524EE5BF5003DE040 /* _OCLogHelper.h */,
@@ -1639,6 +1639,7 @@
 				38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */,
 				3826DC3324EE5BF5003DE040 /* NetworkDetailModel.swift in Sources */,
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
+				385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,
 				3826DB6D24EE5BF5003DE040 /* UITabBarController+_LeaksFinder.m in Sources */,
 				3826DC6E24EE5BF5003DE040 /* _GPBExtensionRegistry.m in Sources */,
@@ -1659,7 +1660,6 @@
 				3826DC3124EE5BF5003DE040 /* NetworkDetailCell.swift in Sources */,
 				3826DC8024EE5BF5003DE040 /* _Struct.pbobjc.m in Sources */,
 				3826DB7624EE5BF5003DE040 /* _LeakedObjectProxy.m in Sources */,
-				3826DC3D24EE5BF5003DE040 /* _LogHelper.swift in Sources */,
 				3826DC4624EE5BF5003DE040 /* _OCLogModel.m in Sources */,
 				3826DD3124EE5FD5003DE040 /* _FileTableViewCell.m in Sources */,
 				3826DB7124EE5BF5003DE040 /* _LeaksMessenger.m in Sources */,
