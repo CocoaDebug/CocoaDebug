@@ -215,7 +215,7 @@ class Bubble: UIView {
         //notification
         NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(show_cocoadebug_force), name: NSNotification.Name(rawValue: "SHOW_COCOADEBUD_FORCE"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(show_cocoadebug_force), name: NSNotification.Name(rawValue: "SHOW_COCOADEBUG_FORCE"), object: nil)
 
         //Defaults
 //        memoryLabel?.attributedText = memoryLabel?.memoryAttributedString(with: 0)
