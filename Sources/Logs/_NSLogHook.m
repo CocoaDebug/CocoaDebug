@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "_OCLogHelper.h"
 #import "_fishhook.h"
-//#import "RCTLog.h"
 //#import <React/RCTLog.h>
 
 @interface _NSLogHook : NSObject
@@ -106,7 +105,7 @@ void cocoadebug_nslog(NSString *format, ...) {
 //                    else
 //                    {
 //                        //`RCTLogSourceNative` or unknow
-//                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor colorWithRed:210/255.0 green:143/255.0 blue:90/255.0 alpha:1] type:CocoaDebugToolTypeRN];
+//                        [_OCLogHelper.shared handleLogWithFile:fileStr function:@"" line:-1 message:message color:[UIColor systemOrangeColor] type:CocoaDebugToolTypeRN];
 //                    }
 //                }
 //            });
