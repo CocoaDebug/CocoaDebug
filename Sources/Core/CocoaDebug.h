@@ -11,6 +11,7 @@
 #import "CocoaDebugDeviceInfo.h"
 #import "NSObject+CocoaDebug.h"
 
+#import "_fishhook.h"
 #import "_FileInfo.h"
 #import "_Swizzling.h"
 #import "_ObjcLog.h"
