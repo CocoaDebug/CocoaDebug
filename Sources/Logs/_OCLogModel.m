@@ -76,9 +76,14 @@
         NSRange range2 = NSMakeRange(startIndex, self.fileInfo.length);
         
         if ([self.fileInfo isEqualToString:@"[Error]\n"]) {
+            self.fileInfo = @"[error]\n";
             [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemRedColor]  range: range2];
         } else {
             [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemGrayColor]  range: range2];
+        }
+        
+        if ([self.fileInfo isEqualToString:@"[Info]\n"]) {
+            self.fileInfo = @"[log]\n";
         }
         
         [attstr addAttribute: NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range2];
@@ -101,3 +106,4 @@
 }
 
 @end
+
