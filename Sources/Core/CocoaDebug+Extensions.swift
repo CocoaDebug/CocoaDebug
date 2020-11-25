@@ -304,7 +304,7 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
@@ -321,16 +321,29 @@ extension CocoaDebug {
         } else {
             CocoaDebugSettings.shared.serverURL = serverURL
         }
-        if onlyURLs == nil {
-            CocoaDebugSettings.shared.onlyURLs = []
-        } else {
-            CocoaDebugSettings.shared.onlyURLs = onlyURLs
-        }
+        
         if ignoredURLs == nil {
             CocoaDebugSettings.shared.ignoredURLs = []
         } else {
             CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
+        if onlyURLs == nil {
+            CocoaDebugSettings.shared.onlyURLs = []
+        } else {
+            CocoaDebugSettings.shared.onlyURLs = onlyURLs
+        }
+        
+        if ignoredPrefixLogs == nil {
+            CocoaDebugSettings.shared.ignoredPrefixLogs = []
+        } else {
+            CocoaDebugSettings.shared.ignoredPrefixLogs = ignoredPrefixLogs
+        }
+        if onlyPrefixLogs == nil {
+            CocoaDebugSettings.shared.onlyPrefixLogs = []
+        } else {
+            CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
+        }
+        
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true

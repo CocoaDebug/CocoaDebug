@@ -88,9 +88,13 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `onlyURLs` - Set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
 
+- `ignoredPrefixLogs` - Set the prefix Logs which should not been captured, CocoaDebug capture all Logs when the value is nil. Default value is **nil**.
+
+- `onlyPrefixLogs` - Set the prefix Logs which are only been captured, CocoaDebug capture all Logs when the value is nil. Default value is **nil**.
+
 - `additionalViewController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
 
-- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **200**.
+- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **500**.
 
 - `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. Default value is **nil**.
 

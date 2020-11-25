@@ -462,7 +462,7 @@ extension NetworkDetailViewController {
                 }
                 //计算NSString高度
                 let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
-                return (height + 70) > 5000 ? 5000 : (height + 70)
+                return height + 70
             }
             return 0
         }

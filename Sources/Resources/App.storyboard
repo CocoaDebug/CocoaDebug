@@ -185,30 +185,32 @@
             </objects>
             <point key="canvasLocation" x="-279" y="3249"/>
         </scene>
-        <!--Ignored URLs-->
+        <!--Settings-->
         <scene sceneID="OGh-yx-4BT">
             <objects>
-                <tableViewController storyboardIdentifier="IgnoredURLsViewController" title="Ignored URLs" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="IgnoredURLsViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wcd-XR-9Vs">
+                <tableViewController storyboardIdentifier="IgnoredURLsViewController" title="Settings" hidesBottomBarWhenPushed="YES" id="if5-nq-YeY" customClass="IgnoredURLsViewController" customModule="CocoaDebug" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wcd-XR-9Vs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="sVC-dN-O65">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocoaDebugSettingsCell" id="sVC-dN-O65">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sVC-dN-O65" id="ZmJ-2k-Qh8">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="if5-nq-YeY" id="8WY-1w-Jmz"/>
                             <outlet property="delegate" destination="if5-nq-YeY" id="WcR-7y-fwZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ignored URLs" id="isR-TM-jaf">
+                    <navigationItem key="navigationItem" title="Settings" id="isR-TM-jaf">
                         <barButtonItem key="backBarButtonItem" title=" " id="Kb7-EV-zlP"/>
                     </navigationItem>
                     <connections>
@@ -863,7 +865,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ignored URLs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-8H-UcW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-8H-UcW">
                                                     <rect key="frame" x="16" y="11" width="110" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="PQV-zw-DIQ"/>
@@ -872,20 +874,9 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bR-ma-wZQ">
-                                                    <rect key="frame" x="248" y="11" width="111" height="20.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="111" id="eV0-Gy-lkc"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5bR-ma-wZQ" firstAttribute="trailing" secondItem="7jN-Rb-Eb3" secondAttribute="trailingMargin" constant="-8" id="5tX-Fj-XJn"/>
                                                 <constraint firstItem="rqv-8H-UcW" firstAttribute="leading" secondItem="7jN-Rb-Eb3" secondAttribute="leading" constant="16" id="RCG-xx-1HK"/>
-                                                <constraint firstItem="5bR-ma-wZQ" firstAttribute="top" secondItem="7jN-Rb-Eb3" secondAttribute="topMargin" constant="3" id="ZeS-ji-LlC"/>
                                                 <constraint firstItem="rqv-8H-UcW" firstAttribute="top" secondItem="7jN-Rb-Eb3" secondAttribute="topMargin" constant="3" id="d2o-JF-Q4z"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -944,7 +935,6 @@
                         <outlet property="labelIOSVersion" destination="lQJ-Bz-A5f" id="QLN-M3-KPP"/>
                         <outlet property="labelScreenResolution" destination="Kz7-U6-YrS" id="28a-cs-9Hu"/>
                         <outlet property="labelVersionNumber" destination="7Yi-0U-npR" id="cIg-RG-FLI"/>
-                        <outlet property="labelignoredURLs" destination="5bR-ma-wZQ" id="Ab7-uR-wVL"/>
                         <outlet property="labelserverURL" destination="buG-N4-VY9" id="W1a-e8-npR"/>
                         <outlet property="logSwitch" destination="Ssj-o9-QJs" id="BWf-MV-I6J"/>
                         <outlet property="memberVariablesMemoryLeaksSwitch" destination="HIt-ae-gCK" id="6pC-uR-cCP"/>

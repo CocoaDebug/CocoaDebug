@@ -210,14 +210,26 @@ import Foundation
             _NetworkHelper.shared().logMaxCount = logMaxCount
         }
     }
+    
+    @objc public var ignoredURLs: [String]? = nil {
+        didSet {
+            _NetworkHelper.shared().ignoredURLs = ignoredURLs
+        }
+    }
     @objc public var onlyURLs: [String]? = nil {
         didSet {
             _NetworkHelper.shared().onlyURLs = onlyURLs
         }
     }
-    @objc public var ignoredURLs: [String]? = nil {
+    
+    @objc public var ignoredPrefixLogs: [String]? = nil {
         didSet {
-            _NetworkHelper.shared().ignoredURLs = ignoredURLs
+            _NetworkHelper.shared().ignoredPrefixLogs = ignoredPrefixLogs
+        }
+    }
+    @objc public var onlyPrefixLogs: [String]? = nil {
+        didSet {
+            _NetworkHelper.shared().onlyPrefixLogs = onlyPrefixLogs
         }
     }
     
@@ -254,8 +266,12 @@ import Foundation
         
         //objc
         logMaxCount = _NetworkHelper.shared().logMaxCount
-        onlyURLs = _NetworkHelper.shared().onlyURLs
+        
         ignoredURLs = _NetworkHelper.shared().ignoredURLs
+        onlyURLs = _NetworkHelper.shared().onlyURLs
+
+        ignoredPrefixLogs = _NetworkHelper.shared().ignoredPrefixLogs
+        onlyPrefixLogs = _NetworkHelper.shared().onlyPrefixLogs
         
         //protobuf
         protobufTransferMap = _NetworkHelper.shared().protobufTransferMap

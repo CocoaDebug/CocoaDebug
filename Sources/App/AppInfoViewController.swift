@@ -17,7 +17,6 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var labelDeviceModel: UILabel!
     @IBOutlet weak var labelCrashCount: UILabel!
     @IBOutlet weak var labelBundleID: UILabel!
-    @IBOutlet weak var labelignoredURLs: UILabel!
     @IBOutlet weak var labelserverURL: UILabel!
     @IBOutlet weak var labelIOSVersion: UILabel!
     @IBOutlet weak var labelHtml: UILabel!
@@ -56,7 +55,6 @@ class AppInfoViewController: UITableViewController {
         labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
         
         labelBundleID.text = CocoaDebugDeviceInfo.sharedInstance().appBundleID
-        labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
         labelserverURL.text = CocoaDebugSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
@@ -191,14 +189,7 @@ extension AppInfoViewController {
                 return 0
             }
         }
-        if indexPath.section == 5 && indexPath.row == 0 {
-            if labelignoredURLs.text == "0" {
-                if UIScreen.main.scale == 3 {
-                    return 1.5//plus,iPhone X
-                }
-                return 0.5//iphone 5,6,6s,7,8
-            }
-        }
+        
         return 44
     }
     
@@ -235,9 +226,7 @@ extension AppInfoViewController {
         }
         
         if indexPath.section == 1 && indexPath.row == 4 {
-            if labelserverURL.text == nil || labelserverURL.text == "" {
-                return
-            }
+            if labelserverURL.text == nil || labelserverURL.text == "" {return}
             
             UIPasteboard.general.string = CocoaDebugSettings.shared.serverURL
             

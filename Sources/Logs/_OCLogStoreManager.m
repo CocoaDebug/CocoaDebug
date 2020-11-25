@@ -44,8 +44,26 @@
 
 - (void)addLog:(_OCLogModel *)log
 {
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    if (![log.content isKindOfClass:[NSString class]]) {return;}
     
+    //log过滤, 忽略大小写
+    for (NSString *prefixStr in [_NetworkHelper shared].onlyPrefixLogs) {
+        if (![log.content hasPrefix:prefixStr]) {
+            return;
+        }
+    }
+    //log过滤, 忽略大小写
+    for (NSString *prefixStr in [_NetworkHelper shared].ignoredPrefixLogs) {
+        if ([log.content hasPrefix:prefixStr]) {
+            return;
+        }
+    }
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
