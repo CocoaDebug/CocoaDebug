@@ -34,6 +34,12 @@
         }
         
         //
+        if ([fileInfo isKindOfClass:[NSString class]]) {
+            fileInfo = [fileInfo stringByReplacingOccurrencesOfString:@"[Error]\n" withString:@"[error]\n"];
+            fileInfo = [fileInfo stringByReplacingOccurrencesOfString:@"[Info]\n" withString:@"[log]\n"];
+        }
+        
+        //
         self.Id = [[NSUUID UUID] UUIDString];
         self.fileInfo = fileInfo;
         self.date = [NSDate date];
@@ -65,7 +71,7 @@
         } else {
             stringContent = [stringContent stringByAppendingFormat:@"%@", self.content];
         }
-    
+        
         NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc] initWithString:stringContent];
         [attstr addAttribute:NSForegroundColorAttributeName value:self.color range:NSMakeRange(0, [stringContent length])];
         
@@ -75,15 +81,10 @@
         
         NSRange range2 = NSMakeRange(startIndex, self.fileInfo.length);
         
-        if ([self.fileInfo isEqualToString:@"[Error]\n"]) {
-            self.fileInfo = @"[error]\n";
+        if ([self.fileInfo isEqualToString:@"[error]\n"]) {
             [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemRedColor]  range: range2];
         } else {
             [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemGrayColor]  range: range2];
-        }
-        
-        if ([self.fileInfo isEqualToString:@"[Info]\n"]) {
-            self.fileInfo = @"[log]\n";
         }
         
         [attstr addAttribute: NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range2];
@@ -106,4 +107,3 @@
 }
 
 @end
-
