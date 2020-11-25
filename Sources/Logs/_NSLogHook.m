@@ -61,16 +61,16 @@ void cocoadebug_nslog(NSString *format, ...) {
 //    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableRNMonitoring_CocoaDebug"]) {
 //        static dispatch_once_t onceToken;
 //        dispatch_once(&onceToken, ^{
-//
+//            
 //            RCTSetLogFunction(^(RCTLogLevel level, RCTLogSource source, NSString *fileName, NSNumber *lineNumber, NSString *message) {
 //                if (![message isKindOfClass:[NSString class]]) {
 //                    return;
 //                }
-//
-//                if (level != RCTLogLevelError && level != RCTLogLevelTrace) {
+//                
+//                if (level != RCTLogLevelError && level != RCTLogLevelInfo) {
 //                    return;
 //                }
-//
+//                
 //                //1.
 //                NSString *levelStr = @"";
 //                switch (level) {
@@ -92,16 +92,16 @@ void cocoadebug_nslog(NSString *format, ...) {
 //                    default:
 //                        break;
 //                }
-//
+//                
 //                //2.
 //                NSString *fileStr = [[(fileName ?: @"") componentsSeparatedByString:@"/"] lastObject] ?: @"";
 //                if ([lineNumber isKindOfClass:[NSNumber class]]) {
 //                    fileStr = [NSString stringWithFormat:@"%@[%ld]", fileStr, (long)[lineNumber integerValue]];
 //                }
-//
+//                
 //                //3.
 //                fileStr = [NSString stringWithFormat:@"%@%@\n", fileStr, levelStr];
-//
+//                
 //                //4.
 //                if (source == RCTLogSourceJavaScript)
 //                {
@@ -119,3 +119,4 @@ void cocoadebug_nslog(NSString *format, ...) {
 }
 
 @end
+
