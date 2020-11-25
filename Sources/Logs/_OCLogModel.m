@@ -34,9 +34,9 @@
         }
         
         //RN (java script)
-        if ([fileInfo isEqualToString:@"[RCTLogLevelError]\n"]) {
+        if ([fileInfo isEqualToString:@"[RCTLogError]\n"]) {
             fileInfo = @"[error]\n";
-        } else if ([fileInfo isEqualToString:@"[RCTLogLevelInfo]\n"]) {
+        } else if ([fileInfo isEqualToString:@"[RCTLogInfo]\n"]) {
             fileInfo = @"[log]\n";
         }
         

@@ -75,19 +75,19 @@ void cocoadebug_nslog(NSString *format, ...) {
 //                NSString *levelStr = @"";
 //                switch (level) {
 //                    case RCTLogLevelTrace:
-//                        levelStr = @"[RCTLogLevelTrace]";
+//                        levelStr = @"[RCTLogTrace]";
 //                        break;
 //                    case RCTLogLevelInfo:
-//                        levelStr = @"[RCTLogLevelInfo]";
+//                        levelStr = @"[RCTLogInfo]";
 //                        break;
 //                    case RCTLogLevelWarning:
-//                        levelStr = @"[RCTLogLevelWarning]";
+//                        levelStr = @"[RCTLogWarn]";
 //                        break;
 //                    case RCTLogLevelError:
-//                        levelStr = @"[RCTLogLevelError]";
+//                        levelStr = @"[RCTLogError]";
 //                        break;
 //                    case RCTLogLevelFatal:
-//                        levelStr = @"[RCTLogLevelFatal]";
+//                        levelStr = @"[RCTLogFatal]";
 //                        break;
 //                    default:
 //                        break;
