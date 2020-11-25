@@ -633,7 +633,7 @@ extension LogViewController: UITableViewDelegate {
         return 0
     }
     
-    
+    /*
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if tableView == defaultTableView
@@ -819,6 +819,7 @@ extension LogViewController: UITableViewDelegate {
             }
         }
     }
+ */
 }
 
 //MARK: - UIScrollViewDelegate

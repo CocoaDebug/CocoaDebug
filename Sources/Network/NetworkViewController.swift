@@ -269,6 +269,7 @@ extension NetworkViewController: UITableViewDelegate {
         CocoaDebugSettings.shared.networkLastIndex = indexPath.row
     }
     
+    /*
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
@@ -345,6 +346,7 @@ extension NetworkViewController: UITableViewDelegate {
             }
         }
     }
+ */
 }
 
 //MARK: - UIScrollViewDelegate
