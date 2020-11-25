@@ -33,10 +33,11 @@
             }
         }
         
-        //
-        if ([fileInfo isKindOfClass:[NSString class]]) {
-            fileInfo = [fileInfo stringByReplacingOccurrencesOfString:@"[Error]\n" withString:@"[error]\n"];
-            fileInfo = [fileInfo stringByReplacingOccurrencesOfString:@"[Info]\n" withString:@"[log]\n"];
+        //RN (java script)
+        if ([fileInfo isEqualToString:@"[RCTLogLevelError]\n"]) {
+            fileInfo = @"[error]\n";
+        } else if ([fileInfo isEqualToString:@"[RCTLogLevelInfo]\n"]) {
+            fileInfo = @"[log]\n";
         }
         
         //
