@@ -31,7 +31,7 @@ NSString *const _FileTableViewCellReuseIdentifier = @"_FileCell";
     self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
     
-    self.detailTextLabel.textColor = [UIColor grayColor];
+    self.detailTextLabel.textColor = [UIColor systemGrayColor];
     self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     self.detailTextLabel.font = [UIFont boldSystemFontOfSize:12];
     //    self.selectionStyle = UITableViewCellSelectionStyleNone;

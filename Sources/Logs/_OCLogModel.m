@@ -74,7 +74,13 @@
         [attstr addAttribute:NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range];
         
         NSRange range2 = NSMakeRange(startIndex, self.fileInfo.length);
-        [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor grayColor]  range: range2];
+        
+        if ([self.fileInfo isEqualToString:@"[Error]\n"]) {
+            [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemRedColor]  range: range2];
+        } else {
+            [attstr addAttribute: NSForegroundColorAttributeName value: [UIColor systemGrayColor]  range: range2];
+        }
+        
         [attstr addAttribute: NSFontAttributeName value: [UIFont boldSystemFontOfSize:12] range: range2];
         
         
