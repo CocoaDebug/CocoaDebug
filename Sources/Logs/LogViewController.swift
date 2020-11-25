@@ -626,7 +626,7 @@ extension LogViewController: UITableViewDelegate {
         }
         
         if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width) {
-            return (height + 10) > 5000 ? 5000 : (height + 10)
+            return height + 10;
         }
         
         return 0

@@ -39,6 +39,15 @@
         self.date = [NSDate date];
         self.color = color;
         self.isTag = isTag;
+        
+        if ([content isKindOfClass:[NSString class]]) {
+            self.contentData = [content dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        
+        //避免日志数量过多导致卡顿
+        if (content.length > 1000) {
+            content = [content substringToIndex:1000];
+        }
         self.content = content;
         
         /////////////////////////////////////////////////////////////////////////
