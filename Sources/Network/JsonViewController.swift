@@ -132,10 +132,8 @@ class JsonViewController: UIViewController {
             textView.isHidden = false
             naviItemTitleLabel?.text = logTitleString
             
-            if let logModel = logModel {
-                textView.text = nil
-                textView.text = logModel.str
-                textView.attributedText = logModel.attr
+            if let data = logModel?.contentData {
+                textView.text = data.dataToString()
             }
         }
         else

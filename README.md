@@ -90,7 +90,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 
 - `additionalViewController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
 
-- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **1000**.
+- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **200**.
 
 - `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. Default value is **nil**.
 
