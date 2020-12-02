@@ -122,16 +122,11 @@ class LogViewController: UIViewController {
         
         if selectedSegmentIndex == 0
         {
-            if defaultReloadDataFinish == false {
-                return
-            }
+            if defaultReloadDataFinish == false {return}
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                self?.defaultSearchBar.isHidden = false
-                self?.rnSearchBar.isHidden = true
-                self?.webSearchBar.isHidden = true
-            }
-            
+            defaultSearchBar.isHidden = false
+            rnSearchBar.isHidden = true
+            webSearchBar.isHidden = true
             
             defaultTableView.isHidden = false
             rnTableView.isHidden = true
@@ -166,16 +161,11 @@ class LogViewController: UIViewController {
         }
         else if selectedSegmentIndex == 1
         {
-            if rnReloadDataFinish == false {
-                return
-            }
+            if rnReloadDataFinish == false {return}
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                self?.defaultSearchBar.isHidden = true
-                self?.rnSearchBar.isHidden = false
-                self?.webSearchBar.isHidden = true
-            }
-            
+            defaultSearchBar.isHidden = true
+            rnSearchBar.isHidden = false
+            webSearchBar.isHidden = true
             
             defaultTableView.isHidden = true
             rnTableView.isHidden = false
@@ -210,16 +200,11 @@ class LogViewController: UIViewController {
         }
         else
         {
-            if webReloadDataFinish == false {
-                return
-            }
+            if webReloadDataFinish == false {return}
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                self?.defaultSearchBar.isHidden = true
-                self?.rnSearchBar.isHidden = true
-                self?.webSearchBar.isHidden = false
-            }
-            
+            defaultSearchBar.isHidden = true
+            rnSearchBar.isHidden = true
+            webSearchBar.isHidden = false
             
             defaultTableView.isHidden = true
             rnTableView.isHidden = true

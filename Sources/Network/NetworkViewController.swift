@@ -50,16 +50,9 @@ class NetworkViewController: UIViewController {
     //MARK: - private
     func reloadHttp(needScrollToEnd: Bool = false) {
         
-        if reloadDataFinish == false {
-            return
-        }
+        if reloadDataFinish == false {return}
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-            if self?.searchBar.isHidden == true {
-                self?.searchBar.isHidden = false
-            }
-        }
-        
+        searchBar.isHidden = false
         
         self.models = (_HttpDatasource.shared().httpModels as NSArray as? [_HttpModel])
         self.cacheModels = self.models
