@@ -57,12 +57,6 @@ extension CrashListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //Otherwise occasionally crash
-        if indexPath.row >= models.count {
-            return UITableViewCell()
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
             as! CrashCell
         cell.crash = models[indexPath.row]

@@ -127,9 +127,9 @@ class LogViewController: UIViewController {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.defaultSearchBar.isHidden == true {
-                    self?.defaultSearchBar.isHidden = false
-                }
+                self?.defaultSearchBar.isHidden = false
+                self?.rnSearchBar.isHidden = true
+                self?.webSearchBar.isHidden = true
             }
             
             
@@ -171,9 +171,9 @@ class LogViewController: UIViewController {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.rnSearchBar.isHidden == true {
-                    self?.rnSearchBar.isHidden = false
-                }
+                self?.defaultSearchBar.isHidden = true
+                self?.rnSearchBar.isHidden = false
+                self?.webSearchBar.isHidden = true
             }
             
             
@@ -215,9 +215,9 @@ class LogViewController: UIViewController {
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.webSearchBar.isHidden == true {
-                    self?.webSearchBar.isHidden = false
-                }
+                self?.defaultSearchBar.isHidden = true
+                self?.rnSearchBar.isHidden = true
+                self?.webSearchBar.isHidden = false
             }
             
             
@@ -275,12 +275,12 @@ class LogViewController: UIViewController {
         
         //notification
         NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil)
-
+        
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
-//        defaultTableView.rowHeight = UITableViewAutomaticDimension
+        //        defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
         defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordNormal
         defaultSearchBar.isHidden = true
@@ -294,7 +294,7 @@ class LogViewController: UIViewController {
         rnTableView.tableFooterView = UIView()
         rnTableView.delegate = self
         rnTableView.dataSource = self
-//        rnTableView.rowHeight = UITableViewAutomaticDimension
+        //        rnTableView.rowHeight = UITableViewAutomaticDimension
         rnSearchBar.delegate = self
         rnSearchBar.text = CocoaDebugSettings.shared.logSearchWordRN
         rnSearchBar.isHidden = true
@@ -308,7 +308,7 @@ class LogViewController: UIViewController {
         webTableView.tableFooterView = UIView()
         webTableView.delegate = self
         webTableView.dataSource = self
-//        webTableView.rowHeight = UITableViewAutomaticDimension
+        //        webTableView.rowHeight = UITableViewAutomaticDimension
         webSearchBar.delegate = self
         webSearchBar.text = CocoaDebugSettings.shared.logSearchWordWeb
         webSearchBar.isHidden = true
@@ -332,7 +332,7 @@ class LogViewController: UIViewController {
         }
         
         reloadLogs(needScrollToEnd: true, needReloadData: true)
-
+        
         
         
         //hide searchBar icon
@@ -341,13 +341,13 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar.leftView = nil
         textFieldInsideSearchBar.backgroundColor = .white
         textFieldInsideSearchBar.returnKeyType = .default
-
+        
         let textFieldInsideSearchBar2 = rnSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
         textFieldInsideSearchBar2.leftView = nil
         textFieldInsideSearchBar2.backgroundColor = .white
         textFieldInsideSearchBar2.returnKeyType = .default
-
+        
         let textFieldInsideSearchBar3 = webSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar3.leftViewMode = .never
         textFieldInsideSearchBar3.leftView = nil
@@ -366,7 +366,7 @@ class LogViewController: UIViewController {
         //notification
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     
     //MARK: - target action
     @IBAction func didTapDown(_ sender: Any) {
@@ -417,9 +417,9 @@ class LogViewController: UIViewController {
         {
             defaultModels = []
             defaultCacheModels = []
-//            defaultSearchBar.text = nil
+            //            defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordNormal = nil
+            //            CocoaDebugSettings.shared.logSearchWordNormal = nil
             
             _OCLogStoreManager.shared()?.resetNormalLogs()
             
@@ -431,9 +431,9 @@ class LogViewController: UIViewController {
         {
             rnModels = []
             rnCacheModels = []
-//            rnSearchBar.text = nil
+            //            rnSearchBar.text = nil
             rnSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordRN = nil
+            //            CocoaDebugSettings.shared.logSearchWordRN = nil
             
             _OCLogStoreManager.shared()?.resetRNLogs()
             
@@ -445,9 +445,9 @@ class LogViewController: UIViewController {
         {
             webModels = []
             webCacheModels = []
-//            webSearchBar.text = nil
+            //            webSearchBar.text = nil
             webSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordWeb = nil
+            //            CocoaDebugSettings.shared.logSearchWordWeb = nil
             
             _OCLogStoreManager.shared().resetWebLogs()
             
@@ -536,29 +536,14 @@ extension LogViewController: UITableViewDataSource {
         
         if tableView == defaultTableView
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= defaultModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = defaultModels[indexPath.row]
         }
         else if tableView == rnTableView
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= rnModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = rnModels[indexPath.row]
         }
         else
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= webModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = webModels[indexPath.row]
         }
         
@@ -574,7 +559,7 @@ extension LogViewController: UITableViewDelegate {
         
         var logTitleString = ""
         var models_: [_OCLogModel]?
-
+        
         if tableView == defaultTableView
         {
             defaultSearchBar.resignFirstResponder()
@@ -596,10 +581,10 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Web"
             models_ = webModels
         }
-
+        
         //
         guard let models = models_ else {return}
-
+        
         let vc = JsonViewController.instanceFromStoryBoard()
         vc.editType = .log
         vc.logTitleString = logTitleString
@@ -619,8 +604,10 @@ extension LogViewController: UITableViewDelegate {
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
+            
         } else if tableView == rnTableView {
             model = rnModels[indexPath.row]
+            
         } else {
             model = webModels[indexPath.row]
         }
