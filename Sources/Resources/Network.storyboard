@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,32 +19,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-UO-WV3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qfa-em-8wP"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HG7-0d-Yj9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <color key="separatorColor" red="0.30192413930000001" green="0.30198186640000002" blue="0.30192047360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="H1I-hQ-x8v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="g3o-UO-WV3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="g3o-UO-WV3" secondAttribute="trailing" id="KcB-J5-KOC"/>
-                                        <constraint firstItem="g3o-UO-WV3" firstAttribute="top" secondItem="H1I-hQ-x8v" secondAttribute="top" id="SHY-xT-giH"/>
-                                        <constraint firstAttribute="bottom" secondItem="g3o-UO-WV3" secondAttribute="bottom" id="eS3-Dx-CMy"/>
-                                        <constraint firstItem="g3o-UO-WV3" firstAttribute="leading" secondItem="H1I-hQ-x8v" secondAttribute="leading" id="wTd-Wx-RpH"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NetworkCell" rowHeight="140" id="caZ-x3-DZv" customClass="NetworkCell" customModule="CocoaDebug" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caZ-x3-DZv" id="wOJ-KD-fAY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -148,8 +138,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AxS-rn-hDA" firstAttribute="top" secondItem="HG7-0d-Yj9" secondAttribute="bottom" id="2fj-rT-RHQ"/>
+                            <constraint firstItem="g3o-UO-WV3" firstAttribute="leading" secondItem="jKX-oK-70h" secondAttribute="leading" id="4Q2-Rg-vSx"/>
+                            <constraint firstItem="g3o-UO-WV3" firstAttribute="top" secondItem="5LO-XP-TDA" secondAttribute="bottom" id="4bq-NT-PqH"/>
+                            <constraint firstAttribute="trailing" secondItem="g3o-UO-WV3" secondAttribute="trailing" id="GTd-L2-PQ0"/>
                             <constraint firstItem="HG7-0d-Yj9" firstAttribute="leading" secondItem="jKX-oK-70h" secondAttribute="leading" id="IfW-Ku-Gg6"/>
-                            <constraint firstItem="HG7-0d-Yj9" firstAttribute="top" secondItem="jKX-oK-70h" secondAttribute="top" id="a0q-kt-eHI"/>
+                            <constraint firstItem="HG7-0d-Yj9" firstAttribute="top" secondItem="jKX-oK-70h" secondAttribute="top" constant="44" id="a0q-kt-eHI"/>
                             <constraint firstAttribute="trailing" secondItem="HG7-0d-Yj9" secondAttribute="trailing" id="sJA-Dl-pas"/>
                         </constraints>
                     </view>

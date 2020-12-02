@@ -42,31 +42,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-CH-bNP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="98c-Bg-01N"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-cF-Ycv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SEU-CJ-6Tj"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="y0I-qu-Bgu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8lJ-TQ-6yB"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fq3-3m-DV4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="730"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="Vsw-UO-JjX">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-CH-bNP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="aXE-CH-bNP" firstAttribute="top" secondItem="Vsw-UO-JjX" secondAttribute="top" id="OYb-Gi-uUx"/>
-                                        <constraint firstItem="aXE-CH-bNP" firstAttribute="leading" secondItem="Vsw-UO-JjX" secondAttribute="leading" id="RxT-Z0-g1z"/>
-                                        <constraint firstAttribute="bottom" secondItem="aXE-CH-bNP" secondAttribute="bottom" id="ToB-3A-Fdo"/>
-                                        <constraint firstAttribute="trailing" secondItem="aXE-CH-bNP" secondAttribute="trailing" id="bPp-0g-LTr"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="CMU-Yb-WmC" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="103"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMU-Yb-WmC" id="Mwi-RZ-tis">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
@@ -107,30 +113,12 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwa-b2-R5v">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="730"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="sz9-PV-VPi">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-cF-Ycv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Be8-cF-Ycv" secondAttribute="bottom" id="2aH-2K-eNQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Be8-cF-Ycv" secondAttribute="trailing" id="Vkf-kj-Y97"/>
-                                        <constraint firstItem="Be8-cF-Ycv" firstAttribute="leading" secondItem="sz9-PV-VPi" secondAttribute="leading" id="v0c-f1-PsC"/>
-                                        <constraint firstItem="Be8-cF-Ycv" firstAttribute="top" secondItem="sz9-PV-VPi" secondAttribute="top" id="z28-9W-i8r"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="jvF-DW-uiK" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="103"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jvF-DW-uiK" id="y1t-vs-uq4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
@@ -171,30 +159,12 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mNu-i0-KLy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="730"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="hbm-Ra-i1G">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="y0I-qu-Bgu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="y0I-qu-Bgu" firstAttribute="top" secondItem="hbm-Ra-i1G" secondAttribute="top" id="BqA-hW-D2E"/>
-                                        <constraint firstAttribute="bottom" secondItem="y0I-qu-Bgu" secondAttribute="bottom" id="Qo5-Er-Dtf"/>
-                                        <constraint firstAttribute="trailing" secondItem="y0I-qu-Bgu" secondAttribute="trailing" id="iEm-mi-5tZ"/>
-                                        <constraint firstItem="y0I-qu-Bgu" firstAttribute="leading" secondItem="hbm-Ra-i1G" secondAttribute="leading" id="mgx-xj-I01"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogCell" rowHeight="103" id="Mjr-Ie-lPw" customClass="LogCell" customModule="CocoaDebug" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="103"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mjr-Ie-lPw" id="v62-ik-jvT">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
@@ -237,18 +207,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Be8-cF-Ycv" secondAttribute="trailing" id="2Dg-y7-Igw"/>
                             <constraint firstItem="fq3-3m-DV4" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="3Vt-Qy-odc"/>
                             <constraint firstAttribute="trailing" secondItem="fq3-3m-DV4" secondAttribute="trailing" id="Cn3-F5-vgR"/>
+                            <constraint firstAttribute="trailing" secondItem="aXE-CH-bNP" secondAttribute="trailing" id="DtT-c1-rxj"/>
                             <constraint firstItem="mNu-i0-KLy" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="N3b-sk-PgT"/>
-                            <constraint firstItem="iwa-b2-R5v" firstAttribute="top" secondItem="UzN-vB-IsZ" secondAttribute="bottom" id="RBA-yC-Y1w"/>
+                            <constraint firstItem="iwa-b2-R5v" firstAttribute="top" secondItem="UzN-vB-IsZ" secondAttribute="bottom" constant="44" id="RBA-yC-Y1w"/>
                             <constraint firstAttribute="trailing" secondItem="iwa-b2-R5v" secondAttribute="trailing" id="Vvu-bK-4Tx"/>
                             <constraint firstAttribute="trailing" secondItem="mNu-i0-KLy" secondAttribute="trailing" id="YJi-Eo-s2N"/>
                             <constraint firstItem="iwa-b2-R5v" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="aRj-me-LDN"/>
+                            <constraint firstItem="Be8-cF-Ycv" firstAttribute="top" secondItem="aXE-CH-bNP" secondAttribute="bottom" id="b5R-Nc-671"/>
                             <constraint firstItem="tUW-lE-b31" firstAttribute="top" secondItem="iwa-b2-R5v" secondAttribute="bottom" id="b8C-bH-nR3"/>
+                            <constraint firstAttribute="trailing" secondItem="y0I-qu-Bgu" secondAttribute="trailing" id="cmU-tn-peI"/>
                             <constraint firstItem="tUW-lE-b31" firstAttribute="top" secondItem="mNu-i0-KLy" secondAttribute="bottom" id="db4-LD-w3q"/>
-                            <constraint firstItem="mNu-i0-KLy" firstAttribute="top" secondItem="UzN-vB-IsZ" secondAttribute="bottom" id="hrk-jP-uk7"/>
+                            <constraint firstItem="mNu-i0-KLy" firstAttribute="top" secondItem="UzN-vB-IsZ" secondAttribute="bottom" constant="44" id="hrk-jP-uk7"/>
                             <constraint firstItem="tUW-lE-b31" firstAttribute="top" secondItem="fq3-3m-DV4" secondAttribute="bottom" id="i7X-iQ-ijZ"/>
-                            <constraint firstItem="fq3-3m-DV4" firstAttribute="top" secondItem="C0A-8K-msL" secondAttribute="top" id="or2-BD-5kJ"/>
+                            <constraint firstItem="y0I-qu-Bgu" firstAttribute="top" secondItem="Be8-cF-Ycv" secondAttribute="bottom" id="iQ1-QL-gQL"/>
+                            <constraint firstItem="fq3-3m-DV4" firstAttribute="top" secondItem="C0A-8K-msL" secondAttribute="top" constant="44" id="or2-BD-5kJ"/>
+                            <constraint firstItem="aXE-CH-bNP" firstAttribute="top" secondItem="UzN-vB-IsZ" secondAttribute="bottom" id="pZl-PP-ghw"/>
+                            <constraint firstItem="y0I-qu-Bgu" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="sJs-MF-ne7"/>
+                            <constraint firstItem="aXE-CH-bNP" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="ytK-YF-fQc"/>
+                            <constraint firstItem="Be8-cF-Ycv" firstAttribute="leading" secondItem="C0A-8K-msL" secondAttribute="leading" id="zMj-I4-By9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="psj-WG-xZh">
