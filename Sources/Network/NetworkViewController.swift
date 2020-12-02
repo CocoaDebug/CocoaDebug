@@ -52,13 +52,15 @@ class NetworkViewController: UIViewController {
         
         if reloadDataFinish == false {return}
         
-        searchBar.isHidden = false
+        if searchBar.isHidden != false {
+            searchBar.isHidden = false
+        }
         
         self.models = (_HttpDatasource.shared().httpModels as NSArray as? [_HttpModel])
         self.cacheModels = self.models
         
         self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
-
+        
         dispatch_main_async_safe { [weak self] in
             self?.reloadDataFinish = false
             self?.tableView.reloadData {
@@ -159,11 +161,11 @@ class NetworkViewController: UIViewController {
         _HttpDatasource.shared().reset()
         models = []
         cacheModels = []
-//        searchBar.text = nil
+        //        searchBar.text = nil
         searchBar.resignFirstResponder()
-//        CocoaDebugSettings.shared.networkSearchWord = nil
+        //        CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.networkLastIndex = 0
-
+        
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
             self?.naviItemTitleLabel?.text = "[0]"

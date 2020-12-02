@@ -124,13 +124,21 @@ class LogViewController: UIViewController {
         {
             if defaultReloadDataFinish == false {return}
             
-            defaultSearchBar.isHidden = false
-            rnSearchBar.isHidden = true
-            webSearchBar.isHidden = true
+            if defaultSearchBar.isHidden != false ||
+                rnSearchBar.isHidden != true ||
+                webSearchBar.isHidden != true {
+                defaultSearchBar.isHidden = false
+                rnSearchBar.isHidden = true
+                webSearchBar.isHidden = true
+            }
             
-            defaultTableView.isHidden = false
-            rnTableView.isHidden = true
-            webTableView.isHidden = true
+            if defaultTableView.isHidden != false ||
+                rnTableView.isHidden != true ||
+                webTableView.isHidden != true {
+                defaultTableView.isHidden = false
+                rnTableView.isHidden = true
+                webTableView.isHidden = true
+            }
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
@@ -163,13 +171,21 @@ class LogViewController: UIViewController {
         {
             if rnReloadDataFinish == false {return}
             
-            defaultSearchBar.isHidden = true
-            rnSearchBar.isHidden = false
-            webSearchBar.isHidden = true
+            if defaultSearchBar.isHidden != true ||
+                rnSearchBar.isHidden != false ||
+                webSearchBar.isHidden != true {
+                defaultSearchBar.isHidden = true
+                rnSearchBar.isHidden = false
+                webSearchBar.isHidden = true
+            }
             
-            defaultTableView.isHidden = true
-            rnTableView.isHidden = false
-            webTableView.isHidden = true
+            if defaultTableView.isHidden != true ||
+                rnTableView.isHidden != false ||
+                webTableView.isHidden != true {
+                defaultTableView.isHidden = true
+                rnTableView.isHidden = false
+                webTableView.isHidden = true
+            }
             
             if needReloadData == false && rnModels.count > 0 {return}
             
@@ -202,13 +218,21 @@ class LogViewController: UIViewController {
         {
             if webReloadDataFinish == false {return}
             
-            defaultSearchBar.isHidden = true
-            rnSearchBar.isHidden = true
-            webSearchBar.isHidden = false
+            if defaultSearchBar.isHidden != true ||
+                rnSearchBar.isHidden != true ||
+                webSearchBar.isHidden != false {
+                defaultSearchBar.isHidden = true
+                rnSearchBar.isHidden = true
+                webSearchBar.isHidden = false
+            }
             
-            defaultTableView.isHidden = true
-            rnTableView.isHidden = true
-            webTableView.isHidden = false
+            if defaultTableView.isHidden != true ||
+                rnTableView.isHidden != true ||
+                webTableView.isHidden != false {
+                defaultTableView.isHidden = true
+                rnTableView.isHidden = true
+                webTableView.isHidden = false
+            }
             
             if needReloadData == false && webModels.count > 0 {return}
             
