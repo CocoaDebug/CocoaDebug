@@ -272,6 +272,13 @@ extension NetworkViewController: UIScrollViewDelegate {
         searchBar.resignFirstResponder()
         reachEnd = false
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y + 1) >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+            //bottom reached
+            reachEnd = true
+        }
+    }
 }
 
 //MARK: - UISearchBarDelegate

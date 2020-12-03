@@ -644,6 +644,19 @@ extension LogViewController: UIScrollViewDelegate {
             reachEndWeb = false
         }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y + 1) >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+            //bottom reached
+            if scrollView == defaultTableView {
+                reachEndDefault = true
+            } else if scrollView == rnTableView {
+                reachEndRN = true
+            } else {
+                reachEndWeb = true
+            }
+        }
+    }
 }
 
 //MARK: - UISearchBarDelegate
