@@ -21,7 +21,7 @@ struct NetworkDetailModel {
     var requestData: Data?
     var responseData: Data?
     var httpModel: _HttpModel?
-
+    
     
     init(title: String? = nil, content: String? = "", url: String? = "", image: UIImage? = nil, httpModel: _HttpModel? = nil) {
         self.title = title?.replacingOccurrences(of: "\\/", with: "/")
@@ -39,7 +39,7 @@ struct NetworkDetailModel {
             guard let content = content, let url = url, let data = self.requestData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
             if !content.contains("_GPBMessage") {return}
             self.title = "REQUEST (Protobuf)"
-
+            
             for key in keys {
                 if url.contains(key) {
                     //1.
@@ -65,16 +65,16 @@ struct NetworkDetailModel {
                 }
             }
         }
-        
-        
-        
+            
+            
+            
         else if title == "RESPONSE" {
             self.responseData = httpModel?.responseData
             
             guard let content = content, let url = url, let data = self.responseData, let keys = CocoaDebugSettings.shared.protobufTransferMap?.keys else {return}
             if !content.contains("_GPBMessage") {return}
             self.title = "RESPONSE (Protobuf)"
-
+            
             for key in keys {
                 if url.contains(key) {
                     //1.
@@ -93,7 +93,7 @@ struct NetworkDetailModel {
                         } else {
                             self.content = jsonString
                         }
-
+                        
                         self.content = self.content?.replacingOccurrences(of: "\\/", with: "/")
                         return
                     }

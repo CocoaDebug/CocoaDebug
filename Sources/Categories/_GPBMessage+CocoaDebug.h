@@ -1,8 +1,8 @@
 //
-//  _GPBMessage+CocoaDebug.h
-//  AirPayCounter
+//  Example
+//  man.li
 //
-//  Created by HuiCao on 2019/7/9.
+//  Created by man.li on 11/11/2018.
 //  Copyright © 2020 man.li. All rights reserved.
 //
 

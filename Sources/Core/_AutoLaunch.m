@@ -30,7 +30,7 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
 - (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
     if (self.applicationDidFinishLaunching) {return;}
     self.applicationDidFinishLaunching = YES;
-
+    
     Class CocoaDebug = NSClassFromString(@"_TtC10CocoaDebug10CocoaDebug");
     if (CocoaDebug) {
         [[CocoaDebug class] performSelector:@selector(enable)];

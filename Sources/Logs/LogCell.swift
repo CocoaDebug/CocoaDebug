@@ -9,7 +9,7 @@
 import UIKit
 
 class LogCell: UITableViewCell {
-
+    
     @IBOutlet weak var labelContent: CustomTextView!
     @IBOutlet weak var viewTypeLogColor: UIView!
     

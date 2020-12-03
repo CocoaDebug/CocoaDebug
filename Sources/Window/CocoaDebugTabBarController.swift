@@ -9,7 +9,7 @@
 import UIKit
 
 class CocoaDebugTabBarController: UITabBarController {
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class CocoaDebugTabBarController: UITabBarController {
     
     //MARK: - private
     func setChildControllers() {
-
+        
         //1.
         let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
         let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
@@ -79,7 +79,7 @@ class CocoaDebugTabBarController: UITabBarController {
         
         let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
         let leftItem = UIBarButtonItem(image: image,
-                                         style: .done, target: self, action: selector)
+                                       style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen
         nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
         //****** 以上代码从NavigationController.swift复制 ******
@@ -95,11 +95,11 @@ class CocoaDebugTabBarController: UITabBarController {
     }
     
     //MARK: - show more than 5 tabs by CocoaDebug
-//    override var traitCollection: UITraitCollection {
-//        var realTraits = super.traitCollection
-//        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
-//        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
-//    }
+    //    override var traitCollection: UITraitCollection {
+    //        var realTraits = super.traitCollection
+    //        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+    //        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
+    //    }
 }
 
 //MARK: - UITabBarDelegate

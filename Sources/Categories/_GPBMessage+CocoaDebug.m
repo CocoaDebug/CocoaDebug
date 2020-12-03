@@ -1,8 +1,8 @@
 //
-//  _GPBMessage+CocoaDebug.m
-//  AirPayCounter
+//  Example
+//  man.li
 //
-//  Created by HuiCao on 2019/7/9.
+//  Created by man.li on 11/11/2018.
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
@@ -55,19 +55,19 @@
 #pragma mark - Private Methods
 - (NSDictionary *)dictionaryWithIgnoreFields:(NSArray * _Nullable)ignoreFields {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-
+    
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     for (unsigned int i = 0; i < count; i++) {
         const char *propertyName = property_getName(properties[i]);
         NSString *keyPath = [NSString stringWithUTF8String:propertyName];
-
+        
         id serializeObject = [self serializeValueForKey:keyPath];
         if (nil == serializeObject) {
             continue;
         }
         id keyNameObject = [[self nameMap] objectForKey:keyPath];
-
+        
         if (keyNameObject == nil && ![ignoreFields containsObject:keyPath]) {
             [dict setObject:serializeObject forKey:keyPath];
         }
@@ -184,16 +184,16 @@
         objc_property_t property = properties[i];
         NSString *propertyName = [NSString stringWithUTF8String:property_getName(property)];
         [propertiesNameArray addObject:propertyName];
-
+        
         NSString *attr = [NSString stringWithUTF8String:&(property_getAttributes(property)[1])];
         NSString *type = [[attr componentsSeparatedByString:@","] objectAtIndex:0];
         [propertiesTypeDic setObject:type forKey:propertyName];
     }
     free(properties);
-
+    
     NSString *type = [propertiesTypeDic _stringForKey:keyPath default:@""];
     SEL setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [keyPath substringToIndex:1].uppercaseString, [keyPath substringFromIndex:1]]);
-
+    
     if ([value isKindOfClass:[NSString class]] == YES) {
         NSString *str = (NSString *)value;
         if ([type isEqualToString:@"@\"NSString\""]) {
@@ -390,7 +390,7 @@
             ((void (*)(id, SEL, id))(void *) objc_msgSend)(self, setter, dictValue);
             return;
         }
-
+        
         NSString *itemType = [type substringWithRange:NSMakeRange(2, [type length]-3)];
         Class itemClass = NSClassFromString(itemType);
         if (!itemClass) {

@@ -44,7 +44,7 @@ func handleSignal(signal: Int32) {
 }
 
 class CrashLogger {
-
+    
     static let shared = CrashLogger()
     private init() {}
     
@@ -60,7 +60,7 @@ class CrashLogger {
             }
         }
     }
-
+    
     func register() {
         if hasBeenRegistered == false {
             hasBeenRegistered = true
@@ -75,7 +75,7 @@ class CrashLogger {
             signal(SIGTRAP, handleSignal)
         }
     }
-
+    
     func unregister() {
         if hasBeenRegistered == true {
             hasBeenRegistered = false
@@ -90,7 +90,7 @@ class CrashLogger {
             signal(SIGTRAP, SIG_DFL)
         }
     }
-
+    
     static func addCrash(name: String, reason: String?) {
         let newCrash = _CrashModel(name: name, reason: reason)
         CrashStoreManager.shared.addCrash(newCrash)

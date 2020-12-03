@@ -33,7 +33,7 @@
 @property (nonatomic, copy) NSArray<NSString *> *onlyPrefixLogs;
 
 /**
- *  日志最大数量,默认`500`
+ *  日志最大数量,默认`1000`
  */
 @property (nonatomic, assign) NSInteger logMaxCount;
 /**

@@ -18,7 +18,7 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var requestUrlTextView: CustomTextView!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
-
+    
     
     var httpModel: _HttpModel? {
         didSet {

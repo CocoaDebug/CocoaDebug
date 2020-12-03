@@ -470,7 +470,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
         }
     }
     
-    //处理500,404等错误
+    //Handling errors 404...
     model = [self handleError:self.error model:model];
     
     
@@ -919,7 +919,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     }
 }
 
-//处理500,404等错误
+//Handling errors 404...
 - (_HttpModel *)handleError:(NSError *)error model:(_HttpModel *)model {
     if (!error) {
         //https://httpcodes.co/status/

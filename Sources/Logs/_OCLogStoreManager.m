@@ -63,7 +63,7 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
+    
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
@@ -104,7 +104,7 @@
 - (void)removeLog:(_OCLogModel *)log
 {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
+    
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal

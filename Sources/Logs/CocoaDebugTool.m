@@ -69,10 +69,10 @@
     }
     
     //2.protobuf
-//    _GPBMessage *message = [_GPBMessage parseFromData:data error:nil];
-//    if ([message serializedSize] > 0) {
-//        return [message description];
-//    }
+    //    _GPBMessage *message = [_GPBMessage parseFromData:data error:nil];
+    //    if ([message serializedSize] > 0) {
+    //        return [message description];
+    //    }
     
     //3.utf-8 string
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

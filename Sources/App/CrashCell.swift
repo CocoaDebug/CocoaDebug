@@ -9,14 +9,14 @@
 import UIKit
 
 class CrashCell: UITableViewCell {
-
+    
     @IBOutlet weak var textview: CustomTextView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         textview.isUserInteractionEnabled = false
     }
-
+    
     var crash: _CrashModel? {
         didSet {
             guard let crash = crash else {return}

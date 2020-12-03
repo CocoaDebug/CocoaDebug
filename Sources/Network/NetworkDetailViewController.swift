@@ -16,7 +16,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     var httpModel: _HttpModel?
     var httpModels: [_HttpModel]?
     
@@ -27,7 +27,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     var headerCell: NetworkCell?
     
     var messageBody: String = ""
-
+    
     var justCancelCallback:(() -> Void)?
     
     static func instanceFromStoryBoard() -> NetworkDetailViewController {
@@ -258,7 +258,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 //share via email
                 let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel) { _ in
-//                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                    //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
                 
@@ -269,7 +269,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 self.present(alert, animated: true, completion: nil)
             } else {
                 //copy to clipboard
-//                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
             
             return nil
@@ -277,7 +277,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         if copy == true {
             //copy to clipboard
-//            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+            //            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             return nil
         }
         
@@ -299,7 +299,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         //6.subject
         mailComposeVC.setSubject(url)
-
+        
         return mailComposeVC
     }
     
@@ -319,7 +319,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         //确定request格式(JSON/Form)
         detectRequestSerializer()
-            
+        
         setupModels()
         
         if var lastModel = detailModels.last {
@@ -342,15 +342,15 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         super.viewWillAppear(animated)
         
         //notification
-//        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_CocoaDebug"), object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_CocoaDebug"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         //notification
-//        NotificationCenter.default.removeObserver(self)
-
+        //        NotificationCenter.default.removeObserver(self)
+        
         if let index = httpModels?.firstIndex(where: { (model) -> Bool in
             return model.isSelected == true
         }) {
@@ -371,7 +371,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     @IBAction func didTapMail(_ sender: UIBarButtonItem) {
         
-//        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
+        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
         
         // create an actionSheet
         let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -389,7 +389,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-//            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+            //            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         }
         
         // add actions
@@ -407,11 +407,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     
     //MARK: - notification
-//    @objc func motionShake_notification() {
-//        dispatch_main_async_safe { [weak self] in
-//
-//        }
-//    }
+    //    @objc func motionShake_notification() {
+    //        dispatch_main_async_safe { [weak self] in
+    //
+    //        }
+    //    }
 }
 
 //MARK: - UITableViewDataSource
@@ -474,13 +474,13 @@ extension NetworkDetailViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerCell?.contentView
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard let serverURL = CocoaDebugSettings.shared.serverURL else {return 0}
         
         var height: CGFloat = 0.0
-            
+        
         if let cString = httpModel?.url.absoluteString.cString(using: String.Encoding.utf8) {
             if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
                 
@@ -518,7 +518,7 @@ extension NetworkDetailViewController {
             if error != nil {
                 let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { _ in
-//                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                    //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
                 
@@ -528,7 +528,7 @@ extension NetworkDetailViewController {
                 
                 self.present(alert, animated: true, completion: nil)
             } else {
-//                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
         }
     }

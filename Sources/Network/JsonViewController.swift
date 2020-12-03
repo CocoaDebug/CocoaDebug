@@ -23,7 +23,7 @@ class JsonViewController: UIViewController {
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     var editType: EditType  = .unknown
     var httpModel: _HttpModel?
     var detailModel: NetworkDetailModel?
@@ -38,7 +38,7 @@ class JsonViewController: UIViewController {
     var logModels: [_OCLogModel]?
     var logModel: _OCLogModel?
     var justCancelCallback:(() -> Void)?
-
+    
     static func instanceFromStoryBoard() -> JsonViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
@@ -60,11 +60,11 @@ class JsonViewController: UIViewController {
             //Form格式
             detailModel?.requestSerializer = RequestSerializer.form
             
-                if let jsonString = detailModel?.content?.formStringToJsonString() {
-                    textView.text = jsonString
-                    detailModel?.requestSerializer = RequestSerializer.JSON
-                    detailModel?.content = textView.text
-                }
+            if let jsonString = detailModel?.content?.formStringToJsonString() {
+                textView.text = jsonString
+                detailModel?.requestSerializer = RequestSerializer.JSON
+                detailModel?.content = textView.text
+            }
         }
     }
     
@@ -72,12 +72,12 @@ class JsonViewController: UIViewController {
     //MARK: - init
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
+        //        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        navigationController?.hidesBarsOnSwipe = false
+        //        navigationController?.hidesBarsOnSwipe = false
         
         if let index = logModels?.firstIndex(where: { (model) -> Bool in
             return model.isSelected == true
@@ -86,7 +86,7 @@ class JsonViewController: UIViewController {
         }
         
         logModel?.isSelected = true
-
+        
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
@@ -94,7 +94,7 @@ class JsonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
@@ -103,7 +103,7 @@ class JsonViewController: UIViewController {
         naviItem.titleView = naviItemTitleLabel
         
         textView.textContainer.lineFragmentPadding = 15
-//        textView.textContainerInset = .zero
+        //        textView.textContainerInset = .zero
         
         //判断类型 (默认类型URL)
         if detailModel?.title == "REQUEST HEADER" {

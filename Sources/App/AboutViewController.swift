@@ -15,7 +15,7 @@ class AboutViewController: UITableViewController {
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class AboutViewController: UITableViewController {
         naviItem.titleView = naviItemTitleLabel
         
         
-        let version = "1.5.8"
+        let version = "1.5.9"
         
         self.versionLabel.text = "CocoaDebug Version ".appending(version)
         

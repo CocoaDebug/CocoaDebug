@@ -16,9 +16,9 @@ class CrashDetailViewController: UITableViewController {
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     var crash: _CrashModel?
-
+    
     static func instanceFromStoryBoard() -> CrashDetailViewController {
         let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "CrashDetailViewController") as! CrashDetailViewController
@@ -38,10 +38,10 @@ class CrashDetailViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         tableView.delegate = self
-
+        
         textviewName.text = "\(crash?.name ?? "N/A")"
         textviewReason.text = "\(crash?.reason ?? "N/A")"
-
+        
         let contentStack = crash?.callStacks?.reduce("", {
             $0 == "" ? $1 : $0 + "\n" + $1
         })

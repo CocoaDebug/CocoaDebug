@@ -10,15 +10,15 @@ import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-
+    
     var window: CocoaDebugWindow
     var displayedList = false
     lazy var vc = CocoaDebugViewController() //必须使用lazy, 否则崩溃
     
     //FPS
-//    fileprivate var fpsCounter = FPSCounter()
-//    var fpsCallback:((Int) -> Void)?
-
+    //    fileprivate var fpsCounter = FPSCounter()
+    //    var fpsCallback:((Int) -> Void)?
+    
     
     private override init() {
         window = CocoaDebugWindow(frame: UIScreen.main.bounds)
@@ -26,18 +26,18 @@ public class WindowHelper: NSObject {
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-//        fpsCounter.delegate = self
+        //        fpsCounter.delegate = self
     }
-
+    
     
     public func enable() {
         if window.rootViewController != vc {
             window.rootViewController = vc
             window.delegate = self
             window.isHidden = false
-//            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
-//            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
-//            fpsCounter.startMonitoring()
+            //            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
+            //            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
+            //            fpsCounter.startMonitoring()
         }
         
         if #available(iOS 13.0, *) {
@@ -58,15 +58,15 @@ public class WindowHelper: NSObject {
         }
     }
     
-
+    
     public func disable() {
         if window.rootViewController != nil {
             window.rootViewController = nil
             window.delegate = nil
             window.isHidden = true
-//            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
-//            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
-//            fpsCounter.stopMonitoring()
+            //            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
+            //            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
+            //            fpsCounter.stopMonitoring()
         }
     }
 }

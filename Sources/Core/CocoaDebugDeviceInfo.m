@@ -97,7 +97,7 @@
     if ([deviceString isEqualToString:@"iPhone12,3"])   return @"iPhone 11 Pro";
     if ([deviceString isEqualToString:@"iPhone12,5"])   return @"iPhone 11 Pro Max";
     if ([deviceString isEqualToString:@"iPhone12,8"])   return @"iPhone SE (2nd generation)";
-
+    
     if ([deviceString isEqualToString:@"iPhone13,1"])   return @"iPhone 12 mini";
     if ([deviceString isEqualToString:@"iPhone13,2"])   return @"iPhone 12";
     if ([deviceString isEqualToString:@"iPhone13,3"])   return @"iPhone 12 Pro";
@@ -145,7 +145,7 @@
     if ([deviceString isEqualToString:@"iPad11,4"])     return @"iPad Air (3rd generation)";
     if ([deviceString isEqualToString:@"iPad13,1"])     return @"iPad Air (4th generation)";
     if ([deviceString isEqualToString:@"iPad13,2"])     return @"iPad Air (4th generation)";
-
+    
     //iPad Pro
     if ([deviceString isEqualToString:@"iPad6,3"])      return @"iPad Pro 9.7";
     if ([deviceString isEqualToString:@"iPad6,4"])      return @"iPad Pro 9.7";
@@ -182,7 +182,7 @@
     if ([deviceString isEqualToString:@"iPad5,2"])      return @"iPad Mini 4 (LTE)";
     if ([deviceString isEqualToString:@"iPad11,1"])     return @"iPad mini (5th generation)";
     if ([deviceString isEqualToString:@"iPad11,2"])     return @"iPad mini (5th generation)";
-
+    
     //Simulator
     if ([deviceString isEqualToString:@"i386"])         return @"Simulator";
     if ([deviceString isEqualToString:@"x86_64"])       return @"Simulator";
@@ -214,7 +214,7 @@
     if ([deviceString isEqualToString:@"Watch6,2"])       return @"Apple Watch Series 6";
     if ([deviceString isEqualToString:@"Watch6,3"])       return @"Apple Watch Series 6";
     if ([deviceString isEqualToString:@"Watch6,4"])       return @"Apple Watch Series 6";
-
+    
     return @"unknow";
 }
 

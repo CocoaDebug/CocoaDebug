@@ -63,16 +63,16 @@
 {
     if (!self.enable) {return;}
     if (!file || !function || !message || !color) {return;}
-
+    
     //1.
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
     
-//    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-//        newLog.logType = CocoaDebugLogType...
-//    }
+    //    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
+    //        newLog.logType = CocoaDebugLogType...
+    //    }
     
     if (type == CocoaDebugToolTypeRN) {
         newLog.logType = CocoaDebugLogTypeRN;

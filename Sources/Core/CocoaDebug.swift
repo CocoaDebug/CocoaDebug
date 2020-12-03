@@ -23,8 +23,8 @@ import UIKit
     @objc public static var onlyPrefixLogs: [String]? = nil
     ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
     @objc public static var additionalViewController: UIViewController? = nil
-    ///the maximum count of logs which CocoaDebug display. Default value is `500`.
-    @objc public static var logMaxCount: Int = 500
+    ///the maximum count of logs which CocoaDebug display. Default value is `1000`.
+    @objc public static var logMaxCount: Int = 1000
     ///set the initial recipients to include in the email’s “To” field when share via email. Default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
     ///set the initial recipients to include in the email’s “Cc” field when share via email. Default value is `nil`.
@@ -43,7 +43,7 @@ import UIKit
     @objc public static func disable() {
         deinitializationMethod()
     }
-
+    
     //MARK: - hide Bubble
     @objc public static func hideBubble() {
         CocoaDebugSettings.shared.showBubbleAndWindow = false

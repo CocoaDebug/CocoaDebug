@@ -9,11 +9,11 @@
 import Foundation
 
 @objc public class CocoaDebugSettings: NSObject {
-
+    
     @objc public static let shared = CocoaDebugSettings()
-
+    
     @objc public var isRunning: Bool = false
-
+    
     @objc public var slowAnimations: Bool = false {
         didSet {            
             if slowAnimations == false {
@@ -30,12 +30,12 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-//    @objc public var responseShakeNetworkDetail: Bool = false {
-//        didSet {
-//            UserDefaults.standard.set(responseShakeNetworkDetail, forKey: "responseShakeNetworkDetail_CocoaDebug")
-//            UserDefaults.standard.synchronize()
-//        }
-//    }
+    //    @objc public var responseShakeNetworkDetail: Bool = false {
+    //        didSet {
+    //            UserDefaults.standard.set(responseShakeNetworkDetail, forKey: "responseShakeNetworkDetail_CocoaDebug")
+    //            UserDefaults.standard.synchronize()
+    //        }
+    //    }
     @objc public var firstIn: String? = nil {
         didSet {
             UserDefaults.standard.set(firstIn, forKey: "firstIn_CocoaDebug")
@@ -242,7 +242,7 @@ import Foundation
     
     private override init() {
         responseShake = UserDefaults.standard.bool(forKey: "responseShake_CocoaDebug")
-//        responseShakeNetworkDetail = UserDefaults.standard.bool(forKey: "responseShakeNetworkDetail_CocoaDebug")
+        //        responseShakeNetworkDetail = UserDefaults.standard.bool(forKey: "responseShakeNetworkDetail_CocoaDebug")
         firstIn = UserDefaults.standard.string(forKey: "firstIn_CocoaDebug")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
@@ -262,14 +262,14 @@ import Foundation
         logSearchWordWeb = UserDefaults.standard.string(forKey: "logSearchWordWeb_CocoaDebug")
         networkSearchWord = UserDefaults.standard.string(forKey: "networkSearchWord_CocoaDebug")
         mainColor = UserDefaults.standard.string(forKey: "mainColor_CocoaDebug") ?? "#42d459"
-
+        
         
         //objc
         logMaxCount = _NetworkHelper.shared().logMaxCount
         
         ignoredURLs = _NetworkHelper.shared().ignoredURLs
         onlyURLs = _NetworkHelper.shared().onlyURLs
-
+        
         ignoredPrefixLogs = _NetworkHelper.shared().ignoredPrefixLogs
         onlyPrefixLogs = _NetworkHelper.shared().onlyPrefixLogs
         

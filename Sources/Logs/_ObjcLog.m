@@ -26,7 +26,7 @@
         
         if ([format isKindOfClass:[NSString class]])
         {
-//            NSLogv(format, args);
+            //            NSLogv(format, args);
             [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[[NSString alloc] initWithFormat:format arguments:args] color:color type:CocoaDebugToolTypeNone];
         }
         else if ([format isKindOfClass:[JSValue class]])
@@ -35,18 +35,18 @@
             if ([format_ isEqualToString:@"[object Object]"])
             {
                 format_ = [format toDictionary];
-//                NSLogv([NSString stringWithFormat:@"%@",format_], args);
+                //                NSLogv([NSString stringWithFormat:@"%@",format_], args);
                 [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format_] color:color type:CocoaDebugToolTypeNone];
             }
             else
             {
-//                NSLogv([NSString stringWithFormat:@"%@",format], args);
+                //                NSLogv([NSString stringWithFormat:@"%@",format], args);
                 [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color type:CocoaDebugToolTypeNone];
             }
         }
         else
         {
-//            NSLogv([NSString stringWithFormat:@"%@",format], args);
+            //            NSLogv([NSString stringWithFormat:@"%@",format], args);
             [_OCLogHelper.shared handleLogWithFile:[NSString stringWithUTF8String:file] function:[NSString stringWithUTF8String:function] line:line message:[NSString stringWithFormat:@"%@",format] color:color type:CocoaDebugToolTypeNone];
         }
         
