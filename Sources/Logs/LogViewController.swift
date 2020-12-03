@@ -632,22 +632,15 @@ extension LogViewController: UITableViewDelegate {
 //MARK: - UIScrollViewDelegate
 extension LogViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == defaultTableView {
-            defaultSearchBar.resignFirstResponder()
-        } else if scrollView == rnTableView {
-            rnSearchBar.resignFirstResponder()
-        } else {
-            webSearchBar.resignFirstResponder()
-        }
-    }
-    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
+            defaultSearchBar.resignFirstResponder()
             reachEndDefault = false
         } else if scrollView == rnTableView {
+            rnSearchBar.resignFirstResponder()
             reachEndRN = false
         } else {
+            webSearchBar.resignFirstResponder()
             reachEndWeb = false
         }
     }

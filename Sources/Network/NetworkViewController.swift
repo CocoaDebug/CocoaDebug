@@ -268,11 +268,8 @@ extension NetworkViewController: UITableViewDelegate {
 //MARK: - UIScrollViewDelegate
 extension NetworkViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
-    }
-    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
         reachEnd = false
     }
 }
