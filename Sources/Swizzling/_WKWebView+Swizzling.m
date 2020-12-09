@@ -42,11 +42,28 @@
             if (!class_addMethod([self class], original_sel2, method_getImplementation(replaced_method2), method_getTypeEncoding(replaced_method2))) {
                 method_exchangeImplementations(original_method2, replaced_method2);
             }
+            
+            SEL original_sel3 = NSSelectorFromString(@"willDealloc");
+            SEL replaced_sel3 = @selector(replaced_willDealloc);
+            Method replaced_method3 = class_getInstanceMethod([self class], replaced_sel3);
+            class_addMethod([self class], original_sel3, method_getImplementation(replaced_method3), method_getTypeEncoding(replaced_method3));
         });
     }
 }
 
 #pragma mark - replaced method
+
+- (BOOL)replaced_willDealloc {
+    // removeScriptMessageHandlerForName
+    [self.configuration.userContentController removeScriptMessageHandlerForName:@"log"];
+    [self.configuration.userContentController removeScriptMessageHandlerForName:@"error"];
+    [self.configuration.userContentController removeScriptMessageHandlerForName:@"warn"];
+    [self.configuration.userContentController removeScriptMessageHandlerForName:@"debug"];
+    [self.configuration.userContentController removeScriptMessageHandlerForName:@"info"];
+    
+    return true;
+}
+
 - (void)replaced_dealloc {
     //WKWebView
     [_ObjcLog logWithFile:"[WKWebView]" function:"" line:0 color:[UIColor redColor] message:@"-------------------------------- dealloc --------------------------------"];
