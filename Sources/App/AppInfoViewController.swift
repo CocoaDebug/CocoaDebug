@@ -63,7 +63,7 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
+        logSwitch.isOn = CocoaDebugSettings.shared.enableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
         rnSwitch.isOn = !CocoaDebugSettings.shared.disableRNMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
@@ -141,31 +141,31 @@ class AppInfoViewController: UITableViewController {
     }
     
     @objc func logSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
-        if CocoaDebugSettings.shared.disableLogMonitoring == true {
-            CocoaDebugSettings.shared.disableRNMonitoring = true
-            rnSwitch.setOn(false, animated: true)
-            CocoaDebugSettings.shared.enableWKWebViewMonitoring = false
-            webViewSwitch.setOn(false, animated: true)
-        }
+        CocoaDebugSettings.shared.enableLogMonitoring = logSwitch.isOn
+//        if CocoaDebugSettings.shared.enableLogMonitoring == true {
+//            CocoaDebugSettings.shared.disableRNMonitoring = true
+//            rnSwitch.setOn(false, animated: true)
+//            CocoaDebugSettings.shared.enableWKWebViewMonitoring = false
+//            webViewSwitch.setOn(false, animated: true)
+//        }
         self.showAlert()
     }
     
     @objc func rnSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableRNMonitoring = !rnSwitch.isOn
-        if CocoaDebugSettings.shared.disableRNMonitoring == false {
-            CocoaDebugSettings.shared.disableLogMonitoring = false
-            logSwitch.setOn(true, animated: true)
-        }
+//        if CocoaDebugSettings.shared.disableRNMonitoring == false {
+//            CocoaDebugSettings.shared.enableLogMonitoring = false
+//            logSwitch.setOn(true, animated: true)
+//        }
         self.showAlert()
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
-        if CocoaDebugSettings.shared.enableWKWebViewMonitoring == true {
-            CocoaDebugSettings.shared.disableLogMonitoring = false
-            logSwitch.setOn(true, animated: true)
-        }
+//        if CocoaDebugSettings.shared.enableWKWebViewMonitoring == true {
+//            CocoaDebugSettings.shared.enableLogMonitoring = false
+//            logSwitch.setOn(true, animated: true)
+//        }
         self.showAlert()
     }
 }

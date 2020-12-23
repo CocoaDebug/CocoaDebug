@@ -61,9 +61,9 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var disableLogMonitoring: Bool = false {
+    @objc public var enableLogMonitoring: Bool = false {
         didSet {
-            UserDefaults.standard.set(disableLogMonitoring, forKey: "disableLogMonitoring_CocoaDebug")
+            UserDefaults.standard.set(enableLogMonitoring, forKey: "enableLogMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -249,7 +249,7 @@ import Foundation
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-        disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
+        enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
