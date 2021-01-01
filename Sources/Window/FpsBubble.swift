@@ -41,12 +41,14 @@ class FpsBubble: UIView {
     
     func updateFrame() {
         if #available(iOS 11.0, *) {
-            if UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0 > 24.0 {
+            if UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0 > 24.0 { //iPhoneX
+                center.x = UIScreen.main.bounds.width/2.0
                 center.y = 39
             }
         }
         
         if CocoaDebugDeviceInfo.sharedInstance().getPlatformString == "iPhone 12 mini" {
+            center.x = UIScreen.main.bounds.width/2.0
             center.y = 39 + 4.5
         }
     }
@@ -55,4 +57,3 @@ class FpsBubble: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
