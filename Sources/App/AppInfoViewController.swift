@@ -27,7 +27,8 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var rnSwitch: UISwitch!
-    
+    @IBOutlet weak var fpsSwitch: UISwitch!
+
     @IBOutlet weak var controllerMemoryLeaksSwitch: UISwitch!
     @IBOutlet weak var viewMemoryLeaksSwitch: UISwitch!
     @IBOutlet weak var memberVariablesMemoryLeaksSwitch: UISwitch!
@@ -72,7 +73,8 @@ class AppInfoViewController: UITableViewController {
         viewMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View
         memberVariablesMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
-        
+        fpsSwitch.isOn = CocoaDebugSettings.shared.enableFpsMonitoring
+
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
         rnSwitch.addTarget(self, action: #selector(rnSwitchChanged), for: UIControl.Event.valueChanged)
@@ -82,6 +84,7 @@ class AppInfoViewController: UITableViewController {
         viewMemoryLeaksSwitch.addTarget(self, action: #selector(viewMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
         memberVariablesMemoryLeaksSwitch.addTarget(self, action: #selector(memberVariablesMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
+        fpsSwitch.addTarget(self, action: #selector(fpsSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +133,15 @@ class AppInfoViewController: UITableViewController {
         //        self.showAlert()
     }
     
+    @objc func fpsSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableFpsMonitoring = fpsSwitch.isOn
+        if fpsSwitch.isOn == true {
+            WindowHelper.shared.startFpsMonitoring()
+        } else {
+            WindowHelper.shared.stopFpsMonitoring()
+        }
+    }
+    
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn
         self.showAlert()
@@ -142,30 +154,16 @@ class AppInfoViewController: UITableViewController {
     
     @objc func logSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableLogMonitoring = logSwitch.isOn
-//        if CocoaDebugSettings.shared.enableLogMonitoring == true {
-//            CocoaDebugSettings.shared.disableRNMonitoring = true
-//            rnSwitch.setOn(false, animated: true)
-//            CocoaDebugSettings.shared.enableWKWebViewMonitoring = false
-//            webViewSwitch.setOn(false, animated: true)
-//        }
         self.showAlert()
     }
     
     @objc func rnSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableRNMonitoring = !rnSwitch.isOn
-//        if CocoaDebugSettings.shared.disableRNMonitoring == false {
-//            CocoaDebugSettings.shared.enableLogMonitoring = false
-//            logSwitch.setOn(true, animated: true)
-//        }
         self.showAlert()
     }
     
     @objc func webViewSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
-//        if CocoaDebugSettings.shared.enableWKWebViewMonitoring == true {
-//            CocoaDebugSettings.shared.enableLogMonitoring = false
-//            logSwitch.setOn(true, animated: true)
-//        }
         self.showAlert()
     }
 }

@@ -30,12 +30,7 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    //    @objc public var responseShakeNetworkDetail: Bool = false {
-    //        didSet {
-    //            UserDefaults.standard.set(responseShakeNetworkDetail, forKey: "responseShakeNetworkDetail_CocoaDebug")
-    //            UserDefaults.standard.synchronize()
-    //        }
-    //    }
+    
     @objc public var firstIn: String? = nil {
         didSet {
             UserDefaults.standard.set(firstIn, forKey: "firstIn_CocoaDebug")
@@ -53,6 +48,12 @@ import Foundation
                 CrashLogger.shared.enable = false
                 CrashStoreManager.shared.resetCrashs()
             }
+        }
+    }
+    @objc public var enableFpsMonitoring: Bool = false {
+        didSet {
+            UserDefaults.standard.set(enableFpsMonitoring, forKey: "enableFpsMonitoring_CocoaDebug")
+            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableWKWebViewMonitoring: Bool = false {
@@ -242,12 +243,12 @@ import Foundation
     
     private override init() {
         responseShake = UserDefaults.standard.bool(forKey: "responseShake_CocoaDebug")
-        //        responseShakeNetworkDetail = UserDefaults.standard.bool(forKey: "responseShakeNetworkDetail_CocoaDebug")
         firstIn = UserDefaults.standard.string(forKey: "firstIn_CocoaDebug")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_CocoaDebug")
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
+        enableFpsMonitoring = UserDefaults.standard.bool(forKey: "enableFpsMonitoring_CocoaDebug")
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")

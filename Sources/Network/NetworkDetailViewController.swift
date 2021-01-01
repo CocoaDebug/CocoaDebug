@@ -258,7 +258,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 //share via email
                 let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel) { _ in
-                    //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
                 
@@ -269,7 +268,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 self.present(alert, animated: true, completion: nil)
             } else {
                 //copy to clipboard
-                //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
             
             return nil
@@ -277,7 +275,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         if copy == true {
             //copy to clipboard
-            //            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             return nil
         }
         
@@ -338,18 +335,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         headerCell?.httpModel = httpModel
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //notification
-        //        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name(rawValue: "motionShake_CocoaDebug"), object: nil)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        //notification
-        //        NotificationCenter.default.removeObserver(self)
         
         if let index = httpModels?.firstIndex(where: { (model) -> Bool in
             return model.isSelected == true
@@ -371,8 +358,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     
     @IBAction func didTapMail(_ sender: UIBarButtonItem) {
         
-        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
-        
         // create an actionSheet
         let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -389,7 +374,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-            //            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         }
         
         // add actions
@@ -404,14 +388,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         // present an actionSheet...
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    //MARK: - notification
-    //    @objc func motionShake_notification() {
-    //        dispatch_main_async_safe { [weak self] in
-    //
-    //        }
-    //    }
 }
 
 //MARK: - UITableViewDataSource
@@ -518,7 +494,6 @@ extension NetworkDetailViewController {
             if error != nil {
                 let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
                 let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { _ in
-                    //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
                 
@@ -527,8 +502,6 @@ extension NetworkDetailViewController {
                 alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
                 
                 self.present(alert, animated: true, completion: nil)
-            } else {
-                //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
             }
         }
     }

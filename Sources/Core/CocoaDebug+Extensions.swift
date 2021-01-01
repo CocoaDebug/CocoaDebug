@@ -312,8 +312,6 @@ extension CocoaDebug {
         
         //        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         //        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
-        let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         //        let disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
         
         if serverURL == nil {
@@ -365,7 +363,6 @@ extension CocoaDebug {
         
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
@@ -376,8 +373,9 @@ extension CocoaDebug {
         
         //slow animations
         CocoaDebugSettings.shared.slowAnimations = false
-        
+                
         //log
+        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         if enableLogMonitoring == false {
             _SwiftLogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
@@ -387,6 +385,7 @@ extension CocoaDebug {
         }
         
         //network
+        let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         if disableNetworkMonitoring == true {
             _NetworkHelper.shared().disable()
         } else {
@@ -403,7 +402,6 @@ extension CocoaDebug {
         _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
-        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
     }
 }
 

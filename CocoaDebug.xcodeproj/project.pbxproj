@@ -358,6 +358,10 @@
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
 		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
+		3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA26259E223B00ABF650 /* FPSCounter.swift */; };
+		3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */; };
+		3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA32259E234C00ABF650 /* FpsBubble.swift */; };
 		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -727,6 +731,10 @@
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
+		3828BA26259E223B00ABF650 /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
+		3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
+		3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
+		3828BA32259E234C00ABF650 /* FpsBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FpsBubble.swift; sourceTree = "<group>"; };
 		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
 		3882D68025676EA200379E0C /* _fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _fishhook.c; sourceTree = "<group>"; };
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
@@ -781,6 +789,7 @@
 		3826D9CD24EE5BF4003DE040 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3828BA25259E223B00ABF650 /* Monitor */,
 				3882D67F25676EA200379E0C /* fishhook */,
 				3826D9CE24EE5BF4003DE040 /* Core */,
 				3826D9D424EE5BF4003DE040 /* App */,
@@ -1157,6 +1166,7 @@
 			isa = PBXGroup;
 			children = (
 				3826DAF924EE5BF5003DE040 /* Bubble.swift */,
+				3828BA32259E234C00ABF650 /* FpsBubble.swift */,
 				3826DAFA24EE5BF5003DE040 /* WindowHelper.swift */,
 				3826DAFB24EE5BF5003DE040 /* CocoaDebugNavigationController.swift */,
 				3826DAFC24EE5BF5003DE040 /* CocoaDebugViewController.swift */,
@@ -1256,6 +1266,16 @@
 			path = CocoaDebugTests;
 			sourceTree = "<group>";
 		};
+		3828BA25259E223B00ABF650 /* Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				3828BA26259E223B00ABF650 /* FPSCounter.swift */,
+				3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */,
+				3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */,
+			);
+			path = Monitor;
+			sourceTree = "<group>";
+		};
 		3882D67F25676EA200379E0C /* fishhook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1349,6 +1369,7 @@
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
 				3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */,
 				3826DB6424EE5BF5003DE040 /* _LeaksMessenger.h in Headers */,
+				3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */,
 				3826DB6124EE5BF5003DE040 /* UINavigationController+_LeaksFinder.h in Headers */,
 				3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */,
 				3826DC9F24EE5BF5003DE040 /* _Struct.pbobjc.h in Headers */,
@@ -1664,6 +1685,7 @@
 				3826DD3124EE5FD5003DE040 /* _FileTableViewCell.m in Sources */,
 				3826DB7124EE5BF5003DE040 /* _LeaksMessenger.m in Sources */,
 				3826DC9E24EE5BF5003DE040 /* _GPBCodedOutputStream.m in Sources */,
+				3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */,
 				3826DC8C24EE5BF5003DE040 /* _GPBWireFormat.m in Sources */,
 				3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */,
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
@@ -1673,6 +1695,7 @@
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
 				3826DC7524EE5BF5003DE040 /* _GPBWellKnownTypes.m in Sources */,
 				3826DB6324EE5BF5003DE040 /* UIApplication+_LeaksFinder.m in Sources */,
+				3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */,
 				3826DC7D24EE5BF5003DE040 /* _GPBUnknownField.m in Sources */,
 				3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */,
 				3826DC8A24EE5BF5003DE040 /* _SourceContext.pbobjc.m in Sources */,
@@ -1681,6 +1704,7 @@
 				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
 				3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */,
 				3826DB6824EE5BF5003DE040 /* UIViewController+_LeaksFinder.m in Sources */,
+				3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */,
 				3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */,
 				3826DC6624EE5BF5003DE040 /* CocoaDebugWindow.swift in Sources */,
 				3826DC4224EE5BF5003DE040 /* CocoaDebugTool.m in Sources */,

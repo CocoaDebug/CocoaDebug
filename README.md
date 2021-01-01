@@ -33,6 +33,8 @@
 
 - [x] Detect memory leaks.
 
+- [x] Detect FPS.
+
 - [x] List crash errors.
 
 - [x] List application and device informations, including: *version*, *build*, *bundle name*, *bundle id*, *screen resolution*, *device*, *iOS version*
