@@ -28,7 +28,7 @@ class FpsBubble: UIView {
     
     //MARK: - init
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: UIScreen.main.bounds.width/4.0, y:1.0, width: frame.width, height: frame.height))
+        super.init(frame: CGRect(x: UIScreen.main.bounds.width/4.0, y:1, width: frame.width, height: frame.height))
         
         initLayer()
         
@@ -41,12 +41,20 @@ class FpsBubble: UIView {
     
     func updateFrame() {
         if #available(iOS 11.0, *) {
-            if (UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0) > 24.0 { //iPhoneX
+            let safeAreaInsetsTop = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+            if safeAreaInsetsTop > 24 { //iPhoneX
                 center.x = UIScreen.main.bounds.width/2.0
-                center.y = (UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0) - 5.0
+                center.y = 39
                 
-                if CocoaDebugDeviceInfo.sharedInstance().getPlatformString == "iPhone 12 mini" {
-                    center.y = (UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0.0) - 7.0
+                let string = CocoaDebugDeviceInfo.sharedInstance().getPlatformString
+                if string == "iPhone 12 mini" {
+                    center.y = 43
+                } else if string == "iPhone 12" {
+                    center.y = 41
+                } else if string == "iPhone 12 Pro" {
+                    center.y = 41
+                } else if string == "iPhone 12 Pro Max" {
+                    center.y = 41
                 }
             }
         }
