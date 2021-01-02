@@ -28,7 +28,7 @@ class FpsBubble: UIView {
     
     //MARK: - init
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: UIScreen.main.bounds.width/4.0, y:1, width: frame.width, height: frame.height))
+        super.init(frame: CGRect(x: UIScreen.main.bounds.width/4.0, y:1.0, width: frame.width, height: frame.height))
         
         initLayer()
         
