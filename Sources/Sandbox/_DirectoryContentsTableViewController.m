@@ -41,10 +41,6 @@
 
 @end
 
-NSInteger const kMLBDeleteAlertViewTag = 101; // 左滑删除
-NSInteger const kMLBDeleteAllAlertViewTag = 111; // Toolbar Delete All
-NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
-
 @implementation _DirectoryContentsTableViewController
 
 //liman
