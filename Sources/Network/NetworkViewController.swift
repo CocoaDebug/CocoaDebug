@@ -203,6 +203,7 @@ extension NetworkViewController: UITableViewDataSource {
             as! NetworkCell
         
         cell.httpModel = models?[indexPath.row]
+        cell.index = indexPath.row
         return cell
     }
 }
