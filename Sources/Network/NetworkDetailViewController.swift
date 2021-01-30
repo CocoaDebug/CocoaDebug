@@ -378,6 +378,9 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             let items: [Any] = [self?.messageBody ?? ""]
             let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
             self?.present(action, animated: true, completion: nil)
+            if let popover = action.popoverPresentationController {
+                popover.sourceView = self?.view
+            }
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
