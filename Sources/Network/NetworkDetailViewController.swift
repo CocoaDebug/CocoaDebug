@@ -373,12 +373,20 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             UIPasteboard.general.string = self?.messageBody
         }
         
+        let moreAction: UIAlertAction = UIAlertAction(title: "more", style: .default) { [weak self] action -> Void in
+            _ = self?.configureMailComposer(true)
+            let items: [Any] = [self?.messageBody ?? ""]
+            let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            self?.present(action, animated: true, completion: nil)
+        }
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
         }
         
         // add actions
         alert.addAction(secondAction)
         alert.addAction(firstAction)
+        alert.addAction(moreAction)
         alert.addAction(cancelAction)
         
         alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
