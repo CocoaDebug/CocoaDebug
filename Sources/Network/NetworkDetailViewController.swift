@@ -377,10 +377,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             _ = self?.configureMailComposer(true)
             let items: [Any] = [self?.messageBody ?? ""]
             let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            self?.present(action, animated: true, completion: nil)
-            if let popover = action.popoverPresentationController {
-                popover.sourceView = self?.view
+            if UI_USER_INTERFACE_IDIOM() == .phone {
+                self?.present(action, animated: true, completion: nil)
+            } else {
+                action.popoverPresentationController?.sourceView = self?.view
+                action.popoverPresentationController?.sourceRect = self?.view.bounds ?? .zero
+                self?.present(action, animated: true, completion: nil)
             }
+
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
