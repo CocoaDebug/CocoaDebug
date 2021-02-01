@@ -61,7 +61,7 @@
 
 - (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
-    if (!self.enable) {return;}
+    if (!self.enable && type != CocoaDebugToolTypeRN) {return;}
     if (!file || !function || !message || !color) {return;}
     
     //1.
