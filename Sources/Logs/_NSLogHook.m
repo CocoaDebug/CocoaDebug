@@ -89,7 +89,6 @@ void _RCTLogJavaScriptInternal(RCTLogLevel level, NSString *message)
             break;
     }
 
-    //`RCTLogSourceJavaScript`
     [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@\n", levelStr] function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
 }
 
