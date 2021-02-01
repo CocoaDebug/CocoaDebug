@@ -27,5 +27,4 @@ Pod::Spec.new do |s|
                           'Sources/Window/**/*.m',
                           'Sources/fishhook/**/*.c',
                           ]
-  s.dependency "React/Core"
 end
