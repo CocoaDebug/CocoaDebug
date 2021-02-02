@@ -63,7 +63,7 @@ void cocoadebug_nslog(NSString *format, ...)
 //#pragma mark - RN
 //void _RCTLogJavaScriptInternal(RCTLogLevel level, NSString *message)
 //{
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"disableRNMonitoring_CocoaDebug"]) {return;}
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableRNMonitoring_CocoaDebug"]) {return;}
 //    if (![message isKindOfClass:[NSString class]]) {return;}
 ////    if (level != RCTLogLevelError && level != RCTLogLevelInfo) {return;}
 //

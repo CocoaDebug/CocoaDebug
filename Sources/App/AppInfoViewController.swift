@@ -66,7 +66,7 @@ class AppInfoViewController: UITableViewController {
         
         logSwitch.isOn = CocoaDebugSettings.shared.enableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
-        rnSwitch.isOn = !CocoaDebugSettings.shared.disableRNMonitoring
+        rnSwitch.isOn = CocoaDebugSettings.shared.enableRNMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
         controllerMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController
@@ -158,7 +158,7 @@ class AppInfoViewController: UITableViewController {
     }
     
     @objc func rnSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableRNMonitoring = !rnSwitch.isOn
+        CocoaDebugSettings.shared.enableRNMonitoring = rnSwitch.isOn
         self.showAlert()
     }
     

@@ -74,9 +74,9 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
-    @objc public var disableRNMonitoring: Bool = false {
+    @objc public var enableRNMonitoring: Bool = false {
         didSet {
-            UserDefaults.standard.set(disableRNMonitoring, forKey: "disableRNMonitoring_CocoaDebug")
+            UserDefaults.standard.set(enableRNMonitoring, forKey: "enableRNMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -252,7 +252,7 @@ import Foundation
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-        disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
+        enableRNMonitoring = UserDefaults.standard.bool(forKey: "enableRNMonitoring_CocoaDebug")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_CocoaDebug")
         logSelectIndex = UserDefaults.standard.integer(forKey: "logSelectIndex_CocoaDebug")
         networkLastIndex = UserDefaults.standard.integer(forKey: "networkLastIndex_CocoaDebug")
