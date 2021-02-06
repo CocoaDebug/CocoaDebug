@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
                           'Sources/Categories/**/*.m',
                           'Sources/Core/**/*.m',
                           'Sources/CustomHTTPProtocol/**/*.m',
-                          'Sources/LeaksFinder/**/*.m',
                           'Sources/Logs/**/*.m',
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
