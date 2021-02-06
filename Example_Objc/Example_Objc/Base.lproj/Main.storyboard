@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1bF-st-ibT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1bF-st-ibT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,45 +16,14 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFO-gA-Thu">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <state key="normal" title="Test Memory Leaks"/>
-                                <connections>
-                                    <segue destination="FDx-V5-sZz" kind="show" id="H9E-iK-qfl"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bFO-gA-Thu" secondAttribute="trailing" id="51c-ep-b3b"/>
-                            <constraint firstItem="bFO-gA-Thu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EVG-fA-mSB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bFO-gA-Thu" secondAttribute="bottom" id="IXY-ZT-hEF"/>
-                            <constraint firstItem="bFO-gA-Thu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="umQ-La-Xl9"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Example" id="v6e-5q-cFs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-152.17391304347828" y="-110.49107142857143"/>
-        </scene>
-        <!--Memory Leak Test-->
-        <scene sceneID="oR2-7I-8gr">
-            <objects>
-                <viewController id="FDx-V5-sZz" customClass="MemoryLeakTestController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="imN-nR-oSu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="O0R-5a-N2Y"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Memory Leak Test" id="Wp7-cp-vvG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hur-Ie-egf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="588" y="-96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sq0-5V-Bng">
