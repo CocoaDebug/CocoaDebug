@@ -31,8 +31,6 @@
 
 - [x] Long press the black bubble to clean all network logs.
 
-- [x] Detect memory leaks.
-
 - [x] Detect FPS.
 
 - [x] List crash errors.
