@@ -329,7 +329,6 @@
 		3826DD3424EE5FD5003DE040 /* _ImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DD2324EE5FD5003DE040 /* _ImageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DE7924EE7CDE003DE040 /* CocoaDebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */; };
 		3826DE7B24EE7CDE003DE040 /* CocoaDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380965722414E04F00382668 /* CocoaDebug.framework */; platformFilter = ios; };
-		3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3826DEA724EE854E003DE040 /* copy_and_codesign.sh */; };
 		3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA26259E223B00ABF650 /* FPSCounter.swift */; };
 		3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */; };
@@ -674,7 +673,6 @@
 		3826DE7624EE7CDE003DE040 /* CocoaDebugTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaDebugTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3826DE7824EE7CDE003DE040 /* CocoaDebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugTests.m; sourceTree = "<group>"; };
 		3826DE7A24EE7CDE003DE040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3826DEA724EE854E003DE040 /* copy_and_codesign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = copy_and_codesign.sh; sourceTree = "<group>"; };
 		3828BA26259E223B00ABF650 /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
 		3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
 		3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
@@ -724,7 +722,6 @@
 		380965742414E04F00382668 /* CocoaDebug */ = {
 			isa = PBXGroup;
 			children = (
-				3826DEA724EE854E003DE040 /* copy_and_codesign.sh */,
 				3826D9CD24EE5BF4003DE040 /* Sources */,
 			);
 			path = CocoaDebug;
@@ -1418,7 +1415,6 @@
 				3826DB7924EE5BF5003DE040 /* NetworkCell.xib in Resources */,
 				3826DBAB24EE5BF5003DE040 /* icon_file_type_folder_not_empty.png in Resources */,
 				3826DC2624EE5BF5003DE040 /* icon_file_type_js@3x.png in Resources */,
-				3826DEA824EE854E003DE040 /* copy_and_codesign.sh in Resources */,
 				3826DBA724EE5BF5003DE040 /* icon_file_type_midi@3x.png in Resources */,
 				3826DBA124EE5BF5003DE040 /* icon_file_type_java@2x.png in Resources */,
 				3826DB9B24EE5BF5003DE040 /* icon_file_type_plist.png in Resources */,
