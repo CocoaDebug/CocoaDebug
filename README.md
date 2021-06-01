@@ -79,12 +79,7 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 ```swift
 CocoaDebugSettings.shared.enableLogMonitoring = true
 ```
-## Advanced Memory Leak Detection
-```swift
-CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController = true
-CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View = true
-CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables = true
-```
+
 - Check [Example_Objc](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Objc) and [Example_Swift](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Swift) for more advanced usage.
 
 ## Parameters
