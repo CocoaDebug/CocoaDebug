@@ -380,8 +380,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if UI_USER_INTERFACE_IDIOM() == .phone {
                 self?.present(action, animated: true, completion: nil)
             } else {
-                action.popoverPresentationController?.sourceView = self?.view
-                action.popoverPresentationController?.sourceRect = self?.view.bounds ?? .zero
+                action.popoverPresentationController?.sourceRect = .init(x: self?.view.bounds.midX ?? 0, y: self?.view.bounds.midY ?? 0, width: 0, height: 0)
                 self?.present(action, animated: true, completion: nil)
             }
 
