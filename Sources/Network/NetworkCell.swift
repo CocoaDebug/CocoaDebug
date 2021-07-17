@@ -11,7 +11,7 @@ import UIKit
 
 class NetworkCell: UITableViewCell {
     
-    @IBOutlet weak var leftAlignLine: UIView!
+    @IBOutlet weak var leftAlignLine: UILabel!
     @IBOutlet weak var statusCodeLabel: UILabel!
     @IBOutlet weak var methodLabel: UILabel!
     @IBOutlet weak var requestTimeTextView: CustomTextView!
@@ -19,6 +19,7 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
     
+    var index: NSInteger = 0
     
     var httpModel: _HttpModel? {
         didSet {
@@ -136,5 +137,21 @@ class NetworkCell: UITableViewCell {
         requestUrlTextView.textContainer.lineFragmentPadding = 0
         requestUrlTextView.textContainerInset = .zero
         requestUrlTextView.isSelectable = true
+        
+        leftAlignLine.textAlignment = .center
+        leftAlignLine.textColor = .white
+        leftAlignLine.adjustsFontSizeToFitWidth = true
+        if #available(iOS 8.2, *) {
+            leftAlignLine.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        } else {
+            leftAlignLine.font = UIFont.boldSystemFont(ofSize: 20)
+        }
+    }
+    
+    //MARK: - layoutSubviews
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+        
+        leftAlignLine.text = String(index + 1)
     }
 }

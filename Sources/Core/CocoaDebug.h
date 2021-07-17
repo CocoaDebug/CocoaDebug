@@ -78,20 +78,3 @@
 #import "_GPBUtilities_PackagePrivate.h"
 #import "_GPBWellKnownTypes.h"
 #import "_GPBWireFormat.h"
-
-
-//MLeaksFinder
-#import "_LeakedObjectProxy.h"
-#import "_LeaksMessenger.h"
-#import "UIApplication+_LeaksFinder.h"
-#import "UINavigationController+_LeaksFinder.h"
-#import "UIPageViewController+_LeaksFinder.h"
-#import "UISplitViewController+_LeaksFinder.h"
-#import "UITabBarController+_LeaksFinder.h"
-#import "UITouch+_LeaksFinder.h"
-#import "UIView+_LeaksFinder.h"
-#import "UIViewController+_LeaksFinder.h"
-#import "NSArray+_LeaksFinder.h"
-#import "NSDictionary+_LeaksFinder.h"
-#import "NSObject+_LeaksFinder.h"
-#import "NSSet+_LeaksFinder.h"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,9 +34,9 @@
                             <constraint firstItem="RDG-ui-8nx" firstAttribute="centerY" secondItem="JC4-1t-BQJ" secondAttribute="centerY" id="Kfl-tA-9qT"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fN-bI-W2p">
-                        <rect key="frame" x="0.0" y="8" width="0.0" height="124"/>
-                        <color key="backgroundColor" red="0.2557018995" green="0.82255214450000003" blue="0.34441712499999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fN-bI-W2p" customClass="UILabel">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="140"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" id="Hac-EL-A9K"/>
                         </constraints>
@@ -84,7 +84,7 @@
                     <constraint firstItem="kwZ-en-pn0" firstAttribute="centerY" secondItem="v8G-CW-gTr" secondAttribute="centerY" id="Hqx-Wl-Nz6"/>
                     <constraint firstItem="JC4-1t-BQJ" firstAttribute="leading" secondItem="QzV-et-yBo" secondAttribute="trailing" constant="9" id="ITi-bD-aun"/>
                     <constraint firstAttribute="trailing" secondItem="JC4-1t-BQJ" secondAttribute="trailing" id="TxK-j3-KWn"/>
-                    <constraint firstAttribute="bottom" secondItem="3fN-bI-W2p" secondAttribute="bottom" constant="8" id="ijy-4W-A96"/>
+                    <constraint firstAttribute="bottom" secondItem="3fN-bI-W2p" secondAttribute="bottom" id="ijy-4W-A96"/>
                     <constraint firstItem="3fN-bI-W2p" firstAttribute="leading" secondItem="3rq-bh-2Xs" secondAttribute="leading" id="kZP-qQ-edH"/>
                     <constraint firstItem="QzV-et-yBo" firstAttribute="leading" secondItem="v8G-CW-gTr" secondAttribute="leading" id="kZT-8N-a1b"/>
                     <constraint firstAttribute="bottom" secondItem="JC4-1t-BQJ" secondAttribute="bottom" id="uJo-0f-J3P"/>
@@ -92,7 +92,7 @@
                     <constraint firstItem="5Uk-na-nYw" firstAttribute="leading" secondItem="v8G-CW-gTr" secondAttribute="leading" id="vaS-Rk-0ZP"/>
                     <constraint firstItem="JC4-1t-BQJ" firstAttribute="top" secondItem="3rq-bh-2Xs" secondAttribute="top" id="wJq-MT-1wR"/>
                     <constraint firstItem="v8G-CW-gTr" firstAttribute="top" secondItem="3rq-bh-2Xs" secondAttribute="top" constant="16" id="wMA-Fp-0eG"/>
-                    <constraint firstItem="3fN-bI-W2p" firstAttribute="top" secondItem="3rq-bh-2Xs" secondAttribute="top" constant="8" id="xjm-W0-hVi"/>
+                    <constraint firstItem="3fN-bI-W2p" firstAttribute="top" secondItem="3rq-bh-2Xs" secondAttribute="top" id="xjm-W0-hVi"/>
                     <constraint firstItem="QzV-et-yBo" firstAttribute="leading" secondItem="3fN-bI-W2p" secondAttribute="trailing" constant="9" id="zCg-Pu-25Q"/>
                 </constraints>
             </tableViewCellContentView>
@@ -106,7 +106,7 @@
                 <outlet property="statusCodeLabel" destination="RDG-ui-8nx" id="GJ3-Oi-uwC"/>
                 <outlet property="statusCodeView" destination="JC4-1t-BQJ" id="LHX-zv-fWH"/>
             </connections>
-            <point key="canvasLocation" x="-135" y="7"/>
+            <point key="canvasLocation" x="410" y="-25"/>
         </tableViewCell>
     </objects>
 </document>

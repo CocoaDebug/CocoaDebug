@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2b-Ib-iXr">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,21 +58,21 @@
                                                         <constraint firstAttribute="width" constant="74" id="oxx-rh-jLM"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z97-RH-3Xd">
-                                                    <rect key="frame" x="0.0" y="8" width="0.0" height="124"/>
-                                                    <color key="backgroundColor" red="0.25570189952850342" green="0.8225521445274353" blue="0.34441712498664856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z97-RH-3Xd" customClass="UILabel">
+                                                    <rect key="frame" x="4" y="0.0" width="20" height="140"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" id="0rD-2G-shp"/>
+                                                        <constraint firstAttribute="width" constant="20" id="0rD-2G-shp"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[POST]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="mpy-d9-z4s">
-                                                    <rect key="frame" x="9" y="16" width="60" height="21"/>
+                                                    <rect key="frame" x="28" y="16" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.50190365314483643" green="0.50199371576309204" blue="0.50189799070358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHA-Mc-2kX">
-                                                    <rect key="frame" x="9" y="8.5" width="18.5" height="7.5"/>
+                                                    <rect key="frame" x="28" y="8.5" width="18.5" height="7.5"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="6"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -85,13 +85,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oVC-1n-Afy" customClass="CustomTextView" customModule="CocoaDebug" customModuleProvider="target">
-                                                    <rect key="frame" x="9" y="41" width="283" height="83"/>
+                                                    <rect key="frame" x="28" y="41" width="264" height="83"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" text="2017-23-21 23:23:23" translatesAutoresizingMaskIntoConstraints="NO" id="kbT-8h-y06" customClass="CustomTextView" customModule="CocoaDebug" customModuleProvider="target">
-                                                    <rect key="frame" x="73" y="20.5" width="136.5" height="12"/>
+                                                    <rect key="frame" x="92" y="20.5" width="136.5" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="12" id="Djn-QT-sg4"/>
                                                     </constraints>
@@ -101,15 +101,15 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="z97-RH-3Xd" firstAttribute="leading" secondItem="wOJ-KD-fAY" secondAttribute="leading" id="2xR-eV-tHz"/>
+                                                <constraint firstItem="z97-RH-3Xd" firstAttribute="leading" secondItem="wOJ-KD-fAY" secondAttribute="leading" constant="4" id="2xR-eV-tHz"/>
                                                 <constraint firstItem="L1a-aJ-1Wg" firstAttribute="leading" secondItem="oVC-1n-Afy" secondAttribute="trailing" constant="9" id="31z-3Y-WIJ"/>
                                                 <constraint firstItem="L1a-aJ-1Wg" firstAttribute="top" secondItem="wOJ-KD-fAY" secondAttribute="top" constant="-0.5" id="5Dp-jN-v8z"/>
-                                                <constraint firstItem="z97-RH-3Xd" firstAttribute="top" secondItem="wOJ-KD-fAY" secondAttribute="top" constant="8" id="7gE-Qy-aKq"/>
+                                                <constraint firstItem="z97-RH-3Xd" firstAttribute="top" secondItem="wOJ-KD-fAY" secondAttribute="top" id="7gE-Qy-aKq"/>
                                                 <constraint firstAttribute="bottom" secondItem="oVC-1n-Afy" secondAttribute="bottom" constant="16" id="9bS-6o-98K"/>
-                                                <constraint firstItem="mpy-d9-z4s" firstAttribute="leading" secondItem="z97-RH-3Xd" secondAttribute="trailing" constant="9" id="Inb-29-iBD"/>
+                                                <constraint firstItem="mpy-d9-z4s" firstAttribute="leading" secondItem="z97-RH-3Xd" secondAttribute="trailing" constant="4" id="Inb-29-iBD"/>
                                                 <constraint firstAttribute="trailing" secondItem="L1a-aJ-1Wg" secondAttribute="trailing" id="LbV-QN-BV0"/>
                                                 <constraint firstItem="mpy-d9-z4s" firstAttribute="top" secondItem="wOJ-KD-fAY" secondAttribute="top" constant="16" id="NsU-23-Qs7"/>
-                                                <constraint firstItem="oVC-1n-Afy" firstAttribute="leading" secondItem="z97-RH-3Xd" secondAttribute="trailing" constant="9" id="RiM-9J-RpU"/>
+                                                <constraint firstItem="oVC-1n-Afy" firstAttribute="leading" secondItem="z97-RH-3Xd" secondAttribute="trailing" constant="4" id="RiM-9J-RpU"/>
                                                 <constraint firstItem="oVC-1n-Afy" firstAttribute="leading" secondItem="mpy-d9-z4s" secondAttribute="leading" id="TDe-Lb-aWx"/>
                                                 <constraint firstItem="oVC-1n-Afy" firstAttribute="top" secondItem="mpy-d9-z4s" secondAttribute="bottom" constant="4" id="UHs-TO-MMS"/>
                                                 <constraint firstAttribute="bottom" secondItem="L1a-aJ-1Wg" secondAttribute="bottom" constant="-0.5" id="Yhz-fg-pz3"/>
@@ -117,7 +117,7 @@
                                                 <constraint firstItem="SHA-Mc-2kX" firstAttribute="leading" secondItem="mpy-d9-z4s" secondAttribute="leading" id="guC-Dp-Hgv"/>
                                                 <constraint firstItem="kbT-8h-y06" firstAttribute="leading" secondItem="mpy-d9-z4s" secondAttribute="trailing" constant="4" id="k18-oq-4iQ"/>
                                                 <constraint firstItem="mpy-d9-z4s" firstAttribute="top" secondItem="SHA-Mc-2kX" secondAttribute="bottom" id="n7K-Ha-nAd"/>
-                                                <constraint firstAttribute="bottom" secondItem="z97-RH-3Xd" secondAttribute="bottom" constant="8" id="pnN-nd-ZuZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="z97-RH-3Xd" secondAttribute="bottom" id="pnN-nd-ZuZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

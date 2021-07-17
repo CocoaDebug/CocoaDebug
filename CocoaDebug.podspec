@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "CocoaDebug"
-  s.version             = "1.6.1"
+  s.version             = "1.6.3"
   s.summary             = "iOS Debug Tool"
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
   s.author              = {"CocoaDebug" => "man.li@shopee.com"}
@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
                           'Sources/Categories/**/*.m',
                           'Sources/Core/**/*.m',
                           'Sources/CustomHTTPProtocol/**/*.m',
-                          'Sources/LeaksFinder/**/*.m',
                           'Sources/Logs/**/*.m',
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
@@ -27,4 +26,5 @@ Pod::Spec.new do |s|
                           'Sources/Window/**/*.m',
                           'Sources/fishhook/**/*.c',
                           ]
+  # s.dependency "React/Core"
 end

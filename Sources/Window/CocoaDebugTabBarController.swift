@@ -66,7 +66,8 @@ class CocoaDebugTabBarController: UITabBarController {
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)
         nav.navigationBar.barTintColor = "#1f2124".hexColor
-        
+        nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
+
         //****** 以下代码从NavigationController.swift复制 ******
         nav.navigationBar.isTranslucent = false
         

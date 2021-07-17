@@ -31,8 +31,6 @@
 
 - [x] Long press the black bubble to clean all network logs.
 
-- [x] Detect memory leaks.
-
 - [x] Detect FPS.
 
 - [x] List crash errors.
@@ -77,6 +75,10 @@ Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/
 ## Usage
 
 - Don't need to do anything. `CocoaDebug` will start automatically.
+- To capture logs from xcode / use
+```swift
+CocoaDebugSettings.shared.enableLogMonitoring = true
+```
 
 - Check [Example_Objc](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Objc) and [Example_Swift](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Swift) for more advanced usage.
 
