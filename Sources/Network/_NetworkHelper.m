@@ -38,14 +38,18 @@
     return self;
 }
 
-- (void)enable
-{
+- (void)enable {
+    if (self.isNetworkEnable) {
+        return;
+    }
     self.isNetworkEnable = YES;
     [NSURLProtocol registerClass:[_CustomHTTPProtocol class]];
 }
 
-- (void)disable
-{
+- (void)disable {
+    if (!self.isNetworkEnable) {
+        return;
+    }
     self.isNetworkEnable = NO;
     [NSURLProtocol unregisterClass:[_CustomHTTPProtocol class]];
 }

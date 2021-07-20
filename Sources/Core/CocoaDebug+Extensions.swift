@@ -306,9 +306,9 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-        if CocoaDebugSettings.shared.isRunning == true {return}
+//        if CocoaDebugSettings.shared.isRunning == true {return}
         
-        CocoaDebugSettings.shared.isRunning = true
+//        CocoaDebugSettings.shared.isRunning = true
         
         //        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         //        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
@@ -395,7 +395,7 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
-        CocoaDebugSettings.shared.isRunning = false
+//        CocoaDebugSettings.shared.isRunning = false
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _SwiftLogHelper.shared.enable = false

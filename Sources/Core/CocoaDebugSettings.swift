@@ -12,7 +12,7 @@ import Foundation
     
     @objc public static let shared = CocoaDebugSettings()
     
-    @objc public var isRunning: Bool = false
+//    @objc public var isRunning: Bool = false
     
     @objc public var slowAnimations: Bool = false {
         didSet {            
