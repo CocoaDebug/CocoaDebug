@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -42,7 +42,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         guard let requestSerializer = httpModel?.requestSerializer else {return}
         var requestContent: String? = nil
         
-        //容错判断,否则为nil时会崩溃
+        //otherwise it will crash when it is nil
         if httpModel?.requestData == nil {
             httpModel?.requestData = Data.init()
         }
@@ -50,7 +50,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             httpModel?.responseData = Data.init()
         }
         
-        //判断请求参数格式JSON/Form
+        //detect the request parameter format (JSON/Form)
         if requestSerializer == RequestSerializer.JSON {
             //JSON
             requestContent = httpModel?.requestData.dataToPrettyPrintString()
@@ -77,8 +77,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         if httpModel?.isImage == true {
-            //图片:
-            //1.主要
+            //image:
+            //1.
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -87,7 +87,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if let responseData = httpModel?.responseData {
                 model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, image: UIImage.init(gifData: responseData), httpModel: httpModel)
             }
-            //2.次要
+            //2.
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -120,14 +120,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_9)
         }
         else {
-            //非图片:
-            //1.主要
+            //not image:
+            //1.
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString(), url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            //2.次要
+            //2.
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -161,18 +161,18 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
     }
     
-    //确定request格式(JSON/Form)
+    //detetc request format (JSON/Form)
     func detectRequestSerializer() {
         guard let requestData = httpModel?.requestData else {
-            httpModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
+            httpModel?.requestSerializer = RequestSerializer.JSON//default JSON format
             return
         }
         
         if let _ = requestData.dataToDictionary() {
-            //JSON格式
+            //JSON format
             httpModel?.requestSerializer = RequestSerializer.JSON
         } else {
-            //Form格式
+            //Form format
             httpModel?.requestSerializer = RequestSerializer.form
         }
     }

@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -746,13 +746,13 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 //liman
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler
 {
-    //重定向 状态码 >=300 && < 400
+    //Redirect: code >=300 && < 400
     if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         NSInteger status = httpResponse.statusCode;
         if (status >= 300 && status < 400) {
             [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
-            // 记得设置成nil，要不然正常请求会请求两次
+            //Remember to set to nil, otherwise the normal request will be requested twice
             request = nil;
         }
     }

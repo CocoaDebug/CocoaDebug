@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -157,7 +157,7 @@
         self.type == _FileTypeWord ||
         self.type == _FileTypeExcel ||
         // Document
-        self.type == _FileTypeTXT || // 编码问题
+        self.type == _FileTypeTXT ||
         self.type == _FileTypePDF ||
         self.type == _FileTypeMD ||
         // Programming

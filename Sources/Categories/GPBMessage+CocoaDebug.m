@@ -75,7 +75,7 @@
             [dict setObject:serializeObject forKey:keyNameObject];
         }
         if ([keyNameObject isKindOfClass:[NSArray class]] && ![ignoreFields containsObject:keyNameObject]) {
-            NSString *keyName = [keyNameObject objectAtIndex:0]; // 只序列化第一个值
+            NSString *keyName = [keyNameObject objectAtIndex:0]; // Serialize only the first value
             [dict setObject:serializeObject forKey:keyName];
         }
     }

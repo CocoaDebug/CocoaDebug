@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -15,7 +15,7 @@ struct NetworkDetailModel {
     var image: UIImage?
     var blankContent: String?
     var isLast: Bool = false
-    var requestSerializer: RequestSerializer = RequestSerializer.JSON//默认JSON格式
+    var requestSerializer: RequestSerializer = RequestSerializer.JSON//default JSON format
     var requestHeaderFields: [String: Any]?
     var responseHeaderFields: [String: Any]?
     var requestData: Data?

@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -28,7 +28,7 @@
         } else {
             // The stream had an error. You can get an NSError object using [iStream streamError]
             if (result < 0) {
-                //                [NSException raise:@"STREAM_ERROR" format:@"%@", [stream streamError]];
+//                [NSException raise:@"STREAM_ERROR" format:@"%@", [stream streamError]];
                 return nil;//liman
             }
         }

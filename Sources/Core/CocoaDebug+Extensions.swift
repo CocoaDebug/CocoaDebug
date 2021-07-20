@@ -1,6 +1,6 @@
 //
 //  Example
-//  man.li
+//  man
 //
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 extension Dictionary {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func dictionaryToFormString() -> String? {
         var array = [String]()
         
@@ -24,7 +24,7 @@ extension Dictionary {
 }
 
 extension String {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func formStringToDictionary() -> [String: Any]? {
         var dictionary = [String: Any]()
         let array = self.components(separatedBy: "&")
@@ -195,7 +195,6 @@ extension String {
     }
 }
 
-///添加圆角
 extension UIView {
     func addCorner(roundingCorners: UIRectCorner, cornerSize: CGSize) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerSize)
@@ -206,7 +205,6 @@ extension UIView {
     }
 }
 
-///主线程
 extension NSObject {
     func dispatch_main_async_safe(callback: @escaping ()->Void ) {
         if Thread.isMainThread {
