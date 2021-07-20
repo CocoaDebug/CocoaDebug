@@ -1,14 +1,14 @@
 before_install:
     - brew update
     - brew install gcc || brew link --overwrite gcc
-    - brew upgrade
+#    - brew upgrade
     - brew outdated xctool || brew upgrade xctool
-osx_image: xcode11.3
+osx_image: xcode12.4
 language: objective-c
 xcode_project: CocoaDebug.xcodeproj
 xcode_scheme: CocoaDebug
 xcode_sdk: iphonesimulator
 script:
-    - xcodebuild -project CocoaDebug.xcodeproj -scheme CocoaDebug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.3' build test
+    - xcodebuild -project CocoaDebug.xcodeproj -scheme CocoaDebug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0' build test
 after_success:
     - bash <(curl -s https://codecov.io/bash) -J 'CocoaDebug' -t 592f3d0c-a304-44a1-b99e-5ea37f78ce9d
