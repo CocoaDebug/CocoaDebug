@@ -156,7 +156,7 @@ extension Data {
             return str
         } else {
             //2.protobuf
-            if let message = try? _GPBMessage.parse(from: self) {
+            if let message = try? GPBMessage.parse(from: self) {
                 if message.serializedSize() > 0 {
                     return message.description
                 } else {

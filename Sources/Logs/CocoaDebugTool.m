@@ -8,8 +8,8 @@
 
 #import "CocoaDebugTool.h"
 #import "_OCLogHelper.h"
-#import "_GPBMessage+CocoaDebug.h"
-#import "_GPBMessage.h"
+#import "GPBMessage+CocoaDebug.h"
+#import "GPBMessage.h"
 
 @implementation CocoaDebugTool
 
@@ -69,7 +69,7 @@
     }
     
     //2.protobuf
-    //    _GPBMessage *message = [_GPBMessage parseFromData:data error:nil];
+    //    GPBMessage *message = [GPBMessage parseFromData:data error:nil];
     //    if ([message serializedSize] > 0) {
     //        return [message description];
     //    }
@@ -89,7 +89,7 @@
     
     Class cls = NSClassFromString(className);
     //protobuf
-    _GPBMessage *obj = [cls parseFromData:data error:nil];
+    GPBMessage *obj = [cls parseFromData:data error:nil];
     //HuiCao
     NSString *jsonString = [obj _JSONStringWithIgnoreFields:nil];
     if (!jsonString) {return nil;}

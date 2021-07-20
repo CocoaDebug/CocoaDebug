@@ -58,7 +58,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else if requestSerializer == RequestSerializer.form {
             if let data = httpModel?.requestData {
                 //1.protobuf
-                if let message = try? _GPBMessage.parse(from: data) {
+                if let message = try? GPBMessage.parse(from: data) {
                     if message.serializedSize() > 0 {
                         requestContent = message.description
                     } else {

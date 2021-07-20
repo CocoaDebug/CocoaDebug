@@ -6,9 +6,9 @@
 //  Copyright © 2020 man.li. All rights reserved.
 //
 
-#import "_GPBMessage.h"
+#import <Protobuf/GPBMessage.h>
 
-@interface _GPBMessage (CocoaDebug)
+@interface GPBMessage (CocoaDebug)
 
 - (id _Nullable)initWithDictionary:(NSDictionary *_Nullable)dict;
 
