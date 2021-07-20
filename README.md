@@ -61,11 +61,11 @@ end
 ## Usage
 
 - Don't need to do anything. CocoaDebug will start automatically.
-- To capture logs from xcode / use
+- To capture logs from xcode :
 ```swift
 CocoaDebugSettings.shared.enableLogMonitoring = true
 ```
-- Check [Example_Objc](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Objc) and [Example_Swift](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Swift) for more advanced usage.
+- Check [AppDelegate.m](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Objc/Example_Objc/AppDelegate.m) OR [AppDelegate.swift](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Swift/Example_Swift/AppDelegate.swift) for more advanced usage.
 
 ## Parameters
 
