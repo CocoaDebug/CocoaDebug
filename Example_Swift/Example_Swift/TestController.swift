@@ -1,5 +1,5 @@
 //
-//  AdditionalController.swift
+//  TestController.swift
 //  Example_Swift
 //
 //  Created by man on 8/22/20.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-class AdditionalTestController: UIViewController {
+class TestController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Additional Test"
+        self.title = "Test"
         self.view.backgroundColor = .red
     }
 }
