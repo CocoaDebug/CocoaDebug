@@ -2,8 +2,8 @@
 //  CocoaDebugTool.m
 //  Example_Swift
 //
-//  Created by man.li on 5/8/19.
-//  Copyright © 2020 liman.li. All rights reserved.
+//  Created by man 5/8/19.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "CocoaDebugTool.h"

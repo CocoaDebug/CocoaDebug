@@ -10,7 +10,7 @@
 #import "TestViewController.h"
 
 #ifdef DEBUG
-@import CocoaDebug;
+    @import CocoaDebug;
 #endif
 
 @interface AppDelegate ()
@@ -22,14 +22,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 #ifdef DEBUG
-    //    [self customCocoaDebug];
+//    [self customCocoaDebug];
 #endif
     
     return YES;
 }
 
 - (void)customCocoaDebug {
-    //--- If Want to Custom CocoaDebug Settings ---
+    //--- If want to custom CocoaDebug settings ---
     CocoaDebug.serverURL = @"google.com";
     CocoaDebug.ignoredURLs = @[@"aaa.com", @"bbb.com"];
     CocoaDebug.onlyURLs = @[@"ccc.com", @"ddd.com"];
@@ -41,18 +41,15 @@
     CocoaDebug.mainColor = @"#fd9727";
     CocoaDebug.additionalViewController = [TestViewController new];
     
-    //--- If Use Google's Protocol buffers ---
+    //--- If use Google's Protocol buffers ---
     CocoaDebug.protobufTransferMap = @{
         @"your_api_keywords_1": @[@"your_protobuf_className_1"],
         @"your_api_keywords_2": @[@"your_protobuf_className_2"],
         @"your_api_keywords_3": @[@"your_protobuf_className_3"]
     };
     
-    //--- If Want to Manual enable App logs ---
+    //--- If want to manual enable App logs (Take effect the next time when app starts) ---
     CocoaDebugSettings.shared.enableLogMonitoring = YES;
-    
-    //--- If Custom, Must Manual enable CocoaDebug ---
-    [CocoaDebug enable];
 }
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options  API_AVAILABLE(ios(13.0)){

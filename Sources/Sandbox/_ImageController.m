@@ -2,8 +2,8 @@
 //  _ImageController.m
 //  Example_Objc
 //
-//  Created by man.li on 7/25/19.
-//  Copyright © 2020 liman.li. All rights reserved.
+//  Created by man 7/25/19.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_ImageController.h"

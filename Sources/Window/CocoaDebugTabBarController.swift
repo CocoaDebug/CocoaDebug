@@ -2,8 +2,8 @@
 //  Example
 //  man.li
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
@@ -61,7 +61,7 @@ class CocoaDebugTabBarController: UITabBarController {
             return
         }
         
-        //4.添加额外的控制器
+        //4.Add additional controller
         var temp = [network, logs, sandbox, app]
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)

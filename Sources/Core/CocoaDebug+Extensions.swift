@@ -2,8 +2,8 @@
 //  Example
 //  man.li
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -306,14 +306,6 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-//        if CocoaDebugSettings.shared.isRunning == true {return}
-        
-//        CocoaDebugSettings.shared.isRunning = true
-        
-        //        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-        //        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        //        let enableRNMonitoring = UserDefaults.standard.bool(forKey: "enableRNMonitoring_CocoaDebug")
-        
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
@@ -357,9 +349,6 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        //        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
-        //        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
-        //        CocoaDebugSettings.shared.enableRNMonitoring = enableRNMonitoring
         
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
@@ -395,7 +384,6 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
-//        CocoaDebugSettings.shared.isRunning = false
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _SwiftLogHelper.shared.enable = false

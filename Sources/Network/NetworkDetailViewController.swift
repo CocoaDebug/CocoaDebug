@@ -2,8 +2,8 @@
 //  Example
 //  man.li
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -314,7 +314,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         closeItem.tintColor = Color.mainGreen
         
-        //确定request格式(JSON/Form)
+        //detect the request format (JSON/Form)
         detectRequestSerializer()
         
         setupModels()
@@ -325,7 +325,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(lastModel)
         }
         
-        //使用单独的xib-cell文件, 必须注册, 否则崩溃
+        //Use a separate xib-cell file, must be registered, otherwise it will crash
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NetworkCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
@@ -417,7 +417,7 @@ extension NetworkDetailViewController {
             as! NetworkDetailCell
         cell.detailModel = detailModels[indexPath.row]
         
-        //2.点击了编辑view
+        //2.click edit view
         cell.tapEditViewCallback = { [weak self] detailModel in
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
@@ -451,7 +451,7 @@ extension NetworkDetailViewController {
                 if content == "" {
                     return 0
                 }
-                //计算NSString高度
+                //Calculate NSString height
                 let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
@@ -476,7 +476,7 @@ extension NetworkDetailViewController {
             if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
                 
                 if httpModel?.url.absoluteString.contains(serverURL) == true {
-                    //计算NSString高度
+                    //Calculate NSString height
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
@@ -484,7 +484,7 @@ extension NetworkDetailViewController {
                         height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 } else {
-                    //计算NSString高度
+                    //Calculate NSString height
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {

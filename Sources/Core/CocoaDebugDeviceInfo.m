@@ -2,8 +2,8 @@
 //  Example
 //  man.li
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "CocoaDebugDeviceInfo.h"
