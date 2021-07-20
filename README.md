@@ -58,28 +58,13 @@ target 'YourTargetName' do
 end
 ```
 
-### *Carthage*
-
-```ogdl
-github "CocoaDebug/CocoaDebug"
-```
-
-### *Framework*
-
-Drag [CocoaDebug.framework](https://github.com/CocoaDebug/CocoaDebug/raw/master/CocoaDebug.framework.zip) into project and set `Embed Without Signing` or `Embed & Sign` in Xcode.
-
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/002.png" width="600">
-
-> WARNING: Don't submit `.ipa` to AppStore which has been linked with the `CocoaDebug.framework`. This [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to `Debug` builds only.
-
 ## Usage
 
-- Don't need to do anything. `CocoaDebug` will start automatically.
+- Don't need to do anything. CocoaDebug will start automatically.
 - To capture logs from xcode / use
 ```swift
 CocoaDebugSettings.shared.enableLogMonitoring = true
 ```
-
 - Check [Example_Objc](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Objc) and [Example_Swift](https://github.com/CocoaDebug/CocoaDebug/tree/master/Example_Swift) for more advanced usage.
 
 ## Parameters
@@ -115,7 +100,3 @@ When you initialize CocoaDebug, you can customize the following parameter values
 ## Thanks
 
 Special thanks to [remirobert](https://github.com/remirobert).
-
-## License
-
-CocoaDebug is released under the [MIT license](https://github.com/CocoaDebug/CocoaDebug/blob/master/LICENSE).

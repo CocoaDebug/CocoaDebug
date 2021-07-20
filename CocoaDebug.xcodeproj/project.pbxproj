@@ -245,71 +245,7 @@
 		3826DC6624EE5BF5003DE040 /* CocoaDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAFE24EE5BF5003DE040 /* CocoaDebugWindow.swift */; };
 		3826DC6724EE5BF5003DE040 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826DAFF24EE5BF5003DE040 /* Color.swift */; };
 		3826DC6824EE5BF5003DE040 /* NSObject+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0124EE5BF5003DE040 /* NSObject+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC6924EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0224EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0324EE5BF5003DE040 /* NSObject+CocoaDebug.m */; };
-		3826DC6B24EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0424EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC6C24EE5BF5003DE040 /* _GPBProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0624EE5BF5003DE040 /* _GPBProtocolBuffers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC6D24EE5BF5003DE040 /* _Duration.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0724EE5BF5003DE040 /* _Duration.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC6E24EE5BF5003DE040 /* _GPBExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0824EE5BF5003DE040 /* _GPBExtensionRegistry.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0924EE5BF5003DE040 /* _Timestamp.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7024EE5BF5003DE040 /* _Any.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0A24EE5BF5003DE040 /* _Any.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7124EE5BF5003DE040 /* _GPBWireFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0B24EE5BF5003DE040 /* _GPBWireFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7224EE5BF5003DE040 /* _GPBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0C24EE5BF5003DE040 /* _GPBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7324EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0D24EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7424EE5BF5003DE040 /* _SourceContext.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB0E24EE5BF5003DE040 /* _SourceContext.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7524EE5BF5003DE040 /* _GPBWellKnownTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB0F24EE5BF5003DE040 /* _GPBWellKnownTypes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1024EE5BF5003DE040 /* _GPBCodedInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7724EE5BF5003DE040 /* _GPBRootObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1124EE5BF5003DE040 /* _GPBRootObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7824EE5BF5003DE040 /* _GPBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1224EE5BF5003DE040 /* _GPBUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1324EE5BF5003DE040 /* _GPBExtensionInternals.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7A24EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1424EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7B24EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1524EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7C24EE5BF5003DE040 /* _GPBDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1624EE5BF5003DE040 /* _GPBDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7D24EE5BF5003DE040 /* _GPBUnknownField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1724EE5BF5003DE040 /* _GPBUnknownField.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC7E24EE5BF5003DE040 /* _Api.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1824EE5BF5003DE040 /* _Api.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC7F24EE5BF5003DE040 /* _GPBCodedOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1924EE5BF5003DE040 /* _GPBCodedOutputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8024EE5BF5003DE040 /* _Struct.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1A24EE5BF5003DE040 /* _Struct.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8124EE5BF5003DE040 /* _Empty.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1B24EE5BF5003DE040 /* _Empty.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1C24EE5BF5003DE040 /* _GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8324EE5BF5003DE040 /* _Wrappers.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1D24EE5BF5003DE040 /* _Wrappers.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8424EE5BF5003DE040 /* _FieldMask.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB1E24EE5BF5003DE040 /* _FieldMask.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8524EE5BF5003DE040 /* _GPBUnknownFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB1F24EE5BF5003DE040 /* _GPBUnknownFieldSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2024EE5BF5003DE040 /* _Type.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8724EE5BF5003DE040 /* _GPBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2124EE5BF5003DE040 /* _GPBMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8824EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2224EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8924EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2324EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8A24EE5BF5003DE040 /* _SourceContext.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2424EE5BF5003DE040 /* _SourceContext.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8B24EE5BF5003DE040 /* _GPBBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2524EE5BF5003DE040 /* _GPBBootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8C24EE5BF5003DE040 /* _GPBWireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2624EE5BF5003DE040 /* _GPBWireFormat.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8D24EE5BF5003DE040 /* _GPBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2724EE5BF5003DE040 /* _GPBArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC8E24EE5BF5003DE040 /* _GPBArray_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2824EE5BF5003DE040 /* _GPBArray_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC8F24EE5BF5003DE040 /* _Any.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2924EE5BF5003DE040 /* _Any.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9024EE5BF5003DE040 /* _GPBRuntimeTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2A24EE5BF5003DE040 /* _GPBRuntimeTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9124EE5BF5003DE040 /* _Timestamp.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2B24EE5BF5003DE040 /* _Timestamp.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9224EE5BF5003DE040 /* _GPBExtensionRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2C24EE5BF5003DE040 /* _GPBExtensionRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9324EE5BF5003DE040 /* _Duration.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2D24EE5BF5003DE040 /* _Duration.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9424EE5BF5003DE040 /* _GPBDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB2E24EE5BF5003DE040 /* _GPBDescriptor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9524EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB2F24EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9624EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3024EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9724EE5BF5003DE040 /* _GPBExtensionInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3124EE5BF5003DE040 /* _GPBExtensionInternals.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9824EE5BF5003DE040 /* _GPBUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3224EE5BF5003DE040 /* _GPBUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9924EE5BF5003DE040 /* _GPBRootObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB3324EE5BF5003DE040 /* _GPBRootObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB3424EE5BF5003DE040 /* _GPBCodedInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9B24EE5BF5003DE040 /* _GPBWellKnownTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3524EE5BF5003DE040 /* _GPBWellKnownTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9C24EE5BF5003DE040 /* _Empty.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB3624EE5BF5003DE040 /* _Empty.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3724EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DC9E24EE5BF5003DE040 /* _GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB3824EE5BF5003DE040 /* _GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DC9F24EE5BF5003DE040 /* _Struct.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3924EE5BF5003DE040 /* _Struct.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA024EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3A24EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA124EE5BF5003DE040 /* _Api.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB3B24EE5BF5003DE040 /* _Api.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCA224EE5BF5003DE040 /* _GPBUnknownField.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3C24EE5BF5003DE040 /* _GPBUnknownField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA324EE5BF5003DE040 /* _GPBMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3D24EE5BF5003DE040 /* _GPBMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3E24EE5BF5003DE040 /* _Type.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA524EE5BF5003DE040 /* _GPBUnknownFieldSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB3F24EE5BF5003DE040 /* _GPBUnknownFieldSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA624EE5BF5003DE040 /* _FieldMask.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB4024EE5BF5003DE040 /* _FieldMask.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCA724EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB4124EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DB4224EE5BF5003DE040 /* _Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3826DCA924EE5BF5003DE040 /* _GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826DB4324EE5BF5003DE040 /* _GPBDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1324EE5FD4003DE040 /* _SandboxerHelper.m */; };
 		3826DD2524EE5FD5003DE040 /* _ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1424EE5FD4003DE040 /* _ImageController.m */; };
 		3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3826DD1524EE5FD4003DE040 /* _FileInfo.m */; };
@@ -337,6 +273,8 @@
 		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; };
+		38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -589,71 +527,7 @@
 		3826DAFE24EE5BF5003DE040 /* CocoaDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugWindow.swift; sourceTree = "<group>"; };
 		3826DAFF24EE5BF5003DE040 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3826DB0124EE5BF5003DE040 /* NSObject+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CocoaDebug.h"; sourceTree = "<group>"; };
-		3826DB0224EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
 		3826DB0324EE5BF5003DE040 /* NSObject+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CocoaDebug.m"; sourceTree = "<group>"; };
-		3826DB0424EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_GPBMessage+CocoaDebug.h"; sourceTree = "<group>"; };
-		3826DB0624EE5BF5003DE040 /* _GPBProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBProtocolBuffers.h; sourceTree = "<group>"; };
-		3826DB0724EE5BF5003DE040 /* _Duration.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Duration.pbobjc.h; sourceTree = "<group>"; };
-		3826DB0824EE5BF5003DE040 /* _GPBExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBExtensionRegistry.m; sourceTree = "<group>"; };
-		3826DB0924EE5BF5003DE040 /* _Timestamp.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Timestamp.pbobjc.m; sourceTree = "<group>"; };
-		3826DB0A24EE5BF5003DE040 /* _Any.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Any.pbobjc.m; sourceTree = "<group>"; };
-		3826DB0B24EE5BF5003DE040 /* _GPBWireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBWireFormat.h; sourceTree = "<group>"; };
-		3826DB0C24EE5BF5003DE040 /* _GPBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBArray.h; sourceTree = "<group>"; };
-		3826DB0D24EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBProtocolBuffers_RuntimeSupport.h; sourceTree = "<group>"; };
-		3826DB0E24EE5BF5003DE040 /* _SourceContext.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SourceContext.pbobjc.h; sourceTree = "<group>"; };
-		3826DB0F24EE5BF5003DE040 /* _GPBWellKnownTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBWellKnownTypes.m; sourceTree = "<group>"; };
-		3826DB1024EE5BF5003DE040 /* _GPBCodedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBCodedInputStream.h; sourceTree = "<group>"; };
-		3826DB1124EE5BF5003DE040 /* _GPBRootObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBRootObject.h; sourceTree = "<group>"; };
-		3826DB1224EE5BF5003DE040 /* _GPBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBUtilities.m; sourceTree = "<group>"; };
-		3826DB1324EE5BF5003DE040 /* _GPBExtensionInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBExtensionInternals.m; sourceTree = "<group>"; };
-		3826DB1424EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBMessage_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB1524EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUnknownFieldSet_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB1624EE5BF5003DE040 /* _GPBDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor.h; sourceTree = "<group>"; };
-		3826DB1724EE5BF5003DE040 /* _GPBUnknownField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBUnknownField.m; sourceTree = "<group>"; };
-		3826DB1824EE5BF5003DE040 /* _Api.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Api.pbobjc.h; sourceTree = "<group>"; };
-		3826DB1924EE5BF5003DE040 /* _GPBCodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBCodedOutputStream.h; sourceTree = "<group>"; };
-		3826DB1A24EE5BF5003DE040 /* _Struct.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Struct.pbobjc.m; sourceTree = "<group>"; };
-		3826DB1B24EE5BF5003DE040 /* _Empty.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Empty.pbobjc.h; sourceTree = "<group>"; };
-		3826DB1C24EE5BF5003DE040 /* _GPBDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBDictionary.m; sourceTree = "<group>"; };
-		3826DB1D24EE5BF5003DE040 /* _Wrappers.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Wrappers.pbobjc.h; sourceTree = "<group>"; };
-		3826DB1E24EE5BF5003DE040 /* _FieldMask.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FieldMask.pbobjc.h; sourceTree = "<group>"; };
-		3826DB1F24EE5BF5003DE040 /* _GPBUnknownFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBUnknownFieldSet.m; sourceTree = "<group>"; };
-		3826DB2024EE5BF5003DE040 /* _Type.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Type.pbobjc.m; sourceTree = "<group>"; };
-		3826DB2124EE5BF5003DE040 /* _GPBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBMessage.m; sourceTree = "<group>"; };
-		3826DB2224EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBRootObject_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB2324EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB2424EE5BF5003DE040 /* _SourceContext.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SourceContext.pbobjc.m; sourceTree = "<group>"; };
-		3826DB2524EE5BF5003DE040 /* _GPBBootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBBootstrap.h; sourceTree = "<group>"; };
-		3826DB2624EE5BF5003DE040 /* _GPBWireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBWireFormat.m; sourceTree = "<group>"; };
-		3826DB2724EE5BF5003DE040 /* _GPBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBArray.m; sourceTree = "<group>"; };
-		3826DB2824EE5BF5003DE040 /* _GPBArray_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBArray_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB2924EE5BF5003DE040 /* _Any.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Any.pbobjc.h; sourceTree = "<group>"; };
-		3826DB2A24EE5BF5003DE040 /* _GPBRuntimeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBRuntimeTypes.h; sourceTree = "<group>"; };
-		3826DB2B24EE5BF5003DE040 /* _Timestamp.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Timestamp.pbobjc.h; sourceTree = "<group>"; };
-		3826DB2C24EE5BF5003DE040 /* _GPBExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBExtensionRegistry.h; sourceTree = "<group>"; };
-		3826DB2D24EE5BF5003DE040 /* _Duration.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Duration.pbobjc.m; sourceTree = "<group>"; };
-		3826DB2E24EE5BF5003DE040 /* _GPBDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBDescriptor.m; sourceTree = "<group>"; };
-		3826DB2F24EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUtilities_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB3024EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB3124EE5BF5003DE040 /* _GPBExtensionInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBExtensionInternals.h; sourceTree = "<group>"; };
-		3826DB3224EE5BF5003DE040 /* _GPBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUtilities.h; sourceTree = "<group>"; };
-		3826DB3324EE5BF5003DE040 /* _GPBRootObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBRootObject.m; sourceTree = "<group>"; };
-		3826DB3424EE5BF5003DE040 /* _GPBCodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBCodedInputStream.m; sourceTree = "<group>"; };
-		3826DB3524EE5BF5003DE040 /* _GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBWellKnownTypes.h; sourceTree = "<group>"; };
-		3826DB3624EE5BF5003DE040 /* _Empty.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Empty.pbobjc.m; sourceTree = "<group>"; };
-		3826DB3724EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB3824EE5BF5003DE040 /* _GPBCodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GPBCodedOutputStream.m; sourceTree = "<group>"; };
-		3826DB3924EE5BF5003DE040 /* _Struct.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Struct.pbobjc.h; sourceTree = "<group>"; };
-		3826DB3A24EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBCodedInputStream_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB3B24EE5BF5003DE040 /* _Api.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Api.pbobjc.m; sourceTree = "<group>"; };
-		3826DB3C24EE5BF5003DE040 /* _GPBUnknownField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUnknownField.h; sourceTree = "<group>"; };
-		3826DB3D24EE5BF5003DE040 /* _GPBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBMessage.h; sourceTree = "<group>"; };
-		3826DB3E24EE5BF5003DE040 /* _Type.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Type.pbobjc.h; sourceTree = "<group>"; };
-		3826DB3F24EE5BF5003DE040 /* _GPBUnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBUnknownFieldSet.h; sourceTree = "<group>"; };
-		3826DB4024EE5BF5003DE040 /* _FieldMask.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FieldMask.pbobjc.m; sourceTree = "<group>"; };
-		3826DB4124EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
-		3826DB4224EE5BF5003DE040 /* _Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Wrappers.pbobjc.m; sourceTree = "<group>"; };
-		3826DB4324EE5BF5003DE040 /* _GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _GPBDictionary.h; sourceTree = "<group>"; };
 		3826DD1324EE5FD4003DE040 /* _SandboxerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SandboxerHelper.m; sourceTree = "<group>"; };
 		3826DD1424EE5FD4003DE040 /* _ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ImageController.m; sourceTree = "<group>"; };
 		3826DD1524EE5FD4003DE040 /* _FileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FileInfo.m; sourceTree = "<group>"; };
@@ -682,6 +556,8 @@
 		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
 		3882D68025676EA200379E0C /* _fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _fishhook.c; sourceTree = "<group>"; };
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
+		38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+CocoaDebug.h"; sourceTree = "<group>"; };
+		38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -745,7 +621,6 @@
 				3826DAF424EE5BF5003DE040 /* Swizzling */,
 				3826DAF824EE5BF5003DE040 /* Window */,
 				3826DB0024EE5BF5003DE040 /* Categories */,
-				3826DB0524EE5BF5003DE040 /* Protobuf */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1088,81 +963,12 @@
 		3826DB0024EE5BF5003DE040 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */,
+				38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */,
 				3826DB0124EE5BF5003DE040 /* NSObject+CocoaDebug.h */,
-				3826DB0224EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m */,
 				3826DB0324EE5BF5003DE040 /* NSObject+CocoaDebug.m */,
-				3826DB0424EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		3826DB0524EE5BF5003DE040 /* Protobuf */ = {
-			isa = PBXGroup;
-			children = (
-				3826DB0624EE5BF5003DE040 /* _GPBProtocolBuffers.h */,
-				3826DB0724EE5BF5003DE040 /* _Duration.pbobjc.h */,
-				3826DB0824EE5BF5003DE040 /* _GPBExtensionRegistry.m */,
-				3826DB0924EE5BF5003DE040 /* _Timestamp.pbobjc.m */,
-				3826DB0A24EE5BF5003DE040 /* _Any.pbobjc.m */,
-				3826DB0B24EE5BF5003DE040 /* _GPBWireFormat.h */,
-				3826DB0C24EE5BF5003DE040 /* _GPBArray.h */,
-				3826DB0D24EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h */,
-				3826DB0E24EE5BF5003DE040 /* _SourceContext.pbobjc.h */,
-				3826DB0F24EE5BF5003DE040 /* _GPBWellKnownTypes.m */,
-				3826DB1024EE5BF5003DE040 /* _GPBCodedInputStream.h */,
-				3826DB1124EE5BF5003DE040 /* _GPBRootObject.h */,
-				3826DB1224EE5BF5003DE040 /* _GPBUtilities.m */,
-				3826DB1324EE5BF5003DE040 /* _GPBExtensionInternals.m */,
-				3826DB1424EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h */,
-				3826DB1524EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h */,
-				3826DB1624EE5BF5003DE040 /* _GPBDescriptor.h */,
-				3826DB1724EE5BF5003DE040 /* _GPBUnknownField.m */,
-				3826DB1824EE5BF5003DE040 /* _Api.pbobjc.h */,
-				3826DB1924EE5BF5003DE040 /* _GPBCodedOutputStream.h */,
-				3826DB1A24EE5BF5003DE040 /* _Struct.pbobjc.m */,
-				3826DB1B24EE5BF5003DE040 /* _Empty.pbobjc.h */,
-				3826DB1C24EE5BF5003DE040 /* _GPBDictionary.m */,
-				3826DB1D24EE5BF5003DE040 /* _Wrappers.pbobjc.h */,
-				3826DB1E24EE5BF5003DE040 /* _FieldMask.pbobjc.h */,
-				3826DB1F24EE5BF5003DE040 /* _GPBUnknownFieldSet.m */,
-				3826DB2024EE5BF5003DE040 /* _Type.pbobjc.m */,
-				3826DB2124EE5BF5003DE040 /* _GPBMessage.m */,
-				3826DB2224EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h */,
-				3826DB2324EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h */,
-				3826DB2424EE5BF5003DE040 /* _SourceContext.pbobjc.m */,
-				3826DB2524EE5BF5003DE040 /* _GPBBootstrap.h */,
-				3826DB2624EE5BF5003DE040 /* _GPBWireFormat.m */,
-				3826DB2724EE5BF5003DE040 /* _GPBArray.m */,
-				3826DB2824EE5BF5003DE040 /* _GPBArray_PackagePrivate.h */,
-				3826DB2924EE5BF5003DE040 /* _Any.pbobjc.h */,
-				3826DB2A24EE5BF5003DE040 /* _GPBRuntimeTypes.h */,
-				3826DB2B24EE5BF5003DE040 /* _Timestamp.pbobjc.h */,
-				3826DB2C24EE5BF5003DE040 /* _GPBExtensionRegistry.h */,
-				3826DB2D24EE5BF5003DE040 /* _Duration.pbobjc.m */,
-				3826DB2E24EE5BF5003DE040 /* _GPBDescriptor.m */,
-				3826DB2F24EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h */,
-				3826DB3024EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h */,
-				3826DB3124EE5BF5003DE040 /* _GPBExtensionInternals.h */,
-				3826DB3224EE5BF5003DE040 /* _GPBUtilities.h */,
-				3826DB3324EE5BF5003DE040 /* _GPBRootObject.m */,
-				3826DB3424EE5BF5003DE040 /* _GPBCodedInputStream.m */,
-				3826DB3524EE5BF5003DE040 /* _GPBWellKnownTypes.h */,
-				3826DB3624EE5BF5003DE040 /* _Empty.pbobjc.m */,
-				3826DB3724EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h */,
-				3826DB3824EE5BF5003DE040 /* _GPBCodedOutputStream.m */,
-				3826DB3924EE5BF5003DE040 /* _Struct.pbobjc.h */,
-				3826DB3A24EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h */,
-				3826DB3B24EE5BF5003DE040 /* _Api.pbobjc.m */,
-				3826DB3C24EE5BF5003DE040 /* _GPBUnknownField.h */,
-				3826DB3D24EE5BF5003DE040 /* _GPBMessage.h */,
-				3826DB3E24EE5BF5003DE040 /* _Type.pbobjc.h */,
-				3826DB3F24EE5BF5003DE040 /* _GPBUnknownFieldSet.h */,
-				3826DB4024EE5BF5003DE040 /* _FieldMask.pbobjc.m */,
-				3826DB4124EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h */,
-				3826DB4224EE5BF5003DE040 /* _Wrappers.pbobjc.m */,
-				3826DB4324EE5BF5003DE040 /* _GPBDictionary.h */,
-			);
-			path = Protobuf;
 			sourceTree = "<group>";
 		};
 		3826DE7724EE7CDE003DE040 /* CocoaDebugTests */ = {
@@ -1201,55 +1007,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3826DC3624EE5BF5003DE040 /* _CanonicalRequest.h in Headers */,
-				3826DCA924EE5BF5003DE040 /* _GPBDictionary.h in Headers */,
-				3826DC7B24EE5BF5003DE040 /* _GPBUnknownFieldSet_PackagePrivate.h in Headers */,
 				3826DC3A24EE5BF5003DE040 /* _QNSURLSessionDemux.h in Headers */,
-				3826DC8B24EE5BF5003DE040 /* _GPBBootstrap.h in Headers */,
-				3826DC7324EE5BF5003DE040 /* _GPBProtocolBuffers_RuntimeSupport.h in Headers */,
 				3826DC4B24EE5BF5003DE040 /* _OCLogStoreManager.h in Headers */,
-				3826DC7224EE5BF5003DE040 /* _GPBArray.h in Headers */,
-				3826DC8E24EE5BF5003DE040 /* _GPBArray_PackagePrivate.h in Headers */,
-				3826DC8924EE5BF5003DE040 /* _GPBCodedOutputStream_PackagePrivate.h in Headers */,
-				3826DC7124EE5BF5003DE040 /* _GPBWireFormat.h in Headers */,
+				38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */,
 				3826DC3524EE5BF5003DE040 /* _CacheStoragePolicy.h in Headers */,
-				3826DC6C24EE5BF5003DE040 /* _GPBProtocolBuffers.h in Headers */,
 				3826DC4024EE5BF5003DE040 /* _OCLogHelper.h in Headers */,
 				3826DC4324EE5BF5003DE040 /* _ObjcLog.h in Headers */,
-				3826DC6D24EE5BF5003DE040 /* _Duration.pbobjc.h in Headers */,
 				3826DC4924EE5BF5003DE040 /* _OCLoggerFormat.h in Headers */,
-				3826DC8324EE5BF5003DE040 /* _Wrappers.pbobjc.h in Headers */,
-				3826DCA724EE5BF5003DE040 /* _GPBDescriptor_PackagePrivate.h in Headers */,
-				3826DC9824EE5BF5003DE040 /* _GPBUtilities.h in Headers */,
-				3826DC8124EE5BF5003DE040 /* _Empty.pbobjc.h in Headers */,
-				3826DC8824EE5BF5003DE040 /* _GPBRootObject_PackagePrivate.h in Headers */,
-				3826DC9624EE5BF5003DE040 /* _GPBUnknownField_PackagePrivate.h in Headers */,
-				3826DCA324EE5BF5003DE040 /* _GPBMessage.h in Headers */,
 				3826DC3E24EE5BF5003DE040 /* _OCLogModel.h in Headers */,
-				3826DC7C24EE5BF5003DE040 /* _GPBDescriptor.h in Headers */,
-				3826DC7E24EE5BF5003DE040 /* _Api.pbobjc.h in Headers */,
-				3826DC9B24EE5BF5003DE040 /* _GPBWellKnownTypes.h in Headers */,
-				3826DC9024EE5BF5003DE040 /* _GPBRuntimeTypes.h in Headers */,
 				3826DC6024EE5BF5003DE040 /* _Swizzling.h in Headers */,
-				3826DC7424EE5BF5003DE040 /* _SourceContext.pbobjc.h in Headers */,
-				3826DCA224EE5BF5003DE040 /* _GPBUnknownField.h in Headers */,
 				3826DC4A24EE5BF5003DE040 /* CocoaDebugTool.h in Headers */,
 				3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */,
-				3826DC7724EE5BF5003DE040 /* _GPBRootObject.h in Headers */,
-				3826DC9524EE5BF5003DE040 /* _GPBUtilities_PackagePrivate.h in Headers */,
-				3826DCA024EE5BF5003DE040 /* _GPBCodedInputStream_PackagePrivate.h in Headers */,
-				3826DC7A24EE5BF5003DE040 /* _GPBMessage_PackagePrivate.h in Headers */,
-				3826DC8F24EE5BF5003DE040 /* _Any.pbobjc.h in Headers */,
-				3826DC6B24EE5BF5003DE040 /* _GPBMessage+CocoaDebug.h in Headers */,
-				3826DC7F24EE5BF5003DE040 /* _GPBCodedOutputStream.h in Headers */,
-				3826DC9224EE5BF5003DE040 /* _GPBExtensionRegistry.h in Headers */,
 				3826DC6824EE5BF5003DE040 /* NSObject+CocoaDebug.h in Headers */,
-				3826DC8424EE5BF5003DE040 /* _FieldMask.pbobjc.h in Headers */,
 				3826DC2B24EE5BF5003DE040 /* _NetworkHelper.h in Headers */,
-				3826DC9724EE5BF5003DE040 /* _GPBExtensionInternals.h in Headers */,
-				3826DCA524EE5BF5003DE040 /* _GPBUnknownFieldSet.h in Headers */,
 				3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */,
 				3826DC3024EE5BF5003DE040 /* _HttpModel.h in Headers */,
-				3826DC9124EE5BF5003DE040 /* _Timestamp.pbobjc.h in Headers */,
 				3826DD3224EE5FD5003DE040 /* _Sandboxer-Header.h in Headers */,
 				3826DD2C24EE5FD5003DE040 /* _SandboxerHelper.h in Headers */,
 				3826DD3424EE5FD5003DE040 /* _ImageController.h in Headers */,
@@ -1261,12 +1033,8 @@
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */,
 				3882D68325676EA200379E0C /* _fishhook.h in Headers */,
-				3826DCA424EE5BF5003DE040 /* _Type.pbobjc.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
-				3826DC7624EE5BF5003DE040 /* _GPBCodedInputStream.h in Headers */,
 				3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */,
-				3826DC9D24EE5BF5003DE040 /* _GPBDictionary_PackagePrivate.h in Headers */,
-				3826DC9F24EE5BF5003DE040 /* _Struct.pbobjc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1547,64 +1315,43 @@
 				3826DC3924EE5BF5003DE040 /* _CacheStoragePolicy.m in Sources */,
 				3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */,
 				3882D68225676EA200379E0C /* _fishhook.c in Sources */,
-				3826DC7024EE5BF5003DE040 /* _Any.pbobjc.m in Sources */,
-				3826DCA624EE5BF5003DE040 /* _FieldMask.pbobjc.m in Sources */,
-				3826DC8D24EE5BF5003DE040 /* _GPBArray.m in Sources */,
+				38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */,
 				38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */,
 				3826DC3324EE5BF5003DE040 /* NetworkDetailModel.swift in Sources */,
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
 				385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,
-				3826DC6E24EE5BF5003DE040 /* _GPBExtensionRegistry.m in Sources */,
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
 				3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */,
 				3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */,
 				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
-				3826DC8224EE5BF5003DE040 /* _GPBDictionary.m in Sources */,
-				3826DCA824EE5BF5003DE040 /* _Wrappers.pbobjc.m in Sources */,
 				3826DC5F24EE5BF5003DE040 /* _WKWebView+Swizzling.m in Sources */,
 				3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */,
-				3826DC9924EE5BF5003DE040 /* _GPBRootObject.m in Sources */,
 				3826DC4524EE5BF5003DE040 /* _OCLogHelper.m in Sources */,
-				3826DC9C24EE5BF5003DE040 /* _Empty.pbobjc.m in Sources */,
 				3826DC3124EE5BF5003DE040 /* NetworkDetailCell.swift in Sources */,
-				3826DC8024EE5BF5003DE040 /* _Struct.pbobjc.m in Sources */,
 				3826DC4624EE5BF5003DE040 /* _OCLogModel.m in Sources */,
 				3826DD3124EE5FD5003DE040 /* _FileTableViewCell.m in Sources */,
-				3826DC9E24EE5BF5003DE040 /* _GPBCodedOutputStream.m in Sources */,
 				3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */,
-				3826DC8C24EE5BF5003DE040 /* _GPBWireFormat.m in Sources */,
 				3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */,
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
-				3826DC8524EE5BF5003DE040 /* _GPBUnknownFieldSet.m in Sources */,
 				3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */,
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
-				3826DC7524EE5BF5003DE040 /* _GPBWellKnownTypes.m in Sources */,
 				3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */,
-				3826DC7D24EE5BF5003DE040 /* _GPBUnknownField.m in Sources */,
 				3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */,
-				3826DC8A24EE5BF5003DE040 /* _SourceContext.pbobjc.m in Sources */,
 				3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */,
-				3826DC7824EE5BF5003DE040 /* _GPBUtilities.m in Sources */,
-				3826DC8624EE5BF5003DE040 /* _Type.pbobjc.m in Sources */,
-				3826DC9A24EE5BF5003DE040 /* _GPBCodedInputStream.m in Sources */,
 				3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */,
 				3826DC3B24EE5BF5003DE040 /* _CanonicalRequest.m in Sources */,
 				3826DC6624EE5BF5003DE040 /* CocoaDebugWindow.swift in Sources */,
 				3826DC4224EE5BF5003DE040 /* CocoaDebugTool.m in Sources */,
-				3826DCA124EE5BF5003DE040 /* _Api.pbobjc.m in Sources */,
 				3826DC6424EE5BF5003DE040 /* CocoaDebugViewController.swift in Sources */,
 				3826DC4424EE5BF5003DE040 /* _OCLogStoreManager.m in Sources */,
 				3826DC5E24EE5BF5003DE040 /* _Swizzling.m in Sources */,
-				3826DC8724EE5BF5003DE040 /* _GPBMessage.m in Sources */,
 				3826DC2F24EE5BF5003DE040 /* NetworkDetailViewController.swift in Sources */,
-				3826DC9324EE5BF5003DE040 /* _Duration.pbobjc.m in Sources */,
 				3826DB4F24EE5BF5003DE040 /* CrashListViewController.swift in Sources */,
 				3826DC6724EE5BF5003DE040 /* Color.swift in Sources */,
 				3826DB4824EE5BF5003DE040 /* CocoaDebug+Extensions.swift in Sources */,
 				3826DB4D24EE5BF5003DE040 /* CrashDetailViewController.swift in Sources */,
-				3826DC9424EE5BF5003DE040 /* _GPBDescriptor.m in Sources */,
 				3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */,
 				3826DC3424EE5BF5003DE040 /* _HttpDatasource.m in Sources */,
 				3826DC3724EE5BF5003DE040 /* _QNSURLSessionDemux.m in Sources */,
@@ -1614,10 +1361,7 @@
 				3826DD2D24EE5FD5003DE040 /* _FilePreviewController.m in Sources */,
 				3826DC4724EE5BF5003DE040 /* LogCell.swift in Sources */,
 				3826DC6224EE5BF5003DE040 /* WindowHelper.swift in Sources */,
-				3826DC6924EE5BF5003DE040 /* _GPBMessage+CocoaDebug.m in Sources */,
 				3826DD3024EE5FD5003DE040 /* _ImageResources.m in Sources */,
-				3826DC6F24EE5BF5003DE040 /* _Timestamp.pbobjc.m in Sources */,
-				3826DC7924EE5BF5003DE040 /* _GPBExtensionInternals.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
 				3826DC6124EE5BF5003DE040 /* Bubble.swift in Sources */,
