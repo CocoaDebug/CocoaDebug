@@ -63,8 +63,11 @@ extension AppDelegate {
 }
 
 
+
+#if DEBUG
 //MARK: - override Swift `print` method
 public func print<T>(file: String = #file, function: String = #function, line: Int = #line, _ message: T, color: UIColor = .white) {
     Swift.print(message)
     _SwiftLogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
+#endif
