@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "CocoaDebug"
-  s.version             = "1.6.6"
+  s.version             = "1.6.7"
   s.summary             = "iOS Debug Tool"
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
   s.author              = {"CocoaDebug" => "man.li@shopee.com"}
@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
                           'Sources/fishhook/**/*.c',
                           ]
   # s.dependency "React/Core"
-  s.dependency "Protobuf"
+  # s.dependency "Protobuf"
 end
