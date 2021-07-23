@@ -43,7 +43,7 @@
         return;
     }
     self.isNetworkEnable = YES;
-    [NSURLProtocol registerClass:[_CustomHTTPProtocol class]];
+    [_CustomHTTPProtocol start];
 }
 
 - (void)disable {
@@ -51,7 +51,7 @@
         return;
     }
     self.isNetworkEnable = NO;
-    [NSURLProtocol unregisterClass:[_CustomHTTPProtocol class]];
+    [_CustomHTTPProtocol stop];
 }
 
 @end

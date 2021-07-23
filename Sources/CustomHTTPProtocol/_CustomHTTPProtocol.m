@@ -154,6 +154,12 @@ static id<_CustomHTTPProtocolDelegate> sDelegate;
     [NSURLProtocol registerClass:self];
 }
 
+//liman
++ (void)stop
+{
+    [NSURLProtocol unregisterClass:self];
+}
+
 + (id<_CustomHTTPProtocolDelegate>)delegate
 {
     id<_CustomHTTPProtocolDelegate> result;
