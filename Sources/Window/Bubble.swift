@@ -189,16 +189,16 @@ class Bubble: UIView {
             
             if _successStatusCodes.contains(statusCode ?? "") {
                 self?.initLabelEvent("🚀", true)
-                self?.initLabelEvent("🚀", false)
+//                self?.initLabelEvent("🚀", false)
             }
             else if statusCode == "0" { //"0" means network unavailable
                 self?.initLabelEvent("❌", true)
-                self?.initLabelEvent("❌", false)
+//                self?.initLabelEvent("❌", false)
             }
             else {
                 guard let statusCode = statusCode else {return}
                 self?.initLabelEvent(statusCode, true)
-                self?.initLabelEvent(statusCode, false)
+//                self?.initLabelEvent(statusCode, false)
             }
             
             //

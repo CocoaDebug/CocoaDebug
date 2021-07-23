@@ -41,12 +41,13 @@
     CocoaDebug.mainColor = @"#fd9727";
     CocoaDebug.additionalViewController = [TestViewController new];
     
+    //Deprecated!!! Please check version 1.6.6 to support Protobuf.
     //--- If use Google's Protocol buffers ---
-    CocoaDebug.protobufTransferMap = @{
-        @"your_api_keywords_1": @[@"your_protobuf_className_1"],
-        @"your_api_keywords_2": @[@"your_protobuf_className_2"],
-        @"your_api_keywords_3": @[@"your_protobuf_className_3"]
-    };
+//    CocoaDebug.protobufTransferMap = @{
+//        @"your_api_keywords_1": @[@"your_protobuf_className_1"],
+//        @"your_api_keywords_2": @[@"your_protobuf_className_2"],
+//        @"your_api_keywords_3": @[@"your_protobuf_className_3"]
+//    };
     
     //--- If want to manual enable App logs (Take effect the next time when app starts) ---
     CocoaDebugSettings.shared.enableLogMonitoring = YES;
