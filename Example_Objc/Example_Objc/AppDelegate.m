@@ -41,7 +41,7 @@
     CocoaDebug.mainColor = @"#fd9727";
     CocoaDebug.additionalViewController = [TestViewController new];
     
-    //Deprecated!!! Please check version 1.6.6 to support Protobuf.
+    //Deprecated! If want to support protobuf, check branch: origin/protobuf_support
     //--- If use Google's Protocol buffers ---
 //    CocoaDebug.protobufTransferMap = @{
 //        @"your_api_keywords_1": @[@"your_protobuf_className_1"],
