@@ -1,8 +1,5 @@
 | <img alt="logo" src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/logo.png" width="250"/> | <ul align="left"><li><a href="#introduction">Introduction</a><li><a href="#installation">Installation</a><li><a href="#usage">Usage</a><li><a href="#parameters">Parameters</a></ul> |
 | -------------- | -------------- |
-| Travis CI | [![Build Status](https://travis-ci.org/CocoaDebug/CocoaDebug.svg?branch=master)](https://travis-ci.org/CocoaDebug/CocoaDebug) |
-| Codacy | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6aac8606d10f403a811cafdf870bb552)](https://www.codacy.com/app/CocoaDebug/CocoaDebug?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CocoaDebug/CocoaDebug&amp;utm_campaign=Badge_Grade) |
-| Codecov | [![codecov](https://codecov.io/gh/CocoaDebug/CocoaDebug/branch/master/graph/badge.svg)](https://codecov.io/gh/CocoaDebug/CocoaDebug) |
 | Frameworks | [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CocoaDebug.svg)](https://img.shields.io/cocoapods/v/CocoaDebug.svg) |
 | Languages | ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-blue.svg) |
 | Platform | ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg) |
@@ -91,10 +88,6 @@ When you initialize CocoaDebug, you can customize the following parameter values
 - `mainColor` - Set CocoaDebug's main color with hexadecimal format. Default value is **#42d459**.
 
 - `protobufTransferMap` - Protobuf data transfer to JSON map. Default value is **nil**.
-
-## TODO
-
-- [Unit Testing](https://codecov.io/gh/CocoaDebug/CocoaDebug)
 
 ## Thanks
 
