@@ -25,7 +25,7 @@
 /// log with Protobuf Data,
 /// default color is white,
 /// return string
-//+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className;
-//+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className color:(UIColor *)color;
++ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className;
++ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className color:(UIColor *)color;
 
 @end

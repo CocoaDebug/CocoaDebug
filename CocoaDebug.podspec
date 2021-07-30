@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
                           'Sources/fishhook/**/*.c',
                           ]
   # s.dependency "React/Core"
-  # s.dependency "Protobuf"
+  s.dependency "Protobuf"
 end

@@ -58,14 +58,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else if requestSerializer == RequestSerializer.form {
             if let data = httpModel?.requestData {
                 //1.protobuf
-//                if let message = try? GPBMessage.parse(from: data) {
-//                    if message.serializedSize() > 0 {
-//                        requestContent = message.description
-//                    } else {
+                if let message = try? GPBMessage.parse(from: data) {
+                    if message.serializedSize() > 0 {
+                        requestContent = message.description
+                    } else {
                         //2.Form
                         requestContent = data.dataToString()
-//                    }
-//                }
+                    }
+                }
                 if requestContent == nil || requestContent == "" || requestContent == "\u{8}\u{1e}" {
                     //3.utf-8 string
                     requestContent = String(data: data, encoding: .utf8)
