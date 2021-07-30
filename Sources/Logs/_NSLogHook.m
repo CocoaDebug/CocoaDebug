@@ -10,7 +10,7 @@
 #import "_OCLogHelper.h"
 #import "_fishhook.h"
 //#import <React/RCTLog.h>
-//#import "RCTLog.h"
+#import "RCTLog.h"
 
 @interface _NSLogHook : NSObject
 
@@ -61,36 +61,36 @@ void cocoadebug_nslog(NSString *format, ...)
 }
 
 //#pragma mark - RN
-//void _RCTLogJavaScriptInternal(RCTLogLevel level, NSString *message)
-//{
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableRNMonitoring_CocoaDebug"]) {return;}
-//    if (![message isKindOfClass:[NSString class]]) {return;}
-////    if (level != RCTLogLevelError && level != RCTLogLevelInfo) {return;}
-//
-//    NSString *levelStr = @"";
-//
-//    switch (level) {
-////        case RCTLogLevelTrace:
-////            levelStr = @"[RCTLogTrace]";
-////            break;
-//        case RCTLogLevelInfo:
-//            levelStr = @"[RCTLogInfo]";
+void _RCTLogJavaScriptInternal(RCTLogLevel level, NSString *message)
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableRNMonitoring_CocoaDebug"]) {return;}
+    if (![message isKindOfClass:[NSString class]]) {return;}
+//    if (level != RCTLogLevelError && level != RCTLogLevelInfo) {return;}
+
+    NSString *levelStr = @"";
+
+    switch (level) {
+//        case RCTLogLevelTrace:
+//            levelStr = @"[RCTLogTrace]";
 //            break;
-//        case RCTLogLevelWarning:
-//            levelStr = @"[RCTLogWarn]";
-//            break;
-//        case RCTLogLevelError:
-//            levelStr = @"[RCTLogError]";
-//            break;
-////        case RCTLogLevelFatal:
-////            levelStr = @"[RCTLogFatal]";
-//            break;
-//        default:
-//            break;
-//    }
-//
-//    [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@\n", levelStr] function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
-//}
+        case RCTLogLevelInfo:
+            levelStr = @"[RCTLogInfo]";
+            break;
+        case RCTLogLevelWarning:
+            levelStr = @"[RCTLogWarn]";
+            break;
+        case RCTLogLevelError:
+            levelStr = @"[RCTLogError]";
+            break;
+//        case RCTLogLevelFatal:
+//            levelStr = @"[RCTLogFatal]";
+            break;
+        default:
+            break;
+    }
+
+    [_OCLogHelper.shared handleLogWithFile:[NSString stringWithFormat:@"%@\n", levelStr] function:@"" line:-1 message:message color:[UIColor whiteColor] type:CocoaDebugToolTypeRN];
+}
 
 @end
 
