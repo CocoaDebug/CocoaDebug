@@ -1,8 +1,8 @@
 | <img alt="logo" src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/logo.png" width="250"/> | <ul align="left"><li><a href="#introduction">Introduction</a><li><a href="#installation">Installation</a><li><a href="#usage">Usage</a><li><a href="#parameters">Parameters</a></ul> |
 | -------------- | -------------- |
-| Frameworks | [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CocoaDebug.svg)](https://img.shields.io/cocoapods/v/CocoaDebug.svg) |
-| Languages | ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-blue.svg) |
+| Version | [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CocoaDebug.svg)](https://img.shields.io/cocoapods/v/CocoaDebug.svg) |
 | Platform | ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg) |
+| Languages | ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-blue.svg) |
 
 <span style="float:none" />
 
@@ -45,7 +45,7 @@
 
 ## Installation
 
-### *CocoaPods*
+### *CocoaPods* *(Preferred)*
 
 ```ruby
 target 'YourTargetName' do
@@ -53,6 +53,14 @@ target 'YourTargetName' do
     pod 'CocoaDebug', :configurations => ['Debug']
 end
 ```
+
+### *Framework*
+
+[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.6.8)
+
+> WARNING: Never ship a product which has been linked with the CocoaDebug framework. The [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to Debug builds.
+
+> [Xcode12 build error solution](https://stackoverflow.com/questions/63267897/building-for-ios-simulator-but-the-linked-framework-framework-was-built)
 
 ## Usage
 
