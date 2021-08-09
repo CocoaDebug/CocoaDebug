@@ -4,6 +4,8 @@
 | Platform | ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg) |
 | Languages | ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-blue.svg) |
 
+<span style="float:none" />
+
 ## Screenshot
 
 <img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a1.png" width="250">
