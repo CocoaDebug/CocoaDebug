@@ -54,9 +54,15 @@ target 'YourTargetName' do
 end
 ```
 
+### *Carthage*
+
+```ruby
+github  "CocoaDebug/CocoaDebug"
+```
+
 ### *Framework*
 
-[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.6.8)
+*[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.6.8)*
 
 > WARNING: Never ship a product which has been linked with the CocoaDebug framework. The [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to Debug builds.
 
