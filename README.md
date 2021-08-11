@@ -54,6 +54,12 @@ target 'YourTargetName' do
 end
 ```
 
+### *Carthage*
+
+```ruby
+github  "CocoaDebug/CocoaDebug"
+```
+
 ### *Framework*
 
 *[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.6.8)*
