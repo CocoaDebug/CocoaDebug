@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -32,7 +32,7 @@ class NetworkDetailCell: UITableViewCell {
             titleLabel.text = detailModel?.title
             contentTextView.text = detailModel?.content
             
-            //图片
+            //image
             if detailModel?.image == nil {
                 imgView.isHidden = true
             } else {
@@ -40,7 +40,7 @@ class NetworkDetailCell: UITableViewCell {
                 imgView.image = detailModel?.image
             }
             
-            //自动隐藏内容
+            //Hide content automatically
             if detailModel?.blankContent == "..." {
                 middleLine.isHidden = true
                 imgView.isHidden = true
@@ -53,7 +53,7 @@ class NetworkDetailCell: UITableViewCell {
                 titleViewBottomSpaceToMiddleLine.constant = 0
             }
             
-            //底部分割线
+            //Bottom dividing line
             if detailModel?.isLast == true {
                 bottomLine.isHidden = false
             } else {
@@ -74,7 +74,7 @@ class NetworkDetailCell: UITableViewCell {
     
     
     //MARK: - target action
-    //编辑
+    //edit
     @objc func tapEditView() {
         if let tapEditViewCallback = tapEditViewCallback {
             tapEditViewCallback(detailModel)

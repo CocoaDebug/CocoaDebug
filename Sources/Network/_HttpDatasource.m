@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_HttpDatasource.h"
@@ -39,28 +39,28 @@
     }
     
     
-    //url过滤, 忽略大小写
+    //url Filter, ignore case
     for (NSString *urlString in [[_NetworkHelper shared] ignoredURLs]) {
         if ([[model.url.absoluteString lowercaseString] containsString:[urlString lowercaseString]]) {
             return NO;
         }
     }
     
-    //最大个数限制
+    //Maximum number limit
     if (self.httpModels.count >= [[_NetworkHelper shared] logMaxCount]) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }
     }
     
-    //判断重复
+    //detect repeated
     __block BOOL isExist = NO;
     [self.httpModels enumerateObjectsUsingBlock:^(_HttpModel *obj, NSUInteger index, BOOL *stop) {
-        if ([obj.requestId isEqualToString:model.requestId]) {//数组中已经存在该对象
+        if ([obj.requestId isEqualToString:model.requestId]) {
             isExist = YES;
         }
     }];
-    if (!isExist) {//如果不存在就添加进去
+    if (!isExist) {
         [self.httpModels addObject:model];
     } else {
         return NO;

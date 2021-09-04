@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 @import Foundation;
@@ -27,6 +27,9 @@
  */
 
 + (void)start;
+
+//liman
++ (void)stop;
 
 /*! Sets the delegate for the class.
  *  \details Note that there's one delegate for the entire class, not one per 

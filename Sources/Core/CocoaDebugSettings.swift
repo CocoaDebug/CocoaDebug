@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -11,8 +11,6 @@ import Foundation
 @objc public class CocoaDebugSettings: NSObject {
     
     @objc public static let shared = CocoaDebugSettings()
-    
-    @objc public var isRunning: Bool = false
     
     @objc public var slowAnimations: Bool = false {
         didSet {            

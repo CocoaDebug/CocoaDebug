@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_ImageResources.h"
@@ -21,16 +21,6 @@
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName fileType:(NSString * _Nonnull)fileType inDirectory:(NSString * _Nullable)directory {
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     
-    /* 默认系统会选择最适合的分辨率的那张图片，但是最低分辨率的图片必须存在，也就是 @1x 的图片，如果不存在，就会返回 nil。
-       但是有时候不想要 @1x 的图片，所以就只能自己判断了。
-     */
-    
-    /* 系统默认判断分辨率 */
-//    NSString *imagePath = [bundle pathForResource:imageName ofType:fileType inDirectory:directory];
-//    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    
-    /* 自己判断 */
-    // 先找到全部分辨率的图片地址
     NSString *x1ImagePath = [bundle pathForResource:[self imageName:imageName appendingScale:1] ofType:fileType inDirectory:directory];
     NSString *x2ImagePath = [bundle pathForResource:[self imageName:imageName appendingScale:2] ofType:fileType inDirectory:directory];
     NSString *x3ImagePath = [bundle pathForResource:[self imageName:imageName appendingScale:3] ofType:fileType inDirectory:directory];
@@ -69,7 +59,7 @@
             }
             break;
         default:
-            // 默认选择 @1x 的
+            // default @1x
             imagePath = x1ImagePath;
             break;
     }

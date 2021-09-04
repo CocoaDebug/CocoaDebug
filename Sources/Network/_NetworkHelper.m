@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_NetworkHelper.h"
@@ -38,16 +38,20 @@
     return self;
 }
 
-- (void)enable
-{
+- (void)enable {
+    if (self.isNetworkEnable) {
+        return;
+    }
     self.isNetworkEnable = YES;
-    [NSURLProtocol registerClass:[_CustomHTTPProtocol class]];
+    [_CustomHTTPProtocol start];
 }
 
-- (void)disable
-{
+- (void)disable {
+    if (!self.isNetworkEnable) {
+        return;
+    }
     self.isNetworkEnable = NO;
-    [NSURLProtocol unregisterClass:[_CustomHTTPProtocol class]];
+    [_CustomHTTPProtocol stop];
 }
 
 @end

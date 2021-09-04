@@ -2,8 +2,8 @@
 //  WKWebViewTestController.swift
 //  Example_Swift
 //
-//  Created by man on 5/18/19.
-//  Copyright © 2019 liman. All rights reserved.
+//  Created by man 5/18/19.
+//  Copyright © 2019 man. All rights reserved.
 //
 
 import UIKit

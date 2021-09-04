@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
@@ -13,7 +13,7 @@ public class WindowHelper: NSObject {
     
     var window: CocoaDebugWindow
     var displayedList = false
-    lazy var vc = CocoaDebugViewController() //必须使用lazy, 否则崩溃
+    lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
     
     //FPS
     fileprivate var fpsCounter = FPSCounter()
@@ -31,12 +31,14 @@ public class WindowHelper: NSObject {
     
     
     public func enable() {
-        if window.rootViewController != vc {
-            window.rootViewController = vc
-            window.delegate = self
-            window.isHidden = false
-            startFpsMonitoring()
+        if window.rootViewController == vc {
+            return
         }
+        
+        window.rootViewController = vc
+        window.delegate = self
+        window.isHidden = false
+        startFpsMonitoring()
         
         if #available(iOS 13.0, *) {
             var success: Bool = false
@@ -58,12 +60,13 @@ public class WindowHelper: NSObject {
     
     
     public func disable() {
-        if window.rootViewController != nil {
-            window.rootViewController = nil
-            window.delegate = nil
-            window.isHidden = true
-            stopFpsMonitoring()
+        if window.rootViewController == nil {
+            return
         }
+        window.rootViewController = nil
+        window.delegate = nil
+        window.isHidden = true
+        stopFpsMonitoring()
     }
     
     public func startFpsMonitoring() {
@@ -72,7 +75,6 @@ public class WindowHelper: NSObject {
     
     public func stopFpsMonitoring() {
         fpsCounter.stopMonitoring()
-
     }
 }
 

@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -42,7 +42,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         guard let requestSerializer = httpModel?.requestSerializer else {return}
         var requestContent: String? = nil
         
-        //容错判断,否则为nil时会崩溃
+        //otherwise it will crash when it is nil
         if httpModel?.requestData == nil {
             httpModel?.requestData = Data.init()
         }
@@ -50,7 +50,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             httpModel?.responseData = Data.init()
         }
         
-        //判断请求参数格式JSON/Form
+        //detect the request parameter format (JSON/Form)
         if requestSerializer == RequestSerializer.JSON {
             //JSON
             requestContent = httpModel?.requestData.dataToPrettyPrintString()
@@ -58,14 +58,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         else if requestSerializer == RequestSerializer.form {
             if let data = httpModel?.requestData {
                 //1.protobuf
-                if let message = try? _GPBMessage.parse(from: data) {
-                    if message.serializedSize() > 0 {
-                        requestContent = message.description
-                    } else {
+//                if let message = try? GPBMessage.parse(from: data) {
+//                    if message.serializedSize() > 0 {
+//                        requestContent = message.description
+//                    } else {
                         //2.Form
                         requestContent = data.dataToString()
-                    }
-                }
+//                    }
+//                }
                 if requestContent == nil || requestContent == "" || requestContent == "\u{8}\u{1e}" {
                     //3.utf-8 string
                     requestContent = String(data: data, encoding: .utf8)
@@ -77,8 +77,8 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         if httpModel?.isImage == true {
-            //图片:
-            //1.主要
+            //image:
+            //1.
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -87,7 +87,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if let responseData = httpModel?.responseData {
                 model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, image: UIImage.init(gifData: responseData), httpModel: httpModel)
             }
-            //2.次要
+            //2.
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -120,14 +120,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_9)
         }
         else {
-            //非图片:
-            //1.主要
+            //not image:
+            //1.
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString(), url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            //2.次要
+            //2.
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -161,18 +161,18 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
     }
     
-    //确定request格式(JSON/Form)
+    //detetc request format (JSON/Form)
     func detectRequestSerializer() {
         guard let requestData = httpModel?.requestData else {
-            httpModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
+            httpModel?.requestSerializer = RequestSerializer.JSON//default JSON format
             return
         }
         
         if let _ = requestData.dataToDictionary() {
-            //JSON格式
+            //JSON format
             httpModel?.requestSerializer = RequestSerializer.JSON
         } else {
-            //Form格式
+            //Form format
             httpModel?.requestSerializer = RequestSerializer.form
         }
     }
@@ -314,7 +314,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         
         closeItem.tintColor = Color.mainGreen
         
-        //确定request格式(JSON/Form)
+        //detect the request format (JSON/Form)
         detectRequestSerializer()
         
         setupModels()
@@ -325,7 +325,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(lastModel)
         }
         
-        //使用单独的xib-cell文件, 必须注册, 否则崩溃
+        //Use a separate xib-cell file, must be registered, otherwise it will crash
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NetworkCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
@@ -373,12 +373,27 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             UIPasteboard.general.string = self?.messageBody
         }
         
+        let moreAction: UIAlertAction = UIAlertAction(title: "more", style: .default) { [weak self] action -> Void in
+            _ = self?.configureMailComposer(true)
+            let items: [Any] = [self?.messageBody ?? ""]
+            let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            if UI_USER_INTERFACE_IDIOM() == .phone {
+                self?.present(action, animated: true, completion: nil)
+            } else {
+                action.popoverPresentationController?.sourceRect = .init(x: self?.view.bounds.midX ?? 0, y: self?.view.bounds.midY ?? 0, width: 0, height: 0)
+                action.popoverPresentationController?.sourceView = self?.view
+                self?.present(action, animated: true, completion: nil)
+            }
+
+        }
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
         }
         
         // add actions
         alert.addAction(secondAction)
         alert.addAction(firstAction)
+        alert.addAction(moreAction)
         alert.addAction(cancelAction)
         
         alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
@@ -402,7 +417,7 @@ extension NetworkDetailViewController {
             as! NetworkDetailCell
         cell.detailModel = detailModels[indexPath.row]
         
-        //2.点击了编辑view
+        //2.click edit view
         cell.tapEditViewCallback = { [weak self] detailModel in
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
@@ -436,7 +451,7 @@ extension NetworkDetailViewController {
                 if content == "" {
                     return 0
                 }
-                //计算NSString高度
+                //Calculate NSString height
                 let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
@@ -461,7 +476,7 @@ extension NetworkDetailViewController {
             if let content_ = NSString(cString: cString, encoding: String.Encoding.utf8.rawValue) {
                 
                 if httpModel?.url.absoluteString.contains(serverURL) == true {
-                    //计算NSString高度
+                    //Calculate NSString height
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
@@ -469,7 +484,7 @@ extension NetworkDetailViewController {
                         height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 } else {
-                    //计算NSString高度
+                    //Calculate NSString height
                     if #available(iOS 8.2, *) {
                         height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {

@@ -2,8 +2,8 @@
 //  CocoaDebugTool.h
 //  Example_Swift
 //
-//  Created by man.li on 5/8/19.
-//  Copyright © 2020 liman.li. All rights reserved.
+//  Created by man 5/8/19.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -25,7 +25,7 @@
 /// log with Protobuf Data,
 /// default color is white,
 /// return string
-+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className;
-+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className color:(UIColor *)color;
+//+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className;
+//+ (NSString *)logWithProtobufData:(NSData *)data className:(NSString *)className color:(UIColor *)color;
 
 @end

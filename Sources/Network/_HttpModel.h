@@ -1,17 +1,17 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, RequestSerializer) {
-    RequestSerializerJSON = 0,  //JSON格式
-    RequestSerializerForm       //Form格式
+    RequestSerializerJSON = 0,  //JSON format
+    RequestSerializerForm       //Form format
 };
 
 @interface _HttpModel : NSObject
@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, RequestSerializer) {
 @property (nonatomic,copy)NSDictionary<NSString*, id>           *responseHeaderFields;
 @property (nonatomic,assign)BOOL                                isTag;
 @property (nonatomic,assign)BOOL                                isSelected;
-@property (nonatomic,assign)RequestSerializer                   requestSerializer;//默认JSON格式
+@property (nonatomic,assign)RequestSerializer                   requestSerializer;//default JSON format
 @property (nonatomic,copy)NSString                              *errorDescription;
 @property (nonatomic,copy)NSString                              *errorLocalizedDescription;
 @property (nonatomic,copy)NSString                              *size;

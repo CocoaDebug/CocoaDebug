@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 enum EditType {
@@ -28,9 +28,9 @@ class JsonViewController: UIViewController {
     var httpModel: _HttpModel?
     var detailModel: NetworkDetailModel?
     
-    //编辑过的url
+    //Edited url
     var editedURLString: String?
-    //编辑过的content
+    //Edited content
     var editedContent: String?
     
     //log
@@ -46,18 +46,18 @@ class JsonViewController: UIViewController {
     
     //MARK: - tool
     
-    //确定格式(JSON/Form)
+    //detect format (JSON/Form)
     func detectSerializer() {
         guard let content = detailModel?.content else {
-            detailModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
+            detailModel?.requestSerializer = RequestSerializer.JSON//default JSON format
             return
         }
         
         if let _ = content.stringToDictionary() {
-            //JSON格式
+            //JSON format
             detailModel?.requestSerializer = RequestSerializer.JSON
         } else {
-            //Form格式
+            //Form format
             detailModel?.requestSerializer = RequestSerializer.form
             
             if let jsonString = detailModel?.content?.formStringToJsonString() {
@@ -105,7 +105,7 @@ class JsonViewController: UIViewController {
         textView.textContainer.lineFragmentPadding = 15
         //        textView.textContainerInset = .zero
         
-        //判断类型 (默认类型URL)
+        //detect type (default type URL)
         if detailModel?.title == "REQUEST HEADER" {
             editType = .requestHeader
         }
@@ -113,7 +113,7 @@ class JsonViewController: UIViewController {
             editType = .responseHeader
         }
         
-        //设置UI
+        //setup UI
         if editType == .requestHeader
         {
             imageView.isHidden = true
@@ -142,7 +142,7 @@ class JsonViewController: UIViewController {
                 imageView.isHidden = true
                 textView.isHidden = false
                 textView.text = content
-                detectSerializer()//确定格式(JSON/Form)
+                detectSerializer()//detect format (JSON/Form)
             }
             if let image = detailModel?.image {
                 textView.isHidden = true

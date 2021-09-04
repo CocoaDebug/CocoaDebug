@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
@@ -61,14 +61,14 @@ class CocoaDebugTabBarController: UITabBarController {
             return
         }
         
-        //4.添加额外的控制器
+        //4.Add additional controller
         var temp = [network, logs, sandbox, app]
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)
         nav.navigationBar.barTintColor = "#1f2124".hexColor
         nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
 
-        //****** 以下代码从NavigationController.swift复制 ******
+        //****** copy codes from LogNavigationViewController.swift ******
         nav.navigationBar.isTranslucent = false
         
         nav.navigationBar.tintColor = Color.mainGreen
@@ -83,7 +83,7 @@ class CocoaDebugTabBarController: UITabBarController {
                                        style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen
         nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
-        //****** 以上代码从NavigationController.swift复制 ******
+        //****** copy codes from LogNavigationViewController.swift ******
         
         temp.append(nav)
         

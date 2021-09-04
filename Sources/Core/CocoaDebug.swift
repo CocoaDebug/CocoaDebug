@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -62,3 +62,6 @@ public func print<T>(file: String = #file, function: String = #function, line: I
     Swift.print(message)
     _SwiftLogHelper.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
 }
+
+
+

@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "NSObject+CocoaDebug.h"
@@ -28,7 +28,7 @@
         } else {
             // The stream had an error. You can get an NSError object using [iStream streamError]
             if (result < 0) {
-                //                [NSException raise:@"STREAM_ERROR" format:@"%@", [stream streamError]];
+//                [NSException raise:@"STREAM_ERROR" format:@"%@", [stream streamError]];
                 return nil;//liman
             }
         }
@@ -242,7 +242,7 @@
 
 @implementation UIImage (CocoaDebug)
 
-/** 根据一个GIF图片的data数据 获得GIF image对象 */
+//Obtain the GIF image object according to the data data of a GIF image
 + (UIImage *_Nullable)imageWithGIFData:(NSData *_Nullable)data {
     if (!data) return nil;
     
@@ -260,22 +260,17 @@
         
         for (size_t i = 0; i < count; i++) {
             
-            // 拿出了Gif的每一帧图片
             CGImageRef image = CGImageSourceCreateImageAtIndex(source, i, NULL);
             
-            //Learning... 设置动画时长 算出每一帧显示的时长(帧时长)
             NSTimeInterval frameDuration = [UIImage ssz_frameDurationAtIndex:i source:source];
             
             duration += frameDuration;
             
-            // 将每帧图片添加到数组中
             [images addObject:[UIImage imageWithCGImage:image scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp]];
             
-            // 释放真图片对象
             CFRelease(image);
         }
         
-        // 设置动画时长
         if (!duration) {
             duration = (1.0f / 10.0f) * count;
         }
@@ -283,13 +278,12 @@
         animatedImage = [UIImage animatedImageWithImages:images duration:duration];
     }
     
-    // 释放源Gif图片
     CFRelease(source);
     
     return animatedImage;
 }
 
-/** 根据本地GIF图片名 获得GIF image对象 */
+//Obtain the GIF image object according to the name of the local GIF image
 + (UIImage *_Nullable)imageWithGIFNamed:(NSString *_Nullable)name {
     NSUInteger scale = (NSUInteger)[UIScreen mainScreen].scale;
     return [self GIFName:name scale:scale];
@@ -304,7 +298,6 @@
     }
     
     if (imagePath) {
-        // 传入图片名(不包含@Nx)
         NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
         return [UIImage imageWithGIFData:imageData];
         
@@ -313,18 +306,16 @@
         imagePath = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
         
         if (imagePath) {
-            // 传入的图片名已包含@Nx or 传入图片只有一张 不分@Nx
             NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
             return [UIImage imageWithGIFData:imageData];
             
         } else {
-            // 不是一张GIF图片(后缀不是gif)
             return [UIImage imageNamed:name];
         }
     }
 }
 
-/** 根据一个GIF图片的URL 获得GIF image对象 */
+//Obtain the GIF image object according to the URL of a GIF image
 + (void)imageWithGIFUrl:(NSString *_Nullable)url gifImageBlock:(void(^_Nullable)(UIImage *_Nullable gifImage))gifImageBlock {
     NSURL *GIFUrl = [NSURL URLWithString:url];
     
@@ -333,14 +324,13 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSData *CIFData = [NSData dataWithContentsOfURL:GIFUrl];
         
-        // 刷新UI在主线程
         dispatch_async(dispatch_get_main_queue(), ^{
             gifImageBlock([UIImage imageWithGIFData:CIFData]);
         });
     });
 }
 
-//关于GIF图片帧时长
+
 + (float)ssz_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
     float frameDuration = 0.1f;
     

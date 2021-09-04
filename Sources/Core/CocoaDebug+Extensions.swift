@@ -1,15 +1,15 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
 
 extension Dictionary {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func dictionaryToFormString() -> String? {
         var array = [String]()
         
@@ -24,7 +24,7 @@ extension Dictionary {
 }
 
 extension String {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func formStringToDictionary() -> [String: Any]? {
         var dictionary = [String: Any]()
         let array = self.components(separatedBy: "&")
@@ -156,17 +156,17 @@ extension Data {
             return str
         } else {
             //2.protobuf
-            if let message = try? _GPBMessage.parse(from: self) {
-                if message.serializedSize() > 0 {
-                    return message.description
-                } else {
-                    //3.utf-8 string
-                    return String(data: self, encoding: .utf8)
-                }
-            } else {
+//            if let message = try? GPBMessage.parse(from: self) {
+//                if message.serializedSize() > 0 {
+//                    return message.description
+//                } else {
+//                    //3.utf-8 string
+//                    return String(data: self, encoding: .utf8)
+//                }
+//            } else {
                 //3.utf-8 string
                 return String(data: self, encoding: .utf8)
-            }
+//            }
         }
     }
 }
@@ -195,7 +195,6 @@ extension String {
     }
 }
 
-///添加圆角
 extension UIView {
     func addCorner(roundingCorners: UIRectCorner, cornerSize: CGSize) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerSize)
@@ -206,7 +205,6 @@ extension UIView {
     }
 }
 
-///主线程
 extension NSObject {
     func dispatch_main_async_safe(callback: @escaping ()->Void ) {
         if Thread.isMainThread {
@@ -306,14 +304,6 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-        if CocoaDebugSettings.shared.isRunning == true {return}
-        
-        CocoaDebugSettings.shared.isRunning = true
-        
-        //        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-        //        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        //        let enableRNMonitoring = UserDefaults.standard.bool(forKey: "enableRNMonitoring_CocoaDebug")
-        
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
@@ -357,9 +347,6 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        //        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
-        //        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
-        //        CocoaDebugSettings.shared.enableRNMonitoring = enableRNMonitoring
         
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
@@ -395,7 +382,6 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
-        CocoaDebugSettings.shared.isRunning = false
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _SwiftLogHelper.shared.enable = false
