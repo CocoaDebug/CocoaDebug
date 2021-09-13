@@ -73,7 +73,7 @@ github  "CocoaDebug/CocoaDebug"
 - Don't need to do anything. CocoaDebug will start automatically.
 - To capture logs from Xcode with codes: (You can also set this in *CocoaDebug->App->Monitor->Applogs* without any codes.)
 ```swift
-CocoaDebugSettings.shared.enableLogMonitoring = true
+CocoaDebugSettings.shared.enableLogMonitoring = true //The default value is false
 ```
 - Check [AppDelegate.m](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Objc/Example_Objc/AppDelegate.m) OR [AppDelegate.swift](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Swift/Example_Swift/AppDelegate.swift) for more advanced usage.
 
