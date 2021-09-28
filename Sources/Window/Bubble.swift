@@ -143,7 +143,7 @@ class Bubble: UIView {
     func changeSideDisplay() {
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
-        }, completion: nil)
+                       }, completion: nil)
     }
     
     func updateOrientation(newSize: CGSize) {
@@ -165,9 +165,17 @@ class Bubble: UIView {
         self.addGestureRecognizer(panGesture)
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_:)), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllLogs_notification), name: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(show_cocoadebug_force), name: NSNotification.Name(rawValue: "SHOW_COCOADEBUG_FORCE"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] notification in
+            self?.reloadHttp_notification(notification)
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.deleteAllLogs_notification()
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "SHOW_COCOADEBUG_FORCE"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.show_cocoadebug_force()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -183,75 +191,60 @@ class Bubble: UIView {
     //网络通知
     @objc func reloadHttp_notification(_ notification: Notification) {
         
-        dispatch_main_async_safe { [weak self] in
-            guard let userInfo = notification.userInfo else {return}
-            let statusCode = userInfo["statusCode"] as? String
-            
-            if _successStatusCodes.contains(statusCode ?? "") {
-                self?.initLabelEvent("🚀", true)
-//                self?.initLabelEvent("🚀", false)
-            }
-            else if statusCode == "0" { //"0" means network unavailable
-                self?.initLabelEvent("❌", true)
-//                self?.initLabelEvent("❌", false)
-            }
-            else {
-                guard let statusCode = statusCode else {return}
-                self?.initLabelEvent(statusCode, true)
-//                self?.initLabelEvent(statusCode, false)
-            }
-            
-            //
-            self?.networkNumber = (self?.networkNumber ?? 0) + 1
-            if let networkNumber = self?.networkNumber {
-                self?.numberLabel?.text = String(networkNumber)
-            }
-            
-            if self?.networkNumber == 0 {
-                self?.numberLabel?.isHidden = true
-            } else {
-                self?.numberLabel?.isHidden = false
-            }
-            
-            if let networkNumber = self?.networkNumber {
-                if networkNumber >= 0 && networkNumber < 10 {
-                    self?.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
-                } else if networkNumber >= 10 && networkNumber < 100 {
-                    self?.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
-                } else if networkNumber >= 100 && networkNumber < 1000 {
-                    self?.numberLabel?.font = UIFont.boldSystemFont(ofSize: 9)
-                } else if networkNumber >= 1000 && networkNumber < 10000 {
-                    self?.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7.5)
-                } else {
-                    self?.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7)
-                }
-            }
+        guard let userInfo = notification.userInfo else {return}
+        let statusCode = userInfo["statusCode"] as? String
+        
+        if _successStatusCodes.contains(statusCode ?? "") {
+            self.initLabelEvent("🚀", true)
+        }
+        else if statusCode == "0" { //"0" means network unavailable
+            self.initLabelEvent("❌", true)
+        }
+        else {
+            guard let statusCode = statusCode else {return}
+            self.initLabelEvent(statusCode, true)
+        }
+        
+        
+        self.networkNumber = (self.networkNumber ) + 1
+        self.numberLabel?.text = String(networkNumber)
+        
+        
+        if self.networkNumber == 0 {
+            self.numberLabel?.isHidden = true
+        } else {
+            self.numberLabel?.isHidden = false
+        }
+        
+        if networkNumber >= 0 && networkNumber < 10 {
+            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
+        } else if networkNumber >= 10 && networkNumber < 100 {
+            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
+        } else if networkNumber >= 100 && networkNumber < 1000 {
+            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 9)
+        } else if networkNumber >= 1000 && networkNumber < 10000 {
+            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7.5)
+        } else {
+            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7)
         }
     }
     
     
     @objc func deleteAllLogs_notification() {
-        dispatch_main_async_safe { [weak self] in
-            
-            self?.networkNumber = 0
-            
-            if let networkNumber = self?.networkNumber {
-                self?.numberLabel?.text = String(networkNumber)
-            }
-            
-            if self?.networkNumber == 0 {
-                self?.numberLabel?.isHidden = true
-            } else {
-                self?.numberLabel?.isHidden = false
-            }
+        self.networkNumber = 0
+        
+        self.numberLabel?.text = String(networkNumber)
+        
+        if self.networkNumber == 0 {
+            self.numberLabel?.isHidden = true
+        } else {
+            self.numberLabel?.isHidden = false
         }
     }
     
     @objc func show_cocoadebug_force() {
-        dispatch_main_async_safe {
-            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-        }
+        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
+        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
     }
     
     
@@ -270,7 +263,7 @@ class Bubble: UIView {
         if panner.state == .began {
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: { [weak self] in
                 self?.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                }, completion: nil)
+            }, completion: nil)
         }
         
         let offset = panner.translation(in: self.superview)
@@ -327,7 +320,7 @@ class Bubble: UIView {
             UIView.animate(withDuration: durationAnimation * 5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: .allowUserInteraction, animations: { [weak self] in
                 self?.center = CGPoint(x: finalX, y: finalY)
                 self?.transform = CGAffineTransform.identity
-                }, completion:nil)
+            }, completion:nil)
         }
     }
 }

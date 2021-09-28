@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version             = "1.7.1"
   s.summary             = "iOS Debug Tool"
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
-  s.author              = {"CocoaDebug" => "man.li@shopee.com"}
+  s.author              = {"CocoaDebug" => "CocoaDebug@gmail.com"}
   s.license             = "MIT"
   s.source_files        = "Sources", "Sources/**/*.{h,m,mm,swift,c}"
   s.public_header_files = "Sources/**/*.h"

@@ -150,22 +150,22 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordNormal ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultReloadDataFinish = false
-                self?.defaultTableView.reloadData {
-                    self?.defaultReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.defaultModels.count else {return}
-                if count > 0 {
-                    guard let firstInDefault = self?.firstInDefault else {return}
-                    self?.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
-                    self?.firstInDefault = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultReloadDataFinish = false
+            self.defaultTableView.reloadData {
+                self.defaultReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.defaultModels.count else {return}
+            if self.defaultModels.count > 0 {
+                //                    guard let firstInDefault = self.firstInDefault else {return}
+                self.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
+                self.firstInDefault = false
+            }
+            //            }
         }
         else if selectedSegmentIndex == 1
         {
@@ -197,22 +197,22 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordRN ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnReloadDataFinish = false
-                self?.rnTableView.reloadData {
-                    self?.rnReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.rnModels.count else {return}
-                if count > 0 {
-                    guard let firstInRN = self?.firstInRN else {return}
-                    self?.rnTableView.tableViewScrollToBottom(animated: !firstInRN)
-                    self?.firstInRN = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnReloadDataFinish = false
+            self.rnTableView.reloadData {
+                self.rnReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.rnModels.count else {return}
+            if self.rnModels.count > 0 {
+                //                    guard let firstInRN = self.firstInRN else {return}
+                self.rnTableView.tableViewScrollToBottom(animated: !firstInRN)
+                self.firstInRN = false
+            }
+            //            }
         }
         else
         {
@@ -244,22 +244,22 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordWeb ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webReloadDataFinish = false
-                self?.webTableView.reloadData {
-                    self?.webReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.webModels.count else {return}
-                if count > 0 {
-                    guard let firstInWeb = self?.firstInWeb else {return}
-                    self?.webTableView.tableViewScrollToBottom(animated: !firstInWeb)
-                    self?.firstInWeb = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webReloadDataFinish = false
+            self.webTableView.reloadData {
+                self.webReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.webModels.count else {return}
+            if self.webModels.count > 0 {
+                //                    guard let firstInWeb = self.firstInWeb else {return}
+                self.webTableView.tableViewScrollToBottom(animated: !firstInWeb)
+                self.firstInWeb = false
+            }
+            //            }
         }
     }
     
@@ -283,7 +283,9 @@ class LogViewController: UIViewController {
         }
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.refreshLogs_notification()
+        }
         
         
         defaultTableView.tableFooterView = UIView()
@@ -432,9 +434,9 @@ class LogViewController: UIViewController {
             
             _OCLogStoreManager.shared()?.resetNormalLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultTableView.reloadData()
+            //            }
         }
         else if selectedSegmentIndex == 1
         {
@@ -446,9 +448,9 @@ class LogViewController: UIViewController {
             
             _OCLogStoreManager.shared()?.resetRNLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnTableView.reloadData()
+            //            }
         }
         else
         {
@@ -460,9 +462,9 @@ class LogViewController: UIViewController {
             
             _OCLogStoreManager.shared().resetWebLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webTableView.reloadData()
+            //            }
         }
     }
     
@@ -515,14 +517,12 @@ class LogViewController: UIViewController {
     
     //MARK: - notification
     @objc func refreshLogs_notification() {
-        dispatch_main_async_safe { [weak self] in
-            if self?.selectedSegmentIndex == 0 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
-            } else if self?.selectedSegmentIndex == 1 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndRN ?? true, needReloadData: true)
-            } else {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndWeb ?? true, needReloadData: true)
-            }
+        if self.selectedSegmentIndex == 0 {
+            self.reloadLogs(needScrollToEnd: self.reachEndDefault , needReloadData: true)
+        } else if self.selectedSegmentIndex == 1 {
+            self.reloadLogs(needScrollToEnd: self.reachEndRN , needReloadData: true)
+        } else {
+            self.reloadLogs(needScrollToEnd: self.reachEndWeb , needReloadData: true)
         }
     }
 }
@@ -674,27 +674,27 @@ extension LogViewController: UISearchBarDelegate {
             CocoaDebugSettings.shared.logSearchWordNormal = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultTableView.reloadData()
+            //            }
         }
         else if searchBar == rnSearchBar
         {
             CocoaDebugSettings.shared.logSearchWordRN = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnTableView.reloadData()
+            //            }
         }
         else
         {
             CocoaDebugSettings.shared.logSearchWordWeb = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webTableView.reloadData()
+            //            }
         }
     }
 }

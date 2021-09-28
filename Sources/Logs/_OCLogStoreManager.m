@@ -9,12 +9,6 @@
 #import "_OCLogStoreManager.h"
 #import "_NetworkHelper.h"
 
-@interface _OCLogStoreManager ()
-{
-    dispatch_semaphore_t semaphore;
-}
-@end
-
 @implementation _OCLogStoreManager
 
 + (instancetype)shared
@@ -33,8 +27,6 @@
 {
     self = [super init];
     if (self) {
-        semaphore = dispatch_semaphore_create(1);
-        
         self.normalLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
         self.rnLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
         self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
@@ -62,7 +54,6 @@
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
     if (log.logType == CocoaDebugLogTypeNormal)
     {
@@ -97,14 +88,10 @@
         
         [self.webLogArray addObject:log];
     }
-    
-    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)removeLog:(_OCLogModel *)log
 {
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
@@ -120,29 +107,21 @@
         //web
         [self.webLogArray removeObject:log];
     }
-    
-    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetNormalLogs
 {
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.normalLogArray removeAllObjects];
-    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetRNLogs
 {
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.rnLogArray removeAllObjects];
-    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetWebLogs
 {
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.webLogArray removeAllObjects];
-    dispatch_semaphore_signal(semaphore);
 }
 
 @end
