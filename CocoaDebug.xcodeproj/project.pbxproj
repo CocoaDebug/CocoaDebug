@@ -271,9 +271,13 @@
 		3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */; };
 		3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA32259E234C00ABF650 /* FpsBubble.swift */; };
 		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
+		3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF627042E1F005967AE /* _BacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF727042E1F005967AE /* _BacktraceLogger.m */; };
+		3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF827042E1F005967AE /* _RunloopMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF927042E1F005967AE /* _RunloopMonitor.m */; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; };
+		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */; };
 /* End PBXBuildFile section */
 
@@ -554,6 +558,10 @@
 		3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
 		3828BA32259E234C00ABF650 /* FpsBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FpsBubble.swift; sourceTree = "<group>"; };
 		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
+		3871CFF627042E1F005967AE /* _BacktraceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BacktraceLogger.h; sourceTree = "<group>"; };
+		3871CFF727042E1F005967AE /* _BacktraceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BacktraceLogger.m; sourceTree = "<group>"; };
+		3871CFF827042E1F005967AE /* _RunloopMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RunloopMonitor.h; sourceTree = "<group>"; };
+		3871CFF927042E1F005967AE /* _RunloopMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RunloopMonitor.m; sourceTree = "<group>"; };
 		3882D68025676EA200379E0C /* _fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _fishhook.c; sourceTree = "<group>"; };
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
 		38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+CocoaDebug.h"; sourceTree = "<group>"; };
@@ -983,6 +991,10 @@
 		3828BA25259E223B00ABF650 /* Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				3871CFF827042E1F005967AE /* _RunloopMonitor.h */,
+				3871CFF927042E1F005967AE /* _RunloopMonitor.m */,
+				3871CFF627042E1F005967AE /* _BacktraceLogger.h */,
+				3871CFF727042E1F005967AE /* _BacktraceLogger.m */,
 				3828BA26259E223B00ABF650 /* FPSCounter.swift */,
 				3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */,
 				3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */,
@@ -1009,7 +1021,6 @@
 				3826DC3624EE5BF5003DE040 /* _CanonicalRequest.h in Headers */,
 				3826DC3A24EE5BF5003DE040 /* _QNSURLSessionDemux.h in Headers */,
 				3826DC4B24EE5BF5003DE040 /* _OCLogStoreManager.h in Headers */,
-				38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */,
 				3826DC3524EE5BF5003DE040 /* _CacheStoragePolicy.h in Headers */,
 				3826DC4024EE5BF5003DE040 /* _OCLogHelper.h in Headers */,
 				3826DC4324EE5BF5003DE040 /* _ObjcLog.h in Headers */,
@@ -1032,9 +1043,12 @@
 				3826DD2A24EE5FD5003DE040 /* _DirectoryContentsTableViewController.h in Headers */,
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */,
+				3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */,
+				3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */,
 				3882D68325676EA200379E0C /* _fishhook.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
 				3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */,
+				38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1313,6 +1327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3826DC3924EE5BF5003DE040 /* _CacheStoragePolicy.m in Sources */,
+				3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */,
 				3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */,
 				3882D68225676EA200379E0C /* _fishhook.c in Sources */,
 				38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */,
@@ -1355,6 +1370,7 @@
 				3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */,
 				3826DC3424EE5BF5003DE040 /* _HttpDatasource.m in Sources */,
 				3826DC3724EE5BF5003DE040 /* _QNSURLSessionDemux.m in Sources */,
+				3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */,
 				3826DB5424EE5BF5003DE040 /* CrashCell.swift in Sources */,
 				3826DC2A24EE5BF5003DE040 /* _HttpModel.m in Sources */,
 				3826DD2524EE5FD5003DE040 /* _ImageController.m in Sources */,
