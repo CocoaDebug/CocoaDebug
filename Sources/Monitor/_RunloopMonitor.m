@@ -93,7 +93,7 @@ static void runloopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
     CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
     
     // 在子线程中监控卡顿
-    semaphore = dispatch_semaphore_create(0);
+    semaphore = dispatch_semaphore_create(0); //同步?
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         // 开启持续的loop来监控
         while ([_RunloopMonitor shared]->isMonitoring) {
@@ -107,7 +107,7 @@ static void runloopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
                 [NSThread sleepForTimeInterval:WAIT_TIME];
                 // WAIT_TIME 时间后,如果 timeOut任务 任未执行, 则认为主线程前面的任务执行时间过长导致卡顿
                 if (timeOut) {
-                    [_BacktraceLogger lxd_logMain];
+                    [_BacktraceLogger cocoadebug_logMain];
                 }
             }
             else
@@ -124,7 +124,7 @@ static void runloopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
                         [_RunloopMonitor shared]->currentActivity == kCFRunLoopAfterWaiting  ||
                         [_RunloopMonitor shared]->currentActivity == kCFRunLoopBeforeTimers) {
                         
-                        [_BacktraceLogger lxd_logMain];
+                        [_BacktraceLogger cocoadebug_logMain];
                     }
                 }
             }

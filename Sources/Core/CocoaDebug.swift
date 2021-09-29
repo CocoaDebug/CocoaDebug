@@ -23,8 +23,6 @@ import UIKit
     @objc public static var onlyPrefixLogs: [String]? = nil
     ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
     @objc public static var additionalViewController: UIViewController? = nil
-    ///the maximum count of logs which CocoaDebug display. Default value is `1000`.
-    @objc public static var logMaxCount: Int = 1000
     ///set the initial recipients to include in the email’s “To” field when share via email. Default value is `nil`.
     @objc public static var emailToRecipients: [String]? = nil
     ///set the initial recipients to include in the email’s “Cc” field when share via email. Default value is `nil`.
@@ -33,7 +31,7 @@ import UIKit
     @objc public static var mainColor: String = "#42d459"
     ///protobuf url and response class transfer map. Default value is `nil`.
     @objc public static var protobufTransferMap: [String: [String]]? = nil
-    
+
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, ignoredPrefixLogs: ignoredPrefixLogs, onlyPrefixLogs: onlyPrefixLogs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)

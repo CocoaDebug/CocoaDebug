@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //Detect UI Blocking
+        Thread.sleep(forTimeInterval: 0.5)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

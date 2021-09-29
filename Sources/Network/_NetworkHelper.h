@@ -26,9 +26,6 @@
 //Set the log prefix to be crawled, ignore case, and crawl all by default
 @property (nonatomic, copy) NSArray<NSString *> *onlyPrefixLogs;
 
-//Maximum number of logs, default is `1000`
-@property (nonatomic, assign) NSInteger logMaxCount;
-
 //protobuf
 @property (nonatomic, copy) NSDictionary<NSString *, NSArray<NSString*> *> *protobufTransferMap;
 

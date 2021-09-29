@@ -5,7 +5,7 @@
 //  Created by man 11/11/2018.
 //  Copyright © 2020 man. All rights reserved.
 //
-
+/*
 #import "_DebugConsoleLabel.h"
 
 @interface _DebugConsoleLabel ()
@@ -40,15 +40,15 @@
 }
 
 - (void)updateLabelWithValue:(float)value {
-    self.attributedText = [self fpsAttributedStringWith:value];
+    self.attributedText = [self uiBlockingAttributedStringWith:value];
 }
 
 #pragma mark - NSAttributedString
 
-- (NSAttributedString *)fpsAttributedStringWith:(float)fps {
-    CGFloat progress = fps / 60.0;
+- (NSAttributedString *)uiBlockingAttributedStringWith:(float)uiBlocking {
+    CGFloat progress = uiBlocking / 60.0;
     UIColor *color = [UIColor colorWithHue:0.27 * (progress - 0.2) saturation:1 brightness:0.9 alpha:1];
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d FPS",(int)round(fps)]];
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d UIBlocking",(int)round(uiBlocking)]];
     [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, text.length - 3)];
     [text addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(text.length - 3, 3)];
     [text addAttribute:NSFontAttributeName value:self.mainFont range:NSMakeRange(0, text.length)];
@@ -72,3 +72,4 @@
 }
 
 @end
+ */

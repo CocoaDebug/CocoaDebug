@@ -19,7 +19,7 @@ class CrashStoreManager {
     
     //MARK: - public
     func addCrash(_ crash: _CrashModel) {
-        if self.crashArray.count >= CocoaDebugSettings.shared.logMaxCount {
+        if self.crashArray.count >= 1000 {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }

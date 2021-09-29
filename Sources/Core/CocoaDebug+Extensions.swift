@@ -344,7 +344,6 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logSearchWordRN = nil
         CocoaDebugSettings.shared.logSearchWordWeb = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
-        CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
         
@@ -365,10 +364,10 @@ extension CocoaDebug {
         let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         if enableLogMonitoring == false {
             _SwiftLogHelper.shared.enable = false
-            _OCLogHelper.shared()?.enable = false
+//            _OCLogHelper.shared()?.enable = false
         } else {
             _SwiftLogHelper.shared.enable = true
-            _OCLogHelper.shared()?.enable = true
+//            _OCLogHelper.shared()?.enable = true
         }
         
         //network
@@ -385,7 +384,7 @@ extension CocoaDebug {
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _SwiftLogHelper.shared.enable = false
-        _OCLogHelper.shared()?.enable = false
+//        _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
     }
