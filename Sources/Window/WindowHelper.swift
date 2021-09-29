@@ -16,7 +16,7 @@ public class WindowHelper: NSObject {
     lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
     
     //FPS
-    fileprivate var fpsCounter = FPSCounter()
+//    fileprivate var fpsCounter = FPSCounter()
     var fpsCallback:((Int) -> Void)?
     
     
@@ -26,7 +26,7 @@ public class WindowHelper: NSObject {
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-        fpsCounter.delegate = self
+//        fpsCounter.delegate = self
     }
     
     
@@ -38,7 +38,7 @@ public class WindowHelper: NSObject {
         window.rootViewController = vc
         window.delegate = self
         window.isHidden = false
-        startFpsMonitoring()
+//        startFpsMonitoring()
         
         if #available(iOS 13.0, *) {
             var success: Bool = false
@@ -66,25 +66,25 @@ public class WindowHelper: NSObject {
         window.rootViewController = nil
         window.delegate = nil
         window.isHidden = true
-        stopFpsMonitoring()
+//        stopFpsMonitoring()
     }
     
-    public func startFpsMonitoring() {
-        fpsCounter.startMonitoring()
-    }
-    
-    public func stopFpsMonitoring() {
-        fpsCounter.stopMonitoring()
-    }
+//    public func startFpsMonitoring() {
+//        fpsCounter.startMonitoring()
+//    }
+//
+//    public func stopFpsMonitoring() {
+//        fpsCounter.stopMonitoring()
+//    }
 }
 
 
 // MARK: - FPSCounterDelegate
-extension WindowHelper: FPSCounterDelegate {
-    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-        if let fpsCallback = fpsCallback {
-            fpsCallback(fps)
-        }
-    }
-}
+//extension WindowHelper: FPSCounterDelegate {
+//    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+//        if let fpsCallback = fpsCallback {
+//            fpsCallback(fps)
+//        }
+//    }
+//}
 
