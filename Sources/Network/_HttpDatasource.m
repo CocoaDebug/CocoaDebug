@@ -27,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-        self.httpModels = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.httpModels = [NSMutableArray arrayWithCapacity:1000 + 100];
     }
     return self;
 }
@@ -47,7 +47,7 @@
     }
     
     //Maximum number limit
-    if (self.httpModels.count >= [[_NetworkHelper shared] logMaxCount]) {
+    if (self.httpModels.count >= 1000) {
         if ([self.httpModels count] > 0) {
             [self.httpModels removeObjectAtIndex:0];
         }

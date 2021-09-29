@@ -35,7 +35,6 @@
     CocoaDebug.onlyURLs = @[@"ccc.com", @"ddd.com"];
     CocoaDebug.ignoredPrefixLogs = @[@"aaa", @"bbb"];
     CocoaDebug.onlyPrefixLogs = @[@"ccc", @"ddd"];
-    CocoaDebug.logMaxCount = 1000;
     CocoaDebug.emailToRecipients = @[@"aaa@gmail.com", @"bbb@gmail.com"];
     CocoaDebug.emailCcRecipients = @[@"ccc@gmail.com", @"ddd@gmail.com"];
     CocoaDebug.mainColor = @"#fd9727";

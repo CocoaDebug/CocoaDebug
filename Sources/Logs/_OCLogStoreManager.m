@@ -27,9 +27,9 @@
 {
     self = [super init];
     if (self) {
-        self.normalLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
-        self.rnLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
-        self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.normalLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
+        self.rnLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
+        self.webLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
     }
     return self;
 }
@@ -58,7 +58,7 @@
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
-        if ([self.normalLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+        if ([self.normalLogArray count] >= 1000) {
             if (self.normalLogArray.count > 0) {
                 [self.normalLogArray removeObjectAtIndex:0];
             }
@@ -69,7 +69,7 @@
     else if (log.logType == CocoaDebugLogTypeRN)
     {
         //rn
-        if ([self.rnLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+        if ([self.rnLogArray count] >= 1000) {
             if (self.rnLogArray.count > 0) {
                 [self.rnLogArray removeObjectAtIndex:0];
             }
@@ -80,7 +80,7 @@
     else
     {
         //web
-        if ([self.webLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
+        if ([self.webLogArray count] >= 1000) {
             if (self.webLogArray.count > 0) {
                 [self.webLogArray removeObjectAtIndex:0];
             }

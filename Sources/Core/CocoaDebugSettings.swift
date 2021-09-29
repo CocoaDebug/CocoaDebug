@@ -48,9 +48,9 @@ import Foundation
             }
         }
     }
-    @objc public var enableFpsMonitoring: Bool = false {
+    @objc public var enableUIBlockingMonitoring: Bool = false {
         didSet {
-            UserDefaults.standard.set(enableFpsMonitoring, forKey: "enableFpsMonitoring_CocoaDebug")
+            UserDefaults.standard.set(enableUIBlockingMonitoring, forKey: "enableUIBlockingMonitoring_CocoaDebug")
             UserDefaults.standard.synchronize()
         }
     }
@@ -204,11 +204,6 @@ import Foundation
     @objc public var emailCcRecipients: [String]? = nil
     
     //objc
-    @objc public var logMaxCount: Int {
-        didSet {
-            _NetworkHelper.shared().logMaxCount = logMaxCount
-        }
-    }
     
     @objc public var ignoredURLs: [String]? = nil {
         didSet {
@@ -246,7 +241,7 @@ import Foundation
         visible = UserDefaults.standard.bool(forKey: "visible_CocoaDebug")
         showBubbleAndWindow = UserDefaults.standard.bool(forKey: "showBubbleAndWindow_CocoaDebug")
         enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        enableFpsMonitoring = UserDefaults.standard.bool(forKey: "enableFpsMonitoring_CocoaDebug")
+        enableUIBlockingMonitoring = UserDefaults.standard.bool(forKey: "enableUIBlockingMonitoring_CocoaDebug")
         enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
         enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
@@ -264,8 +259,7 @@ import Foundation
         
         
         //objc
-        logMaxCount = _NetworkHelper.shared().logMaxCount
-        
+
         ignoredURLs = _NetworkHelper.shared().ignoredURLs
         onlyURLs = _NetworkHelper.shared().onlyURLs
         
