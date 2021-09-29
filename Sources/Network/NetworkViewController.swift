@@ -61,23 +61,23 @@ class NetworkViewController: UIViewController {
         
         self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
         
-        dispatch_main_async_safe { [weak self] in
-            self?.reloadDataFinish = false
-            self?.tableView.reloadData {
-                self?.reloadDataFinish = true
-            }
-            
-            if needScrollToEnd == false {return}
-            
-            //table下滑到底部
-            if let count = self?.models?.count {
-                if count > 0 {
-                    guard let firstIn = self?.firstIn else {return}
-                    self?.tableView.tableViewScrollToBottom(animated: !firstIn)
-                    self?.firstIn = false
-                }
+        //        dispatch_main_async_safe { [weak self] in
+        self.reloadDataFinish = false
+        self.tableView.reloadData {
+            self.reloadDataFinish = true
+        }
+        
+        if needScrollToEnd == false {return}
+        
+        //table下滑到底部
+        if let count = self.models?.count {
+            if count > 0 {
+                //                    guard let firstIn = self.firstIn else {return}
+                self.tableView.tableViewScrollToBottom(animated: !firstIn)
+                self.firstIn = false
             }
         }
+        //        }
     }
     
     //MARK: - init
@@ -98,7 +98,10 @@ class NetworkViewController: UIViewController {
         deleteItem.tintColor = Color.mainGreen
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification), name: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.reloadHttp(needScrollToEnd: self?.reachEnd ?? true)
+        }
+        
         
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
@@ -166,24 +169,16 @@ class NetworkViewController: UIViewController {
         //        CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.networkLastIndex = 0
         
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-            self?.naviItemTitleLabel?.text = "[0]"
-        }
+        //        dispatch_main_async_safe { [weak self] in
+        self.tableView.reloadData()
+        self.naviItemTitleLabel?.text = "[0]"
+        //        }
         
         NotificationCenter.default.post(name: NSNotification.Name("deleteAllLogs_CocoaDebug"), object: nil, userInfo: nil)
     }
     
     @objc func didTapView() {
         searchBar.resignFirstResponder()
-    }
-    
-    
-    //MARK: - notification
-    @objc func reloadHttp_notification() {
-        dispatch_main_async_safe { [weak self] in
-            self?.reloadHttp(needScrollToEnd: self?.reachEnd ?? true)
-        }
     }
 }
 
@@ -295,9 +290,9 @@ extension NetworkViewController: UISearchBarDelegate {
         CocoaDebugSettings.shared.networkSearchWord = searchText
         searchLogic(searchText)
         
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-        }
+        //        dispatch_main_async_safe { [weak self] in
+        self.tableView.reloadData()
+        //        }
     }
 }
 

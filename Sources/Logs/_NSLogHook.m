@@ -54,8 +54,8 @@ void cocoadebug_nslog(NSString *format, ...)
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            struct rcd_rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&_original_nslog};
-            rcd_rebind_symbols((struct rcd_rebinding[1]){nslog_rebinding}, 1);
+            struct rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&_original_nslog};
+            rebind_symbols((struct rebinding[1]){nslog_rebinding}, 1);
         });
     }
 }

@@ -1,20 +1,40 @@
-//
-//  Example
-//  man
-//
-//  Created by man 11/11/2018.
-//  Copyright © 2020 man. All rights reserved.
-//
+// Copyright (c) 2013, Facebook, Inc.
+// All rights reserved.
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//   * Redistributions of source code must retain the above copyright notice,
+//     this list of conditions and the following disclaimer.
+//   * Redistributions in binary form must reproduce the above copyright notice,
+//     this list of conditions and the following disclaimer in the documentation
+//     and/or other materials provided with the distribution.
+//   * Neither the name Facebook nor the names of its contributors may be used to
+//     endorse or promote products derived from this software without specific
+//     prior written permission.
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "_fishhook.h"
+#include "_fishhook.h"
 
-#import <dlfcn.h>
-#import <stdlib.h>
-#import <string.h>
-#import <sys/types.h>
-#import <mach-o/dyld.h>
-#import <mach-o/loader.h>
-#import <mach-o/nlist.h>
+#include <dlfcn.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <mach/mach.h>
+#include <mach/vm_map.h>
+#include <mach/vm_region.h>
+#include <mach-o/dyld.h>
+#include <mach-o/loader.h>
+#include <mach-o/nlist.h>
 
 #ifdef __LP64__
 typedef struct mach_header_64 mach_header_t;
@@ -34,41 +54,72 @@ typedef struct nlist nlist_t;
 #define SEG_DATA_CONST  "__DATA_CONST"
 #endif
 
-struct rcd_rebindings_entry {
-  struct rcd_rebinding *rebindings;
+struct rebindings_entry {
+  struct rebinding *rebindings;
   size_t rebindings_nel;
-  struct rcd_rebindings_entry *next;
+  struct rebindings_entry *next;
 };
 
-static struct rcd_rebindings_entry *_rebindings_head;
+static struct rebindings_entry *_rebindings_head;
 
-static int rcd_prepend_rebindings(struct rcd_rebindings_entry **rebindings_head,
-                                  struct rcd_rebinding rebindings[],
-                                  size_t nel) {
-  struct rcd_rebindings_entry *new_entry = malloc(sizeof(struct rcd_rebindings_entry));
+static int prepend_rebindings(struct rebindings_entry **rebindings_head,
+                              struct rebinding rebindings[],
+                              size_t nel) {
+  struct rebindings_entry *new_entry = (struct rebindings_entry *) malloc(sizeof(struct rebindings_entry));
   if (!new_entry) {
     return -1;
   }
-  new_entry->rebindings = malloc(sizeof(struct rcd_rebinding) * nel);
+  new_entry->rebindings = (struct rebinding *) malloc(sizeof(struct rebinding) * nel);
   if (!new_entry->rebindings) {
     free(new_entry);
     return -1;
   }
-  memcpy(new_entry->rebindings, rebindings, sizeof(struct rcd_rebinding) * nel);
+  memcpy(new_entry->rebindings, rebindings, sizeof(struct rebinding) * nel);
   new_entry->rebindings_nel = nel;
   new_entry->next = *rebindings_head;
   *rebindings_head = new_entry;
   return 0;
 }
 
-static void rcd_perform_rebinding_with_section(struct rcd_rebindings_entry *rebindings,
-                                               section_t *section,
-                                               intptr_t slide,
-                                               nlist_t *symtab,
-                                               char *strtab,
-                                               uint32_t *indirect_symtab) {
+#if 0
+static int get_protection(void *addr, vm_prot_t *prot, vm_prot_t *max_prot) {
+  mach_port_t task = mach_task_self();
+  vm_size_t size = 0;
+  vm_address_t address = (vm_address_t)addr;
+  memory_object_name_t object;
+#ifdef __LP64__
+  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;
+  vm_region_basic_info_data_64_t info;
+  kern_return_t info_ret = vm_region_64(
+      task, &address, &size, VM_REGION_BASIC_INFO_64, (vm_region_info_64_t)&info, &count, &object);
+#else
+  mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT;
+  vm_region_basic_info_data_t info;
+  kern_return_t info_ret = vm_region(task, &address, &size, VM_REGION_BASIC_INFO, (vm_region_info_t)&info, &count, &object);
+#endif
+  if (info_ret == KERN_SUCCESS) {
+    if (prot != NULL)
+      *prot = info.protection;
+
+    if (max_prot != NULL)
+      *max_prot = info.max_protection;
+
+    return 0;
+  }
+
+  return -1;
+}
+#endif
+
+static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
+                                           section_t *section,
+                                           intptr_t slide,
+                                           nlist_t *symtab,
+                                           char *strtab,
+                                           uint32_t *indirect_symtab) {
   uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;
   void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);
+
   for (uint i = 0; i < section->size / sizeof(void *); i++) {
     uint32_t symtab_index = indirect_symbol_indices[i];
     if (symtab_index == INDIRECT_SYMBOL_ABS || symtab_index == INDIRECT_SYMBOL_LOCAL ||
@@ -77,16 +128,33 @@ static void rcd_perform_rebinding_with_section(struct rcd_rebindings_entry *rebi
     }
     uint32_t strtab_offset = symtab[symtab_index].n_un.n_strx;
     char *symbol_name = strtab + strtab_offset;
-    struct rcd_rebindings_entry *cur = rebindings;
+    bool symbol_name_longer_than_1 = symbol_name[0] && symbol_name[1];
+    struct rebindings_entry *cur = rebindings;
     while (cur) {
       for (uint j = 0; j < cur->rebindings_nel; j++) {
-        if (strlen(symbol_name) > 1 &&
-            strcmp(&symbol_name[1], cur->rebindings[j].name) == 0) {
-          if (cur->rebindings[j].replaced != NULL &&
-              indirect_symbol_bindings[i] != cur->rebindings[j].replacement) {
+        if (symbol_name_longer_than_1 && strcmp(&symbol_name[1], cur->rebindings[j].name) == 0) {
+          kern_return_t err;
+
+          if (cur->rebindings[j].replaced != NULL && indirect_symbol_bindings[i] != cur->rebindings[j].replacement)
             *(cur->rebindings[j].replaced) = indirect_symbol_bindings[i];
+
+          /**
+           * 1. Moved the vm protection modifying codes to here to reduce the
+           *    changing scope.
+           * 2. Adding VM_PROT_WRITE mode unconditionally because vm_region
+           *    API on some iOS/Mac reports mismatch vm protection attributes.
+           * -- Lianfu Hao Jun 16th, 2021
+           **/
+          err = vm_protect (mach_task_self (), (uintptr_t)indirect_symbol_bindings, section->size, 0, VM_PROT_READ | VM_PROT_WRITE | VM_PROT_COPY);
+          if (err == KERN_SUCCESS) {
+            /**
+             * Once we failed to change the vm protection, we
+             * MUST NOT continue the following write actions!
+             * iOS 15 has corrected the const segments prot.
+             * -- Lionfore Hao Jun 11th, 2021
+             **/
+            indirect_symbol_bindings[i] = cur->rebindings[j].replacement;
           }
-          indirect_symbol_bindings[i] = cur->rebindings[j].replacement;
           goto symbol_loop;
         }
       }
@@ -96,7 +164,7 @@ static void rcd_perform_rebinding_with_section(struct rcd_rebindings_entry *rebi
   }
 }
 
-static void rebind_symbols_for_image(struct rcd_rebindings_entry *rebindings,
+static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
                                      const struct mach_header *header,
                                      intptr_t slide) {
   Dl_info info;
@@ -148,10 +216,10 @@ static void rebind_symbols_for_image(struct rcd_rebindings_entry *rebindings,
         section_t *sect =
           (section_t *)(cur + sizeof(segment_command_t)) + j;
         if ((sect->flags & SECTION_TYPE) == S_LAZY_SYMBOL_POINTERS) {
-          rcd_perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
+          perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
         }
         if ((sect->flags & SECTION_TYPE) == S_NON_LAZY_SYMBOL_POINTERS) {
-          rcd_perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
+          perform_rebinding_with_section(rebindings, sect, slide, symtab, strtab, indirect_symtab);
         }
       }
     }
@@ -163,19 +231,22 @@ static void _rebind_symbols_for_image(const struct mach_header *header,
     rebind_symbols_for_image(_rebindings_head, header, slide);
 }
 
-int rcd_rebind_symbols_image(void *header,
-                             intptr_t slide,
-                             struct rcd_rebinding rebindings[],
-                             size_t rebindings_nel) {
-    struct rcd_rebindings_entry *rebindings_head = NULL;
-    int retval = rcd_prepend_rebindings(&rebindings_head, rebindings, rebindings_nel);
-    rebind_symbols_for_image(rebindings_head, header, slide);
+int rebind_symbols_image(void *header,
+                         intptr_t slide,
+                         struct rebinding rebindings[],
+                         size_t rebindings_nel) {
+    struct rebindings_entry *rebindings_head = NULL;
+    int retval = prepend_rebindings(&rebindings_head, rebindings, rebindings_nel);
+    rebind_symbols_for_image(rebindings_head, (const struct mach_header *) header, slide);
+    if (rebindings_head) {
+      free(rebindings_head->rebindings);
+    }
     free(rebindings_head);
     return retval;
 }
 
-int rcd_rebind_symbols(struct rcd_rebinding rebindings[], size_t rebindings_nel) {
-  int retval = rcd_prepend_rebindings(&_rebindings_head, rebindings, rebindings_nel);
+int rebind_symbols(struct rebinding rebindings[], size_t rebindings_nel) {
+  int retval = prepend_rebindings(&_rebindings_head, rebindings, rebindings_nel);
   if (retval < 0) {
     return retval;
   }

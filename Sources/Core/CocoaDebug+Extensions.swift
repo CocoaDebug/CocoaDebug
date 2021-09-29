@@ -205,17 +205,17 @@ extension UIView {
     }
 }
 
-extension NSObject {
-    func dispatch_main_async_safe(callback: @escaping ()->Void ) {
-        if Thread.isMainThread {
-            callback()
-        } else {
-            DispatchQueue.main.async( execute: {
-                callback()
-            })
-        }
-    }
-}
+//extension NSObject {
+//    func dispatch_main_async_safe(callback: @escaping ()->Void ) {
+//        if Thread.isMainThread {
+//            callback()
+//        } else {
+//            DispatchQueue.main.async( execute: {
+//                callback()
+//            })
+//        }
+//    }
+//}
 
 //https://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
 ///tableView
@@ -244,7 +244,7 @@ extension UITableView {
     
     func reloadData(completion: @escaping () -> ()) {
         UIView.animate(withDuration: 0, animations: { self.reloadData()})
-        {_ in completion() }
+            {_ in completion() }
     }
 }
 
@@ -360,7 +360,7 @@ extension CocoaDebug {
         
         //slow animations
         CocoaDebugSettings.shared.slowAnimations = false
-                
+        
         //log
         let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
         if enableLogMonitoring == false {

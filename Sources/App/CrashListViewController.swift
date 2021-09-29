@@ -43,9 +43,9 @@ class CrashListViewController: UITableViewController {
         models = []
         CrashStoreManager.shared.resetCrashs()
         
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-        }
+        //        dispatch_main_async_safe { [weak self] in
+        tableView.reloadData()
+        //        }
     }
 }
 
@@ -84,9 +84,9 @@ extension CrashListViewController {
             guard let models = self?.models else {return}
             CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self?.models.remove(at: indexPath.row)
-            self?.dispatch_main_async_safe { [weak self] in
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            //            self?.dispatch_main_async_safe { [weak self] in
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            }
             completionHandler(true)
         }
         
@@ -107,9 +107,9 @@ extension CrashListViewController {
         if (editingStyle == .delete) {
             CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self.models.remove(at: indexPath.row)
-            self.dispatch_main_async_safe { [weak self] in
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            //            self.dispatch_main_async_safe { [weak self] in
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            }
         }
     }
 }
