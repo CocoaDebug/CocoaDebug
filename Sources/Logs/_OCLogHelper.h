@@ -12,7 +12,7 @@
 
 @interface _OCLogHelper : NSObject
 
-@property (nonatomic, assign) BOOL enable;
+//@property (nonatomic, assign) BOOL enable;
 
 + (instancetype)shared;
 

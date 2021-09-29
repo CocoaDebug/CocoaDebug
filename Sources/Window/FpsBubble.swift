@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FpsBubble: UIView {
+class UIBlockingBubble: UIView {
     
-    static var size: CGSize {return CGSize(width: 48, height: 16)}
+    static var size: CGSize {return CGSize(width: 70, height: 20)}
     
-    private var fpsLabel: _DebugConsoleLabel? = {
-        return _DebugConsoleLabel(frame: CGRect(x:0, y:0, width:size.width, height:size.height))
+    private var uiBlockingLabel: UILabel? = {
+        return UILabel(frame: CGRect(x:0, y:0, width:size.width, height:size.height))
     }()
     
     fileprivate func initLayer() {
@@ -21,8 +21,8 @@ class FpsBubble: UIView {
         self.layer.cornerRadius = 4
         self.sizeToFit()
         
-        if let fpsLabel = fpsLabel {
-            self.addSubview(fpsLabel)
+        if let uiBlockingLabel = uiBlockingLabel {
+            self.addSubview(uiBlockingLabel)
         }
     }
     
@@ -32,10 +32,25 @@ class FpsBubble: UIView {
         
         initLayer()
         
-        fpsLabel?.attributedText = fpsLabel?.fpsAttributedString(with: 60)
+//        uiBlockingLabel?.attributedText = uiBlockingLabel?.uiBlockingAttributedString(with: 60)
         
-        WindowHelper.shared.fpsCallback = { [weak self] value in
-            self?.fpsLabel?.update(withValue: Float(value))
+//        WindowHelper.shared.uiBlockingCallback = { [weak self] value in
+//            self?.uiBlockingLabel?.update(withValue: Float(value))
+//        }
+        
+        uiBlockingLabel?.textAlignment = .center
+        uiBlockingLabel?.adjustsFontSizeToFitWidth = true
+        uiBlockingLabel?.text = "Normal"
+        uiBlockingLabel?.textColor = .white
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "CocoaDebug_Detected_UI_Blocking"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.uiBlockingLabel?.text = "Blocking"
+            self?.uiBlockingLabel?.textColor = .red
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {[weak self] in
+                self?.uiBlockingLabel?.text = "Normal"
+                self?.uiBlockingLabel?.textColor = .white
+            }
         }
     }
     

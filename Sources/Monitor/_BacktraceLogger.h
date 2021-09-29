@@ -13,13 +13,13 @@
  */
 @interface _BacktraceLogger : NSObject
 
-+ (NSString *)lxd_backtraceOfAllThread;
-+ (NSString *)lxd_backtraceOfMainThread;
-+ (NSString *)lxd_backtraceOfCurrentThread;
-+ (NSString *)lxd_backtraceOfNSThread:(NSThread *)thread;
++ (NSString *)cocoadebug_backtraceOfAllThread;
++ (NSString *)cocoadebug_backtraceOfMainThread;
++ (NSString *)cocoadebug_backtraceOfCurrentThread;
++ (NSString *)cocoadebug_backtraceOfNSThread:(NSThread *)thread;
 
-+ (void)lxd_logMain;
-+ (void)lxd_logCurrent;
-+ (void)lxd_logAllThread;
++ (void)cocoadebug_logMain;
++ (void)cocoadebug_logCurrent;
++ (void)cocoadebug_logAllThread;
 
 @end

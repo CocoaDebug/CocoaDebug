@@ -27,7 +27,7 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var rnSwitch: UISwitch!
-    @IBOutlet weak var fpsSwitch: UISwitch!
+    @IBOutlet weak var uiBlockingSwitch: UISwitch!
     
     var naviItemTitleLabel: UILabel?
     
@@ -66,7 +66,7 @@ class AppInfoViewController: UITableViewController {
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
-        fpsSwitch.isOn = CocoaDebugSettings.shared.enableFpsMonitoring
+        uiBlockingSwitch.isOn = CocoaDebugSettings.shared.enableUIBlockingMonitoring
 
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
@@ -74,7 +74,7 @@ class AppInfoViewController: UITableViewController {
         webViewSwitch.addTarget(self, action: #selector(webViewSwitchChanged), for: UIControl.Event.valueChanged)
         slowAnimationsSwitch.addTarget(self, action: #selector(slowAnimationsSwitchChanged), for: UIControl.Event.valueChanged)
         crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
-//        fpsSwitch.addTarget(self, action: #selector(fpsSwitchChanged), for: UIControl.Event.valueChanged)
+        uiBlockingSwitch.addTarget(self, action: #selector(uiBlockingSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,14 +108,14 @@ class AppInfoViewController: UITableViewController {
         //        self.showAlert()
     }
     
-//    @objc func fpsSwitchChanged(sender: UISwitch) {
-//        CocoaDebugSettings.shared.enableFpsMonitoring = fpsSwitch.isOn
-//        if fpsSwitch.isOn == true {
-//            WindowHelper.shared.startFpsMonitoring()
-//        } else {
-//            WindowHelper.shared.stopFpsMonitoring()
-//        }
-//    }
+    @objc func uiBlockingSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableUIBlockingMonitoring = uiBlockingSwitch.isOn
+        if uiBlockingSwitch.isOn == true {
+            WindowHelper.shared.startUIBlockingMonitoring()
+        } else {
+            WindowHelper.shared.stopUIBlockingMonitoring()
+        }
+    }
     
     @objc func crashSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableCrashRecording = crashSwitch.isOn

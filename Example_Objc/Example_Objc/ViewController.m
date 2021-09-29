@@ -21,6 +21,11 @@
 
 @implementation ViewController
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //Detect UI Blocking
+    [NSThread sleepForTimeInterval:0.5];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
