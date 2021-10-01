@@ -269,7 +269,7 @@
 		3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA26259E223B00ABF650 /* FPSCounter.swift */; };
 		3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */; };
-		3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA32259E234C00ABF650 /* FpsBubble.swift */; };
+		3828BA33259E234C00ABF650 /* UIBlockingBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA32259E234C00ABF650 /* UIBlockingBubble.swift */; };
 		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
 		3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF627042E1F005967AE /* _BacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF727042E1F005967AE /* _BacktraceLogger.m */; };
@@ -556,7 +556,7 @@
 		3828BA26259E223B00ABF650 /* FPSCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSCounter.swift; sourceTree = "<group>"; };
 		3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
 		3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
-		3828BA32259E234C00ABF650 /* FpsBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FpsBubble.swift; sourceTree = "<group>"; };
+		3828BA32259E234C00ABF650 /* UIBlockingBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingBubble.swift; sourceTree = "<group>"; };
 		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
 		3871CFF627042E1F005967AE /* _BacktraceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BacktraceLogger.h; sourceTree = "<group>"; };
 		3871CFF727042E1F005967AE /* _BacktraceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BacktraceLogger.m; sourceTree = "<group>"; };
@@ -957,7 +957,7 @@
 			isa = PBXGroup;
 			children = (
 				3826DAF924EE5BF5003DE040 /* Bubble.swift */,
-				3828BA32259E234C00ABF650 /* FpsBubble.swift */,
+				3828BA32259E234C00ABF650 /* UIBlockingBubble.swift */,
 				3826DAFA24EE5BF5003DE040 /* WindowHelper.swift */,
 				3826DAFB24EE5BF5003DE040 /* CocoaDebugNavigationController.swift */,
 				3826DAFC24EE5BF5003DE040 /* CocoaDebugViewController.swift */,
@@ -1352,7 +1352,7 @@
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
 				3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */,
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
-				3828BA33259E234C00ABF650 /* FpsBubble.swift in Sources */,
+				3828BA33259E234C00ABF650 /* UIBlockingBubble.swift in Sources */,
 				3826DB5324EE5BF5003DE040 /* AboutViewController.swift in Sources */,
 				3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */,
 				3828BA29259E223B00ABF650 /* FPSCounter.swift in Sources */,
