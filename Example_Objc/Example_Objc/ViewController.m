@@ -80,8 +80,7 @@
 - (void)testHTTP {
     
     //1.AFNetworking
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSURL *URL = [NSURL URLWithString:@"https://httpbin.org/get"];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
@@ -96,7 +95,25 @@
     }];
     [dataTask resume];
     
-    //2.NSURLConnection
+    
+    //2.NSURLSession
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://httpbin.org/get"]];
+    [urlRequest setHTTPMethod:@"GET"];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionDataTask *dataTask2 = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode == 200) {
+            NSError *parseError = nil;
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"%@",responseDictionary);
+        }else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    [dataTask2 resume];
+    
+    
+    //3.NSURLConnection
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *apiURLStr =[NSString stringWithFormat:@"https://httpbin.org/get"];
         NSMutableURLRequest *dataRqst = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiURLStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
@@ -110,22 +127,6 @@
             NSLog(@"%@", responseString);
         }
     });
-    
-    //3.NSURLSession
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://httpbin.org/get"]];
-    [urlRequest setHTTPMethod:@"GET"];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask_ = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if (httpResponse.statusCode == 200) {
-            NSError *parseError = nil;
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-            NSLog(@"%@",responseDictionary);
-        }else{
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    [dataTask_ resume];
 }
 
 - (void)test_console_WKWebView {
