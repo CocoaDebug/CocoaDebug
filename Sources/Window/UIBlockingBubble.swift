@@ -78,4 +78,9 @@ class UIBlockingBubble: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        //notification
+        NotificationCenter.default.removeObserver(self)
+    }
 }
