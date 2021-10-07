@@ -104,3 +104,7 @@ When you initialize CocoaDebug, you can customize the following parameter values
 ## Thanks
 
 Special thanks to [remirobert](https://github.com/remirobert).
+
+## Reference
+
+[https://developer.apple.com/library/archive/samplecode/CustomHTTPProtocol/Introduction/Intro.html](https://developer.apple.com/library/archive/samplecode/CustomHTTPProtocol/Introduction/Intro.html)
