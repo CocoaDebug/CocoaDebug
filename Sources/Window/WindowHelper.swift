@@ -15,6 +15,8 @@ public class WindowHelper: NSObject {
     var displayedList = false
     lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
     
+    var naviTitle = ""
+    
     //UIBlocking
 //    fileprivate var uiBlockingCounter = UIBlockingCounter()
 //    var uiBlockingCallback:((Int) -> Void)?

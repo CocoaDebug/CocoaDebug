@@ -32,6 +32,10 @@ class CocoaDebugViewController: UIViewController {
         if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
             view.addSubview(uiBlockingBubble)
         }
+        
+        let navi = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+        let controller = navi?.viewControllers.first
+        controller?.title = WindowHelper.shared.naviTitle
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,5 +69,11 @@ extension CocoaDebugViewController: BubbleDelegate {
         guard let vc = storyboard.instantiateInitialViewController() else {return}
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
+        
+        let navi = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+        let controller = navi?.viewControllers.first
+        WindowHelper.shared.naviTitle = controller?.title ?? ""
+        
+        controller?.title = ""
     }
 }

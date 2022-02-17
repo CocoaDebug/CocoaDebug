@@ -35,6 +35,10 @@ class CocoaDebugTabBarController: UITabBarController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         WindowHelper.shared.displayedList = false
+        
+        let navi = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+        let controller = navi?.viewControllers.first
+        controller?.title = WindowHelper.shared.naviTitle
     }
     
     //MARK: - private
