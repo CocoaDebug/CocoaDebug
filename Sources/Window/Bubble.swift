@@ -119,7 +119,7 @@ class Bubble: UIView {
     
     
     fileprivate func initLayer() {
-        self.backgroundColor = .black
+        self.backgroundColor = .red
         self.layer.cornerRadius = _width/2
         self.sizeToFit()
         
