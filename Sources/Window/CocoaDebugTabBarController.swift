@@ -18,7 +18,8 @@ class CocoaDebugTabBarController: UITabBarController {
         
         setChildControllers()
         
-        self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem 
+//        self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem
+        self.selectedIndex = 2
         self.tabBar.tintColor = Color.mainGreen
     }
     
