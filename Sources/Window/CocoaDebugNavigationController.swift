@@ -13,10 +13,21 @@ class CocoaDebugNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            let navigationBar = UINavigationBar()
+            appearance.configureWithOpaqueBackground()
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            appearance.backgroundColor = UIColor.black
+            navigationBar.standardAppearance = appearance;
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        
         navigationBar.isTranslucent = false //liman
-        navigationBar.barStyle = .default
+        navigationBar.barStyle = .blackOpaque
         if #available(iOS 13.0, *) {
-            navigationBar.overrideUserInterfaceStyle = .light
+            navigationBar.overrideUserInterfaceStyle = .dark
         } else {
             // Fallback on earlier versions
         }
