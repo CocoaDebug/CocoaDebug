@@ -14,6 +14,12 @@ class CocoaDebugNavigationController: UINavigationController {
         super.viewDidLoad()
         
         navigationBar.isTranslucent = false //liman
+        navigationBar.barStyle = .default
+        if #available(iOS 13.0, *) {
+            navigationBar.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
         
         navigationBar.tintColor = Color.mainGreen
         navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
