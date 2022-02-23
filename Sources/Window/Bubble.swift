@@ -9,7 +9,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-protocol BubbleDelegate: class {
+protocol BubbleDelegate: AnyObject {
     func didTapBubble()
 }
 

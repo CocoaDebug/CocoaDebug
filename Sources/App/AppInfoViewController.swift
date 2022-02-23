@@ -49,7 +49,8 @@ class AppInfoViewController: UITableViewController {
         labelBundleName.text = CocoaDebugDeviceInfo.sharedInstance().appBundleName
         
         labelScreenResolution.text = "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.width))" + "*" + "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.height))"
-        labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
+//        labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
+        labelDeviceModel.text = "\(UIDevice().cocoadebugDeviceType.rawValue)"
         
         labelBundleID.text = CocoaDebugDeviceInfo.sharedInstance().appBundleID
         

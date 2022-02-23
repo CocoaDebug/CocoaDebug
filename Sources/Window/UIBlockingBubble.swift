@@ -61,7 +61,8 @@ class UIBlockingBubble: UIView {
                 center.x = UIScreen.main.bounds.width/2.0
                 center.y = 39
                 
-                let string = CocoaDebugDeviceInfo.sharedInstance().getPlatformString
+//                let string = CocoaDebugDeviceInfo.sharedInstance().getPlatformString
+                let string = UIDevice().cocoadebugDeviceType.rawValue
                 if string == "iPhone 12 mini" {
                     center.y = 43
                 } else if string == "iPhone 12" {

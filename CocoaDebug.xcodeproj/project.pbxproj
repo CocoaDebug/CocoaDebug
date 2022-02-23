@@ -279,6 +279,7 @@
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */; };
+		EAA911A827C62D6400FFF53B /* CocoaDebugDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA911A727C62D6400FFF53B /* CocoaDebugDevice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -566,6 +567,7 @@
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
 		38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+CocoaDebug.h"; sourceTree = "<group>"; };
 		38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
+		EAA911A727C62D6400FFF53B /* CocoaDebugDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugDevice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -636,6 +638,7 @@
 		3826D9CE24EE5BF4003DE040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EAA911A727C62D6400FFF53B /* CocoaDebugDevice.swift */,
 				3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */,
 				3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */,
 				3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */,
@@ -1336,6 +1339,7 @@
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
 				385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,
+				EAA911A827C62D6400FFF53B /* CocoaDebugDevice.swift in Sources */,
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
 				3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */,
@@ -1536,7 +1540,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
+				DEVELOPMENT_TEAM = AFDCFELHFW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1563,7 +1567,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
+				DEVELOPMENT_TEAM = AFDCFELHFW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

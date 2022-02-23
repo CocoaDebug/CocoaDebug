@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *deviceUUID;
 @property (nonatomic, copy, readonly) NSString *userPhoneName;
 @property (nonatomic, copy, readonly) NSString *deviceName;
-@property (nonatomic, copy, readonly) NSString *getPlatformString;
+//@property (nonatomic, copy, readonly) NSString *getPlatformString;
 @property (nonatomic, copy, readonly) NSString *localizedModel;
 @property (nonatomic, copy, readonly) NSString *appVersion;
 @property (nonatomic, copy, readonly) NSString *appBuiltVersion;
