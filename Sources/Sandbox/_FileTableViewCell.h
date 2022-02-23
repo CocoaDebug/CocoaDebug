@@ -10,6 +10,15 @@
 
 UIKIT_EXTERN NSString *const _FileTableViewCellReuseIdentifier;
 
+@class _FileTableViewCell;
+@protocol _FileTableViewCellDelegate <NSObject>
+
+- (void)didLongPressCell:(_FileTableViewCell *)cell;
+
+@end
+
 @interface _FileTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) id<_FileTableViewCellDelegate> delegate;
 
 @end

@@ -18,7 +18,7 @@
 #import "_SandboxerHelper.h"
 #import "NSObject+CocoaDebug.h"
 
-@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, _FileTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource;
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource_cache;
@@ -550,6 +550,8 @@
     }
     cell.detailTextLabel.attributedText = [attributedString copy];
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;
+    
+    cell.delegate = self;
 
     return cell;
 }
@@ -709,6 +711,11 @@
     
     self.dataSource = self.dataSource_search;
     [self.tableView reloadData];
+}
+
+#pragma mark - _FileTableViewCellDelegate
+- (void)didLongPressCell:(_FileTableViewCell *)cell {
+    NSLog(@"wqewqewqewqe");
 }
 
 @end

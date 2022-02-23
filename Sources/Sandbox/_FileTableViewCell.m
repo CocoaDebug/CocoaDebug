@@ -39,10 +39,18 @@ NSString *const _FileTableViewCellReuseIdentifier = @"_FileCell";
     UIView *selectedView = [[UIView alloc] init];
     selectedView.backgroundColor = [UIColor clearColor];
     self.selectedBackgroundView = selectedView;
+    
+    //
+    UILongPressGestureRecognizer *ges = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressCell)];
+    [self.contentView addGestureRecognizer:ges];
 }
 
 #pragma mark - Action
-
+- (void)didLongPressCell {
+    if ([self.delegate respondsToSelector:@selector(didLongPressCell:)]) {
+        [self.delegate didLongPressCell:self];
+    }
+}
 
 
 #pragma mark - Public Methods
