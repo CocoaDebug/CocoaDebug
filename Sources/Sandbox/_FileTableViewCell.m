@@ -47,8 +47,8 @@ NSString *const _FileTableViewCellReuseIdentifier = @"_FileCell";
 
 #pragma mark - Action
 - (void)didLongPressCell {
-    if ([self.delegate respondsToSelector:@selector(didLongPressCell:)]) {
-        [self.delegate didLongPressCell:self];
+    if ([self.delegate respondsToSelector:@selector(didLongPressCell:index:)]) {
+        [self.delegate didLongPressCell:self index:self.index];
     }
 }
 

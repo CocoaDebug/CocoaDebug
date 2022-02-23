@@ -13,12 +13,13 @@ UIKIT_EXTERN NSString *const _FileTableViewCellReuseIdentifier;
 @class _FileTableViewCell;
 @protocol _FileTableViewCellDelegate <NSObject>
 
-- (void)didLongPressCell:(_FileTableViewCell *)cell;
+- (void)didLongPressCell:(_FileTableViewCell *)cell index:(NSInteger)index;
 
 @end
 
 @interface _FileTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) id<_FileTableViewCellDelegate> delegate;
+@property (nonatomic, assign) NSInteger index;
 
 @end

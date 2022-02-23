@@ -18,7 +18,7 @@
 #import "_SandboxerHelper.h"
 #import "NSObject+CocoaDebug.h"
 
-@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, _FileTableViewCellDelegate>
+@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, _FileTableViewCellDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource;
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource_cache;
@@ -38,6 +38,8 @@
 
 @property (nonatomic, copy) NSString *randomId;
 @property (nonatomic, copy) NSString *searchText;
+
+@property (nonatomic, strong) UIDocumentInteractionController *documentInteractionController;
 
 @end
 
@@ -214,6 +216,10 @@
 
 - (_FileInfo *)fileInfoAtIndexPath:(NSIndexPath *)indexPath {
     return self.dataSource[indexPath.row];
+}
+
+- (_FileInfo *)fileInfoAtIndex:(NSInteger)index {
+    return self.dataSource[index];
 }
 
 - (UIViewController *)viewControllerWithFileInfo:(_FileInfo *)fileInfo {
@@ -552,6 +558,7 @@
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;
     
     cell.delegate = self;
+    cell.index = indexPath.row;
 
     return cell;
 }
@@ -714,8 +721,45 @@
 }
 
 #pragma mark - _FileTableViewCellDelegate
-- (void)didLongPressCell:(_FileTableViewCell *)cell {
-    NSLog(@"wqewqewqewqe");
+- (void)didLongPressCell:(_FileTableViewCell *)cell index:(NSInteger)index {
+    _FileInfo *fileInfo = [self fileInfoAtIndex:index];
+    self.documentInteractionController.URL = fileInfo.URL;
+    
+    [self sharingAction];
+}
+
+#pragma mark - UIDocumentInteractionControllerDelegate
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
+    return self.navigationController;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller {
+    return self.view.bounds;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller {
+    return self.view;
+}
+
+#pragma mark - Getters
+- (UIDocumentInteractionController *)documentInteractionController {
+    if (!_documentInteractionController) {
+        _documentInteractionController = [[UIDocumentInteractionController alloc] init];
+        _documentInteractionController.delegate = self;
+        _documentInteractionController.name = self.fileInfo.displayName;
+    }
+    
+    return _documentInteractionController;
+}
+
+#pragma mark - target action
+- (void)sharingAction {
+    if (![_Sandboxer shared].isShareable) { return; }
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        [self.documentInteractionController presentOptionsMenuFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    } else {
+        [self.documentInteractionController presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
+    }
 }
 
 @end
