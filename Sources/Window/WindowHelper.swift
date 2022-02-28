@@ -77,12 +77,12 @@ public class WindowHelper: NSObject {
     
     public func startUIBlockingMonitoring() {
 //        uiBlockingCounter.startMonitoring()
-        _RunloopMonitor.shared().begin()
+//        _RunloopMonitor.shared().begin()
     }
 
     public func stopUIBlockingMonitoring() {
 //        uiBlockingCounter.stopMonitoring()
-        _RunloopMonitor.shared().end()
+//        _RunloopMonitor.shared().end()
     }
 }
 

@@ -109,7 +109,7 @@ static NSURLSessionConfiguration *replaced_ephemeralSessionConfiguration(id self
     return config;
 }
 
-// I use the following typedef to keep myself sane in the face of the wacky 
+// I use the following typedef to keep myself sane in the face of the wacky
 // Objective-C block syntax.
 
 typedef void (^_ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential);
@@ -119,11 +119,11 @@ typedef void (^_ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition
 @property (atomic, strong, readwrite) NSThread *                        clientThread;       ///< The thread on which we should call the client.
 
 /*! The run loop modes in which to call the client.
- *  \details The concurrency control here is complex.  It's set up on the client 
- *  thread in -startLoading and then never modified.  It is, however, read by code 
- *  running on other threads (specifically the main thread), so we deallocate it in 
- *  -dealloc rather than in -stopLoading.  We can be sure that it's not read before 
- *  it's set up because the main thread code that reads it can only be called after 
+ *  \details The concurrency control here is complex.  It's set up on the client
+ *  thread in -startLoading and then never modified.  It is, however, read by code
+ *  running on other threads (specifically the main thread), so we deallocate it in
+ *  -dealloc rather than in -stopLoading.  We can be sure that it's not read before
+ *  it's set up because the main thread code that reads it can only be called after
  *  -startLoading has started the connection running.
  */
 
@@ -178,8 +178,8 @@ static id<_CustomHTTPProtocolDelegate> sDelegate;
 }
 
 /*! Returns the session demux object used by all the protocol instances.
- *  \details This object allows us to have a single NSURLSession, with a session delegate, 
- *  and have its delegate callbacks routed to the correct protocol instance on the correct 
+ *  \details This object allows us to have a single NSURLSession, with a session delegate,
+ *  and have its delegate callbacks routed to the correct protocol instance on the correct
  *  thread in the correct modes.  Can be called on any thread.
  */
 
@@ -191,7 +191,7 @@ static id<_CustomHTTPProtocolDelegate> sDelegate;
         NSURLSessionConfiguration *     config;
         
         config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        // You have to explicitly configure the session to use your own protocol subclass here 
+        // You have to explicitly configure the session to use your own protocol subclass here
         // otherwise you don't see redirects <rdar://problem/17384498>.
         config.protocolClasses = @[ self ];
         sDemux = [[_QNSURLSessionDemux alloc] initWithConfiguration:config];
@@ -199,7 +199,7 @@ static id<_CustomHTTPProtocolDelegate> sDelegate;
     return sDemux;
 }
 
-/*! Called by by both class code and instance code to log various bits of information. 
+/*! Called by by both class code and instance code to log various bits of information.
  *  Can be called on any thread.
  *  \param protocol The protocol instance; nil if it's the class doing the logging.
  *  \param format A standard NSString-style format string; will not be nil.
@@ -207,7 +207,7 @@ static id<_CustomHTTPProtocolDelegate> sDelegate;
 
 #pragma mark * NSURLProtocol overrides
 
-/*! Used to mark our recursive requests so that we don't try to handle them (and thereby 
+/*! Used to mark our recursive requests so that we don't try to handle them (and thereby
  *  suffer an infinite recursive death).
  */
 
@@ -304,7 +304,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     //assert(request != nil);
     // can be called on any thread
     
-    // Canonicalising a request is quite complex, so all the heavy lifting has 
+    // Canonicalising a request is quite complex, so all the heavy lifting has
     // been shuffled off to a separate module.
     
     result = CanonicalRequestForRequest(request);
@@ -340,19 +340,19 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     NSMutableArray *        calculatedModes;
     NSString *              currentMode;
 
-    // At this point we kick off the process of loading the URL via NSURLSession. 
+    // At this point we kick off the process of loading the URL via NSURLSession.
     // The thread that calls this method becomes the client thread.
     
     //assert(self.clientThread == nil);           // you can't call -startLoading twice
     //assert(self.task == nil);
 
-    // Calculate our effective run loop modes.  In some circumstances (yes I'm looking at 
-    // you UIWebView!) we can be called from a non-standard thread which then runs a 
-    // non-standard run loop mode waiting for the request to finish.  We detect this 
-    // non-standard mode and add it to the list of run loop modes we use when scheduling 
+    // Calculate our effective run loop modes.  In some circumstances (yes I'm looking at
+    // you UIWebView!) we can be called from a non-standard thread which then runs a
+    // non-standard run loop mode waiting for the request to finish.  We detect this
+    // non-standard mode and add it to the list of run loop modes we use when scheduling
     // our callbacks.  Exciting huh?
     //
-    // For debugging purposes the non-standard mode is "WebCoreSynchronousLoaderRunLoopMode" 
+    // For debugging purposes the non-standard mode is "WebCoreSynchronousLoaderRunLoopMode"
     // but it's better not to hard-code that here.
     
     //assert(self.modes == nil);
@@ -365,7 +365,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     self.modes = calculatedModes;
     //assert([self.modes count] > 0);
 
-    // Create new request that's a clone of the request we were initialised with, 
+    // Create new request that's a clone of the request we were initialised with,
     // except that it has our 'recursive request flag' property set on it.
     
     recursiveRequest = [[self request] mutableCopy];
@@ -395,14 +395,14 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     //assert(self.clientThread != nil);           // someone must have called -startLoading
 
-    // Check that we're being stopped on the same thread that we were started 
-    // on.  Without this invariant things are going to go badly (for example, 
-    // run loop sources that got attached during -startLoading may not get 
+    // Check that we're being stopped on the same thread that we were started
+    // on.  Without this invariant things are going to go badly (for example,
+    // run loop sources that got attached during -startLoading may not get
     // detached here).
     //
-    // I originally had code here to bounce over to the client thread but that 
-    // actually gets complex when you consider run loop modes, so I've nixed it. 
-    // Rather, I rely on our client calling us on the right thread, which is what 
+    // I originally had code here to bounce over to the client thread but that
+    // actually gets complex when you consider run loop modes, so I've nixed it.
+    // Rather, I rely on our client calling us on the right thread, which is what
     // the following //assert is about.
     
     //assert([NSThread currentThread] == self.clientThread);
@@ -411,7 +411,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     if (self.task != nil) {
         [self.task cancel];
         self.task = nil;
-        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled, 
+        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
         // which specificallys traps and ignores the error.
     }
     // Don't nil out self.modes; see property declaration comments for a a discussion of this.
@@ -509,7 +509,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     [self performSelector:@selector(onThreadPerformBlock:) onThread:thread withObject:[block copy] waitUntilDone:NO modes:modes];
 }
 
-/*! A helper method used by -performOnThread:modes:block:. Runs in the specified context 
+/*! A helper method used by -performOnThread:modes:block:. Runs in the specified context
  *  and simply calls the block.
  *  \param block The block to run.
  */
@@ -522,18 +522,18 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 /*! Called by our NSURLSession delegate callback to pass the challenge to our delegate.
  *  \description This simply passes the challenge over to the main thread.
- *  We do this so that all accesses to pendingChallenge are done from the main thread, 
+ *  We do this so that all accesses to pendingChallenge are done from the main thread,
  *  which avoids the need for extra synchronisation.
  *
- *  By the time this runes, the NSURLSession delegate callback has already confirmed with 
+ *  By the time this runes, the NSURLSession delegate callback has already confirmed with
  *  the delegate that it wants the challenge.
- *  
- *  Note that we use the default run loop mode here, not the common modes.  We don't want 
+ *
+ *  Note that we use the default run loop mode here, not the common modes.  We don't want
  *  an authorisation dialog showing up on top of an active menu (-:
- *  
- *  Also, we implement our own 'perform block' infrastructure because Cocoa doesn't have 
- *  one <rdar://problem/17232344> and CFRunLoopPerformBlock is inadequate for the 
- *  return case (where we need to pass in an array of modes; CFRunLoopPerformBlock only takes 
+ *
+ *  Also, we implement our own 'perform block' infrastructure because Cocoa doesn't have
+ *  one <rdar://problem/17232344> and CFRunLoopPerformBlock is inadequate for the
+ *  return case (where we need to pass in an array of modes; CFRunLoopPerformBlock only takes
  *  one mode).
  *  \param challenge The authentication challenge to process; must not be nil.
  *  \param completionHandler The associated completion handler; must not be nil.
@@ -551,10 +551,10 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 }
 
 /*! The main thread side of authentication challenge processing.
- *  \details If there's already a pending challenge, something has gone wrong and 
- *  the routine simply cancels the new challenge.  If our delegate doesn't implement 
- *  the -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: delegate callback, 
- *  we also cancel the challenge.  OTOH, if all goes well we simply call our delegate 
+ *  \details If there's already a pending challenge, something has gone wrong and
+ *  the routine simply cancels the new challenge.  If our delegate doesn't implement
+ *  the -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: delegate callback,
+ *  we also cancel the challenge.  OTOH, if all goes well we simply call our delegate
  *  with the challenge.
  *  \param challenge The authentication challenge to process; must not be nil.
  *  \param completionHandler The associated completion handler; must not be nil.
@@ -568,11 +568,11 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     if (self.pendingChallenge != nil) {
 
-        // Our delegate is not expecting a second authentication challenge before resolving the 
-        // first.  Likewise, NSURLSession shouldn't send us a second authentication challenge 
+        // Our delegate is not expecting a second authentication challenge before resolving the
+        // first.  Likewise, NSURLSession shouldn't send us a second authentication challenge
         // before we resolve the first.  If this happens, //assert, log, and cancel the challenge.
         //
-        // Note that we have to cancel the challenge on the thread on which we received it, 
+        // Note that we have to cancel the challenge on the thread on which we received it,
         // namely, the client thread.
 
         
@@ -583,9 +583,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
         strongDelegate = [[self class] delegate];
 
-        // Tell the delegate about it.  It would be weird if the delegate didn't support this 
-        // selector (it did return YES from -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: 
-        // after all), but if it doesn't then we just cancel the challenge ourselves (or the client 
+        // Tell the delegate about it.  It would be weird if the delegate didn't support this
+        // selector (it did return YES from -customHTTPProtocol:canAuthenticateAgainstProtectionSpace:
+        // after all), but if it doesn't then we just cancel the challenge ourselves (or the client
         // thread, of course).
         
         if ( ! [strongDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)] ) {
@@ -594,7 +594,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
             [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
         } else {
 
-            // Remember that this challenge is in progress. 
+            // Remember that this challenge is in progress.
             
             self.pendingChallenge = challenge;
             self.pendingChallengeCompletionHandler = completionHandler;
@@ -608,10 +608,10 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 }
 
 /*! Cancels an authentication challenge that hasn't made it to the pending challenge state.
- *  \details This routine is called as part of various error cases in the challenge handling 
+ *  \details This routine is called as part of various error cases in the challenge handling
  *  code.  It cancels a challenge that, for some reason, we've failed to pass to our delegate.
- * 
- *  The routine is always called on the main thread but bounces over to the client thread to 
+ *
+ *  The routine is always called on the main thread but bounces over to the client thread to
  *  do the actual cancellation.
  *  \param challenge The authentication challenge to cancel; must not be nil.
  *  \param completionHandler The associated completion handler; must not be nil.
@@ -630,9 +630,9 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 }
 
 /*! Cancels an authentication challenge that /has/ made to the pending challenge state.
- *  \details This routine is called by -stopLoading to cancel any challenge that might be 
- *  pending when the load is cancelled.  It's always called on the client thread but 
- *  immediately bounces over to the main thread (because .pendingChallenge is a main 
+ *  \details This routine is called by -stopLoading to cancel any challenge that might be
+ *  pending when the load is cancelled.  It's always called on the client thread but
+ *  immediately bounces over to the main thread (because .pendingChallenge is a main
  *  thread only value).
  */
 
@@ -640,15 +640,15 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 {
     //assert([NSThread currentThread] == self.clientThread);
 
-    // Just pass the work off to the main thread.  We do this so that all accesses 
-    // to pendingChallenge are done from the main thread, which avoids the need for 
+    // Just pass the work off to the main thread.  We do this so that all accesses
+    // to pendingChallenge are done from the main thread, which avoids the need for
     // extra synchronisation.
 
     [self performOnThread:nil modes:nil block:^{
         if (self.pendingChallenge == nil) {
-            // This is not only not unusual, it's actually very typical.  It happens every time you shut down 
-            // the connection.  Ideally I'd like to not even call -mainThreadCancelPendingChallenge when 
-            // there's no challenge outstanding, but the synchronisation issues are tricky.  Rather than solve 
+            // This is not only not unusual, it's actually very typical.  It happens every time you shut down
+            // the connection.  Ideally I'd like to not even call -mainThreadCancelPendingChallenge when
+            // there's no challenge outstanding, but the synchronisation issues are tricky.  Rather than solve
             // those, I'm just not going to log in this case.
             //
             // [[self class] customHTTPProtocol:self logWithFormat:@"challenge not cancelled; no challenge pending"];
@@ -686,8 +686,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     } else {
         _ChallengeCompletionHandler  completionHandler;
         
-        // We clear out our record of the pending challenge and then pass the real work 
-        // over to the client thread (which ensures that the challenge is resolved on 
+        // We clear out our record of the pending challenge and then pass the real work
+        // over to the client thread (which ensures that the challenge is resolved on
         // the same thread we received it on).
         
         completionHandler = self.pendingChallengeCompletionHandler;
@@ -778,8 +778,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     //assert(completionHandler != nil);
     //assert([NSThread currentThread] == self.clientThread);
 
-    // Ask our delegate whether it wants this challenge.  We do this from this thread, not the main thread, 
-    // to avoid the overload of bouncing to the main thread for challenges that aren't going to be customised 
+    // Ask our delegate whether it wants this challenge.  We do this from this thread, not the main thread,
+    // to avoid the overload of bouncing to the main thread for challenges that aren't going to be customised
     // anyway.
     
     strongeDelegate = [[self class] delegate];
@@ -815,8 +815,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     //assert(completionHandler != nil);
     //assert([NSThread currentThread] == self.clientThread);
 
-    // Pass the call on to our client.  The only tricky thing is that we have to decide on a 
-    // cache storage policy, which is based on the actual request we issued, not the request 
+    // Pass the call on to our client.  The only tricky thing is that we have to decide on a
+    // cache storage policy, which is based on the actual request we issued, not the request
     // we were given.
 
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -911,19 +911,19 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 #pragma mark -
 //liman
-+ (void)load {
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableNetworkMonitoring_CocoaDebug"]) {
-        
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-            orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
-            
-            orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
-        });
-    }
-}
+//+ (void)load {
+//
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableNetworkMonitoring_CocoaDebug"]) {
+//
+//        static dispatch_once_t onceToken;
+//        dispatch_once(&onceToken, ^{
+//
+//            orig_defaultSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(defaultSessionConfiguration), (IMP)replaced_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+//
+//            orig_ephemeralSessionConfiguration = (SessionConfigConstructor)replaceMethod(@selector(ephemeralSessionConfiguration), (IMP)replaced_ephemeralSessionConfiguration, [NSURLSessionConfiguration class], YES);
+//        });
+//    }
+//}
 
 //Handling errors 404...
 - (_HttpModel *)handleError:(NSError *)error model:(_HttpModel *)model {

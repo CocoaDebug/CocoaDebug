@@ -1,23 +1,23 @@
+////
+////  Example
+////  man
+////
+////  Created by man 11/11/2018.
+////  Copyright © 2020 man. All rights reserved.
+////
 //
-//  Example
-//  man
+//#import <Foundation/Foundation.h>
 //
-//  Created by man 11/11/2018.
-//  Copyright © 2020 man. All rights reserved.
+//NS_ASSUME_NONNULL_BEGIN
 //
-
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface _RunloopMonitor : NSObject
-//@property (nonatomic, copy, class) NSString * version;
-+ (instancetype)shared;
-
-- (void)beginMonitor;
-
-- (void)endMonitor;
-
-@end
-
-NS_ASSUME_NONNULL_END
+//@interface _RunloopMonitor : NSObject
+////@property (nonatomic, copy, class) NSString * version;
+//+ (instancetype)shared;
+//
+//- (void)beginMonitor;
+//
+//- (void)endMonitor;
+//
+//@end
+//
+//NS_ASSUME_NONNULL_END
