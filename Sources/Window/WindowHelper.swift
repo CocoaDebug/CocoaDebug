@@ -72,18 +72,18 @@ public class WindowHelper: NSObject {
         window.rootViewController = nil
         window.delegate = nil
         window.isHidden = true
-        stopUIBlockingMonitoring()
+//        stopUIBlockingMonitoring()
     }
     
-    public func startUIBlockingMonitoring() {
-//        uiBlockingCounter.startMonitoring()
-//        _RunloopMonitor.shared().begin()
-    }
-
-    public func stopUIBlockingMonitoring() {
-//        uiBlockingCounter.stopMonitoring()
-//        _RunloopMonitor.shared().end()
-    }
+//    public func startUIBlockingMonitoring() {
+////        uiBlockingCounter.startMonitoring()
+////        _RunloopMonitor.shared().begin()
+//    }
+//
+//    public func stopUIBlockingMonitoring() {
+////        uiBlockingCounter.stopMonitoring()
+////        _RunloopMonitor.shared().end()
+//    }
 }
 
 

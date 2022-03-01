@@ -79,7 +79,7 @@ class CocoaDebugTabBarController: UITabBarController {
         var temp = [sandbox, app]
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)
-        nav.navigationBar.barTintColor = UIColor.green
+        nav.navigationBar.barTintColor = "#1f2124".hexColor
         nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
 
         //****** copy codes from LogNavigationViewController.swift ******
