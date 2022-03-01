@@ -55,8 +55,8 @@ class CocoaDebugTabBarController: UITabBarController {
         
         
         //1.
-        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
-        let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
+//        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
+//        let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
         let app = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
@@ -71,15 +71,15 @@ class CocoaDebugTabBarController: UITabBarController {
         
         //3.
         guard let additionalViewController = CocoaDebugSettings.shared.additionalViewController else {
-            self.viewControllers = [network, logs, sandbox, app]
+            self.viewControllers = [sandbox, app]
             return
         }
         
         //4.Add additional controller
-        var temp = [network, logs, sandbox, app]
+        var temp = [sandbox, app]
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)
-        nav.navigationBar.barTintColor = "#1f2124".hexColor
+        nav.navigationBar.barTintColor = UIColor.green
         nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
 
         //****** copy codes from LogNavigationViewController.swift ******
@@ -118,15 +118,15 @@ class CocoaDebugTabBarController: UITabBarController {
 }
 
 //MARK: - UITabBarDelegate
-extension CocoaDebugTabBarController {
-    
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        guard let items = self.tabBar.items else {return}
-        
-        for index in 0...items.count-1 {
-            if item == items[index] {
-                CocoaDebugSettings.shared.tabBarSelectItem = index
-            }
-        }
-    }
-}
+//extension CocoaDebugTabBarController {
+//    
+//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        guard let items = self.tabBar.items else {return}
+//        
+//        for index in 0...items.count-1 {
+//            if item == items[index] {
+//                CocoaDebugSettings.shared.tabBarSelectItem = index
+//            }
+//        }
+//    }
+//}

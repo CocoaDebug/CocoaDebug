@@ -13,7 +13,7 @@
 #import "_Sandboxer.h"
 #import <QuickLook/QuickLook.h>
 #import "_Sandboxer-Header.h"
-#import "_NetworkHelper.h"
+//#import "_NetworkHelper.h"
 #import "_ImageController.h"
 #import "_SandboxerHelper.h"
 #import "NSObject+CocoaDebug.h"
@@ -51,10 +51,10 @@
     //****** copy codes from LogNavigationViewController.swift ******
     self.navigationController.navigationBar.translucent = NO;
     
-    self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
+    self.navigationController.navigationBar.tintColor = UIColor.greenColor;
     self.navigationController.navigationBar.titleTextAttributes = @{
                                                                     NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
-                                                                    NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+                                                                    NSForegroundColorAttributeName: UIColor.greenColor
                                                                     };
 }
 
@@ -552,7 +552,7 @@
     //liman
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:fileInfo.modificationDateText];
     if ([attributedString length] >= 25) {
-        [attributedString setAttributes:@{NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 25)];
+        [attributedString setAttributes:@{NSForegroundColorAttributeName: UIColor.greenColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 25)];
     }
     cell.detailTextLabel.attributedText = [attributedString copy];
 //    cell.detailTextLabel.text = fileInfo.modificationDateText;

@@ -254,8 +254,8 @@ class Bubble: UIView {
     }
     
     @objc func longTap() {
-        _HttpDatasource.shared().reset()
-        CocoaDebugSettings.shared.networkLastIndex = 0
+//        _HttpDatasource.shared().reset()
+//        CocoaDebugSettings.shared.networkLastIndex = 0
         NotificationCenter.default.post(name: NSNotification.Name("deleteAllLogs_CocoaDebug"), object: nil, userInfo: nil)
     }
     

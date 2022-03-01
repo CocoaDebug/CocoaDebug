@@ -41,9 +41,9 @@ public class WindowHelper: NSObject {
         window.delegate = self
         window.isHidden = false
         
-        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
-            startUIBlockingMonitoring()
-        }
+//        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
+//            startUIBlockingMonitoring()
+//        }
 
         
         if #available(iOS 13.0, *) {
