@@ -13,7 +13,6 @@
 #import "_Sandboxer.h"
 #import <QuickLook/QuickLook.h>
 #import "_Sandboxer-Header.h"
-//#import "_NetworkHelper.h"
 #import "_ImageController.h"
 #import "_SandboxerHelper.h"
 #import "NSObject+CocoaDebug.h"
@@ -48,14 +47,9 @@
 //liman
 - (void)customNavigationBar
 {
-    //****** copy codes from LogNavigationViewController.swift ******
     self.navigationController.navigationBar.translucent = NO;
     
     self.navigationController.navigationBar.tintColor = UIColor.greenColor;
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
-                                                                    NSForegroundColorAttributeName: UIColor.greenColor
-                                                                    };
 }
 
 - (void)exit {

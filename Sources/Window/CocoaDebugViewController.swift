@@ -29,28 +29,13 @@ class CocoaDebugViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         WindowHelper.shared.displayedList = false
-//        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
-//            view.addSubview(uiBlockingBubble)
-//        }
+
         
         let navi = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
         let controller = navi?.viewControllers.first
         controller?.title = WindowHelper.shared.naviTitle
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
-//            uiBlockingBubble.updateFrame()
-//        }
-//    }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
-//            uiBlockingBubble.removeFromSuperview()
-//        }
-//    }
     
     func shouldReceive(point: CGPoint) -> Bool {
         if WindowHelper.shared.displayedList {

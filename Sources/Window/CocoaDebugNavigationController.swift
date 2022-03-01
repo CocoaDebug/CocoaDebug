@@ -33,8 +33,7 @@ class CocoaDebugNavigationController: UINavigationController {
         }
         
         navigationBar.tintColor = Color.mainGreen
-        navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
-                                             .foregroundColor: Color.mainGreen]
+
         
         let selector = #selector(CocoaDebugNavigationController.exit)
         

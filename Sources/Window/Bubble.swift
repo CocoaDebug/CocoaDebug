@@ -27,11 +27,7 @@ class Bubble: UIView {
     
     public var width: CGFloat = _width
     public var height: CGFloat = _height
-    
-    private var numberLabel: UILabel? = {
-        return UILabel.init()
-    }()
-    private var networkNumber: Int = 0
+   
     
     
     static var originalPosition: CGPoint {
@@ -52,92 +48,15 @@ class Bubble: UIView {
     
     
     //MARK: - tool
-    fileprivate func initLabelEvent(_ content: String, _ foo: Bool) {
-        if content == "🚀" || content == "❌"
-        {
-            //step 0
-            let WH: CGFloat = 20
-            //step 1
-            let label = UILabel()
-            label.text = content
-            label.font = UIFont.boldSystemFont(ofSize: 14)
-            
-            //step 2
-            if foo == true {
-                label.frame = CGRect(x: self.frame.size.width/2 - WH/2, y: self.frame.size.height/2 - WH/2, width: WH, height: WH)
-                self.addSubview(label)
-            } else {
-                label.frame = CGRect(x: self.center.x - WH/2, y: self.center.y - WH/2, width: WH, height: WH)
-                self.superview?.addSubview(label)
-            }
-            //step 3
-            UIView.animate(withDuration: 0.8, animations: {
-                label.frame.origin.y = foo ? -100 : (self.center.y - 100)
-                label.alpha = 0
-            }, completion: { _ in
-                label.removeFromSuperview()
-            })
-        }
-        else
-        {
-            //step 0
-            let WH: CGFloat = 35
-            //step 1
-            let label = UILabel()
-            label.text = content
-            label.textAlignment = .center
-            label.adjustsFontSizeToFitWidth = true
-            label.font = UIFont.boldSystemFont(ofSize: 14)
-            
-            if _informationalStatusCodes.contains(content) {
-                label.textColor = "#4b8af7".hexColor
-            }
-            else if _redirectionStatusCodes.contains(content) {
-                label.textColor = "#ff9800".hexColor
-            }
-            else {
-                label.textColor = .red
-            }
-            
-            //step 3
-            if foo == true {
-                label.frame = CGRect(x: self.frame.size.width/2 - WH/2, y: self.frame.size.height/2 - WH/2, width: WH, height: WH)
-                self.addSubview(label)
-            } else {
-                label.frame = CGRect(x: self.center.x - WH/2, y: self.center.y - WH/2, width: WH, height: WH)
-                self.superview?.addSubview(label)
-            }
-            //step 4
-            UIView.animate(withDuration: 0.8, animations: {
-                label.frame.origin.y = foo ? -100 : (self.center.y - 100)
-                label.alpha = 0
-            }, completion: { _ in
-                label.removeFromSuperview()
-            })
-        }
-    }
-    
     
     fileprivate func initLayer() {
         self.backgroundColor = .red
         self.layer.cornerRadius = _width/2
         self.sizeToFit()
         
-        if let numberLabel = numberLabel {
-            numberLabel.text = String(networkNumber)
-            numberLabel.textColor = .white
-            numberLabel.textAlignment = .center
-            numberLabel.adjustsFontSizeToFitWidth = true
-            numberLabel.isHidden = true
-            numberLabel.frame = CGRect(x:0, y:0, width:_width, height:_height)
-            self.addSubview(numberLabel)
-        }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Bubble.tap))
         self.addGestureRecognizer(tapGesture)
-        
-        let longTap = UILongPressGestureRecognizer.init(target: self, action: #selector(Bubble.longTap))
-        self.addGestureRecognizer(longTap)
     }
     
     func changeSideDisplay() {
@@ -164,88 +83,12 @@ class Bubble: UIView {
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
-        //notification
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "reloadHttp_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] notification in
-            self?.reloadHttp_notification(notification)
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "deleteAllLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
-            self?.deleteAllLogs_notification()
-        }
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "SHOW_COCOADEBUG_FORCE"), object: nil, queue: OperationQueue.main) { [weak self] _ in
-            self?.show_cocoadebug_force()
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        //notification
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    //MARK: - notification
-    //网络通知
-    @objc func reloadHttp_notification(_ notification: Notification) {
-        
-        guard let userInfo = notification.userInfo else {return}
-        let statusCode = userInfo["statusCode"] as? String
-        
-        if _successStatusCodes.contains(statusCode ?? "") {
-            self.initLabelEvent("🚀", true)
-        }
-        else if statusCode == "0" { //"0" means network unavailable
-            self.initLabelEvent("❌", true)
-        }
-        else {
-            guard let statusCode = statusCode else {return}
-            self.initLabelEvent(statusCode, true)
-        }
-        
-        
-        self.networkNumber = (self.networkNumber ) + 1
-        self.numberLabel?.text = String(networkNumber)
-        
-        
-        if self.networkNumber == 0 {
-            self.numberLabel?.isHidden = true
-        } else {
-            self.numberLabel?.isHidden = false
-        }
-        
-        if networkNumber >= 0 && networkNumber < 10 {
-            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
-        } else if networkNumber >= 10 && networkNumber < 100 {
-            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 11)
-        } else if networkNumber >= 100 && networkNumber < 1000 {
-            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 9)
-        } else if networkNumber >= 1000 && networkNumber < 10000 {
-            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7.5)
-        } else {
-            self.numberLabel?.font = UIFont.boldSystemFont(ofSize: 7)
-        }
-    }
-    
-    
-    @objc func deleteAllLogs_notification() {
-        self.networkNumber = 0
-        
-        self.numberLabel?.text = String(networkNumber)
-        
-        if self.networkNumber == 0 {
-            self.numberLabel?.isHidden = true
-        } else {
-            self.numberLabel?.isHidden = false
-        }
-    }
-    
-    @objc func show_cocoadebug_force() {
-        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-    }
     
     
     //MARK: - target action
@@ -253,11 +96,6 @@ class Bubble: UIView {
         delegate?.didTapBubble()
     }
     
-    @objc func longTap() {
-//        _HttpDatasource.shared().reset()
-//        CocoaDebugSettings.shared.networkLastIndex = 0
-        NotificationCenter.default.post(name: NSNotification.Name("deleteAllLogs_CocoaDebug"), object: nil, userInfo: nil)
-    }
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {
         if panner.state == .began {

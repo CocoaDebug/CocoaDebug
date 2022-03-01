@@ -17,18 +17,13 @@ public class WindowHelper: NSObject {
     
     var naviTitle = ""
     
-    //UIBlocking
-//    fileprivate var uiBlockingCounter = UIBlockingCounter()
-//    var uiBlockingCallback:((Int) -> Void)?
-    
-    
+
     private override init() {
         window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         // This is for making the window not to effect the StatusBarStyle
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-//        uiBlockingCounter.delegate = self
     }
     
     
@@ -40,11 +35,7 @@ public class WindowHelper: NSObject {
         window.rootViewController = vc
         window.delegate = self
         window.isHidden = false
-        
-//        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
-//            startUIBlockingMonitoring()
-//        }
-
+      
         
         if #available(iOS 13.0, *) {
             var success: Bool = false
@@ -72,27 +63,6 @@ public class WindowHelper: NSObject {
         window.rootViewController = nil
         window.delegate = nil
         window.isHidden = true
-//        stopUIBlockingMonitoring()
     }
     
-//    public func startUIBlockingMonitoring() {
-////        uiBlockingCounter.startMonitoring()
-////        _RunloopMonitor.shared().begin()
-//    }
-//
-//    public func stopUIBlockingMonitoring() {
-////        uiBlockingCounter.stopMonitoring()
-////        _RunloopMonitor.shared().end()
-//    }
 }
-
-
-// MARK: - UIBlockingCounterDelegate
-//extension WindowHelper: UIBlockingCounterDelegate {
-//    @objc public func uiBlockingCounter(_ counter: UIBlockingCounter, didUpdateFramesPerSecond uiBlocking: Int) {
-//        if let uiBlockingCallback = uiBlockingCallback {
-//            uiBlockingCallback(uiBlocking)
-//        }
-//    }
-//}
-

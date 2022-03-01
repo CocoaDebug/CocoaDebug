@@ -8,171 +8,6 @@
 
 import Foundation
 
-//extension Dictionary {
-//    ///JSON/Form format conversion
-//    func dictionaryToFormString() -> String? {
-//        var array = [String]()
-//
-//        for (key, value) in self {
-//            array.append(String(describing: key) + "=" + String(describing: value))
-//        }
-//        if array.count > 0 {
-//            return array.joined(separator: "&")
-//        }
-//        return nil
-//    }
-//}
-
-//extension String {
-//    ///JSON/Form format conversion
-//    func formStringToDictionary() -> [String: Any]? {
-//        var dictionary = [String: Any]()
-//        let array = self.components(separatedBy: "&")
-//
-//        for str in array {
-//            let arr = str.components(separatedBy: "=")
-//            if arr.count == 2 {
-//                dictionary.updateValue(arr[1], forKey: arr[0])
-//            } else {
-//                return nil
-//            }
-//        }
-//        if dictionary.count > 0 {
-//            return dictionary
-//        }
-//        return nil
-//    }
-//}
-
-//MARK: - *********************************************************************
-
-//extension Data {
-//    func dataToDictionary() -> [String: Any]? {
-//        do {
-//            return try JSONSerialization.jsonObject(with: self, options: []) as? [String : Any]
-//        } catch {
-//        }
-//        return nil
-//    }
-//}
-
-//extension Dictionary {
-//    func dictionaryToData() -> Data? {
-//        do {
-//            return try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
-//        } catch {
-//        }
-//        return nil
-//    }
-//}
-//
-//extension Data {
-//    func dataToString() -> String? {
-//        return String(bytes: self, encoding: .utf8)
-//    }
-//}
-//
-//extension String {
-//    func stringToData() -> Data? {
-//        return self.data(using: .utf8)
-//    }
-//}
-
-//MARK: - *********************************************************************
-
-//extension String {
-//    func stringToDictionary() -> [String: Any]? {
-//        return self.stringToData()?.dataToDictionary()
-//    }
-//}
-//
-//extension Dictionary {
-//    func dictionaryToString() -> String? {
-//        return self.dictionaryToData()?.dataToString()
-//    }
-//}
-
-//extension String {
-//    func jsonStringToPrettyJsonString() -> String? {
-//        return self.stringToDictionary()?.dictionaryToString()
-//    }
-//}
-//
-//extension String {
-//    func isValidURL() -> Bool {
-//        if let url = URL(string: self) {
-//            return UIApplication.shared.canOpenURL(url)
-//        }
-//        return false
-//    }
-//}
-//
-//extension String {
-//    func isValidJsonString() -> Bool {
-//        if let _ = self.stringToDictionary() {
-//            return true
-//        }
-//        return false
-//    }
-//}
-
-//extension String {
-//    func isValidFormString() -> Bool {
-//        if let _ = self.formStringToDictionary() {
-//            return true
-//        }
-//        return false
-//    }
-//}
-//
-//extension String {
-//    func jsonStringToFormString() -> String? {
-//        return self.stringToDictionary()?.dictionaryToFormString()
-//    }
-//}
-//
-//extension String {
-//    func formStringToJsonString() -> String? {
-//        return self.formStringToDictionary()?.dictionaryToString()
-//    }
-//}
-
-//extension String {
-//    func formStringToData() -> Data? {
-//        return self.formStringToDictionary()?.dictionaryToData()
-//    }
-//}
-
-//extension Data {
-//    func formDataToDictionary() -> [String: Any]? {
-//        return self.dataToString()?.formStringToDictionary()
-//    }
-//}
-
-//extension Data {
-//    func dataToPrettyPrintString() -> String? {
-//        //1.pretty json
-//        if let str = self.dataToDictionary()?.dictionaryToString() {
-//            return str
-//        } else {
-//            //2.protobuf
-//            //            if let message = try? GPBMessage.parse(from: self) {
-//            //                if message.serializedSize() > 0 {
-//            //                    return message.description
-//            //                } else {
-//            //                    //3.utf-8 string
-//            //                    return String(data: self, encoding: .utf8)
-//            //                }
-//            //            } else {
-//            //3.utf-8 string
-//            return String(data: self, encoding: .utf8)
-//            //            }
-//        }
-//    }
-//}
-
-//MARK: - *********************************************************************
-
 //https://gist.github.com/arshad/de147c42d7b3063ef7bc
 ///Color
 extension String {
@@ -195,108 +30,6 @@ extension String {
     }
 }
 
-//extension UIView {
-//    func addCorner(roundingCorners: UIRectCorner, cornerSize: CGSize) {
-//        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerSize)
-//        let cornerLayer = CAShapeLayer()
-//        cornerLayer.frame = bounds
-//        cornerLayer.path = path.cgPath
-//        self.layer.mask = cornerLayer
-//    }
-//}
-
-//extension NSObject {
-//    func dispatch_main_async_safe(callback: @escaping ()->Void ) {
-//        if Thread.isMainThread {
-//            callback()
-//        } else {
-//            DispatchQueue.main.async( execute: {
-//                callback()
-//            })
-//        }
-//    }
-//}
-
-//https://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
-///tableView
-//extension UITableView {
-//    func tableViewScrollToBottom(animated: Bool) {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
-//            let numberOfSections = self.numberOfSections
-//            let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
-//
-//            if numberOfRows > 0 {
-//                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
-//                self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
-//            }
-//        }
-//    }
-//
-//    func tableViewScrollToIndex(index: Int, animated: Bool) {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
-//            self.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: animated)
-//        }
-//    }
-//
-//    func tableViewScrollToHeader(animated: Bool) {
-//        self.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: animated)
-//    }
-//
-//    func reloadData(completion: @escaping () -> ()) {
-//        UIView.animate(withDuration: 0, animations: { self.reloadData()})
-//            {_ in completion() }
-//    }
-//}
-
-///shake
-//extension UIWindow {
-//
-//    private static var _cocoadebugShakeProperty = [String:Bool]()
-//
-//    var cocoadebugShakeProperty:Bool {
-//        get {
-//            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-//            return UIWindow._cocoadebugShakeProperty[tmpAddress] ?? false
-//        }
-//        set(newValue) {
-//            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-//            UIWindow._cocoadebugShakeProperty[tmpAddress] = newValue
-//        }
-//    }
-//
-//
-//    open override var canBecomeFirstResponder: Bool {
-//        return true
-//    }
-//
-//    open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-//        super.motionBegan(motion, with: event)
-//
-//        self.cocoadebugShakeProperty = true
-//
-//        if CocoaDebugSettings.shared.responseShake == false {return}
-//        if motion == .motionShake {
-//            if CocoaDebugSettings.shared.visible == true { return }
-//            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-//        }
-//    }
-//
-//    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-//        super.motionEnded(motion, with: event)
-//
-//        if self.cocoadebugShakeProperty == true {
-//            self.cocoadebugShakeProperty = false
-//            return
-//        }
-//
-//        if CocoaDebugSettings.shared.responseShake == false {return}
-//        if motion == .motionShake {
-//            if CocoaDebugSettings.shared.visible == true { return }
-//            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-//        }
-//    }
-//}
-
 
 ///CocoaDebug
 extension CocoaDebug {
@@ -304,34 +37,6 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-//        if serverURL == nil {
-//            CocoaDebugSettings.shared.serverURL = ""
-//        } else {
-//            CocoaDebugSettings.shared.serverURL = serverURL
-//        }
-        
-//        if ignoredURLs == nil {
-//            CocoaDebugSettings.shared.ignoredURLs = []
-//        } else {
-//            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
-//        }
-//        if onlyURLs == nil {
-//            CocoaDebugSettings.shared.onlyURLs = []
-//        } else {
-//            CocoaDebugSettings.shared.onlyURLs = onlyURLs
-//        }
-//        
-//        if ignoredPrefixLogs == nil {
-//            CocoaDebugSettings.shared.ignoredPrefixLogs = []
-//        } else {
-//            CocoaDebugSettings.shared.ignoredPrefixLogs = ignoredPrefixLogs
-//        }
-//        if onlyPrefixLogs == nil {
-//            CocoaDebugSettings.shared.onlyPrefixLogs = []
-//        } else {
-//            CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
-//        }
-        
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
@@ -340,15 +45,9 @@ extension CocoaDebug {
         }
         
         CocoaDebugSettings.shared.visible = false
-//        CocoaDebugSettings.shared.logSearchWordNormal = nil
-//        CocoaDebugSettings.shared.logSearchWordRN = nil
-//        CocoaDebugSettings.shared.logSearchWordWeb = nil
-//        CocoaDebugSettings.shared.networkSearchWord = nil
-//        CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
+
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
         
-//        var _ = _OCLogStoreManager.shared()
-//        CocoaDebugSettings.shared.responseShake = true
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
@@ -360,33 +59,11 @@ extension CocoaDebug {
         //slow animations
         CocoaDebugSettings.shared.slowAnimations = false
         
-        //log
-//        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
-//        if enableLogMonitoring == false {
-//            _SwiftLogHelper.shared.enable = false
-//            _OCLogHelper.shared()?.enable = false
-//        } else {
-//            _SwiftLogHelper.shared.enable = true
-//            _OCLogHelper.shared()?.enable = true
-//        }
-        
-        //network
-//        let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-//        if disableNetworkMonitoring == true {
-//            _NetworkHelper.shared().disable()
-//        } else {
-//            _NetworkHelper.shared().enable()
-//        }
     }
     
     ///deinit
     static func deinitializationMethod() {
         WindowHelper.shared.disable()
-//        _NetworkHelper.shared().disable()
-//        _SwiftLogHelper.shared.enable = false
-//        _OCLogHelper.shared()?.enable = false
-//        CrashLogger.shared.enable = false
-//        CocoaDebugSettings.shared.responseShake = false
     }
 }
 

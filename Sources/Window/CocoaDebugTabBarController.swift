@@ -18,7 +18,6 @@ class CocoaDebugTabBarController: UITabBarController {
         
         setChildControllers()
         
-//        self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem
         self.selectedIndex = 2
         self.tabBar.tintColor = Color.mainGreen
     }
@@ -55,8 +54,6 @@ class CocoaDebugTabBarController: UITabBarController {
         
         
         //1.
-//        let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
-//        let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
         let app = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "App")
         
         //2.
@@ -82,12 +79,10 @@ class CocoaDebugTabBarController: UITabBarController {
         nav.navigationBar.barTintColor = "#1f2124".hexColor
         nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
 
-        //****** copy codes from LogNavigationViewController.swift ******
         nav.navigationBar.isTranslucent = false
         
         nav.navigationBar.tintColor = Color.mainGreen
-        nav.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
-                                                 .foregroundColor: Color.mainGreen]
+
         
         let selector = #selector(CocoaDebugNavigationController.exit)
         
@@ -97,7 +92,7 @@ class CocoaDebugTabBarController: UITabBarController {
                                        style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen
         nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
-        //****** copy codes from LogNavigationViewController.swift ******
+        
         
         temp.append(nav)
         
@@ -108,25 +103,4 @@ class CocoaDebugTabBarController: UITabBarController {
     @objc func exit() {
         dismiss(animated: true, completion: nil)
     }
-    
-    //MARK: - show more than 5 tabs by CocoaDebug
-    //    override var traitCollection: UITraitCollection {
-    //        var realTraits = super.traitCollection
-    //        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
-    //        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
-    //    }
 }
-
-//MARK: - UITabBarDelegate
-//extension CocoaDebugTabBarController {
-//    
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        guard let items = self.tabBar.items else {return}
-//        
-//        for index in 0...items.count-1 {
-//            if item == items[index] {
-//                CocoaDebugSettings.shared.tabBarSelectItem = index
-//            }
-//        }
-//    }
-//}
