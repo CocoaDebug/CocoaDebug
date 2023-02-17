@@ -3,7 +3,7 @@
 //  Example_Objc
 //
 //  Created by man 7/25/19.
-//  Copyright © 2020 man. All rights reserved.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #import "_ImageController.h"

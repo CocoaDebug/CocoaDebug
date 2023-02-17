@@ -1,9 +1,9 @@
 //
-//  Example
-//  man
+//  CocoaDebug
+//  liman
 //
-//  Created by man 11/11/2018.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 import UIKit
@@ -28,7 +28,7 @@ class LogViewController: UIViewController {
     var webReloadDataFinish: Bool = true
     
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+//    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var deleteItem: UIBarButtonItem!
     
     @IBOutlet weak var defaultTableView: UITableView!
@@ -274,13 +274,13 @@ class LogViewController: UIViewController {
         
         
         deleteItem.tintColor = Color.mainGreen
-        segmentedControl.tintColor = Color.mainGreen
+//        segmentedControl.tintColor = Color.mainGreen
         
-        if UIScreen.main.bounds.size.width == 320 {
-            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
-        } else {
-            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
-        }
+//        if UIScreen.main.bounds.size.width == 320 {
+//            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
+//        } else {
+//            segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
+//        }
         
         //notification
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
@@ -332,7 +332,7 @@ class LogViewController: UIViewController {
         
         //segmentedControl
         selectedSegmentIndex = CocoaDebugSettings.shared.logSelectIndex 
-        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
+//        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
             selectedSegment_0 = true
@@ -468,41 +468,41 @@ class LogViewController: UIViewController {
         }
     }
     
-    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
-        selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
-        
-        if selectedSegmentIndex == 0 {
-            rnSearchBar.resignFirstResponder()
-            webSearchBar.resignFirstResponder()
-        } else if selectedSegmentIndex == 1 {
-            defaultSearchBar.resignFirstResponder()
-            webSearchBar.resignFirstResponder()
-        } else {
-            defaultSearchBar.resignFirstResponder()
-            rnSearchBar.resignFirstResponder()
-        }
-        
-        if selectedSegmentIndex == 0 && selectedSegment_0 == false {
-            selectedSegment_0 = true
-            reloadLogs(needScrollToEnd: true, needReloadData: true)
-            return
-        }
-        
-        if selectedSegmentIndex == 1 && selectedSegment_1 == false {
-            selectedSegment_1 = true
-            reloadLogs(needScrollToEnd: true, needReloadData: true)
-            return
-        }
-        
-        if selectedSegmentIndex == 2 && selectedSegment_2 == false {
-            selectedSegment_2 = true
-            reloadLogs(needScrollToEnd: true, needReloadData: true)
-            return
-        }
-        
-        reloadLogs(needScrollToEnd: false, needReloadData: false)
-    }
+//    @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
+//        selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+//        CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
+//
+//        if selectedSegmentIndex == 0 {
+//            rnSearchBar.resignFirstResponder()
+//            webSearchBar.resignFirstResponder()
+//        } else if selectedSegmentIndex == 1 {
+//            defaultSearchBar.resignFirstResponder()
+//            webSearchBar.resignFirstResponder()
+//        } else {
+//            defaultSearchBar.resignFirstResponder()
+//            rnSearchBar.resignFirstResponder()
+//        }
+//
+//        if selectedSegmentIndex == 0 && selectedSegment_0 == false {
+//            selectedSegment_0 = true
+//            reloadLogs(needScrollToEnd: true, needReloadData: true)
+//            return
+//        }
+//
+//        if selectedSegmentIndex == 1 && selectedSegment_1 == false {
+//            selectedSegment_1 = true
+//            reloadLogs(needScrollToEnd: true, needReloadData: true)
+//            return
+//        }
+//
+//        if selectedSegmentIndex == 2 && selectedSegment_2 == false {
+//            selectedSegment_2 = true
+//            reloadLogs(needScrollToEnd: true, needReloadData: true)
+//            return
+//        }
+//
+//        reloadLogs(needScrollToEnd: false, needReloadData: false)
+//    }
     
     @objc func didTapView() {
         if selectedSegmentIndex == 0 {

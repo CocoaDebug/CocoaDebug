@@ -1,7 +1,7 @@
-| <img alt="logo" src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/logo.png" width="250"/> | <ul align="left"><li><a href="#introduction">Introduction</a><li><a href="#installation">Installation</a><li><a href="#usage">Usage</a><li><a href="#parameters">Parameters</a></ul> |
+| <img alt="logo" src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/logo.png" width="250"/> |  |
 | -------------- | -------------- |
 | Version | [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/CocoaDebug.svg)](https://img.shields.io/cocoapods/v/CocoaDebug.svg) |
-| Platform | ![Platform](https://img.shields.io/badge/platforms-iOS%208.0+-blue.svg) |
+| Platform | ![Platform](https://img.shields.io/badge/platforms-iOS%2012.0+-blue.svg) |
 | Languages | ![Languages](https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-blue.svg) |
 
 <span style="float:none" />
@@ -17,31 +17,30 @@
 
 ## Introduction
 
-- [x] Shake to hide or show the black bubble. (Support iPhone device and simulator)
+- 👉 List network requests inside APP.
 
-- [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
+- 👉 List *print()* and *NSLog()* Xcode console logs.
 
-- [x] Copy logs. (Long press the text, then select all or select copy)
+- 👉 List sandbox folders and files.
 
-- [x] Search logs by keyword.
+- 👉 List APP and device informations, including: *app version/build*, *bundle name/id*, *screen resolution*, *device*, *iOS version*
 
-- [x] Long press the black bubble to clean all network logs.
 
-- [x] Detect *UI Blocking*.
+## Tips
 
-- [x] List crash errors.
+- [x] Support shake to hide or show the black bubble. (Support iPhone device and simulator)
 
-- [x] List application and device informations, including: *version*, *build*, *bundle name*, *bundle id*, *screen resolution*, *device*, *iOS version*
+- [x] Support share network details via email or copy to clipboard when you are in the *Network Details* page.
 
-- [x] List all network requests sent by the application. (Support *JSON* and Google's *Protocol buffers*)
+- [x] Support copy logs. (Long press the text, then select all or select copy)
 
-- [x] List all sandbox folders and files, supporting to preview and edit.
+- [x] Support search logs by keyword.
 
-- [x] List all *WKWebView* consoles.
+- [x] Support long press the black bubble to clean all network logs. (For ease of use)
 
-- [x] List all *React Native* JavaScript consoles and Native logs.
+- [x] Support add your custom test controller. (See demo project)
 
-- [x] List all *print()* and *NSLog()* messages which have been written by developer in Xcode.
+- [x] Support to preview and edit Sandbox files.
 
 ## Installation
 
@@ -62,48 +61,9 @@ github  "CocoaDebug/CocoaDebug"
 
 ### *Framework*
 
-*[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.7.2)*
+*[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip)*
 
 > WARNING: Never ship a product which has been linked with the CocoaDebug framework. The [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to Debug builds.
-
-> [Xcode12 build error solution](https://stackoverflow.com/questions/63267897/building-for-ios-simulator-but-the-linked-framework-framework-was-built)
-
-## Usage
-
-- Don't need to do anything. CocoaDebug will start automatically.
-- To capture logs from Xcode with codes: (You can also set this in *CocoaDebug->App->Monitor->Applogs* without any codes.)
-```swift
-CocoaDebugSettings.shared.enableLogMonitoring = true //The default value is false
-```
-- Check [AppDelegate.m](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Objc/Example_Objc/AppDelegate.m) OR [AppDelegate.swift](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Swift/Example_Swift/AppDelegate.swift) for more advanced usage.
-
-## Parameters
-
-When you initialize CocoaDebug, you can customize the following parameter values before `CocoaDebug.enable()`.
-
-- `serverURL` - If the captured URLs contain server URL, CocoaDebug set server URL bold font to be marked. Not mark when this value is nil. Default value is **nil**.
-
-- `ignoredURLs` - Set the URLs which should not been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
-
-- `onlyURLs` - Set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is **nil**.
-
-- `ignoredPrefixLogs` - Set the prefix Logs which should not been captured, CocoaDebug capture all Logs when the value is nil. Default value is **nil**.
-
-- `onlyPrefixLogs` - Set the prefix Logs which are only been captured, CocoaDebug capture all Logs when the value is nil. Default value is **nil**.
-
-- `additionalViewController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
-
-- `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. Default value is **nil**.
-
-- `emailCcRecipients` - Set the initial recipients to include in the email’s “Cc” field when share via email. Default value is **nil**.
-
-- `mainColor` - Set CocoaDebug's main color with hexadecimal format. Default value is **#42d459**.
-
-- `protobufTransferMap` - Protobuf data transfer to JSON map. Default value is **nil**.
-
-## Thanks
-
-Special thanks to [remirobert](https://github.com/remirobert).
 
 ## Reference
 

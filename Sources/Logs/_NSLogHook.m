@@ -3,7 +3,7 @@
 //  Example_Swift
 //
 //  Created by man 7/26/19.
-//  Copyright © 2020 man. All rights reserved.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -51,7 +51,7 @@ void cocoadebug_nslog(NSString *format, ...)
 #pragma mark - load
 + (void)load
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"disableLogMonitoring_CocoaDebug"]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             struct rebinding nslog_rebinding = {"NSLog",cocoadebug_nslog,(void*)&_original_nslog};

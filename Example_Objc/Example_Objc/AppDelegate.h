@@ -1,9 +1,9 @@
 //
-//  AppDelegate.h
-//  Example_Objc
+//  CocoaDebug
+//  liman
 //
-//  Created by man on 8/11/20.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

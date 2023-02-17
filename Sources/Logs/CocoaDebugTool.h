@@ -3,7 +3,7 @@
 //  Example_Swift
 //
 //  Created by man 5/8/19.
-//  Copyright © 2020 man. All rights reserved.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

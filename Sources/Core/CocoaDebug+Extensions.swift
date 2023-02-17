@@ -1,9 +1,9 @@
 //
-//  Example
-//  man
+//  CocoaDebug
+//  liman
 //
-//  Created by man 11/11/2018.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 import Foundation
@@ -361,8 +361,8 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.slowAnimations = false
         
         //log
-        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
-        if enableLogMonitoring == false {
+        let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
+        if disableLogMonitoring == true {
             _SwiftLogHelper.shared.enable = false
 //            _OCLogHelper.shared()?.enable = false
         } else {

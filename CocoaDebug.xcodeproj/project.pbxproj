@@ -270,11 +270,15 @@
 		3828BA2A259E223B00ABF650 /* _DebugConsoleLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */; };
 		3828BA33259E234C00ABF650 /* UIBlockingBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828BA32259E234C00ABF650 /* UIBlockingBubble.swift */; };
+		384AE686299F5C1700474D74 /* _DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 384AE682299F5C1700474D74 /* _DeviceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		384AE687299F5C1700474D74 /* _DeviceUtil+Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AE683299F5C1700474D74 /* _DeviceUtil+Constant.m */; };
+		384AE688299F5C1700474D74 /* _DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AE684299F5C1700474D74 /* _DeviceUtil.m */; };
+		384AE689299F5C1700474D74 /* _DeviceUtil+Constant.h in Headers */ = {isa = PBXBuildFile; fileRef = 384AE685299F5C1700474D74 /* _DeviceUtil+Constant.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */; };
 		3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF627042E1F005967AE /* _BacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF727042E1F005967AE /* _BacktraceLogger.m */; };
 		3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF827042E1F005967AE /* _RunloopMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF927042E1F005967AE /* _RunloopMonitor.m */; };
+		3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF927042E1F005967AE /* _RunloopMonitor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -557,6 +561,10 @@
 		3828BA27259E223B00ABF650 /* _DebugConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DebugConsoleLabel.h; sourceTree = "<group>"; };
 		3828BA28259E223B00ABF650 /* _DebugConsoleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DebugConsoleLabel.m; sourceTree = "<group>"; };
 		3828BA32259E234C00ABF650 /* UIBlockingBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingBubble.swift; sourceTree = "<group>"; };
+		384AE682299F5C1700474D74 /* _DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DeviceUtil.h; sourceTree = "<group>"; };
+		384AE683299F5C1700474D74 /* _DeviceUtil+Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_DeviceUtil+Constant.m"; sourceTree = "<group>"; };
+		384AE684299F5C1700474D74 /* _DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DeviceUtil.m; sourceTree = "<group>"; };
+		384AE685299F5C1700474D74 /* _DeviceUtil+Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_DeviceUtil+Constant.h"; sourceTree = "<group>"; };
 		385945ED256D07D400ADA065 /* _SwiftLogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _SwiftLogHelper.swift; sourceTree = "<group>"; };
 		3871CFF627042E1F005967AE /* _BacktraceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BacktraceLogger.h; sourceTree = "<group>"; };
 		3871CFF727042E1F005967AE /* _BacktraceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BacktraceLogger.m; sourceTree = "<group>"; };
@@ -636,6 +644,10 @@
 		3826D9CE24EE5BF4003DE040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				384AE682299F5C1700474D74 /* _DeviceUtil.h */,
+				384AE684299F5C1700474D74 /* _DeviceUtil.m */,
+				384AE685299F5C1700474D74 /* _DeviceUtil+Constant.h */,
+				384AE683299F5C1700474D74 /* _DeviceUtil+Constant.m */,
 				3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */,
 				3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */,
 				3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */,
@@ -1044,6 +1056,8 @@
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
 				3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */,
 				3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */,
+				384AE689299F5C1700474D74 /* _DeviceUtil+Constant.h in Headers */,
+				384AE686299F5C1700474D74 /* _DeviceUtil.h in Headers */,
 				3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */,
 				3882D68325676EA200379E0C /* _fishhook.h in Headers */,
 				3826DC2D24EE5BF5003DE040 /* _HttpDatasource.h in Headers */,
@@ -1349,6 +1363,7 @@
 				3826DD3124EE5FD5003DE040 /* _FileTableViewCell.m in Sources */,
 				3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */,
 				3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */,
+				384AE687299F5C1700474D74 /* _DeviceUtil+Constant.m in Sources */,
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
 				3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */,
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
@@ -1378,6 +1393,7 @@
 				3826DC4724EE5BF5003DE040 /* LogCell.swift in Sources */,
 				3826DC6224EE5BF5003DE040 /* WindowHelper.swift in Sources */,
 				3826DD3024EE5FD5003DE040 /* _ImageResources.m in Sources */,
+				384AE688299F5C1700474D74 /* _DeviceUtil.m in Sources */,
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
 				3826DC6124EE5BF5003DE040 /* Bubble.swift in Sources */,
@@ -1536,7 +1552,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
+				DEVELOPMENT_TEAM = AFDCFELHFW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1563,7 +1579,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = XA8SWALX42;
+				DEVELOPMENT_TEAM = AFDCFELHFW;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

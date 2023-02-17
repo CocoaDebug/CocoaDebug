@@ -1,9 +1,9 @@
 //
-//  CocoaDebug.h
 //  CocoaDebug
+//  liman
 //
-//  Created by man on 3/8/20.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

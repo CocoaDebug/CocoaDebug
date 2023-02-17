@@ -1,9 +1,9 @@
 //
-//  ViewController.m
-//  Example_Objc
+//  CocoaDebug
+//  liman
 //
-//  Created by man on 8/11/20.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 #pragma GCC diagnostic push
@@ -21,10 +21,10 @@
 
 @implementation ViewController
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    //Detect UI Blocking
-    [NSThread sleepForTimeInterval:0.5];
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    //Detect UI Blocking
+//    [NSThread sleepForTimeInterval:0.5];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,16 +34,6 @@
     NSLog(@"hello world");
     NSLog(@"%d", 6666666);
     NSLog(@"억 암 온 양 哈哈哈 とうかいとうさん");
-
-    
-    //test WKWebView
-    [self test_console_WKWebView];
-    
-    
-    //Custom Messages
-    [CocoaDebugTool logWithString:@"Custom Messages...."];
-    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
-    
     
     //save image
     for (int i = 0; i < 20; i ++) {
@@ -58,6 +48,16 @@
             [self testHTTP];
         });
     }
+    
+    
+    
+    //test WKWebView
+//    [self test_console_WKWebView];
+    
+    
+    //Custom Messages
+//    [CocoaDebugTool logWithString:@"Custom Messages...."];
+//    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
 }
 
 - (void)saveImage:(UIImage *)image name:(NSString *)name {

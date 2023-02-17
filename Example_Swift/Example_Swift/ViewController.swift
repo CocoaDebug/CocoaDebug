@@ -1,19 +1,19 @@
 //
-//  ViewController.swift
-//  Example_Swift
+//  CocoaDebug
+//  liman
 //
-//  Created by man 8/11/20.
-//  Copyright © 2020 man. All rights reserved.
+//  Created by liman 02/02/2023.
+//  Copyright © 2023 liman. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //Detect UI Blocking
-        Thread.sleep(forTimeInterval: 0.5)
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        //Detect UI Blocking
+//        Thread.sleep(forTimeInterval: 0.5)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
