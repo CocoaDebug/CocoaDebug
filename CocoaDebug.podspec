@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source_files        = "Sources", "Sources/**/*.{h,m,mm,swift,c}"
   s.public_header_files = "Sources/**/*.h"
   s.resources           = "Sources/**/*.{png,xib,storyboard}"
-  s.frameworks          = 'UIKit', 'Foundation'
+  s.frameworks          = 'UIKit', 'Foundation', 'JavaScriptCore', 'QuickLook'
   s.platform            = :ios, "12.0"
   s.swift_version       = '5.0'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
