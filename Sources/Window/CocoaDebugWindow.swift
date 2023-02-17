@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol WindowDelegate: class {
+protocol WindowDelegate: AnyObject {
     func isPointEvent(point: CGPoint) -> Bool
 }
 

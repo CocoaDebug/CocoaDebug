@@ -70,6 +70,7 @@ static void runloopObserverCallback(CFRunLoopObserverRef observer, CFRunLoopActi
 
 - (void)dealloc {
     [self endMonitor];
+    [super dealloc];
 }
 
 - (void)beginMonitor {
