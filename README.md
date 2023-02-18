@@ -8,12 +8,11 @@
 
 ## Screenshot
 
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a1.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a2.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a3.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a4.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a5.png" width="250">
-<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/a6.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/b1.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/b5.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/b2.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/b3.png" width="250">
+<img src="https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/pic/b4.png" width="250">
 
 ## Introduction
 
