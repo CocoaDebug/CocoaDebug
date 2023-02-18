@@ -41,6 +41,8 @@
 
 - [x] Support to preview and edit Sandbox files.
 
+- [x] Support App->Network/Console-Logs to switch on/off monitor functions without coding. (Default value is on)
+
 ## Installation
 
 ### *CocoaPods*
