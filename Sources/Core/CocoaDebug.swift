@@ -12,29 +12,29 @@ import UIKit
 @objc public class CocoaDebug : NSObject {
     
     ///if the captured URLs contain server URL, CocoaDebug set server URL bold font to be marked. Not mark when this value is nil. Default value is `nil`.
-//    @objc public static var serverURL: String? = nil
+    @objc public static var serverURL: String? = nil
     ///set the URLs which should not been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
-//    @objc public static var ignoredURLs: [String]? = nil
+    @objc public static var ignoredURLs: [String]? = nil
     ///set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
-//    @objc public static var onlyURLs: [String]? = nil
+    @objc public static var onlyURLs: [String]? = nil
     ///set the prefix Logs which should not been captured, CocoaDebug capture all Logs when the value is nil. Default value is `nil`.
-//    @objc public static var ignoredPrefixLogs: [String]? = nil
+    @objc public static var ignoredPrefixLogs: [String]? = nil
     ///set the prefix Logs which are only been captured, CocoaDebug capture all Logs when the value is nil. Default value is `nil`.
-//    @objc public static var onlyPrefixLogs: [String]? = nil
+    @objc public static var onlyPrefixLogs: [String]? = nil
     ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
     @objc public static var additionalViewController: UIViewController? = nil
     ///set the initial recipients to include in the email’s “To” field when share via email. Default value is `nil`.
-//    @objc public static var emailToRecipients: [String]? = nil
+    @objc public static var emailToRecipients: [String]? = nil
     ///set the initial recipients to include in the email’s “Cc” field when share via email. Default value is `nil`.
-//    @objc public static var emailCcRecipients: [String]? = nil
+    @objc public static var emailCcRecipients: [String]? = nil
     ///set CocoaDebug's main color with hexadecimal format. Default value is `#42d459`.
     static var mainColor: String = "#42d459"
     ///protobuf url and response class transfer map. Default value is `nil`.
-//    @objc public static var protobufTransferMap: [String: [String]]? = nil
+    @objc public static var protobufTransferMap: [String: [String]]? = nil
 
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: nil, ignoredURLs: nil, onlyURLs: nil, ignoredPrefixLogs: nil, onlyPrefixLogs: nil, additionalViewController: additionalViewController, emailToRecipients: nil, emailCcRecipients: nil, mainColor: nil, protobufTransferMap: nil)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, ignoredPrefixLogs: ignoredPrefixLogs, onlyPrefixLogs: onlyPrefixLogs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
     
     //MARK: - CocoaDebug disable
