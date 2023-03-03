@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "CocoaDebug"
-  s.version             = "1.7.2"
+  s.version             = "1.7.6"
   s.summary             = "iOS Debug Tool"
   s.homepage            = "https://github.com/CocoaDebug/CocoaDebug"
   s.author              = {"CocoaDebug" => "CocoaDebug@gmail.com"}

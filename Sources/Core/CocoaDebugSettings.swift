@@ -273,5 +273,24 @@ import Foundation
         enableMemoryLeaksMonitoring_ViewController = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
         enableMemoryLeaksMonitoring_View = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_UIView_CocoaDebug")
         enableMemoryLeaksMonitoring_MemberVariables = UserDefaults.standard.bool(forKey: "enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug")
+        
+        //ios15
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            // self.navigationController?.navigationBar.isTranslucent = true  // pass "true" for fixing iOS 15.0 black bg issue
+            // self.navigationController?.navigationBar.tintColor = UIColor.white // We need to set tintcolor for iOS 15.0
+            appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            
+            
+            let appearance2 = UITabBarAppearance()
+            appearance2.configureWithOpaqueBackground()
+            appearance2.shadowColor = .clear    //removing navigationbar 1 px bottom border.
+            UITabBar.appearance().standardAppearance = appearance2
+            UITabBar.appearance().scrollEdgeAppearance = appearance2
+        }
+
     }
 }

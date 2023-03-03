@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */; };
-		3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */; };
-		3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */; };
-		3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */; };
-		3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3826D9D224EE5BF4003DE040 /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3826DB4824EE5BF5003DE040 /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */; };
 		3826DB4924EE5BF5003DE040 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D524EE5BF4003DE040 /* AppInfoViewController.swift */; };
 		3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D724EE5BF4003DE040 /* CrashStoreManager.swift */; };
 		3826DB4D24EE5BF5003DE040 /* CrashDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826D9D924EE5BF4003DE040 /* CrashDetailViewController.swift */; };
@@ -274,9 +267,20 @@
 		3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF627042E1F005967AE /* _BacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF727042E1F005967AE /* _BacktraceLogger.m */; };
 		3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3871CFF827042E1F005967AE /* _RunloopMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF927042E1F005967AE /* _RunloopMonitor.m */; };
+		3871CFFD27042E1F005967AE /* _RunloopMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3871CFF927042E1F005967AE /* _RunloopMonitor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3882D68225676EA200379E0C /* _fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 3882D68025676EA200379E0C /* _fishhook.c */; };
 		3882D68325676EA200379E0C /* _fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 3882D68125676EA200379E0C /* _fishhook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38CD79A629B22ADA00B973BD /* CocoaDebug+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CD799B29B22ADA00B973BD /* CocoaDebug+Extensions.swift */; };
+		38CD79A729B22ADA00B973BD /* CocoaDebugDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CD799C29B22ADA00B973BD /* CocoaDebugDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38CD79A829B22ADA00B973BD /* _AutoLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD799D29B22ADA00B973BD /* _AutoLaunch.m */; };
+		38CD79A929B22ADA00B973BD /* CocoaDebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CD799E29B22ADA00B973BD /* CocoaDebugSettings.swift */; };
+		38CD79AA29B22ADA00B973BD /* _DeviceUtil+Constant.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CD799F29B22ADA00B973BD /* _DeviceUtil+Constant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38CD79AB29B22ADA00B973BD /* _DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD79A029B22ADA00B973BD /* _DeviceUtil.m */; };
+		38CD79AC29B22ADA00B973BD /* CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CD79A129B22ADA00B973BD /* CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38CD79AD29B22ADA00B973BD /* _DeviceUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CD79A229B22ADA00B973BD /* _DeviceUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38CD79AE29B22ADA00B973BD /* _DeviceUtil+Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD79A329B22ADA00B973BD /* _DeviceUtil+Constant.m */; };
+		38CD79AF29B22ADA00B973BD /* CocoaDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CD79A429B22ADA00B973BD /* CocoaDebug.swift */; };
+		38CD79B029B22ADA00B973BD /* CocoaDebugDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CD79A529B22ADA00B973BD /* CocoaDebugDeviceInfo.m */; };
 		38F69F8A26A6FAFB0010953F /* GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */; };
 /* End PBXBuildFile section */
@@ -293,13 +297,6 @@
 
 /* Begin PBXFileReference section */
 		380965722414E04F00382668 /* CocoaDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
-		3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugDeviceInfo.m; sourceTree = "<group>"; };
-		3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugDeviceInfo.h; sourceTree = "<group>"; };
-		3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
-		3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
-		3826D9D224EE5BF4003DE040 /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
-		3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CocoaDebug+Extensions.swift"; sourceTree = "<group>"; };
 		3826D9D524EE5BF4003DE040 /* AppInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		3826D9D724EE5BF4003DE040 /* CrashStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashStoreManager.swift; sourceTree = "<group>"; };
 		3826D9D924EE5BF4003DE040 /* CrashDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashDetailViewController.swift; sourceTree = "<group>"; };
@@ -564,6 +561,17 @@
 		3871CFF927042E1F005967AE /* _RunloopMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RunloopMonitor.m; sourceTree = "<group>"; };
 		3882D68025676EA200379E0C /* _fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _fishhook.c; sourceTree = "<group>"; };
 		3882D68125676EA200379E0C /* _fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fishhook.h; sourceTree = "<group>"; };
+		38CD799B29B22ADA00B973BD /* CocoaDebug+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CocoaDebug+Extensions.swift"; sourceTree = "<group>"; };
+		38CD799C29B22ADA00B973BD /* CocoaDebugDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebugDeviceInfo.h; sourceTree = "<group>"; };
+		38CD799D29B22ADA00B973BD /* _AutoLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _AutoLaunch.m; sourceTree = "<group>"; };
+		38CD799E29B22ADA00B973BD /* CocoaDebugSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebugSettings.swift; sourceTree = "<group>"; };
+		38CD799F29B22ADA00B973BD /* _DeviceUtil+Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "_DeviceUtil+Constant.h"; sourceTree = "<group>"; };
+		38CD79A029B22ADA00B973BD /* _DeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DeviceUtil.m; sourceTree = "<group>"; };
+		38CD79A129B22ADA00B973BD /* CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDebug.h; sourceTree = "<group>"; };
+		38CD79A229B22ADA00B973BD /* _DeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DeviceUtil.h; sourceTree = "<group>"; };
+		38CD79A329B22ADA00B973BD /* _DeviceUtil+Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "_DeviceUtil+Constant.m"; sourceTree = "<group>"; };
+		38CD79A429B22ADA00B973BD /* CocoaDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaDebug.swift; sourceTree = "<group>"; };
+		38CD79A529B22ADA00B973BD /* CocoaDebugDeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDebugDeviceInfo.m; sourceTree = "<group>"; };
 		38F69F8826A6FAFB0010953F /* GPBMessage+CocoaDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPBMessage+CocoaDebug.h"; sourceTree = "<group>"; };
 		38F69F8926A6FAFB0010953F /* GPBMessage+CocoaDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPBMessage+CocoaDebug.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -636,13 +644,17 @@
 		3826D9CE24EE5BF4003DE040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3823D00E256664F60014A224 /* CocoaDebugDeviceInfo.h */,
-				3823D00D256664F60014A224 /* CocoaDebugDeviceInfo.m */,
-				3826D9D024EE5BF4003DE040 /* CocoaDebug.swift */,
-				3826D9D124EE5BF4003DE040 /* CocoaDebugSettings.swift */,
-				3826D9D224EE5BF4003DE040 /* CocoaDebug.h */,
-				3826D9D324EE5BF4003DE040 /* CocoaDebug+Extensions.swift */,
-				38164FCE24EFE2B800C54BCC /* _AutoLaunch.m */,
+				38CD799D29B22ADA00B973BD /* _AutoLaunch.m */,
+				38CD79A229B22ADA00B973BD /* _DeviceUtil.h */,
+				38CD79A029B22ADA00B973BD /* _DeviceUtil.m */,
+				38CD799F29B22ADA00B973BD /* _DeviceUtil+Constant.h */,
+				38CD79A329B22ADA00B973BD /* _DeviceUtil+Constant.m */,
+				38CD79A129B22ADA00B973BD /* CocoaDebug.h */,
+				38CD79A429B22ADA00B973BD /* CocoaDebug.swift */,
+				38CD799B29B22ADA00B973BD /* CocoaDebug+Extensions.swift */,
+				38CD799C29B22ADA00B973BD /* CocoaDebugDeviceInfo.h */,
+				38CD79A529B22ADA00B973BD /* CocoaDebugDeviceInfo.m */,
+				38CD799E29B22ADA00B973BD /* CocoaDebugSettings.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1028,7 +1040,6 @@
 				3826DC3E24EE5BF5003DE040 /* _OCLogModel.h in Headers */,
 				3826DC6024EE5BF5003DE040 /* _Swizzling.h in Headers */,
 				3826DC4A24EE5BF5003DE040 /* CocoaDebugTool.h in Headers */,
-				3826DB4724EE5BF5003DE040 /* CocoaDebug.h in Headers */,
 				3826DC6824EE5BF5003DE040 /* NSObject+CocoaDebug.h in Headers */,
 				3826DC2B24EE5BF5003DE040 /* _NetworkHelper.h in Headers */,
 				3826DC3C24EE5BF5003DE040 /* _CustomHTTPProtocol.h in Headers */,
@@ -1042,7 +1053,10 @@
 				3826DD2824EE5FD5003DE040 /* _FileInfo.h in Headers */,
 				3826DD2A24EE5FD5003DE040 /* _DirectoryContentsTableViewController.h in Headers */,
 				3826DD2924EE5FD5003DE040 /* _FilePreviewController.h in Headers */,
-				3823D010256664F60014A224 /* CocoaDebugDeviceInfo.h in Headers */,
+				38CD79AD29B22ADA00B973BD /* _DeviceUtil.h in Headers */,
+				38CD79AA29B22ADA00B973BD /* _DeviceUtil+Constant.h in Headers */,
+				38CD79AC29B22ADA00B973BD /* CocoaDebug.h in Headers */,
+				38CD79A729B22ADA00B973BD /* CocoaDebugDeviceInfo.h in Headers */,
 				3871CFFA27042E1F005967AE /* _BacktraceLogger.h in Headers */,
 				3871CFFC27042E1F005967AE /* _RunloopMonitor.h in Headers */,
 				3882D68325676EA200379E0C /* _fishhook.h in Headers */,
@@ -1331,15 +1345,16 @@
 				3826DD2424EE5FD5003DE040 /* _SandboxerHelper.m in Sources */,
 				3882D68225676EA200379E0C /* _fishhook.c in Sources */,
 				38F69F8B26A6FAFB0010953F /* GPBMessage+CocoaDebug.m in Sources */,
-				38164FCF24EFE2B800C54BCC /* _AutoLaunch.m in Sources */,
 				3826DC3324EE5BF5003DE040 /* NetworkDetailModel.swift in Sources */,
 				3826DC2C24EE5BF5003DE040 /* NetworkCell.swift in Sources */,
 				385945EE256D07D400ADA065 /* _SwiftLogHelper.swift in Sources */,
+				38CD79A929B22ADA00B973BD /* CocoaDebugSettings.swift in Sources */,
 				3826DC4124EE5BF5003DE040 /* _OCLoggerFormat.m in Sources */,
 				3826DC6A24EE5BF5003DE040 /* NSObject+CocoaDebug.m in Sources */,
+				38CD79AB29B22ADA00B973BD /* _DeviceUtil.m in Sources */,
 				3826DB4B24EE5BF5003DE040 /* CrashStoreManager.swift in Sources */,
-				3823D00F256664F60014A224 /* CocoaDebugDeviceInfo.m in Sources */,
 				3826DC3F24EE5BF5003DE040 /* _NSLogHook.m in Sources */,
+				38CD79A829B22ADA00B973BD /* _AutoLaunch.m in Sources */,
 				3826DC3824EE5BF5003DE040 /* _CustomHTTPProtocol.m in Sources */,
 				3826DC5F24EE5BF5003DE040 /* _WKWebView+Swizzling.m in Sources */,
 				3826DD3324EE5FD5003DE040 /* _DirectoryContentsTableViewController.m in Sources */,
@@ -1350,6 +1365,7 @@
 				3828BA2B259E223B00ABF650 /* _DebugConsoleLabel.m in Sources */,
 				3826DB5124EE5BF5003DE040 /* CrashLogger.swift in Sources */,
 				3826DC4824EE5BF5003DE040 /* LogViewController.swift in Sources */,
+				38CD79B029B22ADA00B973BD /* CocoaDebugDeviceInfo.m in Sources */,
 				3826DB5024EE5BF5003DE040 /* _CrashModel.swift in Sources */,
 				3826DD2E24EE5FD5003DE040 /* _Sandboxer.m in Sources */,
 				3828BA33259E234C00ABF650 /* UIBlockingBubble.swift in Sources */,
@@ -1365,9 +1381,7 @@
 				3826DC2F24EE5BF5003DE040 /* NetworkDetailViewController.swift in Sources */,
 				3826DB4F24EE5BF5003DE040 /* CrashListViewController.swift in Sources */,
 				3826DC6724EE5BF5003DE040 /* Color.swift in Sources */,
-				3826DB4824EE5BF5003DE040 /* CocoaDebug+Extensions.swift in Sources */,
 				3826DB4D24EE5BF5003DE040 /* CrashDetailViewController.swift in Sources */,
-				3826DB4524EE5BF5003DE040 /* CocoaDebug.swift in Sources */,
 				3826DC3424EE5BF5003DE040 /* _HttpDatasource.m in Sources */,
 				3826DC3724EE5BF5003DE040 /* _QNSURLSessionDemux.m in Sources */,
 				3871CFFB27042E1F005967AE /* _BacktraceLogger.m in Sources */,
@@ -1381,13 +1395,15 @@
 				3826DC2924EE5BF5003DE040 /* JsonViewController.swift in Sources */,
 				3826DB4E24EE5BF5003DE040 /* IgnoredURLsViewController.swift in Sources */,
 				3826DC6124EE5BF5003DE040 /* Bubble.swift in Sources */,
-				3826DB4624EE5BF5003DE040 /* CocoaDebugSettings.swift in Sources */,
 				3826DC3224EE5BF5003DE040 /* _NetworkHelper.m in Sources */,
 				3826DC6324EE5BF5003DE040 /* CocoaDebugNavigationController.swift in Sources */,
 				3826DC4C24EE5BF5003DE040 /* _ObjcLog.m in Sources */,
 				3826DC2E24EE5BF5003DE040 /* NetworkViewController.swift in Sources */,
+				38CD79AF29B22ADA00B973BD /* CocoaDebug.swift in Sources */,
 				3826DC6524EE5BF5003DE040 /* CocoaDebugTabBarController.swift in Sources */,
 				3826DD2624EE5FD5003DE040 /* _FileInfo.m in Sources */,
+				38CD79A629B22ADA00B973BD /* CocoaDebug+Extensions.swift in Sources */,
+				38CD79AE29B22ADA00B973BD /* _DeviceUtil+Constant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
