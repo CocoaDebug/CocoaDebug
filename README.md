@@ -66,8 +66,6 @@ github  "CocoaDebug/CocoaDebug"
 
 > WARNING: Never ship a product which has been linked with the CocoaDebug framework. The [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to Debug builds.
 
-> [Xcode12 build error solution](https://stackoverflow.com/questions/63267897/building-for-ios-simulator-but-the-linked-framework-framework-was-built)
-
 ## Usage
 
 - Don't need to do anything. CocoaDebug will start automatically.
@@ -100,10 +98,6 @@ When you initialize CocoaDebug, you can customize the following parameter values
 - `mainColor` - Set CocoaDebug's main color with hexadecimal format. Default value is **#42d459**.
 
 - `protobufTransferMap` - Protobuf data transfer to JSON map. Default value is **nil**.
-
-## Thanks
-
-Special thanks to [remirobert](https://github.com/remirobert).
 
 ## Reference
 
