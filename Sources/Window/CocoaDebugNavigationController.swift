@@ -26,6 +26,19 @@ class CocoaDebugNavigationController: UINavigationController {
                                        style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen
         topViewController?.navigationItem.leftBarButtonItem = leftItem
+        
+        //bugfix #issues-158
+        if #available(iOS 13, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            // self.navigationController?.navigationBar.isTranslucent = true  // pass "true" for fixing iOS 15.0 black bg issue
+            // self.navigationController?.navigationBar.tintColor = UIColor.white // We need to set tintcolor for iOS 15.0
+            appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
+//            UINavigationBar.appearance().standardAppearance = appearance
+//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            self.navigationBar.standardAppearance = appearance
+            self.navigationBar.scrollEdgeAppearance = appearance
+        }
     }
     
     

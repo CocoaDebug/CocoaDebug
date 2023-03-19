@@ -20,6 +20,19 @@ class CocoaDebugTabBarController: UITabBarController {
         
         self.selectedIndex = CocoaDebugSettings.shared.tabBarSelectItem 
         self.tabBar.tintColor = Color.mainGreen
+        
+        //bugfix #issues-158
+        if #available(iOS 13, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
+//            self.tabBar.appearance().standardAppearance = appearance
+//            self.tabBar.appearance().scrollEdgeAppearance = appearance
+            self.tabBar.standardAppearance = appearance
+            if #available(iOS 15.0, *) {
+                self.tabBar.scrollEdgeAppearance = appearance
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
