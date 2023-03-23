@@ -17,6 +17,8 @@
 
 ## Introduction
 
+- [x] As similar with [Charles](https://www.charlesproxy.com/) in your App.
+
 - [x] Shake to hide or show the black bubble. (Support iPhone device and simulator)
 
 - [x] Share network details via email or copy to clipboard when you are in the *Network Details* page.
