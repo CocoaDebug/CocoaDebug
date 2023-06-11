@@ -17,7 +17,8 @@ extension _HttpModel {
         }
 
         for (field, value) in requestHeaderFields {
-            components.append("-H \"\(field): \(value)\"")
+            let valueString = "\(value)".replacingOccurrences(of: "\"", with: "\\\"")
+            components.append("-H \"\(field): \(valueString)\"")
         }
 
         if let requestBodyString = String(data: requestData, encoding: .utf8), requestBodyString.isEmpty == false {
