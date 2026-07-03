@@ -28,8 +28,12 @@
     if (!CocoaDebugClass) {
         CocoaDebugClass = NSClassFromString(@"CocoaDebug");
     }
-    if (CocoaDebugClass && [CocoaDebugClass respondsToSelector:@selector(enable)]) {
-        [CocoaDebugClass performSelector:@selector(enable)];
+    SEL enableSel = NSSelectorFromString(@"enable");
+    if (CocoaDebugClass && [CocoaDebugClass respondsToSelector:enableSel]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [CocoaDebugClass performSelector:enableSel];
+#pragma clang diagnostic pop
     }
 
     [[NSNotificationCenter defaultCenter] removeObserver:self

@@ -276,7 +276,7 @@ class LogViewController: UIViewController {
         deleteItem.tintColor = Color.mainGreen
         segmentedControl.tintColor = Color.mainGreen
         
-        if UIScreen.main.bounds.size.width == 320 {
+        if view.bounds.size.width == 320 {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)], for: .normal)
         } else {
             segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], for: .normal)
@@ -621,7 +621,7 @@ extension LogViewController: UITableViewDelegate {
             model = webModels[indexPath.row]
         }
         
-        if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width) {
+        if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: tableView.frame.width) {
             return height + 10;
         }
         

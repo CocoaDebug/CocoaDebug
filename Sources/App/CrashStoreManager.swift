@@ -42,36 +42,23 @@ class CrashStoreManager {
             self.crashArray.removeAll()
             UserDefaults.standard.removeObject(forKey: "crashArchive_CocoaDebug")
             UserDefaults.standard.removeObject(forKey: "crashCount_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     
     //MARK: - private
     private func archiveCrashs(_ crashs: [_CrashModel]) {
         do {
-            var dataArchive: Data
-            if #available(iOS 11.0, *) {
-                dataArchive = try NSKeyedArchiver.archivedData(withRootObject: crashs, requiringSecureCoding: false)
-            } else {
-                // Fallback on earlier versions
-                dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-            }
+            let dataArchive = try NSKeyedArchiver.archivedData(withRootObject: crashs, requiringSecureCoding: true)
             UserDefaults.standard.set(dataArchive, forKey: "crashArchive_CocoaDebug")
             UserDefaults.standard.set(crashs.count, forKey: "crashCount_CocoaDebug")
-            UserDefaults.standard.synchronize()
         } catch {}
     }
     
     private func getCrashs() -> [_CrashModel] {
         guard let data = UserDefaults.standard.object(forKey: "crashArchive_CocoaDebug") as? Data else {return []}
         do {
-            if #available(iOS 9.0, *) {
-                let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-                return dataArchive as! [_CrashModel]
-            } else {
-                // Fallback on earlier versions
-                return []
-            }
+            let dataArchive = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, _CrashModel.self], from: data)
+            return (dataArchive as? [_CrashModel]) ?? []
         } catch {
             return []
         }

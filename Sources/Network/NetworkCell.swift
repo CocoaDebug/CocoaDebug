@@ -29,19 +29,9 @@ class NetworkCell: UITableViewCell {
             //domain name
             requestUrlTextView.text = httpModel?.url.absoluteString
             if requestUrlTextView.text?.contains(serverURL) == true {
-                if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
-                } else {
-                    // Fallback on earlier versions
-                    requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
-                }
+                requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
             } else {
-                if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-                } else {
-                    // Fallback on earlier versions
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13)
-                }
+                requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
             }
             
             //Request method
@@ -141,11 +131,7 @@ class NetworkCell: UITableViewCell {
         leftAlignLine.textAlignment = .center
         leftAlignLine.textColor = .white
         leftAlignLine.adjustsFontSizeToFitWidth = true
-        if #available(iOS 8.2, *) {
-            leftAlignLine.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        } else {
-            leftAlignLine.font = UIFont.boldSystemFont(ofSize: 20)
-        }
+        leftAlignLine.font = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
     
     //MARK: - layoutSubviews

@@ -53,7 +53,16 @@
     self.title = self.fileInfo.displayName;
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
-    self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height - [[UIApplication sharedApplication] statusBarFrame].size.height);
+    CGFloat statusBarHeight = 0;
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+        if (scene.activationState == UISceneActivationStateForegroundActive &&
+            [scene isKindOfClass:[UIWindowScene class]]) {
+            UIWindowScene *windowScene = (UIWindowScene *)scene;
+            statusBarHeight = windowScene.statusBarManager.statusBarFrame.size.height;
+            break;
+        }
+    }
+    self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height - statusBarHeight);
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
@@ -75,7 +84,7 @@
     {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
         {
             [UIView animateWithDuration:UINavigationControllerHideShowBarDuration animations:^{
                 self.imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 111);
@@ -85,10 +94,14 @@
         else
         {
             BOOL iPhoneX = NO;
-            if (@available(iOS 11.0, *)) {
-                UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
-                if (mainWindow.safeAreaInsets.top > 24.0) {
-                    iPhoneX = YES;
+            for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+                if (scene.activationState == UISceneActivationStateForegroundActive &&
+                    [scene isKindOfClass:[UIWindowScene class]]) {
+                    UIWindowScene *windowScene = (UIWindowScene *)scene;
+                    if (windowScene.windows.firstObject.safeAreaInsets.top > 24.0) {
+                        iPhoneX = YES;
+                    }
+                    break;
                 }
             }
             

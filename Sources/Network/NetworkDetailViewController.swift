@@ -412,7 +412,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             _ = self?.configureMailComposer(true)
             let items: [Any] = [self?.messageBody ?? ""]
             let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            if UI_USER_INTERFACE_IDIOM() == .phone {
+            if UIDevice.current.userInterfaceIdiom == .phone {
                 self?.present(action, animated: true, completion: nil)
             } else {
                 action.popoverPresentationController?.sourceRect = .init(x: self?.view.bounds.midX ?? 0, y: self?.view.bounds.midY ?? 0, width: 0, height: 0)
@@ -512,20 +512,10 @@ extension NetworkDetailViewController {
                 
                 if httpModel?.url.absoluteString.contains(serverURL) == true {
                     //Calculate NSString height
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    }
+                    height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                 } else {
                     //Calculate NSString height
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    }
+                    height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                 }
                 return height + 57
             }

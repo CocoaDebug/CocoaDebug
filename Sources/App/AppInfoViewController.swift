@@ -56,7 +56,7 @@ class AppInfoViewController: UITableViewController {
         labelserverURL.text = CocoaDebugSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
         
-        if UIScreen.main.bounds.size.width == 320 {
+        if view.bounds.size.width == 320 {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         

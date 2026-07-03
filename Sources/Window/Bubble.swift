@@ -52,40 +52,31 @@ class Bubble: UIView {
         }
 
         var h = 0
-        if #available(iOS 11.0, *) {
-            let insets = safeAreaInsets()
-            if insets.top > 24.0 {
-                h = 16;
-            }
+        let insets = safeAreaInsets()
+        if insets.top > 24.0 {
+            h = 16;
         }
         let screenBounds = safeScreenBounds()
         return CGPoint(x: 1.875 + _width/2, y: screenBounds.height/2 - _height - CGFloat(h))
     }
 
     private static func safeScreenBounds() -> CGRect {
-        if #available(iOS 13.0, *) {
-            for scene in UIApplication.shared.connectedScenes {
-                if scene.activationState == .foregroundActive,
-                   let windowScene = scene as? UIWindowScene {
-                    return windowScene.coordinateSpace.bounds
-                }
+        for scene in UIApplication.shared.connectedScenes {
+            if scene.activationState == .foregroundActive,
+               let windowScene = scene as? UIWindowScene {
+                return windowScene.coordinateSpace.bounds
             }
         }
         return UIScreen.main.bounds
     }
 
     private static func safeAreaInsets() -> UIEdgeInsets {
-        if #available(iOS 13.0, *) {
-            for scene in UIApplication.shared.connectedScenes {
-                if scene.activationState == .foregroundActive,
-                   let windowScene = scene as? UIWindowScene,
-                   let firstWindow = windowScene.windows.first {
-                    return firstWindow.safeAreaInsets
-                }
+        for scene in UIApplication.shared.connectedScenes {
+            if scene.activationState == .foregroundActive,
+               let windowScene = scene as? UIWindowScene,
+               let firstWindow = windowScene.windows.first {
+                return firstWindow.safeAreaInsets
             }
-        }
-        if #available(iOS 11.0, *) {
-            return UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
         }
         return .zero
     }
@@ -316,23 +307,14 @@ class Bubble: UIView {
         
         if panner.state == .ended || panner.state == .cancelled {
             
-            var frameInset: UIEdgeInsets
-            
-            if #available(iOS 13.0, *) {
-                var insets = UIEdgeInsets.zero
-                for scene in UIApplication.shared.connectedScenes {
-                    if scene.activationState == .foregroundActive,
-                       let windowScene = scene as? UIWindowScene,
-                       let firstWindow = windowScene.windows.first {
-                        insets = firstWindow.safeAreaInsets
-                        break
-                    }
+            var frameInset = UIEdgeInsets.zero
+            for scene in UIApplication.shared.connectedScenes {
+                if scene.activationState == .foregroundActive,
+                   let windowScene = scene as? UIWindowScene,
+                   let firstWindow = windowScene.windows.first {
+                    frameInset = firstWindow.safeAreaInsets
+                    break
                 }
-                frameInset = insets
-            } else if #available(iOS 11.0, *) {
-                frameInset = UIApplication.shared.keyWindow?.safeAreaInsets ?? UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
-            } else {
-                frameInset = UIDevice.current.orientation.isPortrait ? UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0) : .zero
             }
 
             let location = panner.location(in: self.superview)
@@ -341,23 +323,16 @@ class Bubble: UIView {
             var finalX: Double = Double(self.width/8*4.25)
             var finalY: Double = Double(location.y)
 
-            let screenWidth: CGFloat
-            let screenHeight: CGFloat
-            if #available(iOS 13.0, *) {
-                var bounds = UIScreen.main.bounds
-                for scene in UIApplication.shared.connectedScenes {
-                    if scene.activationState == .foregroundActive,
-                       let windowScene = scene as? UIWindowScene {
-                        bounds = windowScene.coordinateSpace.bounds
-                        break
-                    }
+            var bounds = UIScreen.main.bounds
+            for scene in UIApplication.shared.connectedScenes {
+                if scene.activationState == .foregroundActive,
+                   let windowScene = scene as? UIWindowScene {
+                    bounds = windowScene.coordinateSpace.bounds
+                    break
                 }
-                screenWidth = bounds.width
-                screenHeight = bounds.height
-            } else {
-                screenWidth = UIScreen.main.bounds.size.width
-                screenHeight = UIScreen.main.bounds.size.height
             }
+            let screenWidth = bounds.width
+            let screenHeight = bounds.height
 
             if location.x > screenWidth / 2 {
                 finalX = Double(screenWidth) - Double(self.width/8*4.25)

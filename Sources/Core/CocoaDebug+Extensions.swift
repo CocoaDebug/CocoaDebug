@@ -178,9 +178,9 @@ extension Data {
 extension String {
     var hexColor: UIColor {
         let hex = trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        var a, r, g, b: UInt32
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        var a, r, g, b: UInt64
         switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)

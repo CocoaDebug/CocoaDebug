@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _CrashModel: NSObject, NSCoding {
+class _CrashModel: NSObject, NSSecureCoding {
     
     var id: String
     var date: Date
@@ -33,12 +33,14 @@ class _CrashModel: NSObject, NSCoding {
         aCoder.encode(callStacks, forKey: "callstacks")
     }
     
+    static var supportsSecureCoding: Bool { return true }
+
     required init?(coder aDecoder: NSCoder) {
-        id = aDecoder.decodeObject(forKey: "id") as? String ?? ""
-        date = aDecoder.decodeObject(forKey: "date") as? Date ?? Date()
-        reason = aDecoder.decodeObject(forKey: "reason") as? String
-        name = aDecoder.decodeObject(forKey: "name") as? String
-        callStacks = aDecoder.decodeObject(forKey: "callstacks") as? [String]
+        id = aDecoder.decodeObject(of: NSString.self, forKey: "id") as String? ?? ""
+        date = aDecoder.decodeObject(of: NSDate.self, forKey: "date") as Date? ?? Date()
+        reason = aDecoder.decodeObject(of: NSString.self, forKey: "reason") as String?
+        name = aDecoder.decodeObject(of: NSString.self, forKey: "name") as String?
+        callStacks = aDecoder.decodeObject(of: [NSArray.self, NSString.self], forKey: "callstacks") as? [String]
     }
     
     func toString() -> String {

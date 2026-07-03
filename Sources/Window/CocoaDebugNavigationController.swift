@@ -39,10 +39,8 @@ class CocoaDebugNavigationController: UINavigationController {
             self.navigationBar.standardAppearance = appearance
             self.navigationBar.scrollEdgeAppearance = appearance
             self.navigationBar.compactAppearance = appearance
-            if #available(iOS 15.0, *) {
-                self.navigationBar.compactScrollEdgeAppearance = appearance
-            }
-        } else if #available(iOS 13.0, *) {
+            self.navigationBar.compactScrollEdgeAppearance = appearance
+        } else {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.shadowColor = .clear

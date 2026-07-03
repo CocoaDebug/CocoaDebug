@@ -24,7 +24,6 @@ import UIKit
     private var desiredPanelVisible = false
 
     private var isEnabled = false
-    private var sceneActivationObserver: NSObjectProtocol?
 
     private let accessibilityPrefix = "com.cocoadebug.window"
 
@@ -102,13 +101,22 @@ import UIKit
 
     // MARK: - Scene Lifecycle
 
-    @available(iOS 13.0, *)
     @objc public func handleSceneDidActivate(_ scene: UIScene) {
         guard isEnabled, desiredBubbleVisible else { return }
         // Re-assign the active scene to our window
         if let windowScene = scene as? UIWindowScene, let bw = bubbleWindow {
             bw.windowScene = windowScene
         }
+    }
+
+    @objc private func sceneActivated(_ notification: Notification) {
+        NotificationCenter.default.removeObserver(self, name: UIScene.didActivateNotification, object: nil)
+
+        guard let scene = notification.object as? UIWindowScene,
+              let bw = bubbleWindow,
+              bw.windowScene == nil,
+              desiredBubbleVisible else { return }
+        bw.windowScene = scene
     }
 
     @objc public func handleDidEnterBackground() {
@@ -136,24 +144,13 @@ import UIKit
         window.isHidden = false
         bubbleWindow = window
 
-        if #available(iOS 13.0, *) {
-            assignBestScene(to: window)
-            if window.windowScene == nil {
-                sceneActivationObserver = NotificationCenter.default.addObserver(
-                    forName: UIScene.didActivateNotification,
-                    object: nil,
-                    queue: .main) { [weak self] notification in
-                        guard let self = self,
-                              let scene = notification.object as? UIWindowScene else { return }
-                        if self.bubbleWindow?.windowScene == nil && self.desiredBubbleVisible {
-                            self.bubbleWindow?.windowScene = scene
-                        }
-                        if let obs = self.sceneActivationObserver {
-                            NotificationCenter.default.removeObserver(obs)
-                            self.sceneActivationObserver = nil
-                        }
-                    }
-            }
+        assignBestScene(to: window)
+        if window.windowScene == nil {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(sceneActivated(_:)),
+                name: UIScene.didActivateNotification,
+                object: nil)
         }
 
         if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
@@ -161,7 +158,6 @@ import UIKit
         }
     }
 
-    @available(iOS 13.0, *)
     private func assignBestScene(to window: CocoaDebugWindow) {
         if let scene = anyAvailableScene() {
             window.windowScene = scene
@@ -172,7 +168,6 @@ import UIKit
 
     // MARK: - Scene Helpers
 
-    @available(iOS 13.0, *)
     private func anyAvailableScene() -> UIWindowScene? {
         for scene in UIApplication.shared.connectedScenes {
             guard let windowScene = scene as? UIWindowScene else { continue }
@@ -197,21 +192,13 @@ import UIKit
     /// Compute a safe bubble position within the current screen bounds.
     private func safeBubblePosition() -> CGPoint {
         var safeInsets = UIEdgeInsets.zero
-        if #available(iOS 13.0, *) {
-            if let scene = anyAvailableScene() {
-                safeInsets = scene.windows.first?.safeAreaInsets ?? .zero
-            }
-        } else if #available(iOS 11.0, *) {
-            safeInsets = UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
+        if let scene = anyAvailableScene() {
+            safeInsets = scene.windows.first?.safeAreaInsets ?? .zero
         }
 
         let screenBounds: CGRect
-        if #available(iOS 13.0, *) {
-            if let scene = anyAvailableScene() {
-                screenBounds = scene.coordinateSpace.bounds
-            } else {
-                screenBounds = UIScreen.main.bounds
-            }
+        if let scene = anyAvailableScene() {
+            screenBounds = scene.coordinateSpace.bounds
         } else {
             screenBounds = UIScreen.main.bounds
         }
