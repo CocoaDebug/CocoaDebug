@@ -18,9 +18,10 @@ class CocoaDebugWindow: UIWindow {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         self.backgroundColor = .clear
         self.windowLevel = UIWindow.Level(rawValue: UIWindow.Level.alert.rawValue - 1)
+        self.accessibilityIdentifier = "com.cocoadebug.window"
     }
     
     required init?(coder aDecoder: NSCoder) {

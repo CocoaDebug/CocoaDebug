@@ -1,0 +1,228 @@
+//
+//  CocoaDebugWindowManager.swift
+//  CocoaDebug
+//
+//  Copyright © 2020 man. All rights reserved.
+//
+
+import UIKit
+
+/// Central manager for CocoaDebug window lifecycle.
+/// Does NOT modify host app windows or rootViewController.
+@objc public class CocoaDebugWindowManager: NSObject {
+
+    @objc public static let shared = CocoaDebugWindowManager()
+
+    // MARK: - Properties
+
+    private var bubbleWindow: CocoaDebugWindow?
+    private var panelWindow: CocoaDebugWindow?
+
+    private var bubbleVC: CocoaDebugViewController?
+
+    private var desiredBubbleVisible = false
+    private var desiredPanelVisible = false
+
+    private var isEnabled = false
+
+    private let accessibilityPrefix = "com.cocoadebug.window"
+
+    // MARK: - Public API
+
+    @objc public func start() {
+        guard !isEnabled else { return }
+        isEnabled = true
+
+        if desiredBubbleVisible {
+            showBubble()
+        }
+    }
+
+    @objc public func stop() {
+        isEnabled = false
+        hideBubble()
+        hidePanel()
+    }
+
+    @objc public func showBubble() {
+        desiredBubbleVisible = true
+        guard isEnabled else { return }
+
+        if bubbleWindow == nil {
+            createBubbleWindow()
+        }
+        bubbleWindow?.isHidden = false
+    }
+
+    @objc public func hideBubble() {
+        desiredBubbleVisible = false
+        bubbleWindow?.rootViewController = nil
+        bubbleWindow?.delegate = nil
+        bubbleWindow?.isHidden = true
+        bubbleWindow = nil
+        bubbleVC = nil
+    }
+
+    @objc public func showPanel() {
+        desiredPanelVisible = true
+        guard isEnabled, let bubbleVC = bubbleVC else { return }
+
+        WindowHelper.shared.displayedList = true
+        let storyboard = UIStoryboard(name: "Manager", bundle: Bundle(for: CocoaDebug.self))
+        guard let vc = storyboard.instantiateInitialViewController() else { return }
+        vc.view.backgroundColor = .white
+        vc.modalPresentationStyle = .fullScreen
+        bubbleVC.present(vc, animated: true, completion: nil)
+    }
+
+    @objc public func hidePanel() {
+        desiredPanelVisible = false
+        guard let bubbleVC = bubbleVC else { return }
+        if bubbleVC.presentedViewController != nil {
+            bubbleVC.dismiss(animated: true, completion: nil)
+        }
+        WindowHelper.shared.displayedList = false
+    }
+
+    /// Reset the floating ball position to a safe default within screen bounds.
+    @objc public func resetFloatingBallState() {
+        CocoaDebugSettings.shared.bubbleFrameX = 0
+        CocoaDebugSettings.shared.bubbleFrameY = 0
+
+        guard let bubble = bubbleVC?.bubble else { return }
+        let safePosition = safeBubblePosition()
+        bubble.center = safePosition
+        CocoaDebugSettings.shared.bubbleFrameX = Float(safePosition.x)
+        CocoaDebugSettings.shared.bubbleFrameY = Float(safePosition.y)
+    }
+
+    // MARK: - Scene Lifecycle
+
+    @available(iOS 13.0, *)
+    @objc public func handleSceneDidActivate(_ scene: UIScene) {
+        guard isEnabled, desiredBubbleVisible else { return }
+        if bubbleWindow == nil {
+            createBubbleWindow()
+        }
+    }
+
+    @objc public func handleDidEnterBackground() {
+        hidePanel()
+    }
+
+    @objc public func handleWillEnterForeground() {
+        guard isEnabled, desiredBubbleVisible else { return }
+        if bubbleWindow == nil || bubbleWindow?.isHidden == true {
+            createBubbleWindow()
+        }
+    }
+
+    // MARK: - Window Creation
+
+    private func createBubbleWindow() {
+        if #available(iOS 13.0, *) {
+            createBubbleWindowScene()
+        } else {
+            createBubbleWindowLegacy()
+        }
+    }
+
+    @available(iOS 13.0, *)
+    private func createBubbleWindowScene() {
+        guard let windowScene = foregroundActiveScene() else {
+            return
+        }
+
+        let vc = CocoaDebugViewController()
+        bubbleVC = vc
+
+        let window = CocoaDebugWindow(frame: windowScene.coordinateSpace.bounds)
+        window.windowScene = windowScene
+        window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
+        window.bounds.size.height = windowScene.coordinateSpace.bounds.height.nextDown
+        window.rootViewController = vc
+        window.delegate = WindowHelper.shared
+        window.isHidden = false
+        bubbleWindow = window
+
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
+            WindowHelper.shared.startUIBlockingMonitoring()
+        }
+    }
+
+    private func createBubbleWindowLegacy() {
+        let vc = CocoaDebugViewController()
+        bubbleVC = vc
+
+        let window = CocoaDebugWindow(frame: UIScreen.main.bounds)
+        window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
+        window.bounds.size.height = UIScreen.main.bounds.height.nextDown
+        window.rootViewController = vc
+        window.delegate = WindowHelper.shared
+        window.isHidden = false
+        bubbleWindow = window
+
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
+            WindowHelper.shared.startUIBlockingMonitoring()
+        }
+    }
+
+    // MARK: - Scene Helpers
+
+    @available(iOS 13.0, *)
+    private func foregroundActiveScene() -> UIWindowScene? {
+        for scene in UIApplication.shared.connectedScenes {
+            guard let windowScene = scene as? UIWindowScene else { continue }
+            if scene.activationState == .foregroundActive {
+                return windowScene
+            }
+        }
+        for scene in UIApplication.shared.connectedScenes {
+            guard let windowScene = scene as? UIWindowScene else { continue }
+            if scene.activationState == .foregroundInactive {
+                return windowScene
+            }
+        }
+        return nil
+    }
+
+    /// Compute a safe bubble position within the current screen bounds.
+    private func safeBubblePosition() -> CGPoint {
+        var safeInsets = UIEdgeInsets.zero
+        if #available(iOS 13.0, *) {
+            if let scene = foregroundActiveScene() {
+                safeInsets = scene.windows.first?.safeAreaInsets ?? .zero
+            }
+        } else if #available(iOS 11.0, *) {
+            safeInsets = UIApplication.shared.keyWindow?.safeAreaInsets ?? .zero
+        }
+
+        let screenBounds: CGRect
+        if #available(iOS 13.0, *) {
+            if let scene = foregroundActiveScene() {
+                screenBounds = scene.coordinateSpace.bounds
+            } else {
+                screenBounds = UIScreen.main.bounds
+            }
+        } else {
+            screenBounds = UIScreen.main.bounds
+        }
+
+        let bubbleWidth = Bubble.size.width
+        let bubbleHeight = Bubble.size.height
+        let halfWidth = bubbleWidth / 2
+        let halfHeight = bubbleHeight / 2
+
+        let x = max(halfWidth, min(screenBounds.width - halfWidth, screenBounds.width / 2))
+        let y = max(halfHeight + safeInsets.top, min(screenBounds.height - halfHeight - safeInsets.bottom,
+                                                     screenBounds.height / 2))
+
+        return CGPoint(x: x, y: y)
+    }
+
+    // MARK: - Internal helpers
+
+    internal func currentBubbleVC() -> CocoaDebugViewController? {
+        return bubbleVC
+    }
+}

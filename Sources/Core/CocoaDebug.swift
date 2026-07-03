@@ -36,20 +36,49 @@ import UIKit
     @objc public static func enable() {
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, ignoredPrefixLogs: ignoredPrefixLogs, onlyPrefixLogs: onlyPrefixLogs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
-    
+
     //MARK: - CocoaDebug disable
     @objc public static func disable() {
         deinitializationMethod()
     }
-    
+
     //MARK: - hide Bubble
     @objc public static func hideBubble() {
         CocoaDebugSettings.shared.showBubbleAndWindow = false
     }
-    
+
     //MARK: - show Bubble
     @objc public static func showBubble() {
         CocoaDebugSettings.shared.showBubbleAndWindow = true
+    }
+
+    //MARK: - Floating Bubble (public API)
+
+    /// Show the floating bubble entry point.
+    @objc public static func showFloatingBubble() {
+        CocoaDebugWindowManager.shared.showBubble()
+    }
+
+    /// Hide the floating bubble entry point.
+    @objc public static func hideFloatingBubble() {
+        CocoaDebugWindowManager.shared.hideBubble()
+    }
+
+    /// Reset the floating ball position to a safe default within screen bounds.
+    @objc public static func resetFloatingBallState() {
+        CocoaDebugWindowManager.shared.resetFloatingBallState()
+    }
+
+    //MARK: - Panel (public API)
+
+    /// Programmatically show the debug panel.
+    @objc public static func showPanel() {
+        CocoaDebugWindowManager.shared.showPanel()
+    }
+
+    /// Programmatically hide the debug panel.
+    @objc public static func hidePanel() {
+        CocoaDebugWindowManager.shared.hidePanel()
     }
 }
 

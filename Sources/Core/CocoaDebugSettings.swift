@@ -13,12 +13,9 @@ import Foundation
     @objc public static let shared = CocoaDebugSettings()
     
     @objc public var slowAnimations: Bool = false {
-        didSet {            
-            if slowAnimations == false {
-                UIApplication.shared.windows.first?.layer.speed = 1;
-            } else {
-                UIApplication.shared.windows.first?.layer.speed = 0.1;
-            }
+        didSet {
+            // Do NOT modify host app's window layer.speed.
+            // Host app is responsible for slow animation behavior if desired.
         }
     }
     
@@ -106,27 +103,13 @@ import Foundation
         didSet {
             UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
             UserDefaults.standard.synchronize()
-            
-            let x = WindowHelper.shared.vc.bubble.frame.origin.x
-            let width = WindowHelper.shared.vc.bubble.frame.size.width
-            
-            if showBubbleAndWindow == true
-            {
-                if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
-                } else {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
-                }
-                WindowHelper.shared.enable()
-            }
-            else
-            {
-                if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
-                } else {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width
-                }
-                WindowHelper.shared.disable()
+
+            // Settings only emit intent; WindowManager handles the actual window lifecycle.
+            if showBubbleAndWindow == true {
+                CocoaDebugWindowManager.shared.showBubble()
+            } else {
+                CocoaDebugWindowManager.shared.hideBubble()
+                CocoaDebugWindowManager.shared.hidePanel()
             }
         }
     }

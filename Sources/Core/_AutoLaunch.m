@@ -1,51 +1,38 @@
 //
-//  Example
-//  man
+//  _AutoLaunch.m
+//  CocoaDebug
 //
-//  Created by man 11/11/2018.
-//  Copyright © 2020 man. All rights reserved.
+//  Auto-launch helper.
+//  Uses a dedicated class to avoid +load on NSObject (which would run for every class in the process).
 //
-
-static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key";
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <objc/runtime.h>
-#import "_NetworkHelper.h"
 
-@interface NSObject (CocoaDebugAutoLaunch)
-
-@property (nonatomic, assign) BOOL cocoadebug_applicationDidFinishLaunching;
-
+/// Dedicated class for auto-launch. +load only runs once for this specific class.
+@interface CocoaDebugAutoLaunchHelper : NSObject
 @end
 
-@implementation NSObject (CocoaDebugAutoLaunch)
+@implementation CocoaDebugAutoLaunchHelper
 
-#pragma mark - load
 + (void)load {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cocoadebug_applicationDidFinishLaunchingNotification:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cocoadebug_applicationDidFinishLaunching:)
+                                                 name:UIApplicationDidFinishLaunchingNotification
+                                               object:nil];
 }
 
-#pragma mark - notification
-- (void)cocoadebug_applicationDidFinishLaunchingNotification:(NSNotification *)notification {
-    if (self.cocoadebug_applicationDidFinishLaunching) {return;}
-    self.cocoadebug_applicationDidFinishLaunching = YES;
-    
-    Class CocoaDebug = NSClassFromString(@"_TtC10CocoaDebug10CocoaDebug");
-    if (CocoaDebug) {
-        [[CocoaDebug class] performSelector:@selector(enable)];
++ (void)cocoadebug_applicationDidFinishLaunching:(NSNotification *)notification {
+    // Use the stable @objc class name instead of Swift mangled name.
+    Class CocoaDebugClass = NSClassFromString(@"CocoaDebug");
+    if (CocoaDebugClass && [CocoaDebugClass respondsToSelector:@selector(enable)]) {
+        [CocoaDebugClass performSelector:@selector(enable)];
     }
-}
 
-#pragma mark - getter setter
-- (BOOL)cocoadebug_applicationDidFinishLaunching {
-    NSNumber *number = objc_getAssociatedObject(self, kPropertyKey);
-    return [number boolValue];
-}
-
-- (void)setCocoadebug_applicationDidFinishLaunching:(BOOL)applicationDidFinishLaunching {
-    NSNumber *number = [NSNumber numberWithBool:applicationDidFinishLaunching];
-    objc_setAssociatedObject(self, kPropertyKey, number, OBJC_ASSOCIATION_RETAIN);
+    // Only fire once; remove observer after first launch.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidFinishLaunchingNotification
+                                                  object:nil];
 }
 
 @end
