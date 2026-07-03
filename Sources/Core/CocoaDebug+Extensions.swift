@@ -273,12 +273,14 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
+        NSLog("[CocoaDebug] initializationMethod() START, firstIn=%@", CocoaDebugSettings.shared.firstIn ?? "nil")
+
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
             CocoaDebugSettings.shared.serverURL = serverURL
         }
-        
+
         if ignoredURLs == nil {
             CocoaDebugSettings.shared.ignoredURLs = []
         } else {
@@ -289,7 +291,7 @@ extension CocoaDebug {
         } else {
             CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
-        
+
         if ignoredPrefixLogs == nil {
             CocoaDebugSettings.shared.ignoredPrefixLogs = []
         } else {
@@ -300,14 +302,17 @@ extension CocoaDebug {
         } else {
             CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
         }
-        
+
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
+            NSLog("[CocoaDebug] initializationMethod: first launch, setting showBubbleAndWindow=true")
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
         } else {//not first launch
+            NSLog("[CocoaDebug] initializationMethod: not first launch, showBubbleAndWindow=%@",
+                  CocoaDebugSettings.shared.showBubbleAndWindow ? "true" : "false")
             CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
         }
-        
+
         CocoaDebugSettings.shared.visible = false
         CocoaDebugSettings.shared.logSearchWordNormal = nil
         CocoaDebugSettings.shared.logSearchWordRN = nil
@@ -315,9 +320,10 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        
+
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
+        NSLog("[CocoaDebug] initializationMethod() END")
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients

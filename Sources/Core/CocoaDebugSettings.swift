@@ -104,6 +104,8 @@ import Foundation
             UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
             UserDefaults.standard.synchronize()
 
+            NSLog("[CocoaDebug] showBubbleAndWindow.didSet: %@", showBubbleAndWindow ? "true" : "false")
+
             // Settings only emit intent; WindowManager handles the actual window lifecycle.
             if showBubbleAndWindow == true {
                 CocoaDebugWindowManager.shared.showBubble()

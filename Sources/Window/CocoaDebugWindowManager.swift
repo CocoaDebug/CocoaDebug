@@ -45,6 +45,8 @@ import UIKit
     }
 
     @objc public func showBubble() {
+        NSLog("[CocoaDebug] WindowManager.showBubble() called, isEnabled=%@, bubbleWindow=%@",
+              isEnabled ? "YES" : "NO", bubbleWindow != nil ? "exists" : "nil")
         desiredBubbleVisible = true
 
         if !isEnabled {
@@ -54,6 +56,8 @@ import UIKit
         if bubbleWindow == nil {
             createBubbleWindow()
         }
+        NSLog("[CocoaDebug] WindowManager.showBubble() done, bubbleWindow=%@",
+              bubbleWindow != nil ? "exists" : "nil")
         bubbleWindow?.isHidden = false
     }
 
@@ -124,13 +128,12 @@ import UIKit
     // MARK: - Window Creation
 
     private func createBubbleWindow() {
+        NSLog("[CocoaDebug] WindowManager.createBubbleWindow() START")
+
         let vc = CocoaDebugViewController()
         bubbleVC = vc
+        NSLog("[CocoaDebug] createBubbleWindow: CocoaDebugViewController created")
 
-        // Create the window immediately with UIScreen.main.bounds.
-        // On iOS 13+, we'll assign a windowScene below if available.
-        // If no scene is available yet, the window still exists and will
-        // be picked up by the system when a scene activates.
         let window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
@@ -138,17 +141,19 @@ import UIKit
         window.delegate = WindowHelper.shared
         window.isHidden = false
         bubbleWindow = window
+        NSLog("[CocoaDebug] createBubbleWindow: window created, frame=%.0fx%.0f, hidden=%d",
+              window.frame.size.width, window.frame.size.height, window.isHidden ? 1 : 0)
 
-        // On iOS 13+, try to assign a windowScene. Use any available scene
-        // (not just foregroundActive) since at launch time the scene may
-        // still be in .background state.
         if #available(iOS 13.0, *) {
+            let sceneCount = UIApplication.shared.connectedScenes.count
+            NSLog("[CocoaDebug] createBubbleWindow: iOS 13+, connectedScenes count=%ld", sceneCount)
             assignBestScene(to: window)
         }
 
         if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
             WindowHelper.shared.startUIBlockingMonitoring()
         }
+        NSLog("[CocoaDebug] WindowManager.createBubbleWindow() END")
     }
 
     @available(iOS 13.0, *)
