@@ -46,7 +46,12 @@ import UIKit
 
     @objc public func showBubble() {
         desiredBubbleVisible = true
-        guard isEnabled else { return }
+
+        // Auto-start if not yet enabled — Settings.showBubbleAndWindow triggers this
+        // before start() is explicitly called.
+        if !isEnabled {
+            isEnabled = true
+        }
 
         if bubbleWindow == nil {
             createBubbleWindow()
