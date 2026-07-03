@@ -846,7 +846,19 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 
     [[self client] URLProtocol:self didLoadData:data];
-    [self.data appendData:data];//liman
+
+    // Size-limited body capture: stop accumulating after maxStoredBodyBytes
+    // to prevent memory blowout on large responses.
+    NSUInteger maxStored = [_NetworkHelper shared].maxStoredBodyBytes;
+    if (maxStored == 0) { maxStored = 1024 * 1024; } // default 1 MB
+    if (self.data.length < maxStored) {
+        NSUInteger remaining = maxStored - self.data.length;
+        if (data.length <= remaining) {
+            [self.data appendData:data];
+        } else {
+            [self.data appendData:[data subdataWithRange:NSMakeRange(0, remaining)]];
+        }
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
