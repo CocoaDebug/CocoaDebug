@@ -6,20 +6,21 @@ Pod::Spec.new do |s|
   s.author              = {"CocoaDebug" => "CocoaDebug@gmail.com"}
   s.license             = "MIT"
   s.source_files        = "Sources", "Sources/**/*.{h,m,mm,swift,c}"
-  s.public_header_files = "Sources/**/*.h"
+  s.public_header_files = "Sources/Core/CocoaDebug.h", "Sources/Core/CocoaDebugDeviceInfo.h", "Sources/Logs/CocoaDebugTool.h", "Sources/Core/_DeviceUtil.h"
   s.resources           = "Sources/**/*.{png,xib,storyboard}"
   s.frameworks          = 'UIKit', 'Foundation', 'JavaScriptCore', 'QuickLook'
   s.platform            = :ios, "12.0"
   s.swift_version       = '5.0'
   s.source              = { :git => "https://github.com/CocoaDebug/CocoaDebug.git", :branch => 'master', :tag => s.version.to_s }
   s.requires_arc        = false
-  s.requires_arc        = 
+  s.requires_arc        =
                           [
                           'Sources/App/**/*.m',
                           'Sources/Categories/**/*.m',
                           'Sources/Core/**/*.m',
                           'Sources/CustomHTTPProtocol/**/*.m',
                           'Sources/Logs/**/*.m',
+                          'Sources/Monitor/**/*.m',
                           'Sources/Network/**/*.m',
                           'Sources/Sandbox/**/*.m',
                           'Sources/Swizzling/**/*.m',

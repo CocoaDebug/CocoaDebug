@@ -24,28 +24,33 @@ static void (*_original_nslog)(NSString *format, ...);
 void cocoadebug_nslog(NSString *format, ...)
 {
     if (![format isKindOfClass:[NSString class]]) {return;}
-    
+
     va_list vl;
     va_start(vl, format);
     NSString *str = [[NSString alloc] initWithFormat:format arguments:vl];
-    
+
     @try {
         _original_nslog(str);
     } @catch(NSException *exception) {
-        
     } @finally {
-        
     }
-    
-    @try {
-        [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
-    } @catch(NSException *exception) {
-        
-    } @finally {
-        
+
+    // Only write to CocoaDebug store if log monitoring is enabled.
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"]) {
+        @try {
+            [_OCLogHelper.shared handleLogWithFile:@"" function:@"" line:999999999 message:str color:[UIColor whiteColor] type:CocoaDebugToolTypeNone];
+        } @catch(NSException *exception) {
+        } @finally {
+        }
     }
-    
+
     va_end(vl);
+}
+
+/// Runtime check: CocoaDebug calls this to query whether writing is allowed.
+/// Provides a fast-path return for the disable lifecycle without removing the fishhook.
+BOOL CocoaDebugLogCaptureIsEnabled(void) {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"enableLogMonitoring_CocoaDebug"];
 }
 
 #pragma mark - load
