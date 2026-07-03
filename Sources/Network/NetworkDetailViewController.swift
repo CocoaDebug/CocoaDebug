@@ -11,24 +11,28 @@ import UIKit
 import MessageUI
 
 class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
-    
+
     @IBOutlet weak var closeItem: UIBarButtonItem!
     @IBOutlet weak var naviItem: UINavigationItem!
-    
+
     var naviItemTitleLabel: UILabel?
-    
+
     var httpModel: _HttpModel?
     var httpModels: [_HttpModel]?
-    
+
     var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
-    
+
     var requestDictionary: [String: Any]? = Dictionary()
-    
+
     var headerCell: NetworkCell?
-    
+
     var messageBody: String = ""
-    
+
     var justCancelCallback:(() -> Void)?
+
+    /// Token for cancelling in-flight background render tasks.
+    private var renderCancellationToken: UUID?
+
     
     static func instanceFromStoryBoard() -> NetworkDetailViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
@@ -41,7 +45,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     {
         guard let requestSerializer = httpModel?.requestSerializer else {return}
         var requestContent: String? = nil
-        
+
         //otherwise it will crash when it is nil
         if httpModel?.requestData == nil {
             httpModel?.requestData = Data.init()
@@ -49,25 +53,26 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         if httpModel?.responseData == nil {
             httpModel?.responseData = Data.init()
         }
-        
+
+        let maxAutoRender = _NetworkHelper.shared().maxAutoRenderBytes
+        let responseData = httpModel?.responseData
+        let responseSize = responseData?.count ?? 0
+        let isLargeResponse = responseSize > maxAutoRender
+        let isBinary = httpModel?.mineType?.contains("image") == true
+                    || httpModel?.mineType?.contains("application/octet-stream") == true
+                    || httpModel?.mineType?.contains("application/zip") == true
+                    || httpModel?.mineType?.contains("application/x-protobuf") == true
+                    || httpModel?.mineType?.contains("video/") == true
+                    || httpModel?.mineType?.contains("audio/") == true
+
         //detect the request parameter format (JSON/Form)
         if requestSerializer == RequestSerializer.JSON {
-            //JSON
             requestContent = httpModel?.requestData.dataToPrettyPrintString()
         }
         else if requestSerializer == RequestSerializer.form {
             if let data = httpModel?.requestData {
-                //1.protobuf
-//                if let message = try? GPBMessage.parse(from: data) {
-//                    if message.serializedSize() > 0 {
-//                        requestContent = message.description
-//                    } else {
-                        //2.Form
-                        requestContent = data.dataToString()
-//                    }
-//                }
+                requestContent = data.dataToString()
                 if requestContent == nil || requestContent == "" || requestContent == "\u{8}\u{1e}" {
-                    //3.utf-8 string
                     requestContent = String(data: data, encoding: .utf8)
                 }
                 if requestContent == "" || requestContent == "\u{8}\u{1e}" {
@@ -75,10 +80,17 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 }
             }
         }
-        
+
+        // Summary for large or binary responses
+        var responseContent: String? = nil
+        if isBinary {
+            responseContent = "[Binary: \(httpModel?.mineType ?? "unknown")] \(httpModel?.size ?? "")"
+        } else if isLargeResponse {
+            let truncated = responseSize > _NetworkHelper.shared().maxStoredBodyBytes
+            responseContent = "[Response too large to render] \(httpModel?.size ?? "")\n\nURL: \(httpModel?.url.absoluteString ?? "")\nMethod: \(httpModel?.method ?? "")\nStatus: \(httpModel?.statusCode ?? "")\nMIME: \(httpModel?.mineType ?? "")\nDuration: \(httpModel?.totalDuration ?? "")\n\n\(truncated ? "Body was truncated at capture time." : "Tap to load full response.")"
+        }
+
         if httpModel?.isImage == true {
-            //image:
-            //1.
             let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -87,7 +99,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             if let responseData = httpModel?.responseData {
                 model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, url: httpModel?.url.absoluteString, image: UIImage.init(gifData: responseData), httpModel: httpModel)
             }
-            //2.
             let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
             let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
             var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
@@ -107,7 +118,6 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
                 }
             }
             let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            //3.
             detailModels.append(model_1)
             detailModels.append(model_2)
             detailModels.append(model_3)
@@ -120,45 +130,71 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             detailModels.append(model_9)
         }
         else {
-            //not image:
-            //1.
-            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: httpModel?.url.absoluteString, httpModel: httpModel)
-            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString(), url: httpModel?.url.absoluteString, httpModel: httpModel)
-            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            //2.
-            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            if let requestHeaderFields = httpModel?.requestHeaderFields {
-                if !requestHeaderFields.isEmpty {
-                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
-                    model_2.requestHeaderFields = requestHeaderFields
-                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
+            // Render content on background to avoid blocking main thread
+            let token = UUID()
+            renderCancellationToken = token
+            let capturedModel = httpModel
+            let capturedContent = requestContent
+            let capturedRespContent = responseContent
+
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard self?.renderCancellationToken == token else { return }
+
+                // Render response on background queue
+                let rendered: String?
+                if let rc = capturedRespContent {
+                    rendered = rc
+                } else {
+                    rendered = capturedModel?.responseData.dataToPrettyPrintString()
+                }
+
+                DispatchQueue.main.async {
+                    guard self?.renderCancellationToken == token else { return }
+
+                    let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug", url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_3 = NetworkDetailModel.init(title: "REQUEST", content: capturedContent, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: rendered, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_6 = NetworkDetailModel.init(title: "ERROR", content: capturedModel?.errorLocalizedDescription, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: capturedModel?.errorDescription, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: capturedModel?.totalDuration, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: capturedModel?.mineType, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    if let requestHeaderFields = capturedModel?.requestHeaderFields {
+                        if !requestHeaderFields.isEmpty {
+                            model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                            model_2.requestHeaderFields = requestHeaderFields
+                            model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
+                        }
+                    }
+                    var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                    if let responseHeaderFields = capturedModel?.responseHeaderFields {
+                        if !responseHeaderFields.isEmpty {
+                            model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+                            model_4.responseHeaderFields = responseHeaderFields
+                            model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
+                        }
+                    }
+                    let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: capturedModel?.size, url: capturedModel?.url.absoluteString, httpModel: capturedModel)
+
+                    self?.detailModels.append(model_1)
+                    self?.detailModels.append(model_2)
+                    self?.detailModels.append(model_3)
+                    self?.detailModels.append(model_4)
+                    self?.detailModels.append(model_5)
+                    self?.detailModels.append(model_6)
+                    self?.detailModels.append(model_7)
+                    self?.detailModels.append(model_0)
+                    self?.detailModels.append(model_8)
+                    self?.detailModels.append(model_9)
+
+                    self?.tableView.reloadData()
                 }
             }
-            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            if let responseHeaderFields = httpModel?.responseHeaderFields {
-                if !responseHeaderFields.isEmpty {
-                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description, url: httpModel?.url.absoluteString, httpModel: httpModel)
-                    model_4.responseHeaderFields = responseHeaderFields
-                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"").replacingOccurrences(of: "\\/", with: "/")
-                }
-            }
-            let model_0 = NetworkDetailModel.init(title: "RESPONSE SIZE", content: httpModel?.size, url: httpModel?.url.absoluteString, httpModel: httpModel)
-            //3.
-            detailModels.append(model_1)
-            detailModels.append(model_2)
-            detailModels.append(model_3)
-            detailModels.append(model_4)
-            detailModels.append(model_5)
-            detailModels.append(model_6)
-            detailModels.append(model_7)
-            detailModels.append(model_0)
-            detailModels.append(model_8)
-            detailModels.append(model_9)
         }
+    }
+
+    deinit {
+        renderCancellationToken = nil
     }
     
     //detetc request format (JSON/Form)
@@ -304,48 +340,47 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
         naviItemTitleLabel?.font = .boldSystemFont(ofSize: 20)
         naviItemTitleLabel?.text = "Details"
         naviItem.titleView = naviItemTitleLabel
-        
+
         closeItem.tintColor = Color.mainGreen
-        
+
         //detect the request format (JSON/Form)
         detectRequestSerializer()
-        
-        setupModels()
-        
-        if var lastModel = detailModels.last {
-            lastModel.isLast = true
-            detailModels.removeLast()
-            detailModels.append(lastModel)
-        }
-        
+
         //Use a separate xib-cell file, must be registered, otherwise it will crash
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NetworkCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
-        
+
         //header
         headerCell = bundle.loadNibNamed(String(describing: NetworkCell.self), owner: nil, options: nil)?.first as? NetworkCell
         headerCell?.httpModel = httpModel
+
+        // setupModels triggers async background rendering for large/non-image responses.
+        // Image responses are handled synchronously.
+        setupModels()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
+        // Cancel any in-flight background render
+        renderCancellationToken = nil
+
         if let index = httpModels?.firstIndex(where: { (model) -> Bool in
             return model.isSelected == true
         }) {
             httpModels?[index].isSelected = false
         }
-        
+
         httpModel?.isSelected = true
-        
+
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
@@ -377,7 +412,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
             _ = self?.configureMailComposer(true)
             let items: [Any] = [self?.messageBody ?? ""]
             let action = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            if UI_USER_INTERFACE_IDIOM() == .phone {
+            if UIDevice.current.userInterfaceIdiom == .phone {
                 self?.present(action, animated: true, completion: nil)
             } else {
                 action.popoverPresentationController?.sourceRect = .init(x: self?.view.bounds.midX ?? 0, y: self?.view.bounds.midY ?? 0, width: 0, height: 0)
@@ -477,20 +512,10 @@ extension NetworkDetailViewController {
                 
                 if httpModel?.url.absoluteString.contains(serverURL) == true {
                     //Calculate NSString height
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    }
+                    height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                 } else {
                     //Calculate NSString height
-                    if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    } else {
-                        // Fallback on earlier versions
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
-                    }
+                    height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                 }
                 return height + 57
             }

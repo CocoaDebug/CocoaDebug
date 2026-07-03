@@ -178,9 +178,9 @@ extension Data {
 extension String {
     var hexColor: UIColor {
         let hex = trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int = UInt32()
-        Scanner(string: hex).scanHexInt32(&int)
-        var a, r, g, b: UInt32
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        var a, r, g, b: UInt64
         switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
@@ -248,48 +248,17 @@ extension UITableView {
     }
 }
 
-///shake
+///shake — detects shake via the responder chain on host app windows.
+/// Does NOT override canBecomeFirstResponder (that would globally alter responder behavior).
 extension UIWindow {
-    
-    private static var _cocoadebugShakeProperty = [String:Bool]()
-    
-    var cocoadebugShakeProperty:Bool {
-        get {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            return UIWindow._cocoadebugShakeProperty[tmpAddress] ?? false
-        }
-        set(newValue) {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            UIWindow._cocoadebugShakeProperty[tmpAddress] = newValue
-        }
-    }
-    
-    
-    open override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionBegan(motion, with: event)
-        
-        self.cocoadebugShakeProperty = true
-        
-        if CocoaDebugSettings.shared.responseShake == false {return}
-        if motion == .motionShake {
-            if CocoaDebugSettings.shared.visible == true { return }
-            CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-        }
-    }
-    
+
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
-        
-        if self.cocoadebugShakeProperty == true {
-            self.cocoadebugShakeProperty = false
-            return
-        }
-        
-        if CocoaDebugSettings.shared.responseShake == false {return}
+
+        // Only handle on non-CocoaDebug windows (the host app's key window)
+        if self is CocoaDebugWindow { return }
+
+        if CocoaDebugSettings.shared.responseShake == false { return }
         if motion == .motionShake {
             if CocoaDebugSettings.shared.visible == true { return }
             CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
@@ -304,12 +273,13 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
+
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
             CocoaDebugSettings.shared.serverURL = serverURL
         }
-        
+
         if ignoredURLs == nil {
             CocoaDebugSettings.shared.ignoredURLs = []
         } else {
@@ -320,7 +290,7 @@ extension CocoaDebug {
         } else {
             CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
-        
+
         if ignoredPrefixLogs == nil {
             CocoaDebugSettings.shared.ignoredPrefixLogs = []
         } else {
@@ -331,14 +301,17 @@ extension CocoaDebug {
         } else {
             CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
         }
-        
+
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
         } else {//not first launch
-            CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
+            // Preserve persisted state; if bubble should be shown, trigger it
+            if CocoaDebugSettings.shared.showBubbleAndWindow {
+                CocoaDebugWindowManager.shared.showBubble()
+            }
         }
-        
+
         CocoaDebugSettings.shared.visible = false
         CocoaDebugSettings.shared.logSearchWordNormal = nil
         CocoaDebugSettings.shared.logSearchWordRN = nil
@@ -346,10 +319,10 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        
+
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-        
+
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
         CocoaDebugSettings.shared.emailCcRecipients = emailCcRecipients

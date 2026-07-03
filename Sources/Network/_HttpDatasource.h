@@ -11,17 +11,17 @@
 
 @interface _HttpDatasource : NSObject
 
-@property (nonatomic, strong) NSMutableArray<_HttpModel *> *httpModels;
+/// Read-only for backward compatibility. Prefer snapshotWithCompletion: for thread safety.
+@property (nonatomic, strong, readonly) NSMutableArray<_HttpModel *> *httpModels;
 
 + (instancetype)shared;
 
-///记录
 - (BOOL)addHttpRequset:(_HttpModel*)model;
-
-///清空
 - (void)reset;
-
-///删除
 - (void)remove:(_HttpModel *)model;
+- (void)removeAtIndex:(NSUInteger)index;
+
+/// Thread-safe snapshot callback on main queue.
+- (void)snapshotWithCompletion:(void (^)(NSArray<_HttpModel *> *models))completion;
 
 @end

@@ -18,7 +18,7 @@
 #import "_SandboxerHelper.h"
 #import "NSObject+CocoaDebug.h"
 
-@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UIViewControllerPreviewingDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface _DirectoryContentsTableViewController () <QLPreviewControllerDataSource, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource;
 @property (nonatomic, strong) NSMutableArray<_FileInfo *> *dataSource_cache;
@@ -46,40 +46,34 @@
 //liman
 - (void)customNavigationBar
 {
-    //****** copy codes from LogNavigationViewController.swift ******
-    self.navigationController.navigationBar.translucent = NO;
-    
-    self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
-                                                                    NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
-                                                                    };
-    
-    //bugfix #issues-158
-    if (@available(iOS 13.0, *)) {
+    if (@available(iOS 15.0, *)) {
+        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+        appearance.shadowColor = [UIColor clearColor];
+        appearance.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+            NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+        };
+        self.navigationController.navigationBar.standardAppearance = appearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.compactAppearance = appearance;
+        if (@available(iOS 15.0, *)) {
+            self.navigationController.navigationBar.compactScrollEdgeAppearance = appearance;
+        }
+    } else {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
         [appearance configureWithOpaqueBackground];
         appearance.shadowColor = [UIColor clearColor];
         self.navigationController.navigationBar.standardAppearance = appearance;
         self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
+        self.navigationController.navigationBar.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+            NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+        };
     }
-
-    
-    //swift:
-    
-    //bugfix #issues-158
-//    if #available(iOS 13, *) {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        // self.navigationController?.navigationBar.isTranslucent = true  // pass "true" for fixing iOS 15.0 black bg issue
-//        // self.navigationController?.navigationBar.tintColor = UIColor.white // We need to set tintcolor for iOS 15.0
-//        appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
-////            UINavigationBar.appearance().standardAppearance = appearance
-////            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//        self.navigationBar.standardAppearance = appearance
-//        self.navigationBar.scrollEdgeAppearance = appearance
-//    }
-    
 }
 
 - (void)exit {
@@ -106,7 +100,11 @@
     [self.view addGestureRecognizer:tap];
     
     //liman
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    if (@available(iOS 15.0, *)) {
+        // UINavigationBarAppearance handles background color; do not use deprecated barTintColor
+    } else {
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    }
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     //liman
@@ -121,7 +119,6 @@
     
     //
     [self setupViews];
-    [self registerForPreviewing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -162,20 +159,26 @@
     
     //
     self.view.backgroundColor = [UIColor blackColor];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 50) style:UITableViewStylePlain];
-    
-    
+
+    CGFloat statusBarHeight = 0;
     BOOL iPhoneX = NO;
-    if (@available(iOS 11.0, *)) {
-        UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
-        if (mainWindow.safeAreaInsets.top > 24.0) {
-            iPhoneX = YES;
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+        if (scene.activationState == UISceneActivationStateForegroundActive &&
+            [scene isKindOfClass:[UIWindowScene class]]) {
+            UIWindowScene *windowScene = (UIWindowScene *)scene;
+            statusBarHeight = windowScene.statusBarManager.statusBarFrame.size.height;
+            if (windowScene.windows.firstObject.safeAreaInsets.top > 24.0) {
+                iPhoneX = YES;
+            }
+            break;
         }
     }
-    
+
+    CGFloat tableViewHeight = self.view.bounds.size.height - 44 - statusBarHeight - 50;
     if (iPhoneX) {
-        self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 44 - [UIApplication sharedApplication].statusBarFrame.size.height - 50 - 34);
+        tableViewHeight -= 34;
     }
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, tableViewHeight) style:UITableViewStylePlain];
     
     
     self.tableView.dataSource = self;
@@ -200,18 +203,6 @@
     textFieldInsideSearchBar.leftView = nil;
     textFieldInsideSearchBar.backgroundColor = [UIColor whiteColor];
     textFieldInsideSearchBar.returnKeyType = UIReturnKeyDefault;
-}
-
-- (void)registerForPreviewing {
-    if (_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
-        if (@available(iOS 9.0, *)) {
-            if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-                [self registerForPreviewingWithDelegate:self sourceView:self.view];
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-    }
 }
 
 - (void)loadDirectoryContents {
@@ -663,41 +654,6 @@
 
 - (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
     return self.previewingFileInfo.URL;
-}
-
-#pragma mark - UIViewControllerPreviewingDelegate
-
-/// Create a previewing view controller to be shown at "Peek".
-- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    // Obtain the index path and the cell that was pressed.
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-    _FileTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (!cell) { return nil; }
-    
-    _FileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
-    // Create a detail view controller and set its properties.
-    UIViewController *detailViewController = [self viewControllerWithFileInfo:fileInfo];
-    
-    /*
-     Set the height of the preview by setting the preferred content size of the detail view controller.
-     Width should be zero, because it's not used in portrait.
-     */
-    detailViewController.preferredContentSize = CGSizeZero;
-    
-    // Set the source rect to the cell frame, so surrounding elements are blurred.
-    if (_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
-        if (@available(iOS 9.0, *)) {
-            previewingContext.sourceRect = cell.frame;
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    return detailViewController;
-}
-
-- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    [self showViewController:viewControllerToCommit sender:self];
 }
 
 #pragma mark - UIScrollViewDelegate

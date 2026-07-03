@@ -11,9 +11,10 @@
 
 @interface _OCLogStoreManager : NSObject
 
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *normalLogArray;
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *rnLogArray;
-@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *webLogArray;
+// Read-only snapshot accessors. The internal mutable arrays are private.
+@property (nonatomic, strong, readonly) NSMutableArray<_OCLogModel *> *normalLogArray;
+@property (nonatomic, strong, readonly) NSMutableArray<_OCLogModel *> *rnLogArray;
+@property (nonatomic, strong, readonly) NSMutableArray<_OCLogModel *> *webLogArray;
 
 + (instancetype)shared;
 
@@ -24,5 +25,9 @@
 - (void)resetRNLogs;
 - (void)resetWebLogs;
 
-@end
+/// Thread-safe snapshot: returns a copy of the current log arrays via callback on main queue.
+- (void)snapshotWithCompletion:(void (^)(NSArray<_OCLogModel *> *normalLogs,
+                                          NSArray<_OCLogModel *> *rnLogs,
+                                          NSArray<_OCLogModel *> *webLogs))completion;
 
+@end

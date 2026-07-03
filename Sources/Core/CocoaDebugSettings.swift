@@ -13,32 +13,26 @@ import Foundation
     @objc public static let shared = CocoaDebugSettings()
     
     @objc public var slowAnimations: Bool = false {
-        didSet {            
-            if slowAnimations == false {
-                UIApplication.shared.windows.first?.layer.speed = 1;
-            } else {
-                UIApplication.shared.windows.first?.layer.speed = 0.1;
-            }
+        didSet {
+            // Do NOT modify host app's window layer.speed.
+            // Host app is responsible for slow animation behavior if desired.
         }
     }
     
     @objc public var responseShake: Bool = false {
         didSet {
             UserDefaults.standard.set(responseShake, forKey: "responseShake_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     
     @objc public var firstIn: String? = nil {
         didSet {
             UserDefaults.standard.set(firstIn, forKey: "firstIn_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableCrashRecording: Bool = false {
         didSet {
             UserDefaults.standard.set(enableCrashRecording, forKey: "enableCrashRecording_CocoaDebug")
-            UserDefaults.standard.synchronize()
             
             if enableCrashRecording == true {
                 CrashLogger.shared.enable = true
@@ -51,149 +45,114 @@ import Foundation
     @objc public var enableUIBlockingMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(enableUIBlockingMonitoring, forKey: "enableUIBlockingMonitoring_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableWKWebViewMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(enableWKWebViewMonitoring, forKey: "enableWKWebViewMonitoring_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableLogMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(enableLogMonitoring, forKey: "enableLogMonitoring_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var disableNetworkMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(disableNetworkMonitoring, forKey: "disableNetworkMonitoring_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableRNMonitoring: Bool = false {
         didSet {
             UserDefaults.standard.set(enableRNMonitoring, forKey: "enableRNMonitoring_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableMemoryLeaksMonitoring_ViewController: Bool = false {
         didSet {
             UserDefaults.standard.set(enableMemoryLeaksMonitoring_ViewController, forKey: "enableMemoryLeaksMonitoring_UIViewController_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableMemoryLeaksMonitoring_View: Bool = false {
         didSet {
             UserDefaults.standard.set(enableMemoryLeaksMonitoring_View, forKey: "enableMemoryLeaksMonitoring_UIView_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var enableMemoryLeaksMonitoring_MemberVariables: Bool = false {
         didSet {
             UserDefaults.standard.set(enableMemoryLeaksMonitoring_MemberVariables, forKey: "enableMemoryLeaksMonitoring_MemberVariables_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var visible: Bool = false {
         didSet {
             UserDefaults.standard.set(visible, forKey: "visible_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var showBubbleAndWindow: Bool = false {
         didSet {
             UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
-            UserDefaults.standard.synchronize()
-            
-            let x = WindowHelper.shared.vc.bubble.frame.origin.x
-            let width = WindowHelper.shared.vc.bubble.frame.size.width
-            
-            if showBubbleAndWindow == true
-            {
-                if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width - width/8*8.25
-                } else {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width + width/8*8.25
-                }
-                WindowHelper.shared.enable()
-            }
-            else
-            {
-                if x > UIScreen.main.bounds.size.width/2 {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = UIScreen.main.bounds.size.width
-                } else {
-                    WindowHelper.shared.vc.bubble.frame.origin.x = -width
-                }
-                WindowHelper.shared.disable()
+
+            // Settings only emit intent; WindowManager handles the actual window lifecycle.
+            if showBubbleAndWindow == true {
+                CocoaDebugWindowManager.shared.showBubble()
+            } else {
+                CocoaDebugWindowManager.shared.hideBubble()
+                CocoaDebugWindowManager.shared.hidePanel()
             }
         }
     }
     @objc public var serverURL: String? = nil {
         didSet {
             UserDefaults.standard.set(serverURL, forKey: "serverURL_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var tabBarSelectItem: Int {
         didSet {
             UserDefaults.standard.set(tabBarSelectItem, forKey: "tabBarSelectItem_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSelectIndex: Int {
         didSet {
             UserDefaults.standard.set(logSelectIndex, forKey: "logSelectIndex_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var networkLastIndex: Int {
         didSet {
             UserDefaults.standard.set(networkLastIndex, forKey: "networkLastIndex_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var bubbleFrameX: Float {
         didSet {
             UserDefaults.standard.set(bubbleFrameX, forKey: "bubbleFrameX_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var bubbleFrameY: Float {
         didSet {
             UserDefaults.standard.set(bubbleFrameY, forKey: "bubbleFrameY_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSearchWordNormal: String? = nil {
         didSet {
             UserDefaults.standard.set(logSearchWordNormal, forKey: "logSearchWordNormal_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSearchWordRN: String? = nil {
         didSet {
             UserDefaults.standard.set(logSearchWordRN, forKey: "logSearchWordRN_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var logSearchWordWeb: String? = nil {
         didSet {
             UserDefaults.standard.set(logSearchWordWeb, forKey: "logSearchWordWeb_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var networkSearchWord: String? = nil {
         didSet {
             UserDefaults.standard.set(networkSearchWord, forKey: "networkSearchWord_CocoaDebug")
-            UserDefaults.standard.synchronize()
         }
     }
     @objc public var mainColor: String {
         didSet {
             UserDefaults.standard.set(mainColor, forKey: "mainColor_CocoaDebug")
-            UserDefaults.standard.synchronize()
             _NetworkHelper.shared().mainColor = mainColor.hexColor
         }
     }

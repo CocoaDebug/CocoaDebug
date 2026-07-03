@@ -101,17 +101,13 @@
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideNavigationBar)]];
     
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     [self.view addSubview:self.activityIndicatorView];
 }
 
 - (void)loadFile {
     if (self.fileInfo.isCanPreviewInWebView) {
-        if (@available(iOS 9.0, *)) {
-            [self.wkWebView loadFileURL:self.fileInfo.URL allowingReadAccessToURL:self.fileInfo.URL];
-        } else {
-            // Fallback on earlier versions
-        }
+        [self.wkWebView loadFileURL:self.fileInfo.URL allowingReadAccessToURL:self.fileInfo.URL];
     } else {
         switch (self.fileInfo.type) {
             case _FileTypePList: {

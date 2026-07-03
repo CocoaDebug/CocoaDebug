@@ -276,24 +276,84 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 //liman
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
+    // Gate 0: network capture must be enabled
+    if (![_NetworkHelper shared].isNetworkEnable) {
+        return NO;
+    }
+
+    // Gate 1: only intercept http/https
     if (![request.URL.scheme isEqualToString:@"http"] &&
         ![request.URL.scheme isEqualToString:@"https"]) {
         return NO;
     }
-    
-    if ([NSURLProtocol propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request] ) {
+
+    // Gate 2: recursion guard — our own internal requests are marked
+    if ([NSURLProtocol propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request]) {
         return NO;
     }
-    
-    if ([[_NetworkHelper shared] onlyURLs].count > 0) {
-        NSString* url = [request.URL.absoluteString lowercaseString];
-        for (NSString* _url in [_NetworkHelper shared].onlyURLs) {
-            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
-                return YES;
+
+    // Gate 3: ignoredURLs filter (low-cost pre-filter before deeper checks)
+    NSArray *ignoredURLs = [[_NetworkHelper shared] ignoredURLs];
+    if (ignoredURLs.count > 0) {
+        NSString *urlLower = [request.URL.absoluteString lowercaseString];
+        for (NSString *pattern in ignoredURLs) {
+            if (pattern.length == 0) { continue; }
+            if ([urlLower containsString:[pattern lowercaseString]]) {
+                return NO;
+            }
         }
+    }
+
+    // Gate 4: onlyURLs filter — if set, ONLY these URLs are captured
+    NSArray *onlyURLs = [[_NetworkHelper shared] onlyURLs];
+    if (onlyURLs.count > 0) {
+        NSString *urlLower = [request.URL.absoluteString lowercaseString];
+        BOOL matchesAny = NO;
+        for (NSString *pattern in onlyURLs) {
+            if (pattern.length == 0) { continue; }
+            if ([urlLower containsString:[pattern lowercaseString]]) {
+                matchesAny = YES;
+                break;
+            }
+        }
+        if (!matchesAny) {
+            return NO;
+        }
+    }
+
+    // Gate 5: WebSocket upgrade — do NOT intercept; it breaks real-time connections
+    NSDictionary *headers = [request allHTTPHeaderFields];
+    NSString *upgrade = [headers[@"Upgrade"] lowercaseString];
+    NSString *connection = [headers[@"Connection"] lowercaseString];
+    if ([upgrade isEqualToString:@"websocket"] || [connection containsString:@"upgrade"]) {
         return NO;
     }
-    
+
+    // Gate 6: Socket.IO — do NOT intercept
+    NSString *urlStr = [request.URL.absoluteString lowercaseString];
+    if ([urlStr containsString:@"socket.io"] ||
+        [urlStr containsString:@"transport=websocket"]) {
+        return NO;
+    }
+
+    // Gate 7: Server-Sent Events (SSE) — do NOT intercept
+    NSString *accept = [headers[@"Accept"] lowercaseString];
+    NSString *contentType = [headers[@"Content-Type"] lowercaseString];
+    if ([accept isEqualToString:@"text/event-stream"] ||
+        [contentType isEqualToString:@"text/event-stream"]) {
+        return NO;
+    }
+
+    // Gate 8: multipart/form-data — do NOT intercept (preserves upload progress)
+    if ([contentType hasPrefix:@"multipart/form-data"]) {
+        return NO;
+    }
+
+    // Gate 9: HTTPBodyStream — do NOT intercept (preserves upload progress, #46)
+    if (request.HTTPBodyStream != nil) {
+        return NO;
+    }
+
     return YES;
 }
 
@@ -424,39 +484,37 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     }
     
     _HttpModel* model = [[_HttpModel alloc] init];
-    model.url = self.request.URL;
-    model.method = self.request.HTTPMethod;
-    model.mineType = self.response.MIMEType;
+    model.url = self.request.URL ?: [[NSURL alloc] initWithString:@""];
+    model.method = self.request.HTTPMethod ?: @"";
+    model.mineType = self.response.MIMEType ?: @"";
     if (self.request.HTTPBody) {
         model.requestData = self.request.HTTPBody;
     }
-    if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
-        model.requestData = data;
-    }
-    
+    // HTTPBodyStream is NOT read here — see P1-3 fix for upload progress preservation.
+
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
     model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
     model.responseData = self.data;
-    model.size = [[NSByteCountFormatter new] stringFromByteCount:self.data.length];
+    model.size = [[NSByteCountFormatter new] stringFromByteCount:(long long)self.data.length];
     model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-    
+
     //时间
     NSTimeInterval startTimeDouble = self.startTime;
     NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
-    
+
     model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
     model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
     model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
-    
-    
-    model.errorDescription = self.error.description;
-    model.errorLocalizedDescription = self.error.localizedDescription;
-    model.requestHeaderFields = self.request.allHTTPHeaderFields;
-    
+
+    // nil-safe: error may be nil
+    model.errorDescription = self.error.description ?: @"";
+    model.errorLocalizedDescription = self.error.localizedDescription ?: @"";
+    model.requestHeaderFields = self.request.allHTTPHeaderFields ?: @{};
+
     if ([self.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        model.responseHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        NSDictionary *headers = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        model.responseHeaderFields = headers ?: @{};
     }
     
     if (self.response.MIMEType == nil) {
@@ -848,7 +906,19 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 
 
     [[self client] URLProtocol:self didLoadData:data];
-    [self.data appendData:data];//liman
+
+    // Size-limited body capture: stop accumulating after maxStoredBodyBytes
+    // to prevent memory blowout on large responses.
+    NSUInteger maxStored = [_NetworkHelper shared].maxStoredBodyBytes;
+    if (maxStored == 0) { maxStored = 1024 * 1024; } // default 1 MB
+    if (self.data.length < maxStored) {
+        NSUInteger remaining = maxStored - self.data.length;
+        if (data.length <= remaining) {
+            [self.data appendData:data];
+        } else {
+            [self.data appendData:[data subdataWithRange:NSMakeRange(0, remaining)]];
+        }
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler

@@ -55,22 +55,29 @@ class UIBlockingBubble: UIView {
     }
     
     func updateFrame() {
-        if #available(iOS 11.0, *) {
-            let safeAreaInsetsTop = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
-            if safeAreaInsetsTop > 24 { //iPhoneX
-                center.x = UIScreen.main.bounds.width/2.0
-                center.y = 39
-                
-                let string = CocoaDebugDeviceInfo.sharedInstance().getPlatformString
-                if string == "iPhone 12 mini" {
-                    center.y = 43
-                } else if string == "iPhone 12" {
-                    center.y = 41
-                } else if string == "iPhone 12 Pro" {
-                    center.y = 41
-                } else if string == "iPhone 12 Pro Max" {
-                    center.y = 41
-                }
+        var safeAreaInsetsTop: CGFloat = 0
+        var screenWidth: CGFloat = UIScreen.main.bounds.width
+        for scene in UIApplication.shared.connectedScenes {
+            if scene.activationState == .foregroundActive,
+               let windowScene = scene as? UIWindowScene {
+                safeAreaInsetsTop = windowScene.windows.first?.safeAreaInsets.top ?? 0
+                screenWidth = windowScene.coordinateSpace.bounds.width
+                break
+            }
+        }
+        if safeAreaInsetsTop > 24 { //iPhoneX
+            center.x = screenWidth / 2.0
+            center.y = 39
+
+            let string = CocoaDebugDeviceInfo.sharedInstance().getPlatformString
+            if string == "iPhone 12 mini" {
+                center.y = 43
+            } else if string == "iPhone 12" {
+                center.y = 41
+            } else if string == "iPhone 12 Pro" {
+                center.y = 41
+            } else if string == "iPhone 12 Pro Max" {
+                center.y = 41
             }
         }
     }

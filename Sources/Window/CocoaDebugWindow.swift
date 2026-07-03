@@ -18,9 +18,10 @@ class CocoaDebugWindow: UIWindow {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         self.backgroundColor = .clear
         self.windowLevel = UIWindow.Level(rawValue: UIWindow.Level.alert.rawValue - 1)
+        self.accessibilityIdentifier = "com.cocoadebug.window"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +35,9 @@ class CocoaDebugWindow: UIWindow {
 
 extension WindowHelper: WindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
-        return self.vc.shouldReceive(point: point)
+        if let bubbleVC = CocoaDebugWindowManager.shared.currentBubbleVC() {
+            return bubbleVC.shouldReceive(point: point)
+        }
+        return false
     }
 }

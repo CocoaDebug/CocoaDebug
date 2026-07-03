@@ -32,6 +32,12 @@
 //
 @property (nonatomic, assign) BOOL isNetworkEnable;
 
+/// Maximum response body bytes to store. Default 1 MB. Responses larger than this are truncated.
+@property (nonatomic, assign) NSUInteger maxStoredBodyBytes;
+
+/// Maximum response body bytes to auto-render in detail view. Default 256 KB. Above this, only summary/metadata is shown.
+@property (nonatomic, assign) NSUInteger maxAutoRenderBytes;
+
 //
 - (void)enable;
 - (void)disable;

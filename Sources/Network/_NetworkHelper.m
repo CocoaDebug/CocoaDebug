@@ -33,6 +33,8 @@
     if (self = [super init])  {
         self.mainColor = [UIColor colorFromHexString:@"#42d459"];
         self.isNetworkEnable = YES;
+        self.maxStoredBodyBytes = 1024 * 1024;      // 1 MB
+        self.maxAutoRenderBytes = 256 * 1024;        // 256 KB
     }
     return self;
 }
