@@ -276,24 +276,84 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 //liman
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
+    // Gate 0: network capture must be enabled
+    if (![_NetworkHelper shared].isNetworkEnable) {
+        return NO;
+    }
+
+    // Gate 1: only intercept http/https
     if (![request.URL.scheme isEqualToString:@"http"] &&
         ![request.URL.scheme isEqualToString:@"https"]) {
         return NO;
     }
-    
-    if ([NSURLProtocol propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request] ) {
+
+    // Gate 2: recursion guard — our own internal requests are marked
+    if ([NSURLProtocol propertyForKey:kOurRecursiveRequestFlagProperty inRequest:request]) {
         return NO;
     }
-    
-    if ([[_NetworkHelper shared] onlyURLs].count > 0) {
-        NSString* url = [request.URL.absoluteString lowercaseString];
-        for (NSString* _url in [_NetworkHelper shared].onlyURLs) {
-            if ([url rangeOfString:[_url lowercaseString]].location != NSNotFound)
-                return YES;
+
+    // Gate 3: ignoredURLs filter (low-cost pre-filter before deeper checks)
+    NSArray *ignoredURLs = [[_NetworkHelper shared] ignoredURLs];
+    if (ignoredURLs.count > 0) {
+        NSString *urlLower = [request.URL.absoluteString lowercaseString];
+        for (NSString *pattern in ignoredURLs) {
+            if (pattern.length == 0) { continue; }
+            if ([urlLower containsString:[pattern lowercaseString]]) {
+                return NO;
+            }
         }
+    }
+
+    // Gate 4: onlyURLs filter — if set, ONLY these URLs are captured
+    NSArray *onlyURLs = [[_NetworkHelper shared] onlyURLs];
+    if (onlyURLs.count > 0) {
+        NSString *urlLower = [request.URL.absoluteString lowercaseString];
+        BOOL matchesAny = NO;
+        for (NSString *pattern in onlyURLs) {
+            if (pattern.length == 0) { continue; }
+            if ([urlLower containsString:[pattern lowercaseString]]) {
+                matchesAny = YES;
+                break;
+            }
+        }
+        if (!matchesAny) {
+            return NO;
+        }
+    }
+
+    // Gate 5: WebSocket upgrade — do NOT intercept; it breaks real-time connections
+    NSDictionary *headers = [request allHTTPHeaderFields];
+    NSString *upgrade = [headers[@"Upgrade"] lowercaseString];
+    NSString *connection = [headers[@"Connection"] lowercaseString];
+    if ([upgrade isEqualToString:@"websocket"] || [connection containsString:@"upgrade"]) {
         return NO;
     }
-    
+
+    // Gate 6: Socket.IO — do NOT intercept
+    NSString *urlStr = [request.URL.absoluteString lowercaseString];
+    if ([urlStr containsString:@"socket.io"] ||
+        [urlStr containsString:@"transport=websocket"]) {
+        return NO;
+    }
+
+    // Gate 7: Server-Sent Events (SSE) — do NOT intercept
+    NSString *accept = [headers[@"Accept"] lowercaseString];
+    NSString *contentType = [headers[@"Content-Type"] lowercaseString];
+    if ([accept isEqualToString:@"text/event-stream"] ||
+        [contentType isEqualToString:@"text/event-stream"]) {
+        return NO;
+    }
+
+    // Gate 8: multipart/form-data — do NOT intercept (preserves upload progress)
+    if ([contentType hasPrefix:@"multipart/form-data"]) {
+        return NO;
+    }
+
+    // Gate 9: HTTPBodyStream — do NOT intercept (preserves upload progress, #46)
+    if (request.HTTPBodyStream != nil) {
+        return NO;
+    }
+
     return YES;
 }
 
