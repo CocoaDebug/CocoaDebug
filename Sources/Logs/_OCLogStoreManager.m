@@ -9,17 +9,26 @@
 #import "_OCLogStoreManager.h"
 #import "_NetworkHelper.h"
 
+static const NSUInteger kMaxLogCount = 2000;
+
+@interface _OCLogStoreManager ()
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *internalNormalLogArray;
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *internalRNLogArray;
+@property (nonatomic, strong) NSMutableArray<_OCLogModel *> *internalWebLogArray;
+@property (nonatomic, strong) dispatch_queue_t storeQueue;
+@end
+
 @implementation _OCLogStoreManager
 
 + (instancetype)shared
 {
     static id sharedInstance = nil;
-    
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
-    
+
     return sharedInstance;
 }
 
@@ -27,101 +36,126 @@
 {
     self = [super init];
     if (self) {
-        self.normalLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
-        self.rnLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
-        self.webLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
+        _internalNormalLogArray = [NSMutableArray arrayWithCapacity:kMaxLogCount + 100];
+        _internalRNLogArray = [NSMutableArray arrayWithCapacity:kMaxLogCount + 100];
+        _internalWebLogArray = [NSMutableArray arrayWithCapacity:kMaxLogCount + 100];
+        _storeQueue = dispatch_queue_create("com.cocoadebug.logstore", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
 
+// Provide read-only access to the internal arrays for backward compatibility.
+// Callers should prefer snapshotWithCompletion: for thread safety.
+- (NSMutableArray *)normalLogArray { return _internalNormalLogArray; }
+- (NSMutableArray *)rnLogArray { return _internalRNLogArray; }
+- (NSMutableArray *)webLogArray { return _internalWebLogArray; }
+
 - (void)addLog:(_OCLogModel *)log
 {
-    if (![log.content isKindOfClass:[NSString class]]) {return;}
-    
-    //log过滤, 忽略大小写
-    for (NSString *prefixStr in [_NetworkHelper shared].onlyPrefixLogs) {
-        if (![log.content hasPrefix:prefixStr]) {
-            return;
+    if (![log.content isKindOfClass:[NSString class]]) { return; }
+    if (!log) { return; }
+
+    // Capture filter values outside the queue to avoid potential deadlock.
+    NSArray *onlyPrefixLogs = [[_NetworkHelper shared].onlyPrefixLogs copy];
+    NSArray *ignoredPrefixLogs = [[_NetworkHelper shared].ignoredPrefixLogs copy];
+
+    // Filter on the calling thread (fast-path rejection before queuing)
+    if (onlyPrefixLogs.count > 0) {
+        BOOL matchesAny = NO;
+        for (NSString *prefixStr in onlyPrefixLogs) {
+            if ([log.content hasPrefix:prefixStr]) {
+                matchesAny = YES;
+                break;
+            }
         }
+        if (!matchesAny) { return; }
     }
-    //log过滤, 忽略大小写
-    for (NSString *prefixStr in [_NetworkHelper shared].ignoredPrefixLogs) {
+    for (NSString *prefixStr in ignoredPrefixLogs) {
         if ([log.content hasPrefix:prefixStr]) {
             return;
         }
     }
-    
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    if (log.logType == CocoaDebugLogTypeNormal)
-    {
-        //normal
-        if ([self.normalLogArray count] >= 1000) {
-            if (self.normalLogArray.count > 0) {
-                [self.normalLogArray removeObjectAtIndex:0];
+
+    dispatch_async(self.storeQueue, ^{
+        if (log.logType == CocoaDebugLogTypeNormal) {
+            if (self.internalNormalLogArray.count >= kMaxLogCount) {
+                if (self.internalNormalLogArray.count > 0) {
+                    [self.internalNormalLogArray removeObjectAtIndex:0];
+                }
             }
+            [self.internalNormalLogArray addObject:log];
         }
-        
-        [self.normalLogArray addObject:log];
-    }
-    else if (log.logType == CocoaDebugLogTypeRN)
-    {
-        //rn
-        if ([self.rnLogArray count] >= 1000) {
-            if (self.rnLogArray.count > 0) {
-                [self.rnLogArray removeObjectAtIndex:0];
+        else if (log.logType == CocoaDebugLogTypeRN) {
+            if (self.internalRNLogArray.count >= kMaxLogCount) {
+                if (self.internalRNLogArray.count > 0) {
+                    [self.internalRNLogArray removeObjectAtIndex:0];
+                }
             }
+            [self.internalRNLogArray addObject:log];
         }
-        
-        [self.rnLogArray addObject:log];
-    }
-    else
-    {
-        //web
-        if ([self.webLogArray count] >= 1000) {
-            if (self.webLogArray.count > 0) {
-                [self.webLogArray removeObjectAtIndex:0];
+        else {
+            if (self.internalWebLogArray.count >= kMaxLogCount) {
+                if (self.internalWebLogArray.count > 0) {
+                    [self.internalWebLogArray removeObjectAtIndex:0];
+                }
             }
+            [self.internalWebLogArray addObject:log];
         }
-        
-        [self.webLogArray addObject:log];
-    }
+    });
 }
 
 - (void)removeLog:(_OCLogModel *)log
 {
-    if (log.logType == CocoaDebugLogTypeNormal)
-    {
-        //normal
-        [self.normalLogArray removeObject:log];
-    }
-    else if (log.logType == CocoaDebugLogTypeNormal)
-    {
-        //rn
-        [self.rnLogArray removeObject:log];
-    }
-    else
-    {
-        //web
-        [self.webLogArray removeObject:log];
-    }
+    if (!log) { return; }
+    dispatch_async(self.storeQueue, ^{
+        // FIXED: was CocoaDebugLogTypeNormal duplicated (copy-paste bug).
+        // RN branch was dead code; web branch would incorrectly catch RN logs.
+        if (log.logType == CocoaDebugLogTypeNormal) {
+            [self.internalNormalLogArray removeObject:log];
+        }
+        else if (log.logType == CocoaDebugLogTypeRN) {
+            [self.internalRNLogArray removeObject:log];
+        }
+        else {
+            [self.internalWebLogArray removeObject:log];
+        }
+    });
 }
 
 - (void)resetNormalLogs
 {
-    [self.normalLogArray removeAllObjects];
+    dispatch_async(self.storeQueue, ^{
+        [self.internalNormalLogArray removeAllObjects];
+    });
 }
 
 - (void)resetRNLogs
 {
-    [self.rnLogArray removeAllObjects];
+    dispatch_async(self.storeQueue, ^{
+        [self.internalRNLogArray removeAllObjects];
+    });
 }
 
 - (void)resetWebLogs
 {
-    [self.webLogArray removeAllObjects];
+    dispatch_async(self.storeQueue, ^{
+        [self.internalWebLogArray removeAllObjects];
+    });
+}
+
+- (void)snapshotWithCompletion:(void (^)(NSArray<_OCLogModel *> *normalLogs,
+                                          NSArray<_OCLogModel *> *rnLogs,
+                                          NSArray<_OCLogModel *> *webLogs))completion
+{
+    if (!completion) { return; }
+    dispatch_async(self.storeQueue, ^{
+        NSArray *normalCopy = [self.internalNormalLogArray copy];
+        NSArray *rnCopy = [self.internalRNLogArray copy];
+        NSArray *webCopy = [self.internalWebLogArray copy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(normalCopy, rnCopy, webCopy);
+        });
+    });
 }
 
 @end

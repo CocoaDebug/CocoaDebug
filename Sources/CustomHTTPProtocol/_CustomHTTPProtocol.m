@@ -424,39 +424,37 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     }
     
     _HttpModel* model = [[_HttpModel alloc] init];
-    model.url = self.request.URL;
-    model.method = self.request.HTTPMethod;
-    model.mineType = self.response.MIMEType;
+    model.url = self.request.URL ?: [[NSURL alloc] initWithString:@""];
+    model.method = self.request.HTTPMethod ?: @"";
+    model.mineType = self.response.MIMEType ?: @"";
     if (self.request.HTTPBody) {
         model.requestData = self.request.HTTPBody;
     }
-    if (self.request.HTTPBodyStream) {//liman
-        NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];
-        model.requestData = data;
-    }
-    
+    // HTTPBodyStream is NOT read here — see P1-3 fix for upload progress preservation.
+
     NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)self.response;
     model.statusCode = [NSString stringWithFormat:@"%d",(int)httpResponse.statusCode];
     model.responseData = self.data;
-    model.size = [[NSByteCountFormatter new] stringFromByteCount:self.data.length];
+    model.size = [[NSByteCountFormatter new] stringFromByteCount:(long long)self.data.length];
     model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
-    
+
     //时间
     NSTimeInterval startTimeDouble = self.startTime;
     NSTimeInterval endTimeDouble = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval durationDouble = fabs(endTimeDouble - startTimeDouble);
-    
+
     model.startTime = [NSString stringWithFormat:@"%f", startTimeDouble];
     model.endTime = [NSString stringWithFormat:@"%f", endTimeDouble];
     model.totalDuration = [NSString stringWithFormat:@"%f (s)", durationDouble];
-    
-    
-    model.errorDescription = self.error.description;
-    model.errorLocalizedDescription = self.error.localizedDescription;
-    model.requestHeaderFields = self.request.allHTTPHeaderFields;
-    
+
+    // nil-safe: error may be nil
+    model.errorDescription = self.error.description ?: @"";
+    model.errorLocalizedDescription = self.error.localizedDescription ?: @"";
+    model.requestHeaderFields = self.request.allHTTPHeaderFields ?: @{};
+
     if ([self.response isKindOfClass:[NSHTTPURLResponse class]]) {
-        model.responseHeaderFields = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        NSDictionary *headers = ((NSHTTPURLResponse *)self.response).allHeaderFields;
+        model.responseHeaderFields = headers ?: @{};
     }
     
     if (self.response.MIMEType == nil) {
