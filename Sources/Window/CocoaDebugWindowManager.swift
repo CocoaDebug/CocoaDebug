@@ -47,8 +47,6 @@ import UIKit
     @objc public func showBubble() {
         desiredBubbleVisible = true
 
-        // Auto-start if not yet enabled — Settings.showBubbleAndWindow triggers this
-        // before start() is explicitly called.
         if !isEnabled {
             isEnabled = true
         }
@@ -106,8 +104,9 @@ import UIKit
     @available(iOS 13.0, *)
     @objc public func handleSceneDidActivate(_ scene: UIScene) {
         guard isEnabled, desiredBubbleVisible else { return }
-        if bubbleWindow == nil {
-            createBubbleWindowScene(assignScene: true)
+        // Re-assign the active scene to our window
+        if let windowScene = scene as? UIWindowScene, let bw = bubbleWindow {
+            bw.windowScene = windowScene
         }
     }
 
@@ -125,62 +124,13 @@ import UIKit
     // MARK: - Window Creation
 
     private func createBubbleWindow() {
-        if #available(iOS 13.0, *) {
-            createBubbleWindowScene(assignScene: false)
-        } else {
-            createBubbleWindowLegacy()
-        }
-    }
-
-    @available(iOS 13.0, *)
-    private func createBubbleWindowScene(assignScene: Bool) {
-        let windowScene = anyAvailableScene()
-        let useScene = assignScene ? windowScene : windowScene
-
-        // On iOS 13+, UIWindow needs a windowScene. If no scene is available yet
-        // (e.g. during UIApplicationDidFinishLaunchingNotification before scene activation),
-        // create the window with any connected scene — it will work once the scene activates.
-        // Only register for deferred creation if there are zero scenes at all.
-        guard let scene = useScene else {
-            // No scene exists yet. Register one-shot observer for when one appears.
-            var token: NSObjectProtocol?
-            token = NotificationCenter.default.addObserver(
-                forName: UIScene.didActivateNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                guard let self = self else { return }
-                if self.bubbleWindow == nil && self.desiredBubbleVisible {
-                    self.createBubbleWindow()
-                }
-                if let token = token {
-                    NotificationCenter.default.removeObserver(token)
-                }
-            }
-            return
-        }
-
         let vc = CocoaDebugViewController()
         bubbleVC = vc
 
-        let window = CocoaDebugWindow(frame: scene.coordinateSpace.bounds)
-        window.windowScene = scene
-        window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
-        window.bounds.size.height = scene.coordinateSpace.bounds.height.nextDown
-        window.rootViewController = vc
-        window.delegate = WindowHelper.shared
-        window.isHidden = false
-        bubbleWindow = window
-
-        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
-            WindowHelper.shared.startUIBlockingMonitoring()
-        }
-    }
-
-    private func createBubbleWindowLegacy() {
-        let vc = CocoaDebugViewController()
-        bubbleVC = vc
-
+        // Create the window immediately with UIScreen.main.bounds.
+        // On iOS 13+, we'll assign a windowScene below if available.
+        // If no scene is available yet, the window still exists and will
+        // be picked up by the system when a scene activates.
         let window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
@@ -189,30 +139,43 @@ import UIKit
         window.isHidden = false
         bubbleWindow = window
 
+        // On iOS 13+, try to assign a windowScene. Use any available scene
+        // (not just foregroundActive) since at launch time the scene may
+        // still be in .background state.
+        if #available(iOS 13.0, *) {
+            assignBestScene(to: window)
+        }
+
         if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
             WindowHelper.shared.startUIBlockingMonitoring()
         }
+    }
+
+    @available(iOS 13.0, *)
+    private func assignBestScene(to window: CocoaDebugWindow) {
+        if let scene = anyAvailableScene() {
+            window.windowScene = scene
+        }
+        // If no scene is available, the window is still created and visible.
+        // The host app should forward scene activation via handleSceneDidActivate.
     }
 
     // MARK: - Scene Helpers
 
     @available(iOS 13.0, *)
     private func anyAvailableScene() -> UIWindowScene? {
-        // Prefer foregroundActive
         for scene in UIApplication.shared.connectedScenes {
             guard let windowScene = scene as? UIWindowScene else { continue }
             if scene.activationState == .foregroundActive {
                 return windowScene
             }
         }
-        // Then foregroundInactive
         for scene in UIApplication.shared.connectedScenes {
             guard let windowScene = scene as? UIWindowScene else { continue }
             if scene.activationState == .foregroundInactive {
                 return windowScene
             }
         }
-        // Then any UIWindowScene (e.g. .background during launch — will work once scene activates)
         for scene in UIApplication.shared.connectedScenes {
             if let windowScene = scene as? UIWindowScene {
                 return windowScene
