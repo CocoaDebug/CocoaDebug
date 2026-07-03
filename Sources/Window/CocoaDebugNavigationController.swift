@@ -27,15 +27,25 @@ class CocoaDebugNavigationController: UINavigationController {
         leftItem.tintColor = Color.mainGreen
         topViewController?.navigationItem.leftBarButtonItem = leftItem
         
-        //bugfix #issues-158
-        if #available(iOS 13, *) {
+        // Set navigation bar appearance in code (do NOT use global UINavigationBar.appearance()).
+        // This avoids conflicts with QMUIKit, host app global appearance, and iOS 15+ behavior changes.
+        if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            // self.navigationController?.navigationBar.isTranslucent = true  // pass "true" for fixing iOS 15.0 black bg issue
-            // self.navigationController?.navigationBar.tintColor = UIColor.white // We need to set tintcolor for iOS 15.0
-            appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
-//            UINavigationBar.appearance().standardAppearance = appearance
-//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            appearance.backgroundColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1.0)
+            appearance.shadowColor = .clear
+            appearance.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20),
+                                              .foregroundColor: Color.mainGreen]
+            self.navigationBar.standardAppearance = appearance
+            self.navigationBar.scrollEdgeAppearance = appearance
+            self.navigationBar.compactAppearance = appearance
+            if #available(iOS 15.0, *) {
+                self.navigationBar.compactScrollEdgeAppearance = appearance
+            }
+        } else if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.shadowColor = .clear
             self.navigationBar.standardAppearance = appearance
             self.navigationBar.scrollEdgeAppearance = appearance
         }

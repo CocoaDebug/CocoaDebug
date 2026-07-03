@@ -46,40 +46,41 @@
 //liman
 - (void)customNavigationBar
 {
-    //****** copy codes from LogNavigationViewController.swift ******
-    self.navigationController.navigationBar.translucent = NO;
-    
-    self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
-    self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSFontAttributeName:[UIFont boldSystemFontOfSize:20],
-                                                                    NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
-                                                                    };
-    
-    //bugfix #issues-158
-    if (@available(iOS 13.0, *)) {
+    if (@available(iOS 15.0, *)) {
+        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+        appearance.shadowColor = [UIColor clearColor];
+        appearance.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+            NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+        };
+        self.navigationController.navigationBar.standardAppearance = appearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.compactAppearance = appearance;
+        if (@available(iOS 15.0, *)) {
+            self.navigationController.navigationBar.compactScrollEdgeAppearance = appearance;
+        }
+    } else if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
         [appearance configureWithOpaqueBackground];
         appearance.shadowColor = [UIColor clearColor];
         self.navigationController.navigationBar.standardAppearance = appearance;
         self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
+        self.navigationController.navigationBar.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+            NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+        };
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
+        self.navigationController.navigationBar.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont boldSystemFontOfSize:20],
+            NSForegroundColorAttributeName: [_NetworkHelper shared].mainColor
+        };
     }
-
-    
-    //swift:
-    
-    //bugfix #issues-158
-//    if #available(iOS 13, *) {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        // self.navigationController?.navigationBar.isTranslucent = true  // pass "true" for fixing iOS 15.0 black bg issue
-//        // self.navigationController?.navigationBar.tintColor = UIColor.white // We need to set tintcolor for iOS 15.0
-//        appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
-////            UINavigationBar.appearance().standardAppearance = appearance
-////            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//        self.navigationBar.standardAppearance = appearance
-//        self.navigationBar.scrollEdgeAppearance = appearance
-//    }
-    
 }
 
 - (void)exit {
@@ -106,7 +107,11 @@
     [self.view addGestureRecognizer:tap];
     
     //liman
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    if (@available(iOS 15.0, *)) {
+        // UINavigationBarAppearance handles background color; do not use deprecated barTintColor
+    } else {
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    }
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     //liman
