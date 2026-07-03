@@ -34,9 +34,7 @@ import UIKit
 
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        NSLog("[CocoaDebug] enable() called")
         initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, ignoredPrefixLogs: ignoredPrefixLogs, onlyPrefixLogs: onlyPrefixLogs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
-        NSLog("[CocoaDebug] enable() done")
     }
 
     //MARK: - CocoaDebug disable

@@ -273,7 +273,6 @@ extension CocoaDebug {
     ///init
     static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-        NSLog("[CocoaDebug] initializationMethod() START, firstIn=%@", CocoaDebugSettings.shared.firstIn ?? "nil")
 
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
@@ -304,13 +303,13 @@ extension CocoaDebug {
         }
 
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
-            NSLog("[CocoaDebug] initializationMethod: first launch, setting showBubbleAndWindow=true")
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
         } else {//not first launch
-            NSLog("[CocoaDebug] initializationMethod: not first launch, showBubbleAndWindow=%@",
-                  CocoaDebugSettings.shared.showBubbleAndWindow ? "true" : "false")
-            CocoaDebugSettings.shared.showBubbleAndWindow = CocoaDebugSettings.shared.showBubbleAndWindow
+            // Preserve persisted state; if bubble should be shown, trigger it
+            if CocoaDebugSettings.shared.showBubbleAndWindow {
+                CocoaDebugWindowManager.shared.showBubble()
+            }
         }
 
         CocoaDebugSettings.shared.visible = false
@@ -323,8 +322,7 @@ extension CocoaDebug {
 
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-        NSLog("[CocoaDebug] initializationMethod() END")
-        
+
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
         CocoaDebugSettings.shared.emailCcRecipients = emailCcRecipients

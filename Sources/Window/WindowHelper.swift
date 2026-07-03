@@ -13,13 +13,7 @@ import UIKit
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
 
-    // Deprecated direct access; use CocoaDebugWindowManager instead
-    var window: CocoaDebugWindow {
-        // Return a placeholder — callers should migrate to WindowManager
-        return CocoaDebugWindow(frame: .zero)
-    }
     var displayedList = false
-    lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
 
     private override init() {
         super.init()

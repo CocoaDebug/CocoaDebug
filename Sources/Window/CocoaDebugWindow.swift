@@ -35,6 +35,9 @@ class CocoaDebugWindow: UIWindow {
 
 extension WindowHelper: WindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
-        return self.vc.shouldReceive(point: point)
+        if let bubbleVC = CocoaDebugWindowManager.shared.currentBubbleVC() {
+            return bubbleVC.shouldReceive(point: point)
+        }
+        return false
     }
 }

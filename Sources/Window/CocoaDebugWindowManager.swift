@@ -24,6 +24,7 @@ import UIKit
     private var desiredPanelVisible = false
 
     private var isEnabled = false
+    private var sceneActivationObserver: NSObjectProtocol?
 
     private let accessibilityPrefix = "com.cocoadebug.window"
 
@@ -45,8 +46,6 @@ import UIKit
     }
 
     @objc public func showBubble() {
-        NSLog("[CocoaDebug] WindowManager.showBubble() called, isEnabled=%@, bubbleWindow=%@",
-              isEnabled ? "YES" : "NO", bubbleWindow != nil ? "exists" : "nil")
         desiredBubbleVisible = true
 
         if !isEnabled {
@@ -56,8 +55,6 @@ import UIKit
         if bubbleWindow == nil {
             createBubbleWindow()
         }
-        NSLog("[CocoaDebug] WindowManager.showBubble() done, bubbleWindow=%@",
-              bubbleWindow != nil ? "exists" : "nil")
         bubbleWindow?.isHidden = false
     }
 
@@ -128,11 +125,8 @@ import UIKit
     // MARK: - Window Creation
 
     private func createBubbleWindow() {
-        NSLog("[CocoaDebug] WindowManager.createBubbleWindow() START")
-
         let vc = CocoaDebugViewController()
         bubbleVC = vc
-        NSLog("[CocoaDebug] createBubbleWindow: CocoaDebugViewController created")
 
         let window = CocoaDebugWindow(frame: UIScreen.main.bounds)
         window.accessibilityIdentifier = "\(accessibilityPrefix).bubble"
@@ -141,19 +135,30 @@ import UIKit
         window.delegate = WindowHelper.shared
         window.isHidden = false
         bubbleWindow = window
-        NSLog("[CocoaDebug] createBubbleWindow: window created, frame=%.0fx%.0f, hidden=%d",
-              window.frame.size.width, window.frame.size.height, window.isHidden ? 1 : 0)
 
         if #available(iOS 13.0, *) {
-            let sceneCount = UIApplication.shared.connectedScenes.count
-            NSLog("[CocoaDebug] createBubbleWindow: iOS 13+, connectedScenes count=%ld", sceneCount)
             assignBestScene(to: window)
+            if window.windowScene == nil {
+                sceneActivationObserver = NotificationCenter.default.addObserver(
+                    forName: UIScene.didActivateNotification,
+                    object: nil,
+                    queue: .main) { [weak self] notification in
+                        guard let self = self,
+                              let scene = notification.object as? UIWindowScene else { return }
+                        if self.bubbleWindow?.windowScene == nil && self.desiredBubbleVisible {
+                            self.bubbleWindow?.windowScene = scene
+                        }
+                        if let obs = self.sceneActivationObserver {
+                            NotificationCenter.default.removeObserver(obs)
+                            self.sceneActivationObserver = nil
+                        }
+                    }
+            }
         }
 
         if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
             WindowHelper.shared.startUIBlockingMonitoring()
         }
-        NSLog("[CocoaDebug] WindowManager.createBubbleWindow() END")
     }
 
     @available(iOS 13.0, *)

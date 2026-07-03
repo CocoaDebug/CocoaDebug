@@ -285,8 +285,7 @@ class Bubble: UIView {
     }
     
     @objc func show_cocoadebug_force() {
-        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
-        CocoaDebugSettings.shared.showBubbleAndWindow = !CocoaDebugSettings.shared.showBubbleAndWindow
+        CocoaDebugSettings.shared.showBubbleAndWindow = true
     }
     
     
